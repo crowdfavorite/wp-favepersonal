@@ -262,11 +262,11 @@
 		}
 		.bio-box {
 			background-color: <?php echo cf_kuler_color('medium'); ?>;	
-			color: <?php echo cf_kuler_color('dark'); ?>;
+			color: <?php echo cf_kuler_color('darkest'); ?>;
 			margin-bottom: 30px;
 		}
 		.bio-box a {
-			color: <?php echo cf_kuler_color('dark'); ?>;
+			color: <?php echo cf_kuler_color('darkest'); ?>;
 			text-decoration: underline;
 		}
 		.bio-box a:hover {
