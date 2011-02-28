@@ -1,9 +1,9 @@
 <?php
 /**
- * @package carrington-business
+ * @package carrington-personal
  *
  * This file is part of the Carrington Business Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-business/
+ * http://crowdfavorite.com/wordpress/themes/carrington-personal/
  *
  * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
