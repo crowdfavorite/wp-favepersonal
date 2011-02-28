@@ -1,372 +1,67 @@
-/*
-Theme Name: Carrington Personal
-*/
+/** 
+ * Theme Name: Carrington Personal
+ * Theme URI: http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * Description: A personal and customizable theme perfect for your personal site. Customizable colors with Adobe Kuler to create your own unique site.
+ * Version: 1.0
+ * Author: Crowd Favorite
+ * Author URI: http://crowdfavorite.com/
+ * Tags: customizable, template, framework, carrington, cms, one-column, two-columns, three-columns, fixed-width, editor-style, threaded-comments
+ *
+ * @package carrington-personal
+ *
+ * This file is part of the Carrington Business Theme for WordPress
+ * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ *
+ * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * http://crowdfavorite.com
+ *
+ * **********************************************************************
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * **********************************************************************
+ *
+ * NOTE - This file is not used: it's only here because WordPress expects it to be in a theme.
+ * It's standard to use the css/ dir for actual theme CSS in a Carrington-based theme.
+ */
 
-/** Base
- -------------------------------------------------- */
-body {
-	background-color: <?php echo cf_kuler_color('dark'); ?>;
-	font-family: Helvetica, Arial, Verdana, sans-serif;
-	font-size: 14px;
-	font-weight: 300;
-	line-height: 21px;
-	margin: 0;
-}
-a {
-	color: <?php echo cf_kuler_color('dark'); ?>;
-	text-decoration: none;
-}
-a:hover {
-	color: <?php echo cf_kuler_color('darkest'); ?>;
-}
-h1, h2, h3, h4 {
-	font-weight: normal;
-}
-h1 {
-	font-size: 32px;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-}
-h2, h3, h4 {
-	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
-}
-h2 {
-	font-size: 18px;
-}
-h3 {
-	font-size: 16px;
-}
-h4 {
-	font-size: 14px;
-}
-h5 {
-	color: #ccc;
-	font-size: 10px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
+/* including for compatibility */
 
-
-/** Load Fonts
- -------------------------------------------------- */
-@font-face {
-	font-family: Titillium400;
-	src: url(fonts/TitilliumText22L003.otf);
+.alignleft {
+	float:left;
+	margin-right:1em;
+	margin-bottom:1em;
 }
-@font-face {
-	font-family: Titillium600;
-	src: url(fonts/TitilliumText22L004.otf);
+.alignright {
+	float:right;
+	margin-left:1em;
+	margin-bottom:1em;
 }
-
-.container {
-	width: 990px;
-	margin: 0 auto;
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
-
-/** Header
- -------------------------------------------------- */
-#header {
-	background-color: <?php echo cf_kuler_color('darkest'); ?>;
+.wp-caption {
+	border: 1px solid #ddd;
+	text-align: center;
+	background-color: #f3f3f3;
+	padding-top: 4px;
+	margin: 10px;
+	/* optional rounded corners for browsers that support it */
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
-#header .container {
-	background-color: <?php echo cf_kuler_color('darkest'); ?>;
-	position: relative;
-	padding-bottom: 15px;
-	padding-top: 44px;
-}
-#header a {
-	color: <?php echo cf_kuler_color('lightest'); ?>;
-}
-#header a:hover {
-	color: <?php echo cf_kuler_color('medium'); ?>;
-}
-#header h1 {
-	margin: 0;
-}
-#header #nav-main {
-	bottom: 0;
-	line-height: 1em;
-	list-style-type: none;
+.wp-caption img {
 	margin: 0;
 	padding: 0;
-	position: absolute;
-	right: 0;
+	border: 0 none;
 }
-#header #nav-main li {
-	display: inline-block;
-	margin: 0 0 0 20px;
-	padding: 0;
-}
-#header #nav-main li a {
-	display: inline-block;
-	border-bottom: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
-	padding-bottom: 10px;
-}
-#header #nav-main li a.current,
-#header #nav-main li a:hover {
-	border-bottom: 3px solid <?php echo cf_kuler_color('dark'); ?>;
-}
-
-
-/** Mathead
- -------------------------------------------------- */
-#masthead {
-	background-color: <?php echo cf_kuler_color('dark'); ?>;
-	min-height: 10px;
-	padding: 40px 0 41px 0;
-}
-.featured {
-	background-color: <?php echo cf_kuler_color('darkest') ?>;
-	border: 5px solid <?php echo cf_kuler_color('darkest') ?>;
-	height: 170px;
-	overflow: hidden;
-	position: relative;
-	width: 300px;
-}
-.featured-title,
-.featured-content {
-	position: absolute;
-}
-.featured-title {
-	line-height: 1em;
-	margin: 10px 0;
-	z-index: 10;
-}
-.featured-title a {
-	background-color: <?php echo cf_kuler_color('darkest') ?>;
-	color: <?php echo cf_kuler_color('lightest') ?>;
-	display: inline-block;
-	padding: 6px 14px 5px 12px;
-}
-.featured-content {
-	color:<?php echo cf_kuler_color('lightest') ?>;
-	min-height: 170px;
-	padding: 45px 12px 0 12px;
-	z-index: 9;
-}
-.featured-content p {
-	margin-top: 0;
-}
-.featured-link {
-	display: block;
-	position: absolute;
-	height: 180px;
-	left: 0;
-	text-indent: -999em;
-	top: 0;
-	width: 310px;
-	z-index: 20;
-}
-/* rollover */
-.featured:hover {
-	background-color: <?php echo cf_kuler_color('medium') ?>;
-	border: 5px solid <?php echo cf_kuler_color('medium') ?>;
-}
-.featured:hover .featured-title a {
-	background-color: <?php echo cf_kuler_color('medium') ?>;
-	color: <?php echo cf_kuler_color('darkest') ?>;
-}
-.featured:hover .featured-content {
-	color:<?php echo cf_kuler_color('dark') ?>;
-}
-/* with featured image */
-.has-featured-img .featured-content {
-	display: none;
-}
-.has-featured-img:hover .featured-content {
-	color:<?php echo cf_kuler_color('lightest') ?>;
-	background-color: rgba(<?php echo_hex(cf_kuler_color('dark')); ?>.75);
-	display: block;
-}
-.featured-img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 1;
-}
-
-/** Content - wraps body and sidebar
- -------------------------------------------------- */
-#content {
-	background-color: #fff;
-	padding: 40px 0;
-}
-
-
-/** Post
- -------------------------------------------------- */
-.post-header {
-	clear: both;
-	position: relative;
-	margin-bottom: 15px;
-	width: 100%;
-}
-.post-header,
-.post-content {
-	padding-left: 140px;
-	padding-right: 30px;
-}
-.post-title, 
-.post-date {
-	line-height: 1.2em;
+.wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	padding: 0 4px 5px;
 	margin: 0;
-}
-.post-title {
-	color: <?php echo cf_kuler_color('dark'); ?>;			
-}
-.post-date {
-	color: #ccc;
-	bottom: 4px;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 20px;
-	left: 0;
-	letter-spacing: -1px;
-	position: absolute;
-}
-.post-date,
-.post-meta {
-	float: left;
-	margin-right: 20px;
-	text-align: right;
-	width: 120px;
-}
-.post-meta {
-	color: #ccc;
-	font-size: 12px;
-}
-.post-meta a {
-	color: #999;
-}
-.post-meta a:hover {
-	color: <?php echo cf_kuler_color('darkest'); ?>;
-}
-.post-meta h5 {
-	margin: 0;
-}
-.post-meta ul,
-.post-meta p {
-	margin: 0 0 15px 0;
-}
-.post-meta ul {
-	list-style-type: none;
-}
-
-
-/** Sidebar
- -------------------------------------------------- */
-.bio-box,
-.widget {
-	margin: 0 0 25px 0;
-}
-.bio-box {
-	background-color: <?php echo cf_kuler_color('medium'); ?>;	
-	color: <?php echo cf_kuler_color('dark'); ?>;
-	margin-bottom: 30px;
-}
-.bio-box a {
-	color: <?php echo cf_kuler_color('dark'); ?>;
-	text-decoration: underline;
-}
-.bio-box a:hover {
-	color: <?php echo cf_kuler_color('darkest'); ?>;				
-}
-.bio-img {
-	float: right;
-	margin: 0 0 15px 0;
-}
-.bio-box .bio-content {
-	padding: 4px 18px 18px 18px;
-}
-.bio-box .bio-content p {
-	margin: 10px 0 0 0;
-}		
-.widget {
-	color: #999;
-	font-size: 13px;
-	line-height: 18px;
-	margin: 0 0 25px 0;
-}
-.widget-title {
-	color: <?php echo cf_kuler_color('dark'); ?>;
-	background-color: <?php echo cf_kuler_color('light'); ?>;
-	margin: 0 0 10px 0;
-	padding: 7px 10px 6px 10px;
-}
-.widget ul {
-	padding: 0 10px 0 26px;
-	margin: 0;
-}
-.widget ul li {
-	margin: 5px 0 0 0;
-}
-.widget ul.ul-col-2 {
-	padding: 0 0 0 26px;
-}
-.widget ul.ul-col-2 li {
-	float: left;
-	margin-right: 12px;
-	width: 130px;
-}
-
-
-/** Footer
- -------------------------------------------------- */
-#footer {
-	background-color: <?php echo cf_kuler_color('dark'); ?>;
-	color: <?php echo cf_kuler_color('darkest'); ?>;
-	font-size: 12px;
-	line-height: 18px;
-	padding: 30px 0;	
-}
-#footer a {
-	color: <?php echo cf_kuler_color('darkest'); ?>;
-	text-decoration: underline;
-}
-#footer a:hover {
-	color: <?php echo cf_kuler_color('medium'); ?>;
-}
-#footer .credit {
-	float: right;
-	margin-top: 0;
-}
-
-
-
-/** Grid
- -------------------------------------------------- */
-.col-a,
-.col-b,
-.col-c,
-.col-ab,
-.col-bc {
-	display: inline;
-	float: left;
-	margin: 0 15px;
-}
-.col-a,
-.col-b,
-.col-c {
-	width: 310px;
-}
-.col-ab,
-.col-bc {
-	width: 650px;
-}
-.col-a,
-.col-ab {
-	margin-left: 0;
-}
-.col-c {
-	margin-right: 0;
-}
-.clearfix {
-	display: block;
-	zoom: 1;
-}
-.clearfix:after {
-	content: " ";
-	display: block;
-	font-size: 0;
-	height: 0;
-	clear: both;
-	visibility: hidden;
 }
