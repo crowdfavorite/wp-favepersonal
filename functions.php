@@ -49,7 +49,6 @@ include_once(CFCT_PATH.'carrington-core/carrington.php');
  * Kuler Color Integration
  * http://kuler.adobe.com
  */
-//include('plugins/cf-kuler.php');
 
 // Convert color to RGB so we can use background opacity
 function hex2rgb( $color ) {
