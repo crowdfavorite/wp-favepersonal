@@ -16,10 +16,9 @@
  * **********************************************************************
  */
 
-if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
-
-// NOTE: this file is here for compatibility reasons - active templates are in the posts/ dir 
-
-cfct_posts();
 
 ?>
+<div class="pagination">
+	<span class="next"><?php next_posts_link(__('Next &raquo;', 'carrington-text')) ?></span>
+	<span class="previous"><?php previous_posts_link(__('&laquo; Previous', 'carrington-text')) ?></span>
+</div>

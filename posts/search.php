@@ -16,10 +16,40 @@
  * **********************************************************************
  */
 
+
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-// NOTE: this file is here for compatibility reasons - active templates are in the posts/ dir 
+get_header();
 
-cfct_posts();
+$s = get_query_var('s');
+
+if (get_option('permalink_structure') != '') {
+	$search_title = '<a href="'.trailingslashit(get_bloginfo('url')).'search/'.urlencode($s).'">'.htmlspecialchars($s).'</a>';
+}
+else {
+	$search_title = '<a href="'.trailingslashit(get_bloginfo('url')).'?s='.urlencode($s).'">'.htmlspecialchars($s).'</a>';
+}
+
+?>
+
+<div id="content">
+
+	<h1><?php printf(__('Search Results for: %s', 'carrington-text'), $search_title); ?></h1>
+
+<?php
+
+cfct_loop();
+cfct_misc('nav-posts');
+
+?>
+
+</div>
+
+<?php
+
+get_sidebar();
+
+get_footer();
 
 ?>

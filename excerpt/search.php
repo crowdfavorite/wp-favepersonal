@@ -16,10 +16,24 @@
  * **********************************************************************
  */
 
+
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
-
-// NOTE: this file is here for compatibility reasons - active templates are in the posts/ dir 
-
-cfct_posts();
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
+<div id="post-<?php the_ID(); ?>">
+	<h3 class="entry-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+<?php
+
+the_excerpt();
+
+?>
+	<div class="meta"><abbr class="published" title="<?php the_time('Y-m-d\TH:i'); ?>"><?php the_time('M j, Y'); ?></abbr> &mdash; 
+
+<?php
+
+comments_popup_link(__('No comments', 'carrington-text'), __('1 comment', 'carrington-text'), __('% comments', 'carrington-text'));
+
+?>
+	</div>
+</div><!-- .excerpt -->

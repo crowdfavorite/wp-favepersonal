@@ -16,10 +16,20 @@
  * **********************************************************************
  */
 
+
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-// NOTE: this file is here for compatibility reasons - active templates are in the posts/ dir 
-
-cfct_posts();
+if (get_option('permalink_structure') != '') {
+	$onsubmit = "location.href=this.action+'search/'+encodeURIComponent(this.s.value).replace(/%20/g, '+'); return false;";
+}
+else {
+	$onsubmit = '';
+}
 
 ?>
+
+<form method="get" action="<?php echo trailingslashit(get_bloginfo('url')); ?>" onsubmit="<?php echo $onsubmit; ?>">
+	<input type="text" id="s" name="s" value="<?php echo wp_specialchars($s, 1); ?>" size="15" />
+	<input type="submit" name="submit_button" value="<?php _e('Search', 'carrington-text'); ?>" />
+</form>

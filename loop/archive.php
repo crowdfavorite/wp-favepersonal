@@ -16,10 +16,24 @@
  * **********************************************************************
  */
 
+
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-// NOTE: this file is here for compatibility reasons - active templates are in the posts/ dir 
-
-cfct_posts();
+if (have_posts()) {
+	echo '<ol class="archive">';
+	while (have_posts()) {
+		the_post();
+?>
+	<li>
+<?php
+		cfct_excerpt();
+?>
+		<div id="post-content-<?php the_ID(); ?>-target"></div>
+	</li>
+<?php
+	}
+	echo '</ol>';
+}
 
 ?>

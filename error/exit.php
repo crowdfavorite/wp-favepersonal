@@ -16,10 +16,11 @@
  * **********************************************************************
  */
 
+
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
-
-// NOTE: this file is here for compatibility reasons - active templates are in the posts/ dir 
-
-cfct_posts();
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
+<html>
+<body><?php echo htmlspecialchars($str); ?></body>
+</html>

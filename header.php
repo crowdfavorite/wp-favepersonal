@@ -3,8 +3,8 @@
 /**
  * @package carrington-personal
  *
- * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * This file is part of the Carrington Business Theme for WordPress
+ * http://crowdfavorite.com/wordpress/themes/carrington-persona/
  *
  * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
@@ -18,8 +18,8 @@
 
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 
-// NOTE: this file is here for compatibility reasons - active templates are in the posts/ dir 
+// NOTE: this file is here for compatibility reasons - active templates are in the header/ dir 
 
-cfct_posts();
+cfct_header();
 
 ?>

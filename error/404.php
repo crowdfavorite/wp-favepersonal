@@ -16,10 +16,30 @@
  * **********************************************************************
  */
 
+
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-// NOTE: this file is here for compatibility reasons - active templates are in the posts/ dir 
+get_header();
 
-cfct_posts();
+?>
+
+<div id="content">
+
+<p><?php _e('Sorry, we\'re not sure what you\'re looking for here.', 'carrington-text'); ?></p>
+
+<?php
+
+cfct_form('search');
+
+?>
+
+</div>
+
+<?php
+
+get_sidebar();
+
+get_footer();
 
 ?>
