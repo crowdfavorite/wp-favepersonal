@@ -2,7 +2,7 @@
 /**
  * @package carrington-personal
  *
- * This file is part of the Carrington Business Theme for WordPress
+ * This file is part of the Carrington Personal Theme for WordPress
  * http://crowdfavorite.com/wordpress/themes/carrington-personal/
  *
  * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.

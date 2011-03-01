@@ -4,13 +4,9 @@
  * Also contains style for Carrington Build
  * -------------------------------------------------- */
 
-/**
- * Constrained single col
- */
-.col-full {
-	margin-left: auto;
-	margin-right: auto;
-	width: 620px;
+.container {
+	width: 990px;
+	margin: 0 auto;
 }
 
 .col-a, /* 1/3 */
@@ -20,10 +16,7 @@
 .col-bc,
 .col-abc, /* 1/1 */
 .col-d, /* 1/2 */
-.col-e,
-.col-f, /* 1/6 */
-.col-g,
-.col-h {
+.col-e {
 	display: inline; /* Double-margin float bug fix */
 	float: left;
 	/**
@@ -50,6 +43,10 @@
 .col-bc {
 	width: 650px;
 }
+.col-d,
+.col-e {
+	width: 480px;
+}
 .col-abc {
 	display: block;
 	float: none;
@@ -66,9 +63,22 @@
 	clear: left;
 }
 
-.col-d,
+/** 
+ * Remove margins on first and last columns
+ */
+.col-a,
+.col-ab,
+.col-d {
+	margin-left: 0;
+}
+.col-c,
+.col-bc,
 .col-e {
-	width: 480px;
+	margin-right: 0;
+}
+.col-abc {
+	margin-left: 0;
+	margin-right: 0;
 }
 
 /**
@@ -78,18 +88,14 @@
 .col-abc .col-ab,
 .col-abc .col-d,
 .col-ab .col-a,
-.col-bc .col-b,
-.col-d .col-f,
-.col-e .col-f {
+.col-bc .col-b {
 	margin-left: 0;
 }
 .col-abc .col-c,
 .col-abc .col-bc,
 .col-abc .col-e,
 .col-ab .col-b,
-.col-bc .col-e,
-.col-d .col-h,
-.col-e .col-h {
+.col-bc .col-e {
 	margin-right: 0;
 }
 

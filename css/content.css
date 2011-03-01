@@ -1,0 +1,236 @@
+/* --------------------------------------------------
+ * Content - Posts, Pages, Comments
+-------------------------------------------------- */
+
+/** Shared
+ -------------------------------------------------- */
+
+/** Header
+ -------------------------------------------------- */
+#header .container {
+	position: relative;
+	padding-bottom: 15px;
+	padding-top: 44px;
+}
+#header h1 {
+	margin: 0;
+}
+#header #nav-main {
+	bottom: 0;
+	line-height: 1em;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 0;
+}
+#header #nav-main li {
+	display: inline-block;
+	margin: 0 0 0 20px;
+	padding: 0;
+}
+#header #nav-main li a {
+	display: inline-block;
+	padding-bottom: 10px;
+}
+#header #nav-main li a.current,
+#header #nav-main li a:hover {
+}
+
+
+/** Mathead
+ -------------------------------------------------- */
+#masthead {
+	min-height: 10px;
+	padding: 40px 0 41px 0;
+}
+.featured {
+	height: 170px;
+	overflow: hidden;
+	position: relative;
+	width: 300px;
+}
+.featured-title,
+.featured-content {
+	position: absolute;
+}
+.featured-title {
+	line-height: 1em;
+	margin: 10px 0;
+	z-index: 10;
+}
+.featured-title a {
+	display: inline-block;
+	padding: 6px 14px 5px 12px;
+}
+.featured-content {
+	min-height: 170px;
+	padding: 45px 12px 0 12px;
+	z-index: 9;
+}
+.featured-content p {
+	margin-top: 0;
+}
+.featured-link {
+	display: block;
+	position: absolute;
+	height: 180px;
+	left: 0;
+	text-indent: -999em;
+	top: 0;
+	width: 310px;
+	z-index: 20;
+}
+/* rollover */
+.featured:hover {
+}
+.featured:hover .featured-title a {
+}
+.featured:hover .featured-content {
+}
+/* with featured image */
+.has-featured-img .featured-content {
+	display: none;
+}
+.has-featured-img:hover .featured-content {
+	display: block;
+}
+.featured-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+/** Content - wraps body and sidebar
+ -------------------------------------------------- */
+#content {
+	background-color: #fff;
+	padding: 40px 0;
+}
+
+
+/** Post
+ -------------------------------------------------- */
+.post-header {
+	clear: both;
+	position: relative;
+	margin-bottom: 15px;
+	width: 100%;
+}
+.post-header,
+.post-content {
+	padding-left: 140px;
+	padding-right: 30px;
+}
+.post-title, 
+.post-date {
+	line-height: 1.2em;
+	margin: 0;
+}
+.post-title {
+}
+.post-date {
+	color: #ccc;
+	bottom: 4px;
+	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 20px;
+	left: 0;
+	letter-spacing: -1px;
+	position: absolute;
+}
+.post-date,
+.post-meta {
+	float: left;
+	margin-right: 20px;
+	text-align: right;
+	width: 120px;
+}
+.post-meta {
+	color: #ccc;
+	font-size: 12px;
+}
+.post-meta a {
+	color: #999;
+}
+.post-meta a:hover {
+}
+.post-meta h5 {
+	margin: 0;
+}
+.post-meta ul,
+.post-meta p {
+	margin: 0 0 15px 0;
+}
+.post-meta ul {
+	list-style-type: none;
+}
+
+
+/** Sidebar
+ -------------------------------------------------- */
+.bio-box,
+.widget {
+	margin: 0 0 25px 0;
+}
+.bio-box {
+	margin-bottom: 30px;
+}
+.bio-box a {
+	text-decoration: underline;
+}
+.bio-box a:hover {
+}
+.bio-img {
+	float: right;
+	margin: 0 0 15px 0;
+}
+.bio-box .bio-content {
+	padding: 4px 18px 18px 18px;
+}
+.bio-box .bio-content p {
+	margin: 10px 0 0 0;
+}		
+.widget {
+	color: #999;
+	font-size: 13px;
+	line-height: 18px;
+	margin: 0 0 25px 0;
+}
+.widget-title {
+	margin: 0 0 10px 0;
+	padding: 7px 10px 6px 10px;
+}
+.widget ul {
+	padding: 0 10px 0 26px;
+	margin: 0;
+}
+.widget ul li {
+	margin: 5px 0 0 0;
+}
+.widget ul.ul-col-2 {
+	padding: 0 0 0 26px;
+}
+.widget ul.ul-col-2 li {
+	float: left;
+	margin-right: 12px;
+	width: 130px;
+}
+
+
+/** Footer
+ -------------------------------------------------- */
+#footer {
+	font-size: 12px;
+	line-height: 18px;
+	padding: 30px 0;	
+}
+#footer a {
+	text-decoration: underline;
+}
+#footer a:hover {
+}
+#footer .credit {
+	float: right;
+	margin-top: 0;
+}
