@@ -24,15 +24,14 @@ get_header();
 
 ?>
 
-<div id="content">
+<div class="col-ab">
 
-<?php
+	<?php
 
-cfct_loop();
+	cfct_loop();
+	comments_template();
 
-comments_template();
-
-?>
+	?>
 
 	<div class="pagination pagination-single">
 		<span class="next"><?php next_post_link() ?></span>
@@ -41,10 +40,8 @@ comments_template();
 
 </div>
 
-<?php 
+<div id="sidebar" class="col-c">
+	<?php get_sidebar(); ?>
+</div>
 
-get_sidebar();
-
-get_footer();
-
-?>
+<?php get_footer(); ?>

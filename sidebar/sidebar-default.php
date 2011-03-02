@@ -67,10 +67,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 				<?php wp_get_archives(); ?>
 			</ul>
 		</div><!--.widget-->
-		<div class="widget under meta">
-			<?php wp_register('<p>', '</p>'); ?> 
-			<p><?php wp_loginout(); ?></p>
-		</div><!--.widget-->
 	<?php
 	}
 	?>

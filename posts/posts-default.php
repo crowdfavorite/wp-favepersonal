@@ -35,7 +35,7 @@ get_header();
 
 </div>
 
-<div class="col-c">
+<div id="sidebar" class="col-c">
 	<?php get_sidebar(); ?>
 </div>
 
