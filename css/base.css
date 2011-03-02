@@ -5,7 +5,7 @@ Base Style Sheet
 /** Reset
 -------------------------------------------------- */
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, p, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, font, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -24,10 +24,6 @@ hr {
 }
 body {
 	background-color: #fff;
-}
-address,
-cite {
-	font-style: normal;
 }
 /**
  * Set HTML5 block level elements for browsers that don't recognize.
@@ -50,11 +46,6 @@ footer,header,hgroup,menu,nav,section,summary {
 ::-moz-focus-inner {
 	border: 0;
 }
-
-th {
-	text-align: left;
-}
-
 
 /** Load Fonts
  -------------------------------------------------- */
@@ -90,8 +81,7 @@ h6,
 .h4,
 .h5,
 .h6 { 
-	margin: 16px 0 8px 0;
-	color: #000;
+	margin: 30px 0 15px 0;
 }
 
 h1,
@@ -150,7 +140,7 @@ ol,
 dl,
 blockquote,
 pre {
-	margin-bottom: 1em;
+	margin-bottom: 15px;
 }
 
 ul,
