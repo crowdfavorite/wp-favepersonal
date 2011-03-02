@@ -23,49 +23,46 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 ?>
 
 <div id="sidebar">
-<?php
-$about_text = cfct_about_text();
-if (!empty($about_text)) {
-?>
-	<div id="carrington-about" class="widget">
-		<div class="about">
-			<h2 class="title"><?php printf(__('About %s', 'carrington-text'), get_bloginfo('name')); ?></h2>
-<?php
-	echo $about_text;
-?>
+	<?php
+	$about_text = cfct_about_text();
+	if (!empty($about_text)) {
+	?>
+	<div class="bio-box">
+		<div class="bio-content">
+			<h2><?php printf(__('About %s', 'carrington-personal'), get_bloginfo('name')); ?></h2>
+			<?php echo $about_text; ?>
 		</div>
-	</div><!--.widget-->
-	<hr class="divider" />
-<?php
-}
-?>
-	<div id="primary-sidebar">
-<?php
-$post = $orig_post;
-if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Primary Sidebar') ) {
-?>
+	</div><!--.bio-box-->
+	<?php
+	}
+	?>
+
+	<?php
+	$post = $orig_post;
+	if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Primary Sidebar') ) {
+	?>
 		<div class="widget">
-			<h3 class="widget-title"><?php _e('Search', 'carrington-text'); ?></h3>
+			<h3 class="widget-title"><?php _e('Search', 'carrington-personal'); ?></h3>
 			<?php cfct_form('search'); ?>
 		</div><!--.widget-->
 		<div class="widget">
-			<h3 class="widget-title"><?php _e('Pages', 'carrington-text'); ?></h3>
+			<h3 class="widget-title"><?php _e('Pages', 'carrington-personal'); ?></h3>
 			<ul>
 				<?php wp_list_pages('title_li='); ?>
 			</ul>
 		</div><!--.widget-->
 		<div class="widget">
-			<h3 class="widget-title"><?php _e('Categories', 'carrington-text'); ?></h2>
+			<h3 class="widget-title"><?php _e('Categories', 'carrington-personal'); ?></h2>
 			<ul>
 				<?php wp_list_cats(); ?>
 			</ul>
 		</div><!--.widget-->
 		<div class="widget">
-			<h3 class="widget-title"><?php _e('Tags', 'carrington-text'); ?></h3>
+			<h3 class="widget-title"><?php _e('Tags', 'carrington-personal'); ?></h3>
 			<?php wp_tag_cloud('smallest=10&largest=18&unit=px'); ?>
 		</div><!--.widget-->
 		<div class="widget">
-			<h3 class="widget-title"><?php _e('Archives', 'carrington-text'); ?></h3>
+			<h3 class="widget-title"><?php _e('Archives', 'carrington-personal'); ?></h3>
 			<ul>
 				<?php wp_get_archives(); ?>
 			</ul>
@@ -74,9 +71,8 @@ if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Primary Sidebar') 
 			<?php wp_register('<p>', '</p>'); ?> 
 			<p><?php wp_loginout(); ?></p>
 		</div><!--.widget-->
+	<?php
+	}
+	?>
 
-<?php
-}
-?>
-	</div><!--#primary-sidebar-->
 </div><!--#sidebar-->

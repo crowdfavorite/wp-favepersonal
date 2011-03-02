@@ -25,7 +25,7 @@ global $post, $comment;
 extract($data); // for comment reply link
 
 ?>
-<div id="comment-<?php comment_ID(); ?>" <?php comment_class('hentry'); ?>>
+<div id="comment-<?php comment_ID(); ?>" <?php comment_class(''); ?>>
 	<div class="entry-content comment-content">
 <?php 
 

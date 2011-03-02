@@ -44,6 +44,24 @@ define('CFCT_URL_VERSION', '0.2');
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
 
+if ( ! function_exists( 'carrington_personal_setup' ) ) {
+	function carrington_personal_setup() {
+		// Add default posts and comments RSS feed links to head
+		add_theme_support( 'automatic-feed-links' );
+		
+		// This theme uses post thumbnails
+		add_theme_support( 'post-thumbnails' );
+		// Width, Height, Crop
+		set_post_thumbnail_size( 90, 90, true );
+
+		register_nav_menus(array(
+			'main' => __( 'Main Navigation', 'carrington-personal' ),
+			'footer' => __( 'Footer Navigation', 'carrington-personal' )
+		));
+		
+	}
+}
+add_action( 'after_setup_theme', 'carrington_personal_setup' );
 
 /**
  * Kuler Color Integration

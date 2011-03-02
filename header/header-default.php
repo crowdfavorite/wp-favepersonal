@@ -51,20 +51,20 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		#header {
 			background-color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
-		#header .container {
-			background-color: <?php echo cf_kuler_color('darkest'); ?>;
-		}
 		#header a {
 			color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
 		#header a:hover {
 			color: <?php echo cf_kuler_color('medium'); ?>;
 		}
-		#header #nav-main li a {
+		#header #nav-main a,
+		#header .menu a {
 			border-bottom: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
 		}
-		#header #nav-main li a.current,
-		#header #nav-main li a:hover {
+		#header #nav-main a:hover,
+		#header #nav-main .current_page_item a,
+		#header .menu a:hover,
+		#header .menu .current_page_item a {
 			border-bottom: 3px solid <?php echo cf_kuler_color('dark'); ?>;
 		}
 
@@ -87,7 +87,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			padding: 45px 12px 0 12px;
 			z-index: 9;
 		}
-
 		/* rollover */
 		.featured:hover {
 			background-color: <?php echo cf_kuler_color('medium') ?>;
@@ -158,12 +157,12 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	<div id="header">
 		<div class="container">
 			<h1><a href="<?php bloginfo('url') ?>/" title="Home" rel="home"><?php bloginfo('name') ?></a></h1>
-			<ul id="nav-main">
-				<li><a href="" class="current">Home</a></li>
-				<li><a href="">About</a></li>
-				<li><a href="">Blog</a></li>
-				<li><a href="">Contact</a></li>
-			</ul>			
+			<?php wp_nav_menu( array(
+				'container' => 'nav',
+				'container_id' => 'nav-main',
+				'theme_location' => 'main',
+				'depth' => 1
+			)); ?>
 		</div><!-- .container -->
 	</div><!-- #header -->
 	

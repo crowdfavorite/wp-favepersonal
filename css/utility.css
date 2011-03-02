@@ -22,3 +22,49 @@
 	float: none;
 	height: 1px;
 }
+
+
+/** WordPress compatibility styles
+ --------------------------------------------------------------- */
+.alignleft,
+.alignright {
+	margin-top: 4px;
+}
+.alignleft {
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 10px;
+}
+.alignright {
+	float: right;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+/**
+ * Captioned images
+ * Caption shortcode filtered.
+ */
+.wp-caption {
+	background-color: #e3e3e3;
+	-moz-border-radius: 3px; /* FF1+ */
+	-webkit-border-radius: 3px; /* Saf3+, Chrome */
+	-khtml-border-radius: 3px; /* Konqueror */
+	border-radius: 3px; /* Standard. IE9 */
+	overflow: hidden;
+	padding: 5px;
+	position: relative;
+}
+.wp-caption img {
+	display: block;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.wp-caption .wp-caption-text {
+	margin: 6px 2px 0 2px;
+}

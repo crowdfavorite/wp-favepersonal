@@ -23,7 +23,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 global $comment;
 
 ?>
-<div id="comment-<?php comment_ID(); ?>" <?php comment_class('hentry'); ?>>
+<div id="comment-<?php comment_ID(); ?>" <?php comment_class(''); ?>>
 	<div class="entry-content comment-content">
 <?php 
 
