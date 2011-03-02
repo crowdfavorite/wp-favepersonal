@@ -27,7 +27,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	if (!dynamic_sidebar('sidebar-default')) { ?>
 	<aside class="widget">
 		<h3 class="widget-title"><?php _e('No Widgets Yet!', 'carrington-personal'); ?></h3>
-		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Default Sidebar), go <a href="%s">add some</a>!', 'carrington-business'), admin_url('widgets.php')); ?></p>
+		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Default Sidebar), go <a href="%s">add some</a>!', 'carrington-personal'), admin_url('widgets.php')); ?></p>
 	</aside>
 	<?php
 	}
