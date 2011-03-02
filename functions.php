@@ -43,6 +43,7 @@ define('CFCT_URL_VERSION', '0.2');
  * Includes
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
+include_once(CFCT_PATH.'functions/sidebars.php');
 
 if ( ! function_exists( 'carrington_personal_setup' ) ) {
 	function carrington_personal_setup() {

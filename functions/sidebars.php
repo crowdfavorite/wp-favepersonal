@@ -16,20 +16,28 @@
  * **********************************************************************
  */
 
-
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
-if (CFCT_DEBUG) { cfct_banner(__FILE__); }
+
+/**
+ * Register widgetized areas
+ * @uses register_sidebar
+ */
+function cfct_widgets_init() {
+	$sidebar_defaults = array(
+		'before_widget' => '<aside id="%1$s" class="widget clearfix %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
+	);
+
+	register_sidebar(array_merge($sidebar_defaults, array(
+		'id' => 'sidebar-default',
+		'name' => __('Default Sidebar', 'carrington-personal'),
+		'description' => __('Shown on blog posts and archives.', 'carrington-personal')
+	)));
+	
+}
+
+add_action( 'widgets_init', 'cfct_widgets_init' );
 
 ?>
-
-<div id="sidebar">
-	<?php
-	if (!dynamic_sidebar('sidebar-default')) { ?>
-	<aside class="widget">
-		<h3 class="widget-title"><?php _e('No Widgets Yet!', 'carrington-personal'); ?></h3>
-		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Default Sidebar), go <a href="%s">add some</a>!', 'carrington-business'), admin_url('widgets.php')); ?></p>
-	</aside>
-	<?php
-	}
-	?>
-</div><!--#sidebar-->
