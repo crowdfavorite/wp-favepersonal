@@ -57,15 +57,25 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		#header a:hover {
 			color: <?php echo cf_kuler_color('medium'); ?>;
 		}
-		#header #nav-main a,
-		#header .menu a {
-			border-bottom: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
-		}
-		#header #nav-main a:hover,
-		#header #nav-main .current_page_item a,
-		#header .menu a:hover,
-		#header .menu .current_page_item a {
+		/* Menu */
+		#header #nav-main ul li:hover,
+		#header #nav-main ul > li.current_page_item,
+		#header .menu ul li:hover,
+		#header .menu ul > li.current_page_item {
 			border-bottom: 3px solid <?php echo cf_kuler_color('dark'); ?>;
+		}
+		/* Sub Menu */
+		#header #nav-main ul ul,
+		#header .menu ul ul {
+			background: <?php echo cf_kuler_color('dark'); ?>;
+			border: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
+			border-top: 0;
+		}
+		#header #nav-main ul ul li:hover,
+		#header #nav-main ul > li.current_page_item li,
+		#header .menu ul ul li:hover,
+		#header .menu ul > li.current_page_item li {
+			border-bottom: 0;
 		}
 
 		/** Masthead
@@ -161,7 +171,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 				'container' => 'nav',
 				'container_id' => 'nav-main',
 				'theme_location' => 'main',
-				'depth' => 1
+				'depth' => 2
 			)); ?>
 		</div><!-- .container -->
 	</div><!-- #header -->

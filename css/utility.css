@@ -32,13 +32,13 @@
 }
 .alignleft {
 	float: left;
-	margin-right: 15px;
-	margin-bottom: 10px;
+	margin-right: 20px;
+	margin-bottom: 15px;
 }
 .alignright {
 	float: right;
-	margin-left: 15px;
-	margin-bottom: 10px;
+	margin-left: 20px;
+	margin-bottom: 15px;
 }
 .aligncenter {
 	display: block;
