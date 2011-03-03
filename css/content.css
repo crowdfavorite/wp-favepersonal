@@ -57,7 +57,7 @@
 	display: none;
 	font-family: Helvetica, Arial, Verdana, sans-serif;
 	left: -3px;
-	padding: 7px 0 5px 0;
+	padding: 5px 0 3px 0;
 	position: absolute;
 	text-transform: none;
 	top: 23px;
@@ -67,7 +67,7 @@
 #header #nav-main ul ul li,
 #header .menu ul ul li {
 	display: block;
-	margin: 0;
+	margin: 3px 0;
 	padding: 0;
 }
 #header #nav-main ul ul a,
@@ -77,25 +77,13 @@
 	height: auto;
 	letter-spacing: 0;
 	line-height: 1em;
-	padding: 3px 8px;
+	padding: 4px 10px;
 }
 #header #nav-main ul li:hover > ul,
 #header .menu ul li:hover > ul {
 	display: block;
 }
-#header #nav-main ul ul li.current_page_item > a,
-#header #nav-main ul ul li.current-menu-ancestor > a,
-#header .menu ul ul li.current-menu-item > a,
-#header .menu ul ul li.current-menu-parent > a {
-	color: #000;
-}
-* html #header #nav-main ul li.current_page_item a,
-* html #header #nav-main ul li.current-menu-ancestor a,
-* html #header #nav-main ul li.current-menu-item a,
-* html #header #nav-main ul li.current-menu-parent a,
-* html #header #nav-main ul li a:hover {
-	color: #000;
-}
+
 
 /** Masthead
  -------------------------------------------------- */
@@ -177,7 +165,7 @@
 .post-header {
 	clear: both;
 	position: relative;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 	width: 100%;
 }
 .post-header,
@@ -192,6 +180,10 @@
 }
 .post-title {
 	letter-spacing: -1px;
+}
+.home .post-title,
+.archive .post-title {
+	font-size: 28px;
 }
 .post-date {
 	color: #ccc;

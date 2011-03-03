@@ -59,12 +59,17 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		}
 		/* Menu */
 		#header #nav-main ul li:hover,
-		#header #nav-main ul > li.current_page_item,
+		#header #nav-main ul li.current_page_item,
+		#header #nav-main ul li.current-menu-parent,
 		#header .menu ul li:hover,
-		#header .menu ul > li.current_page_item {
+		#header .menu ul li.current_page_item,
+		#header .menu ul li.current_page_parent {
 			border-bottom: 3px solid <?php echo cf_kuler_color('dark'); ?>;
 		}
 		/* Sub Menu */
+		#header ul ul li a:hover {
+			color: <?php echo cf_kuler_color('darkest'); ?>;
+		}
 		#header #nav-main ul ul,
 		#header .menu ul ul {
 			background: <?php echo cf_kuler_color('dark'); ?>;
@@ -72,10 +77,17 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			border-top: 0;
 		}
 		#header #nav-main ul ul li:hover,
-		#header #nav-main ul > li.current_page_item li,
+		#header #nav-main ul ul li.current_page_item,
 		#header .menu ul ul li:hover,
-		#header .menu ul > li.current_page_item li {
+		#header .menu ul ul li.current_page_item {
 			border-bottom: 0;
+		}
+		#header #nav-main ul ul li.current_page_item > a,
+		#header .menu ul ul li.current_page_item > a {
+			border-left: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
+			border-right: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
+			padding-left: 7px;
+			padding-right: 7px;
 		}
 
 		/** Masthead
@@ -162,7 +174,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
 	
 	<div id="header">
 		<div class="container">
