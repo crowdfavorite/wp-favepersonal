@@ -27,9 +27,15 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 	<div id="footer">
 		<div class="container">
-			<p id="developer-link"><?php printf(__('<a href="http://crowdfavorite.com" title="Custom WordPress development, design and backup services." rel="developer designer">%s</a>', 'carrington-text'), 'Carrington Theme by Crowd Favorite'); ?></p>
-			<p><?php _e('Proudly powered by <a href="http://wordpress.org/" rel="generator">WordPress</a></span> and <span id="theme-link"><a href="http://carringtontheme.com" title="Carrington theme for WordPress">Carrington</a></span>.', 'carrington-text'); ?></p>
-		</div><!-- .container -->
+			<?php cfct_form('search'); ?>
+			<ul class="social-network-links">
+				<li><a href="">T</a></li>
+				<li><a href="">F</a></li>
+				<li><a href="">P</a></li>
+				<li><a href="">V</a></li>
+				<li><a href="">L</a></li>
+			</ul>
+		</div><!--.container-->
 	</div><!-- #footer -->
 
 	<?php wp_footer() ?>
