@@ -26,9 +26,7 @@ if (have_posts()) {
 		the_post();
 ?>
 	<li>
-<?php
-		cfct_excerpt();
-?>
+		<?php cfct_excerpt(); ?>
 		<div id="post-content-<?php the_ID(); ?>-target"></div>
 	</li>
 <?php

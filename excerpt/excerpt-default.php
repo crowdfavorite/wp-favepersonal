@@ -22,13 +22,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
 <div id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
-	<p class="entry-title"><a href="<?php the_permalink() ?>" rev="post-<?php the_ID(); ?>"><?php the_title(); ?></a></p>
-	<div class="meta"><?php the_time('M j, Y'); ?> &mdash; 
-
-<?php
-
-comments_popup_link(__('No Comments', 'carrington-text'), __('1 Comment', 'carrington-text'), __('% Comments', 'carrington-text'));
-
-?>
+	<div class="post-header">
+		<h1 class="post-title"><a href="<?php the_permalink() ?>" title="Permanent link to <?php the_title_attribute() ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?></a></h1>
+		<p class="post-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i'); ?>"><?php the_date(); ?></abbr></p>
+	</div>
+	<div class="post-content">
+		<?php comments_popup_link(__('No Comments', 'carrington-personal'), __('1 Comment', 'carrington-text'), __('% Comments', 'carrington-personal')); ?>		
 	</div>
 </div><!-- .excerpt -->

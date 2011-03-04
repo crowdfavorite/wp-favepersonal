@@ -68,3 +68,11 @@
 .wp-caption .wp-caption-text {
 	margin: 6px 2px 0 2px;
 }
+
+/** Archive
+ -------------------------------------------------- */
+.archive {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
