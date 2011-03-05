@@ -29,11 +29,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<div class="container">
 			<?php cfct_form('search'); ?>
 			<ul class="social-network-links">
-				<li><a href="">T</a></li>
-				<li><a href="">F</a></li>
-				<li><a href="">P</a></li>
-				<li><a href="">V</a></li>
-				<li><a href="">L</a></li>
+				<li><a href="http://twitter.com">T</a></li>
+				<li><a href="http://facebook.com">FB</a></li>
+				<li><a href="http://flickr.com">Fl</a></li>
+				<li><a href="http://vimeo.com">V</a></li>
+				<li><a href="http://linkedin.com">L</a></li>
 			</ul>
 		</div><!--.container-->
 	</div><!-- #footer -->

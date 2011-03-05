@@ -315,9 +315,10 @@
 	width: 100%;
 }
 #footer a {
-	text-decoration: underline;
+	color: #fff;
 }
 #footer a:hover {
+	text-decoration: underline;
 }
 #footer .social-network-links {
 	list-style-type: none;

@@ -159,13 +159,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		 -------------------------------------------------- */
 		#footer {
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
-			color: <?php echo cf_kuler_color('darkest'); ?>;
-		}
-		#footer a {
-			color: <?php echo cf_kuler_color('darkest'); ?>;
-		}
-		#footer a:hover {
-			color: <?php echo cf_kuler_color('medium'); ?>;
 		}
 	</style>
 
