@@ -306,13 +306,8 @@
 /** Footer
  -------------------------------------------------- */
 #footer {
-	border-top: 5px solid #fff;
-	bottom: 0;
 	font-size: 12px;
 	line-height: 18px;
-	padding: 5px 0;	
-	position: fixed;
-	width: 100%;
 }
 #footer a {
 	color: #fff;

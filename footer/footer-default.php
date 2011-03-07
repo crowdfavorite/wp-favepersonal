@@ -26,7 +26,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 
 	<div id="footer">
-		<div class="container">
+		<div class="container clearfix">
 			<?php cfct_form('search'); ?>
 			<ul class="social-network-links">
 				<li><a href="http://twitter.com">T</a></li>
