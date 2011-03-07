@@ -106,24 +106,12 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		}
 		.featured-content {
 			color:<?php echo cf_kuler_color('lightest') ?>;
-			min-height: 170px;
-			padding: 45px 12px 0 12px;
-			z-index: 9;
 		}
 		/* rollover */
-		.featured:hover {
-			background-color: <?php echo cf_kuler_color('medium') ?>;
-			border: 5px solid <?php echo cf_kuler_color('medium') ?>;
-		}
-		.featured:hover .featured-title a {
-			background-color: <?php echo cf_kuler_color('medium') ?>;
-			color: <?php echo cf_kuler_color('darkest') ?>;
-		}
 		.featured:hover .featured-content {
-			color:<?php echo cf_kuler_color('dark') ?>;
+			background-color: <?php echo cf_kuler_color('dark') ?>;
 		}
 		.has-featured-img:hover .featured-content {
-			color:<?php echo cf_kuler_color('lightest') ?>;
 			background-color: rgba(<?php echo_hex(cf_kuler_color('dark')); ?>.75);
 		}
 
@@ -188,9 +176,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			<div class="col-a">
 				<div class="featured has-featured-img">
 					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-1.jpg" class="featured-img" />
-					<h2 class="featured-title"><a href="">Praesent Placerat</a></h2>
 					<div class="featured-content">
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+						<h2 class="featured-title"><a href="">Praesent Placerat</a></h2>
+						<div class="featured-description">
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>							
+						</div>
 					</div>
 					<a href="" class="featured-link">Read More</a>
 				</div><!-- .featured -->				
@@ -198,18 +188,22 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			<div class="col-b">
 				<div class="featured has-featured-img">
 					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-2.jpg" class="featured-img" />
-					<h2 class="featured-title"><a href="">Vestibulum Auctor Dapibus</a></h2>
 					<div class="featured-content">
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+						<h2 class="featured-title"><a href="">Vestibulum Auctor Dapibus</a></h2>
+						<div class="featured-description">
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+						</div>
 					</div>
 					<a href="" class="featured-link">Read More</a>
 				</div><!-- .featured -->				
 			</div><!-- .col-b -->
 			<div class="col-c">
 				<div class="featured">
-					<h2 class="featured-title"><a href="">Integer Vitae Libero</a></h2>
 					<div class="featured-content">
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+						<h2 class="featured-title"><a href="">Integer Vitae Libero</a></h2>
+						<div class="featured-description">
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+						</div>
 					</div>
 					<a href="" class="featured-link">Read More</a>
 				</div><!-- .featured -->				
