@@ -54,7 +54,10 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_theme_support( 'post-thumbnails' );
 		// Width, Height, Crop
 		set_post_thumbnail_size( 90, 90, true );
-
+		
+		// Add post formats
+		add_theme_support( 'post-formats', array('aside','audio','gallery','image','link','video','status','quote','chat'));
+		
 		register_nav_menus(array(
 			'main' => __( 'Main Navigation', 'carrington-personal' ),
 			'footer' => __( 'Footer Navigation', 'carrington-personal' )
