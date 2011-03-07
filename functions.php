@@ -52,8 +52,10 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		
 		// This theme uses post thumbnails
 		add_theme_support( 'post-thumbnails' );
-		// Width, Height, Crop
-		set_post_thumbnail_size( 90, 90, true );
+		// Set thumbnail size (width, height, crop)
+		set_post_thumbnail_size(150, 120, true);
+		// New image size for featured image
+		add_image_size( 'featured-img', 300, 170, true );
 		
 		// Add post formats
 		add_theme_support( 'post-formats', array('aside','audio','gallery','image','link','video','status','quote','chat'));
@@ -95,3 +97,9 @@ function echo_hex($color2hex) {
 		echo $color_array[$i].',';
 	}
 }
+
+// Replaces "[...]" with something more pretty
+function cfcp_excerpt_more( $more ) {
+	return '&hellip;';
+}
+add_filter( 'excerpt_more', 'cfcp_excerpt_more' );

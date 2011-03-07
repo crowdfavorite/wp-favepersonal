@@ -50,6 +50,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		 -------------------------------------------------- */
 		#header {
 			background-color: <?php echo cf_kuler_color('darkest'); ?>;
+			border-bottom: 4px solid <?php echo cf_kuler_color('dark'); ?>;
 		}
 		#header a {
 			color: <?php echo cf_kuler_color('lightest'); ?>;
