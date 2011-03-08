@@ -16,7 +16,6 @@
  * **********************************************************************
  */
 
-
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
@@ -26,11 +25,8 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<h1 class="post-title"><a href="<?php the_permalink() ?>" title="Permanent link to <?php the_title_attribute() ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?></a></h1>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
-	<div class="post-meta">
-		<h5><?php _e('Replies', 'carrington-personal'); ?></h5>
-		<p><?php comments_popup_link(__('No Comments', 'carrington-personal'), __('1 Comment', 'carrington-personal'), __('% Comments', 'carrington-personal')); ?></p>
-	</div>
 	<div class="post-content clearfix">
+		<?php echo do_shortcode('[gallery columns="3" size="thumbnail"]'); ?>
 		<?php the_excerpt(); ?>
 	</div><!--post-content-->
 </div><!-- .excerpt -->

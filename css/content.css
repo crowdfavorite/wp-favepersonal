@@ -150,8 +150,7 @@
 	padding: 40px 0;
 }
 
-
-/** Post
+/** Posts
  -------------------------------------------------- */
 .post {
 	margin-bottom: 40px;
@@ -165,14 +164,16 @@
 .post-header,
 .post-content {
 	padding-left: 140px;
-	padding-right: 30px;
+}
+.post-header .post-date {
+	bottom: 4px;
+	left: 0;
+	position: absolute;
 }
 .post-title, 
 .post-date {
 	line-height: 1.2em;
 	margin: 0;
-}
-.post-title {
 	letter-spacing: -1px;
 }
 .home .post-title,
@@ -181,12 +182,11 @@
 }
 .post-date {
 	color: #ccc;
-	bottom: 4px;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 20px;
-	left: 0;
-	letter-spacing: -1px;
-	position: absolute;
+}
+.post-date a {
+	color: #ccc;
 }
 .post-date,
 .post-meta {
@@ -213,7 +213,43 @@
 	list-style-type: none;
 }
 
-/** Post
+/* Status post format */
+.format-status {
+	color: #aaa;
+	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 22px;
+	line-height: 28px;
+}
+.format-status .post-content {
+	position: relative;
+}
+.format-status .post-date {
+	top: 0;
+	left: 0;
+	line-height: 28px;
+	position: absolute;
+}
+
+/* Gallery post format */
+.format-status {
+
+}
+
+.gallery {}
+#content .gallery-item {
+	float: left;
+	margin: 0 15px 9px 0;
+	text-align: center;
+	width: 150px;
+}
+#content .gallery-item .gallery-icon {
+	margin: 0;
+}
+#content .gallery-item .gallery-icon img {
+	border: 0;
+}
+
+/** Pages
  -------------------------------------------------- */
 .page {
 	margin-bottom: 40px;
@@ -223,10 +259,6 @@
 	position: relative;
 	margin-bottom: 15px;
 	width: 100%;
-}
-.page-header,
-.page-content {
-	padding-right: 30px;
 }
 .page-title {
 	line-height: 1.2em;

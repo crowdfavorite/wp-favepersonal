@@ -44,6 +44,7 @@ define('CFCT_URL_VERSION', '0.2');
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
 include_once(CFCT_PATH.'functions/sidebars.php');
+include_once(CFCT_PATH.'plugins/cf-compat/cf-compat.php');
 
 if ( ! function_exists( 'carrington_personal_setup' ) ) {
 	function carrington_personal_setup() {
@@ -103,3 +104,9 @@ function cfcp_excerpt_more( $more ) {
 	return '&hellip;';
 }
 add_filter( 'excerpt_more', 'cfcp_excerpt_more' );
+
+// Common date formatting. Uses plugins/cf-compat/
+function cfcp_date() {
+	global $post;
+	return cf_relative_time_ago($post->post_date, '', 'ago', '4', 'm.d.y');
+}
