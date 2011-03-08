@@ -166,7 +166,7 @@
 	padding-left: 140px;
 }
 .post-header .post-date {
-	bottom: 4px;
+	top: 4px;
 	left: 0;
 	position: absolute;
 }
@@ -276,6 +276,10 @@
 	letter-spacing: -1px;
 	position: absolute;
 }
+/* full page with no sidebar */
+.page-full {
+	padding: 0 140px;
+}
 
 
 /** Sidebar
@@ -334,6 +338,7 @@
 #footer {
 	font-size: 12px;
 	line-height: 18px;
+	padding: 25px 0;
 }
 #footer a {
 	color: #fff;
