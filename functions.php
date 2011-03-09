@@ -110,3 +110,33 @@ function cfcp_date() {
 	global $post;
 	return cf_relative_time_ago($post->post_date, '', 'ago', '4', 'm.d.y');
 }
+
+// Prettier captions
+function cfcp_img_captions($attr, $content = null) {
+	$output = apply_filters('img_caption_shortcode', '', $attr, $content);
+	if (condition) {
+		# code...
+	}
+	if ($output != '') {
+		return $output;
+	}
+	extract(shortcode_atts(array(
+		'id'	=> '',
+		'align'	=> 'alignnone',
+		'width'	=> '',
+		'caption' => ''
+	), $attr));
+	if ( 1 > (int) $width || empty($caption) ) {
+		return $content;
+	}
+	if ( $id ) {
+		$id = 'id="' . $id . '" ';
+	}
+	return '
+		<dl ' . $id . 'class="wp-caption ' .$align. '" style="width: ' .$width. 'px">
+			<dt>'.do_shortcode( $content ).'</dt>
+			<dd class="wp-caption-text">' .$caption. '</dd>
+		</dl>';
+}
+add_shortcode('wp_caption', 'cfcp_img_captions');
+add_shortcode('caption', 'cfcp_img_captions');

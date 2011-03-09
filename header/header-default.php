@@ -149,6 +149,13 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		#footer {
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
 		}
+		
+		/** Utilities
+		 -------------------------------------------------- */
+		.wp-caption {
+			color: <?php echo cf_kuler_color('dark'); ?>;
+			background-color: <?php echo cf_kuler_color('light'); ?>;
+		}
 	</style>
 
 <?php
