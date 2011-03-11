@@ -284,28 +284,50 @@
 
 /** Sidebar
  -------------------------------------------------- */
-.bio-box,
-.widget {
-	margin: 0 0 25px 0;
-}
+/* bio-box */
 .bio-box {
 	margin-bottom: 30px;
 }
-.bio-box a {
-	text-decoration: underline;
+.bio-box-gallery {
+	height: 180px;
+	overflow: hidden;
 }
-.bio-box a:hover {
+.bio-box-content {
+	border-bottom: 1px solid #fff;
+	padding: 15px 20px 17px 20px;
 }
-.bio-img {
-	float: right;
-	margin: 0 0 15px 0;
+.bio-box-title {
+	font-size: 21px;
+	margin: 3px 0 0 0;
 }
-.bio-box .bio-content {
-	padding: 4px 18px 18px 18px;
+.bio-box-content p {
+	margin: 8px 0 0 0;
 }
-.bio-box .bio-content p {
-	margin: 10px 0 0 0;
-}		
+.bio-box-links {
+	padding: 15px 15px 15px 20px;
+}
+.bio-box-links ul,
+.bio-box-links li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.bio-box-links ul li,
+.bio-box-links ul li a {
+	display: block;
+	float: left;
+}
+.bio-box-links ul li {
+	height: 20px;
+	padding-right: 5px;
+}
+.bio-box-links ul li a {
+	background-color: #fff;
+	border: 2px solid #fff;
+	height: 16px;
+	width: 16px;
+}
+/* widgets */
 .widget {
 	color: #999;
 	font-size: 13px;
@@ -345,26 +367,4 @@
 }
 #footer a:hover {
 	text-decoration: underline;
-}
-#footer .social-network-links {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-#footer .social-network-links li,
-#footer .social-network-links a {
-	background-color: #223366;
-	float: left;
-	height: 26px;
-	text-align: center;
-	width: 26px;
-}
-#footer .social-network-links li {
-	margin: 0 5px 0 0;
-}
-#footer form {
-	background-color: #223366;
-	float: right;
-	height: 26px;
-	width: 310px;
 }

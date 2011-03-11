@@ -33,23 +33,21 @@ else {
 
 ?>
 
-<div id="content">
+<div class="col-ab">
 
-	<h1><?php printf(__('Search Results for: %s', 'carrington-text'), $search_title); ?></h1>
+	<h1><?php printf(__('Search Results for: %s', 'carrington-personal'), $search_title); ?></h1>
+	
+	<?php
 
-<?php
+	cfct_loop();
+	cfct_misc('nav-posts');
 
-cfct_loop();
-cfct_misc('nav-posts');
-
-?>
+	?>
 
 </div>
 
-<?php
+<div id="sidebar" class="col-c">
+	<?php get_sidebar(); ?>
+</div>
 
-get_sidebar();
-
-get_footer();
-
-?>
+<?php get_footer(); ?>

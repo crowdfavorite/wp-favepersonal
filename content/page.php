@@ -26,7 +26,7 @@ $previousday = -1;
 ?>
 <div id="post-content-<?php the_ID() ?>" <?php post_class('page') ?>>
 	<div class="page-header">
-		<h1 class="page-title"><a href="<?php the_permalink() ?>" title="Permanent link to <?php the_title_attribute() ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?></a></h1>
+		<h1 class="page-title"><?php the_title() ?></h1>
 	</div>
 	<div class="page-content">
 		<?php

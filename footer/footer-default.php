@@ -27,14 +27,8 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 	<div id="footer">
 		<div class="container clearfix">
-			<?php cfct_form('search'); ?>
-			<ul class="social-network-links">
-				<li><a href="http://twitter.com">T</a></li>
-				<li><a href="http://facebook.com">FB</a></li>
-				<li><a href="http://flickr.com">Fl</a></li>
-				<li><a href="http://vimeo.com">V</a></li>
-				<li><a href="http://linkedin.com">L</a></li>
-			</ul>
+			<p><?php printf(__('<a href="http://crowdfavorite.com" title="Custom WordPress development, design and backup services." rel="developer designer">%s</a>', 'carrington-text'), 'Carrington Theme by Crowd Favorite'); ?></p>
+			<p><?php _e('Proudly powered by <a href="http://wordpress.org/" rel="generator">WordPress</a></span> and <span id="theme-link"><a href="http://carringtontheme.com" title="Carrington theme for WordPress">Carrington</a></span>.', 'carrington-text'); ?></p>
 		</div><!--.container-->
 	</div><!-- #footer -->
 
