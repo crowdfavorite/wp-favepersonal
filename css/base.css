@@ -148,6 +148,9 @@ ul,
 ol {
 	margin-left: 2em;
 }
+ul {
+	list-style-type: square;
+}
 li {
 	margin: 4px 0 0 0;
 }

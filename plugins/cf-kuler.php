@@ -15,7 +15,16 @@ Author URI: http://crowdfavorite.com
 
 */
 
-define('CF_KULER_ITEMS_PER_PAGE', 20);
+
+/* Let's load some styles that will be used on all theme setting pages */
+add_action('admin_head', 'cfcp_admin_css');
+function cfcp_admin_css() {
+    $cfcp_admin_styles = get_bloginfo('template_url').'/plugins/css/admin.css';
+    echo '<link rel="stylesheet" type="text/css" href="' . $cfcp_admin_styles . '" />';
+}
+
+
+define('CF_KULER_ITEMS_PER_PAGE', 10);
 define('CF_KULER_COLORS', 'cf_kuler_colors');
 
 if (!function_exists('cf_sort_hex_colors')) {
@@ -160,6 +169,7 @@ function cf_kuler_themes_html($themes) {
 function cf_kuler_theme_html($theme) {
 	$html = '
 <div class="cf-kuler-theme" data-swatches="'.implode(',', $theme['swatches']).'">
+	<p><a href="'.$theme['url'].'">'.$theme['title'].'</a> <em>by User Name</em></p>
 	<ul>
 	';
 	foreach ($theme['swatches'] as $color) {
@@ -169,7 +179,6 @@ function cf_kuler_theme_html($theme) {
 	}
 	$html .= '
 	</ul>
-	<p><a href="'.$theme['url'].'">'.$theme['title'].'</a></p>
 </div>
 	';
 	return $html;
@@ -187,6 +196,7 @@ function cf_kuler_colors_html($colors) {
 	}
 	$html .= '
 	</ul>
+	<p><a href="#link-me">Enter Theme Name</a> <em>by User Name</em></p>
 </div>
 	';
 	return $html;
@@ -197,6 +207,8 @@ function cf_kuler_admin_js() {
 <script type="text/javascript">
 jQuery(function($) {
 	$('#cf-kuler-menu a').click(function(e) {
+		$('#cf-kuler-menu a').removeClass('current');
+		$(this).addClass('current');
 		$swatches = $('#cf-kuler-swatch-selector');
 		$swatches.html('<div>Loading...</div>');
 		$.post(
@@ -272,62 +284,8 @@ jQuery(function($) {
 <?php
 }
 
-function cf_kuler_admin_css() {
-?>
-<style type="text/css">
-#cf-kuler-search-form {
-	margin-bottom: 10px;
-}
-#cf-kuler-swatch-selector {
-	margin-bottom: 10px;
-}
-.cf-kuler-swatches {
-	height: 400px;
-	overflow: auto;
-	width: 500px;
-}
-.cf-kuler-theme {
-	height: 50px;
-	margin-bottom: 10px;
-	position: relative;
-}
-.cf-kuler-theme ul,
-.cf-kuler-theme ul li {
-	margin: 0;
-	padding: 0;
-}
-.cf-kuler-theme ul li {
-	float: left;
-	height: 50px;
-	width: 75px;
-}
-#cf-kuler-swatch-selector .cf-kuler-theme ul li {
-	cursor: pointer;
-}
-.cf-kuler-theme p {
-	background: #000;
-	bottom: 0;
-	color: #fff;
-	margin: 0;
-	opacity: 0.8;
-	padding: 3px 7px;
-	position: absolute;
-}
-.cf-kuler-theme p a,
-.cf-kuler-theme p a:visited {
-	color: #fff;
-	font-size: 11px;
-	text-decoration: none;
-}
-.cf-kuler-pagination {
-	padding: 5px 0;
-}
-</style>
-<?php
-}
 if (is_admin() && $_GET['page'] == basename(__FILE__)) {
 	add_action('admin_head', 'cf_kuler_admin_js');
-	add_action('admin_head', 'cf_kuler_admin_css');
 }
 
 function cf_kuler_admin_ajax() {
@@ -371,12 +329,12 @@ function cf_kuler_admin_ajax() {
 			die();
 			break;
 	}
-	$html = '<div class="cf-kuler-swatches">'.cf_kuler_themes_html($themes).'</div>';
+	$html = '<div class="cf-kuler-swatches cf-clearfix">'.cf_kuler_themes_html($themes).'</div>';
 
-	$params['startIndex'] == 0 ? $prev_page = '' : $prev_page = '<a href="#" class="cf-kuler-paging prev" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] - 1).'" data-items="'.esc_attr($params['itemsPerPage']).'">'.__('Previous', 'cf-kuler').'</a>';
-	$next_page = '<a href="#" class="cf-kuler-paging next" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] + 1).'" data-items="'.esc_attr($params['itemsPerPage']).'">'.__('Next', 'cf-kuler').'</a>';
+	$params['startIndex'] == 0 ? $prev_page = '' : $prev_page = '<a href="#" class="cf-kuler-paging prev" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] - 1).'" data-items="'.esc_attr($params['itemsPerPage']).'">&laquo; '.__('previous', 'cf-kuler').'</a>';
+	$next_page = '<a href="#" class="cf-kuler-paging next" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] + 1).'" data-items="'.esc_attr($params['itemsPerPage']).'">'.__('next', 'cf-kuler').' &raquo;</a>';
 
-	$html .= '<div class="cf-kuler-pagination">'.$prev_page.$next_page.'</div>';
+	$html .= '<div class="cf-kuler-pagination">'.$next_page.$prev_page.'</div>';
 
 	die($html);
 }
@@ -421,33 +379,41 @@ function cf_kuler_settings_form() {
 	print('
 <div class="wrap">
 	<h2>'.__('Color Settings', 'cf-kuler').'</h2>
-	<ul id="cf-kuler-menu">
-		<li><a href="#" data-request="get" data-listtype="popular" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Most Popular', 'cf-kuler').'</a></li>
-		<li><a href="#" data-request="get" data-listtype="rating" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Highest Rated', 'cf-kuler').'</a></li>
-		<li><a href="#" data-request="get" data-listtype="recent" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Newest', 'cf-kuler').'</a></li>
-		<li><a href="#" data-request="get" data-listtype="random" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Random', 'cf-kuler').'</a></li>
-	</ul>
-	<form action="#" id="cf-kuler-search-form" data-start="0" data-page="'.CF_KULER_ITEMS_PER_PAGE.'">
-		<label for="cf_kuler_search">Find a theme:</label>
-		<input type="text" name="cf_kuler_search" id="cf_kuler_search" />
-		<input type="submit" class="button" name="" value="Search" />
-	</form>
-	<div id="cf-kuler-swatch-selector">
-	</div>
-	<h3>'.__('Selected Theme', 'cf-kuler').'</h3>
-	<div id="cf-kuler-swatch-selected">
-	'.$colors_html.'
-	</div>
-	<form id="cf_kuler_settings_form" name="cf_kuler_settings_form" action="'.admin_url('themes.php').'" method="post">
-		<input type="hidden" name="cf_action" value="cf_kuler_update_settings" />
-		<input type="hidden" name="cf_kuler_colors" id="cf_kuler_colors" value="" />
-		<p class="submit">
-			<input type="submit" name="submit_button" value="'.__('Save Settings', 'cf-kuler').'" class="button-primary" />
-		</p>
-	');
-	wp_nonce_field('cf_kuler_update_settings');
-	print('
-	</form>
+	<div class="cfcp-section">
+		<h3 class="cfcp-section-title"><span>'.__('Selected Theme', 'cf-kuler').'</span></h3>
+		<div id="cf-kuler-swatch-selected" class="cf-clearfix">
+			'.$colors_html.'
+		</div>
+		<form id="cf_kuler_settings_form" name="cf_kuler_settings_form" action="'.admin_url('themes.php').'" method="post">
+			<input type="hidden" name="cf_action" value="cf_kuler_update_settings" />
+			<input type="hidden" name="cf_kuler_colors" id="cf_kuler_colors" value="" />
+			<p>
+				<input type="button" name="preview_button" value="'.__('Preview', 'cf-kuler').'" class="button" />
+				<input type="submit" name="submit_button" value="'.__('Save Settings', 'cf-kuler').'" class="button-primary" />
+			</p>
+		');
+		wp_nonce_field('cf_kuler_update_settings');
+		print('
+		</form>
+	</div><!-- .cfcp-section -->
+
+	<div class="cfcp-section">
+		<h3 class="cfcp-section-title"><span>'.__('Browse Kuler Colors', 'cf-kuler').'</span></h3>
+		<div class="cfcp-nav">
+			<form action="#" id="cf-kuler-search-form" data-start="0" data-page="'.CF_KULER_ITEMS_PER_PAGE.'">
+				<input type="text" name="cf_kuler_search" id="cf_kuler_search" />
+				<input type="submit" class="button" name="" value="Search Colors" />
+			</form>
+			<ul id="cf-kuler-menu">
+				<li><a href="#" data-request="get" data-listtype="popular" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Most Popular', 'cf-kuler').'</a></li>
+				<li><a href="#" data-request="get" data-listtype="rating" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Highest Rated', 'cf-kuler').'</a></li>
+				<li><a href="#" data-request="get" data-listtype="recent" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Newest', 'cf-kuler').'</a></li>
+				<li><a href="#" data-request="get" data-listtype="random" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Random', 'cf-kuler').'</a></li>
+			</ul>		
+		</div>
+		<div id="cf-kuler-swatch-selector">
+		</div>
+	</div><!-- .cfcp-section -->
 </div>
 	');
 }

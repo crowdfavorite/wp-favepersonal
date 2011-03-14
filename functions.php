@@ -66,6 +66,11 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 			'footer' => __( 'Footer Navigation', 'carrington-personal' )
 		));
 		
+		// Let's load some scripts
+		if( !is_admin()){
+			wp_enqueue_script('global', get_bloginfo('template_directory').'/js/global.js', array('jquery'), CFCT_URL_VERSION);
+		}
+		
 	}
 }
 add_action( 'after_setup_theme', 'carrington_personal_setup' );

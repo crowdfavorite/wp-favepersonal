@@ -33,17 +33,17 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		</div>
 		<div class="bio-box-links clearfix">
 			<ul>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-				<li><a href=""><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="http://twitter.com" title="Twitter"><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="Facebook"><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="Flickr"><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="Delicious"><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
+				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
 			</ul>			
 		</div>
 	</aside>
