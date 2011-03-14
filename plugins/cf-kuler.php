@@ -11,7 +11,11 @@ Author URI: http://crowdfavorite.com
 
 /* TODO
 
-- manual override on a per color basis
+- Manual override on a per color basis
+- Preview window
+- Random is not working
+- Add in usernames for color themes
+- On selected color, if it's been customized it will "Custom Theme by..." wordpress username
 
 */
 
