@@ -17,13 +17,13 @@ jQuery(document).ready(function($) {
 				var left_pos;
 				var top_pos;
 				var offset = 25;
-				if(border_right - (offset *2) >= my_tooltip.width() + kmouse.pageX){
+				if(border_right >= my_tooltip.width() + kmouse.pageX){
 					left_pos = kmouse.pageX-(my_tooltip.outerWidth()/2);
 					} else{
-					left_pos = border_right-my_tooltip.outerWidth()-offset;
+					left_pos = border_right-my_tooltip.outerWidth()-10;
 					}
 				if(border_top + (offset *2)>= kmouse.pageY - my_tooltip.height()){
-					top_pos = border_top +offset;
+					top_pos = border_top+offset;
 					} else{
 					top_pos = kmouse.pageY-my_tooltip.height()-offset;
 					}	
@@ -37,6 +37,5 @@ jQuery(document).ready(function($) {
 	// Show tooltip for the .bio-box-links
 	cfcp_tooltip(".bio-box-links a","tooltip");
 	
-
 });
 
