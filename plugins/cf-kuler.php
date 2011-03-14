@@ -17,12 +17,17 @@ Author URI: http://crowdfavorite.com
 
 
 /* Let's load some styles that will be used on all theme setting pages */
-add_action('admin_head', 'cfcp_admin_css');
 function cfcp_admin_css() {
     $cfcp_admin_styles = get_bloginfo('template_url').'/plugins/css/admin.css';
     echo '<link rel="stylesheet" type="text/css" href="' . $cfcp_admin_styles . '" />';
 }
-
+add_action('admin_head', 'cfcp_admin_css');
+/* Now load some extra JS */
+function cfcp_admin_scrolljs() {
+    $cfcp_admin_scroll = get_bloginfo('template_url').'/js/jquery.scrollTo-1.4.2-min.js';
+    echo '<script type="text/javascript" src="' . $cfcp_admin_scroll . '"></script>';
+}
+add_action('admin_head', 'cfcp_admin_scrolljs');
 
 define('CF_KULER_ITEMS_PER_PAGE', 10);
 define('CF_KULER_COLORS', 'cf_kuler_colors');
@@ -179,6 +184,10 @@ function cf_kuler_theme_html($theme) {
 	}
 	$html .= '
 	</ul>
+	<div class="cf-kuler-theme-actions">
+		<p><a href="#selected-theme" class="button cf-kuler-apply">'.__('Apply', 'cf-kuler').'</a></p>
+		<p><a href="#linkme" class="button">'.__('Preview', 'cf-kuler').'</a></p>
+	</div>
 </div>
 	';
 	return $html;
@@ -266,7 +275,7 @@ jQuery(function($) {
 		);
 		e.preventDefault();
 	});
-	$('#cf-kuler-swatch-selector .cf-kuler-theme li').live('click', function(e) {
+	$('#cf-kuler-swatch-selector .cf-kuler-theme .cf-kuler-apply').live('click', function(e) {
 // select swatch
 		$selected = $('#cf-kuler-swatch-selected');
 		$selected.html('');
@@ -277,6 +286,7 @@ jQuery(function($) {
 		$('#cf_kuler_settings_form')
 			.find('#cf_kuler_colors').val($theme.attr('data-swatches')).end()
 			.find('input[type=submit]').show().end();
+		$('html, body').animate({scrollTop:0}, 'slow'); // scroll to top
 		e.preventDefault();
 	});
 });
@@ -380,7 +390,7 @@ function cf_kuler_settings_form() {
 <div class="wrap">
 	<h2>'.__('Color Settings', 'cf-kuler').'</h2>
 	<div class="cfcp-section">
-		<h3 class="cfcp-section-title"><span>'.__('Selected Theme', 'cf-kuler').'</span></h3>
+		<h3 id="selected-theme" class="cfcp-section-title"><span>'.__('Selected Theme', 'cf-kuler').'</span></h3>
 		<div id="cf-kuler-swatch-selected" class="cf-clearfix">
 			'.$colors_html.'
 		</div>

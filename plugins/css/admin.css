@@ -31,8 +31,6 @@
 /** Color settings page
  -------------------------------------------------- */
 /* search results */
-.cf-kuler-swatches {
-}
 .cf-kuler-theme {
 	float: left;
 	padding: 0 0 18px 0;
@@ -63,9 +61,28 @@
 	font-size: .9em;
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
-/* show pointer in search results */
-#cf-kuler-swatch-selector .cf-kuler-theme ul li {
-	cursor: pointer;
+
+/* apply and preview from search results */
+#cf-kuler-swatch-selector .cf-kuler-theme-actions {
+	background-color: #eaf2fa;
+	display: none;
+	float: left;
+	height: 70px;
+	padding: 11px 0;
+	text-align: center;
+	width: 110px;
+	-moz-border-radius-topright: 5px;
+	-webkit-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+	-moz-border-radius-bottomright: 5px; 
+	-webkit-border-bottom-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#cf-kuler-swatch-selector .cf-kuler-theme-actions p {
+	margin: 13px 0;
+}
+#cf-kuler-swatch-selector .cf-kuler-theme:hover .cf-kuler-theme-actions {
+	display: block;
 }
 
 /* Selected Color Theme */
