@@ -37,5 +37,14 @@ jQuery(document).ready(function($) {
 	// Show tooltip for the .bio-box-links
 	cfcp_tooltip(".bio-box-links a","tooltip");
 	
+// Search form scripts
+	//hide the label after typing
+	$('.searchform #s').keypress(function() {
+		var $this = jQuery(this);
+		if ($this.val() == '') {
+			$this.prev('label').hide();
+		}
+	});
+	
 });
 

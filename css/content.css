@@ -356,7 +356,61 @@
 	margin-right: 12px;
 	width: 130px;
 }
-
+/* search widget
+<aside id="search-3" class="widget clearfix widget_search">
+	<form role="search" method="get" id="searchform" action="http://cp.local/">
+		<div>
+			<label class="screen-reader-text" for="s">Search for:</label>
+			<input type="text" value="gallery post" name="s" id="s">
+			<input type="submit" id="searchsubmit" value="Search">
+		</div>
+	</form>
+</aside>
+ */
+.widget_search .widget-title {
+	display: none;
+}
+.widget_search form {
+	background-color: #ff0;
+	min-height: 28px;
+	position: relative;
+}
+.widget_search form label,
+.widget_search form #s,
+.widget_search form #searchsubmit {
+	margin: 0;
+	position: absolute;
+	top: 0;
+}
+.widget_search form label,
+.widget_search form #s {
+	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 16px;
+	line-height: 28px;
+	padding: 0 10px;
+}
+.widget_search form label {
+	left: 0;
+	z-index: 10;
+}
+.widget_search form #s {
+	background-color: #ccc;
+	border: 0;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 220px;
+}
+.widget_search form #searchsubmit {
+	background-color: #ddd;
+	border: 0;
+	margin: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	width: 70px;
+}
 /** Attachment Page
  -------------------------------------------------- */
 #attachment {}
