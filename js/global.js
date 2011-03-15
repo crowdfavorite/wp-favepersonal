@@ -45,6 +45,9 @@ jQuery(document).ready(function($) {
 			$this.prev('label').hide();
 		}
 	});
+	$('.searchform label').click(function() {
+		$(this).addClass('focus');
+	});
 	
 });
 

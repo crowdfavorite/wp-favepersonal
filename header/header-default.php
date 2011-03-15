@@ -146,9 +146,19 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		.bio-box-links ul li a:hover {
 			border-color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
-		.widget-title {
+		.widget-title,
+		.widget_search form {
 			color: <?php echo cf_kuler_color('dark'); ?>;
 			background-color: <?php echo cf_kuler_color('light'); ?>;
+		}
+		.widget_search form #s {
+			color: <?php echo cf_kuler_color('darkest'); ?>;
+		}
+		.widget_search form label {
+			color: <?php echo cf_kuler_color('dark'); ?>;
+		}
+		.widget_search form label.focus {
+			color: <?php echo cf_kuler_color('medium'); ?>;
 		}
 
 		/** Footer
