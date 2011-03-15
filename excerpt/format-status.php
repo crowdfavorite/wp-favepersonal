@@ -21,9 +21,9 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-<div id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
+<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
 	<div class="post-content">
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 		<?php the_excerpt(); ?>
 	</div><!--post-content-->	
-</div><!-- .excerpt -->
+</article><!-- .excerpt -->

@@ -21,7 +21,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-<div id="post-<?php the_ID(); ?>">
+<article id="post-<?php the_ID(); ?>">
 	<h3 class="entry-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 <?php
 
@@ -36,4 +36,4 @@ comments_popup_link(__('No comments', 'carrington-text'), __('1 comment', 'carri
 
 ?>
 	</div>
-</div><!-- .excerpt -->
+</article><!-- .excerpt -->

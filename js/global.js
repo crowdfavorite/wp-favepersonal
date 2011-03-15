@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
 			
 			if($(this).attr("title") != "" && $(this).attr("title") != "undefined" ){
 
-			$(this).removeAttr("title").mouseover(function(){
+			$(this).removeAttr("title").mouseover(function() {
 				my_tooltip.css({opacity:0.8, display:"none"}).fadeIn(200);
 			}).mousemove(function(kmouse){
 				var border_top = $(window).scrollTop(); 
@@ -17,15 +17,15 @@ jQuery(document).ready(function($) {
 				var left_pos;
 				var top_pos;
 				var offset = 25;
-				if(border_right >= my_tooltip.width() + kmouse.pageX){
-					left_pos = kmouse.pageX-(my_tooltip.outerWidth()/2);
-					} else{
-					left_pos = border_right-my_tooltip.outerWidth()-10;
+				if(border_right >= my_tooltip.width() + kmouse.pageX) {
+						left_pos = kmouse.pageX-(my_tooltip.outerWidth()/2);
+					} else {
+						left_pos = border_right-my_tooltip.outerWidth()-10;
 					}
-				if(border_top + (offset *2)>= kmouse.pageY - my_tooltip.height()){
-					top_pos = border_top+offset;
-					} else{
-					top_pos = kmouse.pageY-my_tooltip.height()-offset;
+				if(border_top + (offset *2)>= kmouse.pageY - my_tooltip.height()) {
+						top_pos = border_top+offset;
+					} else {
+						top_pos = kmouse.pageY-my_tooltip.height()-offset;
 					}	
 				my_tooltip.css({left:left_pos, top:top_pos});
 			}).mouseout(function(){

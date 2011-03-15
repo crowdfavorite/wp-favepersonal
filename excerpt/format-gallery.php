@@ -20,7 +20,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-<div id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
+<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
 	<div class="post-header">
 		<h1 class="post-title"><a href="<?php the_permalink() ?>" title="Permanent link to <?php the_title_attribute() ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?></a></h1>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
@@ -29,4 +29,4 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<?php echo do_shortcode('[gallery columns="3" size="thumbnail"]'); ?>
 		<?php the_excerpt(); ?>
 	</div><!--post-content-->
-</div><!-- .excerpt -->
+</article><!-- .excerpt -->

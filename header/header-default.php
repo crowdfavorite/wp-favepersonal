@@ -189,7 +189,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 <body <?php body_class(); ?>>
 	
-	<div id="header">
+	<header id="header">
 		<div class="container">
 			<h1><a href="<?php bloginfo('url') ?>/" title="Home" rel="home"><?php bloginfo('name') ?></a></h1>
 			<?php wp_nav_menu( array(
@@ -199,13 +199,13 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 				'depth' => 2
 			)); ?>
 		</div><!-- .container -->
-	</div><!-- #header -->
+	</header><!-- #header -->
 	
 	
-	<div id="masthead">
+	<section id="masthead">
 		<div class="container clearfix">
 			<div class="col-a">
-				<div class="featured has-featured-img">
+				<article class="featured has-featured-img">
 					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-1.jpg" class="featured-img" />
 					<div class="featured-content">
 						<h2 class="featured-title"><a href="">Praesent Placerat</a></h2>
@@ -214,10 +214,10 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 						</div>
 					</div>
 					<a href="" class="featured-link">Read More</a>
-				</div><!-- .featured -->				
+				</article><!-- .featured -->				
 			</div><!-- .col-a -->
 			<div class="col-b">
-				<div class="featured has-featured-img">
+				<article class="featured has-featured-img">
 					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-2.jpg" class="featured-img" />
 					<div class="featured-content">
 						<h2 class="featured-title"><a href="">Vestibulum Auctor Dapibus</a></h2>
@@ -226,10 +226,10 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 						</div>
 					</div>
 					<a href="" class="featured-link">Read More</a>
-				</div><!-- .featured -->				
+				</article><!-- .featured -->				
 			</div><!-- .col-b -->
 			<div class="col-c">
-				<div class="featured">
+				<article class="featured">
 					<div class="featured-content">
 						<h2 class="featured-title"><a href="">Integer Vitae Libero</a></h2>
 						<div class="featured-description">
@@ -237,11 +237,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 						</div>
 					</div>
 					<a href="" class="featured-link">Read More</a>
-				</div><!-- .featured -->				
+				</article><!-- .featured -->				
 			</div><!-- .col-c -->
 		</div><!-- .container -->
-	</div><!-- #masthead -->
+	</section><!-- #masthead -->
 	
 	
-	<div id="content">
+	<section id="content">
 		<div class="container clearfix">
