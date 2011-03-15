@@ -415,6 +415,7 @@
 .attachment-next,
 .attachment-content {
 	float: left;
+	overflow: hidden;
 }
 .attachment-header,
 .attachment-content {
@@ -433,16 +434,22 @@
 	color: #666;
 	font-size: .9em;
 }
-.attachment-prev,
-.attachment-next {
+.attachment-next,
+.attachment-prev {
 	width: 150px;
 }
-.attachment-prev a,
-.attachment-next a {
+.attachment-prev {
+	text-align: left;
+}
+.attachment-next {
+	text-align: right;
+}
+.attachment-next a,
+.attachment-prev a {
 	opacity: 0.25;
 }
-.attachment-prev a:hover,
-.attachment-next a:hover {
+.attachment-next a:hover,
+.attachment-prev a:hover {
 	opacity: 1.0;
 }
 
