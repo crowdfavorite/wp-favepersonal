@@ -160,6 +160,13 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		.widget_search form label.focus {
 			color: <?php echo cf_kuler_color('medium'); ?>;
 		}
+		.widget_search form #searchsubmit:hover,
+		.widget_search form #searchsubmit:focus {
+			background-color: <?php echo cf_kuler_color('dark'); ?>;
+		}
+		.widget_search form #searchsubmit:active {
+			background-color: <?php echo cf_kuler_color('darkest'); ?>;
+		}
 
 		/** Footer
 		 -------------------------------------------------- */
