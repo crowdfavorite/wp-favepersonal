@@ -75,11 +75,11 @@
 	padding: 4px 0 0 0;
 }
 
-/* Let's hang some images off the side */
-.page-full .alignleft.hang {
+/* Let's pull things off the side */
+.page-full .alignleft.pull {
 	margin-left: -140px;
 }
-.page-full .alignright.hang {
+.page-full .alignright.pull {
 	margin-right: -140px;
 }
 

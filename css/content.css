@@ -166,13 +166,13 @@
 	padding-left: 140px;
 }
 .post-header .post-date {
-	top: 4px;
+	top: 3px;
 	left: 0;
 	position: absolute;
 }
 .post-title, 
 .post-date {
-	line-height: 1.2em;
+	line-height: 30px;
 	margin: 0;
 	letter-spacing: -1px;
 }
@@ -183,7 +183,7 @@
 .post-date {
 	color: #ccc;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 20px;
+	font-size: 18px;
 }
 .post-date a {
 	color: #ccc;
