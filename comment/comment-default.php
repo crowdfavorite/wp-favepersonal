@@ -25,38 +25,31 @@ global $post, $comment;
 extract($data); // for comment reply link
 
 ?>
-<div id="comment-<?php comment_ID(); ?>" <?php comment_class(''); ?>>
-	<div class="entry-content comment-content">
-<?php 
 
-if ($comment->comment_approved == '0') {
-
-?>
-		<p class="notification"><strong><?php _e('(Your comment is awaiting moderation)', 'carrington-text'); ?></strong></p>
-<?php 
-
-}
-comment_text();
-
-?>
-	</div><!--.entry-content-->
-	<div class="clear"></div>
-	<div class="meta">
-
-<?php
-
-edit_comment_link(__('Edit', 'carrington-text'), '<span class="comment-editlink">', '</span>');
-
-if (function_exists('get_avatar')) { 
-	echo get_avatar($comment, 25);
-}
-
-echo '<span class="author">',comment_author_link(),'</span> &mdash; <a href="'.htmlspecialchars(get_comment_link( $comment->comment_ID )).'">',comment_date(),' @ ',comment_time(),'</a>';
-
-if (function_exists('comment_reply_link') && get_option('thread_comments')) {
-	echo ' &mdash; ',comment_reply_link(array_merge( $args, array('respond_id' => 'respond-p' . $post->ID, 'depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post);
-}
-
-?>
+<div class="mcc-comment-header">
+	<div class="mcc-comment-author vcard">
+		<?php if (function_exists('get_avatar')) { 
+			echo get_avatar($comment, 30);
+		} ?>
+		<cite class="mcc-fn fn"><?php comment_author_link(); ?></cite>
+	</div><!-- .comment-author .vcard -->
+	<div class="mcc-comment-meta">
+		<span class="mcc-posted-from">Comment</span> 
+		<?php echo '<a href="'.htmlspecialchars(get_comment_link( $comment->comment_ID )).'" class="mcc-posted-when">',comment_date(),'</a>';  ?>
 	</div>
-</div>
+</div><!--.mcc-comment-header-->
+<div class="mcc-comment-body">
+	<?php if ($comment->comment_approved == '0') { ?>
+		<p class="notification"><strong><?php _e('(Your comment is awaiting moderation)', 'carrington-text'); ?></strong></p>
+	<?php }
+		comment_text();
+	?>
+</div><!--.mcc-comment-body-->
+<div class="mcc-actions">
+	<?php if (function_exists('comment_reply_link') && get_option('thread_comments')) {
+			comment_reply_link(array_merge( $args, array('respond_id' => 'respond-p' . $post->ID, 'depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post);
+	} ?>
+	&middot;
+	<a class="mcc-comment-email-link" href="#">Email This</a>
+	<?php edit_comment_link(__('Edit', 'carrington-personal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
+</div><!--.mcc-actions-->

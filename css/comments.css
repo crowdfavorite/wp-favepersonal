@@ -27,7 +27,7 @@ ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author
 	position: relative;
 	text-align: right;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author .mcc-avatar {
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author .avatar {
 	bottom: 0;
 	position: absolute;
 	right: 0;
@@ -121,5 +121,3 @@ ol.mcc-commentlist ul li {
 .mcc-ping .mcc-posted-from {
 	background-position: -75 -50px;
 }
-
-

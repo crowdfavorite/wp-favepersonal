@@ -25,11 +25,11 @@ global $post, $wp_query, $comments, $comment;
 if (have_comments() || comments_open()) {
 ?>
 
-<a class="feed comment-feed" rel="alternate" href="<?php echo get_post_comments_feed_link($post->ID, ''); ?>"><?php _e('Comment Feed', 'carrington-text'); ?></a>
-<h2 id="comments" class="h1 comments-title"><?php comments_number(__('No Responses (yet)', 'carrington-text'), __('One Response', 'carrington-text'), __('% Responses', 'carrington-text')); ?></h2>
+<h2 id="comments" class="comments-title"><?php comments_number(__('No Responses (yet)', 'carrington-text'), __('One Response', 'carrington-text'), __('% Responses', 'carrington-text')); ?></h2>
 
+<div id="mcc">
+	<div class="mcc-comments">
 <?php 
-
 	if (!post_password_required()) {
 		$comments = $wp_query->comments;
 		$comment_count = 0;
@@ -43,7 +43,7 @@ if (have_comments() || comments_open()) {
 			}
 		}
 		if ($comment_count) {
-			echo '<ol class="comments">', wp_list_comments('type=comment&callback=cfct_threaded_comment'), '</ol>';
+			echo '<ol class="mcc-commentlist">', wp_list_comments('type=comment&callback=cfct_threaded_comment'), '</ol>';
 			
 			previous_comments_link();
 			next_comments_link();
@@ -57,5 +57,6 @@ if (have_comments() || comments_open()) {
 		}
 	}
 }
-
 ?>
+	</div><!-- #comments -->
+</div><!--#mcc-->
