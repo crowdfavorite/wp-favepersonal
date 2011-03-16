@@ -129,6 +129,12 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
 		
+		/** Comments
+		 -------------------------------------------------- */
+		ol.mcc-commentlist .mcc-comment-inner:hover .mcc-posted-from {
+			background-color: <?php echo cf_kuler_color('dark'); ?>;
+		}
+
 		/** Sidebar
 		 -------------------------------------------------- */
 		.bio-box a {

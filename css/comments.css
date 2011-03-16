@@ -1,0 +1,125 @@
+/* --------------------------------------------------
+ * Comments - Over ride MailChimp Styles
+-------------------------------------------------- */
+
+ol.mcc-commentlist {
+	float: left;
+	font-size: 13px;
+	line-height: 18px;
+	list-style-type: none;
+	margin: 20px 0;
+	padding: 0;
+}
+ol.mcc-commentlist li {
+	float: left;
+}
+ol.mcc-commentlist li .mcc-comment-inner {
+	float: left;
+	position: relative;
+	width: 100%;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header {
+	float: left;
+	width: 120px;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author {
+	padding-bottom: 35px;
+	position: relative;
+	text-align: right;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author .mcc-avatar {
+	bottom: 0;
+	position: absolute;
+	right: 0;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author .mcc-fn {
+	font-style: normal;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author .mcc-replied {
+	display: none;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-posted-when {
+	bottom: 0;
+	position: absolute;
+	left: 140px;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-body {
+	border-top: 1px solid #ccc;
+	padding-bottom: 18px;
+	padding-right: 25px;
+	margin-left: 140px;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-body p {
+	margin: 0 0 6px 0;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-actions {
+	bottom: 0;
+	display: none;
+	position: absolute;
+	right: 5px;
+}
+ol.mcc-commentlist li .mcc-comment-inner:hover .mcc-actions {
+	display: block;
+}
+
+/* spacing between replies */
+ol.mcc-commentlist li {
+	padding: 0 0 18px 0;
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header {
+	padding-top: 19px; /* +1 since there is not border */
+}
+ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-body {
+	padding-top: 18px;
+}
+
+/* small fonts */
+.mcc-posted-when,
+.mcc-actions {
+	color: #ccc;
+	font-size: 12px;
+	text-transform: lowercase;
+}
+.mcc-posted-when a,
+.mcc-actions a {
+	color: #ccc;
+}
+
+/* comment replies / nested */
+ol.mcc-commentlist ul {
+	float: left;
+	margin: 0;
+	width: 100%;
+}
+ol.mcc-commentlist ul li {
+	list-style-type: none;
+	margin: 0 0 0 25px;
+	padding: 20px 0 0 0;
+}
+
+/* icon sources */
+.mcc-posted-from {
+	background: #ddd url('../img/comment-icons-sprite.png') 0 -50px no-repeat;
+	display: block;
+	height: 16px;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	text-indent: -9999px;
+	top: 20px;
+	width: 16px;
+}
+.mcc-wordpress .mcc-posted-from {
+	background-position: 0 -50px;
+}
+.mcc-twitter .mcc-posted-from {
+	background-position: -25px -50px;
+}
+.mcc-facebook .mcc-posted-from {
+	background-position: -50px -50px;
+}
+.mcc-ping .mcc-posted-from {
+	background-position: -75 -50px;
+}
+
+

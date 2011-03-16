@@ -22,7 +22,8 @@ $load = array(
 	'base.css',
 	'utility.css',
 	'content.css',
-	'grid.css'
+	'comments.css',
+	'grid.css',
 );
 
 // Initialize gzip and send headers
