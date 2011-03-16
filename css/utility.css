@@ -50,16 +50,12 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-.wp-caption .alignleft {
-	margin-right: 0;
-}
 /**
  * Captioned images
  * Caption shortcode filtered.
  */
 .wp-caption {
 	overflow: hidden;
-	padding: 5px;
 	position: relative;
 }
 .wp-caption dt {
@@ -71,8 +67,10 @@
 	padding: 0;
 	border: 0;
 }
-.wp-caption .wp-caption-text {
-	padding: 4px 0 0 0;
+.wp-caption dd {
+	font-size: .9em;
+	padding: 2px 8px 3px 8px;
+	margin: 1px 0 0 0;
 }
 
 /* Let's pull things off the side */

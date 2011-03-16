@@ -98,7 +98,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		}
 		.featured {
 			background-color: <?php echo cf_kuler_color('darkest') ?>;
-			border: 5px solid <?php echo cf_kuler_color('darkest') ?>;
 		}
 		.featured-title a {
 			background-color: <?php echo cf_kuler_color('darkest') ?>;
@@ -106,6 +105,9 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		}
 		.featured-content {
 			color:<?php echo cf_kuler_color('lightest') ?>;
+		}
+		.featured-link {
+			border-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
 		/* rollover */
 		.featured:hover .featured-content {
@@ -118,7 +120,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		/** Post
 		 -------------------------------------------------- */
 		.post-title {
-			color: <?php echo cf_kuler_color('dark'); ?>;			
+			color: <?php echo cf_kuler_color('dark'); ?>;
 		}
 		.post-meta a {
 			color: #999;
@@ -133,7 +135,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
 		.bio-box a:hover {
-			color: <?php echo cf_kuler_color('lightest'); ?>;				
+			color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
 		.bio-box-content,
 		.bio-box-links {
@@ -176,9 +178,9 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		
 		/** Utilities
 		 -------------------------------------------------- */
-		.wp-caption {
+		.wp-caption dd {
 			color: <?php echo cf_kuler_color('dark'); ?>;
-			background-color: <?php echo cf_kuler_color('lightest'); ?>;
+			background-color: <?php echo cf_kuler_color('light'); ?>;
 		}
 	</style>
 
@@ -206,7 +208,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<div class="container clearfix">
 			<div class="col-a">
 				<article class="featured has-featured-img">
-					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-1.jpg" class="featured-img" />
+					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-1.jpg" width="310" height="180" class="featured-img" />
 					<div class="featured-content">
 						<h2 class="featured-title"><a href="">Praesent Placerat</a></h2>
 						<div class="featured-description">
@@ -214,11 +216,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 						</div>
 					</div>
 					<a href="" class="featured-link">Read More</a>
-				</article><!-- .featured -->				
+				</article><!-- .featured -->
 			</div><!-- .col-a -->
 			<div class="col-b">
 				<article class="featured has-featured-img">
-					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-2.jpg" class="featured-img" />
+					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-2.jpg" width="310" height="180" class="featured-img" />
 					<div class="featured-content">
 						<h2 class="featured-title"><a href="">Vestibulum Auctor Dapibus</a></h2>
 						<div class="featured-description">
@@ -226,7 +228,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 						</div>
 					</div>
 					<a href="" class="featured-link">Read More</a>
-				</article><!-- .featured -->				
+				</article><!-- .featured -->
 			</div><!-- .col-b -->
 			<div class="col-c">
 				<article class="featured">
@@ -237,7 +239,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 						</div>
 					</div>
 					<a href="" class="featured-link">Read More</a>
-				</article><!-- .featured -->				
+				</article><!-- .featured -->
 			</div><!-- .col-c -->
 		</div><!-- .container -->
 	</section><!-- #masthead -->

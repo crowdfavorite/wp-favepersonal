@@ -53,10 +53,12 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		
 		// This theme uses post thumbnails
 		add_theme_support( 'post-thumbnails' );
-		// Set thumbnail size (width, height, crop)
-		set_post_thumbnail_size(150, 120, true);
-		// New image size for featured image
-		add_image_size( 'featured-img', 300, 170, true );
+
+		// New image sizes that are not overwrote in the admin
+		add_image_size('thumb-img', 150, 120, true);
+		add_image_size('small-img', 310, 180, true);
+		add_image_size('medium-img', 480, 480, false);
+		add_image_size('large-img', 650, 650, false);
 		
 		// Add post formats
 		add_theme_support( 'post-formats', array('aside','audio','gallery','image','link','video','status','quote','chat'));
@@ -119,9 +121,6 @@ function cfcp_date() {
 // Prettier captions
 function cfcp_img_captions($attr, $content = null) {
 	$output = apply_filters('img_caption_shortcode', '', $attr, $content);
-	if (condition) {
-		# code...
-	}
 	if ($output != '') {
 		return $output;
 	}
@@ -134,14 +133,32 @@ function cfcp_img_captions($attr, $content = null) {
 	if ( 1 > (int) $width || empty($caption) ) {
 		return $content;
 	}
-	if ( $id ) {
-		$id = 'id="' . $id . '" ';
-	}
 	return '
-		<dl ' . $id . 'class="wp-caption ' .$align. '" style="width: ' .$width. 'px">
-			<dt>'.do_shortcode( $content ).'</dt>
-			<dd class="wp-caption-text">' .$caption. '</dd>
+		<dl id="'.$id.'" class="wp-caption '.$align.'" style="width:'.$width.'px">
+			<dt>'.do_shortcode($content).'</dt>
+			<dd>'.$caption.'</dd>
 		</dl>';
 }
 add_shortcode('wp_caption', 'cfcp_img_captions');
 add_shortcode('caption', 'cfcp_img_captions');
+
+
+// Display gallery images without our own markup for excerpts 
+function gallery_excerpt($size = thumbnail, $quantity = -1) {
+	if($images = get_posts(array(
+		'post_parent'    => get_the_ID(),
+		'post_type'      => 'attachment',
+		'numberposts'    => $quantity, // -1 to show all
+		'post_status'    => null,
+		'post_mime_type' => 'image',
+        'orderby'        => 'menu_order',
+        'order'           => 'ASC',
+	))) {
+		echo '<ul class="gallery-img-excerpt">';
+		foreach($images as $image) {
+			$attimg  = wp_get_attachment_link($image->ID,$size,'false');
+			echo '<li>'.$attimg.'</li>';
+		}
+		echo '</ul>';
+	}
+}

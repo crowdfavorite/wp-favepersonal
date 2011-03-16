@@ -24,7 +24,7 @@ global $previousday;
 $previousday = -1;
 
 ?>
-<div id="post-content-<?php the_ID() ?>" <?php post_class('page') ?>>
+<article id="post-<?php the_ID() ?>" <?php post_class('page') ?>>
 	<div class="page-header">
 		<h1 class="page-title"><?php the_title() ?></h1>
 	</div>
@@ -39,4 +39,4 @@ $previousday = -1;
 			wp_link_pages($args);
 		?>
 	</div><!--.page-content-->
-</div><!-- .post -->
+</article><!-- .post -->
