@@ -179,7 +179,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		/** Footer
 		 -------------------------------------------------- */
 		#footer {
+			color: <?php echo cf_kuler_color('light'); ?>;
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
+		}
+		#footer a {
+			color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
 		
 		/** Utilities

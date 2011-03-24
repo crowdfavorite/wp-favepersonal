@@ -27,8 +27,8 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 	<footer id="footer">
 		<div class="container clearfix">
-			<p><?php printf(__('<a href="http://crowdfavorite.com" title="Custom WordPress development, design and backup services." rel="developer designer">%s</a>', 'carrington-text'), 'Carrington Theme by Crowd Favorite'); ?></p>
-			<p><?php _e('Proudly powered by <a href="http://wordpress.org/" rel="generator">WordPress</a></span> and <span id="theme-link"><a href="http://carringtontheme.com" title="Carrington theme for WordPress">Carrington</a></span>.', 'carrington-text'); ?></p>
+			<p class="credit"><?php _e('Powered by <a href="http://wordpress.org/" rel="generator">WordPress</a></span>', 'carrington-personal'); ?> &middot; <?php printf(__('<a href="http://crowdfavorite.com/themes/carrington-personal" title="Powerful Wordpress theme to power your personal sites">%s</a>', 'carrington-personal'), 'Carrington Personal'); ?> by <?php printf(__('<a href="http://crowdfavorite.com" title="Custom WordPress development, design and backup services." rel="developer designer">%s</a>', 'carrington-text'), 'Crowd Favorite'); ?></p>
+			<p><?php _e('Copyright &copy; ', 'carrington-personal'); echo date('Y'); ?>, <?php bloginfo('name'); ?></p>
 		</div><!--.container-->
 	</footer><!-- #footer -->
 
