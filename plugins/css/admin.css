@@ -241,24 +241,6 @@
 	width: 360px;
 }
 
-.cf-kuler-preview-header, 
-.cf-kuler-preview-featured {
-	background-color: #000;
-}
-.cf-kuler-preview-masthead,
-.cf-kuler-preview-footer {
-	background-color: #333;
-}
-.cf-kuler-preview-bio {
-	background-color: #666;
-}
-.cf-kuler-preview-widget {
-	background-color: #999;
-}
-.cf-kuler-preview-logo,
-.cf-kuler-preview-link li {
-	background-color: #ccc;
-}
 
 /** Clearing
  -------------------------------------------------- */

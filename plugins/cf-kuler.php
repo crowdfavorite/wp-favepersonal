@@ -12,7 +12,7 @@ Author URI: http://crowdfavorite.com
 /* TODO
 
 - Manual override on a per color basis
-- Preview window
+- Hook up preview window, HTML in place
 - Add in usernames for color themes
 - On selected color, if it's been customized it will "Custom Theme by..." wordpress username
 
@@ -23,6 +23,27 @@ Author URI: http://crowdfavorite.com
 function cfcp_admin_css() {
     $cfcp_admin_styles = get_bloginfo('template_url').'/plugins/css/admin.css';
     echo '<link rel="stylesheet" type="text/css" href="' . $cfcp_admin_styles . '" />';
+	echo '
+		<style type="text/css" media="screen">
+			.cf-kuler-preview-header, 
+			.cf-kuler-preview-featured {
+				background-color: '.cf_kuler_color('darkest').';
+			}
+			.cf-kuler-preview-masthead,
+			.cf-kuler-preview-footer {
+				background-color: '.cf_kuler_color('dark').';
+			}
+			.cf-kuler-preview-bio {
+				background-color: '.cf_kuler_color('medium').';
+			}
+			.cf-kuler-preview-widget {
+				background-color: '.cf_kuler_color('light').';
+			}
+			.cf-kuler-preview-logo,
+			.cf-kuler-preview-link li {
+				background-color: '.cf_kuler_color('lightest').';
+			}
+		</style>';
 }
 add_action('admin_head', 'cfcp_admin_css');
 /* Now load some extra JS */
