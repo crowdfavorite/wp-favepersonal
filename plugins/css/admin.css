@@ -2,18 +2,6 @@
  * Theme Settings Styles
  -------------------------------------------------- */
 
-/* Clearing */
-.cf-clearfix {
-	display: block;
-}
-.cf-clearfix:after {
-	content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-}
-
 /* section and section-title */
 .cfcp-section {
 	margin: 0 0 30px 0;
@@ -30,6 +18,10 @@
 
 /** Color settings page
  -------------------------------------------------- */
+/* set width for colors page */
+.cf-kuler-wrap {
+	width: 802px;
+}
 /* search results */
 .cf-kuler-theme {
 	float: left;
@@ -63,6 +55,9 @@
 }
 
 /* apply and preview from search results */
+#cf-kuler-swatch-selector {
+	clear: both;
+}
 #cf-kuler-swatch-selector .cf-kuler-theme-actions {
 	background-color: #eaf2fa;
 	display: none;
@@ -110,10 +105,9 @@
 
 /* pagination */
 .cf-kuler-pagination {
-	border-top: 1px solid #c7c7c7;
-	margin: 8px 0;
 	min-height: 18px;
 	padding: 5px 0;
+	width: 550px;
 }
 .cf-kuler-paging.next {
 	float: right;
@@ -239,4 +233,31 @@
 	left: 0;
 	position: absolute;
 	width: 360px;
+}
+
+/** Utilities
+ -------------------------------------------------- */
+/* Clearing */
+.cf-clearfix {
+	display: block;
+}
+.cf-clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+/* Loading gif */
+.cfcp-loading {
+	background: url('../img/ajax-loader.gif') center center no-repeat;
+	min-height: 32px;
+	min-width: 32px;
+}
+.cfcp-loading em {
+	display: none;
+}
+/* taller for loading kuler color  */
+#cf-kuler-swatch-selector .cfcp-loading {
+	height: 250px;
 }

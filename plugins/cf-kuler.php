@@ -53,7 +53,7 @@ function cfcp_admin_scrolljs() {
 }
 add_action('admin_head', 'cfcp_admin_scrolljs');
 
-define('CF_KULER_ITEMS_PER_PAGE', 10);
+define('CF_KULER_ITEMS_PER_PAGE', 8);
 define('CF_KULER_COLORS', 'cf_kuler_colors');
 
 if (!function_exists('cf_sort_hex_colors')) {
@@ -243,7 +243,7 @@ jQuery(function($) {
 		$('#cf-kuler-menu a').removeClass('current');
 		$(this).addClass('current');
 		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div class="cfcp-loading">Loading...</div>');
+		$swatches.html('<div class="cfcp-loading"><em>Loading...</em></div>');
 		$.post(
 			ajaxurl,
 			{
@@ -255,6 +255,9 @@ jQuery(function($) {
 			},
 			function(response) {
 				$swatches.html(response);
+				// set height to avoid the window jerk
+				var wrapHeight = $swatches.height();
+				$swatches.css('height', wrapHeight);
 			},
 			'html'
 		);
@@ -262,7 +265,7 @@ jQuery(function($) {
 	});
 	$('#cf-kuler-search-form').submit(function(e) {
 		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div>Loading...</div>');
+		$swatches.html('<div class="cfcp-loading"><em>Loading...</em></div>');
 		$.post(
 			ajaxurl,
 			{
@@ -281,7 +284,7 @@ jQuery(function($) {
 	});
 	$('a.cf-kuler-paging').live('click', function(e) {
 		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div>Loading...</div>');
+		$swatches.html('<div class="cfcp-loading"><em>Loading...</em></div>');
 		$.post(
 			ajaxurl,
 			{
@@ -411,7 +414,7 @@ function cf_kuler_settings_form() {
 	}
 	
 	print('
-<div class="wrap cf-clearfix">
+<div class="wrap cf-kuler-wrap cf-clearfix">
 	<h2>'.__('Color Settings', 'cf-kuler').'</h2>
 	<div class="cfcp-section">
 		<h3 id="selected-theme" class="cfcp-section-title"><span>'.__('Selected Theme', 'cf-kuler').'</span></h3>
