@@ -190,7 +190,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		 -------------------------------------------------- */
 		.wp-caption dd {
 			color: <?php echo cf_kuler_color('dark'); ?>;
-			background-color: <?php echo cf_kuler_color('light'); ?>;
+			background-color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
 	</style>
 

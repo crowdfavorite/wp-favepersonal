@@ -61,7 +61,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_image_size('large-img', 650, 650, false);
 		
 		// Add post formats
-		add_theme_support( 'post-formats', array('aside','audio','gallery','image','link','video','status','quote','chat'));
+		add_theme_support( 'post-formats', array('gallery','image','link','quote','status','video'));
 		
 		register_nav_menus(array(
 			'main' => __( 'Main Navigation', 'carrington-personal' ),
