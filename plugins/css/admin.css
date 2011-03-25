@@ -174,3 +174,108 @@
 	margin-bottom: 0;
 	padding-bottom: 7px;
 }
+
+/** Color Preview
+ * colors set in cf-kuler.php
+ -------------------------------------------------- */
+#cf-kuler-preview {
+	background: url('../img/color-preview.png') 0 0 no-repeat;
+	height: 385px;
+	padding: 10px;
+	width: 365px;
+}
+.cf-kuler-preview-page {
+	height: 380px;
+	width: 360px;
+	position: relative;
+}
+.cf-kuler-preview-header {
+	height: 30px;
+}
+.cf-kuler-preview-logo {
+	height: 10px;
+	left: 22px;
+	position: absolute;
+	top: 15px;
+	width: 100px;
+}
+.cf-kuler-preview-link {
+	position: absolute;
+	right: 22px;
+	top: 20px;
+}
+.cf-kuler-preview-link li {
+	float: left;
+	height: 5px;
+	margin: 0 0 0 8px;
+	width: 20px;
+}
+.cf-kuler-preview-masthead {
+	height: 80px;
+	padding: 0 18px;
+}
+.cf-kuler-preview-featured {
+	float: left;
+	height: 58px;
+	width: 100px;
+	margin: 11px 4px;
+}
+.cf-kuler-preview-sidebar {
+	margin-left: 238px;
+	padding: 11px 0;
+	width: 100px;
+}
+.cf-kuler-preview-bio {
+	height: 58px;
+	margin-bottom: 10px;
+}
+.cf-kuler-preview-widget {
+	height: 12px;
+	margin-bottom: 52px;
+}
+.cf-kuler-preview-footer {
+	bottom: 0;
+	height: 30px;
+	left: 0;
+	position: absolute;
+	width: 360px;
+}
+
+.cf-kuler-preview-header, 
+.cf-kuler-preview-featured {
+	background-color: #000;
+}
+.cf-kuler-preview-masthead,
+.cf-kuler-preview-footer {
+	background-color: #333;
+}
+.cf-kuler-preview-bio {
+	background-color: #666;
+}
+.cf-kuler-preview-widget {
+	background-color: #999;
+}
+.cf-kuler-preview-logo,
+.cf-kuler-preview-link li {
+	background-color: #ccc;
+}
+
+/** Clearing
+ -------------------------------------------------- */
+.clearfix {
+	display: block;
+	zoom: 1;
+}
+.clearfix:after {
+	content: " ";
+	display: block;
+	font-size: 0;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clear {
+	clear: both;
+	float: none;
+	height: 1px;
+}

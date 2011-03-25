@@ -390,7 +390,7 @@ function cf_kuler_settings_form() {
 	}
 	
 	print('
-<div class="wrap">
+<div class="wrap clearfix">
 	<h2>'.__('Color Settings', 'cf-kuler').'</h2>
 	<div class="cfcp-section">
 		<h3 id="selected-theme" class="cfcp-section-title"><span>'.__('Selected Theme', 'cf-kuler').'</span></h3>
@@ -428,6 +428,35 @@ function cf_kuler_settings_form() {
 		</div>
 	</div><!-- .cfcp-section -->
 </div>
+
+<div id="cf-kuler-preview">
+	<div class="cf-kuler-preview-page">
+		<div class="cf-kuler-preview-header">
+			<div class="cf-kuler-preview-logo"></div>
+			<ul class="cf-kuler-preview-link">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="cf-kuler-preview-masthead">
+			<div class="cf-kuler-preview-featured"></div>
+			<div class="cf-kuler-preview-featured"></div>
+			<div class="cf-kuler-preview-featured"></div>			
+		</div>
+		<div class="cf-kuler-preview-sidebar">
+			<div class="cf-kuler-preview-bio"></div>
+			<div class="cf-kuler-preview-widget"></div>
+			<div class="cf-kuler-preview-widget"></div>
+		</div>
+		<div class="cf-kuler-preview-footer"></div>
+		</div><!--.cf-kuler-preview-page-->
+</div><!--#cf-kuler-preview-->
+
+
+
+
 	');
 }
 
