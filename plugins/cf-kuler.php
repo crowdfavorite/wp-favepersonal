@@ -243,7 +243,7 @@ jQuery(function($) {
 		$('#cf-kuler-menu a').removeClass('current');
 		$(this).addClass('current');
 		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div>Loading...</div>');
+		$swatches.html('<div class="cfcp-loading">Loading...</div>');
 		$.post(
 			ajaxurl,
 			{
@@ -411,7 +411,7 @@ function cf_kuler_settings_form() {
 	}
 	
 	print('
-<div class="wrap clearfix">
+<div class="wrap cf-clearfix">
 	<h2>'.__('Color Settings', 'cf-kuler').'</h2>
 	<div class="cfcp-section">
 		<h3 id="selected-theme" class="cfcp-section-title"><span>'.__('Selected Theme', 'cf-kuler').'</span></h3>
