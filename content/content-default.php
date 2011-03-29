@@ -30,9 +30,9 @@ $previousday = -1;
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
 	<div class="post-meta">
-		<p><?php comments_popup_link(__('No Replies', 'carrington-personal'), __('1 Comment', 'carrington-personal'), __('% Comments', 'carrington-personal')); ?></p>
-		<?php printf(__('<h5>Categories</h5> <p>%s</p>', 'carrington-personal'), get_the_category_list(', ')) ?>
-		<?php the_tags(__('<h5>Tags</h5> <p>', 'carrington-personal'), ', ', '</p>'); ?>
+		<p class="h5"><?php comments_popup_link(__('No Replies', 'carrington-personal'), __('1 Comment', 'carrington-personal'), __('% Comments', 'carrington-personal')); ?></p>
+		<?php printf(__('<p class="h6">Categories</p> <p>%s</p>', 'carrington-personal'), get_the_category_list(', ')) ?>
+		<?php the_tags(__('<p class="h6">Tags</p> <p>', 'carrington-personal'), ', ', '</p>'); ?>
 	</div>
 	<div class="post-content clearfix">
 		<?php 

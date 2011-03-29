@@ -208,7 +208,14 @@
 .post-meta {
 	color: #ccc;
 	font-size: 12px;
+	line-height: 20px;
 	padding-top: 1px;
+}
+.post-meta .h5 {
+	margin-top: 0;
+}
+.post-meta .h6 {
+	margin: 0;
 }
 .post-meta a {
 	color: #666;

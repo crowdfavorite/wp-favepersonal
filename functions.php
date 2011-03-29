@@ -144,7 +144,7 @@ add_shortcode('caption', 'cfcp_img_captions');
 
 
 // Display gallery images without our own markup for excerpts 
-function gallery_excerpt($size = thumbnail, $quantity = -1) {
+function gallery_excerpt($size = thumbnail, $quantity = 9) {
 	if($images = get_posts(array(
 		'post_parent'    => get_the_ID(),
 		'post_type'      => 'attachment',

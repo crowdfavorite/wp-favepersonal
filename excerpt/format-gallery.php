@@ -26,7 +26,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
 	<div class="post-content clearfix">
-		<?php gallery_excerpt('thumb-img', '9'); ?>
+		<?php gallery_excerpt('thumb-img'); ?>
 		<?php the_excerpt(); ?>
 	</div><!--post-content-->
 </article><!-- .excerpt -->
