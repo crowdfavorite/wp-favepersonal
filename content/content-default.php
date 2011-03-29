@@ -29,11 +29,7 @@ $previousday = -1;
 		<h1 class="post-title"><a href="<?php the_permalink() ?>" title="Permanent link to <?php the_title_attribute() ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?></a></h1>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
-	<div class="post-meta">
-		<p class="h5"><?php comments_popup_link(__('No Replies', 'carrington-personal'), __('1 Comment', 'carrington-personal'), __('% Comments', 'carrington-personal')); ?></p>
-		<?php printf(__('<p class="h6">Categories</p> <p>%s</p>', 'carrington-personal'), get_the_category_list(', ')) ?>
-		<?php the_tags(__('<p class="h6">Tags</p> <p>', 'carrington-personal'), ', ', '</p>'); ?>
-	</div>
+	<?php cfct_misc('post-meta'); ?>
 	<div class="post-content clearfix">
 		<?php 
 			the_content('<span class="more-link">'.__('Continued...', 'carrington-personal').'</span>'); 

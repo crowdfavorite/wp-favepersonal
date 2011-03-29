@@ -51,12 +51,7 @@ $previousday = -1;
 		</ul>
 	</div>
 	
-	
-	<div class="post-meta">
-		<p><?php comments_popup_link(__('No Replies', 'carrington-personal'), __('1 Comment', 'carrington-personal'), __('% Comments', 'carrington-personal')); ?></p>
-		<?php printf(__('<h5>Categories</h5> <p>%s</p>', 'carrington-personal'), get_the_category_list(', ')) ?>
-		<?php the_tags(__('<h5>Tags</h5> <p>', 'carrington-personal'), ', ', '</p>'); ?>
-	</div>
+	<?php cfct_misc('post-meta'); ?>
 	
 	<div class="post-content clearfix">
 		<?php 
