@@ -294,6 +294,13 @@
 	margin: 0 15px 15px 0;
 	width: 150px;
 }
+.gallery-img-excerpt li.gallery-view-all a {
+	display: block;
+	height: 120px;
+	line-height: 118px;
+	text-align: center;
+	width: 150px;
+}
 #content .gallery-item {
 	float: left;
 	margin: 0 15px 9px 0;

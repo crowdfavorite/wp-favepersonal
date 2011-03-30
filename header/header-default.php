@@ -192,6 +192,12 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			color: <?php echo cf_kuler_color('dark'); ?>;
 			background-color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
+		.gallery-img-excerpt li.gallery-view-all a {
+			background-color: <?php echo cf_kuler_color('lightest'); ?>;
+		}
+		.gallery-img-excerpt li.gallery-view-all a:hover {
+			background-color: <?php echo cf_kuler_color('light'); ?>;
+		}
 	</style>
 
 <?php

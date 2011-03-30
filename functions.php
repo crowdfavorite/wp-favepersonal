@@ -62,7 +62,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_image_size('banner-img', 480, 180, true); // excerpt featured img
 		
 		// Add post formats
-		add_theme_support( 'post-formats', array('gallery','image','link','quote','status','video'));
+		add_theme_support( 'post-formats', array('gallery','image','link','quote','status'));
 		
 		register_nav_menus(array(
 			'main' => __( 'Main Navigation', 'carrington-personal' ),
@@ -145,21 +145,24 @@ add_shortcode('caption', 'cfcp_img_captions');
 
 
 // Display gallery images without our own markup for excerpts 
-function gallery_excerpt($size = thumbnail, $quantity = 9) {
-	if($images = get_posts(array(
-		'post_parent'    => get_the_ID(),
-		'post_type'      => 'attachment',
-		'numberposts'    => $quantity, // -1 to show all
-		'post_status'    => null,
-		'post_mime_type' => 'image',
-        'orderby'        => 'menu_order',
-        'order'           => 'ASC',
-	))) {
-		echo '<ul class="gallery-img-excerpt">';
-		foreach($images as $image) {
+function gallery_excerpt($size = thumbnail, $quantity = 8) {
+	//Get number of images we want
+	$images = new WP_Query(array(
+		'post_parent'		=> get_the_ID(),
+		'post_type'			=> 'attachment',
+		'post_status'		=> 'inherit',
+		'posts_per_page'	=> $quantity, // -1 to show all
+		'post_mime_type'	=> 'image%',
+		'orderby'			=> 'menu_order',
+		'order'				=> 'ASC',
+	));
+	echo '<ul class="gallery-img-excerpt">';	
+		foreach($images->posts as $image) {
 			$attimg  = wp_get_attachment_link($image->ID,$size,'false');
 			echo '<li>'.$attimg.'</li>';
 		}
-		echo '</ul>';
-	}
+		if ($images->found_posts > $quantity) {
+			echo '<li class="gallery-view-all"><a href="'.get_permalink(get_the_ID()).'">View all '.$images->found_posts.'</a></li>';
+		}
+	echo '</ul>';
 }
