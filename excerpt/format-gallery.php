@@ -25,8 +25,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<h2 class="post-title"><a href="<?php the_permalink() ?>" title="Permanent link to <?php the_title_attribute() ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?></a></h2>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
-	<div class="post-content clearfix">
+	<?php cfct_misc('post-meta-excerpts'); ?>
+	<div class="post-media">
 		<?php gallery_excerpt('thumb-img'); ?>
+	</div><!-- .post-media -->
+	<div class="post-content clearfix">
 		<?php the_excerpt(); ?>
 	</div><!--post-content-->
 </article><!-- .excerpt -->

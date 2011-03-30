@@ -50,6 +50,13 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+/* Let's pull things off the side */
+.page-full .alignleft.pull {
+	margin-left: -140px;
+}
+.page-full .alignright.pull {
+	margin-right: -140px;
+}
 /**
  * Captioned images
  * Caption shortcode filtered.
@@ -73,13 +80,32 @@
 	margin: 1px 0 0 0;
 }
 
-/* Let's pull things off the side */
-.page-full .alignleft.pull {
-	margin-left: -140px;
+/* WP Gallery */
+#gallery {
+	margin: 20px 0 25px 0;
+	padding: 0 130px;
 }
-.page-full .alignright.pull {
-	margin-right: -140px;
+#gallery-image {
+	background-color: #ddd;
+	height: 400px;
+	margin: 0 10px;
+	width: 710px;
 }
+#gallery-thumbs {
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 0 10px;
+}
+#gallery-thumbs li {
+	background-color: #ddd;
+	display: block;
+	float: left;
+	height: 40px;
+	margin: 10px 10px 0 0;
+	padding: 0;
+	width: 50px;
+}
+
 
 /** Archive
  -------------------------------------------------- */

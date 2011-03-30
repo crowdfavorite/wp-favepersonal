@@ -16,17 +16,8 @@
  * **********************************************************************
  */
 
-
-if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
-if (CFCT_DEBUG) { cfct_banner(__FILE__); }
-
+/* Using as an include since it's used in many places */
 ?>
-<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
-	<div class="post-header">
-		<h2 class="post-title"><a href="<?php the_permalink() ?>" title="Permanent link to <?php the_title_attribute() ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?></a></h2>
-		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
-	</div>
-	<div class="post-content">
-		<?php the_excerpt(); ?>
-	</div>
-</article><!-- .excerpt -->
+<div class="post-meta">
+	<p class="h5"><?php comments_popup_link(__('No Replies', 'carrington-personal'), __('1 Comment', 'carrington-personal'), __('% Comments', 'carrington-personal')); ?></p>
+</div>
