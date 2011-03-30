@@ -55,10 +55,11 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_theme_support( 'post-thumbnails' );
 
 		// New image sizes that are not overwrote in the admin
-		add_image_size('thumb-img', 150, 120, true);
-		add_image_size('small-img', 310, 180, true);
-		add_image_size('medium-img', 480, 480, false);
-		add_image_size('large-img', 650, 650, false);
+		add_image_size('thumb-img', 150, 120, true); // gallery excerpt
+		add_image_size('small-img', 310, 180, true); // masthead featured img, bio box
+		add_image_size('medium-img', 480, 480, false); // excerpt image-format
+		add_image_size('large-img', 710, 710, false); // single view for image and gallery
+		add_image_size('banner-img', 480, 180, true); // excerpt featured img
 		
 		// Add post formats
 		add_theme_support( 'post-formats', array('gallery','image','link','quote','status','video'));
