@@ -56,7 +56,7 @@ ol.mcc-commentlist li .mcc-comment-inner {
 	width: 450px;
 }
 .mcc-comment-body p {
-	margin: 0 0 6px 0;
+	margin: 0 0 10px 0;
 }
 /* mcc-actions */
 .mcc-actions {
@@ -159,4 +159,47 @@ ul.children li ul li ul li ul li ul li ul li ul li ul li ul li ul li .mcc-commen
 }
 .mcc-ping .mcc-posted-from {
 	background-position: -75 -50px;
+}
+
+
+/** Comment Form
+ -------------------------------------------------- */
+.mcc-input-row {
+	clear: both;
+	margin: 10px 0;
+	width: 100%;
+}
+.mcc-input-row label {
+	color: #666;
+	float: left;
+	font-size: 13px;
+	margin-right: 20px;
+	margin-top: 5px;
+	text-align: right;
+	width: 120px;
+}
+.mcc-input-text,
+#mcc-sign-in-comment {
+	border: 1px solid #ccc;
+	background-color: #f8f8f8;
+	padding: 4px;
+}
+.mcc-input-text {
+	width: 338px;
+}
+#mcc-sign-in-comment {
+	height: 100px;
+	width: 470px;
+}
+.mcc-input-submit {
+	margin-left: 140px;
+}
+
+/** Misc
+ -------------------------------------------------- */
+.notification {
+	/* bg color set with colors */
+	font-size: 11px;
+	line-height: 20px;
+	padding: 0 5px;
 }

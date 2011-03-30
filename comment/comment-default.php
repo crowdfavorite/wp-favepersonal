@@ -26,7 +26,7 @@ extract($data); // for comment reply link
 
 ?>
 
-<div class="mcc-comment-header">
+<div id="comment-<?php comment_ID(); ?>" class="mcc-comment-header">
 	<div class="mcc-comment-author vcard">
 		<?php if (function_exists('get_avatar')) { 
 			echo get_avatar($comment, 30);

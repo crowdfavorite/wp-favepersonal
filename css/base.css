@@ -61,6 +61,7 @@ footer,header,hgroup,menu,nav,section,summary {
 /** Basic Elements
 -------------------------------------------------- */
 body,
+input,
 textarea {
 	font-family: Helvetica, Arial, Verdana, sans-serif;
 	font-size: 14px;

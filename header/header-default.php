@@ -131,8 +131,12 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		
 		/** Comments
 		 -------------------------------------------------- */
-		ol.mcc-commentlist .mcc-comment-inner:hover .mcc-posted-from {
+		.mcc-comment-inner:hover .mcc-posted-from {
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
+		}
+		.notification {
+			background-color: <?php echo cf_kuler_color('lightest'); ?>;
+			color: <?php echo cf_kuler_color('dark'); ?>;
 		}
 
 		/** Sidebar
@@ -201,6 +205,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	</style>
 
 <?php
+	/* Add JavaScript to pages with the comment form to support threaded comments (when in use). */
+	if ( is_singular() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );		
+	}
+	
 	wp_head(); 
 ?>
 </head>
