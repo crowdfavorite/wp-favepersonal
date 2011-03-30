@@ -24,31 +24,32 @@ global $previousday;
 $previousday = -1;
 
 ?>
-<h1>gallery</h1>
 <article id="post-<?php the_ID() ?>" <?php post_class('post cleafix') ?>>
 	<div class="post-header">
 		<h1 class="post-title"><?php the_title() ?></h1>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
 	
-	<div id="gallery" class="clearfix">
-		<div id="gallery-image">
-			full image
-		</div>
-		<ul id="gallery-thumbs">
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-			<li>img</li>
-		</ul>
+	<div class="post-media">
+		<div id="gallery" class="clearfix">
+			<div id="gallery-image">
+				full image
+			</div>
+			<ul id="gallery-thumbs">
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+				<li>img</li>
+			</ul>
+		</div>		
 	</div>
 	
 	<?php cfct_misc('post-meta'); ?>

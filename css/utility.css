@@ -81,31 +81,18 @@
 }
 
 /* WP Gallery */
-#gallery {
-	margin: 20px 0 25px 0;
-	padding: 0 130px;
-}
-#gallery-image {
-	background-color: #ddd;
-	height: 400px;
-	margin: 0 10px;
-	width: 710px;
-}
-#gallery-thumbs {
-	list-style-type: none;
-	margin: 0;
-	padding: 0 0 0 10px;
-}
-#gallery-thumbs li {
-	background-color: #ddd;
-	display: block;
+#content .gallery-item {
 	float: left;
-	height: 40px;
-	margin: 10px 10px 0 0;
-	padding: 0;
-	width: 50px;
+	margin: 0 15px 9px 0;
+	text-align: center;
+	width: 150px;
 }
-
+#content .gallery-item .gallery-icon {
+	margin: 0;
+}
+#content .gallery-item .gallery-icon img {
+	border: 0;
+}
 
 /* Archive */
 .archive {

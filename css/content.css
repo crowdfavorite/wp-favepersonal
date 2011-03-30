@@ -162,8 +162,8 @@
 
 /* shared */
 .post-header,
-.post-content,
-.post-media {
+.post-media,
+.post-content {
 	padding-left: 140px;
 }
 
@@ -204,15 +204,20 @@
 	color: #ccc;
 }
 
+/* post-media - wraps featured images, gallery, video */
+.single .post-media {
+	padding: 0 130px;
+}
+.home .post-media,
+.archive .post-media {
+	padding-bottom: 11px;
+	padding-right: 0;
+	padding-top: 5px;
+}
+
 /* post-content */
 .post-content {
 	padding-right: 25px;
-}
-
-/* post-media - wraps featured images, gallery, video */
-.post-media {
-	padding-bottom: 11px;
-	padding-top: 5px;
 }
 
 /* post-meta */
@@ -244,20 +249,29 @@
 }
 
 
-/** Post Formats
+/** Status Post Format
  -------------------------------------------------- */
-/* Status format */
-.format-status .post-content {
+.format-status .post-date {
+	line-height: 26px;
+}
+.post-status-content {
 	color: #999;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 20px;
 	line-height: 26px;
 }
-.format-status .post-date {
-	line-height: 26px;
+.post-status-meta {
+	color: #ccc;
+	font-size: 12px;
+	margin-top: -10px;
+	text-transform: lowercase;
+}
+.post-status-meta a {
+	color: #999;
 }
 
-/* Quote format */
+/** Quote Post Format
+ -------------------------------------------------- */
 .format-quote .post-content blockquote {
 	color: #999;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
@@ -268,7 +282,8 @@
 	line-height: 26px;
 }
 
-/* link format */
+/** Link Post Format
+ -------------------------------------------------- */
 .format-link .post-title {
 	font-size: 22px;
 }
@@ -280,7 +295,9 @@
 	top: 1px;
 }
 
-/* Gallery format */
+/** Gallery Post Format
+ -------------------------------------------------- */
+/* excerpts */
 .gallery-img-excerpt {
 	float: left;
 	list-style-type: none;
@@ -301,17 +318,29 @@
 	text-align: center;
 	width: 150px;
 }
-#content .gallery-item {
-	float: left;
-	margin: 0 15px 9px 0;
-	text-align: center;
-	width: 150px;
+/* single / full */
+#gallery {
+	margin: 20px 0 25px 0;
 }
-#content .gallery-item .gallery-icon {
+#gallery-image {
+	background-color: #ddd;
+	height: 400px;
+	margin: 0 10px;
+	width: 710px;
+}
+#gallery-thumbs {
+	list-style-type: none;
 	margin: 0;
+	padding: 0 0 0 10px;
 }
-#content .gallery-item .gallery-icon img {
-	border: 0;
+#gallery-thumbs li {
+	background-color: #ddd;
+	display: block;
+	float: left;
+	height: 40px;
+	margin: 10px 10px 0 0;
+	padding: 0;
+	width: 50px;
 }
 
 
