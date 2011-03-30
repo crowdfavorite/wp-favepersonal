@@ -250,50 +250,11 @@
 }
 
 
-/** Status Post Format
- -------------------------------------------------- */
-.format-status .post-date {
-	line-height: 26px;
-}
-.post-status-content {
-	color: #999;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 20px;
-	line-height: 26px;
-}
-.post-status-meta {
-	color: #ccc;
-	font-size: 12px;
-	margin-top: -10px;
-	text-transform: lowercase;
-}
-.post-status-meta a {
-	color: #999;
-}
-
-/** Quote Post Format
- -------------------------------------------------- */
-.format-quote .post-content blockquote {
-	color: #999;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 20px;
-	line-height: 26px;
-}
-.format-quote .post-date {
-	line-height: 26px;
-}
-
-/** Link Post Format
- -------------------------------------------------- */
-.format-link .post-title {
-	font-size: 22px;
-}
-.format-link .post-title,
-.format-link .post-date {
-	line-height: 26px;
-}
-.format-link .post-date {
-	top: 1px;
+/* Shared styles for media post formats */
+.format-image .post-content,
+.format-gallery .post-content,
+.format-video .post-content {
+	width: 680px;
 }
 
 /** Gallery Post Format
@@ -345,6 +306,51 @@
 	width: 50px;
 }
 
+/** Status Post Format
+ -------------------------------------------------- */
+.format-status .post-date {
+	line-height: 26px;
+}
+.post-status-content {
+	color: #999;
+	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 20px;
+	line-height: 26px;
+}
+.post-status-meta {
+	color: #ccc;
+	font-size: 12px;
+	margin-top: -10px;
+	text-transform: lowercase;
+}
+.post-status-meta a {
+	color: #999;
+}
+
+/** Quote Post Format
+ -------------------------------------------------- */
+.format-quote .post-content blockquote {
+	color: #999;
+	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 20px;
+	line-height: 26px;
+}
+.format-quote .post-date {
+	line-height: 26px;
+}
+
+/** Link Post Format
+ -------------------------------------------------- */
+.format-link .post-title {
+	font-size: 22px;
+}
+.format-link .post-title,
+.format-link .post-date {
+	line-height: 26px;
+}
+.format-link .post-date {
+	top: 1px;
+}
 
 
 /** Pages
