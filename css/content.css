@@ -206,7 +206,8 @@
 
 /* post-media - wraps featured images, gallery, video */
 .single .post-media {
-	padding: 0 130px;
+	margin: 20px 0 25px 0;
+	padding: 0 140px;
 }
 .home .post-media,
 .archive .post-media {
@@ -318,9 +319,10 @@
 	text-align: center;
 	width: 150px;
 }
-/* single / full */
-#gallery {
-	margin: 20px 0 25px 0;
+/* single/full */
+.single .format-gallery .post-media {
+	padding-left: 130px;
+	padding-right: 130px;
 }
 #gallery-image {
 	background-color: #ddd;
