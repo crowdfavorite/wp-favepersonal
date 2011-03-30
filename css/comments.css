@@ -18,47 +18,51 @@ ol.mcc-commentlist li .mcc-comment-inner {
 	position: relative;
 	width: 100%;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header {
+/* mcc-comment-header */
+.mcc-comment-header {
 	float: left;
 	width: 120px;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author {
+.mcc-comment-header .mcc-comment-author {
 	padding-bottom: 35px;
 	position: relative;
 	text-align: right;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author .avatar {
+.mcc-comment-header .mcc-comment-author .avatar {
 	bottom: 0;
 	position: absolute;
 	right: 0;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author .mcc-fn {
+.mcc-comment-header .mcc-comment-author .mcc-fn {
 	font-style: normal;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-comment-author .mcc-replied {
+.mcc-replied {
 	display: none;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-header .mcc-posted-when {
+.mcc-comment-header .mcc-posted-when {
 	bottom: 0;
 	position: absolute;
 	left: 140px;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-body {
+/* mcc-comment-body */
+.mcc-comment-body {
 	border-top: 1px solid #ccc;
 	padding-bottom: 18px;
-	padding-right: 25px;
+	padding-right: 30px;
 	margin-left: 140px;
+	width: 480px;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-comment-body p {
+.mcc-comment-body p {
 	margin: 0 0 6px 0;
 }
-ol.mcc-commentlist li .mcc-comment-inner .mcc-actions {
+/* mcc-actions */
+.mcc-actions {
 	bottom: 0;
 	display: none;
 	position: absolute;
 	right: 5px;
 }
-ol.mcc-commentlist li .mcc-comment-inner:hover .mcc-actions {
+.mcc-comment-inner:hover .mcc-actions {
 	display: block;
 }
 
@@ -96,7 +100,39 @@ ol.mcc-commentlist ul li {
 	margin: 0 0 0 25px;
 	padding: 20px 0 0 0;
 }
-
+/* fixed width so short comments fill the space 
+ * supporting as many levels as WP does 
+ */
+ul.children li .mcc-comment-body { /* nested 1 */
+	width: 455px; /* + 30px right padding */
+}
+ul.children li ul li .mcc-comment-body { /* nested 2 */
+	width: 430px;
+}
+ul.children li ul li ul li .mcc-comment-body { /* nested 3 */
+	width: 405px;
+}
+ul.children li ul li ul li ul li .mcc-comment-body { /* nested 4 */
+	width: 380px;
+}
+ul.children li ul li ul li ul li ul li .mcc-comment-body { /* nested 5 */
+	width: 355px;
+}
+ul.children li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 6 */
+	width: 330px;
+}
+ul.children li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 7 */
+	width: 305px;
+}
+ul.children li ul li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 8 */
+	width: 280px;
+}
+ul.children li ul li ul li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 9 */
+	width: 255px;
+}
+ul.children li ul li ul li ul li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 10 */
+	width: 230px;
+}
 /* icon sources */
 .mcc-posted-from {
 	background: #ddd url('../img/comment-icons-sprite.png') 0 -50px no-repeat;
