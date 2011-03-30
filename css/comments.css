@@ -1,7 +1,9 @@
 /* --------------------------------------------------
  * Comments - Over ride MailChimp Styles
 -------------------------------------------------- */
-
+.mcc-comments {
+	padding-right: 30px;
+}
 ol.mcc-commentlist {
 	float: left;
 	font-size: 13px;
@@ -11,6 +13,7 @@ ol.mcc-commentlist {
 	padding: 0;
 }
 ol.mcc-commentlist li {
+	clear: both;
 	float: left;
 }
 ol.mcc-commentlist li .mcc-comment-inner {
@@ -50,7 +53,7 @@ ol.mcc-commentlist li .mcc-comment-inner {
 	padding-bottom: 18px;
 	padding-right: 30px;
 	margin-left: 140px;
-	width: 480px;
+	width: 450px;
 }
 .mcc-comment-body p {
 	margin: 0 0 6px 0;
@@ -104,34 +107,34 @@ ol.mcc-commentlist ul li {
  * supporting as many levels as WP does 
  */
 ul.children li .mcc-comment-body { /* nested 1 */
-	width: 455px; /* + 30px right padding */
+	width: 425px; /* + 30px right padding */
 }
 ul.children li ul li .mcc-comment-body { /* nested 2 */
-	width: 430px;
+	width: 400px;
 }
 ul.children li ul li ul li .mcc-comment-body { /* nested 3 */
-	width: 405px;
+	width: 375px;
 }
 ul.children li ul li ul li ul li .mcc-comment-body { /* nested 4 */
-	width: 380px;
+	width: 350px;
 }
 ul.children li ul li ul li ul li ul li .mcc-comment-body { /* nested 5 */
-	width: 355px;
+	width: 325px;
 }
 ul.children li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 6 */
-	width: 330px;
+	width: 300px;
 }
 ul.children li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 7 */
-	width: 305px;
+	width: 275px;
 }
 ul.children li ul li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 8 */
-	width: 280px;
+	width: 250px;
 }
 ul.children li ul li ul li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 9 */
-	width: 255px;
+	width: 225px;
 }
 ul.children li ul li ul li ul li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 10 */
-	width: 230px;
+	width: 200px;
 }
 /* icon sources */
 .mcc-posted-from {

@@ -25,7 +25,7 @@ global $post, $wp_query, $comments, $comment;
 if (have_comments() || comments_open()) {
 ?>
 
-<h2 id="comments" class="comments-title"><?php comments_number(__('No Responses (yet)', 'carrington-text'), __('One Response', 'carrington-text'), __('% Responses', 'carrington-text')); ?></h2>
+<h2 id="comments" class="comments-title"><?php comments_number(__('No Responses (yet)', 'carrington-personal'), __('One Response', 'carrington-personal'), __('% Responses', 'carrington-personal')); ?></h2>
 
 <div id="mcc">
 	<div class="mcc-comments">
@@ -51,7 +51,7 @@ if (have_comments() || comments_open()) {
 		cfct_form('comment');
 		if ($ping_count) {
 ?>
-<h3 class="pings"><?php _e('Continuing the Discussion', 'carrington-text'); ?></h3>
+<h3 class="pings"><?php _e('Continuing the Discussion', 'carrington-personal'); ?></h3>
 <?php
 			echo '<ol class="comments pings">', wp_list_comments('type=pings&callback=cfct_threaded_comment'), '</ol>';
 		}

@@ -26,7 +26,7 @@ get_header();
 
 <div id="content">
 
-<p><?php _e('Sorry, we\'re not sure what you\'re looking for here.', 'carrington-text'); ?></p>
+<p><?php _e('Sorry, we\'re not sure what you\'re looking for here.', 'carrington-personal'); ?></p>
 
 <?php
 

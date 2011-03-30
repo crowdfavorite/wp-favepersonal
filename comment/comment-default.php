@@ -40,7 +40,7 @@ extract($data); // for comment reply link
 </div><!--.mcc-comment-header-->
 <div class="mcc-comment-body">
 	<?php if ($comment->comment_approved == '0') { ?>
-		<p class="notification"><strong><?php _e('(Your comment is awaiting moderation)', 'carrington-text'); ?></strong></p>
+		<p class="notification"><strong><?php _e('(Your comment is awaiting moderation)', 'carrington-personal'); ?></strong></p>
 	<?php }
 		comment_text();
 	?>

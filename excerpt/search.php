@@ -32,7 +32,7 @@ the_excerpt();
 
 <?php
 
-comments_popup_link(__('No comments', 'carrington-text'), __('1 comment', 'carrington-text'), __('% comments', 'carrington-text'));
+comments_popup_link(__('No comments', 'carrington-personal'), __('1 comment', 'carrington-personal'), __('% comments', 'carrington-personal'));
 
 ?>
 	</div>
