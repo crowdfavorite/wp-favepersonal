@@ -107,17 +107,29 @@
 }
 
 
-/** Archive
- -------------------------------------------------- */
+/* Archive */
 .archive {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
+/* Pagination */
+.pagination {
+	min-height: 20px;
+}
+.pagination .next {
+	float: right;
+}
+.pagination a {
+	color: #ccc;
+}
+.home .pagination {
+	padding-right: 30px;
+	padding-left: 140px;
+}
 
-
-
+/* Tooltip */
 .tooltip {
 	color:#fff;
 	position:absolute;

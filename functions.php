@@ -162,7 +162,7 @@ function gallery_excerpt($size = thumbnail, $quantity = 8) {
 			echo '<li>'.$attimg.'</li>';
 		}
 		if ($images->found_posts > $quantity) {
-			echo '<li class="gallery-view-all"><a href="'.get_permalink(get_the_ID()).'">View all '.$images->found_posts.'</a></li>';
+			echo '<li class="gallery-view-all h5"><a href="'.get_permalink(get_the_ID()).'">View all '.$images->found_posts.'</a></li>';
 		}
 	echo '</ul>';
 }
