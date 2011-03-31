@@ -33,4 +33,8 @@ get_header();
 
 </div><!--.page-full-->
 
+<div id="sidebar-footer" class="clearfix">
+	<?php get_sidebar(); ?>
+</div>
+
 <?php get_footer(); ?>

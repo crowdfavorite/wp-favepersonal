@@ -31,9 +31,21 @@ function cfct_widgets_init() {
 	);
 
 	register_sidebar(array_merge($sidebar_defaults, array(
-		'id' => 'sidebar-default',
-		'name' => __('Default Sidebar', 'carrington-personal'),
-		'description' => __('Shown on blog posts and archives.', 'carrington-personal')
+		'id' => 'sidebar-section-1',
+		'name' => __('Sidebar Section One', 'carrington-personal'),
+		'description' => __('Top section in sidebar, first column in footer.', 'carrington-personal')
+	)));
+	
+	register_sidebar(array_merge($sidebar_defaults, array(
+		'id' => 'sidebar-section-2',
+		'name' => __('Sidebar Section Two', 'carrington-personal'),
+		'description' => __('Middle section in sidebar, second column in footer.', 'carrington-personal')
+	)));
+	
+	register_sidebar(array_merge($sidebar_defaults, array(
+		'id' => 'sidebar-section-3',
+		'name' => __('Sidebar Section Three', 'carrington-personal'),
+		'description' => __('Bottom section in sidebar, third column in footer.', 'carrington-personal')
 	)));
 	
 }

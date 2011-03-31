@@ -388,6 +388,19 @@
 
 /** Sidebar
  -------------------------------------------------- */
+
+/* Sidebar Footer - split sidebar section into columns */
+#sidebar-footer #sidebar-1,
+#sidebar-footer #sidebar-2,
+#sidebar-footer #sidebar-3 {
+	float: left;
+	width: 310px;
+}
+#sidebar-footer #sidebar-1,
+#sidebar-footer #sidebar-2 {
+	margin-right: 30px;
+}
+
 /* bio-box */
 .bio-box {
 	margin-bottom: 30px;

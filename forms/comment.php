@@ -68,8 +68,7 @@ if ('open' == $post->comment_status) {
 		do_action('comment_form', $post->ID);
 ?>
 	</form>
-</div>
-
+</div><!--#respond-->
 
 <?php 
 	} // If registration required and not logged in 

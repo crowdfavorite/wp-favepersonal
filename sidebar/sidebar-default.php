@@ -22,7 +22,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
 
-<div id="sidebar">
+<div id="sidebar-1">
 	<aside class="bio-box">
 		<div class="bio-box-gallery">
 			<img src="<?php bloginfo('template_url'); ?>/img/fpo-bio-img.jpg" width="310" height="205" alt="Fpo Bio Img">
@@ -44,16 +44,29 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
 				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
 				<li><a href="" title="and more..."><img src="<?php bloginfo('template_url'); ?>/img/fpo-favicon.png" width="16" height="16" alt="Fpo Favicon"></a></li>
-			</ul>			
+			</ul>
 		</div>
 	</aside>
-	<?php
-	if (!dynamic_sidebar('sidebar-default')) { ?>
+	<?php if (!dynamic_sidebar('sidebar-section-1')) { ?>
 	<aside class="widget">
-		<h3 class="widget-title"><?php _e('No Widgets Yet!', 'carrington-personal'); ?></h3>
-		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Default Sidebar), go <a href="%s">add some</a>!', 'carrington-personal'), admin_url('widgets.php')); ?></p>
+		<h5><?php _e('No Widgets Yet!', 'carrington-personal'); ?></h5>
+		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Sidebar Section One), go <a href="%s">add some</a>!', 'carrington-personal'), admin_url('widgets.php')); ?></p>
 	</aside>
-	<?php
-	}
-	?>
-</div><!--#sidebar-->
+	<?php } ?>
+</div><!-- #sidebar-1 -->
+<div id="sidebar-2">
+	<?php if (!dynamic_sidebar('sidebar-section-2')) { ?>
+	<aside class="widget">
+		<h5><?php _e('No Widgets Yet!', 'carrington-personal'); ?></h5>
+		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Sidebar Section Two), go <a href="%s">add some</a>!', 'carrington-personal'), admin_url('widgets.php')); ?></p>
+	</aside>
+	<?php } ?>
+</div><!-- #sidebar-2 -->
+<div id="sidebar-3">
+	<?php if (!dynamic_sidebar('sidebar-section-3')) { ?>
+	<aside class="widget">
+		<h5><?php _e('No Widgets Yet!', 'carrington-personal'); ?></h5>
+		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Sidebar Section Three), go <a href="%s">add some</a>!', 'carrington-personal'), admin_url('widgets.php')); ?></p>
+	</aside>
+	<?php } ?>
+</div><!-- #sidebar-3 -->
