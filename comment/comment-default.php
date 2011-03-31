@@ -46,9 +46,7 @@ extract($data); // for comment reply link
 	?>
 </div><!--.mcc-comment-body-->
 <div class="mcc-actions">
-	<?php if (function_exists('comment_reply_link') && get_option('thread_comments')) {
-			comment_reply_link(array_merge( $args, array('respond_id' => 'respond-p' . $post->ID, 'depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post);
-	} ?>
+	<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 	&middot;
 	<a class="mcc-comment-email-link" href="#">Email This</a>
 	<?php edit_comment_link(__('Edit', 'carrington-personal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>

@@ -56,7 +56,10 @@ if (have_comments() || comments_open()) {
 			echo '<ol class="comments pings">', wp_list_comments('type=pings&callback=cfct_threaded_comment'), '</ol>';
 		}
 	}
-}
 ?>
+
 	</div><!-- #comments -->
 </div><!--#mcc-->
+<?php 
+}
+?>
