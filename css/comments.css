@@ -1,9 +1,6 @@
 /* --------------------------------------------------
  * Comments - Over ride MailChimp Styles
 -------------------------------------------------- */
-.mcc-comments {
-	background-color: #eee;
-}
 ol.mcc-commentlist {
 	float: left;
 	font-size: 13px;
