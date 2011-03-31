@@ -43,18 +43,12 @@ if (have_comments() || comments_open()) {
 			}
 		}
 		if ($comment_count) {
-			echo '<ol class="mcc-commentlist">', wp_list_comments('type=comment&callback=cfct_threaded_comment'), '</ol>';
+			echo '<ol class="mcc-commentlist commentlist">', wp_list_comments('callback=cfct_threaded_comment'), '</ol>';
 			
 			previous_comments_link();
 			next_comments_link();
 		}
 		cfct_form('comment');
-		if ($ping_count) {
-?>
-<h3 class="pings"><?php _e('Continuing the Discussion', 'carrington-personal'); ?></h3>
-<?php
-			echo '<ol class="comments pings">', wp_list_comments('type=pings&callback=cfct_threaded_comment'), '</ol>';
-		}
 	}
 ?>
 

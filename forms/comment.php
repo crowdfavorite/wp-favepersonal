@@ -23,6 +23,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 global $post, $user_identity;
 
 $commenter = wp_get_current_commenter();
+
 extract($commenter);
 
 $req = get_option('require_name_email');
@@ -40,8 +41,9 @@ if ('open' == $post->comment_status) {
 ?>
 
 <div id="respond" class="mcc-sign-in-form">
-	<form action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post" class="comment-form">
-
+		
+	<form action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
+		<?php cancel_comment_reply_link() ?>
 <?php if (!is_user_logged_in()) { ?>
 		<div class="mcc-input-row">
 			<label><?php _e('Name', 'carrington-personal'); ?></label>
@@ -64,7 +66,7 @@ if ('open' == $post->comment_status) {
 			<input class="mcc-input-submit" name="submit" type="submit" value="<?php _e('Post Comment', 'carrington-personal'); ?>" />
 		</div>
 <?php 
-		cfct_comment_id_fields();
+		comment_id_fields();
 		do_action('comment_form', $post->ID);
 ?>
 	</form>

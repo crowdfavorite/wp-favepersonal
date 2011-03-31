@@ -19,7 +19,7 @@
 /* Using as an include since it's used in many places */
 ?>
 <div class="post-meta">
-	<p class="h5"><?php comments_popup_link(__('No Replies', 'carrington-personal'), __('1 Comment', 'carrington-personal'), __('% Comments', 'carrington-personal')); ?></p>
+	<p class="h5"><?php comments_popup_link(__('No Replies', 'carrington-personal'), __('1 Reply', 'carrington-personal'), __('% Replies', 'carrington-personal')); ?></p>
 	<?php printf(__('<p class="h6">Categories</p> <p>%s</p>', 'carrington-personal'), get_the_category_list(', ')) ?>
 	<?php the_tags(__('<p class="h6">Tags</p> <p>', 'carrington-personal'), ', ', '</p>'); ?>
 </div>

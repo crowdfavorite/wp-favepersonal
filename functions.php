@@ -46,6 +46,14 @@ include_once(CFCT_PATH.'carrington-core/carrington.php');
 include_once(CFCT_PATH.'functions/sidebars.php');
 include_once(CFCT_PATH.'plugins/cf-compat/cf-compat.php');
 
+/**
+ * Removing theme settings from carrington-core, will replace with carrington-personal settings
+ */
+//remove_action('admin_menu', 'cfct_admin_menu');
+
+/**
+ * Theme Setup
+ */
 if ( ! function_exists( 'carrington_personal_setup' ) ) {
 	function carrington_personal_setup() {
 		// Add default posts and comments RSS feed links to head
@@ -116,7 +124,11 @@ add_filter( 'excerpt_more', 'cfcp_excerpt_more' );
 // Common date formatting. Uses plugins/cf-compat/
 function cfcp_date() {
 	global $post;
-	return cf_relative_time_ago($post->post_date, '', 'ago', '4', 'm.d.y', '');
+	return cf_relative_time_ago($post->post_date_gmt, '', 'ago', '4', 'm.d.y', '', true);
+}
+function cfcp_comment_date() {
+	global $comment;
+	return cf_relative_time_ago($comment->comment_date_gmt, '', 'ago', '4', 'm.d.y', '', true);
 }
 
 // Prettier captions

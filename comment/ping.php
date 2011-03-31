@@ -23,23 +23,24 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 global $comment;
 
 ?>
-<div id="comment-<?php comment_ID(); ?>" <?php comment_class(''); ?>>
-	<div class="entry-content comment-content">
-<?php 
 
-comment_text();
 
-?>
-	</div><!--.entry-content-->
-	<div class="clear"></div>
-	<div class="meta">
-
-<?php
-
-edit_comment_link(__('Edit', 'carrington-personal'), '<span class="comment-editlink">', '</span>');
-
-echo '<span class="author">',comment_author_link(),'</span> &mdash; <a href="'.htmlspecialchars(get_comment_link( $comment->comment_ID )).'">',comment_date(),' @ ',comment_time(),'</a>';
-
-?>
-	</div>
+<div id="comment-<?php comment_ID(); ?>"  class="mcc-comment-inner">
+	<div class="mcc-comment-header">
+		<div class="mcc-comment-author vcard">
+			<cite class="mcc-fn fn">Pingback</cite>
+		</div><!-- .comment-author .vcard -->
+		<div class="mcc-comment-meta">
+			<span class="mcc-posted-from">Pingback</span> 
+			<?php echo '<a href="'.htmlspecialchars(get_comment_link( $comment->comment_ID )).'" class="mcc-posted-when">',cfcp_date(),'</a>';  ?>
+		</div>
+	</div><!--.mcc-comment-header-->
+	<div class="mcc-comment-body">
+		<p><?php comment_author_link(); ?></p>
+		<?php comment_text(); ?>
+	</div><!--.mcc-comment-body-->
+	<div class="mcc-actions">
+		<a class="mcc-comment-email-link" href="#">Email This</a>
+		<?php edit_comment_link(__('Edit', 'carrington-personal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
+	</div><!--.mcc-actions-->
 </div>
