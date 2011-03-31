@@ -30,7 +30,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	<?php // check if the post has a Post Thumbnail assigned to it.
 		if ( has_post_thumbnail() ) {
 			echo '<div class="post-media">';
-			the_post_thumbnail('medium');
+			the_post_thumbnail('medium-img');
 			echo '</div>';
 		}
 	?>

@@ -28,7 +28,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	</div>
 	<?php cfct_misc('post-meta-excerpts'); ?>
 	<div class="post-media">
-		<iframe src="http://player.vimeo.com/video/13588587?color=ff0065" width="480" height="270" frameborder="0"></iframe>
+		<iframe src="http://player.vimeo.com/video/13588587?color=ff0065" width="510" height="287" frameborder="0"></iframe>
 	</div>
 	<div class="post-content clearfix">
 		<p>FPO - hard coded in template.</p>
