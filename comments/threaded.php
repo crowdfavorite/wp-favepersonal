@@ -20,8 +20,8 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
 
-<li class="mcc-comment mcc-wordpress">
-	<div class="mcc-comment-inner">
+<li <?php comment_class('mcc-comment mcc-wordpress'); ?> id="li-comment-<?php comment_ID(); ?>">
+	<div id="comment-<?php comment_ID(); ?>" class="mcc-comment-inner">
 		<?php cfct_comment($data); ?>
 	</div>
 <?php
