@@ -18,13 +18,24 @@ Author URI: http://crowdfavorite.com
 
 */
 
+// function cfcp_admin_init() {
+// 	if ($_GET['page'] == basename(__FILE__)) {
+// 		wp_enqueue_script('jquery-ui-position');
+// 	}
+// }
+// add_action('admin_init', 'cfcp_admin_init');
 
 /* Let's load some styles that will be used on all theme setting pages */
 function cfcp_admin_css() {
     $cfcp_admin_styles = get_bloginfo('template_url').'/plugins/css/admin.css';
     echo '<link rel="stylesheet" type="text/css" href="' . $cfcp_admin_styles . '" />';
-	echo '
-		<style type="text/css" media="screen">
+	echo cfcp_admin_preview_css();
+}
+add_action('admin_head', 'cfcp_admin_css');
+
+function cfcp_admin_preview_css() {
+	return '
+		<style type="text/css" media="screen" title="kuler-preview-css">
 			.cf-kuler-preview-header, 
 			.cf-kuler-preview-featured {
 				background-color: '.cf_kuler_color('darkest').';
@@ -45,7 +56,7 @@ function cfcp_admin_css() {
 			}
 		</style>';
 }
-add_action('admin_head', 'cfcp_admin_css');
+
 /* Now load some extra JS */
 function cfcp_admin_scrolljs() {
     $cfcp_admin_scroll = get_bloginfo('template_url').'/js/jquery.scrollTo-1.4.2-min.js';
@@ -106,7 +117,7 @@ if (!function_exists('cf_sort_hex_colors')) {
 
 function cf_kuler_color($key = 'darkest') {
 	$color = '';
-	if ($colors = get_option(CF_KULER_COLORS)) {
+	if ($colors = cf_kuler_get_colors()) {
 		switch ($key) {
 			case 'darkest':
 				$color = $colors[0];
@@ -126,6 +137,10 @@ function cf_kuler_color($key = 'darkest') {
 		}
 	}
 	return $color;
+}
+
+function cf_kuler_get_colors() {
+	return apply_filters('cf-kuler-colors', get_option(CF_KULER_COLORS));
 }
 
 function cf_kuler_api_get($listType = 'rating', $startIndex = 0, $itemsPerPage = 20) {
@@ -210,7 +225,7 @@ function cf_kuler_theme_html($theme) {
 	</ul>
 	<div class="cf-kuler-theme-actions">
 		<p><a href="#selected-theme" class="button cf-kuler-apply">'.__('Apply', 'cf-kuler').'</a></p>
-		<p><a href="#linkme" class="button">'.__('Preview', 'cf-kuler').'</a></p>
+		<p><a href="#linkme" class="button cf-kuler-apply-preview">'.__('Preview', 'cf-kuler').'</a></p>
 	</div>
 </div>
 	';
@@ -316,6 +331,50 @@ jQuery(function($) {
 		$('html, body').animate({scrollTop:0}, 'slow'); // scroll to top
 		e.preventDefault();
 	});
+	
+	$('#cf-kuler-swatch-selector .cf-kuler-theme .cf-kuler-apply-preview').live('click', function(e) {
+		var $this = $(this);
+		$(this).closest('.cf-kuler-theme').addClass('hover').siblings('.cf-kuler-theme').removeClass('hover');
+		$.post(
+			ajaxurl,
+			{
+				'action': 'cf_kuler_preview_css',
+				'cf_kuler_colors': $(this).closest('.cf-kuler-theme').attr('data-swatches')
+			},
+			function(response) {
+				if (response.success) {
+					$('style[title="kuler-preview-css"]').replaceWith($(response.css));
+					var pos = $this.position();
+					var $preview = $('#cf-kuler-preview');
+					$preview.css({
+						'left': Math.ceil(pos.left - $preview.outerWidth()) + 'px',
+						'top': Math.ceil(pos.top - ($preview.outerHeight() / 2) + ($this.outerHeight() / 2) + 5 /* plus 5 because the lil' arrow isn't centered */) + 'px',
+						'position': 'absolute',
+						'z-index': 10
+					}).show();
+				}
+				else {
+					var error = 'Error: ';
+					if (response.message) {
+						error += response.message;
+					}
+					else {
+						error += 'An unknown error has occurred.';
+					}
+					alert(error);
+				}
+			},
+			'json'
+		);
+		e.preventDefault();
+		e.stopPropagation();
+	});
+	
+	// global preview neutralizer
+	$('body').live('click', function() {
+		$('#cf-kuler-preview').hide();
+		$('.cf-kuler-theme').removeClass('hover');
+	});
 });
 </script>
 <?php
@@ -376,6 +435,44 @@ function cf_kuler_admin_ajax() {
 	die($html);
 }
 add_action('wp_ajax_cf_kuler', 'cf_kuler_admin_ajax');
+
+/**
+ * Grab the CSS output for altering the theme colors preview
+ *
+ * @return void
+ */
+function cf_kuler_admin_preview_css() {
+	add_filter('cf-kuler-colors', 'cf_kuler_colors_ajax_filter');
+	$response = array(
+		'success' => true,
+		'css' => cfcp_admin_preview_css()
+	);
+	header('content-type: text/javascript');
+	echo json_encode($response);
+	exit;
+}
+add_action('wp_ajax_cf_kuler_preview_css', 'cf_kuler_admin_preview_css');
+
+/**
+ * Filter in new colors passed in via ajax
+ * Will ignore any passed in fields that contain more data than a full HEX color definition
+ * so hacking will return a weird color set, but won't damage anything
+ *
+ * @param array $colors 
+ * @return array
+ */
+function cf_kuler_colors_ajax_filter($colors) {
+	if (!empty($_POST['cf_kuler_colors'])) {
+		$_colors = explode(',', $_POST['cf_kuler_colors']);		
+		array_map('trim', $_colors);
+		foreach ($_colors as $k => $color) {
+			if (preg_match('/^#[a-z0-9]{6}$/i', $color)) {
+				$colors[$k] = $color;
+			}
+		}
+	}
+	return $colors;
+}
 
 function cf_kuler_request_handler() {
 	if (!empty($_POST['cf_action'])) {
@@ -453,7 +550,7 @@ function cf_kuler_settings_form() {
 	</div><!-- .cfcp-section -->
 </div>
 
-<div id="cf-kuler-preview">
+<div id="cf-kuler-preview" style="display: none;">
 	<div class="cf-kuler-preview-page">
 		<div class="cf-kuler-preview-header">
 			<div class="cf-kuler-preview-logo"></div>

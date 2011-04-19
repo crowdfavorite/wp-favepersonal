@@ -57,6 +57,7 @@
 /* apply and preview from search results */
 #cf-kuler-swatch-selector {
 	clear: both;
+	margin-bottom: 80px;
 }
 #cf-kuler-swatch-selector .cf-kuler-theme-actions {
 	background-color: #eaf2fa;
@@ -76,7 +77,8 @@
 #cf-kuler-swatch-selector .cf-kuler-theme-actions p {
 	margin: 13px 0;
 }
-#cf-kuler-swatch-selector .cf-kuler-theme:hover .cf-kuler-theme-actions {
+#cf-kuler-swatch-selector .cf-kuler-theme:hover .cf-kuler-theme-actions,
+#cf-kuler-swatch-selector .cf-kuler-theme.hover .cf-kuler-theme-actions {
 	display: block;
 }
 
