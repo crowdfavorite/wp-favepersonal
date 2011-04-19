@@ -186,8 +186,11 @@ function cf_kuler_api_request($url) {
 			'title' => $data['themeTitle'][0]['data'],
 			'url' => 'http://kuler.adobe.com/#themeID/'.$id,
 			'image' => $data['themeImage'][0]['data'],
-			'swatches' => array()
+			'swatches' => array(),
+			'author' => $data['themeAuthor'][0]['child'][$namespace]['authorLabel'][0]['data'],
+			'author_id' => $data['themeAuthor'][0]['child'][$namespace]['authorID'][0]['data']
 		);
+		ep($theme);
 		foreach ($data['themeSwatches'][0]['child'][$namespace]['swatch'] as $swatch) {
 			$theme['swatches'][] = $swatch['child'][$namespace]['swatchHexColor'][0]['data'];
 		}
@@ -222,8 +225,8 @@ function cf_kuler_themes_html($themes) {
 
 function cf_kuler_theme_html($theme) {
 	$html = '
-<div class="cf-kuler-theme" data-swatches="'.implode(',', $theme['swatches']).'">
-	<p><a href="'.$theme['url'].'">'.$theme['title'].'</a> <em>by User Name</em></p>
+<div class="cf-kuler-theme" data-swatches="'.implode(',', $theme['swatches']).'" data-kuler-id="'.$theme['id'].'">
+	<p><a class="cf-kuler-theme-title" href="'.$theme['url'].'">'.$theme['title'].'</a> <em>by <span class="cf-kuler-theme-user" kuler-author-id="'.$theme['author_id'].'">'.$theme['author'].'</span></em></p>
 	<ul>
 	';
 	foreach ($theme['swatches'] as $color) {
