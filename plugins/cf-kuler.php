@@ -150,7 +150,12 @@ function cf_kuler_color($key = 'darkest') {
 }
 
 function cf_kuler_get_colors() {
-	return apply_filters('cf-kuler-colors', get_option(CF_KULER_COLORS));
+	$settings = cf_kuler_get_settings();
+	return apply_filters('cf-kuler-colors', $settings['colors']);
+}
+
+function cf_kuler_get_settings() {
+	return get_option(CF_KULER_COLORS);
 }
 
 function cf_kuler_api_get($listType = 'rating', $startIndex = 0, $itemsPerPage = 20) {
@@ -183,14 +188,15 @@ function cf_kuler_api_request($url) {
 		$id = $data['themeID'][0]['data'];
 		$theme = array(
 			'id' => $id,
+			'guid' => $item->get_id(),
+			'link' => $item->get_link(),
 			'title' => $data['themeTitle'][0]['data'],
-			'url' => 'http://kuler.adobe.com/#themeID/'.$id,
+			'url' => 'http://kuler.adobe.com/#themeID/'.$id, // for some reason this triggers a search on kuler.com instead of linking directly to the theme
 			'image' => $data['themeImage'][0]['data'],
 			'swatches' => array(),
 			'author' => $data['themeAuthor'][0]['child'][$namespace]['authorLabel'][0]['data'],
 			'author_id' => $data['themeAuthor'][0]['child'][$namespace]['authorID'][0]['data']
 		);
-		ep($theme);
 		foreach ($data['themeSwatches'][0]['child'][$namespace]['swatch'] as $swatch) {
 			$theme['swatches'][] = $swatch['child'][$namespace]['swatchHexColor'][0]['data'];
 		}
@@ -225,8 +231,11 @@ function cf_kuler_themes_html($themes) {
 
 function cf_kuler_theme_html($theme) {
 	$html = '
-<div class="cf-kuler-theme" data-swatches="'.implode(',', $theme['swatches']).'" data-kuler-id="'.$theme['id'].'">
-	<p><a class="cf-kuler-theme-title" href="'.$theme['url'].'">'.$theme['title'].'</a> <em>by <span class="cf-kuler-theme-user" kuler-author-id="'.$theme['author_id'].'">'.$theme['author'].'</span></em></p>
+<div class="cf-kuler-theme" data-swatches="'.implode(',', $theme['swatches']).'">
+	<!-- original data to be saved unaltered if swatch is chosen -->
+	'.cf_kuler_theme_fields($theme).'
+	<!-- /original data to be saved unaltered if swatch is chosen -->
+	<p class="cf-kuler-theme-description"><a href="'.$theme['link'].'">'.$theme['title'].'</a> <em>by '.$theme['author'].'</em></p>
 	<ul>
 	';
 	foreach ($theme['swatches'] as $color) {
@@ -237,7 +246,7 @@ function cf_kuler_theme_html($theme) {
 	$html .= '
 	</ul>
 	<div class="cf-kuler-theme-actions">
-		<p><a href="#selected-theme" class="button cf-kuler-apply">'.__('Apply', 'cf-kuler').'</a></p>
+		<p><a href="#selected-theme" class="button cf-kuler-apply">'.__('Select', 'cf-kuler').'</a></p>
 		<p><a href="#linkme" class="button cf-kuler-apply-preview">'.__('Preview', 'cf-kuler').'</a></p>
 	</div>
 </div>
@@ -245,7 +254,8 @@ function cf_kuler_theme_html($theme) {
 	return $html;
 }
 
-function cf_kuler_colors_html($colors) {
+function cf_kuler_colors_html($settings) {
+	extract($settings); // extracts $colors & $theme
 	$html = '
 <div class="cf-kuler-theme" data-swatches="'.implode(',', $colors).'">
 	<ul>
@@ -257,7 +267,7 @@ function cf_kuler_colors_html($colors) {
 	}
 	$html .= '
 	</ul>
-	<p><a href="#link-me">Enter Theme Name</a> <em>by User Name</em></p>
+	<p id="cf-kuler-theme-description" class="cf-kuler-theme-description"><a href="'.$theme['link'].'">'.$theme['title'].'</a> <em>by '.$theme['author'].'</em></p>
 </div>
 	';
 	return $html;
@@ -334,13 +344,15 @@ jQuery(function($) {
 	});
 	$('#cf-kuler-swatch-selector .cf-kuler-theme .cf-kuler-apply').live('click', function(e) {
 // select swatch
-		$selected = $('#cf-kuler-swatch-selected');
-		$selected.html('');
-		$theme = $(this).closest('.cf-kuler-theme');
-		$theme.clone().find('p').remove().end().appendTo($selected);
+		var $selected = $('#cf-kuler-swatch-selected');
+		$selected.find('.cf-kuler-theme').html('');
+		var $theme = $(this).closest('.cf-kuler-theme');
+		$selected.find('.cf-kuler-theme').append($theme.find('ul').clone()).append($theme.find('p.cf-kuler-theme-description').clone());
+		
 // populate hidden field
 // show save button
 		$('#cf_kuler_settings_form')
+			.find('#cf-kuler-theme-info').html($theme.find('.cf-kuler-theme-data').clone()).end()
 			.find('#cf_kuler_colors').val($theme.attr('data-swatches')).end()
 			.find('input[type=submit]').show().end();
 		$('html, body').animate({scrollTop:0}, 'slow'); // scroll to top
@@ -485,9 +497,9 @@ function cf_kuler_request_handler() {
 		switch ($_POST['cf_action']) {
 			case 'cf_kuler_update_settings':
 				check_admin_referer('cf_kuler_update_settings');
-				$colors = stripslashes($_POST['cf_kuler_colors']);
-				$colors = explode(',', $colors);
-				update_option(CF_KULER_COLORS, $colors);
+				$colors = explode(',', stripslashes($_POST['cf_kuler_colors']));
+				$theme = array_map('stripslashes', $_POST['cf_kuler_theme']);
+				update_option(CF_KULER_COLORS, compact('colors','theme'));
 				wp_redirect(admin_url('themes.php?page='.basename(__FILE__).'&updated=true'));
 				die();
 				break;
@@ -508,9 +520,21 @@ function cf_kuler_admin_menu() {
 }
 add_action('admin_menu', 'cf_kuler_admin_menu');
 
+function cf_kuler_theme_fields($theme) {
+	return '
+	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[id]" value="'.$theme['id'].'" /> 
+	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[guid]" value="'.$theme['guid'].'" /> 
+	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[link]" value="'.$theme['link'].'" /> 
+	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[title]" value="'.$theme['title'].'" /> 
+	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[author]" value="'.$theme['author'].'" /> 
+	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[author_id]" value="'.$theme['author_id'].'" /> 
+	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[image]" value="'.$theme['image'].'" /> 
+	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[swatches]" value="'.(is_array($theme['swatches']) ? implode(',', $theme['swatches']) : $theme['swatches']).'" />';
+}
+
 function cf_kuler_settings_form() {
-	if ($colors = get_option(CF_KULER_COLORS)) {
-		$colors_html = cf_kuler_colors_html($colors);
+	if ($settings = cf_kuler_get_settings()) {
+		$colors_html = cf_kuler_colors_html($settings);
 	}
 	else {
 		$colors_html = '';
@@ -527,6 +551,13 @@ function cf_kuler_settings_form() {
 		<form id="cf_kuler_settings_form" name="cf_kuler_settings_form" action="'.admin_url('themes.php').'" method="post">
 			<input type="hidden" name="cf_action" value="cf_kuler_update_settings" />
 			<input type="hidden" name="cf_kuler_colors" id="cf_kuler_colors" value="" />
+			<div id="cf-kuler-theme-info">
+				');
+	if (!empty($settings['theme'])) {
+		echo cf_kuler_theme_fields($settings['theme']);
+	}
+	print('
+			</div>
 			<p>
 				<input type="button" name="preview_button" value="'.__('Preview', 'cf-kuler').'" class="button" />
 				<input type="submit" name="submit_button" value="'.__('Save Settings', 'cf-kuler').'" class="button-primary" />
