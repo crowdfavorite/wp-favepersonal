@@ -34,25 +34,35 @@ function cfcp_admin_css() {
 add_action('admin_head', 'cfcp_admin_css');
 
 function cfcp_admin_preview_css() {
+	return sprintf(cfcp_admin_preview_css_template(),
+	 	cf_kuler_color('darkest'),
+		cf_kuler_color('dark'),
+		cf_kuler_color('medium'),
+		cf_kuler_color('light'),
+		cf_kuler_color('lightest')
+	);
+}
+
+function cfcp_admin_preview_css_template() {
 	return '
 		<style type="text/css" media="screen" title="kuler-preview-css">
 			.cf-kuler-preview-header, 
 			.cf-kuler-preview-featured {
-				background-color: '.cf_kuler_color('darkest').';
+				background-color: %s;
 			}
 			.cf-kuler-preview-masthead,
 			.cf-kuler-preview-footer {
-				background-color: '.cf_kuler_color('dark').';
+				background-color: %s;
 			}
 			.cf-kuler-preview-bio {
-				background-color: '.cf_kuler_color('medium').';
+				background-color: %s;
 			}
 			.cf-kuler-preview-widget {
-				background-color: '.cf_kuler_color('light').';
+				background-color: %s;
 			}
 			.cf-kuler-preview-logo,
 			.cf-kuler-preview-link li {
-				background-color: '.cf_kuler_color('lightest').';
+				background-color: %s;
 			}
 		</style>';
 }
@@ -251,6 +261,8 @@ function cf_kuler_colors_html($colors) {
 }
 
 function cf_kuler_admin_js() {
+	$admin_css_template = sprintf(cfcp_admin_preview_css_template(), '{{0}}', '{{1}}', '{{2}}', '{{3}}', '{{4}}');
+	$admin_css_template = preg_replace("/[\n|\t]/", '', $admin_css_template);
 ?>
 <script type="text/javascript">
 jQuery(function($) {
@@ -335,37 +347,20 @@ jQuery(function($) {
 	$('#cf-kuler-swatch-selector .cf-kuler-theme .cf-kuler-apply-preview').live('click', function(e) {
 		var $this = $(this);
 		$(this).closest('.cf-kuler-theme').addClass('hover').siblings('.cf-kuler-theme').removeClass('hover');
-		$.post(
-			ajaxurl,
-			{
-				'action': 'cf_kuler_preview_css',
-				'cf_kuler_colors': $(this).closest('.cf-kuler-theme').attr('data-swatches')
-			},
-			function(response) {
-				if (response.success) {
-					$('style[title="kuler-preview-css"]').replaceWith($(response.css));
-					var pos = $this.position();
-					var $preview = $('#cf-kuler-preview');
-					$preview.css({
-						'left': Math.ceil(pos.left - $preview.outerWidth()) + 'px',
-						'top': Math.ceil(pos.top - ($preview.outerHeight() / 2) + ($this.outerHeight() / 2) + 5 /* plus 5 because the lil' arrow isn't centered */) + 'px',
-						'position': 'absolute',
-						'z-index': 10
-					}).show();
-				}
-				else {
-					var error = 'Error: ';
-					if (response.message) {
-						error += response.message;
-					}
-					else {
-						error += 'An unknown error has occurred.';
-					}
-					alert(error);
-				}
-			},
-			'json'
-		);
+		
+		// drop in the new color styles
+		cf_kuler_admin_css_template($(this).closest('.cf-kuler-theme').attr('data-swatches').split(','));
+
+		// trigger preview
+		var pos = $this.position();
+		var $preview = $('#cf-kuler-preview');
+		$preview.css({
+			'left': Math.ceil(pos.left - $preview.outerWidth()) + 'px',
+			'top': Math.ceil(pos.top - ($preview.outerHeight() / 2) + ($this.outerHeight() / 2) + 5 /* plus 5 because the lil' arrow isn't centered */) + 'px',
+			'position': 'absolute',
+			'z-index': 10
+		}).show();	
+		
 		e.preventDefault();
 		e.stopPropagation();
 	});
@@ -375,6 +370,14 @@ jQuery(function($) {
 		$('#cf-kuler-preview').hide();
 		$('.cf-kuler-theme').removeClass('hover');
 	});
+	
+	var cf_kuler_admin_css_template = function(colors) {
+		var _template = '<?php echo $admin_css_template; ?>';
+		for (i in colors) {
+			_template = _template.replace('{{' + i + '}}', colors[i]);
+		}
+		$('style[title="kuler-preview-css"]').replaceWith($(_template));
+	};
 });
 </script>
 <?php
