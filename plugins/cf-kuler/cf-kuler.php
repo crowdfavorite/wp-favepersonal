@@ -18,12 +18,31 @@ Author URI: http://crowdfavorite.com
 
 */
 
-// function cfcp_admin_init() {
-// 	if ($_GET['page'] == basename(__FILE__)) {
-// 		wp_enqueue_script('jquery-ui-position');
-// 	}
-// }
-// add_action('admin_init', 'cfcp_admin_init');
+define('CF_KULER_VERSION', '0.8');
+define('CF_KULER_ITEMS_PER_PAGE', 8);
+define('CF_KULER_COLORS', 'cf_kuler_colors');
+
+function cfcp_admin_init() {
+	if ($_GET['page'] == basename(__FILE__)) {
+		add_action('admin_head', 'cfcp_admin_css');
+		add_action('admin_head', 'cfcp_admin_scrolljs');
+		
+		$plugin_dir = trailingslashit(get_template_directory_uri()).'plugins/'.basename(__FILE__, '.php');
+		
+		// colorpicker version is the last entry date from the changelog since it doesn't appear to have a version defined
+		wp_enqueue_script('jquery-colorpicker', $plugin_dir.'/js/colorpicker/js/colorpicker.js', array('jquery'), '20090523');
+		wp_enqueue_style('jquery-colorpicker', $plugin_dir.'/js/colorpicker/css/colorpicker.css', array(), '20090523', 'screen');
+		
+		// our kuler js
+		$css_preview_template = sprintf(cfcp_admin_preview_css_template(), '-0-', '-1-', '-2-', '-3-', '-4-');
+		$css_preview_template = preg_replace("/[\n|\t]/", '', $css_preview_template);
+		wp_enqueue_script('cf-kuler', $plugin_dir.'/js/cf-kuler.js', array('jquery', 'colorpicker'), CF_KULER_VERSION);
+		wp_localize_script('cf-kuler', 'cf_kuler_settings', array(
+			'preview_css_template' => $css_preview_template
+		));	
+	}
+}
+add_action('admin_init', 'cfcp_admin_init');
 
 /* Let's load some styles that will be used on all theme setting pages */
 function cfcp_admin_css() {
@@ -31,7 +50,6 @@ function cfcp_admin_css() {
     echo '<link rel="stylesheet" type="text/css" href="' . $cfcp_admin_styles . '" />';
 	echo cfcp_admin_preview_css();
 }
-add_action('admin_head', 'cfcp_admin_css');
 
 function cfcp_admin_preview_css() {
 	return sprintf(cfcp_admin_preview_css_template(),
@@ -72,10 +90,6 @@ function cfcp_admin_scrolljs() {
     $cfcp_admin_scroll = get_bloginfo('template_url').'/js/jquery.scrollTo-1.4.2-min.js';
     echo '<script type="text/javascript" src="' . $cfcp_admin_scroll . '"></script>';
 }
-add_action('admin_head', 'cfcp_admin_scrolljs');
-
-define('CF_KULER_ITEMS_PER_PAGE', 8);
-define('CF_KULER_COLORS', 'cf_kuler_colors');
 
 if (!function_exists('cf_sort_hex_colors')) {
 	function cf_sort_hex_colors($colors) {
@@ -231,25 +245,15 @@ function cf_kuler_themes_html($themes) {
 
 function cf_kuler_theme_html($theme) {
 	$html = '
-<div class="cf-kuler-theme" data-swatches="'.implode(',', $theme['swatches']).'">
-	<!-- original data to be saved unaltered if swatch is chosen -->
-	'.cf_kuler_theme_fields($theme).'
-	<!-- /original data to be saved unaltered if swatch is chosen -->
-	<p class="cf-kuler-theme-description"><a href="'.$theme['link'].'">'.$theme['title'].'</a> <em>by '.$theme['author'].'</em></p>
-	<ul>
-	';
-	foreach ($theme['swatches'] as $color) {
-		$html .= '
-		<li style="background-color: '.$color.';"></li>
-		';
-	}
-	$html .= '
-	</ul>
-	<div class="cf-kuler-theme-actions">
-		<p><a href="#selected-theme" class="button cf-kuler-apply">'.__('Select', 'cf-kuler').'</a></p>
-		<p><a href="#linkme" class="button cf-kuler-apply-preview">'.__('Preview', 'cf-kuler').'</a></p>
-	</div>
-</div>
+		<div class="cf-kuler-theme" data-swatches="'.implode(',', $theme['swatches']).'">
+			'.cf_kuler_theme_fields($theme).'
+			<p class="cf-kuler-theme-description">'.cf_kuler_theme_desc($theme).'</p>
+			'.cf_kuler_colors_list($theme['swatches']).'
+			<div class="cf-kuler-theme-actions">
+				<p><a href="#selected-theme" class="button cf-kuler-apply">'.__('Select', 'cf-kuler').'</a></p>
+				<p><a href="#linkme" class="button cf-kuler-apply-preview">'.__('Preview', 'cf-kuler').'</a></p>
+			</div>
+		</div>
 	';
 	return $html;
 }
@@ -257,149 +261,28 @@ function cf_kuler_theme_html($theme) {
 function cf_kuler_colors_html($settings) {
 	extract($settings); // extracts $colors & $theme
 	$html = '
-<div class="cf-kuler-theme" data-swatches="'.implode(',', $colors).'">
-	<ul>
-	';
-	foreach ($colors as $color) {
-		$html .= '
-		<li style="background-color: '.$color.';"></li>
-		';
-	}
-	$html .= '
-	</ul>
-	<p id="cf-kuler-theme-description" class="cf-kuler-theme-description"><a href="'.$theme['link'].'">'.$theme['title'].'</a> <em>by '.$theme['author'].'</em></p>
-</div>
+		<div class="cf-kuler-theme" data-swatches="'.implode(',', $colors).'">
+			'.cf_kuler_colors_list($colors).'
+			<p id="cf-kuler-theme-description" class="cf-kuler-theme-description">'.cf_kuler_theme_desc($theme, ($theme['swatches'] != implode(',', $colors))).'</p>
+		</div>
 	';
 	return $html;
 }
 
-function cf_kuler_admin_js() {
-	$admin_css_template = sprintf(cfcp_admin_preview_css_template(), '{{0}}', '{{1}}', '{{2}}', '{{3}}', '{{4}}');
-	$admin_css_template = preg_replace("/[\n|\t]/", '', $admin_css_template);
-?>
-<script type="text/javascript">
-jQuery(function($) {
-	$('#cf-kuler-menu a').click(function(e) {
-		$('#cf-kuler-menu a').removeClass('current');
-		$(this).addClass('current');
-		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div class="cfcp-loading"><em>Loading...</em></div>');
-		$.post(
-			ajaxurl,
-			{
-				'action': 'cf_kuler',
-				'request': $(this).attr('data-request'),
-				'listType': $(this).attr('data-listtype'),
-				'startIndex': $(this).attr('data-start'),
-				'itemsPerPage': $(this).attr('data-items')
-			},
-			function(response) {
-				$swatches.html(response);
-				// set height to avoid the window jerk
-				var wrapHeight = $swatches.height();
-				$swatches.css('height', wrapHeight);
-			},
-			'html'
-		);
-		e.preventDefault();
-	});
-	$('#cf-kuler-search-form').submit(function(e) {
-		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div class="cfcp-loading"><em>Loading...</em></div>');
-		$.post(
-			ajaxurl,
-			{
-				'action': 'cf_kuler',
-				'request': 'search',
-				'searchQuery': $(this).find('#cf_kuler_search').val(),
-				'startIndex': $(this).attr('data-start'),
-				'itemsPerPage': $(this).attr('data-items')
-			},
-			function(response) {
-				$swatches.html(response);
-			},
-			'html'
-		);
-		e.preventDefault();
-	});
-	$('a.cf-kuler-paging').live('click', function(e) {
-		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div class="cfcp-loading"><em>Loading...</em></div>');
-		$.post(
-			ajaxurl,
-			{
-				'action': 'cf_kuler',
-				'request': $(this).attr('data-request'),
-				'listType': $(this).attr('data-listtype'),
-				'searchQuery': $(this).attr('data-search'),
-				'startIndex': $(this).attr('data-start'),
-				'itemsPerPage': $(this).attr('data-items')
-			},
-			function(response) {
-				$swatches.html(response);
-			},
-			'html'
-		);
-		e.preventDefault();
-	});
-	$('#cf-kuler-swatch-selector .cf-kuler-theme .cf-kuler-apply').live('click', function(e) {
-// select swatch
-		var $selected = $('#cf-kuler-swatch-selected');
-		$selected.find('.cf-kuler-theme').html('');
-		var $theme = $(this).closest('.cf-kuler-theme');
-		$selected.find('.cf-kuler-theme').append($theme.find('ul').clone()).append($theme.find('p.cf-kuler-theme-description').clone());
-		
-// populate hidden field
-// show save button
-		$('#cf_kuler_settings_form')
-			.find('#cf-kuler-theme-info').html($theme.find('.cf-kuler-theme-data').clone()).end()
-			.find('#cf_kuler_colors').val($theme.attr('data-swatches')).end()
-			.find('input[type=submit]').show().end();
-		$('html, body').animate({scrollTop:0}, 'slow'); // scroll to top
-		e.preventDefault();
-	});
-	
-	$('#cf-kuler-swatch-selector .cf-kuler-theme .cf-kuler-apply-preview').live('click', function(e) {
-		var $this = $(this);
-		$(this).closest('.cf-kuler-theme').addClass('hover').siblings('.cf-kuler-theme').removeClass('hover');
-		
-		// drop in the new color styles
-		cf_kuler_admin_css_template($(this).closest('.cf-kuler-theme').attr('data-swatches').split(','));
-
-		// trigger preview
-		var pos = $this.position();
-		var $preview = $('#cf-kuler-preview');
-		$preview.css({
-			'left': Math.ceil(pos.left - $preview.outerWidth()) + 'px',
-			'top': Math.ceil(pos.top - ($preview.outerHeight() / 2) + ($this.outerHeight() / 2) + 5 /* plus 5 because the lil' arrow isn't centered */) + 'px',
-			'position': 'absolute',
-			'z-index': 10
-		}).show();	
-		
-		e.preventDefault();
-		e.stopPropagation();
-	});
-	
-	// global preview neutralizer
-	$('body').live('click', function() {
-		$('#cf-kuler-preview').hide();
-		$('.cf-kuler-theme').removeClass('hover');
-	});
-	
-	var cf_kuler_admin_css_template = function(colors) {
-		var _template = '<?php echo $admin_css_template; ?>';
-		for (i in colors) {
-			_template = _template.replace('{{' + i + '}}', colors[i]);
-		}
-		$('style[title="kuler-preview-css"]').replaceWith($(_template));
-	};
-});
-</script>
-<?php
+function cf_kuler_colors_list($colors) {
+	$html = '
+		<ul>';
+	foreach ($colors as $color) {
+		$html .= '
+			<li style="background-color: '.$color.';"><a class="cf-kuler-theme-edit-swatch" href="#">'.__('edit', 'cf-kuler').'</a></li>';
+	}
+	$html .= '
+		</ul>';
+	return $html;
 }
 
-if (is_admin() && $_GET['page'] == basename(__FILE__)) {
-	add_action('admin_head', 'cf_kuler_admin_js');
+function cf_kuler_theme_desc($theme, $modified = false) {
+	return ($modified ? __('Based on', 'cf-kuler').' ' : '').'<a href="'.$theme['link'].'">'.$theme['title'].'</a> <em>'.__('by', 'cf-kuler').' '.$theme['author'].'</em>';
 }
 
 function cf_kuler_admin_ajax() {
@@ -534,9 +417,11 @@ function cf_kuler_theme_fields($theme) {
 
 function cf_kuler_settings_form() {
 	if ($settings = cf_kuler_get_settings()) {
+		$colors = implode(',', $settings['colors']);
 		$colors_html = cf_kuler_colors_html($settings);
 	}
 	else {
+		$colors = '';
 		$colors_html = '';
 	}
 	
@@ -548,9 +433,18 @@ function cf_kuler_settings_form() {
 		<div id="cf-kuler-swatch-selected" class="cf-clearfix">
 			'.$colors_html.'
 		</div>
+		<div id="cf-kuler-color-picker" style="display: none;">
+			<p>'.__('Pick a new color:', 'cf-kuler').'</p>
+			<p>'.__('Or select from original theme colors:', 'cf-kuler').'</p>
+			<div class="theme-swatches">
+				<div class="theme-swatches-container">
+					'.$colors_html.'
+				</div>
+			</div>
+		</div>
 		<form id="cf_kuler_settings_form" name="cf_kuler_settings_form" action="'.admin_url('themes.php').'" method="post">
 			<input type="hidden" name="cf_action" value="cf_kuler_update_settings" />
-			<input type="hidden" name="cf_kuler_colors" id="cf_kuler_colors" value="" />
+			<input type="hidden" name="cf_kuler_colors" id="cf_kuler_colors" value="'.$colors.'" />
 			<div id="cf-kuler-theme-info">
 				');
 	if (!empty($settings['theme'])) {
@@ -573,7 +467,7 @@ function cf_kuler_settings_form() {
 		<div class="cfcp-nav">
 			<form action="#" id="cf-kuler-search-form" data-start="0" data-page="'.CF_KULER_ITEMS_PER_PAGE.'">
 				<input type="text" name="cf_kuler_search" id="cf_kuler_search" />
-				<input type="submit" class="button" name="" value="Search Colors" />
+				<input type="submit" class="button" name="" value="'.__('Search Colors', 'cf-kuler').'" />
 			</form>
 			<ul id="cf-kuler-menu">
 				<li><a href="#" data-request="get" data-listtype="popular" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Most Popular', 'cf-kuler').'</a></li>
@@ -611,10 +505,6 @@ function cf_kuler_settings_form() {
 		<div class="cf-kuler-preview-footer"></div>
 		</div><!--.cf-kuler-preview-page-->
 </div><!--#cf-kuler-preview-->
-
-
-
-
 	');
 }
 

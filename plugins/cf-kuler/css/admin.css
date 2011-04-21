@@ -53,6 +53,9 @@
 	font-size: .9em;
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
+.cf-kuler-theme .cf-kuler-theme-edit-swatch {
+	display: none;
+}
 
 /* apply and preview from search results */
 #cf-kuler-swatch-selector {
@@ -103,6 +106,9 @@
 }
 #cf-kuler-swatch-selected .cf-kuler-theme p {
 	margin: 0;
+}
+#cf-kuler-swatch-selected .cf-kuler-theme ul li:hover .cf-kuler-theme-edit-swatch {
+	display: block;
 }
 
 /* pagination */
@@ -237,8 +243,105 @@
 	width: 360px;
 }
 
+/** Color Picker
+ -------------------------------------------------- */
+#cf-kuler-color-picker {
+	position: absolute;
+	width: 356px;
+	height: 264px;
+	border: 1px solid #A0A0A0;
+	display: block;
+	background-color: #FAFAFA;
+	z-index: 99;
+	-moz-box-shadow: 0px 0px 6px #868686; /* FF3.5+ */
+	-webkit-box-shadow: 0px 0px 6px #868686; /* Saf3+, Chrome */
+	box-shadow: 0px 0px 6px #868686; /* Standard. Opera 10.5, IE9 */
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+	/**
+	 * @bugfix border-radius background bleed
+	 * @see http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed
+	 */
+	-webkit-background-clip: padding-box;
+}
+#cf-kuler-color-picker .colorpicker {
+	background-image: url(../js/colorpicker/images/custom_background.png);
+	position: relative;
+	bottom: 0;
+	left: 0;
+	margin-top: -2px;
+}
+#cf-kuler-color-picker .colorpicker_hue div {
+	background-image: url(../js/colorpicker/images/custom_indic.gif);
+}
+#cf-kuler-color-picker .colorpicker_hex {
+	background-image: url(../js/colorpicker/images/custom_hex.png);
+}
+#cf-kuler-color-picker .colorpicker_rgb_r {
+	background-image: url(../js/colorpicker/images/custom_rgb_r.png);
+}
+#cf-kuler-color-picker .colorpicker_rgb_g {
+	background-image: url(../js/colorpicker/images/custom_rgb_g.png);
+}
+#cf-kuler-color-picker .colorpicker_rgb_b {
+	background-image: url(../js/colorpicker/images/custom_rgb_b.png);
+}
+#cf-kuler-color-picker .colorpicker_hsb_s {
+	background-image: url(../js/colorpicker/images/custom_hsb_s.png);
+	display: none;
+}
+#cf-kuler-color-picker .colorpicker_hsb_h {
+	background-image: url(../js/colorpicker/images/custom_hsb_h.png);
+	display: none;
+}
+#cf-kuler-color-picker .colorpicker_hsb_b {
+	background-image: url(../js/colorpicker/images/custom_hsb_b.png);
+	display: none;
+}
+#cf-kuler-color-picker .colorpicker_submit {
+	background-image: url(../js/colorpicker/images/custom_submit.png);
+}
+#cf-kuler-color-picker .colorpicker input {
+	color: #778398;
+	border: none;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	border-radius: 0;
+	background-color: transparent;
+	padding-top: 3px;
+	font-weight: bold;
+	font-size: 11px;
+	text-align: center;
+}
+#cf-kuler-color-picker .theme-swatches,
+#cf-kuler-color-picker p {
+	padding-left: 4px;
+}
+#cf-kuler-color-picker p {
+	margin: 5px 0 2px 0;
+}
+#cf-kuler-color-picker .theme-swatches .cf-kuler-theme ul {
+	height: 36px;
+}
+#cf-kuler-color-picker .theme-swatches .cf-kuler-theme li {
+	width: 69px;
+	height: 36px;
+}
+#cf-kuler-color-picker .theme-swatches .cf-kuler-theme li:last-child {
+	width: 70px;
+}
+#cf-kuler-color-picker .theme-swatches .cf-kuler-theme p {
+	display: none;
+}
+
 /** Utilities
  -------------------------------------------------- */
+#cf_kuler_settings_form p {
+	text-align: right;
+}
 /* Clearing */
 .cf-clearfix {
 	display: block;
