@@ -94,14 +94,16 @@
 	padding: 0;
 }
 #cf-kuler-swatch-selected .cf-kuler-theme ul,
-#cf-kuler-swatch-selected .cf-kuler-theme ul li {
+#cf-kuler-swatch-selected .cf-kuler-theme ul li,
+.cf-kuler-theme-swatch-placeholder {
 	height: 140px;
 }
 #cf-kuler-swatch-selected .cf-kuler-theme ul {
 	width: 800px;
 	margin-bottom: 10px;
 }
-#cf-kuler-swatch-selected .cf-kuler-theme ul li {
+#cf-kuler-swatch-selected .cf-kuler-theme ul li,
+.cf-kuler-theme-swatch-placeholder {
 	width: 160px;
 }
 #cf-kuler-swatch-selected .cf-kuler-theme p {
@@ -109,6 +111,12 @@
 }
 #cf-kuler-swatch-selected .cf-kuler-theme ul li:hover .cf-kuler-theme-edit-swatch {
 	display: block;
+}
+.cf-kuler-theme-swatch-placeholder {
+	background-color: #E0E0E0;
+	-moz-box-shadow: inset 2px 2px 8px #333; /* FF3.5+ */
+	-webkit-box-shadow: inset 2px 2px 8px #333; /* Saf3+, Chrome */
+	box-shadow: inset 2px 2px 8px #333; /* Standard. Opera 10.5, IE9 */
 }
 
 /* pagination */

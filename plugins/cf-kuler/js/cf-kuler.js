@@ -80,6 +80,8 @@ jQuery(function($) {
 			.find('#cf_kuler_colors').val($theme.attr('data-swatches')).end()
 			.find('input[type=submit]').show().end();
 		$('html, body').animate({scrollTop:0}, 'slow'); // scroll to top
+
+		CF.utils.initSelectedSortable();
 		e.preventDefault();
 	});
 	
@@ -145,6 +147,15 @@ jQuery(function($) {
 					("0" + parseInt(rgb[0], 10).toString(16)).slice(-2) +
 					("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
 					("0" + parseInt(rgb[2], 10).toString(16)).slice(-2);
+			},
+			
+			initSelectedSortable: function() {
+				$('#cf-kuler-swatch-selected .cf-kuler-theme ul').sortable({
+					'axis': 'x',
+					'cursor': 'crosshair',
+					'forcePlaceholderSize': true,
+					'placeholder': 'cf-kuler-theme-swatch-placeholder'
+				});
 			}
 		};
 	}(jQuery);
@@ -302,4 +313,6 @@ jQuery(function($) {
 		$('.cf-kuler-theme').removeClass('hover');
 		$('#cf-kuler-color-picker').hide();
 	});
+	
+	CF.utils.initSelectedSortable();
 });
