@@ -405,43 +405,55 @@
 }
 
 /* bio-box */
-.bio-box {
+.bio-box,
+.widget.bio-box {
 	margin-bottom: 30px;
 }
-.bio-box-gallery {
+.bio-box-gallery,
+.widget .bio-box-gallery {
 	height: 180px;
 	overflow: hidden;
 }
-.bio-box-content {
+.bio-box-content,
+.widget .bio-box-content {
 	border-bottom: 1px solid #fff;
 	padding: 15px 20px 17px 20px;
 }
-.bio-box-title {
+.bio-box-title,
+.widget .bio-box-title {
 	font-size: 21px;
 	margin: 3px 0 0 0;
 }
-.bio-box-content p {
+.bio-box-content p,
+.widget .bio-box-content p {
 	margin: 8px 0 0 0;
 }
-.bio-box-links {
+.bio-box-links,
+.widget .bio-box-links {
 	padding: 15px 15px 15px 20px;
 }
 .bio-box-links ul,
-.bio-box-links li {
+.bio-box-links li,
+.widget .bio-box-links ul,
+.widget .bio-box-links li {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 .bio-box-links ul li,
-.bio-box-links ul li a {
+.bio-box-links ul li a,
+.widget .bio-box-links ul li,
+.widget .bio-box-links ul li a {
 	display: block;
 	float: left;
 }
-.bio-box-links ul li {
+.bio-box-links ul li,
+.widget .bio-box-links ul li {
 	height: 20px;
 	padding-right: 5px;
 }
-.bio-box-links ul li a {
+.bio-box-links ul li a,
+.widget .bio-box-links ul li a {
 	background-color: #fff;
 	border: 2px solid #fff;
 	height: 16px;
