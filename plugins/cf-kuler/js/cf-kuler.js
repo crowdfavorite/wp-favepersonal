@@ -266,18 +266,18 @@ jQuery(function($) {
 
 	// color picker init
 	$('#cf-kuler-color-picker').ColorPicker({
-			flat: CF.picker.config.flat,
-			color: CF.picker.config.defaultColor,
-			onSubmit: function(hsb, hex, rgb) {
-				CF.picker.submitPicker(hsb, hex, rgb);
-			},
-			onChange: function(hsb, hex, rgb) {
-				CF.picker.changePicker(hsb, hex, rgb);
-			}
-		}).live('click', function(e) {
-			// what happens in Vegas stays in Vegas
-			e.stopPropagation();
-		});
+		flat: CF.picker.config.flat,
+		color: CF.picker.config.defaultColor,
+		onSubmit: function(hsb, hex, rgb) {
+			CF.picker.submitPicker(hsb, hex, rgb);
+		},
+		onChange: function(hsb, hex, rgb) {
+			CF.picker.changePicker(hsb, hex, rgb);
+		}
+	}).live('click', function(e) {
+		// what happens in Vegas stays in Vegas
+		e.stopPropagation();
+	});
 
 	$('.cf-kuler-theme-edit-swatch').live('click', function(e) {
 		CF.picker.showPicker(this);
