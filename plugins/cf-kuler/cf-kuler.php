@@ -169,7 +169,25 @@ function cf_kuler_get_colors() {
 }
 
 function cf_kuler_get_settings() {
-	return get_option(CF_KULER_COLORS);
+	return get_option(CF_KULER_COLORS, array(
+		'colors' => array(
+			'#223366',
+            '#556699',
+            '#8899cc',
+            '#d3d3f7',
+            '#ffffff'
+		),
+		'theme' => array(
+			'id' => 1248653,
+            'guid' => 'http://kuler.adobe.com/index.cfm#themeID/1248653',
+            'link' => 'http://kuler.adobe.com/index.cfm#themeID/1248653',
+            'title' => 'alexking.org',
+            'author' => 'alexkingorg',
+            'author_id' => '383498',
+            'image' => 'http://kuler-api.adobe.com/kuler/themeImages/theme_1248653.png',
+            'swatches' => '#223366,#556699,#8899cc,#d3d3f7,#ffffff'
+		)
+	));
 }
 
 function cf_kuler_api_get($listType = 'rating', $startIndex = 0, $itemsPerPage = 20) {
