@@ -204,6 +204,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		}
 	</style>
 
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+
 <?php
 	/* Add JavaScript to pages with the comment form to support threaded comments (when in use). */
 	if ( is_singular() && get_option( 'thread_comments' ) ) {
