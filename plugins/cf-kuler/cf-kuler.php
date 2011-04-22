@@ -424,10 +424,16 @@ function cf_kuler_settings_form() {
 		$colors = '';
 		$colors_html = '';
 	}
+
+	$message = '';
+	if (!empty($_GET['updated']) && $_GET['updated'] == 'true') {
+		$message = '<div class="updated below-h2 fade cf-kuler-message-fade" id="message"><p>'.__('Settings updated.', 'cf-kuler').'</p></div>';
+	}
 	
 	print('
 <div class="wrap cf-kuler-wrap cf-clearfix">
 	<h2>'.__('Color Settings', 'cf-kuler').'</h2>
+	'.$message.'
 	<div class="cfcp-section">
 		<h3 id="selected-theme" class="cfcp-section-title"><span>'.__('Selected Theme', 'cf-kuler').'</span></h3>
 		<div id="cf-kuler-swatch-selected" class="cf-clearfix">

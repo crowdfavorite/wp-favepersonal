@@ -314,5 +314,9 @@ jQuery(function($) {
 		$('#cf-kuler-color-picker').hide();
 	});
 	
+	$('.cf-kuler-message-fade')
+		.animate({'opacity': 1.0}, 8000) // faux timeout, animates nothing for 8 seconds
+		.slideUp('slow');
+	
 	CF.utils.initSelectedSortable();
 });
