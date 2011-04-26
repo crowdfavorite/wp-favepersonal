@@ -78,7 +78,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		));
 		
 		// Let's load some scripts
-		if( !is_admin()){
+		if (!is_admin()) {
 			wp_enqueue_script('global', get_bloginfo('template_directory').'/js/global.js', array('jquery'), CFCT_URL_VERSION);
 		}
 		

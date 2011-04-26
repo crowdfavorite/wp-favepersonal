@@ -421,6 +421,19 @@ function cf_kuler_admin_menu() {
 }
 add_action('admin_menu', 'cf_kuler_admin_menu');
 
+function cf_kuler_admin_bar() {
+	global $wp_admin_bar;
+	if (current_user_can('manage_options')) {
+		$wp_admin_bar->add_menu(array(
+			'id' => 'cf-kuler',
+			'title' => __('Colors', 'cf-kuler'),
+			'href' => admin_url('themes.php?page='.basename(__FILE__)),
+			'parent' => 'appearance'
+		));
+	}
+}
+add_action('wp_before_admin_bar_render', 'cf_kuler_admin_bar');
+
 function cf_kuler_theme_fields($theme) {
 	return '
 	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[id]" value="'.$theme['id'].'" /> 
