@@ -206,8 +206,8 @@ jQuery(function($) {
 			setPickerPosition: function() {
 				var pos = $swatch.position();
 				$picker.css({
-					top: (pos.top + ($swatch.outerHeight() * 0.9)) + 'px',
-					left: (pos.left - ($swatch.outerWidth() / 2)) + 'px'
+					top: (pos.top + ($swatch.outerHeight() * 0.98)) + 'px',
+					left: (pos.left - ($swatch.outerWidth() - 55)) + 'px'
 				});
 			}, 
 		

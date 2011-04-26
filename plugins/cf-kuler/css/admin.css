@@ -262,16 +262,17 @@
 /** Color Picker
  -------------------------------------------------- */
 #cf-kuler-color-picker {
+	background-color: #FAFAFA;
+	border: 1px solid #aaa;
+	display: block;
+	height: 264px;
+	padding: 3px 5px 5px 5px;
 	position: absolute;
 	width: 356px;
-	height: 264px;
-	border: 1px solid #A0A0A0;
-	display: block;
-	background-color: #FAFAFA;
 	z-index: 99;
-	-moz-box-shadow: 0px 0px 6px #868686; /* FF3.5+ */
-	-webkit-box-shadow: 0px 0px 6px #868686; /* Saf3+, Chrome */
-	box-shadow: 0px 0px 6px #868686; /* Standard. Opera 10.5, IE9 */
+	-moz-box-shadow: 0px 3px 6px #868686; /* FF3.5+ */
+	-webkit-box-shadow: 0px 3px 6px #868686; /* Saf3+, Chrome */
+	box-shadow: 0px 3px 6px #868686; /* Standard. Opera 10.5, IE9 */
 	-moz-border-radius: 5px; /* FF1+ */
 	-webkit-border-radius: 5px; /* Saf3+, Chrome */
 	-khtml-border-radius: 5px; /* Konqueror */
