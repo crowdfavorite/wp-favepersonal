@@ -19,5 +19,5 @@
 /* Using as an include since it's used in many places */
 ?>
 <div class="post-meta">
-	<p class="h5"><?php comments_popup_link(__('No Replies', 'carrington-personal'), __('1 Reply', 'carrington-personal'), __('% Relies', 'carrington-personal')); ?></p>
+	<p class="h5"><?php comments_popup_link(__('No Replies', 'carrington-personal'), __('1 Reply', 'carrington-personal'), __('% Replies', 'carrington-personal')); ?></p>
 </div>
