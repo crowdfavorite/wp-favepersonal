@@ -54,7 +54,15 @@
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
 .cf-kuler-theme .cf-kuler-theme-edit-swatch {
-	display: none;
+	background: url(../img/color-edit.png) 0 0 no-repeat;
+	display: block;
+	height: 140px;
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 160px;
+}
+#cf-kuler-swatch-selected .cf-kuler-theme ul li:hover .cf-kuler-theme-edit-swatch {
+	background-position: 0 -140px;
 }
 
 /* apply and preview from search results */
@@ -108,9 +116,6 @@
 }
 #cf-kuler-swatch-selected .cf-kuler-theme p {
 	margin: 0;
-}
-#cf-kuler-swatch-selected .cf-kuler-theme ul li:hover .cf-kuler-theme-edit-swatch {
-	display: block;
 }
 .cf-kuler-theme-swatch-placeholder {
 	background-color: #E0E0E0;
