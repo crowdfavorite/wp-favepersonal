@@ -61,8 +61,11 @@
 	text-indent: -9999px;
 	width: 160px;
 }
-#cf-kuler-swatch-selected .cf-kuler-theme ul li:hover .cf-kuler-theme-edit-swatch {
+.cf-kuler-theme:hover .cf-kuler-theme-edit-swatch {
 	background-position: 0 -140px;
+}
+#cf-kuler-color-picker .cf-kuler-theme-edit-swatch {
+	display: none;
 }
 
 /* apply and preview from search results */
