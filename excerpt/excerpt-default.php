@@ -23,17 +23,17 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 ?>
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
 	<div class="post-header">
-		<h2 class="post-title"><a href="<?php the_permalink() ?>" title="Permanent link to <?php the_title_attribute() ?>" rel="bookmark"><?php the_title() ?></a></h2>
+		<h2 class="post-title"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
 	<?php cfct_misc('post-meta-excerpts'); ?>
-	<?php // check if the post has a Post Thumbnail assigned to it.
-		if ( has_post_thumbnail() ) {
-			echo '<div class="post-media">';
-				the_post_thumbnail('banner-img');
-			echo '</div>';
-		}
-	?>
+	
+	<?php if ( has_post_thumbnail() ) { ?>
+		<div class="post-media">
+			<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('banner-img'); ?></a>
+		</div>
+	<?php } ?>
+	
 	<div class="post-content clearfix">
 		<?php the_excerpt(); ?>
 	</div><!--post-content-->
