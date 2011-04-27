@@ -53,7 +53,10 @@
 	font-size: .9em;
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
-.cf-kuler-theme .cf-kuler-theme-edit-swatch {
+.cf-kuler-theme-edit-swatch {
+	display: none;
+}
+#cf-kuler-swatch-selected .cf-kuler-theme .cf-kuler-theme-edit-swatch {
 	background: url(../img/color-edit.png) 0 0 no-repeat;
 	display: block;
 	height: 140px;
@@ -61,10 +64,10 @@
 	text-indent: -9999px;
 	width: 160px;
 }
-.cf-kuler-theme:hover .cf-kuler-theme-edit-swatch {
+#cf-kuler-swatch-selected .cf-kuler-theme ul li:hover .cf-kuler-theme-edit-swatch {
 	background-position: 0 -140px;
 }
-#cf-kuler-color-picker .cf-kuler-theme-edit-swatch {
+#cf-kuler-swatch-selected #cf-kuler-color-picker .cf-kuler-theme-edit-swatch {
 	display: none;
 }
 
