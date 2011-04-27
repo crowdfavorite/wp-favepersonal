@@ -1,8 +1,8 @@
 <?php
 
 /*
-Plugin Name: Kuler Test Script 
-Description: testing...
+Plugin Name: CF Colors 
+Description: Selection of color swatches from Adobe Kuler.
 Version: dev 
 Author: Crowd Favorite
 Author URI: http://crowdfavorite.com
@@ -21,6 +21,7 @@ Author URI: http://crowdfavorite.com
 define('CF_KULER_VERSION', '0.8');
 define('CF_KULER_ITEMS_PER_PAGE', 8);
 define('CF_KULER_COLORS', 'cf_kuler_colors');
+define('CF_KULER_API', 'http://colors.api.crowdfavorite.com/1.0/?url={URL}');
 
 function cfcp_admin_init() {
 	if ($_GET['page'] == basename(__FILE__)) {
@@ -203,13 +204,10 @@ function cf_kuler_api_search($searchQuery, $startIndex = 0, $itemsPerPage = 20) 
 }
 
 function cf_kuler_api_request($url) {
-	$kuler_key = '2931428E4D8D5DBE3EFC8D1040A9ACB0';
-	$url .= '&key='.$kuler_key;
-
 	require(ABSPATH.WPINC.'/class-simplepie.php');
 	$feed = new SimplePie();
 	$feed->enable_cache(false);
-	$feed->set_feed_url($url);
+	$feed->set_feed_url(str_replace('{URL}', urlencode($url), CF_KULER_API));
 	$feed->init();
 
 	$namespace = 'http://kuler.adobe.com/kuler/API/rss/';
