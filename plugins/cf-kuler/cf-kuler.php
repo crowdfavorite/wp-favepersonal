@@ -24,7 +24,7 @@ define('CF_KULER_COLORS', 'cf_kuler_colors');
 define('CF_KULER_API', 'http://colors.api.crowdfavorite.com/1.0/?url={URL}');
 
 function cfcp_admin_init() {
-	if ($_GET['page'] == basename(__FILE__)) {
+	if (!empty($_GET['page']) && $_GET['page'] == basename(__FILE__)) {
 		add_action('admin_head', 'cfcp_admin_css');
 		add_action('admin_head', 'cfcp_admin_scrolljs');
 		
