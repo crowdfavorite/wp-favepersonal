@@ -260,14 +260,15 @@ function cf_kuler_themes_html($themes) {
 }
 
 function cf_kuler_theme_html($theme) {
+	$signature = md5(serialize($theme));
 	$html = '
 		<div class="cf-kuler-theme" data-swatches="'.implode(',', $theme['swatches']).'">
 			'.cf_kuler_theme_fields($theme).'
 			<p class="cf-kuler-theme-description">'.cf_kuler_theme_desc($theme).'</p>
 			'.cf_kuler_colors_list($theme['swatches']).'
 			<div class="cf-kuler-theme-actions">
-				<p><a href="#selected-theme" class="button cf-kuler-apply">'.__('Select', 'cf-kuler').'</a></p>
-				<p><a href="#linkme" class="button cf-kuler-apply-preview">'.__('Preview', 'cf-kuler').'</a></p>
+				<p><a id="select-'.$signature.'" href="#selected-theme" class="button cf-kuler-apply">'.__('Select', 'cf-kuler').'</a></p>
+				<p><a id="preview-'.$signature.'" href="#preview-me" class="button cf-kuler-apply-preview">'.__('Preview', 'cf-kuler').'</a></p>
 			</div>
 		</div>
 	';
@@ -540,6 +541,11 @@ function cf_kuler_settings_form() {
 		<div class="cf-kuler-preview-footer"></div>
 		</div><!--.cf-kuler-preview-page-->
 </div><!--#cf-kuler-preview-->
+<script type="text/javascript">
+	jQuery(function($) {
+		$("#cf-kuler-menu li:first-child a").trigger("click");
+	});
+</script>
 	');
 }
 

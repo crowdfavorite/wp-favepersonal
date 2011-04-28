@@ -168,6 +168,8 @@ jQuery(function($) {
 			cssTemplate = cf_kuler_settings.preview_css_template;
 			
 		return {
+			selected: null,
+			
 			show: function(colors, referenceObj) {
 				var $referenceObj = $(referenceObj);
 				var pos = $referenceObj.position();
@@ -179,6 +181,27 @@ jQuery(function($) {
 					'position': 'absolute',
 					'z-index': 10
 				}).show();
+				
+				this.selected = $referenceObj.attr('id');
+			},
+			
+			hide: function() {
+				$('#cf-kuler-preview').hide();
+			},
+			
+			toggle: function(colors, source) {
+				if (!this.isVisible() || source.attr('id') != this.selected) {
+					console.log('show');
+					this.show(colors, source);
+				}
+				else {
+					console.log('hide');
+					this.hide();
+				}
+			},
+			
+			isVisible: function() {
+				return $('#cf-kuler-preview').is(':visible');
 			},
 			
 			setCssTemplate: function(colors) {
@@ -291,17 +314,23 @@ jQuery(function($) {
 		var colors = $(this).closest('.cf-kuler-theme').attr('data-swatches').split(',');
 
 		$(this).closest('.cf-kuler-theme').addClass('hover').siblings('.cf-kuler-theme').removeClass('hover');
-		CF.preview.show(colors, $this);
+		CF.preview.toggle(colors, $this);
 		
 		e.preventDefault();
 		e.stopPropagation();
 	});
-	
+	// omg hax!
+	$('#cf-kuler-swatch-selector ul li').live('click', function(e) {
+		$(this).closest('.cf-kuler-theme').find('.cf-kuler-apply-preview').trigger('click');
+		e.preventDefault();
+		e.stopPropagation();
+	})
+
 	$('input[name="preview_button"]').live('click', function(e) {
 		var $this = $(this);		
 		var colors = CF.utils.getThemeColors($('#cf-kuler-swatch-selected'));
-
-		CF.preview.show(colors, $this);
+						
+		CF.preview.toggle(colors, this);
 		
 		e.preventDefault();
 		e.stopPropagation();
@@ -309,7 +338,7 @@ jQuery(function($) {
 	
 	// global popup neutralizer
 	$('body').live('click', function() {
-		$('#cf-kuler-preview').hide();
+		CF.preview.hide();
 		$('.cf-kuler-theme').removeClass('hover');
 		$('#cf-kuler-color-picker').hide();
 	});

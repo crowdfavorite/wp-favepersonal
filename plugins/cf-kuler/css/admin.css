@@ -98,6 +98,9 @@
 #cf-kuler-swatch-selector .cf-kuler-theme.hover .cf-kuler-theme-actions {
 	display: block;
 }
+#cf-kuler-swatch-selector .cf-kuler-theme ul li:hover {
+	cursor: pointer;
+}
 
 /* Selected Color Theme */
 #cf-kuler-swatch-selected {
