@@ -455,7 +455,7 @@ function cf_kuler_settings_form() {
 	}
 
 	$message = '';
-	if (!empty($_GET['updated']) && $_GET['updated'] == 'true') {
+	if (!empty($_GET['updated']) && $_GET['updated'] == true) {
 		$message = '<div class="updated below-h2 fade cf-kuler-message-fade" id="message"><p>'.__('Settings updated.', 'cf-kuler').'</p></div>';
 	}
 	
