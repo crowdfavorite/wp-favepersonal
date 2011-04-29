@@ -51,25 +51,13 @@
 			<p>We're temporarily only taking 2 link inputs here. UI &amp; interaction TBD.</p>
 			<p>Favicon fetching is active and favicons are saved to: <code><?php echo esc_html(CFCP_FAVICON_DIR); ?></code></p>
 			<?php
-				for ($i = 0; $i < 2; $i++) {
-					echo '
-						<fieldset>
-							<div class="cf-clearfix">
-								<label for="cfcp_about_links_title_'.$i.'">'.__('Link Title', 'carrington-personal').'</label>
-								<input size="50" id="cfcp_about_links_title_'.$i.'" type="text" name="'.CFCP_ABOUT_SETTINGS.'[links]['.$i.'][title]" value="'.esc_attr($settings['links'][$i]['title']).'" />
-								<br  class="cf-clearfix">
-								<label for="cfcp_about_links_url_'.$i.'">'.__('Link Url', 'carrington-personal').'</label>
-								<input size="50" id="cfcp_about_links_url_'.$i.'"type="text" name="'.CFCP_ABOUT_SETTINGS.'[links]['.$i.'][url]" value="'.esc_attr($settings['links'][$i]['url']).'" />';
-					if (!empty($settings['links'][$i]['favicon'])) {
-						echo '<img src="'.cf_about_favicon_url($settings['links'][$i]['favicon']).'" width="16" height="16" style="margin-left: -22px; margin-top: 5px;" />';
-					}					
-					echo '
-								<input type="hidden" name="'.CFCP_ABOUT_SETTINGS.'[links]['.$i.'][favicon]" value="'.$settings['links'][$i]['favicon'].'" />
-							</div>
-						</fieldset>';						
+				if (!empty($settings['links'])) {
+					for ($i = 0; $i < 2; $i++) {
+						$link = $settings['links'][$i];
+						include('link-inputs.php');
+					}
 				}
 			?>
-
 		</fieldset>
 								
 		<p class="submit"><input class="button button-primary" type="submit" name="submit" value="<?php _e('Save Settings', 'carrington-personal'); ?>" /></p>

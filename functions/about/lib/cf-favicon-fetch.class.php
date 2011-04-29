@@ -45,9 +45,7 @@ class CF_Favicon_Fetch {
 		$siteurl = esc_url($url);
 		$favicon = 'default';
 
-		if ($f_url = $this->query_head($siteurl)) {
-			ep($f_url.' :: '.__METHOD__);
-			
+		if ($f_url = $this->query_head($siteurl)) {			
 			$f_data = $this->fetch_favicon($f_url);
 			$filename = $this->make_filename($siteurl, $f_data['ext']);			
 		}
@@ -91,6 +89,7 @@ class CF_Favicon_Fetch {
 			$data = json_decode($r['body']);
 			if ($data->query->count > 0) {
 				$favicon = trim($data->query->results->link->href);
+				$this->fix_relative_url($favicon, $siteurl);
 			}
 		}
 		else {
@@ -98,7 +97,7 @@ class CF_Favicon_Fetch {
 		}
 	
 		unset($r);
-		return $this->fix_relative_url($favicon, $siteurl);
+		return $favicon;
 	}
 
 	/**
