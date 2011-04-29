@@ -34,7 +34,7 @@ function cfcp_admin_init() {
 		// our kuler js
 		$css_preview_template = sprintf(cfcp_admin_preview_css_template(), '-0-', '-1-', '-2-', '-3-', '-4-');
 		$css_preview_template = preg_replace("/[\n|\t]/", '', $css_preview_template);
-		wp_enqueue_script('cf-kuler', $plugin_dir.'/js/cf-kuler.js', array('jquery', 'colorpicker', 'jquery-ui-sortable'), CF_KULER_VERSION);
+		wp_enqueue_script('cf-kuler', $plugin_dir.'/js/cf-colors.js', array('jquery', 'colorpicker', 'jquery-ui-sortable'), CF_KULER_VERSION);
 		wp_localize_script('cf-kuler', 'cf_kuler_settings', array(
 			'preview_css_template' => $css_preview_template
 		));	
@@ -44,7 +44,7 @@ add_action('admin_init', 'cfcp_admin_init');
 
 /* Let's load some styles that will be used on all theme setting pages */
 function cfcp_admin_css() {
-    $cfcp_admin_styles = get_bloginfo('template_url').'/plugins/cf-kuler/css/admin.css';
+    $cfcp_admin_styles = get_bloginfo('template_url').'/plugins/cf-colors/css/admin.css';
     echo '<link rel="stylesheet" type="text/css" href="' . $cfcp_admin_styles . '" />';
 	echo cfcp_admin_preview_css();
 }
@@ -204,7 +204,7 @@ function cf_kuler_api_request($url) {
 	require(ABSPATH.WPINC.'/class-simplepie.php');
 	$feed = new SimplePie();
 	$feed->enable_cache(false);
-	$feed->set_feed_url(str_replace('{URL}', base64_encode($url), CF_KULER_API));
+	$feed->set_feed_url(str_replace('{URL}', urlencode($url), CF_KULER_API));
 	$feed->init();
 
 	$namespace = 'http://kuler.adobe.com/kuler/API/rss/';
