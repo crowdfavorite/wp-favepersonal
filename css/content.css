@@ -416,6 +416,31 @@
 .widget .bio-box-gallery {
 	height: 180px;
 	overflow: hidden;
+	position: relative;
+}
+.bio-box-gallery a.carousel-nav,
+.widget .bio-box-gallery a.bio-carousel-nav {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	background-color: white;
+	top: 80px;
+	z-index: 999999;
+	color: black;
+	line-height: 30px;
+	text-align: center;
+}
+.bio-box-gallery a.carousel-nav:hover,
+.widget .bio-box-gallery a.bio-carousel-nav:hover {
+	background-color: red;
+}
+.bio-box-gallery a#bio-carousel-prev,
+.widget .bio-box-gallery a#bio-carousel-prev {
+	left: 10px;
+}
+.bio-box-gallery a#bio-carousel-next,
+.widget .bio-box-gallery a#bio-carousel-next {
+	right: 10px;
 }
 .bio-box-content,
 .widget .bio-box-content {

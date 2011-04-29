@@ -37,6 +37,15 @@ jQuery(document).ready(function($) {
 	// Show tooltip for the .bio-box-links
 	cfcp_tooltip(".bio-box-links a","tooltip");
 	
+// About box carousel
+	$('#bio-carousel .bio-box-gallery-images').cycle({
+		'fx': 'scrollHorz',
+		'timeout': 0,
+		'next': '#bio-carousel-next', 
+		'prev': '#bio-carousel-prev',
+		'speed': 400
+	});
+	
 // Search form scripts
 	//hide the label after typing
 	$('.searchform #s').keypress(function() {

@@ -44,7 +44,8 @@ define('CFCT_URL_VERSION', '0.2');
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
 include_once(CFCT_PATH.'functions/sidebars.php');
-include_once(CFCT_PATH.'plugins/cf-compat/cf-compat.php');
+include_once(CFCT_PATH.'functions/about/about.php');
+include_once(CFCT_PATH.'plugins/load.php');
 
 /**
  * Removing theme settings from carrington-core, will replace with carrington-personal settings
@@ -79,12 +80,15 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		
 		// Let's load some scripts
 		if (!is_admin()) {
-			wp_enqueue_script('global', get_bloginfo('template_directory').'/js/global.js', array('jquery'), CFCT_URL_VERSION);
+			wp_enqueue_script('cfcp-global');
 		}
-		
 	}
 }
 add_action( 'after_setup_theme', 'carrington_personal_setup' );
+
+// Register Scripts
+wp_register_script('jquery-cycle', get_template_directory_uri().'/js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);
+wp_register_script('cfcp-global', get_bloginfo('template_directory').'/js/global.js', array('jquery'), CFCT_URL_VERSION);
 
 /**
  * Kuler Color Integration
