@@ -63,7 +63,7 @@ define('CFCP_ABOUT_SETTINGS', 'cfcp_about_settings');
 // Settings
 
 	function cfcp_validate_settings($settings) {
-		ep($settings);
+		// ep($settings);
 		
 		// temporary image processing
 		$settings['images'] = explode(',', $settings['images']);
