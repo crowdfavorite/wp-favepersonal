@@ -11,9 +11,6 @@ Author URI: http://crowdfavorite.com
 
 /* TODO
 
-- Manual override on a per color basis
-- Hook up preview window, HTML in place
-- Add in usernames for color themes
 - On selected color, if it's been customized it will "Custom Theme by..." wordpress username
 
 */
@@ -207,7 +204,7 @@ function cf_kuler_api_request($url) {
 	require(ABSPATH.WPINC.'/class-simplepie.php');
 	$feed = new SimplePie();
 	$feed->enable_cache(false);
-	$feed->set_feed_url(str_replace('{URL}', urlencode($url), CF_KULER_API));
+	$feed->set_feed_url(str_replace('{URL}', base64_encode($url), CF_KULER_API));
 	$feed->init();
 
 	$namespace = 'http://kuler.adobe.com/kuler/API/rss/';
@@ -499,7 +496,7 @@ function cf_kuler_settings_form() {
 	</div><!-- .cfcp-section -->
 
 	<div class="cfcp-section">
-		<h3 class="cfcp-section-title"><span>'.__('Browse Kuler Colors', 'cf-kuler').'</span></h3>
+		<h3 class="cfcp-section-title"><span>'.__('Browse Colors', 'cf-kuler').'</span></h3>
 		<div class="cfcp-nav">
 			<form action="#" id="cf-kuler-search-form" data-start="0" data-page="'.CF_KULER_ITEMS_PER_PAGE.'">
 				<input type="text" name="cf_kuler_search" id="cf_kuler_search" />
