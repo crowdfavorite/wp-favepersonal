@@ -191,11 +191,9 @@ jQuery(function($) {
 			
 			toggle: function(colors, source) {
 				if (!this.isVisible() || source.attr('id') != this.selected) {
-					console.log('show');
 					this.show(colors, source);
 				}
 				else {
-					console.log('hide');
 					this.hide();
 				}
 			},
