@@ -10,6 +10,7 @@ Author URI: http://crowdfavorite.com
 
 define('CFCP_ABOUT_VERSION', 0.1);
 define('CFCP_ABOUT_SETTINGS', 'cfcp_about_settings');
+define('CFCP_FAVICON_DIR', WP_CONTENT_URL . '/uploads/favicons');
 
 // Init
 	include_once('widget/about.php');
@@ -63,16 +64,45 @@ define('CFCP_ABOUT_SETTINGS', 'cfcp_about_settings');
 // Settings
 
 	function cfcp_validate_settings($settings) {
-		// ep($settings);
-		
 		// temporary image processing
-		$settings['images'] = explode(',', $settings['images']);
-		$settings['images'] = array_map('trim', $settings['images']);
+		$settings['images'] = trim($settings['images']);
+		if (!empty($settings['images'])) {
+			$settings['images'] = explode(',', $settings['images']);
+			$settings['images'] = array_map('trim', $settings['images']);
+		}
+		// links processing
+		foreach ($settings['links'] as &$link) {
+			$link['title'] = esc_html($link['title']);
+			$link['url'] = esc_url($link['url']); // might not want to do this as it'll foobar relative urls
+			if (!empty($link['url'])) {
+								
+			}
+		}
 		
 		return $settings;
 	}
 	
 // Utility
+
+	function cfcp_get_site_favicon_info() {
+		// use Yahoo YQL service to grab the icon from the html source
+		$api_url = "http://query.yahooapis.com/v1/public/yql?";
+		// $yql = "q=select%20*%20from%20html%20where%20url%3D%22".$url.
+		// 		"%22and%20xpath%3D%22/html/head/link[@rel%3D'icon']%20".
+		// 		"|%20/html/head/link[@rel%3D'ICON']%20|%20/html/head/link[@rel%3D'shortcut%20icon']%20".
+		// 		"|%20/html/head/link[@rel%3D'SHORTCUT%20ICON']%22".
+		// 		"&format=json&callback=grab";
+		$yql = urlencode("q=select * from html where url=\"".$url.
+				"\" and xpath=\"/html/head/link[@rel='icon'] ".
+				"| /html/head/link[@rel='ICON'] | /html/head/link[@rel='shortcut icon'] ".
+				"| /html/head/link[@rel='SHORTCUT ICON']\"".
+				"&format=json&callback=grab");
+		$r = wp_remote_get($yql);
+		pp($r);
+		
+		// fallback to grab the file from the webroot
+		
+	}
 
 	function cfcp_about_get_settings() {
 		return get_option(CFCP_ABOUT_SETTINGS, array(
@@ -81,30 +111,16 @@ define('CFCP_ABOUT_SETTINGS', 'cfcp_about_settings');
 			'images' => array(),
 			'links' => array()
 		));
-		
-		// return array(
-		// 	'title' => 'About Carrington Personal',
-		// 	'description' => '<b>Lorem ipsum dolor sit</b> amet sed do eiusmod tempor <a href="#">incididunt</a> ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-		// 
-		// 	foo bar baz!',
-		// 	'images' => array(8, 7, 6),
-		// 	'links' => array(
-		// 		array(
-		// 			'title' => 'Flicks',
-		// 			'url' => 'http://www.flickr.com/photos/tehgipster/',
-		// 			'favicon' => 'http://l.yimg.com/g/favicon.ico' // temporary url
-		// 		),
-		// 		array(
-		// 			'title' => 'Twitts',
-		// 			'url' => 'https://twitter.com/#!/WookieeBoy',
-		// 			'favicon' => 'http://twitter.com/phoenix/favicon.ico' // temporary url
-		// 		)
-		// 	)
-		// );
 	}
 
 	function cf_about_favicon_url($favicon) {
 		// in the future the $favicon will come in as just a filename
+		if ($favicon == 'default') {
+			$favicon_url = trailingslashit(get_template_directory_uri()).'img/default-favicon.png';
+		}
+		else {
+			$favicon_url = $favicon;
+		}
 		return $favicon;
 	}
 ?>

@@ -29,7 +29,7 @@
 			<p>We're temporarily taking a comma separated input of image ids. UI &amp; interaction TBD.</p>
 			<div>
 				<label for="cfcp_about_images"><?php _e('Images', 'carrington-personal'); ?></label>
-				<input size="50" type="text" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[images]" id="cfcp_settings_images" value="<?php echo implode(', ', $settings['images']); ?>" />
+				<input size="50" type="text" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[images]" id="cfcp_settings_images" value="<?php echo (is_array($settings['images']) ? implode(', ', $settings['images']) : ''); ?>" />
 			</div>
 		</fieldset>
 
