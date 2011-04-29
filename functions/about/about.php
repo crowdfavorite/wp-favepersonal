@@ -63,7 +63,7 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 	
 	function cfcp_about_admin_form() {
 		$settings = cfcp_about_get_settings();
-		include('admin-view.php');
+		include('views/admin-view.php');
 	}
 	
 // Settings
