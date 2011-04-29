@@ -34,8 +34,8 @@ function cfcp_admin_init() {
 		// our kuler js
 		$css_preview_template = sprintf(cfcp_admin_preview_css_template(), '-0-', '-1-', '-2-', '-3-', '-4-');
 		$css_preview_template = preg_replace("/[\n|\t]/", '', $css_preview_template);
-		wp_enqueue_script('cf-kuler', $plugin_dir.'/js/cf-colors.js', array('jquery', 'colorpicker', 'jquery-ui-sortable'), CF_KULER_VERSION);
-		wp_localize_script('cf-kuler', 'cf_kuler_settings', array(
+		wp_enqueue_script('cf-colors', $plugin_dir.'/js/cf-colors.js', array('jquery', 'colorpicker', 'jquery-ui-sortable'), CF_KULER_VERSION);
+		wp_localize_script('cf-colors', 'cf_kuler_settings', array(
 			'preview_css_template' => $css_preview_template
 		));	
 	}
