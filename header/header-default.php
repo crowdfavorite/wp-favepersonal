@@ -147,6 +147,9 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		.bio-box a:hover {
 			color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
+		.bio-box-gallery a.bio-carousel-nav:hover {
+			background-color: <?php echo cf_kuler_color('medium'); ?>;
+		}
 		.bio-box-content,
 		.bio-box-links {
 			background-color: <?php echo cf_kuler_color('medium'); ?>;
