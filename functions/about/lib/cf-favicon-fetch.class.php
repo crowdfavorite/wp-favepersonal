@@ -185,7 +185,11 @@ class CF_Favicon_Fetch {
 		if (!is_dir($this->upload_dir)) {
 			mkdir($this->upload_dir);
 		}
-		return is_dir($this->upload_dir) && is_writable($this->upload_dir);
+		$upload_dir = is_dir($this->upload_dir) && is_writable($this->upload_dir);
+		if (!$upload_dir) {
+			error_log('There is a problem with the upload dir "'.$this->upload_dir.'" - it is either missing or not writable');
+		}
+		return $upload_dir;
 	}
 
 	/**
