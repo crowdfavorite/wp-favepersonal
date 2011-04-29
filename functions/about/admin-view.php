@@ -21,6 +21,7 @@
 </style>
 <div class="wrap cf-about-wrap cf-clearfix">
 	<h2><?php _e('About', 'carrington-personal'); ?></h2>
+	<p>This page likely throws php notices at the moment. Please ignore for now.</p>
 	<form id="cfcp-about-settings" name="cfcp-about-settings" action="options.php" method="post">
 
 		<?php settings_fields(CFCP_ABOUT_SETTINGS); ?>
@@ -44,24 +45,31 @@
 				<textarea cols="50" rows="10" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[description]" id="cfcp_settings_description"><?php echo esc_attr($settings['description']); ?></textarea>
 			</div>
 		</fieldset>
-				
+		
+		<h3>Links</h3>
 		<fieldset>
 			<p>We're temporarily only taking 2 link inputs here. UI &amp; interaction TBD.</p>
-			<div class="cf-clearfix">
-				<label for="cfcp_about_links_title_0"><?php _e('Link One Title', 'carrington-personal'); ?></label>
-				<input size="50" id="cfcp_about_links_title_0" type="text" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[links][0][title]" value="<?php echo esc_attr($settings['links'][0]['title']); ?>">
-				<br  class="cf-clearfix">
-				<label for="cfcp_about_links_url_0"><?php _e('Link One Url', 'carrington-personal'); ?></label>
-				<input size="50" id="cfcp_about_links_url_0"type="text" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[links][0][url]" value="<?php echo esc_attr($settings['links'][0]['url']); ?>">
-			</div>
-			<br /><br />
-			<div class="cf-clearfix">
-				<label for="cfcp_about_links_title_1"><?php _e('Link Two Title', 'carrington-personal'); ?></label>
-				<input size="50" id="cfcp_about_links_title_1" type="text" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[links][1][title]" value="<?php echo esc_attr($settings['links'][1]['title']); ?>">
-				<br class="cf-clearfix" />
-				<label for="cfcp_about_links_url_1"><?php _e('Link Two Url', 'carrington-personal'); ?></label>
-				<input size="50" id="cfcp_about_links_url_1" type="text" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[links][1][url]" value="<?php echo esc_attr($settings['links'][1]['url']); ?>">
-			</div>
+			<p>Favicon fetching is active and favicons are saved to: <code><?php echo esc_html(CFCP_FAVICON_DIR); ?></code></p>
+			<?php
+				for ($i = 0; $i < 2; $i++) {
+					echo '
+						<fieldset>
+							<div class="cf-clearfix">
+								<label for="cfcp_about_links_title_'.$i.'">'.__('Link Title', 'carrington-personal').'</label>
+								<input size="50" id="cfcp_about_links_title_'.$i.'" type="text" name="'.CFCP_ABOUT_SETTINGS.'[links]['.$i.'][title]" value="'.esc_attr($settings['links'][$i]['title']).'" />
+								<br  class="cf-clearfix">
+								<label for="cfcp_about_links_url_'.$i.'">'.__('Link Url', 'carrington-personal').'</label>
+								<input size="50" id="cfcp_about_links_url_'.$i.'"type="text" name="'.CFCP_ABOUT_SETTINGS.'[links]['.$i.'][url]" value="'.esc_attr($settings['links'][$i]['url']).'" />';
+					if (!empty($settings['links'][$i]['favicon'])) {
+						echo '<img src="'.cf_about_favicon_url($settings['links'][$i]['favicon']).'" width="16" height="16" style="margin-left: -22px; margin-top: 5px;" />';
+					}					
+					echo '
+								<input type="hidden" name="'.CFCP_ABOUT_SETTINGS.'[links]['.$i.'][favicon]" value="'.$settings['links'][$i]['favicon'].'" />
+							</div>
+						</fieldset>';						
+				}
+			?>
+
 		</fieldset>
 								
 		<p class="submit"><input class="button button-primary" type="submit" name="submit" value="<?php _e('Save Settings', 'carrington-personal'); ?>" /></p>

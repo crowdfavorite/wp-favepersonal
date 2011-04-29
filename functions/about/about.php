@@ -10,10 +10,15 @@ Author URI: http://crowdfavorite.com
 
 define('CFCP_ABOUT_VERSION', 0.1);
 define('CFCP_ABOUT_SETTINGS', 'cfcp_about_settings');
-define('CFCP_FAVICON_DIR', WP_CONTENT_URL . '/uploads/favicons');
+$favicon_subdir = '/uploads/favicons';
+define('CFCP_FAVICON_URL', WP_CONTENT_URL.$favicon_subdir);
+define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 
 // Init
 	include_once('widget/about.php');
+	if (is_admin()) {
+		include_once('lib/cf-favicon-fetch.class.php');
+	}
 
 	function cfcp_about_init() {
 		if (!is_admin()) {
@@ -71,11 +76,49 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_URL . '/uploads/favicons');
 			$settings['images'] = array_map('trim', $settings['images']);
 		}
 		// links processing
-		foreach ($settings['links'] as &$link) {
-			$link['title'] = esc_html($link['title']);
-			$link['url'] = esc_url($link['url']); // might not want to do this as it'll foobar relative urls
-			if (!empty($link['url'])) {
-								
+		if (!empty($settings['links'])) {
+			$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);
+			foreach ($settings['links'] as &$link) {
+				$link['title'] = esc_html($link['title']);
+				$link['url'] = esc_url($link['url']); // might not want to do this as it'll foobar relative urls
+				
+				if (!empty($link['url'])) {
+					// we need the filename without the extension so that
+					// we can compare the name to see if we need to re-fetch 
+					// the ico for this link
+					$curricon = false;
+					if (!empty($link['favicon']) && $link['favicon'] !== 'default') {
+						$finfo = pathinfo($link['favicon']); // PATHINFO_FILENAME is not available 'till 5.2...
+						$curricon = $finfo['filename'];
+					}
+
+					switch(true) {
+						case (empty($link['favicon']) || $link['favicon'] == 'default'):	
+							// favicon is new or we want to re-evaluate a previous 'default' status
+							$fetch = true;
+							break;
+						case !is_file(CFCP_FAVICON_DIR.'/'.$link['favicon']): 				
+							// favicon file has been purged
+							$fetch = true;
+							break;
+						case $u->make_filename($link['url']) != $curricon: 					
+							// old filename doesn't match calculated filename from POST data
+							$fetch = true;
+							break;
+						default:
+							$fetch = false;
+					}
+					
+					if ($fetch) {
+							$a = $u->get_favicon($link['url']);
+							if (!empty($a) && $a != 'default') {
+								$link['favicon'] = basename($a);
+							}
+							else {
+								$link['favicon'] = 'default';
+							}
+					}
+				}
 			}
 		}
 		
@@ -83,26 +126,6 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_URL . '/uploads/favicons');
 	}
 	
 // Utility
-
-	function cfcp_get_site_favicon_info() {
-		// use Yahoo YQL service to grab the icon from the html source
-		$api_url = "http://query.yahooapis.com/v1/public/yql?";
-		// $yql = "q=select%20*%20from%20html%20where%20url%3D%22".$url.
-		// 		"%22and%20xpath%3D%22/html/head/link[@rel%3D'icon']%20".
-		// 		"|%20/html/head/link[@rel%3D'ICON']%20|%20/html/head/link[@rel%3D'shortcut%20icon']%20".
-		// 		"|%20/html/head/link[@rel%3D'SHORTCUT%20ICON']%22".
-		// 		"&format=json&callback=grab";
-		$yql = urlencode("q=select * from html where url=\"".$url.
-				"\" and xpath=\"/html/head/link[@rel='icon'] ".
-				"| /html/head/link[@rel='ICON'] | /html/head/link[@rel='shortcut icon'] ".
-				"| /html/head/link[@rel='SHORTCUT ICON']\"".
-				"&format=json&callback=grab");
-		$r = wp_remote_get($yql);
-		pp($r);
-		
-		// fallback to grab the file from the webroot
-		
-	}
 
 	function cfcp_about_get_settings() {
 		return get_option(CFCP_ABOUT_SETTINGS, array(
@@ -119,8 +142,8 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_URL . '/uploads/favicons');
 			$favicon_url = trailingslashit(get_template_directory_uri()).'img/default-favicon.png';
 		}
 		else {
-			$favicon_url = $favicon;
+			$favicon_url = CFCP_FAVICON_URL.'/'.$favicon;
 		}
-		return $favicon;
+		return $favicon_url;
 	}
 ?>
