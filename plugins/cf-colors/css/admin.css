@@ -41,15 +41,14 @@
 .cf-kuler-theme ul li {
 	width: 110px;
 }
-.cf-kuler-theme p {
-	margin: 0 0 3px 0;
+.cf-kuler-theme-description {
+	margin: 3px 0 0 0;
 }
-.cf-kuler-theme p a,
-.cf-kuler-theme p a:visited {
-	font-weight: bold;
+.cf-kuler-theme-description a {
+	font-weight: bold;	
 	text-decoration: none;
 }
-.cf-kuler-theme p em {
+.cf-kuler-theme-description em {
 	font-size: .9em;
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
@@ -135,11 +134,17 @@
 
 /* pagination */
 .cf-kuler-pagination {
+	border-top: 1px solid #ccc;
+	margin-top: 1em;
 	min-height: 18px;
 	padding: 5px 0;
 	width: 550px;
 }
 .cf-kuler-paging.next {
+	float: right;
+}
+.kuler-credit {
+	margin-top: 1em;
 	float: right;
 }
 

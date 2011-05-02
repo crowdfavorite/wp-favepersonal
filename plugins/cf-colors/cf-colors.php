@@ -261,12 +261,14 @@ function cf_kuler_theme_html($theme) {
 	$html = '
 		<div class="cf-kuler-theme" data-swatches="'.implode(',', $theme['swatches']).'">
 			'.cf_kuler_theme_fields($theme).'
-			<p class="cf-kuler-theme-description">'.cf_kuler_theme_desc($theme).'</p>
-			'.cf_kuler_colors_list($theme['swatches']).'
-			<div class="cf-kuler-theme-actions">
-				<p><a id="select-'.$signature.'" href="#selected-theme" class="button cf-kuler-apply">'.__('Select', 'cf-kuler').'</a></p>
-				<p><a id="preview-'.$signature.'" href="#preview-me" class="button cf-kuler-apply-preview">'.__('Preview', 'cf-kuler').'</a></p>
+			<div class="cf-kuler-theme-swatches cf-clearfix">
+				'.cf_kuler_colors_list($theme['swatches']).'
+				<div class="cf-kuler-theme-actions">
+					<p><a id="select-'.$signature.'" href="#selected-theme" class="button cf-kuler-apply">'.__('Select', 'cf-kuler').'</a></p>
+					<p><a id="preview-'.$signature.'" href="#preview-me" class="button cf-kuler-apply-preview">'.__('Preview', 'cf-kuler').'</a></p>
+				</div>
 			</div>
+			<p class="cf-kuler-theme-description">'.cf_kuler_theme_desc($theme).'</p>
 		</div>
 	';
 	return $html;
@@ -345,7 +347,11 @@ function cf_kuler_admin_ajax() {
 	$params['startIndex'] == 0 ? $prev_page = '' : $prev_page = '<a href="#" class="cf-kuler-paging prev" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] - 1).'" data-items="'.esc_attr($params['itemsPerPage']).'">&laquo; '.__('previous', 'cf-kuler').'</a>';
 	$next_page = '<a href="#" class="cf-kuler-paging next" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] + 1).'" data-items="'.esc_attr($params['itemsPerPage']).'">'.__('next', 'cf-kuler').' &raquo;</a>';
 
-	$html .= '<div class="cf-kuler-pagination">'.$next_page.$prev_page.'</div>';
+	$html .= '
+		<a href="http://kuler.adobe.com/" title="Adobe Kuler"><img src="'.get_bloginfo('template_url').'/plugins/cf-colors/img/color-by-kuler.png" width="120" height="33" alt="Color by Adobe Kuler" class="kuler-credit"></a>
+		<div class="cf-kuler-pagination">'
+			.$next_page.$prev_page.'
+		</div>';
 
 	die($html);
 }
