@@ -38,13 +38,16 @@ jQuery(document).ready(function($) {
 	cfcp_tooltip(".bio-box-links a","tooltip");
 	
 // About box carousel
-	$('#bio-carousel .bio-box-gallery-images').cycle({
-		'fx': 'scrollHorz',
-		'timeout': 0,
-		'next': '#bio-carousel-next', 
-		'prev': '#bio-carousel-prev',
-		'speed': 400
-	});
+	var $aboutImgs = $('#bio-carousel .bio-box-gallery-images');
+	if ($aboutImgs.find('img').size() > 1) {
+		$aboutImgs.cycle({
+			'fx': 'scrollHorz',
+			'timeout': 0,
+			'next': '#bio-carousel-next', 
+			'prev': '#bio-carousel-prev',
+			'speed': 400
+		});
+	};
 	
 // Search form scripts
 	//hide the label after typing
