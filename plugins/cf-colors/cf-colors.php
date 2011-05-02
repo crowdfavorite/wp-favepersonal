@@ -204,7 +204,7 @@ function cf_kuler_api_request($url) {
 	require(ABSPATH.WPINC.'/class-simplepie.php');
 	$feed = new SimplePie();
 	$feed->enable_cache(false);
-	$feed->set_feed_url(str_replace('{URL}', urlencode($url), CF_KULER_API));
+	$feed->set_feed_url(str_replace('{URL}', base64_encode($url), CF_KULER_API));
 	$feed->init();
 
 	$namespace = 'http://kuler.adobe.com/kuler/API/rss/';
