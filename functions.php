@@ -65,6 +65,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_theme_support( 'post-thumbnails' );
 
 		// New image sizes that are not overwrote in the admin
+		add_image_size('tiny-img', 50, 40, true); // thumbnails for full gallery
 		add_image_size('thumb-img', 160, 120, true); // gallery excerpt
 		add_image_size('small-img', 310, 180, true); // masthead featured img, bio box
 		add_image_size('medium-img', 510, 510, false); // excerpt image-format

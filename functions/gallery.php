@@ -85,14 +85,21 @@ class CFCT_Gallery {
 		extract($args);
 		$thumbs = $large = '';
 		foreach($gallery->posts as $image) {
-			$thumbs .= '<li>'.wp_get_attachment_image($image->ID, 'thumbnail', false).'</li>';
-			$large .= '<li>'.wp_get_attachment_image($image->ID, 'large', false).'</li>';
+			$id = 'image-'.$image->ID.'-in-post-'.$this->post_id;
+			
+			$thumbs .= '<li><a href="#'.$id.'">'.wp_get_attachment_image($image->ID, 'tiny-img', false).'</a></li>';
+			$large .= '<li id="'.$id.'">'.wp_get_attachment_image($image->ID, 'large-img', false).'</li>';
 		}
 		
 		?>
-		<ul>
-			
-		</ul>
+<div id="<?php echo 'gallery-in-post-'.$this->post_id; ?>" class="clearfix">
+	<ul class="gallery_images">
+		<?php echo $large; ?>
+	</ul>
+	<ul class="gallery-thumbs">
+		<?php echo $thumbs; ?>
+	</ul>
+</div>
 		<?php
 	}
 }
@@ -112,9 +119,9 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 		}
 		
 		?>
-		<ul class="gallery-img-excerpt">
-			<?php echo $thumbs; ?>
-		</ul>
+<ul class="gallery-img-excerpt">
+	<?php echo $thumbs; ?>
+</ul>
 		<?php
 	}
 }

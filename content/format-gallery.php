@@ -20,9 +20,6 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $previousday;
-$previousday = -1;
-
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class('post cleafix') ?>>
 	<div class="post-header">
@@ -31,6 +28,8 @@ $previousday = -1;
 	</div>
 	
 	<div class="post-media">
+		<?php gallery(); ?>
+		
 		<div id="gallery" class="clearfix">
 			<div id="gallery-image">
 				full image
@@ -49,7 +48,7 @@ $previousday = -1;
 				<li>img</li>
 				<li>img</li>
 			</ul>
-		</div>		
+		</div>
 	</div>
 	
 	<?php cfct_misc('post-meta'); ?>
