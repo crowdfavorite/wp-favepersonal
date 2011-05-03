@@ -44,6 +44,7 @@ define('CFCT_URL_VERSION', '0.2');
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
 include_once(CFCT_PATH.'functions/sidebars.php');
+include_once(CFCT_PATH.'functions/gallery.php');
 include_once(CFCT_PATH.'functions/about/about.php');
 include_once(CFCT_PATH.'plugins/load.php');
 
@@ -134,52 +135,4 @@ function cfcp_date() {
 function cfcp_comment_date() {
 	global $comment;
 	return cf_relative_time_ago($comment->comment_date_gmt, '', 'ago', '4', 'm.d.y', '', true);
-}
-
-// Prettier captions
-function cfcp_img_captions($attr, $content = null) {
-	$output = apply_filters('img_caption_shortcode', '', $attr, $content);
-	if ($output != '') {
-		return $output;
-	}
-	extract(shortcode_atts(array(
-		'id'	=> '',
-		'align'	=> 'alignnone',
-		'width'	=> '',
-		'caption' => ''
-	), $attr));
-	if ( 1 > (int) $width || empty($caption) ) {
-		return $content;
-	}
-	return '
-		<dl id="'.$id.'" class="wp-caption '.$align.'" style="width:'.$width.'px">
-			<dt>'.do_shortcode($content).'</dt>
-			<dd>'.$caption.'</dd>
-		</dl>';
-}
-add_shortcode('wp_caption', 'cfcp_img_captions');
-add_shortcode('caption', 'cfcp_img_captions');
-
-
-// Display gallery images without our own markup for excerpts 
-function gallery_excerpt($size = thumbnail, $quantity = 8) {
-	//Get number of images we want
-	$images = new WP_Query(array(
-		'post_parent'		=> get_the_ID(),
-		'post_type'			=> 'attachment',
-		'post_status'		=> 'inherit',
-		'posts_per_page'	=> $quantity, // -1 to show all
-		'post_mime_type'	=> 'image%',
-		'orderby'			=> 'menu_order',
-		'order'				=> 'ASC',
-	));
-	echo '<ul class="gallery-img-excerpt">';	
-		foreach($images->posts as $image) {
-			$attimg  = wp_get_attachment_link($image->ID,$size,'false');
-			echo '<li>'.$attimg.'</li>';
-		}
-		if ($images->found_posts > $quantity) {
-			echo '<li class="gallery-view-all h5"><a href="'.get_permalink(get_the_ID()).'">View all '.$images->found_posts.'</a></li>';
-		}
-	echo '</ul>';
 }
