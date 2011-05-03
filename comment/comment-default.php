@@ -35,7 +35,7 @@ extract($data); // for comment reply link
 		</div><!-- .comment-author .vcard -->
 		<div class="mcc-comment-meta">
 			<span class="mcc-posted-from">Comment</span> 
-			<?php echo '<a href="'.htmlspecialchars(get_comment_link( $comment->comment_ID )).'" class="mcc-posted-when">',cfcp_comment_date(),'</a>'; ?>
+			<?php echo '<a href="'.esc_url(get_comment_link( $comment->comment_ID )).'" class="mcc-posted-when">',cfcp_comment_date(),'</a>'; ?>
 		</div>
 	</div><!--.mcc-comment-header-->
 	<div class="mcc-comment-body">
