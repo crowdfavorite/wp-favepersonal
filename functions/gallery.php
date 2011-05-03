@@ -83,9 +83,17 @@ class CFCT_Gallery {
 	
 	public function view($args = array()) {
 		extract($args);
+		$thumbs = $large = '';
+		foreach($gallery->posts as $image) {
+			$thumbs .= '<li>'.wp_get_attachment_image($image->ID, 'thumbnail', false).'</li>';
+			$large .= '<li>'.wp_get_attachment_image($image->ID, 'large', false).'</li>';
+		}
 		
-			foreach($gallery->posts as $image) {
-			}
+		?>
+		<ul>
+			
+		</ul>
+		<?php
 	}
 }
 
@@ -94,20 +102,24 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	
 	public function view($args = array()) {
 		extract($args);
+		$thumbs = '';
 		
-		echo '<ul class="gallery-img-excerpt">';
-			foreach($gallery->posts as $image) {
-				$attimg  = wp_get_attachment_link($image->ID, $size, false);
-				echo '<li>'.$attimg.'</li>';
-			}
-			if ($gallery->found_posts > count($gallery->posts)) {
-				echo '<li class="gallery-view-all h5"><a href="'.get_permalink(get_the_ID()).'">View all '.intval($gallery->found_posts).'</a></li>';
-			}
-		echo '</ul>';
+		foreach($gallery->posts as $image) {
+			$thumbs .= '<li>'.wp_get_attachment_link($image->ID, $size, false).'</li>';
+		}
+		if ($gallery->found_posts > count($gallery->posts)) {
+			$thumbs .= '<li class="gallery-view-all h5"><a href="'.get_permalink(get_the_ID()).'">View all '.intval($gallery->found_posts).'</a></li>';
+		}
+		
+		?>
+		<ul class="gallery-img-excerpt">
+			<?php echo $thumbs; ?>
+		</ul>
+		<?php
 	}
 }
 
-function gallery($number = 8) {
+function gallery($number = 8, $id = null) {
 	$gallery = new CFCT_Gallery($id, $number);
 	$gallery->render();
 	unset($gallery);
@@ -117,7 +129,7 @@ function gallery($number = 8) {
 function gallery_excerpt($size = 'thumbnail', $number = 8, $id = null) {
 	$gallery = new CFCT_Gallery_Excerpt($id, $number);
 	$args = array(
-		'size' => $size,
+		'size' => $size
 	);
 	$gallery->render($args);
 	unset($gallery);
