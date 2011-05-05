@@ -264,7 +264,7 @@ function cf_kuler_theme_html($theme) {
 			<div class="cf-kuler-theme-swatches cf-clearfix">
 				'.cf_kuler_colors_list($theme['swatches']).'
 				<div class="cf-kuler-theme-actions">
-					<p><a id="select-'.$signature.'" href="#selected-theme" class="button cf-kuler-apply">'.__('Select', 'cf-kuler').'</a></p>
+					<p><a id="select-'.$signature.'" href="#selected-theme" class="button button-primary cf-kuler-apply">'.__('Select', 'cf-kuler').'</a></p>
 					<p><a id="preview-'.$signature.'" href="#preview-me" class="button cf-kuler-apply-preview">'.__('Preview', 'cf-kuler').'</a></p>
 				</div>
 			</div>

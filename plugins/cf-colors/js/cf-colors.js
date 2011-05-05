@@ -107,7 +107,7 @@ jQuery(function($) {
 				return $('<textarea />').html(encoded).val();
 			},
 			
-			// colorpicker.js stomps on jQuery.color's getRGB implmenetation, so we need to duplicate this
+			// colorpicker.js stomps on jQuery.color's getRGB implementation, so we need to duplicate this
 			// Color Conversion functions from highlightFade
 			// By Blair Mitchelmore
 			// http://jquery.offput.ca/highlightFade/
@@ -174,6 +174,8 @@ jQuery(function($) {
 				var $referenceObj = $(referenceObj);
 				var pos = $referenceObj.position();
 				
+				$referenceObj.closest('.cf-kuler-theme').addClass('hover').siblings('.cf-kuler-theme').removeClass('hover');
+				
 				this.setCssTemplate(colors);
 				$preview.css({
 					'left': Math.ceil(pos.left - $preview.outerWidth()) + 'px',
@@ -186,6 +188,7 @@ jQuery(function($) {
 			},
 			
 			hide: function() {
+				$('.cf-kuler-theme').removeClass('hover');
 				$('#cf-kuler-preview').hide();
 			},
 			
@@ -262,6 +265,14 @@ jQuery(function($) {
 			
 				$picker.show();
 			},
+			
+			hide: function() {
+				$picker.hide();
+			},
+			
+			isVisible: function() {
+				return $picker.is(':visible');
+			},
 		
 			setOriginalSwatches: function() {
 				var colors = $('form#cf_kuler_settings_form .cf-kuler-theme-data[name="cf_kuler_theme[swatches]"]').val().split(',');
@@ -301,7 +312,18 @@ jQuery(function($) {
 	});
 
 	$('.cf-kuler-theme-edit-swatch').live('click', function(e) {
-		CF.picker.showPicker(this);
+		
+		if (CF.picker.isVisible()) {
+			CF.picker.hide();
+		}
+		else {
+			CF.picker.showPicker(this);
+		}
+		
+		if (CF.preview.isVisible()) {
+			CF.preview.hide();
+		}
+		
 		e.preventDefault();
 		e.stopPropagation();
 	});
@@ -311,24 +333,32 @@ jQuery(function($) {
 		var $this = $(this);
 		var colors = $(this).closest('.cf-kuler-theme').attr('data-swatches').split(',');
 
-		$(this).closest('.cf-kuler-theme').addClass('hover').siblings('.cf-kuler-theme').removeClass('hover');
 		CF.preview.toggle(colors, $this);
+		
+		if (CF.preview.isVisible()) {
+			CF.picker.hide();
+		}
 		
 		e.preventDefault();
 		e.stopPropagation();
 	});
+	
 	// omg hax!
 	$('#cf-kuler-swatch-selector ul li').live('click', function(e) {
 		$(this).closest('.cf-kuler-theme').find('.cf-kuler-apply-preview').trigger('click');
 		e.preventDefault();
 		e.stopPropagation();
-	})
+	});
 
 	$('input[name="preview_button"]').live('click', function(e) {
 		var $this = $(this);		
 		var colors = CF.utils.getThemeColors($('#cf-kuler-swatch-selected'));
 						
 		CF.preview.toggle(colors, this);
+		
+		if (CF.preview.isVisible()) {
+			CF.picker.hide();
+		}
 		
 		e.preventDefault();
 		e.stopPropagation();
@@ -337,8 +367,7 @@ jQuery(function($) {
 	// global popup neutralizer
 	$('body').live('click', function() {
 		CF.preview.hide();
-		$('.cf-kuler-theme').removeClass('hover');
-		$('#cf-kuler-color-picker').hide();
+		CF.picker.hide();
 	});
 	
 	$('.cf-kuler-message-fade')
