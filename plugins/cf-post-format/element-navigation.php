@@ -1,3 +1,6 @@
+<?php 
+/* has been implemented */ 
+?>
 <div class="cp-elm-block cp-elm-nav">
 	<ul class="clearfix">
 		<li><a href="#">Standard Post</a></li>
