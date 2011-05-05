@@ -135,5 +135,6 @@ function cfcp_date() {
 }
 function cfcp_comment_date() {
 	global $comment;
-	return cf_relative_time_ago($comment->comment_date_gmt, '', 'ago', '4', 'm.d.y', '', true);
+	$date_format = get_option('date_format');
+	return cf_relative_time_ago($comment->comment_date_gmt, '', 'ago', '4', $date_format, '', true);
 }
