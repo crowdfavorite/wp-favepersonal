@@ -53,7 +53,7 @@ Author URI: http://crowdfavorite.com
 				wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/css/admin.css', array(), CFPF_VERSION, 'screen');
 				
 				// actions
-				add_action('edit_form_advanced', 'cfpf_nav');
+				add_action('edit_form_advanced', 'cfpf_post_admin_setup');
 			}
 		}
 	}
@@ -65,7 +65,7 @@ Author URI: http://crowdfavorite.com
 	 *
 	 * @return void
 	 */
-	function cfpf_nav() {
+	function cfpf_post_admin_setup() {
 		$post_formats = get_theme_support('post-formats');
 		if (!empty($post_formats[0]) && is_array($post_formats[0])) {
 			global $post;
