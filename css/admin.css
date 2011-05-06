@@ -365,7 +365,8 @@ button.cf-btn-delete {
 	position: absolute;
 }
 .cfp-popover-top-left .cfp-popover-notch,
-.cfp-popover-top-right .cfp-popover-notch {
+.cfp-popover-top-right .cfp-popover-notch,
+.cfp-popover-top-center .cfp-popover-notch {
 	background-position: 0px 0px;
 	height: 8px;
 	top: 0;
@@ -376,6 +377,9 @@ button.cf-btn-delete {
 }
 .cfp-popover-top-right .cfp-popover-notch {
 	right: 20px;
+}
+.cfp-popover-top-center .cfp-popover-notch {
+	left: 185px;
 }
 /* used for the preview window in color settings, has fixed size */
 .cfp-popover-color-preview .cfp-popover-notch {

@@ -44,13 +44,13 @@
 	</div><!--#cfp-about-->
 	<!--END Working-HTML-->
 	
-	<div class="cfp-popover cfp-popover-top-right">
+	<div class="cfp-popover cfp-popover-top-center">
 		<div class="cfp-popover-notch"></div>
 		<div class="cfp-popover-inner">
 			<div class="cfp-popover-content">
 				<p><strong>.popover</strong></p>
 				<p>The notch is an image, the rest is CSS. Still need to style elements that will appear inside the popover.</p>
-				<p>Use .cfp-popover-top-right, .cfp-popover-top-right, .cfp-popover-color-preview to position the notch in the proper location.</p>
+				<p>Use .cfp-popover-top-right, .cfp-popover-top-right, .cfp-popover-top-center, .cfp-popover-color-preview to position the notch in the proper location.</p>
 			</div><!--.cfp-popover-content-->
 			<div class="cfp-popover-scroll">
 				<p>scrollable list area</p>
