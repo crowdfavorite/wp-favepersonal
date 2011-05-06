@@ -127,7 +127,7 @@ function cfcp_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'cfcp_excerpt_more' );
 
-// Common date formatting. Uses plugins/cf-compat/
+// Common Relative date formatting. Uses plugins/cf-compat/
 function cfcp_date() {
 	global $post;
 	$date_format = get_option('date_format');
