@@ -61,6 +61,21 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 	}
 	add_action('admin_menu', 'cfcp_about_admin_menu');
 	
+	// Add link to the admin menu bar
+	function cfcp_about_admin_bar() {
+		global $wp_admin_bar;
+		if (current_user_can('manage_options')) {
+			$wp_admin_bar->add_menu(array(
+				'id' => 'cfcp-about',
+				'title' => __('About', 'cfcp-about'),
+				'href' => admin_url('themes.php?page='.basename(__FILE__)),
+				'parent' => 'appearance'
+			));
+		}
+	}
+	add_action('wp_before_admin_bar_render', 'cfcp_about_admin_bar');
+	
+	
 	function cfcp_about_admin_form() {
 		$settings = cfcp_about_get_settings();
 		include('views/admin-view.php');
