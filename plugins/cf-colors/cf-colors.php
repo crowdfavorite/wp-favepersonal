@@ -468,7 +468,7 @@ function cf_kuler_settings_form() {
 	<h2>'.__('Color Settings', 'cf-kuler').'</h2>
 	'.$message.'
 	<div class="cfcp-section">
-		<h3 id="selected-theme" class="cfcp-section-title"><span>'.__('Selected Theme', 'cf-kuler').'</span></h3>
+		<h3 id="selected-theme" class="cfcp-section-title"><span>'.__('My Colors', 'cf-kuler').'</span></h3>
 		<div id="cf-kuler-swatch-selected" class="cf-clearfix">
 			'.$colors_html.'
 		</div>
