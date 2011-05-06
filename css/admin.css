@@ -355,7 +355,7 @@ button.cf-btn-delete {
 	display: block;
 	padding: 7px;
 	position: absolute;
-	width: 356px;
+	width: 370px;
 	z-index: 99;
 }
 /* notch and positioning */
@@ -390,9 +390,9 @@ button.cf-btn-delete {
 	background-color: #f1f1f1;
 	border: 1px solid #aaa;
 	padding: 5px 15px;
-	-moz-box-shadow: 0px 3px 5px #868686; /* FF3.5+ */
-	-webkit-box-shadow: 0px 3px 5px #868686; /* Saf3+, Chrome */
-	box-shadow: 0px 3px 5px #868686; /* Standard. Opera 10.5, IE9 */
+	-moz-box-shadow: 0px 2px 5px #888; /* FF3.5+ */
+	-webkit-box-shadow: 0px 2px 5px #888; /* Saf3+, Chrome */
+	box-shadow: 0px 2px 5px #888; /* Standard. Opera 10.5, IE9 */
 	-moz-border-radius: 5px; /* FF1+ */
 	-webkit-border-radius: 5px; /* Saf3+, Chrome */
 	-khtml-border-radius: 5px; /* Konqueror */

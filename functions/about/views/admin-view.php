@@ -43,6 +43,15 @@
 		
 	</div><!--#cfp-about-->
 	<!--END Working-HTML-->
+	
+	<div class="cfp-popover cfp-popover-top-right">
+		<div class="cfp-popover-notch"></div>
+		<div class="cfp-popover-inner">
+			<p><strong>.popover</strong></p>
+			<p>The notch is an image, the rest is CSS. Still need to style elements that will appear inside the popover.</p>
+			<p>Use .cfp-popover-top-right, .cfp-popover-top-right, .cfp-popover-color-preview to position the notch in the proper location.</p>
+		</div>
+	</div>
 
 	<br clear="both" />
 	<hr />
