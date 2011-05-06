@@ -1,10 +1,9 @@
 /**
 ADMIN CSS
-
 Used for common styles across all admin pages
-- About Settings
-- Colors
-- Post Formats
+
+.cfp-... are specific styles for personal
+.cf-... styles are from the Admin UI 
 
 */
 
@@ -349,13 +348,70 @@ button.cf-btn-delete {
 	text-shadow: 0 1px 1px #fff;
 }
 
+
+/** Popover - notch menus
+ -------------------------------------------------- */
+.cfp-popover {
+	display: block;
+	padding: 7px;
+	position: absolute;
+	width: 356px;
+	z-index: 99;
+}
+/* notch and positioning */
+.cfp-popover-notch {
+	background: url(../img/admin/popover-notch.png) 0 0 no-repeat;
+	display: block;
+	position: absolute;
+}
+.cfp-popover-top-left .cfp-popover-notch,
+.cfp-popover-top-right .cfp-popover-notch {
+	background-position: 0px 0px;
+	height: 8px;
+	top: 0;
+	width: 14px;
+}
+.cfp-popover-top-left .cfp-popover-notch {
+	left: 20px;
+}
+.cfp-popover-top-right .cfp-popover-notch {
+	right: 20px;
+}
+/* used for the preview window in color settings, has fixed size */
+.cfp-popover-color-preview .cfp-popover-notch {
+	background-position: 0px -20px;
+	height: 14px;
+	width: 8px;
+	right: 0;
+	top: 50px;
+}
+/* border, bg-color, shadow */
+.cfp-popover-inner {
+	background-color: #f1f1f1;
+	border: 1px solid #aaa;
+	padding: 5px 15px;
+	-moz-box-shadow: 0px 3px 5px #868686; /* FF3.5+ */
+	-webkit-box-shadow: 0px 3px 5px #868686; /* Saf3+, Chrome */
+	box-shadow: 0px 3px 5px #868686; /* Standard. Opera 10.5, IE9 */
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+	/**
+	 * @bugfix border-radius background bleed
+	 * @see http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed
+	 */
+	-webkit-background-clip: padding-box;
+}
+
+
 /** @section About Settings
  -------------------------------------------------- */
 #cfp-about-settings {
 	width: 500px;
 }
 .cfp-list-img-left {
-	background-color: #fff;
+	background-color: #f1f1f1;
 	border: 1px solid #ddd;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -386,8 +442,11 @@ button.cf-btn-delete {
 .cfp-add-link:hover {
 	background-position: 0px -18px;
 }
+#cfp-about-settings .cf-elm-block {
+	position: relative;
+}
 #cfp-about-settings .cfp-add-link {
 	position: absolute;
-	top: 24px;
+	top: 22px;
 	right: -20px;
 }
