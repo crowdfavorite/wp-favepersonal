@@ -1,0 +1,393 @@
+/**
+ADMIN CSS
+
+Used for common styles across all admin pages
+- About Settings
+- Colors
+- Post Formats
+
+*/
+
+/** @section Tab Navigation
+ -------------------------------------------------- */
+.cf-nav {
+	background: url('../img/line-light.gif') bottom left repeat-x;
+	float: left;
+	margin-bottom: 17px;
+	width: 100%;
+}
+.cf-nav form {
+	float: right;
+}
+.cf-nav ul {
+	list-style-type: none;
+	margin: 0 10px;
+	padding: 0em;
+}
+.cf-nav ul li,
+.cf-nav ul li a {
+	float: left;
+	margin: 0;
+}
+.cf-nav ul li a {
+	display: block;
+	color: #999;
+	background-color: #efefef;
+	border: 1px solid #e1e1e1;
+	border-bottom: 0;
+	font-family: Georgia, Times, serif;
+	font-size: 14px;
+	padding: 7px 10px 6px 10px;
+	margin-bottom: 1px;
+	margin-right: 4px;
+	text-decoration: none;
+	text-shadow: #fff 0 1px 1px;
+	-moz-border-radius-topleft: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-khtml-border-top-left-radius: 5px;
+	border-top-left-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-khtml-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+
+}
+.cf-nav ul li a:hover {
+	color: #777;
+}
+.cf-nav ul li a.current {
+	background: url('../img/tab-bg.gif') 0 0 repeat-x;
+	border: 1px solid #c7c7c7;
+	border-bottom: 0;
+	color: #333;
+	margin-bottom: 0;
+	padding-bottom: 7px;
+}
+
+
+/** @section Form structure/elements
+ * Copied from Admin UI
+ * Changes:
+ * - minor change to elm-block spacing
+ * - minor change to .cf-elm-* padding and font size
+ -------------------------------------------------- */
+#cf fieldset {
+	margin-bottom: 1.5em;
+}
+#cf legend {
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+/* overwrite default WP spacing for this class */
+#cf p.submit {
+	margin: 12px 0 0 0;
+	padding: 0;
+}
+
+/* wrapper for labels and form elements */
+.cf-elm-block {
+	clear: both;
+	margin: 5px 0;
+	padding: 3px 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+form .cf-elm-block:hover {
+	background-color: #f3f3f3;
+}
+form .cf-elm-block.no-hover,
+form .no-hover .cf-elm-block:hover {
+	background: none;
+}
+.cf-elm-block.active {
+	background-color: #eee;
+}
+
+.cf-elm-date,
+.cf-elm-readonly,
+.cf-elm-hidden,
+.cf-elm-text,
+.cf-elm-password,
+.cf-elm-select,
+.cf-elm-textarea {
+	font-size: 13px;
+	padding: 5px;
+}
+
+.cf-elm-help {
+	color: #888;
+}
+.cf-elm-help.cf-elm-align-bottom {
+	display: block;
+	padding-left: 20%;
+}
+
+span.cf-elm-checkbox,
+span.cf-elm-flag,
+span.cf-elm-date,
+span.cf-elm-readonly,
+span.cf-elm-hidden,
+span.cf-elm-text,
+span.cf-elm-password,
+span.cf-elm-select,
+div.cf-elm-textarea {
+	padding: 3px 0;
+}
+
+span.cf-elm-checkbox,
+span.cf-elm-flag,
+label.cf-lbl-checkbox,
+label.cf-lbl-flag,
+label.cf-lbl-radio {
+	color: #333;
+	font-size: 12px;
+}
+.view label.cf-lbl-checkbox,
+.view label.cf-lbl-flag,
+.view label.cf-lbl-radio {
+	color: #555;
+	font-size: 11px;
+}
+
+.cf-lbl-pos-top .cf-lbl-date,
+.cf-lbl-pos-top .cf-lbl-readonly,
+.cf-lbl-pos-top .cf-lbl-hidden,
+.cf-lbl-pos-top .cf-lbl-text,
+.cf-lbl-pos-top .cf-lbl-textarea,
+.cf-lbl-pos-top .cf-lbl-select,
+.cf-lbl-pos-top .cf-lbl-password {
+	display: block;
+}
+.cf-lbl-pos-top label.cf-lbl-checkbox,
+.cf-lbl-pos-top label.cf-lbl-flag,
+.cf-lbl-pos-top label.cf-lbl-radio {
+	cursor: pointer;
+	display: inline;
+}
+
+.cf-lbl-pos-left .cf-elm-block {
+	clear: both;
+}
+.cf-lbl-pos-left label,
+.cf-lbl-pos-left .view label.cf-lbl-checkbox,
+.cf-lbl-pos-left .view label.cf-lbl-flag,
+.cf-lbl-pos-left .view label.cf-lbl-radio {
+	width: 20%; /* needs to match .cf-lbl-left .cf-elm-* margin-left */
+	float: left;
+}
+.cf-lbl-pos-left label, 
+.cf-lbl-pos-left span.view {
+	padding-top: 3px;
+}
+.cf-lbl-pos-left span.view {
+	display: inline-block;
+}
+.cf-lbl-pos-left label.cf-lbl-checkbox,
+.cf-lbl-pos-left label.cf-lbl-flag,
+.cf-lbl-pos-left label.cf-lbl-radio {
+	width: auto;
+	padding-top: 0;
+	float: none;
+}
+.cf-lbl-pos-left .cf-elm-checkbox,
+.cf-lbl-pos-left .cf-elm-flag,
+.cf-lbl-pos-left .cf-elm-radio {
+	margin-left: 20%; /* needs to match .cf-lbl-left .cf-lbl-* width */
+}
+/* remainging labels left for view only */
+.cf-lbl-pos-left .view label.cf-lbl-checkbox,
+.cf-lbl-pos-left .view label.cf-lbl-flag,
+.cf-lbl-pos-left .view label.cf-lbl-radio {
+	color: #555;
+	font-size: 11px;
+	padding-top: 3px;
+}
+
+/* Set form element width's */
+.cf-elm-width-300 .cf-elm-text,
+.cf-elm-width-300 .cf-elm-password,
+.cf-elm-width-300 .cf-elm-textarea {
+	width: 300px;
+}
+.cf-elm-width-500 .cf-elm-text,
+.cf-elm-width-500 .cf-elm-password,
+.cf-elm-width-500 .cf-elm-textarea {
+	width: 500px;
+}
+.cf-elm-width-200 .cf-elm-text,
+.cf-elm-width-200 .cf-elm-password,
+.cf-elm-width-200 .cf-elm-textarea {
+	width: 200px;
+}
+.cf-elm-width-50 .cf-elm-text,
+.cf-elm-width-50 .cf-elm-password,
+.cf-elm-width-50 .cf-elm-textarea {
+	width: 40px;
+}
+.cf-elm-width-100 .cf-elm-text,
+.cf-elm-width-100 .cf-elm-password,
+.cf-elm-width-100 .cf-elm-textarea {
+	width: 100px;
+}
+.cf-elm-width-full .cf-elm-text,
+.cf-elm-width-full .cf-elm-password,
+.cf-elm-width-full .cf-elm-textarea {
+	/**
+	 * Box model CSS3 change
+	 * @see http://www.quirksmode.org/css/box.html
+	 * Additional workaround in IE7.css
+	 */
+	-moz-box-sizing: border-box; /* FF1+ */
+	-webkit-box-sizing: border-box; /* Saf3+ */
+	box-sizing: border-box; /* Standard. Opera7+, IE8+ */
+	width: 99%;
+}
+.cf-lbl-pos-left .cf-elm-width-full .cf-elm-text,
+.cf-lbl-pos-left .cf-elm-width-full .cf-elm-password,
+.cf-lbl-pos-left .cf-elm-width-full .cf-elm-textarea {
+	width: 69%;
+}
+/* Set form element heights (textarea) */
+.cf-elm-height-60 .cf-elm-textarea {
+	height: 60px;
+}
+.cf-elm-height-100 .cf-elm-textarea {
+	height: 100px;
+}
+.cf-elm-height-500 .cf-elm-textarea {
+	height: 500px;
+}
+
+/* checkbox and radio lists */
+.cf-lbl-checkbox-group,
+.cf-lbl-radio-group {
+	font-size: 1em;
+}
+.cf-lbl-pos-left .cf-lbl-checkbox-group,
+.cf-lbl-pos-left .cf-lbl-radio-group {
+	width: 20%; /* needs to match .cf-lbl-left .cf-elm-* margin-left */
+	float: left;
+}
+p.cf-lbl-checkbox-group,
+p.cf-lbl-radio-group {
+	margin: 1px 0;
+}
+.cf-has-checkbox ul,
+.cf-has-radio ul {
+	list-style-type: none;
+	margin-left: 0;
+}
+.cf-lbl-pos-left .cf-has-radio ul,
+.cf-lbl-pos-left .cf-has-checkbox ul {
+	margin-left: 20%;
+	margin-top: 2px;
+}
+.cf-lbl-pos-left .cf-has-radio ul .cf-elm-radio,
+.cf-lbl-pos-left .cf-has-checkbox ul .cf-elm-checkbox {
+	margin-left: 0;
+}
+
+.cf-lbl-hide label,
+label.cf-lbl-hide {
+	display: none;
+}
+
+/* delete button */
+input[type="button"].cf-btn-delete,
+input[type="submit"].cf-btn-delete,
+button.cf-btn-delete {
+	border: none;
+	background: transparent;
+	color: #21759B;
+}
+input[type="button"].cf-btn-delete:hover,
+input[type="submit"].cf-btn-delete:hover,
+button.cf-btn-delete {
+	color: #ff0000;
+}
+
+/* notifications */
+.cf-error { 
+	background:#fbe3e4 !important; 
+	color:#8a1f11;
+}
+.cf-notice { 
+	background:#fff6bf !important;
+	color:#514721;
+}
+.cf-success {
+	background:#e4ffc9 !important;
+	color:#264409;
+}
+.cf-error a { color:#8a1f11; }
+.cf-notice a { color:#514721; }
+.cf-success a { color:#264409; }
+
+
+/** @section Utilities
+ -------------------------------------------------- */
+/* clearfix */
+.cf-clearfix:before, .cf-clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.cf-clearfix:after { clear: both; }
+.cf-clearfix { zoom: 1; }
+
+
+
+/** --------------------------------------------------
+ @section Begin Specific Personal Styles
+ -------------------------------------------------- */
+
+/* Let's change the default label styles from Admin UI */
+.cf-elm-block label {
+	color: #666;
+	font: italic normal 12px Georgia, Serif;
+	margin-bottom: 2px;
+	padding-left: 8px;
+	text-transform: uppercase;
+	text-shadow: 0 1px 1px #fff;
+}
+
+/** @section About Settings
+ -------------------------------------------------- */
+#cfp-about-settings {
+	width: 500px;
+}
+.cfp-list-img-left {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	width: 99%;
+}
+.cfp-list-img-left ul {
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	padding: 5px 0 0 5px;
+}
+.cfp-list-img-left ul li {
+	float: left;
+	margin: 0 5px 1px 0;
+	padding: 0;
+}
+/* add-link */
+.cfp-add-link {
+	background: url(../img/admin/add-link.png) 0 0 no-repeat;
+	background-c: #ccc;
+	display: block;
+	height: 18px;
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 18px;
+}
+.cfp-add-link:hover {
+	background-position: 0px -18px;
+}
+#cfp-about-settings .cfp-add-link {
+	position: absolute;
+	top: 24px;
+	right: -20px;
+}
