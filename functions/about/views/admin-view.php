@@ -1,26 +1,53 @@
-<style type="text/css">
-	/* Temporary CSS - NUKE ME WHEN READY */
-	.cf-about-wrap input,
-	.cf-about-wrap textarea,
-	.cf-about-wrap label {
-		float: left;
-		display: block;
-	}
-	label {
-		width: 200px;
-	}
-	.cf-clearfix {
-		clear: both;
-	}
-	.cf-about-wrap fieldset,
-	.cf-about-wrap p.submit {
-		border-top: 1px solid gray;
-		margin: 15px 0;
-		padding: 15px 0;
-	}
-</style>
-<div class="wrap cf-about-wrap cf-clearfix">
-	<h2><?php _e('About', 'carrington-personal'); ?></h2>
+<div class="wrap cf cf-about-wrap cf-clearfix">
+	<h2><?php _e('About Me, Myself and I', 'carrington-personal'); ?></h2>
+	
+	<!--Start Working-HTML-->
+	<div id="cfp-about-settings">
+		
+		<div class="cf-elm-block">
+			<label>Profile Photos</label>
+			<div class="cfp-list-img-left cf-clearfix">
+				<ul>
+					<li><a href="#"><img src="http://placehold.it/50x40"></a></li>
+					<li><a href="#"><img src="http://placehold.it/50x40"></a></li>
+					<li><a href="#"><img src="http://placehold.it/50x40"></a></li>
+					<li><a href="#"><img src="http://placehold.it/50x40"></a></li>
+					<li><a href="#"><img src="http://placehold.it/50x40"></a></li>
+				</ul>
+			</div><!--cfp-about-imgs-->
+			<a href="#add-photo" class="cfp-add-link">Add</a>
+		</div>
+		
+		<div class="cf-elm-block cf-elm-width-full">
+			<label for="title">Title</label>
+			<input type="text" name="title" value="" id="title" class="cf-elm-text">
+		</div>
+		
+		<div class="cf-elm-block cf-elm-width-full">
+			<label for="bio">Bio</label>
+			<textarea name="bio" rows="6" cols="40" id="bio" class="cf-elm-textarea"></textarea>
+		</div>
+		
+		<div class="cf-elm-block">
+			<label>Links</label>
+			<div class="cfp-list-img-left cf-clearfix">
+				<ul>
+					<li><a href="#"><img src="http://placehold.it/16x16"></a></li>
+					<li><a href="#"><img src="http://placehold.it/16x16"></a></li>
+					<li><a href="#"><img src="http://placehold.it/16x16"></a></li>
+					<li><a href="#"><img src="http://placehold.it/16x16"></a></li>
+				</ul>
+			</div><!--.cfp-link-->
+			<a href="#add-link" class="cfp-add-link">Add</a>
+		</div>
+		
+	</div><!--#cfp-about-->
+	<!--END Working-HTML-->
+
+	<br clear="both" />
+	<hr />
+	<br />
+	
 	<p>This page likely throws php notices at the moment. Please ignore for now.</p>
 	<form id="cfcp-about-settings" name="cfcp-about-settings" action="options.php" method="post">
 
@@ -28,22 +55,22 @@
 
 		<fieldset>
 			<p>We're temporarily taking a comma separated input of image ids. UI &amp; interaction TBD.</p>
-			<div>
-				<label for="cfcp_about_images"><?php _e('Images', 'carrington-personal'); ?></label>
+			<p>
+				<label for="cfcp_about_images"><?php _e('Images', 'carrington-personal'); ?></label><br />
 				<input size="50" type="text" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[images]" id="cfcp_settings_images" value="<?php echo (is_array($settings['images']) ? implode(', ', $settings['images']) : ''); ?>" />
-			</div>
+			</p>
 		</fieldset>
 
 		<fieldset>
-			<div class="cf-clearfix">
-				<label for="cfcp_about_title"><?php _e('Title', 'carrington-personal'); ?></label>
+			<p>
+				<label for="cfcp_about_title"><?php _e('Title', 'carrington-personal'); ?></label><br />
 				<input size="50" type="text" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[title]" id="cfcp_settings_title" value="<?php echo esc_attr($settings['title']); ?>" />
-			</div>
+			</p>
 		
-			<div class="cf-clearfix">
-				<label for="cfcp_about_description"><?php _e('Description', 'carrington-personal'); ?></label>
+			<p>
+				<label for="cfcp_about_description"><?php _e('Description', 'carrington-personal'); ?></label><br />
 				<textarea cols="50" rows="10" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[description]" id="cfcp_settings_description"><?php echo esc_attr($settings['description']); ?></textarea>
-			</div>
+			</p>
 		</fieldset>
 		
 		<h3>Links</h3>
