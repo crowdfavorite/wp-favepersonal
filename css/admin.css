@@ -354,7 +354,7 @@ button.cf-btn-delete {
 .cfp-popover {
 	display: block;
 	padding: 7px;
-	position: absolute;
+	position: relative;
 	width: 370px;
 	z-index: 99;
 }
@@ -385,11 +385,10 @@ button.cf-btn-delete {
 	right: 0;
 	top: 50px;
 }
-/* border, bg-color, shadow */
+/* wrapper for border, bg-color, shadow */
 .cfp-popover-inner {
 	background-color: #f1f1f1;
 	border: 1px solid #aaa;
-	padding: 5px 15px;
 	-moz-box-shadow: 0px 2px 5px #888; /* FF3.5+ */
 	-webkit-box-shadow: 0px 2px 5px #888; /* Saf3+, Chrome */
 	box-shadow: 0px 2px 5px #888; /* Standard. Opera 10.5, IE9 */
@@ -403,7 +402,31 @@ button.cf-btn-delete {
 	 */
 	-webkit-background-clip: padding-box;
 }
-
+/* wrapper for content */
+.cfp-popover-content {
+	padding: 5px 15px;
+}
+/* scrollable content area */
+.cfp-popover-scroll {
+	background: #d5d5d5 url(../img/admin/popover-scroll-fade.png) 0 0 repeat-x;
+	border-bottom: 1px solid #aaa;
+	border-top: 1px solid #aaa;
+	height: 100px;
+	overflow: auto;
+	padding: 10px 15px;
+}
+/* footer for save and delete links */
+.cfp-popover-footer {
+	background-color: #e4e4e4;
+	-moz-border-radius-bottomleft: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	-moz-border-radius-bottomright: 4px; 
+	-webkit-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	padding: 7px 15px;
+	text-align: center;
+}
 
 /** @section About Settings
  -------------------------------------------------- */
