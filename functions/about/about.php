@@ -26,6 +26,7 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 		}
 		else {
 			wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
+			add_action('admin_head', 'cf_admin_css');
 		}
 	}
 	add_action('init', 'cfcp_about_init', 50);
@@ -46,9 +47,14 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 			wp_enqueue_script('jquery-cycle'); // registered in the theme's functions.php file
 		}
 	}
-
+	
+	/* Let's load some styles that will be used on all theme setting pages */
+	function cf_admin_css() {
+	    $cf_admin_styles = get_bloginfo('template_url').'/css/admin.css';
+	    echo '<link rel="stylesheet" type="text/css" href="' . $cf_admin_styles . '" />';
+	}
+	
 // Admin Page
-
 	function cfcp_about_admin_menu() {
 		add_submenu_page(
 			'themes.php',
