@@ -289,7 +289,8 @@ p.cf-lbl-radio-group {
 }
 
 .cf-lbl-hide label,
-label.cf-lbl-hide {
+label.cf-lbl-hide,
+.cf-hidden {
 	display: none;
 }
 
