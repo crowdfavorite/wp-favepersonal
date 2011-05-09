@@ -93,9 +93,9 @@ Used for common styles across all admin pages
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-form .cf-elm-block:hover {
+/*form .cf-elm-block:hover {
 	background-color: #f3f3f3;
-}
+}*/
 form .cf-elm-block.no-hover,
 form .no-hover .cf-elm-block:hover {
 	background: none;
