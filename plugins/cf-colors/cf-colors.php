@@ -504,7 +504,7 @@ function cf_kuler_settings_form() {
 	print('
 			</div>
 			<p>
-				<input type="button" name="preview_button" value="'.__('Preview', 'cf-kuler').'" class="button" />
+				<input type="button" name="preview_button" value="'.__('Preview', 'cf-kuler').'" class="button" id="preview-selected" />
 				<input type="submit" name="submit_button" value="'.__('Save Settings', 'cf-kuler').'" class="button-primary" />
 			</p>
 		');

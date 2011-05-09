@@ -379,8 +379,8 @@ jQuery(function($) {
 	$('input[name="preview_button"]').live('click', function(e) {
 		var $this = $(this);		
 		var colors = CF.utils.getThemeColors($('#cf-kuler-swatch-selected'));
-						
-		CF.preview.toggle(colors, this);
+		
+		CF.preview.toggle(colors, $this);
 		
 		if (CF.preview.isVisible()) {
 			CF.picker.hide();
