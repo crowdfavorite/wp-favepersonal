@@ -219,7 +219,8 @@ jQuery(function($) {
 
 	CF.picker = function($) {
 		var $swatch,
-			$picker = $('#cf-kuler-color-picker');
+			$picker = $('#cf-kuler-color-picker'),
+			currentIndex = null;
 	
 		return {
 			config: {
@@ -228,11 +229,33 @@ jQuery(function($) {
 			},
 		
 			setPickerPosition: function() {
-				var pos = $swatch.position();
+				var pos = $swatch.position(),
+					pnum = $swatch.index(),
+					_left,
+					_classname,
+					_offset = 15;
+				
+				switch(true) {
+					case pnum < 2: // notch on left
+						_left = pos.left - _offset + 'px';
+						_classname = 'left';
+						break;
+					case pnum > 2: // notch on right
+						_left = (pos.left + $swatch.outerWidth()) - $picker.outerWidth() + _offset + 'px';
+						_classname = 'right';
+						break;
+					default: // notch centered
+						_left = (pos.left - ($picker.outerWidth() / 2) + ($swatch.outerWidth() / 2)) + 'px';
+						_classname = 'center';
+				}
+
+				
 				$picker.css({
-					top: (pos.top + ($swatch.outerHeight() * 0.98)) + 'px',
-					left: (pos.left - ($swatch.outerWidth() - 55)) + 'px'
-				});
+					top: (pos.top + ($swatch.outerHeight() * 0.97)) + 'px',
+					left: _left
+				}).attr('class', 'cfp-popover cfp-popover-top-' + _classname);
+
+				currentIndex = pnum;
 			}, 
 		
 			// set the swatch color - can accept either hex or jQuery rgb() string val
@@ -251,8 +274,8 @@ jQuery(function($) {
 		
 			showPicker: function(clicked) {				
 				// make sure that the picker is the first item in the popup
-				if (false === $picker.find(':eq(2)').hasClass('colorpicker')) {
-					$('.colorpicker', $picker).insertAfter($(':first', $picker));
+				if (false === $picker.find('.cfp-popover-inner :eq(2)').hasClass('colorpicker')) {
+					$('.colorpicker', $picker).insertAfter($('.cfp-popover-inner :first', $picker));
 				}
 				
 				// make sure our original swatches are set
@@ -274,6 +297,10 @@ jQuery(function($) {
 				return $picker.is(':visible');
 			},
 		
+			currentIndex: function() {
+				return currentIndex;
+			},
+
 			setOriginalSwatches: function() {
 				var colors = $('form#cf_kuler_settings_form .cf-kuler-theme-data[name="cf_kuler_theme[swatches]"]').val().split(',');
 				$('.theme-swatches-container ul li', $picker).each(function(i) {
@@ -312,8 +339,7 @@ jQuery(function($) {
 	});
 
 	$('.cf-kuler-theme-edit-swatch').live('click', function(e) {
-		
-		if (CF.picker.isVisible()) {
+		if (CF.picker.isVisible() && $(this).closest('li').index() == CF.picker.currentIndex()) {
 			CF.picker.hide();
 		}
 		else {

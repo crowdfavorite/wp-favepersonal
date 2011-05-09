@@ -354,7 +354,7 @@ button.cf-btn-delete {
 .cfp-popover {
 	display: block;
 	padding: 7px;
-	position: relative;
+	position: absolute;
 	width: 370px;
 	z-index: 99;
 }

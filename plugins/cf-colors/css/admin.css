@@ -272,34 +272,13 @@
 
 /** Color Picker
  -------------------------------------------------- */
-#cf-kuler-color-picker {
-	background-color: #FAFAFA;
-	border: 1px solid #aaa;
-	display: block;
-	height: 264px;
-	padding: 3px 5px 5px 5px;
-	position: absolute;
-	width: 356px;
-	z-index: 99;
-	-moz-box-shadow: 0px 3px 6px #868686; /* FF3.5+ */
-	-webkit-box-shadow: 0px 3px 6px #868686; /* Saf3+, Chrome */
-	box-shadow: 0px 3px 6px #868686; /* Standard. Opera 10.5, IE9 */
-	-moz-border-radius: 5px; /* FF1+ */
-	-webkit-border-radius: 5px; /* Saf3+, Chrome */
-	-khtml-border-radius: 5px; /* Konqueror */
-	border-radius: 5px; /* Standard. IE9 */
-	/**
-	 * @bugfix border-radius background bleed
-	 * @see http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed
-	 */
-	-webkit-background-clip: padding-box;
-}
+
 #cf-kuler-color-picker .colorpicker {
 	background-image: url(../js/colorpicker/images/custom_background.png);
 	position: relative;
 	bottom: 0;
 	left: 0;
-	margin-top: -2px;
+	margin: -10px 0 -10px 5px;
 }
 #cf-kuler-color-picker .colorpicker_hue div {
 	background-image: url(../js/colorpicker/images/custom_indic.gif);
@@ -344,18 +323,15 @@
 	font-size: 11px;
 	text-align: center;
 }
-#cf-kuler-color-picker .theme-swatches,
-#cf-kuler-color-picker p {
-	padding-left: 4px;
-}
-#cf-kuler-color-picker p {
-	margin: 5px 0 2px 0;
+#cf-kuler-color-picker .theme-swatches .cf-kuler-theme {
+	float: none;
+	height: 31px;
 }
 #cf-kuler-color-picker .theme-swatches .cf-kuler-theme ul {
 	height: 36px;
 }
 #cf-kuler-color-picker .theme-swatches .cf-kuler-theme li {
-	width: 69px;
+	width: 66px;
 	height: 36px;
 }
 #cf-kuler-color-picker .theme-swatches .cf-kuler-theme li:last-child {

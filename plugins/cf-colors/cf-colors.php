@@ -448,6 +448,26 @@ function cf_kuler_theme_fields($theme) {
 	<input class="cf-kuler-theme-data" type="hidden" name="cf_kuler_theme[swatches]" value="'.(is_array($theme['swatches']) ? implode(',', $theme['swatches']) : $theme['swatches']).'" />';
 }
 
+function cf_kuler_color_picker($colors_html) {
+	return '
+		<div id="cf-kuler-color-picker" class="cfp-popover cfp-popover-top-center" style="display: none;">
+			<div class="cfp-popover-notch"></div>
+			<div class="cfp-popover-inner">
+				<div class="cfp-popover-content">
+					<p>'.__('Pick a new color:', 'cf-kuler').'</p>
+				</div>
+				<div class="cfp-popover-content">
+					<p>'.__('Or select from original theme colors:', 'cf-kuler').'</p>
+					<div class="theme-swatches">
+						<div class="theme-swatches-container">
+							'.$colors_html.'
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>';
+}
+
 function cf_kuler_settings_form() {
 	if ($settings = cf_kuler_get_settings()) {
 		$colors = implode(',', $settings['colors']);
@@ -472,15 +492,7 @@ function cf_kuler_settings_form() {
 		<div id="cf-kuler-swatch-selected" class="cf-clearfix">
 			'.$colors_html.'
 		</div>
-		<div id="cf-kuler-color-picker" style="display: none;">
-			<p>'.__('Pick a new color:', 'cf-kuler').'</p>
-			<p>'.__('Or select from original theme colors:', 'cf-kuler').'</p>
-			<div class="theme-swatches">
-				<div class="theme-swatches-container">
-					'.$colors_html.'
-				</div>
-			</div>
-		</div>
+		'.cf_kuler_color_picker($colors_html).'
 		<form id="cf_kuler_settings_form" name="cf_kuler_settings_form" action="'.admin_url('themes.php').'" method="post">
 			<input type="hidden" name="cf_action" value="cf_kuler_update_settings" />
 			<input type="hidden" name="cf_kuler_colors" id="cf_kuler_colors" value="'.$colors.'" />
