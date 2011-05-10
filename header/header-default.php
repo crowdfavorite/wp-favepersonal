@@ -42,11 +42,11 @@ $blog_desc = get_bloginfo('description');
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
 		}
 		a {
-			color: <?php echo cf_kuler_color('dark'); ?>;
+			color: <?php echo cf_kuler_color('darkest'); ?>;
 			text-decoration: none;
 		}
 		a:hover {
-			color: <?php echo cf_kuler_color('darkest'); ?>;
+			color: <?php echo cf_kuler_color('medium'); ?>;
 		}
 		
 		/** Header
@@ -113,13 +113,16 @@ $blog_desc = get_bloginfo('description');
 			border-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
 		/* rollover */
+		.featured:hover .featured-title a {
+			color: <?php echo cf_kuler_color('medium') ?>;
+		}
 		.featured:hover .featured-content {
-			background-color: <?php echo cf_kuler_color('dark') ?>;
+			background-color: rgba(<?php echo_hex(cf_kuler_color('light')); ?>.9);
+			color: <?php echo cf_kuler_color('darkest') ?>;
 		}
-		.has-featured-img:hover .featured-content {
-			background-color: rgba(<?php echo_hex(cf_kuler_color('dark')); ?>.75);
+		.featured:hover .featured-link {
 		}
-
+		
 		/** Post
 		 -------------------------------------------------- */
 		.post-title {
