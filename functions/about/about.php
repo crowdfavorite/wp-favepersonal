@@ -25,7 +25,9 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 			cfcp_about_module_carousel_enqueue();
 		}
 		else {
+			wp_enqueue_script('jquery-ui-sortable');
 			wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
+			wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
 			add_action('admin_head', 'cf_admin_css');
 		}
 	}
@@ -54,7 +56,75 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 	    echo '<link rel="stylesheet" type="text/css" href="' . $cf_admin_styles . '" />';
 	}
 	
+// Ajax
+
+	/**
+	 * Generic Ajax handler
+	 *
+	 * @return void
+	 */
+	function cfcp_about_admin_ajax() {
+		if (!empty($_POST['cfp_about_action'])) {
+			switch($_POST['cfp_about_action']) {
+				case 'cfp_image_search':
+					$results = cfp_about_image_search(array(
+							'key' => $_POST['key'],
+							'term' => $_POST['cfp-image-search-term'],
+							'exclude' => array_map('intval', $_POST['cfp_search_exclude'])
+						));
+					$ret = array(
+						'success' => (!empty($results) ? true : false),
+						'key' => $_POST['key'],
+						'html' => (!empty($results) ? $results : '<div class="cfp-img-search-no-results">'.__('No results found.', 'carrington-personal').'</div>')
+					);
+					break;
+				case 'cfp_fetch_favicon':
+					// retreive and import favicon, then return url
+					break;
+			}
+			header('content-type: text/javascript');
+			echo json_encode($ret);
+			exit;
+		}
+	}
+	add_action('wp_ajax_cfp_about', 'cfcp_about_admin_ajax');
+
+	/**
+	 * Perform image search
+	 *
+	 * @param array $params 
+	 * @return array
+	 */
+	function cfp_about_image_search($params) {
+		$imgs = new WP_Query(array(
+			's' => trim(stripslashes($params['term'])),
+			'posts_per_page' => 9,
+			'post_type' => 'attachment',
+			'post_mime_type' => 'image',
+			'post_status' => 'inherit',
+			'post__not_in' => (!empty($params['exclude']) ? (array) $params['exclude'] : array()),
+			'order' => 'ASC',
+			'fields' => 'ids'
+		));
+
+		$ret = '';
+		if (!empty($imgs->posts)) {
+			$post_type_object = get_post_type_object('attachment');
+			$img_size = 'tiny-img';
+			foreach ($imgs->posts as $img_id) {
+				$ret .= '<li class="cfp-search-result">'.cfcp_load_view('functions/about/views/image-item.php', compact('img_id', 'post_type_object', 'img_size')).'</li>';
+			}
+		}
+		
+		if (!empty($ret)) {
+			$ret = '<ul>'.$ret.'</ul>';
+		}
+
+		return $ret;
+	}
+	
 // Admin Page
+
 	function cfcp_about_admin_menu() {
 		add_submenu_page(
 			'themes.php',
@@ -81,7 +151,6 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 	}
 	add_action('wp_before_admin_bar_render', 'cfcp_about_admin_bar');
 	
-	
 	function cfcp_about_admin_form() {
 		$settings = cfcp_about_get_settings();
 		include('views/admin-view.php');
@@ -90,12 +159,12 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 // Settings
 
 	function cfcp_validate_settings($settings) {
-		// temporary image processing
-		$settings['images'] = trim($settings['images']);
+
+		// this is an array of attachment post-ids
 		if (!empty($settings['images'])) {
-			$settings['images'] = explode(',', $settings['images']);
-			$settings['images'] = array_map('trim', $settings['images']);
+			$settings['images'] = array_map('intval', $settings['images']);
 		}
+		
 		// links processing
 		if (!empty($settings['links'])) {
 			$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);
@@ -109,7 +178,7 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 					// the ico for this link
 					$curricon = false;
 					if (!empty($link['favicon']) && $link['favicon'] !== 'default') {
-						$finfo = pathinfo($link['favicon']); // PATHINFO_FILENAME is not available 'till 5.2...
+						$finfo = pathinfo($link['favicon']); // the PATHINFO_FILENAME constant is not available 'till 5.2!
 						$curricon = $finfo['filename'];
 					}
 
@@ -147,7 +216,6 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 	}
 	
 // Utility
-
 	function cfcp_about_get_settings() {
 		return get_option(CFCP_ABOUT_SETTINGS, array(
 			'title' => null,

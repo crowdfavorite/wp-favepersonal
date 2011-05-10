@@ -73,7 +73,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_image_size('banner-img', 510, 180, true); // excerpt featured img
 		
 		// Add post formats
-		add_theme_support( 'post-formats', array('gallery','image','link','quote','status'));
+		add_theme_support( 'post-formats', array('gallery','image','link','video','status', 'quote'));
 		
 		register_nav_menus(array(
 			'main' => __( 'Main Navigation', 'carrington-personal' ),
@@ -141,3 +141,50 @@ function cfcp_comment_date() {
 	$date_format = get_option('date_format');
 	return cf_relative_time_ago($comment->comment_date_gmt, '', 'ago', '4', $date_format, '', true);
 }
+
+// admin utility
+	function cfp_get_popover_html($popover_id, $params = array()) {
+		$html = $class = '';
+	
+		if (!empty($params['html'])) {
+			$html = $params['html'];
+		}
+	
+		if (!empty($params['class'])) {
+			$class = esc_attr($params['class']);
+		}
+	
+		$arrow_pos = 'center';
+		if (!empty($params['arrow_pos'])) {
+			$arrow_pos = esc_attr($params['arrow_pos']);
+		}
+	
+		$display = 'none';
+		if (!empty($params['display'])) {
+			$display = esc_attr($params['display']);
+		}
+	
+		return cfcp_load_view('misc/admin-popover-template.php', compact('popover_id', 'html', 'arrow_pos', 'class', 'display'));
+	}
+
+	/**
+	 * Load a view file.
+	 * File path is relative to the theme root
+	 *
+	 * @param string $file 
+	 * @param string $params 
+	 * @return void
+	 */
+	function cfcp_load_view($file, $params) {
+		$file = trailingslashit(get_template_directory()).$file;
+		$html = '';
+	
+		if (is_file($file)) {
+			ob_start();
+			extract($params);
+			include($file);
+			$html = ob_get_clean();
+		}
+	
+		return $html;
+	}

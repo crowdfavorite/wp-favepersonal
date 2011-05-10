@@ -5,9 +5,9 @@ jQuery(function($){
 		var $tabs = $('#cf-post-format-tabs');
 		
 		// we found tabs, hide the default post-format box
-		if ($tabs.size() > 0) {
-			$('#formatdiv').hide();
-		}
+		// if ($tabs.size() > 0) {
+		// 	$('#formatdiv').hide();
+		// }
 		
 		return {
 			switchTab: function(clicked) {

@@ -72,7 +72,9 @@ Author URI: http://crowdfavorite.com
 			$current_post_format = get_post_format($post->ID);
 
 			// support the possibility of people having hacked in custom 
-			// post-formats or that this theme doesn't natively support it
+			// post-formats or that this theme doesn't natively support
+			// the post-format in the current post - a tab will be added
+			// for this format but the default WP post UI will be shown ~sp
 			if (!empty($current_post_format) && !in_array($current_post_format, $post_formats[0])) {
 				array_push($post_formats[0], get_post_format_string($current_post_format));
 			}
@@ -81,6 +83,7 @@ Author URI: http://crowdfavorite.com
 			
 			$post_formats = $post_formats[0];
 			include('views/tabs.php');
+			
 		}
 	}
 ?>
