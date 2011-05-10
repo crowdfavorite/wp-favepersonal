@@ -25,10 +25,13 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 			cfcp_about_module_carousel_enqueue();
 		}
 		else {
-			wp_enqueue_script('jquery-ui-sortable');
-			wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
-			wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
 			add_action('admin_head', 'cf_admin_css');
+			wp_enqueue_script('jquery-ui-sortable');
+			wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
+			wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
+			wp_localize_script('cfcp-about-admin-js', 'cfcp_about_settings', array(
+				'image_del_confirm' => __('Are you sure you want to delete this image?', 'carrington-personal')
+			));
 		}
 	}
 	add_action('init', 'cfcp_about_init', 50);
@@ -70,7 +73,7 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 					$results = cfp_about_image_search(array(
 							'key' => $_POST['key'],
 							'term' => $_POST['cfp-image-search-term'],
-							'exclude' => array_map('intval', $_POST['cfp_search_exclude'])
+							'exclude' => (!empty($_POST['cfp_search_exclude']) ? array_map('intval', $_POST['cfp_search_exclude']) : array())
 						));
 					$ret = array(
 						'success' => (!empty($results) ? true : false),
@@ -167,50 +170,51 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 		
 		// links processing
 		if (!empty($settings['links'])) {
-			$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);
-			foreach ($settings['links'] as &$link) {
-				$link['title'] = esc_html($link['title']);
-				$link['url'] = esc_url($link['url']); // might not want to do this as it'll foobar relative urls
-				
-				if (!empty($link['url'])) {
-					// we need the filename without the extension so that
-					// we can compare the name to see if we need to re-fetch 
-					// the ico for this link
-					$curricon = false;
-					if (!empty($link['favicon']) && $link['favicon'] !== 'default') {
-						$finfo = pathinfo($link['favicon']); // the PATHINFO_FILENAME constant is not available 'till 5.2!
-						$curricon = $finfo['filename'];
-					}
-
-					switch(true) {
-						case (empty($link['favicon']) || $link['favicon'] == 'default'):	
-							// favicon is new or we want to re-evaluate a previous 'default' status
-							$fetch = true;
-							break;
-						case !is_file(CFCP_FAVICON_DIR.'/'.$link['favicon']): 				
-							// favicon file has been purged
-							$fetch = true;
-							break;
-						case $u->make_filename($link['url']) != $curricon: 					
-							// old filename doesn't match calculated filename from POST data
-							$fetch = true;
-							break;
-						default:
-							$fetch = false;
-					}
-					
-					if ($fetch) {
-							$a = $u->get_favicon($link['url']);
-							if (!empty($a) && $a != 'default') {
-								$link['favicon'] = basename($a);
-							}
-							else {
-								$link['favicon'] = 'default';
-							}
-					}
-				}
-			}
+			// $u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);
+			// foreach ($settings['links'] as &$link) {
+			// 	$link['title'] = esc_html($link['title']);
+			// 	$link['url'] = esc_url($link['url']); // might not want to do this as it'll foobar relative urls
+			// 	
+			// 	if (!empty($link['url'])) {
+			// 		// we need the filename without the extension so that
+			// 		// we can compare the name to see if we need to re-fetch 
+			// 		// the ico for this link
+			// 		$curricon = false;
+			// 		if (!empty($link['favicon']) && $link['favicon'] !== 'default') {
+			// 			$finfo = pathinfo($link['favicon']); // the PATHINFO_FILENAME constant is not available 'till 5.2!
+			// 			$curricon = $finfo['filename'];
+			// 		}
+			// 
+			// 		switch(true) {
+			// 			case (empty($link['favicon']) || $link['favicon'] == 'default'):	
+			// 				// favicon is new or we want to re-evaluate a previous 'default' status
+			// 				$fetch = true;
+			// 				break;
+			// 			case !is_file(CFCP_FAVICON_DIR.'/'.$link['favicon']): 				
+			// 				// favicon file has been purged
+			// 				$fetch = true;
+			// 				break;
+			// 			case $u->make_filename($link['url']) != $curricon: 					
+			// 				// old filename doesn't match calculated filename from POST data
+			// 				$fetch = true;
+			// 				break;
+			// 			default:
+			// 				$fetch = false;
+			// 		}
+			// 		
+			// 		if ($fetch) {
+			// 				$a = $u->get_favicon($link['url']);
+			// 				if (!empty($a) && $a != 'default') {
+			// 					$link['favicon'] = basename($a);
+			// 				}
+			// 				else {
+			// 					$link['favicon'] = 'default';
+			// 				}
+			// 		}
+			// 	}
+			// }
 		}
+		$settings['links'] = array();
 		
 		return $settings;
 	}

@@ -473,6 +473,12 @@ button.cf-btn-delete {
 .cfp-add-link:hover {
 	background-position: 0px -18px;
 }
+.cfp-add-link.open {
+	background-position: 0px -36px;
+}
+.cfp-add-link.open:hover {
+	background-position: 0px -54px;
+}
 #cfp-about-settings .cf-elm-block {
 	position: relative;
 }

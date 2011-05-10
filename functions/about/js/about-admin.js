@@ -21,8 +21,12 @@ jQuery(function($) {
 			e.stopPropagation();
 		});
 		
+		$('.cfp-search-result img').live('click', function() {
+			CF.imgs.selectImg($(this).closest('li').clone());
+		});
+		
 		$('.cfp-del-image').live('click', function(e) {
-			if (confirm('Are you sure you want to delete this image?')) {
+			if (confirm(cfcp_about_settings.image_del_confirm)) {
 				CF.imgs.removeImage(this);
 			}
 			e.preventDefault();
@@ -51,6 +55,7 @@ jQuery(function($) {
 			},
 			
 			showSearch: function() {
+				$add.addClass('open');
 				// we init search every time we open so that we get a fresh
 				// exclusion of existing images during the type ahead search
 				this.initSearch();
@@ -62,6 +67,7 @@ jQuery(function($) {
 			},
 			
 			hideSearch: function() {
+				$add.removeClass('open');
 				$search.hide();
 			},
 			
@@ -81,7 +87,7 @@ jQuery(function($) {
 					target: '#cfp-img-search-results',
 					resultsCallback: function(target) {
 						$(target).unbind().bind('o-typeahead-select', function() {
-							CF.imgs.selectImg($(this).find('li.otypeahead-current').clone().removeClass('otypeahead-current'));
+							CF.imgs.selectImg($(this).find('li.otypeahead-current').clone());
 						});
 					}
 				});
@@ -109,6 +115,7 @@ jQuery(function($) {
 			},
 			
 			selectImg: function(imgLi) {
+				console.log('foo');
 				$(imgLi).attr('class', false).appendTo($list);
 				this.handleEmptyLi();
 				this.hideSearch();
@@ -148,5 +155,9 @@ jQuery(function($) {
 	$('body').live('click', function(e) {
 		CF.imgs.hideAllDialogs();
 		CF.favicons.hideInputs();
-	});	
+	});
+
+	// $('.cf-updated-message-fade')
+	// 	.animate({'opacity': 1.0}, 8000) // faux timeout, animates nothing for 8 seconds
+	// 	.slideUp('slow');
 });

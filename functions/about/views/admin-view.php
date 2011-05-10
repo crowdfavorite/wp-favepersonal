@@ -2,7 +2,9 @@
 	<h2><?php _e('About Me, Myself and I', 'carrington-personal'); ?></h2>
 	
 	<?php 
-		#pp($settings); 
+		if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
+			echo '<div class="updated below-h2 fade cf-updated-message-fade" id="message"><p>'.__('Settings updated.', 'carrington-personal').'</p></div>';
+		}
 	?>
 	
 	<!--Start Working-HTML-->
@@ -50,7 +52,7 @@
 					<div class="cfp-list-img-left cf-clearfix">
 						<ul>
 						<?php
-							echo '<li class="no-favicon-item'.(empty($settings['images']) ? '' : ' cf-hidden').'"><p>'.__('Click the "+" to the right to start adding images', 'carrington-personal').'</p></li>';
+							echo '<li class="no-favicon-item'.(empty($settings['links']) ? '' : ' cf-hidden').'"><p>'.__('Click the "+" to the right to start adding links', 'carrington-personal').'</p></li>';
 							if (!empty($settings['links'])) {
 								foreach ($settings['links'] as $i => $link) {
 									echo cfcp_load_view('functions/about/views/link-item.php', compact('i', 'link'));
@@ -78,16 +80,4 @@
 		'html' => $img_search_popover_html,
 		'arrow_pos' => 'right'
 	));
-	
-	// $img_actions_popover_html = '
-	// 	<div class="cfp-popover-content">
-	// 		<div class="cfp-about-image-action-inputs">
-	// 			<input type="button" name="cfp-about-image-delete" class="button" id="cfp-about-image-delete" value="'.__('Delete Image', 'carrington-personal').'" />
-	// 			<input type="button" name="cfp-about-image-edit" class="button button-primary" id="cfp-about-image-edit" value="'.__('Edit Image', 'carrington-personal').'" />
-	// 		</div>
-	// 	</div>';
-	// echo cfp_get_popover_html('cfp-popover-image-actions', array(
-	// 	'html' => $img_actions_popover_html,
-	// 	'arrow_pos' => 'center'
-	// ));
 ?>
