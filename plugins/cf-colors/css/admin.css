@@ -207,13 +207,21 @@
 /** Color Preview
  * colors set in cf-kuler.php
  -------------------------------------------------- */
-#cf-kuler-preview {
-	background: url('../img/color-preview.png') 0 0 no-repeat;
-	height: 385px;
-	padding: 10px;
-	width: 365px;
+#cf-kuler-preview.cfp-popover {
+	width: 372px;
+}
+#cf-kuler-preview .cfp-popover-notch {
+	background-position: 0px -20px;
+	height: 14px;
+	right: 0;
+	top: 191px;
+	width: 8px;
+}
+#cf-kuler-preview .cfp-popover-content {
+	padding: 5px;
 }
 .cf-kuler-preview-page {
+	background: url('../img/color-preview.png') 0 0 no-repeat;
 	height: 380px;
 	width: 360px;
 	position: relative;

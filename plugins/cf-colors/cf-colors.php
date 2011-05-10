@@ -532,29 +532,35 @@ function cf_kuler_settings_form() {
 	</div><!-- .cfcp-section -->
 </div>
 
-<div id="cf-kuler-preview" style="display: none;">
-	<div class="cf-kuler-preview-page">
-		<div class="cf-kuler-preview-header">
-			<div class="cf-kuler-preview-logo"></div>
-			<ul class="cf-kuler-preview-link">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</div>
-		<div class="cf-kuler-preview-masthead">
-			<div class="cf-kuler-preview-featured"></div>
-			<div class="cf-kuler-preview-featured"></div>
-			<div class="cf-kuler-preview-featured"></div>			
-		</div>
-		<div class="cf-kuler-preview-sidebar">
-			<div class="cf-kuler-preview-bio"></div>
-			<div class="cf-kuler-preview-widget"></div>
-			<div class="cf-kuler-preview-widget"></div>
-		</div>
-		<div class="cf-kuler-preview-footer"></div>
-		</div><!--.cf-kuler-preview-page-->
+
+<div id="cf-kuler-preview" class="cfp-popover" style="display: none;">
+	<div class="cfp-popover-notch"></div>
+	<div class="cfp-popover-inner">
+		<div class="cfp-popover-content">
+			<div class="cf-kuler-preview-page">
+				<div class="cf-kuler-preview-header">
+					<div class="cf-kuler-preview-logo"></div>
+					<ul class="cf-kuler-preview-link">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+				<div class="cf-kuler-preview-masthead">
+					<div class="cf-kuler-preview-featured"></div>
+					<div class="cf-kuler-preview-featured"></div>
+					<div class="cf-kuler-preview-featured"></div>
+				</div>
+				<div class="cf-kuler-preview-sidebar">
+					<div class="cf-kuler-preview-bio"></div>
+					<div class="cf-kuler-preview-widget"></div>
+					<div class="cf-kuler-preview-widget"></div>
+				</div>
+				<div class="cf-kuler-preview-footer"></div>
+			</div><!--.cf-kuler-preview-page-->		
+		</div><!--.cfp-popover-content-->
+	</div><!--.cfp-popover-inner-->
 </div><!--#cf-kuler-preview-->
 <script type="text/javascript">
 	jQuery(function($) {
