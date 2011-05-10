@@ -88,6 +88,9 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 }
 add_action( 'after_setup_theme', 'carrington_personal_setup' );
 
+// Remove default Carrington-Core theme settings screen
+remove_action('admin_menu', 'cfct_admin_menu');
+
 // Register Scripts
 wp_register_script('jquery-cycle', get_template_directory_uri().'/js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);
 wp_register_script('cfcp-global', get_bloginfo('template_directory').'/js/global.js', array('jquery'), CFCT_URL_VERSION);
