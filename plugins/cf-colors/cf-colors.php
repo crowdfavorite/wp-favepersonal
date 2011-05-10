@@ -169,21 +169,21 @@ function cf_kuler_get_colors() {
 function cf_kuler_get_settings() {
 	return get_option(CF_KULER_COLORS, array(
 		'colors' => array(
-			'#223366',
-            '#556699',
-            '#8899cc',
-            '#d3d3f7',
-            '#ffffff'
+			'#0b1a0e',
+            '#3b3d35',
+            '#05ab4a',
+            '#65c752',
+            '#d0dec7'
 		),
 		'theme' => array(
-			'id' => 1248653,
-            'guid' => 'http://kuler.adobe.com/index.cfm#themeID/1248653',
-            'link' => 'http://kuler.adobe.com/index.cfm#themeID/1248653',
-            'title' => 'alexking.org',
-            'author' => 'alexkingorg',
-            'author_id' => '383498',
-            'image' => 'http://kuler-api.adobe.com/kuler/themeImages/theme_1248653.png',
-            'swatches' => '#223366,#556699,#8899cc,#d3d3f7,#ffffff'
+			'id' => 1357787,
+            'guid' => 'http://kuler.adobe.com/index.cfm#themeID/1357787',
+            'link' => 'http://kuler.adobe.com/index.cfm#themeID/1357787',
+            'title' => 'FavePersonal',
+            'author' => 'CrowdFavorite',
+            'author_id' => '559644',
+            'image' => 'http://kuler-api.adobe.com/kuler/themeImages/theme_1357787.png',
+            'swatches' => '#0b1a0e,#3b3d35,#05ab4a,#65c752,#d0dec7'
 		)
 	));
 }
