@@ -118,7 +118,6 @@ jQuery(function($) {
 			
 			hideAllDialogs: function() {
 				this.hideSearch();
-				this.hideImgAction();
 			}
 		};
 	}(jQuery);
