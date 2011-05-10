@@ -493,18 +493,39 @@ button.cf-btn-delete {
 	-webkit-box-shadow: inset 1px 1px 6px #CCC; /* Saf3+, Chrome */
 	box-shadow: inset 1px 1px 6px #CCC; /* Standard. Opera 10.5, IE9 */
 }
-#cfp-about-imgs-input ul {
+#cfp-about-imgs-input ul,
+#cfp-about-imgs-input ul li {
 	position: relative;
 }
 .cfp-about-image-action-inputs {
 	text-align: center;
 }
 
+/* delete about image button */
+.cfp-del-image {
+	text-indent: -9999px;
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	background: url(../img/admin/del-link.png) 0 0 no-repeat;
+	position: absolute;
+	bottom: 5px;
+	right: 2px;
+	display: none;
+}
+#cfp-about-imgs-input ul li:hover span .cfp-del-image {
+	display: block;
+}
+.cfp-del-image:hover {
+	background-position: 0px -18px;
+}
+
 /* about search results */
 #cfp-img-search-results {
 	padding-left: 6px;
 	padding-right: 0;
-	height: 189px;
+	height: auto;
+	display: none;
 }
 .cfp-search-result {
 	display: inline-block;

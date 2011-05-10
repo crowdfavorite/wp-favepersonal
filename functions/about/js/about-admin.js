@@ -14,32 +14,10 @@ jQuery(function($) {
 			e.stopPropagation();
 		});
 		
-		// image search results click handler
-		$('#cfp-img-search-results a').live('click', function(e) {
-			CF.imgs.selectImg($(this).closest('li'));
-			e.preventDefault();
-			e.stopPropagation();
-		});
-		
-		// capture click on image to show delete/edit buttons
-		$list.find('a').live('click', function(e) {
-			CF.imgs.showImgAction(this);
-			e.preventDefault();
-			e.stopPropagation();
-		});
-		
-		// delete an image from the list
-		$('#cfp-about-image-delete').live('click', function(e) {
+		$('.cfp-del-image').live('click', function(e) {
 			if (confirm('Are you sure you want to delete this image?')) {
-				CF.imgs.removeImage();
+				CF.imgs.removeImage(this);
 			}
-			e.preventDefault();
-			e.stopPropagation();
-		});
-		
-		// edit an image
-		$('#cfp-about-image-edit').live('click', function(e) {
-			CF.imgs.imageActionRedirect();
 			e.preventDefault();
 			e.stopPropagation();
 		});
@@ -131,30 +109,11 @@ jQuery(function($) {
 				this.refreshSortables();
 			},
 			
-			showImgAction: function(clicked) {
-				this.hideSearch();
-				$li = $(clicked).closest('li');
-				this.currentActionImage = $li;
-				var pos = $li.offset();
-				
-				$imgActions.css({
-					top: pos.top + ($li.outerHeight() * 0.88) + 'px',
-					left: pos.left + ($li.outerWidth() / 2) - ($imgActions.outerWidth() / 2) + 'px'
-				}).show();				
-			},
-			
-			hideImgAction: function(clicked) {
-				$imgActions.hide();
-			},
-			
-			imageActionRedirect: function() {
-				window.location = this.currentActionImage.find('a').attr('href');
-			},
-			
-			removeImage: function() {
-				this.currentActionImage.remove();
-				this.refreshSortables();
-				this.hideImgAction();
+			removeImage: function(del) {
+				$(del).closest('li')
+					.animate({'width': 0}, 500, function() {
+						$(this).remove();
+					});
 			},
 			
 			hideAllDialogs: function() {
