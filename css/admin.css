@@ -417,6 +417,7 @@ button.cf-btn-delete {
 	border-bottom: 1px solid #aaa;
 	border-top: 1px solid #aaa;
 	height: 100px;
+	margin-bottom: 5px;
 	overflow: auto;
 	padding: 10px 15px;
 }
