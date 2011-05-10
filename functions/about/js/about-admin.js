@@ -9,6 +9,13 @@ jQuery(function($) {
 			$add = $('#cfp-add-img'),
 			$list = $('#cfp-about-imgs-input ul');
 		
+		// add image to carousel button handler
+		$('#cfp-add-img').live('click', function(e) {
+			CF.imgs.toggle();
+			e.preventDefault();
+			e.stopPropagation();
+		});
+		
 		// keep clicks in the popup from bubbling
 		$search.live('click', function(e) {
 			e.stopPropagation();
@@ -44,7 +51,6 @@ jQuery(function($) {
 			},
 			
 			showSearch: function() {
-				this.hideImgAction();
 				// we init search every time we open so that we get a fresh
 				// exclusion of existing images during the type ahead search
 				this.initSearch();
@@ -138,13 +144,6 @@ jQuery(function($) {
 	}(jQuery);
 	
 // Init
-	
-	// add image to carousel button handler
-	$('#cfp-add-img').live('click', function(e) {
-		CF.imgs.toggle();
-		e.preventDefault();
-		e.stopPropagation();
-	});
 			
 	$('body').live('click', function(e) {
 		CF.imgs.hideAllDialogs();
