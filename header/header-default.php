@@ -192,11 +192,11 @@ $blog_desc = get_bloginfo('description');
 		/** Footer
 		 -------------------------------------------------- */
 		#footer {
-			color: <?php echo cf_kuler_color('light'); ?>;
+			color: <?php echo cf_kuler_color('lightest'); ?>;
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
 		}
 		#footer a {
-			color: <?php echo cf_kuler_color('lightest'); ?>;
+			color: <?php echo cf_kuler_color('light'); ?>;
 		}
 		
 		/** Utilities
