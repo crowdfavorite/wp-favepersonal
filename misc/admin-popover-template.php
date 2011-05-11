@@ -19,6 +19,7 @@
 		</div><!-- .cfp-popover-scroll -->
 		<div class="cfp-popover-footer">
 			<input class="button button-primary" type="submit" name="submit" value="Save Settings">
+			<a href="#" class="cf-remove-link">Remove</a>
 		</div><!-- .cfp-popover-footer -->
 	</div><!--.cfp-popover-inner-->
 </div>
