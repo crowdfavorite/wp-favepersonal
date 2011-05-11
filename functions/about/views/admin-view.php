@@ -72,8 +72,10 @@
 <?php
 	$img_search_popover_html = '
 		<div class="cfp-popover-content" id="cfp-image-search">
-			<input type="text" name="cfp-image-search-term" id="cfp-image-search-term" value="" />
-			<p>Search photos in the media gallery or <a href="#">upload a new photo</a></p>
+			<div class="cf-elm-block">
+				<input type="text" name="cfp-image-search-term" id="cfp-image-search-term" value="" />
+				<p class="cf-elm-help">Search photos in the media gallery or <a href="'.admin_url().'upload.php">upload a new photo</a></p>
+			</div>
 		</div>
 		<div class="cfp-popover-scroll" id="cfp-img-search-results"></div>';
 	echo cfp_get_popover_html('cfp-img-search', array(
