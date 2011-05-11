@@ -70,6 +70,7 @@ Used for common styles across all admin pages
  * - minor change to elm-block spacing
  * - minor change to .cf-elm-* padding and font size
  * - added .cf-remove-link 
+ * - added p.cf-elm-help
  -------------------------------------------------- */
 #cf fieldset {
 	margin-bottom: 1.5em;
@@ -118,6 +119,11 @@ form .no-hover .cf-elm-block:hover {
 
 .cf-elm-help {
 	color: #888;
+	font-size: 11px;
+}
+/* options for aligning to bottom */
+p.cf-elm-help {
+	margin: 3px 2px 0 2px;
 }
 .cf-elm-help.cf-elm-align-bottom {
 	display: block;
@@ -366,7 +372,7 @@ button.cf-btn-delete {
 	display: block;
 	padding: 7px;
 	position: absolute;
-	width: 370px;
+	width: 388px;
 	z-index: 99;
 }
 /* notch and positioning */
@@ -419,17 +425,17 @@ button.cf-btn-delete {
 }
 /* wrapper for content */
 .cfp-popover-content {
-	padding: 5px 15px;
+	padding: 10px 15px;
 }
 /* scrollable content area */
 .cfp-popover-scroll {
 	background: #d5d5d5 url(../img/admin/popover-scroll-fade.png) 0 0 repeat-x;
 	border-bottom: 1px solid #aaa;
 	border-top: 1px solid #aaa;
-	height: 100px;
 	margin-bottom: 5px;
+	max-height: 230px;
 	overflow: auto;
-	padding: 10px 15px;
+	padding: 15px 10px 10px 18px;
 }
 /* footer for save and delete links */
 .cfp-popover-footer {
@@ -547,12 +553,11 @@ button.cf-btn-delete {
 
 /* about search results */
 #cfp-img-search-results {
-	padding-left: 6px;
-	padding-right: 0;
-	height: auto;
 	display: none;
 }
 .cfp-search-result {
 	display: inline-block;
-	margin: 3px;
+	height: 60px;
+	margin: 0 5px 5px 0;
+	width: 80px;
 }
