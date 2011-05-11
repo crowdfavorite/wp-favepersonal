@@ -48,7 +48,7 @@
 		
 			<fieldset>
 				<div class="cf-elm-block">
-					<label>Links</label>
+					<label><?php _e('Links', 'carrington-personal'); ?></label>
 					<div class="cfp-list-img-left cf-clearfix">
 						<ul>
 						<?php
@@ -61,7 +61,7 @@
 						?>
 						</ul>
 					</div><!--.cfp-link-->
-					<a href="#add-link" class="cfp-add-link" id="cfp-add-favicon"><?php _e('Add', 'carrington-personal'); ?></a>
+					<a href="#add-link" class="cfp-add-link" id="cfp-add-link"><?php _e('Add', 'carrington-personal'); ?></a>
 				</div>
 			</fieldset>
 			
@@ -70,16 +70,17 @@
 	</div><!--#cfp-about-->
 </div><!-- / cf-about-wrap -->
 <?php
-	$img_search_popover_html = '
-		<div class="cfp-popover-content" id="cfp-image-search">
-			<div class="cf-elm-block">
-				<input type="text" name="cfp-image-search-term" id="cfp-image-search-term" value="" />
-				<p class="cf-elm-help">Search photos in the media gallery or <a href="'.admin_url().'upload.php">upload a new photo</a></p>
-			</div>
-		</div>
-		<div class="cfp-popover-scroll" id="cfp-img-search-results"></div>';
+	// images popover
+	$img_search_popover_html = cfcp_load_view('functions/about/views/img-search-popover.php', array());
 	echo cfp_get_popover_html('cfp-img-search', array(
 		'html' => $img_search_popover_html,
+		'arrow_pos' => 'right'
+	));
+	
+	// links popover
+	$link_edit_popover_html = cfcp_load_view('functions/about/views/link-edit-popover.php', array());
+	echo cfp_get_popover_html('cfp-link-edit', array(
+		'html' => $link_edit_popover_html,
 		'arrow_pos' => 'right'
 	));
 ?>

@@ -25,6 +25,13 @@ class CF_Favicon_Fetch {
 	protected $valid_response_codes = array(200, 301, 302);
 	
 	/**
+	 * Holde on to the last error we encountered for informational messages
+	 *
+	 * @var string
+	 */
+	protected $last_error = false;
+	
+	/**
 	 * Construct
 	 *
 	 * @param string $upload_dir 
@@ -33,33 +40,71 @@ class CF_Favicon_Fetch {
 		$this->upload_dir = trailingslashit($upload_dir);
 	}
 
-// Main query function 
-
+// Main query functions 
+	
+	public function get_site_favicon_url($siteurl) {
+		$this->reset_error();
+		
+		$siteurl = esc_url($siteurl);
+		$favicon = false;
+		
+		if ($f_url = $this->query_head($siteurl)) {
+			$favicon = $f_url;
+		}
+		elseif ($f_data = $this->query_server($siteurl)) {
+			$favicon = $this->get_baseurl($siteurl).'/favicon.ico';
+		}
+		
+		return $favicon;
+	}
+	
 	/**
 	 * Search for the favicon for a site & then import the favicon to the uploads/favicons folder
 	 *
 	 * @param string $url 
-	 * @return void
+	 * @return string
 	 */
-	public function get_favicon($url) {
-		$siteurl = esc_url($url);
+	public function get_favicon($siteurl) {
+		$this->reset_error();
+		
+		$siteurl = esc_url($siteurl);
 		$favicon = 'default';
+		
+		if (gethostbyname($siteurl) != $siteurl) {
+			if ($f_url = $this->query_head($siteurl)) {			
+				$f_data = $this->fetch_favicon($f_url);
+				$filename = $this->make_filename($siteurl, $f_data['ext']);			
+			}
+			elseif ($f_data = $this->query_server($siteurl)) {
+				$filename = $this->make_filename($siteurl, 'ico');
+			}
 
-		if ($f_url = $this->query_head($siteurl)) {			
-			$f_data = $this->fetch_favicon($f_url);
-			$filename = $this->make_filename($siteurl, $f_data['ext']);			
-		}
-		elseif ($f_data = $this->query_server($siteurl)) {
-			$filename = $this->make_filename($siteurl, 'ico');
-		}
-
-		if (!empty($f_data) && !empty($filename)) {
-			$r = $this->save_file($filename, $f_data);
-			if ($r !== false) {
-				$favicon = $r;
+			if (!empty($f_data) && !empty($filename)) {
+				$r = $this->save_file($filename, $f_data);
+				if ($r !== false) {
+					$favicon = $r;
+				}
 			}
 		}
-
+		
+		return $favicon;
+	}
+	
+	/**
+	 * check to see wether we have a favicon for this site or not
+	 *
+	 * @param string $siteurl 
+	 * @return mixed bool/string - bool on false, filename on true
+	 */
+	public function have_site_favicon($siteurl) {
+		$filename = $this->make_filename($siteurl);
+		$files = glob(CFCP_FAVICON_DIR.'/'.$filename.'\.*');
+		
+		$favicon = false;
+		if (!empty($files[0])) {
+			$favicon = basename($files[0]);
+		}
+		
 		return $favicon;
 	}
 
@@ -87,13 +132,28 @@ class CF_Favicon_Fetch {
 		
 		if (!is_wp_error($r) && $this->is_valid_response_code($r['response']['code']) && !empty($r['body'])) {
 			$data = json_decode($r['body']);
+
 			if ($data->query->count > 0) {
-				$favicon = trim($data->query->results->link->href);
-				$this->fix_relative_url($favicon, $siteurl);
+				// well, now, isn't this fun!
+				if (!empty($data->query->results->link->href)) {
+					// 1 result
+					$favicon = trim($data->query->results->link->href);
+				}
+				elseif (!empty($data->query->results->link[0]->href)) {
+					// many results
+					$favicon = trim($data->query->results->link[0]->href);
+				}
+				else {
+					$this->handle_error(new WP_Error('Unknown data return format: '.print_r($data, true)));
+				}
+				
+				if (!empty($favicon)) {
+					$this->fix_relative_url($favicon, $siteurl);
+				}
 			}
 		}
 		else {
-			$this->handle_error($file, __METHOD__);
+			$this->handle_error($r->get_error_message(), __METHOD__);
 		}
 	
 		unset($r);
@@ -111,8 +171,7 @@ class CF_Favicon_Fetch {
 		$this->server_query_result = false;
 
 		// reduce the siteurl down to the base server name
-		$parts = parse_url($siteurl);
-		$query_url = $parts['scheme'].'://'.$parts['host'];
+		$query_url = $this->get_baseurl($siteurl);
 		
 		$favicon_url = trailingslashit($query_url).'favicon.ico';
 		
@@ -140,7 +199,7 @@ class CF_Favicon_Fetch {
 			);
 		}
 		else {
-			$this->handle_error($file, __METHOD__);
+			$this->handle_error($file->get_error_message(), __METHOD__);
 		}
 		
 		return $favicon;
@@ -177,8 +236,13 @@ class CF_Favicon_Fetch {
 	
 // Internal
 
+	public function get_baseurl($siteurl) {
+		$parts = parse_url(esc_url($siteurl));
+		return $parts['scheme'].'://'.$parts['host'];
+	}
+
 	public function remote_get($url) {
-		return wp_remote_get($url, array('timeout' => $this->timeout));
+		return @wp_remote_get($url, array('timeout' => $this->timeout));
 	}
 
 	public function check_upload_dir() {
@@ -199,7 +263,7 @@ class CF_Favicon_Fetch {
 	 * @return string
 	 */
 	public function make_filename($url, $ext = '') {
-		return md5($url).(!empty($ext) ? '.'.$ext : '');
+		return md5($this->get_baseurl($url)).(!empty($ext) ? '.'.$ext : '');
 	}
 	
 	/**
@@ -214,6 +278,14 @@ class CF_Favicon_Fetch {
 		return in_array(intval($code), $this->valid_response_codes);
 	}
 	
+	public function reset_error() {
+		return $this->last_error = null;
+	}
+	
+	public function get_last_error() {
+		return $this->last_error;
+	}
+	
 	/**
 	 * Stupid error handler
 	 * No, error handling isn't stupid, this handler is
@@ -223,11 +295,13 @@ class CF_Favicon_Fetch {
 	 */
 	public function handle_error($response, $method = '') {
 		if (is_wp_error($response)) {
-			error_log('Error in remote request '.$response->get_error_message().' :: '.$method);
+			$msg = $response->get_error_message();
 		}
-		elseif (!$this->is_valid_response_code()) {
-			error_log('Bad response on favicon request -- http code "'.$response['response']['code'].'" given by remote server', $method);
+		else {
+			$msg = strval($response);
 		}
+		$this->last_error = $msg;
+		error_log('Error in remote request '.$msg.' :: '.$method);
 	}
 }
 

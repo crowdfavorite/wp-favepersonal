@@ -561,3 +561,15 @@ button.cf-btn-delete {
 	margin: 0 5px 5px 0;
 	width: 80px;
 }
+
+/* edit link */
+#cfp-link-icon-edit {
+	text-indent: -9999px;
+	background: transparent url(../img/admin/color-edit.png) -138px -118px no-repeat;
+	width: 16px;
+	height: 16px;
+	border: none;
+}
+#cfp-link-icon-edit:hover {
+	background-position: -138px -258px;
+}

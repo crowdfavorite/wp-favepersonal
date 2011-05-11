@@ -30,7 +30,8 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 			wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
 			wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
 			wp_localize_script('cfcp-about-admin-js', 'cfcp_about_settings', array(
-				'image_del_confirm' => __('Are you sure you want to delete this image?', 'carrington-personal')
+				'image_del_confirm' => __('Are you sure you want to delete this image?', 'carrington-personal'),
+				'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'carrington-personal')
 			));
 		}
 	}
@@ -75,14 +76,45 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 							'term' => $_POST['cfp-image-search-term'],
 							'exclude' => (!empty($_POST['cfp_search_exclude']) ? array_map('intval', $_POST['cfp_search_exclude']) : array())
 						));
+					
 					$ret = array(
 						'success' => (!empty($results) ? true : false),
 						'key' => $_POST['key'],
 						'html' => (!empty($results) ? $results : '<div class="cfp-img-search-no-results">'.__('No results found.', 'carrington-personal').'</div>')
 					);
+					
 					break;
 				case 'cfp_fetch_favicon':
-					// retreive and import favicon, then return url
+					usleep(500000); // pause for 1/2 second to allow the spinner to at least display in the admin
+					
+					$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);
+					$favicon = $u->have_site_favicon($_POST['url']);
+					
+					if (empty($favicon)) {
+						$success = false;
+						$favicon = $u->get_site_favicon_url($_POST['url']);
+						
+						if (!empty($favicon)) {
+							$success = true;
+						}
+						else {
+							$success = false;
+							$favicon = cf_about_favicon_url('default');
+						}
+						$favicon_status = 'new';
+					}
+					else {
+						$success = true;
+						$favicon = cf_about_favicon_url($favicon);
+						$favicon_status = 'local';
+					}
+					
+					$ret = array(
+						'success' => $success,
+						'favicon_url' => $favicon,
+						'favicon_status' => $favicon_status
+					);
+					
 					break;
 			}
 			header('content-type: text/javascript');
