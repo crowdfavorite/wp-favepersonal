@@ -69,6 +69,7 @@ Used for common styles across all admin pages
  * Changes:
  * - minor change to elm-block spacing
  * - minor change to .cf-elm-* padding and font size
+ * - added .cf-remove-link 
  -------------------------------------------------- */
 #cf fieldset {
 	margin-bottom: 1.5em;
