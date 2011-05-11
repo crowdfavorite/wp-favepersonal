@@ -307,6 +307,15 @@ input[type="submit"].cf-btn-delete:hover,
 button.cf-btn-delete {
 	color: #ff0000;
 }
+/* remove/delete link */
+.cf-remove-link {
+	color: #990000;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+.cf-remove-link:hover {
+	color: #cc0000;
+}
 
 /* notifications */
 .cf-error { 
@@ -431,8 +440,16 @@ button.cf-btn-delete {
 	-webkit-border-bottom-right-radius: 4px;
 	border-bottom-right-radius: 4px;
 	padding: 7px 15px;
+	position: relative;
 	text-align: center;
 }
+.cfp-popover-footer .cf-remove-link {
+	line-height: 1em;
+	margin: 6px 15px;
+	position: absolute;
+	right: 0;
+}
+
 
 /** @section About Settings
  -------------------------------------------------- */
