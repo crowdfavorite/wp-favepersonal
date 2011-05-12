@@ -515,7 +515,7 @@ function cf_kuler_settings_form() {
 
 	<div class="cfcp-section">
 		<h3 class="cfcp-section-title"><span>'.__('Browse Colors', 'cf-kuler').'</span></h3>
-		<div class="cfcp-nav">
+		<div class="cf-nav">
 			<form action="#" id="cf-kuler-search-form" data-start="0" data-page="'.CF_KULER_ITEMS_PER_PAGE.'">
 				<input type="text" name="cf_kuler_search" id="cf_kuler_search" />
 				<input type="submit" class="button" name="" value="'.__('Search Colors', 'cf-kuler').'" />
@@ -525,7 +525,7 @@ function cf_kuler_settings_form() {
 				<li><a href="#" data-request="get" data-listtype="rating" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Highest Rated', 'cf-kuler').'</a></li>
 				<li><a href="#" data-request="get" data-listtype="recent" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Newest', 'cf-kuler').'</a></li>
 				<li><a href="#" data-request="get" data-listtype="random" data-start="0" data-items="'.CF_KULER_ITEMS_PER_PAGE.'">'.__('Random', 'cf-kuler').'</a></li>
-			</ul>		
+			</ul>
 		</div>
 		<div id="cf-kuler-swatch-selector">
 		</div>

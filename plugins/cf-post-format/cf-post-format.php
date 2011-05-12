@@ -50,6 +50,7 @@ Author URI: http://crowdfavorite.com
 			if (post_type_supports($post_type, 'post-formats') && current_theme_supports('post-formats')) {
 				// assets
 				wp_enqueue_script('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/js/admin.js', array('jquery'), CFPF_VERSION);
+				//wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/css/admin.css', array(), CFPF_VERSION, 'screen');
 				wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/css/admin.css', array(), CFPF_VERSION, 'screen');
 				
 				// actions

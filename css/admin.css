@@ -2,7 +2,7 @@
 ADMIN CSS
 Used for common styles across all admin pages
 
-.cfp-... are specific styles for personal
+.cfp-... are specific styles for personal theme
 .cf-... styles are from the Admin UI 
 
 */
@@ -10,9 +10,9 @@ Used for common styles across all admin pages
 /** @section Tab Navigation
  -------------------------------------------------- */
 .cf-nav {
-	background: url('../img/line-light.gif') bottom left repeat-x;
+	border-bottom: 1px solid #ccc;
 	float: left;
-	margin-bottom: 17px;
+	margin-bottom: 20px;
 	width: 100%;
 }
 .cf-nav form {
@@ -32,35 +32,32 @@ Used for common styles across all admin pages
 	display: block;
 	color: #999;
 	background-color: #efefef;
-	border: 1px solid #e1e1e1;
+	border: 1px solid #ddd;
 	border-bottom: 0;
 	font-family: Georgia, Times, serif;
 	font-size: 14px;
-	padding: 7px 10px 6px 10px;
-	margin-bottom: 1px;
-	margin-right: 4px;
+	height: 32px;
+	line-height: 32px;
+	margin-right: 5px;
+	padding: 0 10px;
 	text-decoration: none;
 	text-shadow: #fff 0 1px 1px;
 	-moz-border-radius-topleft: 5px;
 	-webkit-border-top-left-radius: 5px;
-	-khtml-border-top-left-radius: 5px;
 	border-top-left-radius: 5px;
 	-moz-border-radius-topright: 5px;
 	-webkit-border-top-right-radius: 5px;
-	-khtml-border-top-right-radius: 5px;
 	border-top-right-radius: 5px;
-
 }
 .cf-nav ul li a:hover {
-	color: #777;
+	color: #666;
 }
 .cf-nav ul li a.current {
-	background: url('../img/tab-bg.gif') 0 0 repeat-x;
-	border: 1px solid #c7c7c7;
-	border-bottom: 0;
+	background: none;
+	border: 1px solid #ccc;
+	border-bottom: 1px solid #f9f9f9;
 	color: #333;
-	margin-bottom: 0;
-	padding-bottom: 7px;
+	margin-bottom: -1px;
 }
 
 
@@ -498,6 +495,7 @@ button.cf-btn-delete {
 .cfp-add-link:hover {
 	background-position: 0px -18px;
 }
+/* changes add-link to remove link */
 .cfp-add-link.open {
 	background-position: 0px -36px;
 }

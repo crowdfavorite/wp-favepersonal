@@ -1,4 +1,4 @@
-<div id="cf-post-format-tabs" class="cp-elm-block cp-elm-nav">
+<div id="cf-post-format-tabs" class="cf-nav">
 	<ul class="clearfix">
 	<?php
 		foreach ($post_formats as $format) {
