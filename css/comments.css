@@ -97,41 +97,44 @@ ol.mcc-commentlist ul {
 }
 ol.mcc-commentlist ul li {
 	list-style-type: none;
-	margin: 0 0 0 25px;
+	margin: 0 0 0 20px;
 	padding: 20px 0 0 0;
 }
 /* fixed width so short comments fill the space 
  * supporting as many levels as WP does 
  */
+ol.mcc-commentlist ul.children {
+	margin-bottom: 20px;
+}
 ul.children li .mcc-comment-body { /* nested 1 */
-	width: 455px; /* + 30px right padding */
+	width: 445px; /* + 30px right padding */
 }
 ul.children li ul li .mcc-comment-body { /* nested 2 */
-	width: 430px;
+	width: 420px;
 }
 ul.children li ul li ul li .mcc-comment-body { /* nested 3 */
-	width: 405px;
+	width: 395px;
 }
 ul.children li ul li ul li ul li .mcc-comment-body { /* nested 4 */
-	width: 380px;
+	width: 370px;
 }
 ul.children li ul li ul li ul li ul li .mcc-comment-body { /* nested 5 */
-	width: 355px;
+	width: 345px;
 }
 ul.children li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 6 */
-	width: 330px;
+	width: 320px;
 }
 ul.children li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 7 */
-	width: 305px;
+	width: 295px;
 }
 ul.children li ul li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 8 */
-	width: 280px;
+	width: 270px;
 }
 ul.children li ul li ul li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 9 */
-	width: 255px;
+	width: 245px;
 }
 ul.children li ul li ul li ul li ul li ul li ul li ul li ul li ul li .mcc-comment-body { /* nested 10 */
-	width: 230px;
+	width: 220px;
 }
 /* icon sources */
 .mcc-posted-from {
