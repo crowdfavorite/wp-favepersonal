@@ -15,7 +15,7 @@
 			
 			<fieldset>
 				<div class="cf-elm-block" id="cfp-about-imgs-input">
-					<label><?php _e('Profile Photos', 'carrington-personal'); ?></label>
+					<label class="typ-sc"><?php _e('Profile Photos', 'carrington-personal'); ?></label>
 					<div class="cfp-list-img-left cf-clearfix">
 						<ul>
 						<?php
@@ -36,19 +36,19 @@
 		
 			<fieldset>
 				<div class="cf-elm-block cf-elm-width-full">
-					<label for="title"><?php _e('Title', 'carrington-personal'); ?></label>
+					<label for="title" class="typ-sc"><?php _e('Title', 'carrington-personal'); ?></label>
 					<input type="text" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[title]" class="cf-elm-text" id="cfcp_settings_title" value="<?php echo esc_attr($settings['title']); ?>">
 				</div>
 		
 				<div class="cf-elm-block cf-elm-width-full">
-					<label for="bio"><?php _e('Bio', 'carrington-personal'); ?></label>
+					<label for="bio" class="typ-sc"><?php _e('Bio', 'carrington-personal'); ?></label>
 					<textarea rows="6" cols="40" class="cf-elm-textarea" name="<?php echo CFCP_ABOUT_SETTINGS; ?>[description]" id="cfcp_settings_description"><?php echo esc_textarea($settings['description']); ?></textarea>
 				</div>
 			</fieldset>
 		
 			<fieldset>
 				<div class="cf-elm-block">
-					<label><?php _e('Links', 'carrington-personal'); ?></label>
+					<label class="typ-sc"><?php _e('Links', 'carrington-personal'); ?></label>
 					<div class="cfp-list-img-left cf-clearfix">
 						<ul>
 						<?php
