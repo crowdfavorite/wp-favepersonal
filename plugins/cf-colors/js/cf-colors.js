@@ -60,6 +60,7 @@ jQuery(function($) {
 			},
 			function(response) {
 				$swatches.html(response);
+				$.scrollTo($('#preview-selected'), 'slow');
 			},
 			'html'
 		);

@@ -201,13 +201,20 @@ function cf_kuler_api_search($searchQuery, $startIndex = 0, $itemsPerPage = 20) 
 }
 
 function cf_kuler_api_request($url) {
+	// ep(str_replace('{URL}', base64_encode($url), CF_KULER_API));
 	require(ABSPATH.WPINC.'/class-simplepie.php');
 	$feed = new SimplePie();
 	$feed->enable_cache(false);
 	$feed->set_feed_url(str_replace('{URL}', base64_encode($url), CF_KULER_API));
 	$feed->init();
-
 	$namespace = 'http://kuler.adobe.com/kuler/API/rss/';
+
+	$foundElement = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RSS_20, 'recordCount');
+	$found = $foundElement[0]['data'];
+	
+	$perPageElement = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RSS_20, 'itemsPerPage');
+	$itemsPerPage = $perPageElement[0]['data'];
+	
 	$themes = array();
 	foreach ($feed->get_items() as $item) {
 		$data = $item->get_item_tags($namespace, 'themeItem');
@@ -232,7 +239,7 @@ function cf_kuler_api_request($url) {
 			$themes[cf_kuler_theme_hash($theme)] = $theme;
 		}
 	}
-	return $themes;
+	return compact('themes', 'found', 'itemsPerPage');
 }
 
 function cf_kuler_theme_hash($theme) {
@@ -325,14 +332,14 @@ function cf_kuler_admin_ajax() {
 // execute search
 	switch ($api_request_type) {
 		case 'get':
-			$themes = cf_kuler_api_get(
+			$result = cf_kuler_api_get(
 				$params['listType'], 
 				$params['startIndex'], 
 				$params['itemsPerPage']
 			);
 			break;
 		case 'search':
-			$themes = cf_kuler_api_search(
+			$result = cf_kuler_api_search(
 				$params['searchQuery'], 
 				$params['startIndex'], 
 				$params['itemsPerPage']
@@ -342,17 +349,26 @@ function cf_kuler_admin_ajax() {
 			die();
 			break;
 	}
-	$html = '<div class="cf-kuler-swatches cf-clearfix">'.cf_kuler_themes_html($themes).'</div>';
 
-	$params['startIndex'] == 0 ? $prev_page = '' : $prev_page = '<a href="#" class="cf-kuler-paging prev" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] - $params['itemsPerPage']).'" data-items="'.esc_attr($params['itemsPerPage']).'">&laquo; '.__('previous', 'cf-kuler').'</a>';
-	$next_page = '<a href="#" class="cf-kuler-paging next" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] + $params['itemsPerPage']).'" data-items="'.esc_attr($params['itemsPerPage']).'">'.__('next', 'cf-kuler').' &raquo;</a>';
+	$html = '<div class="cf-kuler-swatches cf-clearfix">'.cf_kuler_themes_html($result['themes']).'</div>';
 
+	$prev_page = $next_page = '';
+
+	if ($params['startIndex'] > 0) {
+		$prev_page = '<a href="#" class="cf-kuler-paging prev" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] - $params['itemsPerPage']).'" data-items="'.esc_attr($params['itemsPerPage']).'">&laquo; '.__('previous', 'cf-kuler').'</a>';
+	}
+	
+	if ($result['found'] > $params['itemsPerPage']) {
+		$next_page = '<a href="#" class="cf-kuler-paging next" data-request="'.esc_attr($api_request_type).'" data-listtype="'.esc_attr($params['listType']).'" data-search="'.esc_attr($params['searchQuery']).'" data-start="'.esc_attr($params['startIndex'] + $params['itemsPerPage']).'" data-items="'.esc_attr($params['itemsPerPage']).'">'.__('next', 'cf-kuler').' &raquo;</a>';
+	}
+	
 	$html .= '
 		<a href="http://kuler.adobe.com/" title="Adobe Kuler"><img src="'.get_bloginfo('template_url').'/plugins/cf-colors/img/color-by-kuler.png" width="120" height="33" alt="Color by Adobe Kuler" class="kuler-credit"></a>
 		<div class="cf-kuler-pagination">'
 			.$next_page.$prev_page.'
 		</div>';
 
+	header('content-type: text/html');
 	die($html);
 }
 add_action('wp_ajax_cf_kuler', 'cf_kuler_admin_ajax');
