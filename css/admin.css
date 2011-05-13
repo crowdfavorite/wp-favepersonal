@@ -488,10 +488,10 @@ button.cf-btn-delete {
 /* delete about image button */
 .cfp-del-image {
 	text-indent: -9999px;
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 16px;
 	display: inline-block;
-	background: url(../img/admin/del-link.png) 0 0 no-repeat;
+	background: url(../img/admin/edit-actions-sprite.png) 0 -32px no-repeat;
 	position: absolute;
 	bottom: 5px;
 	right: 2px;
@@ -501,7 +501,7 @@ button.cf-btn-delete {
 	display: block;
 }
 .cfp-del-image:hover {
-	background-position: 0px -18px;
+	background-position: 0px -48px;
 }
 
 /* popover image search */
