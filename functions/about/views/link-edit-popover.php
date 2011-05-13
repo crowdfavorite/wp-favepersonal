@@ -12,14 +12,15 @@
 	
 	<div class="cf-elm-block cf-lbl-pos-left cf-elm-width-full" id="cfp-link-icon-preview" style="display: none;">
 		<label for="cfp-link-icon"><?php _e('Icon', 'carrington-personal'); ?></label>
-		<img id="cfp-icon-preview" src="<?php echo trailingslashit(get_template_directory_uri()); ?>img/admin/ajax-loader.gif" width="16" height="16" />
-		
-		<input type="button" name="edit" id="cfp-link-icon-edit" value="Edit" />
+		<span class="cfp-icon-preview"><img id="cfp-icon-preview" src="<?php echo trailingslashit(get_template_directory_uri()); ?>img/admin/ajax-loader.gif" width="16" height="16" /></span>
+
+		<input type="button" name="edit" id="cfp-link-icon-edit" class="cfp-action-edit" value="Edit" />
 		<input type="hidden" name="favicon_status" id="cfp-link-favicon-status" value="" />
 		
 		<div class="cf-hidden">
-			<input type="text" name="custom_favicon" id="cfp-link-custom-favicon" value="" />
-			<p><?php printf(__('Image Url or <a href="%s">upload a new photo</a>', 'carrington-personal'), '#'); ?></p>
+			<input type="text" name="custom_favicon" id="cfp-link-custom-favicon" class="cf-elm-text" value="" />
+			<input type="button" name="remove" class="cfp-action-remove" value="Remove" />
+			<div class="cf-elm-help"><?php printf(__('Image Url or <a href="%s">upload a new photo</a>', 'carrington-personal'), '#'); ?></div>
 		</div>
 		<div id="cfp-link-icon-message" class="cf-elm-help"></div>
 	</div>

@@ -484,25 +484,6 @@ button.cf-btn-delete {
 	top: 22px;
 	right: -20px;
 }
-#cfp-image-search-term {
-	width: 98%;
-}
-.cfp-about-img-placeholder {
-	width: 80px;
-	height: 60px;
-	display: inline-block;
-	background: #f0f0f0;
-	-moz-box-shadow: inset 1px 1px 6px #CCC; /* FF3.5+ */
-	-webkit-box-shadow: inset 1px 1px 6px #CCC; /* Saf3+, Chrome */
-	box-shadow: inset 1px 1px 6px #CCC; /* Standard. Opera 10.5, IE9 */
-}
-#cfp-about-imgs-input ul,
-#cfp-about-imgs-input ul li {
-	position: relative;
-}
-.cfp-about-image-action-inputs {
-	text-align: center;
-}
 
 /* delete about image button */
 .cfp-del-image {
@@ -523,6 +504,27 @@ button.cf-btn-delete {
 	background-position: 0px -18px;
 }
 
+/* popover image search */
+#cfp-image-search-term {
+	width: 98%;
+}
+.cfp-about-img-placeholder {
+	width: 80px;
+	height: 60px;
+	display: inline-block;
+	background: #f0f0f0;
+	-moz-box-shadow: inset 1px 1px 6px #CCC; /* FF3.5+ */
+	-webkit-box-shadow: inset 1px 1px 6px #CCC; /* Saf3+, Chrome */
+	box-shadow: inset 1px 1px 6px #CCC; /* Standard. Opera 10.5, IE9 */
+}
+#cfp-about-imgs-input ul,
+#cfp-about-imgs-input ul li {
+	position: relative;
+}
+.cfp-about-image-action-inputs {
+	text-align: center;
+}
+
 /* about search results */
 #cfp-img-search-results {
 	display: none;
@@ -534,13 +536,27 @@ button.cf-btn-delete {
 	width: 80px;
 }
 
+/* popover link menu */
+.cfp-icon-preview {
+	background-color: #fff;
+	border: 1px solid #dfdfdf;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	display: inline-block;
+	height: 16px;
+	margin: 0;
+	padding: 4px;
+	text-align: center;
+	width: 16px;
+	vertical-align: middle;
+}
 
 /** @section Utilities
  -------------------------------------------------- */
-/* add-link */
+/* Popup Actions */
 .cfp-add-link {
-	background: url(../img/admin/add-link.png) 0 0 no-repeat;
-	background-c: #ccc;
+	background: url(../img/admin/popup-actions-sprite.png) 0 0 no-repeat;
 	display: block;
 	height: 18px;
 	overflow: hidden;
@@ -558,16 +574,30 @@ button.cf-btn-delete {
 	background-position: 0px -54px;
 }
 
-/* edit link */
-#cfp-link-icon-edit {
-	text-indent: -9999px;
-	background: transparent url(../img/admin/color-edit.png) -138px -118px no-repeat;
-	width: 16px;
+/* Edit Actions */
+input.cfp-action-edit,
+input.cfp-action-remove {
+	background: transparent url(../img/admin/edit-actions-sprite.png) 0 0 no-repeat;
+	border: 0;
+	cursor: pointer;
 	height: 16px;
-	border: none;
+	margin: 0;
+	padding: 0;
+	text-indent: -9999px;
+	width: 16px;
+	vertical-align: baseline;	
 }
-#cfp-link-icon-edit:hover {
-	background-position: -138px -258px;
+input.cfp-action-edit {
+	background-position: 0px 0px;
+}
+input.cfp-action-edit:hover {
+	background-position: 0 -16px;
+}
+input.cfp-action-remove {
+	background-position: 0px -32px;
+}
+input.cfp-action-remove:hover {
+	background-position: 0 -48px;
 }
 
 /* Typography */
