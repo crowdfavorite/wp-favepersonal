@@ -20,6 +20,13 @@ jQuery(document).ready(function($) {
 			$this.prev('label').hide();
 		}
 	});
+	$('.searchform #s').blur(function() {
+		var $this = jQuery(this);
+		if ($this.val() == '') {
+			$this.prev('label').show();
+			$('.searchform label').removeClass('focus')
+		}
+	});
 	$('.searchform label').click(function() {
 		$(this).addClass('focus');
 	});

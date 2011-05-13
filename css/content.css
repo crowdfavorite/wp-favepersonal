@@ -517,7 +517,12 @@
 .widget_search form #s {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 16px;
-	line-height: 28px;
+}
+.widget_search form #s {
+	margin-top: 5px;
+}
+.widget_search form label {
+	margin-top: 6px;
 }
 .widget_search form label {
 	left: 0;
