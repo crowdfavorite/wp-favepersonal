@@ -442,6 +442,17 @@ button.cf-btn-delete {
 	right: 0;
 }
 
+/* color picker popover */
+#cf-kuler-color-picker.cfp-popover {
+	width: 378px;
+}
+#cf-kuler-color-picker p {
+	margin: 5px 0;
+}
+#cf-kuler-color-picker .colorpicker {
+	margin: -15px 0 -5px 10px;	
+}
+
 
 /** @section About Settings
  -------------------------------------------------- */

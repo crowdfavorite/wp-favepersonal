@@ -225,13 +225,11 @@
 
 /** Color Picker
  -------------------------------------------------- */
-
 #cf-kuler-color-picker .colorpicker {
 	background-image: url(../js/colorpicker/images/custom_background.png);
 	position: relative;
 	bottom: 0;
 	left: 0;
-	margin: -10px 0 -10px 5px;
 }
 #cf-kuler-color-picker .colorpicker_hue div {
 	background-image: url(../js/colorpicker/images/custom_indic.gif);
@@ -284,9 +282,10 @@
 	height: 36px;
 }
 #cf-kuler-color-picker .theme-swatches .cf-kuler-theme li {
-	width: 66px;
+	width: 68px;
 	height: 36px;
 }
+#cf-kuler-color-picker .theme-swatches .cf-kuler-theme li:first-child, 
 #cf-kuler-color-picker .theme-swatches .cf-kuler-theme li:last-child {
 	width: 70px;
 }
