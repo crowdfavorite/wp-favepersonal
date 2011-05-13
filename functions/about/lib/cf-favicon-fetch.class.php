@@ -133,7 +133,7 @@ class CF_Favicon_Fetch {
 		if (!is_wp_error($r) && $this->is_valid_response_code($r['response']['code']) && !empty($r['body'])) {
 			$data = json_decode($r['body']);
 
-			if ($data->query->count > 0) {
+			if (!empty($data) && $data->query->count > 0) {
 				// well, now, isn't this fun!
 				if (!empty($data->query->results->link->href)) {
 					// 1 result
@@ -190,13 +190,16 @@ class CF_Favicon_Fetch {
 	public function fetch_favicon($favicon_url) {
 		$file = $this->remote_get($favicon_url);
 		$favicon = false;
-		
-		if (!is_wp_error($file) && $this->is_valid_response_code($file['response']['code'])) {
+
+		if (!is_wp_error($file) && $this->is_valid_response_code($file['response']['code']) && !empty($file['body'])) {
 			$filename = $this->make_filename($favicon_url);
 			$favicon = array(
 				'ext' => pathinfo(basename($favicon_url), PATHINFO_EXTENSION),
 				'source' => $file['body']
 			);
+		}
+		elseif (empty($file['body'])) {
+			$this->handle_error(new WP_Error('Request returned no image content'), __METHOD__);
 		}
 		else {
 			$this->handle_error($file->get_error_message(), __METHOD__);
@@ -242,7 +245,7 @@ class CF_Favicon_Fetch {
 	}
 
 	public function remote_get($url) {
-		return @wp_remote_get($url, array('timeout' => $this->timeout));
+		return wp_remote_get(esc_url($url), array('timeout' => $this->timeout));
 	}
 
 	public function check_upload_dir() {
@@ -294,14 +297,16 @@ class CF_Favicon_Fetch {
 	 * @return void
 	 */
 	public function handle_error($response, $method = '') {
-		if (is_wp_error($response)) {
-			$msg = $response->get_error_message();
+		if (defined('WP_DEBUG') && WP_DEBUG) {
+			if (is_wp_error($response)) {
+				$msg = $response->get_error_message();
+			}
+			else {
+				$msg = strval($response);
+			}
+			$this->last_error = $msg;
+			error_log('Error in remote request '.$msg.' :: '.$method);
 		}
-		else {
-			$msg = strval($response);
-		}
-		$this->last_error = $msg;
-		error_log('Error in remote request '.$msg.' :: '.$method);
 	}
 }
 
