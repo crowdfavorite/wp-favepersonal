@@ -76,11 +76,11 @@
 	margin-bottom: 80px;
 }
 #cf-kuler-swatch-selector .cf-kuler-theme-actions {
-	background-color: #eaf2fa;
+	background-color: #888;
 	display: none;
 	float: left;
-	height: 70px;
-	padding: 11px 0;
+	height: 82px;
+	padding: 5px 0;
 	text-align: center;
 	width: 110px;
 	-moz-border-radius-topright: 5px;
@@ -91,7 +91,16 @@
 	border-bottom-right-radius: 5px;
 }
 #cf-kuler-swatch-selector .cf-kuler-theme-actions p {
-	margin: 13px 0;
+	margin: 12px 0;
+}
+#cf-kuler-swatch-selector .cf-kuler-theme-actions a.button {
+	border: 1px solid #666;
+	display: inline-block;
+	margin: 0;
+	width: 46px;
+}
+#cf-kuler-swatch-selector .cf-kuler-theme:hover ul {
+	border: 1px solid #888;
 }
 #cf-kuler-swatch-selector .cf-kuler-theme:hover .cf-kuler-theme-actions,
 #cf-kuler-swatch-selector .cf-kuler-theme.hover .cf-kuler-theme-actions {
