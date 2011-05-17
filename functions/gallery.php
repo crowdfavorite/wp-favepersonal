@@ -15,6 +15,27 @@
  * **********************************************************************
  */
 
+/**
+ * Run code for gallery at the WP action
+ */
+function cfcp_gallery_on_wp() {
+	if (is_singular()) {
+		$theme = trailingslashit(get_bloginfo('template_directory'));
+		
+		/* Add scripts for full gallery */
+		wp_enqueue_script('jquery-galleria', $theme . 'js/galleria/jquery.galleria.min.js', array('jquery'), CFCT_URL_VERSION);
+		wp_enqueue_script('galleria-personal', $theme . 'js/galleria/themes/personal/galleria.personal.js', array('jquery-galleria'), CFCT_URL_VERSION);
+		
+		$loc = array(
+			'width' => 730,
+			'height' => 450
+		);
+		wp_localize_script('galleria-personal', 'cfcp_galleria', $loc);
+	}
+}
+add_action('wp', 'cfcp_gallery_on_wp');
+
+
 // Prettier captions
 function cfcp_img_captions($attr, $content = null) {
 	$output = apply_filters('img_caption_shortcode', '', $attr, $content);
@@ -40,6 +61,7 @@ add_shortcode('wp_caption', 'cfcp_img_captions');
 add_shortcode('caption', 'cfcp_img_captions');
 
 class CFCT_Gallery {
+	public $id;
 	public $post_id;
 	public $gallery;
 	public $number_of_images = -1; // Unlimited by default
@@ -54,6 +76,17 @@ class CFCT_Gallery {
 		if ($number_of_images) {
 			$this->number_of_images = $number_of_images;
 		}
+		/* Each instance of the gallery has it's own uniqid, so it's guaranteed we have unique
+		HTML ids. */
+		$this->id = uniqid('gal');
+	}
+	
+	/* Just an API function for piecing together the slide naming convention */
+	public function get_slide_id($i) {
+		return 'slide-'.$i.'-'.$this->id;
+	}
+	public function get_thumb_id($i) {
+		return 'thumb-'.$i.'-'.$this->id;
 	}
 	
 	public function get_attachments($number) {
@@ -83,23 +116,16 @@ class CFCT_Gallery {
 	
 	public function view($args = array()) {
 		extract($args);
-		$thumbs = $large = '';
+		$thumbs = '';
 		foreach($gallery->posts as $image) {
-			$id = 'image-'.$image->ID.'-in-post-'.$this->post_id;
-			
-			$thumbs .= '<li><a href="#'.$id.'">'.wp_get_attachment_image($image->ID, 'tiny-img', false).'</a></li>';
-			$large .= '<li id="'.$id.'">'.wp_get_attachment_image($image->ID, 'large-img', false).'</li>';
+			$thumbs .= '<li><a href="'.wp_get_attachment_url($image->ID, 'large-img').'">'.wp_get_attachment_image($image->ID, 'tiny-img', false).'</a></li>';
 		}
 		
 		?>
-<div id="<?php echo 'gallery-in-post-'.$this->post_id; ?>" class="clearfix">
-	<ul class="gallery_images">
-		<?php echo $large; ?>
-	</ul>
-	<ul class="gallery-thumbs">
-		<?php echo $thumbs; ?>
-	</ul>
+<div id="<?php echo $this->id; ?>" class="gallery clearfix">
+	<?php echo $thumbs; ?>
 </div>
+<script type="text/javascript">//jQuery('#<?php echo $id; ?>').galleria(cfcp_galleria);</script>
 		<?php
 	}
 }
@@ -110,12 +136,17 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	public function view($args = array()) {
 		extract($args);
 		$thumbs = '';
+		$post_permalink = get_permalink(get_the_ID());
 		
+		$i = 1;
 		foreach($gallery->posts as $image) {
-			$thumbs .= '<li>'.wp_get_attachment_link($image->ID, $size, false).'</li>';
+			$id = $this->get_slide_id($i);
+			$thumbs .= '<li><a href="'.$post_permalink.'#'.$id.'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
+			$i++;
 		}
 		if ($gallery->found_posts > count($gallery->posts)) {
-			$thumbs .= '<li class="gallery-view-all h5"><a href="'.get_permalink(get_the_ID()).'">View all '.intval($gallery->found_posts).'</a></li>';
+			$text = sprintf(__('View all %s', 'carrington-personal'), intval($gallery->found_posts));
+			$thumbs .= '<li class="gallery-view-all h5"><a href="'.$post_permalink.'"> '.$text.'</a></li>';
 		}
 		
 		?>
