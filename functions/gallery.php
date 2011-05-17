@@ -108,15 +108,16 @@ class CFCT_Gallery {
 	
 	public function view($args = array()) {
 		extract($args);
-		$thumbs = $slides = '';
-		$i = 1;
+		$thumbs = '';
 		foreach($gallery->posts as $image) {
 			/* Individual links can be anchored to. Anchoring to a link triggers Javascript to
 			load its larger image in the stage area */
 			$id = $this->get_slide_id($image->ID);
 			$slide_src = wp_get_attachment_image_src($image->ID, 'large-img', false);
-			$thumbs .= '<li><a id="'.$id.'" href="'.$slide_src[0].'">'.wp_get_attachment_image($image->ID, 'tiny-img', false).'</a></li>';
-			$i++;
+			$attachment_url = get_attachment_link($image->ID);
+			$thumb = wp_get_attachment_image($image->ID, 'tiny-img', false);
+			
+			$thumbs .= '<li><a id="'.$id.'" data-largesrc="'.$slide_src[0].'" href="'.$attachment_url.'">'.$thumb.'</a></li>';
 		}
 		
 		?>

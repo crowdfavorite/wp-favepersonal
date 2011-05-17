@@ -33,6 +33,7 @@
 		fn.$thumbs.click(function(e){
 			var i = fn.getThumbIndex(this);
 			fn.updateStage(i);
+			
 			e.preventDefault();
 		});
 		
@@ -100,7 +101,7 @@
 		},
 
 		getSrcFromThumb: function(i) {
-			return this.$thumbs.eq(i).find('img').attr('src');
+			return this.$thumbs.eq(i).data('largesrc');
 		},
 
 		/*
