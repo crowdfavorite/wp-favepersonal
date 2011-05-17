@@ -6,6 +6,8 @@
 		// Memoize gallery and thumbs for use later.
 		fn.$gal = this;
 		fn.$thumbs = this.find('ul a[href][id]');
+		fn.$stage = $('<div class="stage" />');
+		this.prepend(fn.$stage);
 		
 		fn.updateStage(opts.startAt);
 		
@@ -32,11 +34,10 @@
 		updateStage: function(i) {
 			var src = this.getSrcFromThumb(i),
 				nextSrc = this.getSrcFromThumb(i + 1),
-				$stage = $('<div class="stage"/>'),
 				$img = this.createImage(src),
 				$nextImg = this.createImage(nextSrc);
 
-			this.$gal.prepend($stage.append($img));
+			this.$stage.prepend($img);
 		},
 
 		/* Create and extend an image object from url */
