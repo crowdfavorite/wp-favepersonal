@@ -2,6 +2,7 @@
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
  */
 ;(function ($, win) {
+	loc = win.location;
 	var gal = function(options) {
 		var opts = $.extend(options, gal.defaults),
 			fn = gal.fn,
@@ -33,16 +34,16 @@
 		fn.$thumbs.click(function(e){
 			var i = fn.getThumbIndex(this);
 			fn.updateStage(i);
-			
+			fn.setHashToken($(this).attr('id'));
 			e.preventDefault();
+			e.stopPropagation();
 		});
 		
 		// Bind window load to location hash
 		$(win).load(function(){
-			var loc = win.location.hash,
-				t = fn.$thumbs.filter(loc),
+			var t = fn.$thumbs.filter('#' + fn.getHashToken()),
 				i;
-			if (loc && t.length > 0) {
+			if (t.length > 0) {
 				i = fn.getThumbIndex(t);
 				fn.updateStage(i);
 			};
@@ -68,6 +69,18 @@
 				$img.fadeIn('fast');
 			});
 			this.current = i;
+		},
+		
+		// Set hash without jumping by prepending /
+		setHashToken: function(str) {
+			loc.hash = '/' + str;
+		},
+		
+		getHashToken: function() {
+			if (!loc.hash) {
+				return '';
+			};
+			return loc.hash.slice(2);
 		},
 		
 		getImage: function(i) {
