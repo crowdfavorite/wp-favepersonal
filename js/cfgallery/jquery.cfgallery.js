@@ -1,18 +1,19 @@
 ;(function($, win){
 	var gal = function(options) {
 		var opts = $.extend(options, gal.defaults);
+		gal.$gal = this;
 		gal.$thumbs = this.find('ul a[href][id]');
-		gal.setupStage(this, opts);
+		gal.updateStage(opts.startAt);
 		
 		gal.$thumbs.click(gal.clickThumb);
 		
 		$(win).load(function(){
-			var id = win.location.hash + '',
-				t = gal.$thumbs.find(id);
-			console.log(t);
-			
-			if (t.length > 0) {
-				opts.startAt = gal.getThumbIndex(t);
+			var loc = win.location.hash,
+				t = gal.$thumbs.filter(loc),
+				i;
+			if (loc && t.length > 0) {
+				i = gal.getThumbIndex(t);
+				gal.updateStage(i);
 			};
 		});
 	};
@@ -21,15 +22,18 @@
 		fullSize: [710, 473],
 		startAt: 0
 	};
-	gal.setupStage = function($gal, opts) {
-		var i = opts.startAt,
-			src = gal.getSrcFromThumb(i),
+	
+	gal.updateStage = function(i) {
+		var src = gal.getSrcFromThumb(i),
 			nextSrc = gal.getSrcFromThumb(i + 1),
 			$stage = $('<div class="stage"/>'),
 			$img = gal.createImage(src),
 			$nextImg = gal.createImage(nextSrc);
-		$gal.prepend($stage.append($img));
+		
+		gal.$gal.prepend($stage.append($img));
 	};
+	
+	/* Create and extend an image object from url */
 	gal.createImage = function(src) {
 		var img = new Image();
 		img.src = src;
@@ -44,12 +48,7 @@
 	Get the index of a thumb jQuery object in the set of thumb objects.
 	@return int 0-x or -1 if not found. */
 	gal.getThumbIndex = function($thumb) {
-		for (var i = gal.$thumbs.length - 1; i >= 0; i--){
-			if (gal.$thumbs[i] === $thumb) {
-				return i;
-			};
-		};
-		return -1;
+		return gal.$thumbs.index($thumb);
 	};
 	
 	gal.clickThumb = function(e) {
