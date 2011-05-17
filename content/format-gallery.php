@@ -29,26 +29,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	
 	<div class="post-media">
 		<?php gallery(); ?>
-		
-		<div id="gallery" class="clearfix">
-			<div id="gallery-image">
-				full image
-			</div>
-			<ul id="gallery-thumbs">
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-				<li>img</li>
-			</ul>
-		</div>
 	</div>
 	
 	<?php cfct_misc('post-meta'); ?>

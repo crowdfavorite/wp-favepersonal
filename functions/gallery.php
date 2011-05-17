@@ -23,14 +23,7 @@ function cfcp_gallery_on_wp() {
 		$theme = trailingslashit(get_bloginfo('template_directory'));
 		
 		/* Add scripts for full gallery */
-		wp_enqueue_script('jquery-galleria', $theme . 'js/galleria/jquery.galleria.min.js', array('jquery'), CFCT_URL_VERSION);
-		wp_enqueue_script('galleria-personal', $theme . 'js/galleria/themes/personal/galleria.personal.js', array('jquery-galleria'), CFCT_URL_VERSION);
-		
-		$loc = array(
-			'width' => 730,
-			'height' => 450
-		);
-		wp_localize_script('galleria-personal', 'cfcp_galleria', $loc);
+		wp_enqueue_script('jquery-cfgallery', $theme . 'js/cfgallery/jquery.cfgallery.js', array('jquery'), CFCT_URL_VERSION);
 	}
 }
 add_action('wp', 'cfcp_gallery_on_wp');
@@ -76,17 +69,16 @@ class CFCT_Gallery {
 		if ($number_of_images) {
 			$this->number_of_images = $number_of_images;
 		}
-		/* Each instance of the gallery has it's own uniqid, so it's guaranteed we have unique
-		HTML ids. */
-		$this->id = uniqid('gal');
+		/* Gallery ID based on post id. This should be unique enough. Can't use uniqid because
+		the ID needs to be reproduceable across page loads (for anchoring to slides).
+		If we end up needing multiple same galleries per page, we can make a factory
+		to make sure each gallery id is unique. */
+		$this->id = sprintf('gal%s', $this->post_id);
 	}
 	
 	/* Just an API function for piecing together the slide naming convention */
 	public function get_slide_id($i) {
 		return 'slide-'.$i.'-'.$this->id;
-	}
-	public function get_thumb_id($i) {
-		return 'thumb-'.$i.'-'.$this->id;
 	}
 	
 	public function get_attachments($number) {
@@ -116,16 +108,21 @@ class CFCT_Gallery {
 	
 	public function view($args = array()) {
 		extract($args);
-		$thumbs = '';
+		$thumbs = $slides = '';
+		$i = 1;
 		foreach($gallery->posts as $image) {
-			$thumbs .= '<li><a href="'.wp_get_attachment_url($image->ID, 'large-img').'">'.wp_get_attachment_image($image->ID, 'tiny-img', false).'</a></li>';
+			/* Individual links can be anchored to. Anchoring to a link triggers Javascript to
+			load its larger image in the stage area */
+			$id = $this->get_slide_id($i);
+			$slide_src = wp_get_attachment_image_src($image->ID, 'large-img', false);
+			$thumbs .= '<li><a id="'.$id.'" href="'.$slide_src[0].'">'.wp_get_attachment_image($image->ID, 'tiny-img', false).'</a></li>';
+			$i++;
 		}
 		
 		?>
 <div id="<?php echo $this->id; ?>" class="gallery clearfix">
-	<?php echo $thumbs; ?>
+	<ul class="gallery-thumbs"><?php echo $thumbs; ?></ul>
 </div>
-<script type="text/javascript">//jQuery('#<?php echo $id; ?>').galleria(cfcp_galleria);</script>
 		<?php
 	}
 }

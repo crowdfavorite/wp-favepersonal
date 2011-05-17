@@ -285,18 +285,19 @@
 	padding-left: 130px;
 	padding-right: 130px;
 }
-#gallery-image {
+.gallery .stage {
 	background-color: #ddd;
 	height: 400px;
 	margin: 0 10px;
+	overflow: hidden;
 	width: 710px;
 }
-#gallery-thumbs {
+.gallery-thumbs {
 	list-style-type: none;
 	margin: 0;
 	padding: 0 0 0 10px;
 }
-#gallery-thumbs li {
+.gallery-thumbs li {
 	background-color: #ddd;
 	display: block;
 	float: left;

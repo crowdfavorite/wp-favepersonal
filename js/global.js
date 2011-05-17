@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+jQuery(function($) {
 	
 // About box carousel
 	var $aboutImgs = $('#bio-carousel .bio-box-gallery-images');
@@ -18,18 +18,19 @@ jQuery(document).ready(function($) {
 		var $this = jQuery(this);
 		if ($this.val() == '') {
 			$this.prev('label').hide();
-		}
+		};
 	});
 	$('.searchform #s').blur(function() {
 		var $this = jQuery(this);
 		if ($this.val() == '') {
 			$this.prev('label').show();
-			$('.searchform label').removeClass('focus')
-		}
+			$('.searchform label').removeClass('focus');
+		};
 	});
 	$('.searchform label').click(function() {
 		$(this).addClass('focus');
 	});
 	
+	$('.gallery').cfgallery();
 });
 
