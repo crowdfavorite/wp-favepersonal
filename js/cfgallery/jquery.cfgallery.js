@@ -1,18 +1,42 @@
-;(function($, win){
+/**
+ * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
+ */
+;(function ($, win) {
 	var gal = function(options) {
 		var opts = $.extend(options, gal.defaults),
-			fn = gal.fn;
+			fn = gal.fn,
+			dim = opts.stageDimensions,
+			stage;
 		
 		// Memoize gallery and thumbs for use later.
 		fn.$gal = this;
 		fn.$thumbs = this.find('ul a[href][id]');
-		fn.$stage = $('<div class="stage" />');
-		this.prepend(fn.$stage);
+		
+		// Stage setup. Look for a div if one is provided.
+		stage = this.find('.gallery-stage');
+		// Create a stage if not.
+		if (stage.length < 1) {
+			stage = $('<div class="gallery-stage" />');
+			this.prepend(stage);
+		};
+		stage.css({
+			'position': 'relative',
+			'width': dim[0],
+			'height': dim[1]
+		});
+		
+		fn.$stage = stage;
 		
 		fn.updateStage(opts.startAt);
 		
-		fn.$thumbs.click(fn.clickThumb);
+		// Bind thumb click
+		fn.$thumbs.click(function(e){
+			var i = fn.getThumbIndex(this);
+			fn.updateStage(i);
+			e.preventDefault();
+		});
 		
+		// Bind window load to location hash
 		$(win).load(function(){
 			var loc = win.location.hash,
 				t = fn.$thumbs.filter(loc),
@@ -35,9 +59,9 @@
 			var src = this.getSrcFromThumb(i),
 				nextSrc = this.getSrcFromThumb(i + 1),
 				$img = this.createImage(src),
-				$nextImg = this.createImage(nextSrc);
+				$nextImg = this.preloadImage(nextSrc);
 
-			this.$stage.prepend($img);
+			this.$stage.append($img);
 		},
 
 		/* Create and extend an image object from url */
@@ -45,10 +69,13 @@
 			var that = this,
 				img;
 			this.$gal.trigger('cfgallery-loading');
-			img = this.preloadImage(src);
-			img.load(function () {
-				that.$gal.trigger('cfgallery-loaded');
-			});
+			img = this.preloadImage(src)
+				.load(function () {
+					that.$gal.trigger('cfgallery-loaded');
+				})
+				.css({
+					'position': 'absolute'
+				});
 
 			return img;
 		},
@@ -69,29 +96,11 @@
 		@return int 0-x or -1 if not found. */
 		getThumbIndex: function($thumb) {
 			return this.$thumbs.index($thumb);
-		},
-
-		clickThumb: function(e) {
-			var i = this.getThumbIndex(this),
-				prevImg,
-				nextImg,
-				src;
-
-			e.preventDefault();
-
-			if (i > 1) {
-				src = this.getSrcFromThumb(i - 1);
-				prevImg = this.createImage(src);
-			};
-			if (i < this.$thumbs.length) {
-				src = this.getSrcFromThumb(i + 1);
-				nextImg = this.createImage(src);
-			};
 		}
 	};
 	/* Default args for gallery */
 	gal.defaults = {
-		fullSize: [710, 473],
+		stageDimensions: [710, 473],
 		startAt: 0
 	};
 	
