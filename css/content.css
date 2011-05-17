@@ -285,8 +285,8 @@
 	padding-left: 130px;
 	padding-right: 130px;
 }
-.gallery .stage {
-	background-color: #ddd;
+.gallery-stage {
+	background-color: #000;
 	height: 400px;
 	margin: 0 10px;
 	overflow: hidden;

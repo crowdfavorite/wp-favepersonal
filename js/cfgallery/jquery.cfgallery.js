@@ -52,35 +52,47 @@
 	"this" value set to the jQuery collection passed). Object literal object notation also
 	compresses down a little better in Closure Compiler. */
 	gal.fn = {
-		//$gal: Gallery jQuery object
-		//$thumbs: thumb array jQuery object
+		// $gal: Gallery div jQuery object
+		// $stage: Stage div jQuery object
+		// $thumbs: thumb array jQuery object
+		current: 0, // int of active thumb
+		loadedImages: [], // array of loaded images as jQuery objects
 		
 		updateStage: function(i) {
-			var src = this.getSrcFromThumb(i),
-				nextSrc = this.getSrcFromThumb(i + 1),
-				$img = this.createImage(src),
-				$nextImg = this.preloadImage(nextSrc);
+			var $img = this.getImage(i),
+				$current = this.getImage(this.current),
+				$siblings = this.$stage.children().not(this.loadedImages[this.current]);
+			$siblings.hide();
+			$current.fadeOut('fast', function(){
+				$img.fadeIn('fast');
+			});
+			this.current = i;
+		},
+		
+		getImage: function(i) {
+			var src, img,
+				that = this;
+			// Preload image if we don't already have it in the array.
+			if (!(this.loadedImages[i] instanceof jQuery)) {
+				src = this.getSrcFromThumb(i);
+				
+				this.$gal.trigger('cfgallery-loading');
+				
+				img = this.loadImage(src)
+					.css({
+						'position': 'absolute'
+					})
+					.appendTo(this.$stage)
+					.load(function () {
+						that.$gal.trigger('cfgallery-loaded');
+					});
 
-			this.$stage.append($img);
+				this.loadedImages[i] = img;
+			};
+			return this.loadedImages[i];
 		},
 
-		/* Create and extend an image object from url */
-		createImage: function(src) {
-			var that = this,
-				img;
-			this.$gal.trigger('cfgallery-loading');
-			img = this.preloadImage(src)
-				.load(function () {
-					that.$gal.trigger('cfgallery-loaded');
-				})
-				.css({
-					'position': 'absolute'
-				});
-
-			return img;
-		},
-
-		preloadImage: function(src) {
+		loadImage: function(src) {
 			var img = new Image();
 			img.src = src;
 			img.alt = "";

@@ -77,8 +77,8 @@ class CFCT_Gallery {
 	}
 	
 	/* Just an API function for piecing together the slide naming convention */
-	public function get_slide_id($i) {
-		return 'slide-'.$i.'-'.$this->id;
+	public function get_slide_id($id) {
+		return 's'.$id;
 	}
 	
 	public function get_attachments($number) {
@@ -113,7 +113,7 @@ class CFCT_Gallery {
 		foreach($gallery->posts as $image) {
 			/* Individual links can be anchored to. Anchoring to a link triggers Javascript to
 			load its larger image in the stage area */
-			$id = $this->get_slide_id($i);
+			$id = $this->get_slide_id($image->ID);
 			$slide_src = wp_get_attachment_image_src($image->ID, 'large-img', false);
 			$thumbs .= '<li><a id="'.$id.'" href="'.$slide_src[0].'">'.wp_get_attachment_image($image->ID, 'tiny-img', false).'</a></li>';
 			$i++;
@@ -121,6 +121,7 @@ class CFCT_Gallery {
 		
 		?>
 <div id="<?php echo $this->id; ?>" class="gallery clearfix">
+	<div class="gallery-stage"></div>
 	<ul class="gallery-thumbs"><?php echo $thumbs; ?></ul>
 </div>
 		<?php
