@@ -141,7 +141,7 @@
 		},
 		
 		preloadNeighbors: function(index) {
-			var check = [-1, 1, 2],
+			var check = [1, 2, -1],
 				max = this.$thumbs.length -1,
 				i,
 				a;
