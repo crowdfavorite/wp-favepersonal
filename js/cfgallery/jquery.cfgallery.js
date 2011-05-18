@@ -1,7 +1,7 @@
 /**
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
  */
-;(function ($, win) {
+;(function ($, win, docEl) {
 	loc = win.location;
 	var gal = function(options) {
 		var opts = $.extend(options, gal.defaults),
@@ -36,7 +36,6 @@
 			fn.updateStage(i);
 			fn.setHashToken($(this).attr('id'));
 			e.preventDefault();
-			e.stopPropagation();
 		});
 		
 		// Bind window load to location hash
@@ -46,6 +45,17 @@
 			if (t.length > 0) {
 				i = fn.getThumbIndex(t);
 				fn.updateStage(i);
+			};
+		});
+		
+		$(docEl).keyup(function(e){
+			// Right arrow
+			if (e.keyCode === 39) {
+				fn.updateStage(fn.current + 1);
+			}
+			// Left arrow
+			else if (e.keyCode === 37) {
+				fn.updateStage(fn.current - 1);
 			};
 		});
 	};
@@ -131,4 +141,4 @@
 	};
 	
 	$.fn.cfgallery = gal;
-})(jQuery, window);
+})(jQuery, window, document.documentElement);
