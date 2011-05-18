@@ -47,6 +47,7 @@
 			e.preventDefault();
 		});
 		
+		// Bind loading message to image create and loaded events.
 		fn.$stage.bind('create.cfgal', function(e){
 			fn.$loading.show();
 		});
@@ -123,6 +124,7 @@
 					that.setHashToken(imgThumb.attr('id'));
 				};
 				
+				that.preloadNeighbors(i);
 				that.current = i;
 			};
 			
@@ -135,6 +137,19 @@
 			}
 			else {
 				innerShow($img);
+			};
+		},
+		
+		preloadNeighbors: function(index) {
+			var check = [-1, 1, 2],
+				max = this.$thumbs.length -1,
+				i,
+				a;
+			for (i = check.length - 1; i >= 0; i--){
+				a = index + check[i];
+				if (a >= 0 && a <= max && !this.getImage(a)) {
+					this.createImage(a);
+				};
 			};
 		},
 		
