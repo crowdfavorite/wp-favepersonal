@@ -34,10 +34,9 @@
 			'width': dim[0],
 			'height': dim[1]
 		});
-		
-		stage.bind('create.cfgal', function(e){
-			console.log('creating...');
-		});
+		fn.$loading = $('<div class="loading">Loading...</div>')
+			.hide()
+			.appendTo(stage);
 		
 		fn.$stage = stage;
 		
@@ -46,6 +45,13 @@
 			var i = fn.getThumbIndex(this);
 			fn.show(i);
 			e.preventDefault();
+		});
+		
+		fn.$stage.bind('create.cfgal', function(e){
+			fn.$loading.show();
+		});
+		fn.$stage.bind('loaded.cfgal', function(e){
+			fn.$loading.hide();
 		});
 		
 		// Bind window load to location hash
@@ -191,7 +197,7 @@
 		createImage: function(i) {
 			var src, img;
 			
-			src = this.getSrcFromThumb(i);
+			src = this.$thumbs.eq(i).data('largesrc');
 			img = this.loadImage(src)
 				.css({
 					'position': 'absolute',
@@ -223,13 +229,8 @@
 			return $(img);
 		},
 
-		getSrcFromThumb: function(i) {
-			return this.$thumbs.eq(i).data('largesrc');
-		},
-
 		/*
-		Get the index of a thumb jQuery object in the set of thumb objects.
-		@return int 0-x or -1 if not found. */
+		Get the index of a thumb jQuery object in the set of thumb objects. */
 		getThumbIndex: function($thumb) {
 			return this.$thumbs.index($thumb);
 		}

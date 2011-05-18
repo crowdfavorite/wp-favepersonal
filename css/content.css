@@ -315,6 +315,13 @@
 	-webkit-box-shadow: 0 0 10px #000000; /* Saf3+, Chrome */
 	box-shadow: 0 0 10px #000000; /* Standard. Opera 10.5, IE9 */
 }
+.gallery .loading {
+	background: red;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 5;
+}
 
 /** Status Post Format
  -------------------------------------------------- */
