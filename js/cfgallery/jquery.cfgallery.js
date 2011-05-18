@@ -58,7 +58,7 @@
 			}
 			else {
 				fn.show(opts.start, false);
-			}
+			};
 		});
 		
 		$(docEl).keyup(function(e){
@@ -80,17 +80,24 @@
 		// $gal: Gallery div jQuery object
 		// $stage: Stage div jQuery object
 		// $thumbs: thumb array jQuery object
-		current: 0, // int of active thumb
+		current: null, // int of active thumb
 		loadedImages: [], // array of loaded images as jQuery objects
 		
 		show: function(i, setHash) {
-			var $img = this.getImage(i),
-				$current = this.getImage(this.current),
-				$siblings = this.$stage.children().not(this.loadedImages[this.current]),
+			var $img = this.stageImage(i),
 				$imgThumb = this.$thumbs.eq(i),
-				c = gal.opts.activatedClass;
-			$siblings.hide();
-			this.transitionSlides($current, $img);
+				c = gal.opts.activatedClass,
+				$current,
+				$siblings;
+			
+			if (this.current !== null && this.current !== i) {
+				$current = this.stageImage(this.current);
+				// Hide others
+				this.$stage.children().not($current).hide();
+			}
+			
+			this.transitionSlides($img, $current);
+
 			this.$thumbs.removeClass(c);
 			$imgThumb.addClass(c);
 			if (setHash !== false) {
@@ -123,13 +130,19 @@
 			this.show(i);
 		},
 		
-		transitionSlides: function ($old, $neue) {
-			$old.fadeOut('fast', function(){
-				$neue.fadeIn('fast');
-			});
+		/* Allow transition to be overidden using Duck Punching */
+		transitionSlides: function ($neue, $old) {
+			if (typeof $old !== 'undefined') {
+				$old.fadeOut('fast', function(){
+					$neue.fadeIn('fast');
+				});
+			}
+			else {
+				$neue.fadeIn('medium');
+			};
 		},
 		
-		// Set hash without jumping by prepending /
+		/* Set hash without jumping by prepending with "/" */
 		setHashToken: function(str) {
 			loc.hash = '/' + str;
 		},
@@ -141,23 +154,29 @@
 			return loc.hash.slice(2);
 		},
 		
-		getImage: function(i) {
+		/* Get a full size image jQuery object by it's index.
+		If the image doesn't exist yet, this function will create and append it based on the
+		thumbnail list markup. */
+		stageImage: function(i, callback) {
 			var src, img,
 				that = this;
 			// Preload image if we don't already have it in the array.
 			if (!(this.loadedImages[i] instanceof jQuery)) {
 				src = this.getSrcFromThumb(i);
 				
-				this.$gal.trigger('cfgallery-loading');
-				
 				img = this.loadImage(src)
 					.css({
-						'position': 'absolute'
+						'position': 'absolute',
+						/* Display none is save, because we've already triggered image
+						preload with loadImage() */
+						'display': 'none'
 					})
-					.appendTo(this.$stage)
-					.load(function () {
-						that.$gal.trigger('cfgallery-loaded');
-					});
+					.load(function() {
+						if (typeof callback === 'function') {
+							callback(i, img);
+						};
+					})
+					.appendTo(this.$stage);
 
 				this.loadedImages[i] = img;
 			};
@@ -165,7 +184,8 @@
 		},
 
 		loadImage: function(src) {
-			var img = new Image();
+			var img = new Image(),
+				$img;
 			img.src = src;
 			img.alt = "";
 			return $(img);
