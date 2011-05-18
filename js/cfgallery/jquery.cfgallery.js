@@ -35,6 +35,10 @@
 			'height': dim[1]
 		});
 		
+		stage.bind('create.cfgal', function(e){
+			console.log('creating...');
+		});
+		
 		fn.$stage = stage;
 		
 		// Bind thumb click
@@ -84,26 +88,47 @@
 		loadedImages: [], // array of loaded images as jQuery objects
 		
 		show: function(i, setHash) {
-			var $img = this.stageImage(i),
-				$imgThumb = this.$thumbs.eq(i),
-				c = gal.opts.activatedClass,
-				$current,
-				$siblings;
+			var that = this,
+				$img,
+				innerShow;
 			
-			if (this.current !== null && this.current !== i) {
-				$current = this.stageImage(this.current);
-				// Hide others
-				this.$stage.children().not($current).hide();
-			}
-			
-			this.transitionSlides($img, $current);
+			innerShow = function () {
+				var img = $img,
+					imgThumb = that.$thumbs.eq(i),
+					c = gal.opts.activatedClass,
+					$current;
+				
+				console.log([i, that.current]);
+				
+				$current = that.getImage(that.current);
+				console.log($current);
+				if ($current !== null) {
+					// Hide others
+					that.$stage.children().not($current).hide();
+				}
+				if (that.current !== i) {
+					that.transitionSlides(img, $current);
+				};
+				
+				that.$thumbs.removeClass(c);
+				imgThumb.addClass(c);
 
-			this.$thumbs.removeClass(c);
-			$imgThumb.addClass(c);
-			if (setHash !== false) {
-				this.setHashToken($imgThumb.attr('id'));
+				if (setHash !== false) {
+					that.setHashToken(imgThumb.attr('id'));
+				};
+				
+				that.current = i;
 			};
-			this.current = i;
+			
+			$img = this.getImage(i);
+			if ($img === null) {
+				$img = this.createImage(i);
+				$img.bind('loaded.cfgal', innerShow);
+			}
+			else {
+				console.log('already loaded');
+				innerShow();
+			};
 		},
 		
 		showNext: function() {
@@ -132,9 +157,9 @@
 		
 		/* Allow transition to be overidden using Duck Punching */
 		transitionSlides: function ($neue, $old) {
-			if (typeof $old !== 'undefined') {
+			if ($old !== null && typeof $old !== 'undefined') {
 				$old.fadeOut('fast', function(){
-					$neue.fadeIn('fast');
+					$(this).fadeIn('fast');
 				});
 			}
 			else {
@@ -154,33 +179,32 @@
 			return loc.hash.slice(2);
 		},
 		
+		getImage: function(i) {
+			if (!(this.loadedImages[i] instanceof jQuery)) { return null; };
+			return this.loadedImages[i];
+		},
+		
 		/* Get a full size image jQuery object by it's index.
 		If the image doesn't exist yet, this function will create and append it based on the
 		thumbnail list markup. */
-		stageImage: function(i, callback) {
-			var src, img,
-				that = this;
-			// Preload image if we don't already have it in the array.
-			if (!(this.loadedImages[i] instanceof jQuery)) {
-				src = this.getSrcFromThumb(i);
-				
-				img = this.loadImage(src)
-					.css({
-						'position': 'absolute',
-						/* Display none is save, because we've already triggered image
-						preload with loadImage() */
-						'display': 'none'
-					})
-					.load(function() {
-						if (typeof callback === 'function') {
-							callback(i, img);
-						};
-					})
-					.appendTo(this.$stage);
-
-				this.loadedImages[i] = img;
-			};
-			return this.loadedImages[i];
+		createImage: function(i) {
+			var src, img;
+			
+			src = this.getSrcFromThumb(i);
+			img = this.loadImage(src)
+				.css({
+					'position': 'absolute',
+					/* Display none is safe, because we've already triggered image
+					preload with loadImage() */
+					'display': 'none'
+				})
+				.appendTo(this.$stage)
+				.trigger('create.cfgal')
+				.load(function() {
+					$(this).trigger('loaded.cfgal');
+				});
+			this.loadedImages[i] = img;
+			return img;
 		},
 
 		loadImage: function(src) {
