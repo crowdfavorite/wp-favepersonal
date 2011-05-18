@@ -306,6 +306,15 @@
 	padding: 0;
 	width: 80px;
 }
+.gallery-thumbs a,
+.gallery-thumbs img {
+	display: block;
+}
+.gallery-thumbs a.activated {
+	-moz-box-shadow: 0 0 10px #000000; /* FF3.5+ */
+	-webkit-box-shadow: 0 0 10px #000000; /* Saf3+, Chrome */
+	box-shadow: 0 0 10px #000000; /* Standard. Opera 10.5, IE9 */
+}
 
 /** Status Post Format
  -------------------------------------------------- */

@@ -4,10 +4,16 @@
 ;(function ($, win, docEl) {
 	loc = win.location;
 	var gal = function(options) {
-		var opts = $.extend(options, gal.defaults),
+		var opts = $.extend(options, gal.opts),
 			fn = gal.fn,
 			dim = opts.stageDimensions,
 			stage;
+			
+		gal.opts = opts;
+
+		if (this.length < 1) {
+			return;
+		};
 		
 		// Memoize gallery and thumbs for use later.
 		fn.$gal = this;
@@ -28,7 +34,7 @@
 		
 		fn.$stage = stage;
 		
-		fn.show(opts.startAt);
+		fn.show(opts.start, false);
 		
 		// Bind thumb click
 		fn.$thumbs.click(function(e){
@@ -39,12 +45,16 @@
 		
 		// Bind window load to location hash
 		$(win).load(function(){
-			var t = fn.$thumbs.filter('#' + fn.getHashToken()),
+			var ht = fn.getHashToken(),
+				t,
 				i;
-			if (t.length > 0) {
-				i = fn.getThumbIndex(t);
-				fn.show(i);
-			};
+			if (ht.length > 0) {
+				t = fn.$thumbs.filter('#' + ht);
+				if (t.length > 0) {
+					i = fn.getThumbIndex(t);
+					fn.show(i, false);
+				};
+			}
 		});
 		
 		$(docEl).keyup(function(e){
@@ -69,15 +79,21 @@
 		current: 0, // int of active thumb
 		loadedImages: [], // array of loaded images as jQuery objects
 		
-		show: function(i) {
+		show: function(i, setHash) {
 			var $img = this.getImage(i),
 				$current = this.getImage(this.current),
-				$siblings = this.$stage.children().not(this.loadedImages[this.current]);
+				$siblings = this.$stage.children().not(this.loadedImages[this.current]),
+				$imgThumb = this.$thumbs.eq(i),
+				c = gal.opts.activatedClass;
 			$siblings.hide();
 			$current.fadeOut('fast', function(){
 				$img.fadeIn('fast');
 			});
-			this.setHashToken(this.$thumbs.eq(i).attr('id'));
+			this.$thumbs.removeClass(c);
+			$imgThumb.addClass(c);
+			if (setHash !== false) {
+				this.setHashToken($imgThumb.attr('id'));
+			};
 			this.current = i;
 		},
 		
@@ -158,10 +174,12 @@
 			return this.$thumbs.index($thumb);
 		}
 	};
-	/* Default args for gallery */
-	gal.defaults = {
+	
+	/* Default options for gallery */
+	gal.opts = {
 		stageDimensions: [710, 473],
-		startAt: 0
+		start: 0,
+		activatedClass: 'activated'
 	};
 	
 	$.fn.cfgallery = gal;

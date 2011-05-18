@@ -137,11 +137,9 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 		$thumbs = '';
 		$post_permalink = get_permalink(get_the_ID());
 		
-		$i = 1;
 		foreach($gallery->posts as $image) {
-			$id = $this->get_slide_id($i);
-			$thumbs .= '<li><a href="'.$post_permalink.'#'.$id.'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
-			$i++;
+			$id = $this->get_slide_id($image->ID);
+			$thumbs .= '<li><a href="'.$post_permalink.'#/'.$id.'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
 		}
 		if ($gallery->found_posts > count($gallery->posts)) {
 			$text = sprintf(__('View all %s', 'carrington-personal'), intval($gallery->found_posts));
