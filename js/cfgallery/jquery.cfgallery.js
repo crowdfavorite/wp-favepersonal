@@ -92,22 +92,22 @@
 				$img,
 				innerShow;
 			
-			innerShow = function () {
-				var img = $img,
-					imgThumb = that.$thumbs.eq(i),
+			innerShow = function (img) {
+				var imgThumb = that.$thumbs.eq(i),
 					c = gal.opts.activatedClass,
+					current = that.current,
 					$current;
 				
-				console.log([i, that.current]);
-				
-				$current = that.getImage(that.current);
-				console.log($current);
-				if ($current !== null) {
+				// Hide old and show new if both are present
+				if (current !== null && current !== i) {
+					$current = that.getImage(current);
 					// Hide others
 					that.$stage.children().not($current).hide();
-				}
-				if (that.current !== i) {
 					that.transitionSlides(img, $current);
+				}
+				// If there is no current (first load) just show.
+				if (current === null) {
+					that.transitionSlides(img);
 				};
 				
 				that.$thumbs.removeClass(c);
@@ -123,11 +123,12 @@
 			$img = this.getImage(i);
 			if ($img === null) {
 				$img = this.createImage(i);
-				$img.bind('loaded.cfgal', innerShow);
+				$img.bind('loaded.cfgal', function(e) {
+					innerShow($(e.currentTarget));
+				});
 			}
 			else {
-				console.log('already loaded');
-				innerShow();
+				innerShow($img);
 			};
 		},
 		
@@ -159,7 +160,7 @@
 		transitionSlides: function ($neue, $old) {
 			if ($old !== null && typeof $old !== 'undefined') {
 				$old.fadeOut('fast', function(){
-					$(this).fadeIn('fast');
+					$neue.fadeIn('medium');
 				});
 			}
 			else {
