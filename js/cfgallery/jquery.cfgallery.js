@@ -197,12 +197,19 @@
 					'position': 'absolute',
 					/* Display none is safe, because we've already triggered image
 					preload with loadImage() */
-					'display': 'none'
+					'display': 'none',
+					'left': '50%'
 				})
 				.appendTo(this.$stage)
 				.trigger('create.cfgal')
 				.load(function() {
-					$(this).trigger('loaded.cfgal');
+					var t = $(this);
+					t
+						.css({
+							// Add CSS for centering.
+							'margin-left': -1 * (t.width() / 2)
+						})
+						.trigger('loaded.cfgal');
 				});
 			this.loadedImages[i] = img;
 			return img;
@@ -230,7 +237,7 @@
 	
 	/* Default options for gallery */
 	gal.opts = {
-		stageDimensions: [710, 473],
+		stageDimensions: [710, 400],
 		start: 0,
 		activatedClass: 'activated'
 	};
