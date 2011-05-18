@@ -2,7 +2,10 @@
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
  */
 ;(function ($, win, docEl) {
-	loc = win.location;
+	/* Local variable for hash makes lookups faster and is better for closure compiler */
+	var loc = win.location;
+	
+	/* Constructor */
 	var gal = function(options) {
 		var opts = $.extend(options, gal.opts),
 			fn = gal.fn,
@@ -34,8 +37,6 @@
 		
 		fn.$stage = stage;
 		
-		fn.show(opts.start, false);
-		
 		// Bind thumb click
 		fn.$thumbs.click(function(e){
 			var i = fn.getThumbIndex(this);
@@ -54,6 +55,9 @@
 					i = fn.getThumbIndex(t);
 					fn.show(i, false);
 				};
+			}
+			else {
+				fn.show(opts.start, false);
 			}
 		});
 		
@@ -86,9 +90,7 @@
 				$imgThumb = this.$thumbs.eq(i),
 				c = gal.opts.activatedClass;
 			$siblings.hide();
-			$current.fadeOut('fast', function(){
-				$img.fadeIn('fast');
-			});
+			this.transitionSlides($current, $img);
 			this.$thumbs.removeClass(c);
 			$imgThumb.addClass(c);
 			if (setHash !== false) {
@@ -119,6 +121,12 @@
 				i = max;
 			};
 			this.show(i);
+		},
+		
+		transitionSlides: function ($old, $neue) {
+			$old.fadeOut('fast', function(){
+				$neue.fadeIn('fast');
+			});
 		},
 		
 		// Set hash without jumping by prepending /
@@ -182,5 +190,6 @@
 		activatedClass: 'activated'
 	};
 	
+	/* Assign our object to the jQuery function namespace */
 	$.fn.cfgallery = gal;
 })(jQuery, window, document.documentElement);

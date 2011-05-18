@@ -81,7 +81,7 @@ class CFCT_Gallery {
 		return 's'.$id;
 	}
 	
-	public function get_attachments($number) {
+	public function get_attachments() {
 		if (!$this->gallery) {
 			$this->gallery = new WP_Query(array(
 				'post_parent'		=> $this->post_id,
@@ -97,7 +97,7 @@ class CFCT_Gallery {
 	}
 	
 	public function render($args = array()) {
-		$args['gallery'] = $this->get_attachments($this->number);
+		$args['gallery'] = $this->get_attachments();
 		
 		ob_start();
 			$this->view($args);
@@ -154,7 +154,7 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	}
 }
 
-function gallery($number = 8, $id = null) {
+function gallery($number = -1, $id = null) {
 	$gallery = new CFCT_Gallery($id, $number);
 	$gallery->render();
 	unset($gallery);
