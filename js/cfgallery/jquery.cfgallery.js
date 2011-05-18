@@ -28,13 +28,12 @@
 		
 		fn.$stage = stage;
 		
-		fn.updateStage(opts.startAt);
+		fn.show(opts.startAt);
 		
 		// Bind thumb click
 		fn.$thumbs.click(function(e){
 			var i = fn.getThumbIndex(this);
-			fn.updateStage(i);
-			fn.setHashToken($(this).attr('id'));
+			fn.show(i);
 			e.preventDefault();
 		});
 		
@@ -44,18 +43,18 @@
 				i;
 			if (t.length > 0) {
 				i = fn.getThumbIndex(t);
-				fn.updateStage(i);
+				fn.show(i);
 			};
 		});
 		
 		$(docEl).keyup(function(e){
 			// Right arrow
 			if (e.keyCode === 39) {
-				fn.updateStage(fn.current + 1);
+				fn.showNext();
 			}
 			// Left arrow
 			else if (e.keyCode === 37) {
-				fn.updateStage(fn.current - 1);
+				fn.showPrev();
 			};
 		});
 	};
@@ -70,7 +69,7 @@
 		current: 0, // int of active thumb
 		loadedImages: [], // array of loaded images as jQuery objects
 		
-		updateStage: function(i) {
+		show: function(i) {
 			var $img = this.getImage(i),
 				$current = this.getImage(this.current),
 				$siblings = this.$stage.children().not(this.loadedImages[this.current]);
@@ -78,7 +77,32 @@
 			$current.fadeOut('fast', function(){
 				$img.fadeIn('fast');
 			});
+			this.setHashToken(this.$thumbs.eq(i).attr('id'));
 			this.current = i;
+		},
+		
+		showNext: function() {
+			var i,
+				max = this.$thumbs.length - 1;
+			if (this.current < max) {
+				i = this.current + 1;
+			}
+			else {
+				i = 0;
+			};
+			this.show(i);
+		},
+		
+		showPrev: function() {
+			var i,
+				max = this.$thumbs.length - 1;
+			if (this.current > 0) {
+				i = this.current - 1;
+			}
+			else {
+				i = max;
+			};
+			this.show(i);
 		},
 		
 		// Set hash without jumping by prepending /
