@@ -10,7 +10,6 @@
 
 /**
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
- * @todo fix animation race condition when hitting keypress very fast
  */
 ;(function ($, win, docEl) {
 	/* Local variable for hash makes lookups faster and is better for closure compiler */
@@ -112,37 +111,39 @@
 			
 			callback = function (img) {
 				var c = gal.opts.activatedClass,
-					current = that.current,
+					current = this.current,
 					$current;
 				
 				// Hide old and show new if both are present
 				if (current !== null && current !== i) {
-					$current = that.getImage(current);
+					$current = this.getImage(current);
 					// Hide others
-					that.$stage.children().not($current).hide();
-					that.transitionSlides(img, $current);
+					this.$stage.children().not($current).hide();
+					// Dequeue all animations before starting a new one.
+					this.$stage.find('img').stop(true, true);
+					this.transitionSlides(img, $current);
 				}
 				// If there is no current (first load) just show.
 				if (current === null) {
-					that.transitionSlides(img);
+					this.transitionSlides(img);
 				};
 				
-				that.$thumbs.removeClass(c);
+				this.$thumbs.removeClass(c);
 				$thumb.addClass(c);
 
-				that.preloadNeighbors(i);
-				that.current = i;
+				this.preloadNeighbors(i);
+				this.current = i;
 			};
 			
 			$img = this.getImage(i);
 			if (typeof $img === 'undefined') {
 				$img = this.createImage(i);
 				$img.bind('loaded.cfgal', function(e) {
-					callback($(e.currentTarget));
+					callback.apply(that, [$(e.currentTarget)]);
 				});
 			}
 			else {
-				callback($img);
+				callback.apply(that, [$img]);
 			};
 		},
 		
