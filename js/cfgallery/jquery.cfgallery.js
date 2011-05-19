@@ -11,8 +11,6 @@
 /**
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
  * @todo fix animation race condition when hitting keypress very fast
- * @todo bind to hashchange event to allow paging through slides with back button
- * @todo create gallery image size
  */
 ;(function ($, win, docEl) {
 	/* Local variable for hash makes lookups faster and is better for closure compiler */
