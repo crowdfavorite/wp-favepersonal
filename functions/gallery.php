@@ -113,7 +113,7 @@ class CFCT_Gallery {
 			/* Individual links can be anchored to. Anchoring to a link triggers Javascript to
 			load its larger image in the stage area */
 			$id = $this->get_slide_id($image->ID);
-			$slide_src = wp_get_attachment_image_src($image->ID, 'large-img', false);
+			$slide_src = wp_get_attachment_image_src($image->ID, 'gallery-large-img', false);
 			$attachment_url = get_attachment_link($image->ID);
 			$thumb = wp_get_attachment_image($image->ID, 'tiny-img', false);
 			

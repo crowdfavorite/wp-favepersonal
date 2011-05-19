@@ -69,7 +69,8 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_image_size('thumb-img', 160, 120, true); // gallery excerpt
 		add_image_size('small-img', 310, 180, true); // masthead featured img, bio box
 		add_image_size('medium-img', 510, 510, false); // excerpt image-format
-		add_image_size('large-img', 710, 400, false); // single view for image and gallery
+		add_image_size('large-img', 710, 700, false); // single view for image
+		add_image_size('gallery-large-img', 710, 474, false); // large size for gallery (~3:2 aspect ratio)
 		add_image_size('banner-img', 510, 180, true); // excerpt featured img
 		
 		// Add post formats
