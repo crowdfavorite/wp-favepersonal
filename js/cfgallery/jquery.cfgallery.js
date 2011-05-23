@@ -88,6 +88,7 @@
 			fn.$loading.hide();
 		});
 	};
+
 	/* Helper functions. These live inside of an object so that
 	"this" still points to the parent object (constructors the $.fn space get their
 	"this" value set to the jQuery collection passed). Object literal object notation also
@@ -170,7 +171,11 @@
 		
 		/* Set hash without jumping by prepending with "/" */
 		setHashToken: function(str) {
-			loc.hash = '/' + str;
+			loc.hash = this.makeHashToken(str);
+		},
+		
+		makeHashToken: function(str) {
+			return '/' + str;
 		},
 		
 		setNextHashToken: function() {
@@ -226,11 +231,17 @@
 			src = $thumb.data('largesrc');
 			img = this.loadImage(src)
 				.css({
+					/* We have to do a bit of a dance with image hide/show and centering
+					Though the image is loaded through loadImage, making its width/height
+					info available in most browsers, IE7 doesn't like to give us the w/h
+					without the image being shown. We'll load and place it in the stage,
+					then after loading is finished, we'll set w/h for centering and switch
+					out visibility:hidden for display:none -- that way we can animate the
+					image effectively. */
 					'position': 'absolute',
-					/* Display none is safe, because we've already triggered image
-					preload with loadImage() */
-					'display': 'none',
-					'left': '50%'
+					'left': '50%',
+					'top': '50%',
+					'visibility': 'hidden'
 				})
 				.appendTo(this.$stage)
 				.trigger('create.cfgal')
@@ -238,8 +249,13 @@
 					var t = $(this);
 					t
 						.css({
+							'width': t.width(),
+							'height': t.height(),
 							// Add CSS for centering.
-							'margin-left': -1 * (t.width() / 2)
+							'margin-left': -1 * (t.width() / 2),
+							'margin-top': -1 * (t.height() / 2),
+							'visibility': 'visible',
+							'display': 'none'
 						})
 						.trigger('loaded.cfgal');
 				});
@@ -276,6 +292,15 @@
 		activatedClass: 'activated'
 	};
 	
-	/* Assign our object to the jQuery function namespace */
 	$.fn.cfgallery = gal;
+	
+	$.fn.cfShimLinkHash = function() {
+		var fn = gal.fn;
+		if (this.length > 0) {
+			this.filter('a').each(function(){
+				var t = $(this);
+				t.attr('href', fn.makeHashToken(t.attr('id')));
+			});
+		};
+	};
 })(jQuery, window, document.documentElement);
