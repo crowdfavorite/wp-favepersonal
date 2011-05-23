@@ -27,11 +27,12 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
 	
-	<div class="post-media">
-		<?php gallery(); ?>
-	</div>
-	
-	<?php cfct_misc('post-meta'); ?>
+	<?php
+	gallery(array(
+		'before' => '<div class="post-media">',
+		'after' => '</div>'
+	));
+	cfct_misc('post-meta'); ?>
 	
 	<div class="post-content clearfix">
 		<?php 
