@@ -158,7 +158,8 @@ function gallery($args = array()) {
 		'before' => '',
 		'after' => ''
 	);
-	$gallery = new CFCT_Gallery($id, $number);
+	$args = array_merge($defaults, $args);
+	$gallery = new CFCT_Gallery($args['id'], $args['number']);
 	if ($gallery->exists()) {
 		echo $args['before'];
 		$gallery->render();
