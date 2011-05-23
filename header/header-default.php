@@ -23,7 +23,7 @@ $blog_desc = get_bloginfo('description');
 (is_home() && !empty($blog_desc)) ? $title_description = ' - '.$blog_desc : $title_description = '';
 ?>
 <!DOCTYPE html>
-<!--[if IE 6]><![endif]-->
+<!--[if IE]><![endif]-->
 <html <?php language_attributes() ?>>
 <head>
 	<meta http-equiv="content-type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />

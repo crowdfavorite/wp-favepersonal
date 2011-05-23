@@ -19,12 +19,9 @@
  * Run code for gallery at the WP action
  */
 function cfcp_gallery_on_wp() {
-	if (is_singular()) {
 		$theme = trailingslashit(get_bloginfo('template_directory'));
-		
 		/* Add scripts for full gallery */
 		wp_enqueue_script('jquery-cfgallery', $theme . 'js/cfgallery/jquery.cfgallery.js', array('jquery'), CFCT_URL_VERSION);
-	}
 }
 add_action('wp', 'cfcp_gallery_on_wp');
 
@@ -58,14 +55,11 @@ class CFCT_Gallery {
 	public $post_id;
 	public $gallery;
 	public $number_of_images = -1; // Unlimited by default
+	protected static $instances;
 	
-	public function __construct($id = null, $number_of_images = null) {
-		if (!$id) {
-			$this->post_id = get_the_ID();
-		}
-		else {
-			$this->post_id = $id;
-		}
+	public function __construct($id, $number_of_images = null) {
+		$this->post_id = $id;
+		
 		if ($number_of_images) {
 			$this->number_of_images = $number_of_images;
 		}
@@ -96,14 +90,17 @@ class CFCT_Gallery {
 		return $this->gallery;
 	}
 	
+	public function exists() {
+		$e = $this->get_attachments();
+		return $e->have_posts();
+	}
+	
 	public function render($args = array()) {
+		if (!$this->exists()) {
+			return;
+		}
 		$args['gallery'] = $this->get_attachments();
-		
-		ob_start();
-			$this->view($args);
-		$ob = ob_get_clean();
-		
-		echo $ob;
+		$this->view($args);
 	}
 	
 	public function view($args = array()) {
@@ -130,7 +127,7 @@ class CFCT_Gallery {
 }
 
 class CFCT_Gallery_Excerpt extends CFCT_Gallery {
-	public $number_of_images = 8;
+	public $number_of_images = 8; // 8 by default
 	
 	public function view($args = array()) {
 		extract($args);
@@ -154,19 +151,42 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	}
 }
 
-function gallery($number = -1, $id = null) {
+function gallery($args = array()) {
+	$defaults = array(
+		'number' => -1,
+		'id' => get_the_ID(),
+		'before' => '',
+		'after' => ''
+	);
 	$gallery = new CFCT_Gallery($id, $number);
-	$gallery->render();
+	if ($gallery->exists()) {
+		echo $args['before'];
+		$gallery->render();
+		echo $args['after'];
+	}
 	unset($gallery);
 }
 
 // Display gallery images without our own markup for excerpts 
-function gallery_excerpt($size = 'thumbnail', $number = 8, $id = null) {
-	$gallery = new CFCT_Gallery_Excerpt($id, $number);
-	$args = array(
-		'size' => $size
+function gallery_excerpt($args = array()) {
+	$defaults = array(
+		'size' => 'thumbnail',
+		'number' => 8,
+		'id' => get_the_ID(),
+		'before' => '',
+		'after' => ''
 	);
-	$gallery->render($args);
+	$args = array_merge($defaults, $args);
+	$gallery = new CFCT_Gallery_Excerpt($args['id'], $args['number']);
+	if ($gallery->exists()) {
+		$display_args = array(
+			'size' => $args['size']
+		);
+		
+		echo $args['before'];
+		$gallery->render($display_args);
+		echo $args['after'];
+	}
 	unset($gallery);
 }
 ?>
