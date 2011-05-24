@@ -88,7 +88,7 @@
 			fn.$loading.hide();
 		});
 	};
-
+	
 	/* Helper functions. These live inside of an object so that
 	"this" still points to the parent object (constructors the $.fn space get their
 	"this" value set to the jQuery collection passed). Object literal object notation also
@@ -169,11 +169,12 @@
 			return l.slice(2);
 		},
 		
-		/* Set hash without jumping by prepending with "/" */
+		/* Set hash without jumping */
 		setHashToken: function(str) {
 			loc.hash = this.makeHashToken(str);
 		},
 		
+		/* hash without jumping by prepending / to text */
 		makeHashToken: function(str) {
 			return '/' + str;
 		},
@@ -282,7 +283,12 @@
 			img.src = src;
 			img.alt = "";
 			return $(img);
-		}
+		},
+		
+		/* Copyright (c) 2011 Jed Schmidt, http://jed.is
+		https://gist.github.com/964849
+		Released under MIT license */
+		parseUrl: function(a){return function(b,c,d){a.href=b;c={};for(d in a)if(typeof a[d]=="string")c[d]=a[d];return c}}(document.createElement("a"))
 	};
 	
 	/* Default options for gallery */
@@ -298,8 +304,10 @@
 		var fn = gal.fn;
 		if (this.length > 0) {
 			this.filter('a').each(function(){
-				var t = $(this);
-				t.attr('href', fn.makeHashToken(t.attr('id')));
+				var t = $(this),
+					a = fn.parseUrl(t.attr('href')),
+					token = '#' + fn.makeHashToken(a.hash.replace('#', ''));
+					t.attr('href', a.href.replace(a.hash, token));
 			});
 		};
 	};

@@ -1,5 +1,4 @@
 jQuery(function($) {
-	
 // About box carousel
 	var $aboutImgs = $('#bio-carousel .bio-box-gallery-images');
 	if ($aboutImgs.find('img').size() > 1) {
@@ -32,5 +31,7 @@ jQuery(function($) {
 	});
 	
 	$('.gallery').cfgallery();
+	
+	$('.gallery-img-excerpt a').cfShimLinkHash();
 });
 
