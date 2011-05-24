@@ -24,7 +24,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 <div id="sidebar-1">
 	<?php if (!dynamic_sidebar('sidebar-section-1')) { ?>
-	
 		<aside class="widget">
 			<h3 class="widget-title">Archives</h3>
 			<ul>

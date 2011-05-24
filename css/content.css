@@ -310,10 +310,13 @@
 .gallery-thumbs img {
 	display: block;
 }
-.gallery-thumbs a.activated {
-	-moz-box-shadow: 0 0 10px #000000; /* FF3.5+ */
-	-webkit-box-shadow: 0 0 10px #000000; /* Saf3+, Chrome */
-	box-shadow: 0 0 10px #000000; /* Standard. Opera 10.5, IE9 */
+.gallery-thumbs a.activated,
+.gallery-thumbs a:hover {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+}
+.gallery-thumbs a img {
+	border-bottom: 1px solid #fff;
 }
 .gallery .loading {
 	background: red;

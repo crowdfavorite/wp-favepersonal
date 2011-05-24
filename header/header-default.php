@@ -48,7 +48,7 @@ $blog_desc = get_bloginfo('description');
 		a:hover {
 			color: <?php echo cf_kuler_color('medium'); ?>;
 		}
-		
+
 		/** Header
 		 -------------------------------------------------- */
 		#header {
@@ -210,6 +210,12 @@ $blog_desc = get_bloginfo('description');
 		}
 		.gallery-img-excerpt li.gallery-view-all a:hover {
 			background-color: <?php echo cf_kuler_color('light'); ?>;
+		}
+		.gallery-thumbs a:hover {
+			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
+		}
+		.gallery-thumbs a.activated {
+			border-bottom-color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
 	</style>
 
