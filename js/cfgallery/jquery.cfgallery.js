@@ -11,14 +11,16 @@
 /**
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
  */
-;(function ($, win, docEl) {
+;(function ($, win) {
 	/* Local variable for hash makes lookups faster and is better for closure compiler */
-	var loc = win.location;
+	var loc = win.location,
+		docEl = win.document.documentElement,
+		gal, helpers;
 	
 	/* Constructor */
-	var gal = function(options) {
+	gal = function(options) {
 		var opts = $.extend(options, gal.opts),
-			fn = gal.fn,
+			fn = helpers,
 			dim = opts.stageDimensions,
 			stage;
 			
@@ -73,6 +75,9 @@
 				var id = fn.getHashToken();
 				fn.exhibit(id);
 			})
+			.ready(function(){
+				fn.patchHashToken();
+			})
 			.load(function(){
 				/* If hash is set onload, show the appropriate image.
 				If not, will show the start image. */
@@ -88,12 +93,20 @@
 			fn.$loading.hide();
 		});
 	};
+	/* Default options for gallery */
+	gal.opts = {
+		stageDimensions: [710, 474],
+		start: 0,
+		activatedClass: 'activated'
+	};
+	
+	$.fn.cfgallery = gal;
 	
 	/* Helper functions. These live inside of an object so that
 	"this" still points to the parent object (constructors the $.fn space get their
 	"this" value set to the jQuery collection passed). Object literal object notation also
 	compresses down a little better in Closure Compiler. */
-	gal.fn = {
+	helpers = {
 		// $gal: Gallery div jQuery object
 		// $stage: Stage div jQuery object
 		// $thumbs: thumb array jQuery object
@@ -102,7 +115,7 @@
 		/* Show an image on the stage by it's thumb's ID token.
 		- Loads image if not already loaded
 		- Preloads it's siblings afterwords
-		- Updates index of gal.fn.current */
+		- Updates index of this.current */
 		exhibit: function(token) {
 			var that = this,
 				$img,
@@ -176,7 +189,16 @@
 		
 		/* hash without jumping by prepending / to text */
 		makeHashToken: function(str) {
-			return '/' + str;
+			return '#/' + str;
+		},
+		
+		/* Run this on DOMReady or similar
+		Turns URLs with hashes anchored to gallery thumbs into #/foo URLs */
+		patchHashToken: function() {
+			var l = loc.hash;
+			if (l.indexOf('#/') === -1 && this.$thumbs.filter(l).length > 0) {
+				loc.hash = this.makeHashToken(l.replace('#', ''));
+			};
 		},
 		
 		setNextHashToken: function() {
@@ -291,24 +313,15 @@
 		parseUrl: function(a){return function(b,c,d){a.href=b;c={};for(d in a)if(typeof a[d]=="string")c[d]=a[d];return c}}(document.createElement("a"))
 	};
 	
-	/* Default options for gallery */
-	gal.opts = {
-		stageDimensions: [710, 474],
-		start: 0,
-		activatedClass: 'activated'
-	};
-	
-	$.fn.cfgallery = gal;
-	
 	$.fn.cfShimLinkHash = function() {
-		var fn = gal.fn;
+		var fn = helpers;
 		if (this.length > 0) {
 			this.filter('a').each(function(){
 				var t = $(this),
 					a = fn.parseUrl(t.attr('href')),
-					token = '#' + fn.makeHashToken(a.hash.replace('#', ''));
+					token = fn.makeHashToken(a.hash.replace('#', ''));
 					t.attr('href', a.href.replace(a.hash, token));
 			});
 		};
 	};
-})(jQuery, window, document.documentElement);
+})(jQuery, window);
