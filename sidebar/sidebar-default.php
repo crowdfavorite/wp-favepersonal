@@ -24,25 +24,30 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 <div id="sidebar-1">
 	<?php if (!dynamic_sidebar('sidebar-section-1')) { ?>
-	<aside class="widget">
-		<h5><?php _e('No Widgets Yet!', 'carrington-personal'); ?></h5>
-		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Sidebar Section One), go <a href="%s">add some</a>!', 'carrington-personal'), admin_url('widgets.php')); ?></p>
-	</aside>
+	
+		<aside class="widget">
+			<h3 class="widget-title">Archives</h3>
+			<ul>
+				<?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
+			</ul> 
+		</aside>
+		<aside class="widget">
+			<h3 class="widget-title">Meta</h3>
+			<ul>
+				<?php wp_register(); ?>
+				<li><?php wp_loginout(); ?></li>
+				<?php wp_meta(); ?>
+			</ul>
+		</aside>
 	<?php } ?>
 </div><!-- #sidebar-1 -->
 <div id="sidebar-2">
-	<?php if (!dynamic_sidebar('sidebar-section-2')) { ?>
-	<aside class="widget">
-		<h5><?php _e('No Widgets Yet!', 'carrington-personal'); ?></h5>
-		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Sidebar Section Two), go <a href="%s">add some</a>!', 'carrington-personal'), admin_url('widgets.php')); ?></p>
-	</aside>
-	<?php } ?>
+	<?php if (!dynamic_sidebar('sidebar-section-2')) {
+		// default content here is desired
+	} ?>
 </div><!-- #sidebar-2 -->
 <div id="sidebar-3">
-	<?php if (!dynamic_sidebar('sidebar-section-3')) { ?>
-	<aside class="widget">
-		<h5><?php _e('No Widgets Yet!', 'carrington-personal'); ?></h5>
-		<p><?php printf(__('It looks like you haven&rsquo;t added any widgets to this sidebar yet. To customize this sidebar (Sidebar Section Three), go <a href="%s">add some</a>!', 'carrington-personal'), admin_url('widgets.php')); ?></p>
-	</aside>
-	<?php } ?>
+	<?php if (!dynamic_sidebar('sidebar-section-3')) { 
+		// default content here is desired
+	} ?>
 </div><!-- #sidebar-3 -->
