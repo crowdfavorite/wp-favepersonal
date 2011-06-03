@@ -189,3 +189,40 @@ function cfcp_comment_date() {
 	
 		return $html;
 	}
+	
+	
+	//
+	// Working HTML for featured post position HTML
+	//
+	add_action( 'add_meta_boxes', 'cfp_set_featured_position' );
+	/* Adds a box to the main column on the Post and Page edit screens */
+	function cfp_set_featured_position() {
+		add_meta_box(
+			'cfp-set-featured-position',
+			__( 'Featured Post Position', 'myplugin_textdomain' ),
+			'cfp_featured_position_content',
+			'post',
+			'advanced',
+			'high'
+		);
+	}
+	/* Prints the box content */
+	function cfp_featured_position_content() {	
+		echo '
+		<ul class="cf-clearfix">
+			<li id="cfp-featured-position-1" class="cfp-featured-set">
+				<h4 class="cfp-featured-title">Really really long title that wraps to the next line</h4>
+				<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
+			</li>
+			<li id="cfp-featured-position-2">
+				<h4 class="cfp-featured-title">Title</h4>
+				<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
+			</li>
+			<li id="cfp-featured-position-3">
+				<h4 class="cfp-featured-title">Title</h4>
+				<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
+			</li>
+		</ul>
+		';
+	}
+	//END featured post position HTML

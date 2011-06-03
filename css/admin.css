@@ -34,7 +34,6 @@ Used for common styles across all admin pages
 	background-color: #efefef;
 	border: 1px solid #ddd;
 	border-bottom: 0;
-	font-family: Georgia, Times, serif;
 	font-size: 14px;
 	height: 32px;
 	line-height: 32px;
@@ -618,4 +617,71 @@ input.cfp-action-remove:hover {
 	font: italic normal 12px Georgia, Serif;
 	margin: 0 0 2px 8px;
 	text-transform: uppercase;
+}
+
+
+/** Featured Post Position
+ * metabox on post-edit screen
+ -------------------------------------------------- */
+#cfp-set-featured-position {
+}
+#poststuff #cfp-set-featured-position .inside {
+	margin: 0;
+	padding: 0;
+}
+#cfp-set-featured-position ul,
+#cfp-set-featured-position li,
+#cfp-set-featured-position a {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+#cfp-set-featured-position ul {
+	width: 100%;
+}
+#cfp-set-featured-position li {
+	float: left;
+	padding: 10px 0 11px 0;
+	width: 33.1%;
+	overflow: hidden;
+}
+#cfp-set-featured-position li#cfp-featured-position-2 {
+	border-left: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+}
+#poststuff #cfp-set-featured-position li h4, 
+#poststuff #cfp-set-featured-position li p {
+	margin: 0 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#poststuff #cfp-set-featured-position li h4 {
+	font-size: 13px;
+	font-weight: normal;
+	margin-top: 3px;
+}
+#cfp-set-featured-position li p.cfp-featured-meta {
+	color: #999;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+/* hover */
+#cfp-set-featured-position li:hover {
+	background: url(../img/admin/set-featured-hover.png) 50% 50% no-repeat;
+}
+/* preset - for when post is in draft */
+#cfp-set-featured-position li.cfp-featured-preset {
+	background: url(../img/admin/set-featured-preset.png) 50% 50% no-repeat;
+}
+/* set - position this post is set to once published */
+#cfp-set-featured-position li.cfp-featured-set {
+	background: url(../img/admin/set-featured-set.png) 50% 50% no-repeat;
+}
+/* hide content for hover and setting position */
+#cfp-set-featured-position li:hover,
+#cfp-set-featured-position li.cfp-featured-preset,
+#cfp-set-featured-position li.cfp-featured-set {
+	text-indent: -9999px;
 }
