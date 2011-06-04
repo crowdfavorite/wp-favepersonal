@@ -685,3 +685,14 @@ input.cfp-action-remove:hover {
 #cfp-set-featured-position li.cfp-featured-set {
 	text-indent: -9999px;
 }
+
+/** Header Settings
+ -------------------------------------------------- */
+#cfp-header-options {
+	border-top: 1px solid #999;
+	margin: 15px 0 0 0;
+	padding: 0;
+}
+#cfp-header-options li {
+	border-bottom: 1px solid #999;
+}

@@ -46,7 +46,30 @@ Author URI: http://crowdfavorite.com
 
 			<div id="cfp-header-settings">
 				<form id="cfcp-header-settings" name="cfcp-header-settings" action="" method="">
-
+					
+					<ul id="cfp-header-options">
+						<li>
+							<label>
+								<input type="radio" name="cfp-header-option" value=""> Featured Posts
+							</label>
+							<div class="cfp-featured-preview">
+								Featured Preview
+							</div><!--.cfp-featured-preview-->
+						</li>
+						<li>
+							<label>
+								<input type="radio" name="cfp-header-option" value=""> Header Image
+							</label>
+							<div class="cfp-image-preview">
+								Image Preview
+							</div><!--.cfp-image-preview-->
+						</li>
+						<li>
+							<label>
+								<input type="radio" name="cfp-header-option" value=""> Remove Header
+							</label>
+						</li>
+					</ul>
 
 					<p class="submit"><input class="button button-primary" type="submit" name="submit" value="<?php _e('Save Settings', 'carrington-personal'); ?>" /></p>
 				</form>

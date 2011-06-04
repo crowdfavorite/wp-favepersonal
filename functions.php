@@ -211,7 +211,7 @@ function cfcp_comment_date() {
 	function cfp_featured_position_content() {	
 		echo '
 		<ul class="cf-clearfix">
-			<li id="cfp-featured-position-1" class="cfp-featured-set">
+			<li id="cfp-featured-position-1" class="cfp-featured-preset">
 				<h4 class="cfp-featured-title">Really really long title that wraps to the next line</h4>
 				<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
 			</li>

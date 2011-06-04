@@ -319,10 +319,16 @@
 	border-bottom: 1px solid #fff;
 }
 .gallery .loading {
-	background: red;
+	background-color: rgba(0, 0, 0, .8);
+	color: #fff;
+	font-size: 12px;
+	left: 0;
+	line-height: 2.5em;
 	position: absolute;
+	padding: 0 12px;
 	right: 0;
-	top: 0;
+	text-align: center;
+	bottom: 0;
 	z-index: 5;
 }
 
