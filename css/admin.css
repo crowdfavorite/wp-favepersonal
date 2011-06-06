@@ -325,7 +325,9 @@ button.cf-btn-delete {
 .cf-remove-link:hover {
 	color: #cc0000;
 }
-
+.new .cf-remove-link {
+	display: none;
+}
 /* notifications */
 .cf-error { 
 	background:#fbe3e4 !important; 
@@ -526,7 +528,8 @@ button.cf-btn-delete {
 #cfp-image-search-term {
 	width: 98%;
 }
-.cfp-about-img-placeholder {
+.cfp-about-img-placeholder,
+.cfp-link-img-placeholder {
 	width: 80px;
 	height: 60px;
 	display: inline-block;
@@ -534,6 +537,10 @@ button.cf-btn-delete {
 	-moz-box-shadow: inset 1px 1px 6px #CCC; /* FF3.5+ */
 	-webkit-box-shadow: inset 1px 1px 6px #CCC; /* Saf3+, Chrome */
 	box-shadow: inset 1px 1px 6px #CCC; /* Standard. Opera 10.5, IE9 */
+}
+.cfp-link-img-placeholder {
+	width: 16px;
+	height: 16px;
 }
 #cfp-about-imgs-input ul,
 #cfp-about-imgs-input ul li {

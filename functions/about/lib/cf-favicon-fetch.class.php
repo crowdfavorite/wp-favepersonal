@@ -15,7 +15,7 @@ class CF_Favicon_Fetch {
 	 * 
 	 * @var int
 	 */
-	protected $timeout = 8;
+	protected $timeout = 15;
 	
 	/**
 	 * Response codes that we'll accept as valid when fetching a favicon
@@ -34,10 +34,17 @@ class CF_Favicon_Fetch {
 	/**
 	 * Construct
 	 *
+	 * @todo throw exeption if upload dir is not usable?
 	 * @param string $upload_dir 
 	 */
-	public function __construct($upload_dir) {
+	public function __construct($upload_dir, $options = array()) {
 		$this->upload_dir = trailingslashit($upload_dir);
+		if (!empty($options['timeout'])) {
+			$this->timeout = intval($options['timeout']);
+		}
+		if (!empty($options['valid_response_codes']) && is_array($options['valid_response_codes'])) {
+			$this->valid_response_codes = array_map('intval', $options['valid_response_codes']);
+		}
 	}
 
 // Main query functions 
@@ -70,20 +77,18 @@ class CF_Favicon_Fetch {
 		$siteurl = esc_url($siteurl);
 		$favicon = 'default';
 		
-		if (gethostbyname($siteurl) != $siteurl) {
-			if ($f_url = $this->query_head($siteurl)) {			
-				$f_data = $this->fetch_favicon($f_url);
-				$filename = $this->make_filename($siteurl, $f_data['ext']);			
-			}
-			elseif ($f_data = $this->query_server($siteurl)) {
-				$filename = $this->make_filename($siteurl, 'ico');
-			}
+		if ($f_url = $this->query_head($siteurl)) {			
+			$f_data = $this->fetch_favicon($f_url);
+			$filename = $this->make_filename($siteurl, $f_data['ext']);			
+		}
+		elseif ($f_data = $this->query_server($siteurl)) {
+			$filename = $this->make_filename($siteurl, 'ico');
+		}
 
-			if (!empty($f_data) && !empty($filename)) {
-				$r = $this->save_file($filename, $f_data);
-				if ($r !== false) {
-					$favicon = $r;
-				}
+		if (!empty($f_data) && !empty($filename)) {
+			$r = $this->save_file($filename, $f_data);
+			if ($r !== false) {
+				$favicon = $r;
 			}
 		}
 		
@@ -128,8 +133,7 @@ class CF_Favicon_Fetch {
 				"| /html/head/link[@rel='SHORTCUT ICON']\"");
 		$y .= "&format=json";
 
-		$r = $this->remote_get($y);
-		
+		$r = $this->remote_get($y);	
 		if (!is_wp_error($r) && $this->is_valid_response_code($r['response']['code']) && !empty($r['body'])) {
 			$data = json_decode($r['body']);
 
@@ -191,17 +195,17 @@ class CF_Favicon_Fetch {
 		$file = $this->remote_get($favicon_url);
 		$favicon = false;
 
-		if (!is_wp_error($file) && $this->is_valid_response_code($file['response']['code']) && !empty($file['body'])) {
+		if (!is_wp_error($file) && $this->is_valid_response_code($file['response']['code']) && !empty($file['body']) && $this->is_image($file)) {
 			$filename = $this->make_filename($favicon_url);
 			$favicon = array(
 				'ext' => pathinfo(basename($favicon_url), PATHINFO_EXTENSION),
 				'source' => $file['body']
 			);
 		}
-		elseif (empty($file['body'])) {
+		elseif (!is_wp_error($file) && empty($file['body'])) {
 			$this->handle_error(new WP_Error('Request returned no image content'), __METHOD__);
 		}
-		else {
+		elseif (is_wp_error($file)) {
 			$this->handle_error($file->get_error_message(), __METHOD__);
 		}
 		
@@ -244,8 +248,19 @@ class CF_Favicon_Fetch {
 		return $parts['scheme'].'://'.$parts['host'];
 	}
 
+	/**
+	 * Perform remote get function
+	 * Must supress notice output from the wp_remote_get function 
+	 * so that it doesn't bork ajax operations.
+	 *
+	 * @param string $url 
+	 * @return mixed array/object will be WP_Error object on failure
+	 */
 	public function remote_get($url) {
-		return wp_remote_get(esc_url($url), array('timeout' => $this->timeout));
+		return @wp_remote_get(esc_url($url), array(
+			'timeout' => $this->timeout,
+			'sslverify' => false
+		));
 	}
 
 	public function check_upload_dir() {
@@ -287,6 +302,10 @@ class CF_Favicon_Fetch {
 	
 	public function get_last_error() {
 		return $this->last_error;
+	}
+	
+	public function is_image($file) {
+		return strpos('image', $file['headers']['content-type']) !== false;
 	}
 	
 	/**

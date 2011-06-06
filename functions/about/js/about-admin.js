@@ -1,4 +1,22 @@
 jQuery(function($) {
+	// For older IE implementations - SUCK!
+	// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/keys (expanded for readability)
+	if(!Object.keys) {
+		Object.keys = function(o){
+			if (o !== Object(o)) {
+				throw new TypeError('Object.keys called on non-object');
+			}
+			var ret=[],p;
+			for(p in o) {
+				if(Object.prototype.hasOwnProperty.call(o,p)) {
+					ret.push(p);
+				}
+			}
+			return ret;
+		};
+	}
+	
+// Objects
 	var CF = CF || {};
 
 // Image selector
@@ -53,8 +71,8 @@ jQuery(function($) {
 			},
 			
 			showSearch: function() {
-				if (CF.favicons != undefined) {
-					CF.favicons.hideInputs();
+				if (CF.aboutLinks != undefined) {
+					CF.aboutLinks.hideInputs();
 				}
 				
 				$add.addClass('open');
@@ -138,11 +156,13 @@ jQuery(function($) {
 
 // Favicon input
 	
-	CF.favicons = function($) {
+	CF.aboutLinks = function($) {
 		var $add = $('#cfp-add-link'),
 			$edit = $('#cfp-link-edit'),
-			$preview = $('#cfp-icon-preview'),
-			$previewBlock = $('#cfp-link-icon-preview'),
+			$list = $('#cfp-link-items'),
+			$preview = $('#cfp_icon_preview'),
+			$previewBlock = $('#cfp_link_icon_preview'),
+			$customIconField = $('#cfp_link_custom_favicon'),
 			_fetchIconUrl = null,
 			_timer = null;
 		
@@ -150,15 +170,56 @@ jQuery(function($) {
 		$.data($preview, 'src-orig', $preview.attr('src'));
 		
 		$add.live('click', function(e) {
-			CF.favicons.toggleInputs();
+			CF.aboutLinks.toggleInputs(true);
 			e.stopPropagation();
 			e.preventDefault();
+		});
+		
+		// save button
+		$edit.find('input[name="submit"]').live('click', function(e) {
+			CF.aboutLinks.saveFavicon();
+			e.preventDefault();
+			e.stopPropagation();
+		});
+		
+		// cancel
+		$edit.find('input[name="cancel"]').live('click', function(e) {
+			CF.aboutLinks.hideInputs();
+			e.preventDefault();
+			e.stopPropagation();			
 		});
 		
 		// keep clicks in the popup from bubbling
 		$edit.live('click', function(e) {
 			e.stopPropagation();
-		});	
+		});
+		
+		$list.find('li.cfcp_about_link_item a').live('click', function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			CF.aboutLinks.editLink();
+		});
+		
+		// customize favicon url
+		$('#cfp-link-icon-edit').live('click', function() {
+			CF.aboutLinks.togglePreviewEdit();
+		});
+		
+		// clear custom icon input
+		$('#cfp-cancel-link-icon-edit').live('click', function(e) {
+			CF.aboutLinks.togglePreviewEdit();
+			e.stopPropagation();
+			e.preventDefault();
+		});
+		
+		// init sortables
+		$list.sortable({
+			axis: 'x',
+			items: 'li',
+			cursor: 'crosshair',
+			helper: 'clone',
+			placeholder: 'cfp-link-img-placeholder'
+		});
 		
 		return {
 			requestObj: null,
@@ -169,16 +230,23 @@ jQuery(function($) {
 				}
 			},
 			
-			toggleInputs: function() {
+			toggleInputs: function(showNew) {
 				if (this.isVisible()) {
-					this.hideInputs();
+					this.hideInputs(showNew);
 				}
 				else {
-					this.showInputs();
+					this.showInputs(showNew);
 				}
 			},
 			
-			showInputs: function() {
+			showInputs: function(showNew) {
+				if (showNew == true) {
+					$edit.addClass('new');
+				}
+				else {
+					$edit.removeClass('new');
+				}
+				
 				if (CF.imgs != undefined) {
 					CF.imgs.hideSearch();
 				}
@@ -190,17 +258,17 @@ jQuery(function($) {
 				$edit.css({
 					top: pos.top + 13 + 'px',
 					left: (pos.left + $add.outerWidth() / 2) - ($edit.outerWidth()) + 27 + 'px'
-				}).show().find('input#cfp-link-title').focus();
+				}).show().find('input#cfp_link_title').focus();
 				
 				// timer for live favicon fetch
-				$edit.find('input#cfp-link-url').keyup(function() {
+				$edit.find('input#cfp_link_url').unbind().keyup(function() {
 					if (_timer != null) {
 						clearTimeout(_timer);
 					}
 					actionFunc = function(parentObj) {
 						parentObj.fetchFaviconUrl();
 					};
-					_timer = setTimeout(actionFunc, 500, CF.favicons);
+					_timer = setTimeout(actionFunc, 500, CF.aboutLinks);
 				});			
 			},
 			
@@ -217,11 +285,11 @@ jQuery(function($) {
 			
 			// reset our inputs for editing
 			resetInputs: function() {
-				$edit.find('input[type!="submit"]').val('').end()
+				$edit.find('input[type!="button"]').val('').end()
 					.find('img').attr('src', '#');
 				_fetchIconUrl = null;
 			},
-			
+						
 			isVisible: function() {
 				return $edit.is(':visible');
 			},
@@ -231,7 +299,7 @@ jQuery(function($) {
 				this.resetIconPreview(false);
 				$previewBlock.show();
 				
-				var _url = $('#cfp-link-url').val();
+				var _url = $('#cfp_link_url').val();
 				if (_url.length > 0 && _url != _fetchIconUrl) {
 					_fetchIconUrl = _url;
 					this.requestObj = $.post(ajaxurl,
@@ -242,11 +310,11 @@ jQuery(function($) {
 						},
 						function(r) {
 							if (r.success) {
-								CF.favicons.setIconPreview(r.favicon_url, r.favicon_status);
+								CF.aboutLinks.setIconPreview(r.favicon_url, r.favicon_status);
 							}
 							else {
-								CF.favicons.setIconPreview(r.favicon_url, r.favicon_status);
-								CF.favicons.setErrorMessage(cfcp_about_settings.favicon_fetch_error + _url);
+								CF.aboutLinks.setIconPreview(r.favicon_url, r.favicon_status);
+								CF.aboutLinks.setErrorMessage(cfcp_about_settings.favicon_fetch_error + _url);
 							}
 							CF.requestObj = null;
 						},
@@ -257,9 +325,11 @@ jQuery(function($) {
 			
 			setIconPreview: function(src, status) {
 				$preview.attr('src', src);
-				$('#cfp-link-favicon-status').val(status);
+				$('#cfp_link_favicon').val(src);
+				$('#cfp_link_favicon_status').val(status);
 			},
 			
+			// set the icon preview back to a "loading" state
 			resetIconPreview: function(hide) {
 				if (hide == undefined || hide == true) {
 					$previewBlock.hide();
@@ -269,11 +339,133 @@ jQuery(function($) {
 			},
 			
 			setErrorMessage: function(msg) {
-				$('#cfp-link-icon-message').html(msg);
+				$('#cfp_link_icon_message').html(msg);
 			},
 			
 			clearErrorMessage: function() {
-				$('#cfp-link-icon-message').html('');
+				$('#cfp_link_icon_message').html('');
+			},
+			
+			// show and hide the custom favicon edit box
+			// also stores the current favicon preview state on the "cancel" button
+			togglePreviewEdit: function() {
+				alert('CF.aboutLinks.togglePreviewEdit(): not yet!');
+				return;
+				
+				var $previewEdit = $('#cfp_link_icon_preview_custom');
+				if ($previewEdit.is(':visible')) {
+					$previewEdit.hide();
+				}
+				else {
+					$('#cfp_link_custom_favicon').val('');
+					$previewEdit.show();
+					this.editSaveFaviconState();
+					$customIconField.keyup(function() {
+						if (_timer != null) {
+							clearTimeout(_timer);
+						}
+						actionFunc = function(parentObj) {
+							parentObj.setCustomFavicon();
+						};
+						_timer = setTimeout(actionFunc, 500, CF.aboutLinks);
+					});
+				}
+			},
+			
+			// store a url on the "cancel" button so that we can revert when field is cleared
+			editSaveFaviconState: function() {
+				$('#cfp-cancel-link-icon-edit').data('favicon', $preview.attr('src')).data('status', $('#cfp-link-favicon-status').val());
+			},
+			
+			// restore the favicon preview from the last known state before the custom icon field was messed with
+			editRestoreFaviconState: function() {
+				$preview.attr('src', $('#cfp-cancel-link-icon-edit').data('favicon'));
+				$('#cfp-link-favicon-status').val($('#cfp-cancel-link-icon-edit').data('status'));
+			},
+			
+			setCustomFavicon: function() {
+				CF.aboutLinks.setIconPreview($customIconField.val(), 'custom');
+			},
+			
+			saveFavicon: function() {
+				var _url = $.trim($('#cfp_link_url').val()),
+					_title = $.trim($('#cfp_link_title').val()),
+					_favicon = $.trim($('#cfp_link_favicon').val()),
+					_favicon_status = $.trim($('#cfp_link_favicon_status').val()),
+					errors = {};
+					
+				this.clearNotices();
+					
+				
+				if (_title.length == 0) {
+					errors.cfp_link_title = 'Please enter a link Title';
+				}
+				if (_url.length == 0) {
+					errors.cfp_link_url = 'Please enter a link URL';
+				}
+				
+				this.displayNotices(errors);
+				if (Object.keys(errors).length) {
+					return false;
+				}
+				
+				$.post(ajaxurl,
+					{
+						action: 'cfp_about',
+						cfp_about_action: 'cfp_save_favicon',
+						link: {
+							url: _url,
+							title: _title,
+							favicon: _favicon,
+							favicon_status: _favicon_status
+						}
+					},
+					function(r) {
+						if (r.success) {
+							CF.aboutLinks.insertLinkItem(r.html);
+						}
+						else {
+							$('#cfp-link-edit', $edit).append('<div class="cf-error">' + r.error + '</div>');
+						}
+					},
+					'json'
+				);
+				return true;
+			},
+			
+			displayNotices: function(errors) {
+				this.clearNotices();
+				if (errors !== undefined) {
+					jQuery.each(errors, function(id, errorString) {
+						$('#' + id, $edit).closest('div').append($('<span class="cf-error">' + errorString + '</span>'));
+					});
+				}
+			},
+			
+			clearNotices: function() {
+				$('.cf-error', $edit).remove();
+			},
+			
+			insertLinkItem: function(link) {
+				$list.append($(link));
+				this.handleEmptyLi();
+			},
+			
+			handleEmptyLi: function() {
+				if ($list.find('li').size() > 1) {
+					$list.find('.no-link-item').hide();
+				}
+				else {
+					$list.find('no-link-item').show();					
+				}
+			},
+			
+			refreshSortables: function() {
+				$list.sortable('refresh');
+			}, 
+			
+			editLink: function() {
+				alert('CF.aboutLinks.editLink(): not yet');
 			}
 		};
 	}(jQuery);
@@ -282,7 +474,7 @@ jQuery(function($) {
 			
 	$('body').live('click', function(e) {
 		CF.imgs.hideAllDialogs();
-		CF.favicons.hideInputs();
+		CF.aboutLinks.hideInputs();
 	});
 
 	// $('.cf-updated-message-fade')

@@ -50,12 +50,14 @@
 				<div class="cf-elm-block">
 					<label class="typ-sc"><?php _e('Links', 'carrington-personal'); ?></label>
 					<div class="cfp-list-img-left cf-clearfix">
-						<ul>
+						<ul id="cfp-link-items">
 						<?php
-							echo '<li class="no-favicon-item'.(empty($settings['links']) ? '' : ' cf-hidden').'"><p>'.__('Click the "+" to the right to start adding links', 'carrington-personal').'</p></li>';
-							if (!empty($settings['links'])) {
-								foreach ($settings['links'] as $i => $link) {
-									echo cfcp_load_view('functions/about/views/link-item.php', compact('i', 'link'));
+							echo '<li class="no-link-item'.(empty($settings['links']) ? '' : ' cf-hidden').'"><p>'.__('Click the "+" to the right to start adding links', 'carrington-personal').'</p></li>';
+							if (!empty($settings['links']) && is_array($settings['links'])) {
+								foreach ($settings['links'] as $link) {
+									if (is_array($link)) {
+										echo cfcp_load_view('functions/about/views/link-item.php', compact('link'));
+									}
 								}
 							}
 						?>
