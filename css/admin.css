@@ -7,6 +7,18 @@ Used for common styles across all admin pages
 
 */
 
+
+/**
+ * Style from Admin-UI
+ * This will likely be replaced with an external of the admin-ui in google code
+ *
+ * Changes:
+ * - minor change to elm-block spacing
+ * - minor change to .cf-elm-* padding and font size
+ * - added .cf-remove-link 
+ * - added p.cf-elm-help
+ */
+
 /** @section Tab Navigation
  -------------------------------------------------- */
 .cf-nav {
@@ -59,14 +71,7 @@ Used for common styles across all admin pages
 	margin-bottom: -1px;
 }
 
-
 /** @section Form structure/elements
- * Copied from Admin UI
- * Changes:
- * - minor change to elm-block spacing
- * - minor change to .cf-elm-* padding and font size
- * - added .cf-remove-link 
- * - added p.cf-elm-help
  -------------------------------------------------- */
 #cf fieldset {
 	margin-bottom: 1.5em;
@@ -338,7 +343,6 @@ button.cf-btn-delete {
 .cf-notice a { color:#514721; }
 .cf-success a { color:#264409; }
 
-
 /* clearfix */
 .cf-clearfix:before, .cf-clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .cf-clearfix:after { clear: both; }
@@ -346,8 +350,12 @@ button.cf-btn-delete {
 
 
 
-/** @section Begin Specific Personal Styles
- -------------------------------------------------- */
+
+
+
+/**
+ * Begin Specific Personal Styles
+ */
 
 
 /** Popover - notch menus
