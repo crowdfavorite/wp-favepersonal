@@ -451,7 +451,7 @@
 	top: 67px;
 	text-indent: -9999px;
 	width: 30px;
-	z-index: 999999;
+	z-index: 9999;
 }
 .widget .bio-box-gallery a#bio-carousel-prev {
 	background-position: 0px 0px;
