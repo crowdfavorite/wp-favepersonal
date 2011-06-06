@@ -156,6 +156,7 @@ $blog_desc = get_bloginfo('description');
 		.bio-box-gallery a.bio-carousel-nav:hover {
 			background-color: <?php echo cf_kuler_color('medium'); ?>;
 		}
+		.bio-box-gallery-images,
 		.bio-box-content,
 		.bio-box-links {
 			background-color: <?php echo cf_kuler_color('medium'); ?>;
