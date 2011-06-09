@@ -1,28 +1,71 @@
 /* --------------------------------------------------
  * Comments - Over ride MailChimp Styles
 -------------------------------------------------- */
-ol.mcc-commentlist {
-	float: left;
+
+
+/** @section Comments List
+ -------------------------------------------------- */
+#social ol.social-commentlist {
 	font-size: 13px;
 	line-height: 18px;
-	list-style-type: none;
 	margin: 20px 0;
+	padding: 0;	
+}
+#social li.social-comment {
+	border: 0;
+	margin: 0;
+}
+#social li.social-comment .social-comment-inner {
+	margin: 0;
 	padding: 0;
-}
-ol.mcc-commentlist li {
-	clear: both;
-	float: left;
-}
-ol.mcc-commentlist li .mcc-comment-inner {
-	float: left;
 	position: relative;
-	width: 100%;
 }
-/* mcc-comment-header */
-.mcc-comment-header {
-	float: left;
+#social li.social-comment .social-comment-header {
+	margin: 0;
+	position: static;
 	width: 120px;
 }
+	#social li.social-comment .social-comment-header .social-comment-author {
+		position: relative;
+		margin: 0;
+		padding-bottom: 32px;
+		text-align: right;
+	}
+	#social li.social-comment .social-comment-header .social-fn {
+		display: block;
+	}
+	#social li.social-comment .social-comment-header .avatar {
+		bottom: 0;
+		left: auto;
+		height: 30px;
+		position: absolute;
+		right: 0;
+		top: auto;
+		width: 30px;
+	}
+	#social li.social-comment .social-comment-header .social-comment-meta .social-posted-from {
+		display: block;
+	}
+#social li.social-comment .social-comment-body {
+	border-top: 1px solid #ccc;
+	padding-bottom: 18px;
+	margin: 0 0 0 140px;
+	width: auto;
+}
+#social li.social-comment .social-comment-body p {
+	margin: 0 0 10px 0;
+	padding-right: 30px;
+}
+
+
+
+
+
+
+/** This is my previous styling attempt before the plugin was changed to "social"
+ * I have left this for reference incase any of it can be used
+ * Everything below will be changed to new class names and/or removed
+ -------------------------------------------------- */
 .mcc-comment-header .mcc-comment-author {
 	padding-bottom: 35px;
 	position: relative;
@@ -44,17 +87,7 @@ ol.mcc-commentlist li .mcc-comment-inner {
 	position: absolute;
 	left: 140px;
 }
-/* mcc-comment-body */
-.mcc-comment-body {
-	border-top: 1px solid #ccc;
-	padding-bottom: 18px;
-	padding-right: 30px;
-	margin-left: 140px;
-	width: 480px;
-}
-.mcc-comment-body p {
-	margin: 0 0 10px 0;
-}
+
 /* mcc-actions */
 .mcc-actions {
 	bottom: 0;

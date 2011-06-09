@@ -27,8 +27,8 @@ if (have_comments() || comments_open()) {
 
 <h2 id="comments" class="comments-title"><?php comments_number(__('No Responses (yet)', 'carrington-personal'), __('One Response', 'carrington-personal'), __('% Responses', 'carrington-personal')); ?></h2>
 
-<div id="mcc">
-	<div class="mcc-comments">
+<div id="social">
+	<div class="social-comments">
 <?php 
 	if (!post_password_required()) {
 		$comments = $wp_query->comments;
@@ -52,8 +52,8 @@ if (have_comments() || comments_open()) {
 	}
 ?>
 
-	</div><!-- #comments -->
-</div><!--#mcc-->
+	</div><!-- .social-comments -->
+</div><!--#social-->
 <?php 
 }
 ?>
