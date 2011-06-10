@@ -99,6 +99,7 @@ $blog_desc = get_bloginfo('description');
 		#masthead {
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
 		}
+		/* featured posts */
 		.featured {
 			background-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
@@ -121,6 +122,10 @@ $blog_desc = get_bloginfo('description');
 			color: <?php echo cf_kuler_color('darkest') ?>;
 		}
 		.featured:hover .featured-link {
+		}
+		/* header image */
+		#header-image img {
+			border-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
 		
 		/** Post
@@ -252,41 +257,13 @@ $blog_desc = get_bloginfo('description');
 	
 	<section id="masthead">
 		<div class="container clearfix">
-			<div class="col-a">
-				<article class="featured has-featured-img">
-					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-1.jpg" width="310" height="180" class="featured-img" />
-					<div class="featured-content">
-						<h2 class="featured-title"><a href="">Praesent Placerat</a></h2>
-						<div class="featured-description">
-							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>							
-						</div>
-					</div>
-					<a href="" class="featured-link">Read More</a>
-				</article><!-- .featured -->
-			</div><!-- .col-a -->
-			<div class="col-b">
-				<article class="featured has-featured-img">
-					<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-2.jpg" width="310" height="180" class="featured-img" />
-					<div class="featured-content">
-						<h2 class="featured-title"><a href="">Vestibulum Auctor Dapibus</a></h2>
-						<div class="featured-description">
-							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-						</div>
-					</div>
-					<a href="" class="featured-link">Read More</a>
-				</article><!-- .featured -->
-			</div><!-- .col-b -->
-			<div class="col-c">
-				<article class="featured">
-					<div class="featured-content">
-						<h2 class="featured-title"><a href="">Integer Vitae Libero</a></h2>
-						<div class="featured-description">
-							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-						</div>
-					</div>
-					<a href="" class="featured-link">Read More</a>
-				</article><!-- .featured -->
-			</div><!-- .col-c -->
+			<?php
+				//These files are also loaded for the header settings screen in the admin
+				//If settings are for featured posts
+				cfct_misc('header-featured-posts');
+				//else if setting are for header image
+				//cfct_misc('header-image');
+			?>
 		</div><!-- .container -->
 	</section><!-- #masthead -->
 	

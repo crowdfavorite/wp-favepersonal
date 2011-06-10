@@ -48,23 +48,23 @@ Author URI: http://crowdfavorite.com
 				<form id="cfcp-header-settings" name="cfcp-header-settings" action="" method="">
 					
 					<ul id="cfp-header-options">
-						<li>
+						<li id="cfp-header-featured" class="cfp-selected">
 							<label>
 								<input type="radio" name="cfp-header-option" value=""> Featured Posts
 							</label>
-							<div class="cfp-featured-preview">
-								Featured Preview
+							<div class="cfp-header-preview">
+								<?php cfct_misc('header-featured-posts'); ?>
 							</div><!--.cfp-featured-preview-->
 						</li>
-						<li>
+						<li id="cfp-header-image" class="">
 							<label>
 								<input type="radio" name="cfp-header-option" value=""> Header Image
 							</label>
-							<div class="cfp-image-preview">
-								Image Preview
+							<div class="cfp-header-preview">
+								<?php cfct_misc('header-image'); ?>
 							</div><!--.cfp-image-preview-->
 						</li>
-						<li>
+						<li id="cfp-header-none">
 							<label>
 								<input type="radio" name="cfp-header-option" value=""> Remove Header
 							</label>
