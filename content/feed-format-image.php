@@ -24,7 +24,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 <?php remove_filter('the_content', 'cfct_content_feed'); ?>
 
-<p><?php the_post_thumbnail('medium-img'); ?></p>
+<p><a href="<?php the_permalink() ?>"><?php the_post_thumbnail('medium-img'); ?></a></p>
 <?php the_content_feed('rss2'); ?>
 
 <?php add_filter('the_content', 'cfct_content_feed'); ?>
