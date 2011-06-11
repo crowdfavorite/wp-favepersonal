@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @package carrington-personal
+ * @package favepersonal
  *
  * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -18,7 +18,7 @@
 
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 
-load_theme_textdomain('carrington-personal');
+load_theme_textdomain('favepersonal');
 
 /**
  * Set this to "true" to turn on debugging mode.
@@ -50,7 +50,7 @@ include_once(CFCT_PATH.'functions/header.php');
 include_once(CFCT_PATH.'plugins/load.php');
 
 /**
- * Removing theme settings from carrington-core, will replace with carrington-personal settings
+ * Removing theme settings from carrington-core, will replace with favepersonal settings
  */
 //remove_action('admin_menu', 'cfct_admin_menu');
 
@@ -78,8 +78,8 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_theme_support( 'post-formats', array('gallery','image','link','video','status', 'quote'));
 		
 		register_nav_menus(array(
-			'main' => __( 'Main Navigation', 'carrington-personal' ),
-			'footer' => __( 'Footer Navigation', 'carrington-personal' )
+			'main' => __( 'Main Navigation', 'favepersonal' ),
+			'footer' => __( 'Footer Navigation', 'favepersonal' )
 		));
 		
 		// Let's load some scripts

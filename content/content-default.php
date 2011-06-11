@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @package carrington-personal
+ * @package favepersonal
  *
  * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -32,9 +32,9 @@ $previousday = -1;
 	<?php cfct_misc('post-meta'); ?>
 	<div class="post-content clearfix">
 		<?php 
-			the_content('<span class="more-link">'.__('Continued...', 'carrington-personal').'</span>'); 
+			the_content('<span class="more-link">'.__('Continued...', 'favepersonal').'</span>'); 
 			$args = array(
-				'before' => '<p class="pages-link">'. __('Pages: ', 'carrington-personal'),
+				'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
 				'after' => "</p>\n",
 				'next_or_number' => 'number'
 			);

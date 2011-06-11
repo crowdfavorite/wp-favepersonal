@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @package carrington-personal
+ * @package favepersonal
  *
  * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -32,5 +32,5 @@ else {
 <form class="searchform" method="get" action="<?php echo trailingslashit(get_bloginfo('url')); ?>" onsubmit="<?php echo $onsubmit; ?>">
 	<label for="s">Search&hellip;</label>
 	<input type="text" id="s" name="s" value="<?php echo esc_html($s, 1); ?>" size="15" />
-	<input type="submit" id="searchsubmit" value="<?php _e('Search', 'carrington-personal'); ?>">
+	<input type="submit" id="searchsubmit" value="<?php _e('Search', 'favepersonal'); ?>">
 </form>

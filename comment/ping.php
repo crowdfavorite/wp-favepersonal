@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @package carrington-personal
+ * @package favepersonal
  *
  * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -41,6 +41,6 @@ global $comment;
 	</div><!--.mcc-comment-body-->
 	<div class="mcc-actions">
 		<a class="mcc-comment-email-link" href="#">Email This</a>
-		<?php edit_comment_link(__('Edit', 'carrington-personal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
+		<?php edit_comment_link(__('Edit', 'favepersonal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
 	</div><!--.mcc-actions-->
 </div>

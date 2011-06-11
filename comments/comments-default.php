@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @package carrington-personal
+ * @package favepersonal
  *
  * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -25,7 +25,7 @@ global $post, $wp_query, $comments, $comment;
 if (have_comments() || comments_open()) {
 ?>
 
-<h2 id="comments" class="comments-title"><?php comments_number(__('No Responses (yet)', 'carrington-personal'), __('One Response', 'carrington-personal'), __('% Responses', 'carrington-personal')); ?></h2>
+<h2 id="comments" class="comments-title"><?php comments_number(__('No Responses (yet)', 'favepersonal'), __('One Response', 'favepersonal'), __('% Responses', 'favepersonal')); ?></h2>
 
 <div id="social">
 	<div class="social-comments">

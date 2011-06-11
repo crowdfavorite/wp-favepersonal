@@ -14,8 +14,8 @@ Author URI: http://crowdfavorite.com
 	function cfcp_header_admin_menu() {
 		add_submenu_page(
 			'themes.php',
-			__('Header', 'carrington-personal'),
-			__('Header', 'carrington-personal'),
+			__('Header', 'favepersonal'),
+			__('Header', 'favepersonal'),
 			'manage_options',
 			basename(__FILE__),
 			'cfcp_header_admin_form'
@@ -42,7 +42,7 @@ Author URI: http://crowdfavorite.com
 ?>
 
 		<div class="wrap cf cf-clearfix">
-			<h2><?php _e('Header Settings', 'carrington-personal'); ?></h2>
+			<h2><?php _e('Header Settings', 'favepersonal'); ?></h2>
 
 			<div id="cfp-header-settings">
 				<form id="cfcp-header-settings" name="cfcp-header-settings" action="" method="">
@@ -71,7 +71,7 @@ Author URI: http://crowdfavorite.com
 						</li>
 					</ul>
 
-					<p class="submit"><input class="button button-primary" type="submit" name="submit" value="<?php _e('Save Settings', 'carrington-personal'); ?>" /></p>
+					<p class="submit"><input class="button button-primary" type="submit" name="submit" value="<?php _e('Save Settings', 'favepersonal'); ?>" /></p>
 				</form>
 			</div><!--#cfp-header-->
 		</div><!--.cf wrap -->

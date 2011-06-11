@@ -30,8 +30,8 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 			wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
 			wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
 			wp_localize_script('cfcp-about-admin-js', 'cfcp_about_settings', array(
-				'image_del_confirm' => __('Are you sure you want to delete this image?', 'carrington-personal'),
-				'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'carrington-personal')
+				'image_del_confirm' => __('Are you sure you want to delete this image?', 'favepersonal'),
+				'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'favepersonal')
 			));
 		}
 	}
@@ -80,7 +80,7 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 					$ret = array(
 						'success' => (!empty($results) ? true : false),
 						'key' => $_POST['key'],
-						'html' => (!empty($results) ? $results : '<div class="cfp-img-search-no-results">'.__('No results found.', 'carrington-personal').'</div>')
+						'html' => (!empty($results) ? $results : '<div class="cfp-img-search-no-results">'.__('No results found.', 'favepersonal').'</div>')
 					);
 					
 					break;
@@ -164,10 +164,10 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 					}
 					else {
 						if (empty($link['title'])) {
-							$error += '<p>'.__('Please enter a valid link title.', 'carrington-personal').'</p>';
+							$error += '<p>'.__('Please enter a valid link title.', 'favepersonal').'</p>';
 						}
 						if (empty($link['url'])) {
-							$error += '<p>'.__('Please enter a valid link URL.', 'carrington-personal').'</p>';
+							$error += '<p>'.__('Please enter a valid link URL.', 'favepersonal').'</p>';
 						}
 					}
 
@@ -233,8 +233,8 @@ define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
 	function cfcp_about_admin_menu() {
 		add_submenu_page(
 			'themes.php',
-			__('About', 'carrington-personal'),
-			__('About', 'carrington-personal'),
+			__('About', 'favepersonal'),
+			__('About', 'favepersonal'),
 			'manage_options',
 			basename(__FILE__),
 			'cfcp_about_admin_form'

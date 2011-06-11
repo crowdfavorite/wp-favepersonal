@@ -55,7 +55,7 @@ class CFCP_About_Widget extends WP_Widget {
      * @return void Echoes it's output
      **/
 	function form( $instance ) {
-		echo '<p>'.sprintf(__('This widget has no options. %sClick here to manage the settings for this widget%s', 'carrington-personal'), '<a href="#">', '</a>').'</p>';
+		echo '<p>'.sprintf(__('This widget has no options. %sClick here to manage the settings for this widget%s', 'favepersonal'), '<a href="#">', '</a>').'</p>';
 	}
 }
 

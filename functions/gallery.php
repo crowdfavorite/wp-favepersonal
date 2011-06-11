@@ -1,11 +1,11 @@
 <?php
 /**
- * @package carrington-personal
+ * @package favepersonal
  *
  * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -139,7 +139,7 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 			$thumbs .= '<li><a href="'.$post_permalink.'#'.$id.'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
 		}
 		if ($gallery->found_posts > count($gallery->posts)) {
-			$text = sprintf(__('View all %s', 'carrington-personal'), intval($gallery->found_posts));
+			$text = sprintf(__('View all %s', 'favepersonal'), intval($gallery->found_posts));
 			$thumbs .= '<li class="gallery-view-all h5"><a href="'.$post_permalink.'"> '.$text.'</a></li>';
 		}
 		

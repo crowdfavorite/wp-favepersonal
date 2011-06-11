@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @package carrington-personal
+ * @package favepersonal
  *
  * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -20,6 +20,6 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-echo '<p>', _e('Sorry, we couldn\'t find any results that matched your request.', 'carrington-personal'), '</p>';
+echo '<p>', _e('Sorry, we couldn\'t find any results that matched your request.', 'favepersonal'), '</p>';
 
 ?>

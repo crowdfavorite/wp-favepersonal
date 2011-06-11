@@ -9,7 +9,7 @@
 				$format_hash = 'post-format-'.$format;
 			}
 			else {
-				$format_string = __('Standard Post', 'carrington-personal');
+				$format_string = __('Standard Post', 'favepersonal');
 				$format_hash = 'post-format-0';
 			}
 			

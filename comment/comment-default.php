@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @package carrington-personal
+ * @package favepersonal
  *
  * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -40,7 +40,7 @@ extract($data); // for comment reply link
 	</div><!--.mcc-comment-header-->
 	<div class="mcc-comment-body">
 		<?php if ($comment->comment_approved == '0') { ?>
-			<p class="notification"><strong><?php _e('(Your comment is awaiting moderation)', 'carrington-personal'); ?></strong></p>
+			<p class="notification"><strong><?php _e('(Your comment is awaiting moderation)', 'favepersonal'); ?></strong></p>
 		<?php }
 			comment_text();
 		?>
@@ -49,6 +49,6 @@ extract($data); // for comment reply link
 		<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post); ?>
 		&middot;
 		<a class="mcc-comment-email-link" href="#">Email This</a>
-		<?php edit_comment_link(__('Edit', 'carrington-personal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
+		<?php edit_comment_link(__('Edit', 'favepersonal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
 	</div><!--.mcc-actions-->
 </div><!--#comment-xx-->

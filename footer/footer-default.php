@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @package carrington-personal
+ * @package favepersonal
  *
  * This file is part of the Carrington Personal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-personal/
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2010 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -27,8 +27,8 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 	<footer id="footer">
 		<div class="container clearfix">
-			<p class="credit"><?php _e('Powered by <a href="http://wordpress.org/" rel="generator">WordPress</a></span>', 'carrington-personal'); ?> &nbsp;&middot;&nbsp; <?php printf(__('<a href="http://crowdfavorite.com/themes/carrington-personal" title="Powerful Wordpress theme to power your personal sites">%s</a>', 'carrington-personal'), 'Carrington Personal'); ?> by <?php printf(__('<a href="http://crowdfavorite.com" title="Custom WordPress development, design and backup services." rel="developer designer">%s</a>', 'carrington-personal'), 'Crowd Favorite'); ?></p>
-			<p><?php _e('Copyright &copy; ', 'carrington-personal'); echo date('Y'); ?> &nbsp;&middot;&nbsp; <?php bloginfo('name'); ?></p>
+			<p class="credit"><?php _e('Powered by <a href="http://wordpress.org/" rel="generator">WordPress</a></span>', 'favepersonal'); ?> &nbsp;&middot;&nbsp; <?php printf(__('<a href="http://crowdfavorite.com/themes/favepersonal" title="Powerful Wordpress theme to power your personal sites">%s</a>', 'favepersonal'), 'Carrington Personal'); ?> by <?php printf(__('<a href="http://crowdfavorite.com" title="Custom WordPress development, design and backup services." rel="developer designer">%s</a>', 'favepersonal'), 'Crowd Favorite'); ?></p>
+			<p><?php _e('Copyright &copy; ', 'favepersonal'); echo date('Y'); ?> &nbsp;&middot;&nbsp; <?php bloginfo('name'); ?></p>
 		</div><!--.container-->
 	</footer><!-- #footer -->
 
