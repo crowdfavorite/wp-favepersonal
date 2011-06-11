@@ -3,8 +3,8 @@
 /**
  * @package favepersonal
  *
- * This file is part of the Carrington Business Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/carrington-persona/
+ * This file is part of the FavePersonal for WordPress
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
  * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
