@@ -16,17 +16,22 @@
  * **********************************************************************
  */
 
-
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
+global $post;
+
+if (has_post_thumbnail($post->ID)) {
 ?>
-
-<?php remove_filter('the_content', 'cfct_content_feed'); ?>
-
 <div style="float:left; margin: 0 1.5em 1.5em 0;">
 	<?php the_post_thumbnail('thumb-img'); ?>
 </div>
-<?php the_content_feed('rss2'); ?>
+<?php 
+}
 
-<?php add_filter('the_content', 'cfct_content_feed'); ?>
+remove_filter('the_content', 'cfct_content_feed');
+the_content_feed('rss2'); 
+add_filter('the_content', 'cfct_content_feed');
+
+?>
+<p style="clear: both;"><a href="<?php echo get_permalink($post->ID); ?>">#</a></p>

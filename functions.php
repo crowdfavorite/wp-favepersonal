@@ -115,10 +115,19 @@ remove_action('admin_menu', 'cfct_admin_menu');
 wp_register_script('jquery-cycle', get_template_directory_uri().'/js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);
 wp_register_script('cfcp-global', get_bloginfo('template_directory').'/js/global.js', array('jquery'), CFCT_URL_VERSION);
 
-/**
- * Kuler Color Integration
- * http://kuler.adobe.com
- */
+// feed permalink for link posts
+
+function cfp_the_permalink_rss($url) {
+	global $post;
+	if (has_post_format('link', $post)) {
+		$link = get_post_meta($post->ID, '_format_link_url', true);
+		if (!empty($link)) {
+			$url = $link;
+		}
+	}
+	return $url;
+}
+add_filter('the_permalink_rss', 'cfp_the_permalink_rss');
 
 // Convert color to RGB so we can use background opacity
 function hex2rgb( $color ) {
@@ -126,11 +135,11 @@ function hex2rgb( $color ) {
 			$color = substr( $color, 1 );
 	}
 	if ( strlen( $color ) == 6 ) {
-			list( $r, $g, $b ) = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+		list( $r, $g, $b ) = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
 	} elseif ( strlen( $color ) == 3 ) {
-			list( $r, $g, $b ) = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+		list( $r, $g, $b ) = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
 	} else {
-			return false;
+		return false;
 	}
 	$r = hexdec( $r );
 	$g = hexdec( $g );
@@ -163,85 +172,85 @@ function cfcp_comment_date() {
 }
 
 // admin utility
-	function cfp_get_popover_html($popover_id, $params = array()) {
-		$html = $class = '';
-	
-		if (!empty($params['html'])) {
-			$html = $params['html'];
-		}
-	
-		if (!empty($params['class'])) {
-			$class = esc_attr($params['class']);
-		}
-	
-		$arrow_pos = 'center';
-		if (!empty($params['arrow_pos'])) {
-			$arrow_pos = esc_attr($params['arrow_pos']);
-		}
-	
-		$display = 'none';
-		if (!empty($params['display'])) {
-			$display = esc_attr($params['display']);
-		}
-	
-		return cfcp_load_view('misc/admin-popover-template.php', compact('popover_id', 'html', 'arrow_pos', 'class', 'display'));
+function cfp_get_popover_html($popover_id, $params = array()) {
+	$html = $class = '';
+
+	if (!empty($params['html'])) {
+		$html = $params['html'];
 	}
 
-	/**
-	 * Load a view file.
-	 * File path is relative to the theme root
-	 *
-	 * @param string $file 
-	 * @param string $params 
-	 * @return void
-	 */
-	function cfcp_load_view($file, $params) {
-		$file = trailingslashit(get_template_directory()).$file;
-		$html = '';
-	
-		if (is_file($file)) {
-			ob_start();
-			extract($params);
-			include($file);
-			$html = ob_get_clean();
-		}
-	
-		return $html;
+	if (!empty($params['class'])) {
+		$class = esc_attr($params['class']);
 	}
-	
-	
-	//
-	// Working HTML for featured post position HTML
-	//
-	add_action( 'add_meta_boxes', 'cfp_set_featured_position' );
-	/* Adds a box to the main column on the Post and Page edit screens */
-	function cfp_set_featured_position() {
-		add_meta_box(
-			'cfp-set-featured-position',
-			__( 'Featured Post Position', 'myplugin_textdomain' ),
-			'cfp_featured_position_content',
-			'post',
-			'advanced',
-			'high'
-		);
+
+	$arrow_pos = 'center';
+	if (!empty($params['arrow_pos'])) {
+		$arrow_pos = esc_attr($params['arrow_pos']);
 	}
-	/* Prints the box content */
-	function cfp_featured_position_content() {	
-		echo '
-		<ul class="cf-clearfix">
-			<li id="cfp-featured-position-1" class="cfp-featured-preset">
-				<h4 class="cfp-featured-title">Really really long title that wraps to the next line</h4>
-				<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
-			</li>
-			<li id="cfp-featured-position-2">
-				<h4 class="cfp-featured-title">Title</h4>
-				<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
-			</li>
-			<li id="cfp-featured-position-3">
-				<h4 class="cfp-featured-title">Title</h4>
-				<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
-			</li>
-		</ul>
-		';
+
+	$display = 'none';
+	if (!empty($params['display'])) {
+		$display = esc_attr($params['display']);
 	}
-	//END featured post position HTML
+
+	return cfcp_load_view('misc/admin-popover-template.php', compact('popover_id', 'html', 'arrow_pos', 'class', 'display'));
+}
+
+/**
+ * Load a view file.
+ * File path is relative to the theme root
+ *
+ * @param string $file 
+ * @param string $params 
+ * @return void
+ */
+function cfcp_load_view($file, $params) {
+	$file = trailingslashit(get_template_directory()).$file;
+	$html = '';
+
+	if (is_file($file)) {
+		ob_start();
+		extract($params);
+		include($file);
+		$html = ob_get_clean();
+	}
+
+	return $html;
+}
+
+
+//
+// Working HTML for featured post position HTML
+//
+add_action( 'add_meta_boxes', 'cfp_set_featured_position' );
+/* Adds a box to the main column on the Post and Page edit screens */
+function cfp_set_featured_position() {
+	add_meta_box(
+		'cfp-set-featured-position',
+		__( 'Featured Post Position', 'myplugin_textdomain' ),
+		'cfp_featured_position_content',
+		'post',
+		'advanced',
+		'high'
+	);
+}
+/* Prints the box content */
+function cfp_featured_position_content() {	
+	echo '
+	<ul class="cf-clearfix">
+		<li id="cfp-featured-position-1" class="cfp-featured-preset">
+			<h4 class="cfp-featured-title">Really really long title that wraps to the next line</h4>
+			<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
+		</li>
+		<li id="cfp-featured-position-2">
+			<h4 class="cfp-featured-title">Title</h4>
+			<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
+		</li>
+		<li id="cfp-featured-position-3">
+			<h4 class="cfp-featured-title">Title</h4>
+			<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
+		</li>
+	</ul>
+	';
+}
+//END featured post position HTML

@@ -1,14 +1,7 @@
 jQuery(function($){
 	var CF = CF || {};
 	
-	CF.pfTabs = function($) {
-		var $tabs = $('#cf-post-format-tabs');
-		
-		// we found tabs, hide the default post-format box
-		// if ($tabs.size() > 0) {
-		// 	$('#formatdiv').hide();
-		// }
-		
+	CF.postFormats = function($) {
 		return {
 			switchTab: function(clicked) {
 				var $this = $(clicked),
@@ -23,16 +16,51 @@ jQuery(function($){
 			
 			switchWPFormat: function(format_hash) {
 				$(format_hash).trigger('click');
+				switch (format_hash) {
+					case '#post-format-0':
+						CF.postFormats.standard();
+						break;
+					case '#post-format-status':
+					case '#post-format-link':
+					case '#post-format-image':
+					case '#post-format-gallery':
+					case '#post-format-video':
+					case '#post-format-quote':
+						eval('CF.postFormats.' + format_hash.replace('#post-format-', '') + '();');
+				}
+			},
+
+			standard: function() {
+console.log('format standard');
+			},
+			
+			status: function() {
+			},
+
+			link: function() {
+console.log('format link');
+			},
+			
+			image: function() {
+			},
+
+			gallery: function() {
+			},
+
+			video: function() {
+			},
+
+			quote: function() {
 			}
 		};
 	}(jQuery);
-		
+	
 	// move tabs in to place
 	$('#cf-post-format-tabs').insertBefore($('form#post'));
 	
 	// tab switch
 	$('#cf-post-format-tabs a').live('click', function(e) {
-		CF.pfTabs.switchTab(this);
+		CF.postFormats.switchTab(this);
 		e.stopPropagation();
 		e.preventDefault();
 	});
