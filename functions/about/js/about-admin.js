@@ -531,10 +531,20 @@ jQuery(function($) {
 	}(jQuery);
 	
 // Init
-			
+	
+	// hide all pop-overs on bubbled body click
 	$('body').live('click', function(e) {
 		CF.imgs.hideAllDialogs();
 		CF.aboutLinks.hideAllDialogs();
+	});
+	// hide all pop-overs when hitting ESC
+	$(document).keyup(function(e) {
+		switch (e.which) {
+			case 27: // esc
+				CF.imgs.hideAllDialogs();
+				CF.aboutLinks.hideAllDialogs();
+				break;
+		}
 	});
 
 // this is a good idea but pop-over menus get disconnected when the animation happens
