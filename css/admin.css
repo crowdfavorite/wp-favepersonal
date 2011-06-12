@@ -359,7 +359,10 @@ button.cf-btn-delete {
  * Begin Specific Personal Styles
  */
 
-
+/* more space for .cf-nav on the post edit screen */
+#cf-post-format-tabs {
+	margin-top: 13px;
+}
 /** Popover - notch menus
  -------------------------------------------------- */
 .cfp-popover {
