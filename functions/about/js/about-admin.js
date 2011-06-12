@@ -1,7 +1,7 @@
 jQuery(function($) {
 	// For older IE implementations - SUCK!
 	// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/keys (expanded for readability)
-	if(!Object.keys) {
+	if (!Object.keys) {
 		Object.keys = function(o){
 			if (o !== Object(o)) {
 				throw new TypeError('Object.keys called on non-object');

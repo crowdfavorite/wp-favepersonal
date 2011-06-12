@@ -1,8 +1,5 @@
 <?php
-	$favicon_url = cf_about_favicon_url('default'); // @TODO start off with default icon url
-	if (!empty($link['favicon'])) {
-		$favicon_url = cf_about_favicon_url($link['favicon']);
-	}
+	$favicon_url = (!empty($link['favicon']) ? cf_about_favicon_url($link['favicon']) : cf_about_favicon_url('default'));
 	// json encoding the link data looks weird but it allows us much more freedom with sortables
 	// we can do name="settings[links][]" and let the dom order be the order instead of having to
 	// keep track of the items ids and the order during editing

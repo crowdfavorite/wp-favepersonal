@@ -486,6 +486,7 @@ button.cf-btn-delete {
 	padding: 5px 0 0 5px;
 }
 .cfp-list-img-left ul li {
+	cursor: move;
 	float: left;
 	margin: 0 5px 1px 0;
 	padding: 0;

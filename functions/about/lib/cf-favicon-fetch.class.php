@@ -52,16 +52,16 @@ class CF_Favicon_Fetch {
 	public function get_site_favicon_url($siteurl) {
 		$this->reset_error();
 		
-		$siteurl = esc_url($siteurl);
+		$siteurl = $siteurl;
 		$favicon = false;
 		
 		if ($f_url = $this->query_head($siteurl)) {
 			$favicon = $f_url;
 		}
-		elseif ($f_data = $this->query_server($siteurl)) {
+		else if ($f_data = $this->query_server($siteurl)) {
 			$favicon = $this->get_baseurl($siteurl).'/favicon.ico';
 		}
-		
+
 		return $favicon;
 	}
 	
@@ -74,14 +74,13 @@ class CF_Favicon_Fetch {
 	public function get_favicon($siteurl) {
 		$this->reset_error();
 		
-		$siteurl = esc_url($siteurl);
 		$favicon = 'default';
 		
-		if ($f_url = $this->query_head($siteurl)) {			
+		if ($f_url = $this->query_head($siteurl)) {
 			$f_data = $this->fetch_favicon($f_url);
 			$filename = $this->make_filename($siteurl, $f_data['ext']);			
 		}
-		elseif ($f_data = $this->query_server($siteurl)) {
+		else if ($f_data = $this->query_server($siteurl)) {
 			$filename = $this->make_filename($siteurl, 'ico');
 		}
 
@@ -133,7 +132,8 @@ class CF_Favicon_Fetch {
 				"| /html/head/link[@rel='SHORTCUT ICON']\"");
 		$y .= "&format=json";
 
-		$r = $this->remote_get($y);	
+		$r = $this->remote_get($y);
+
 		if (!is_wp_error($r) && $this->is_valid_response_code($r['response']['code']) && !empty($r['body'])) {
 			$data = json_decode($r['body']);
 
@@ -150,14 +150,14 @@ class CF_Favicon_Fetch {
 				else {
 					$this->handle_error(new WP_Error('Unknown data return format: '.print_r($data, true)));
 				}
-				
+
 				if (!empty($favicon)) {
-					$this->fix_relative_url($favicon, $siteurl);
+					$favicon = $this->fix_relative_url($favicon, $siteurl);
 				}
 			}
 		}
 		else {
-			$this->handle_error($r->get_error_message(), __METHOD__);
+			$this->handle_error(@$r->get_error_message(), __METHOD__);
 		}
 	
 		unset($r);
@@ -208,7 +208,7 @@ class CF_Favicon_Fetch {
 		elseif (is_wp_error($file)) {
 			$this->handle_error($file->get_error_message(), __METHOD__);
 		}
-		
+
 		return $favicon;
 	}
 	
@@ -257,7 +257,7 @@ class CF_Favicon_Fetch {
 	 * @return mixed array/object will be WP_Error object on failure
 	 */
 	public function remote_get($url) {
-		return @wp_remote_get(esc_url($url), array(
+		return @wp_remote_get($url, array(
 			'timeout' => $this->timeout,
 			'sslverify' => false
 		));
@@ -305,7 +305,7 @@ class CF_Favicon_Fetch {
 	}
 	
 	public function is_image($file) {
-		return strpos('image', $file['headers']['content-type']) !== false;
+		return strpos($file['headers']['content-type'], 'image') !== false;
 	}
 	
 	/**

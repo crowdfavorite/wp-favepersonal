@@ -24,20 +24,21 @@ function cfcp_about_init() {
 	if (!is_admin()) {
 		cfcp_about_module_carousel_enqueue();
 	}
-	else {
+}
+add_action('init', 'cfcp_about_init', 50);
+
+function cfcp_about_admin_init() {
+	global $pagenow, $plugin_page;
+	if ($pagenow == 'themes.php' && $plugin_page == 'about.php') {
 		add_action('admin_head', 'cf_admin_css');
 		wp_enqueue_script('jquery-ui-sortable');
 		wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
 		wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
 		wp_localize_script('cfcp-about-admin-js', 'cfcp_about_settings', array(
 			'image_del_confirm' => __('Are you sure you want to delete this image?', 'favepersonal'),
-			'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'favepersonal')
+			'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'cfcp-about')
 		));
 	}
-}
-add_action('init', 'cfcp_about_init', 50);
-
-function cfcp_about_admin_init() {
 	register_setting(CFCP_ABOUT_SETTINGS, CFCP_ABOUT_SETTINGS, 'cfcp_validate_settings');
 }
 add_action('admin_init', 'cfcp_about_admin_init');
@@ -89,11 +90,11 @@ function cfcp_about_admin_ajax() {
 				
 				$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);
 				$favicon = $u->have_site_favicon($_POST['url']);
-				
+
 				if (empty($favicon)) {
 					$success = false;
 					$favicon = $u->get_site_favicon_url($_POST['url']);
-					
+
 					if (!empty($favicon)) {
 						$success = true;
 						$favicon_status = 'new';
@@ -121,15 +122,16 @@ function cfcp_about_admin_ajax() {
 				$success = false;
 				$error = '';
 				$link = array(
-					'title' => esc_html(trim($_POST['link']['title'])),
+					'title' => trim($_POST['link']['title']),
 					'url' => trim($_POST['link']['url']), // if we need to support relative urls then the esc_url will have to go
-					'favicon' => esc_html(trim($_POST['link']['favicon'])),
-					'favicon_status' => esc_html(trim($_POST['link']['favicon_status'])),
+					'favicon' => trim($_POST['link']['favicon']),
+					'favicon_status' => trim($_POST['link']['favicon_status']),
 				);
 				
 				// fetch
 				if (!empty($link['url']) && !empty($link['title'])) {
 					if ($link['favicon_status'] == 'new') {
+
 						$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);						
 						$a = $u->get_favicon($link['url']);
 				
@@ -158,7 +160,7 @@ function cfcp_about_admin_ajax() {
 						}
 						$success = true;
 					}
-					elseif ($link['favicon_status'] == 'custum') {
+					elseif ($link['favicon_status'] == 'custom') {
 						// @TODO
 					}
 				}
