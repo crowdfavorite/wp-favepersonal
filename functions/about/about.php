@@ -161,6 +161,15 @@ function cfcp_about_admin_ajax() {
 					}
 					elseif ($link['favicon_status'] == 'custom') {
 						// @TODO
+						$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);						
+						// download and save favicon
+						$f_data = $u->fetch_favicon($link['favicon']);
+						$filename = $u->make_filename($siteurl, $f_data['ext']);
+						if ($u->save_file($filename, $f_data) !== false) {
+							$link['favicon'] = $filename;
+							$link['favicon_status'] = 'local';
+							$success = true;
+						}
 					}
 				}
 				else {
@@ -292,7 +301,7 @@ function cfcp_about_get_settings() {
 	));
 }
 
-function cf_about_favicon_url($favicon) {
+function cf_about_favicon_url($favicon = 'default') {
 	// in the future the $favicon will come in as just a filename
 	if ($favicon == 'default') {
 		$favicon_url = trailingslashit(get_template_directory_uri()).'img/default-favicon.png';

@@ -437,9 +437,17 @@ jQuery(function($) {
 			saveFavicon: function() {
 				var _url = $.trim($('#cfp_link_url').val()),
 					_title = $.trim($('#cfp_link_title').val()),
-					_favicon = $.trim($('#cfp_link_favicon').val()),
+					_favicon = '',
 					_favicon_status = $.trim($('#cfp_link_favicon_status').val()),
 					errors = {};
+				
+				switch (_favicon_status) {
+					case 'custom':
+						_favicon = $.trim($('#cfp_link_custom_favicon').val());
+						break;
+					default:
+						_favicon = $.trim($('#cfp_link_favicon').val());
+				}
 					
 				this.clearNotices();
 					
@@ -529,7 +537,8 @@ jQuery(function($) {
 		CF.aboutLinks.hideAllDialogs();
 	});
 
-	// $('.cf-updated-message-fade')
-	// 	.animate({'opacity': 1.0}, 8000) // faux timeout, animates nothing for 8 seconds
-	// 	.slideUp('slow');
+// this is a good idea but pop-over menus get disconnected when the animation happens
+// 	$('.cf-updated-message-fade')
+// 		.animate({'opacity': 1.0}, 8000) // faux timeout, animates nothing for 8 seconds
+// 		.slideUp('slow');
 });

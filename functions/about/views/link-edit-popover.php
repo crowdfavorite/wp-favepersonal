@@ -26,7 +26,7 @@
 			<label for="cfp_link_custom_favicon"><?php _e('Icon', 'favepersonal'); ?></label>
 			<input type="text" name="custom_favicon" id="cfp_link_custom_favicon" class="cf-elm-text" value="" />
 			<input type="button" name="remove" class="cfp-action-remove" value="Remove" />
-			<div class="cf-elm-help"><?php printf(__('Image Url or <a href="%s">upload a new photo</a>', 'favepersonal'), admin_url('media-new.php')); ?></div>
+			<div class="cf-elm-help"><?php _e('Image URL - http://example.com/favicon.ico', 'favepersonal'); ?></div>
 		</div>
 		<div id="cfp_link_icon_message" class="cf-elm-help"></div>
 	</div>
