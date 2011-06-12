@@ -35,6 +35,6 @@
 </div>
 
 <div class="cfp-popover-footer">
-	<input class="button button-primary" type="button" name="submit_button" value="<?php _e('Save', 'favepersonal'); ?>" />
+	<input class="button button-primary" type="button" name="submit_button" value="<?php _e('Add', 'favepersonal'); ?>" />
 	<input class="button" type="button" name="cancel" value="<?php _e('Cancel', 'favepersonal'); ?>" />
 </div>

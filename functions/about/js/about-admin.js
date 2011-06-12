@@ -297,7 +297,9 @@ jQuery(function($) {
 
 				$remove.find('a').unbind().click(function(e) {
 					CF.aboutLinks.hideRemove();
-					$elem.closest('li').fadeOut();
+					$elem.closest('li').fadeOut(function() {
+						$(this).remove();
+					});
 					e.stopPropagation();
 					e.preventDefault();
 				});
