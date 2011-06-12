@@ -30,14 +30,19 @@ add_action('init', 'cfcp_about_init', 50);
 function cfcp_about_admin_init() {
 	global $pagenow, $plugin_page;
 	if ($pagenow == 'themes.php' && $plugin_page == 'about.php') {
-		add_action('admin_head', 'cf_admin_css');
 		wp_enqueue_script('jquery-ui-sortable');
 		wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
 		wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
-		wp_localize_script('cfcp-about-admin-js', 'cfcp_about_settings', array(
-			'image_del_confirm' => __('Are you sure you want to delete this image?', 'favepersonal'),
-			'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'cfcp-about')
-		));
+		wp_localize_script(
+			'cfcp-about-admin-js', 
+			'cfcp_about_settings', 
+			array(
+				'image_del_confirm' => __('Are you sure you want to delete this image?', 'favepersonal'),
+				'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'cfcp-about'),
+				'save' => __('Save', 'cfcp-about'),
+				'saving' => __('Saving...', 'cfcp-about'),
+			)
+		);
 	}
 	register_setting(CFCP_ABOUT_SETTINGS, CFCP_ABOUT_SETTINGS, 'cfcp_validate_settings');
 }
@@ -53,12 +58,6 @@ function cfcp_about_module_carousel_enqueue() {
 	if (count($settings['images']) > 1 && is_active_widget(null, null, 'cfcp-about')) {
 		wp_enqueue_script('jquery-cycle'); // registered in the theme's functions.php file
 	}
-}
-
-/* Let's load some styles that will be used on all theme setting pages */
-function cf_admin_css() {
-	$cf_admin_styles = get_bloginfo('template_url').'/css/admin.css';
-	echo '<link rel="stylesheet" type="text/css" href="' . $cf_admin_styles . '" />';
 }
 
 // Ajax

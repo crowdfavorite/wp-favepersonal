@@ -27,7 +27,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 	<footer id="footer">
 		<div class="container clearfix">
-			<p class="credit"><?php _e('Powered by <a href="http://wordpress.org/" rel="generator">WordPress</a></span>', 'favepersonal'); ?> &nbsp;&middot;&nbsp; <?php printf(__('<a href="http://crowdfavorite.com/themes/favepersonal" title="Powerful Wordpress theme to power your personal sites">%s</a>', 'favepersonal'), 'Carrington Personal'); ?> by <?php printf(__('<a href="http://crowdfavorite.com" title="Custom WordPress development, design and backup services." rel="developer designer">%s</a>', 'favepersonal'), 'Crowd Favorite'); ?></p>
+			<p class="credit"><?php _e('Powered by <a href="http://wordpress.org/" rel="generator">WordPress</a></span>', 'favepersonal'); ?> &nbsp;&middot;&nbsp; <?php printf(__('<a href="http://crowdfavorite.com/themes/favepersonal" title="A powerful, personal Wordpress theme.">%s</a>', 'favepersonal'), 'FavePersonal'); ?> by <?php printf(__('<a href="http://crowdfavorite.com" title="Elegant WordPress development and design services." rel="developer designer">%s</a>', 'favepersonal'), 'Crowd Favorite'); ?></p>
 			<p><?php _e('Copyright &copy; ', 'favepersonal'); echo date('Y'); ?> &nbsp;&middot;&nbsp; <?php bloginfo('name'); ?></p>
 		</div><!--.container-->
 	</footer><!-- #footer -->

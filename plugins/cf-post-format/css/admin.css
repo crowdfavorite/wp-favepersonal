@@ -1,3 +1,9 @@
+/* hide default radio button UI */
+#formatdiv {
+	display: none;
+}
+
+
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }

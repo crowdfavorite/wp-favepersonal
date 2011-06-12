@@ -1,4 +1,4 @@
-<div class="cfp-popover-content" id="cfp-link-edit">
+<div class="cfp-popover-content">
 	
 <!-- link data -->
 	<div class="cf-elm-block cf-lbl-pos-left cf-elm-width-full">
@@ -17,14 +17,16 @@
 	
 <!-- favicon fetch & preview -->
 	<div class="cf-elm-block cf-lbl-pos-left cf-elm-width-full" id="cfp_link_icon_preview" style="display: none;">
-		<label for="cfp-link-icon"><?php _e('Icon', 'favepersonal'); ?></label>
-		<span class="cfp-icon-preview"><img id="cfp_icon_preview" src="<?php echo trailingslashit(get_template_directory_uri()); ?>img/admin/ajax-loader.gif" width="16" height="16" /></span>
-		<input type="button" name="edit" id="cfp-link-icon-edit" class="cfp-action-edit" value="Edit" />
-		
-		<div id="cfp-link-icon-preview-custom" class="cf-hidden">
+		<div id="cfp-link-icon-preview-auto">
+			<label for="cfp-link-icon"><?php _e('Icon', 'favepersonal'); ?></label>
+			<span class="cfp-icon-preview"><img id="cfp_icon_preview" src="<?php echo trailingslashit(get_template_directory_uri()); ?>img/admin/ajax-loader.gif" width="16" height="16" /></span>
+			<input type="button" name="edit" id="cfp-link-icon-edit" class="cfp-action-edit" value="Edit" />
+		</div>
+		<div id="cfp-link-icon-preview-custom" style="display: none;">
+			<label for="cfp_link_custom_favicon"><?php _e('Icon', 'favepersonal'); ?></label>
 			<input type="text" name="custom_favicon" id="cfp_link_custom_favicon" class="cf-elm-text" value="" />
 			<input type="button" name="remove" class="cfp-action-remove" value="Remove" />
-			<div class="cf-elm-help"><?php printf(__('Image Url or <a href="%s">upload a new photo</a>', 'favepersonal'), '#'); ?></div>
+			<div class="cf-elm-help"><?php printf(__('Image Url or <a href="%s">upload a new photo</a>', 'favepersonal'), admin_url('media-new.php')); ?></div>
 		</div>
 		<div id="cfp_link_icon_message" class="cf-elm-help"></div>
 	</div>
@@ -33,7 +35,6 @@
 </div>
 
 <div class="cfp-popover-footer">
-	<input class="button button-primary" type="button" name="submit" value="<?php _e('Save', 'favepersonal'); ?>" />
+	<input class="button button-primary" type="button" name="submit_button" value="<?php _e('Save', 'favepersonal'); ?>" />
 	<input class="button" type="button" name="cancel" value="<?php _e('Cancel', 'favepersonal'); ?>" />
-	<a href="#" class="cf-remove-link"><?php _e('Remove', 'favepersonal'); ?></a>
 </div>

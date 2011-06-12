@@ -73,16 +73,28 @@
 </div><!-- / cf-about-wrap -->
 <?php
 	// images popover
-	$img_search_popover_html = cfcp_load_view('functions/about/views/img-search-popover.php', array());
 	echo cfp_get_popover_html('cfp-img-search', array(
-		'html' => $img_search_popover_html,
+		'html' => cfcp_load_view(
+			'functions/about/views/img-search-popover.php',
+			array()
+		),
 		'arrow_pos' => 'right'
 	));
 	
 	// links popover
-	$link_edit_popover_html = cfcp_load_view('functions/about/views/link-edit-popover.php', array());
 	echo cfp_get_popover_html('cfp-link-edit', array(
-		'html' => $link_edit_popover_html,
+		'html' => cfcp_load_view(
+			'functions/about/views/link-edit-popover.php', 
+			array()
+		),
 		'arrow_pos' => 'right'
+	));
+
+	echo cfp_get_popover_html('cfp-link-remove', array(
+		'html' => cfcp_load_view(
+			'functions/about/views/link-remove-popover.php',
+			array()
+		),
+		'arrow_pos' => 'left'
 	));
 ?>

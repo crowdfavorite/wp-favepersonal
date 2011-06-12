@@ -550,6 +550,33 @@ button.cf-btn-delete {
 .cfp-about-image-action-inputs {
 	text-align: center;
 }
+#cfp_link_custom_favicon {
+	width: 72%;
+}
+#cfp-link-edit.saving .button-primary {
+	background: #999;
+	border: #666;
+}
+#cfp-link-remove {
+	max-width: 388px;
+	min-width: 250px;
+	width: auto;
+}
+#cfp-link-remove p.title {
+	font-weight: bold;
+	margin-bottom: .5em;
+}
+#cfp-link-remove p.url {
+	margin-top: .5em;
+}
+#cfp-link-remove .cfp-popover-footer {
+	text-align: left;
+}
+#cfp-link-remove .cf-remove-link {
+	line-height: 2em;
+	margin: 0;
+	position: relative;
+}
 
 /* about search results */
 #cfp-img-search-results {

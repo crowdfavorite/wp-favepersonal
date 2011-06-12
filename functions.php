@@ -75,7 +75,17 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_image_size('banner-img', 510, 180, true); // excerpt featured img
 		
 		// Add post formats
-		add_theme_support( 'post-formats', array('gallery','image','link','video','status', 'quote'));
+		add_theme_support(
+			'post-formats', 
+			array(
+				'status',
+				'link',
+				'image',
+				'gallery',
+				'video',
+				'quote',
+			)
+		);
 		
 		register_nav_menus(array(
 			'main' => __( 'Main Navigation', 'favepersonal' ),
@@ -86,9 +96,17 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		if (!is_admin()) {
 			wp_enqueue_script('cfcp-global');
 		}
+		
+		add_action('admin_head', 'cf_admin_css');
 	}
 }
 add_action( 'after_setup_theme', 'carrington_personal_setup' );
+
+/* Let's load some styles that will be used on all theme setting pages */
+function cf_admin_css() {
+	$cf_admin_styles = get_bloginfo('template_url').'/css/admin.css';
+	echo '<link rel="stylesheet" type="text/css" href="' . $cf_admin_styles . '" />';
+}
 
 // Remove default Carrington-Core theme settings screen
 remove_action('admin_menu', 'cfct_admin_menu');
