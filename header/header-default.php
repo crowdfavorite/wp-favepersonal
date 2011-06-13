@@ -62,6 +62,10 @@ $blog_desc = get_bloginfo('description');
 			color: <?php echo cf_kuler_color('medium'); ?>;
 		}
 		/* Menu */
+		#header #nav-main ul li,
+		#header .menu ul li {
+			border-bottom: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
+		}
 		#header #nav-main ul li:hover,
 		#header #nav-main ul li.current_page_item,
 		#header #nav-main ul li.current-menu-parent,
@@ -80,8 +84,10 @@ $blog_desc = get_bloginfo('description');
 			border: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
 			border-top: 0;
 		}
+		#header #nav-main ul ul li,
 		#header #nav-main ul ul li:hover,
 		#header #nav-main ul ul li.current_page_item,
+		#header .menu ul ul li,
 		#header .menu ul ul li:hover,
 		#header .menu ul ul li.current_page_item {
 			border-bottom: 0;
@@ -243,7 +249,7 @@ $blog_desc = get_bloginfo('description');
 <body <?php body_class(); ?>>
 	
 	<header id="header">
-		<div class="container">
+		<div class="container clearfix">
 			<h1><a href="<?php bloginfo('url') ?>/" title="Home" rel="home"><?php bloginfo('name') ?></a></h1>
 			<?php wp_nav_menu( array(
 				'container' => 'nav',

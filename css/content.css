@@ -8,18 +8,20 @@
 /** Header
  -------------------------------------------------- */
 #header .container {
-	height: 80px;
+	padding-top: 40px;
 	position: relative;
 }
 #header h1 {
-	bottom: 5px;
-	left: 0;
+	float: left;
 	line-height: 1em;
-	margin: 0;
-	position: absolute;
+	margin: 0 0 5px 0;
 }
 
 /* Menu */
+#nav-main {
+	float: right;
+	padding-top: 9px;
+}
 #header #nav-main ul,
 #header .menu ul {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
@@ -29,8 +31,9 @@
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	position: absolute;
-	right: 0;
+	/* position: absolute; */
+	/* right: 0; */
+	text-align: right;
 	text-transform: uppercase;
 	top: 57px;
 }
@@ -56,12 +59,12 @@
 	-webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
 	display: none;
 	font-family: Helvetica, Arial, Verdana, sans-serif;
-	left: -3px;
+	right: -3px;
 	padding: 5px 0 3px 0;
 	position: absolute;
 	text-transform: none;
 	top: 23px;
-	width: 160px;
+	width: 140px;
 	z-index: 99999;
 }
 #header #nav-main ul ul li,
@@ -281,8 +284,7 @@
 
 /** Status Post Format
  -------------------------------------------------- */
-article.format-status.content {
-	margin: 60px 0 180px;
+.format-status.content {
 }
 .format-status .post-date {
 	line-height: 26px;
@@ -294,12 +296,12 @@ article.format-status.content {
 	line-height: 26px;
 }
 article.format-status.content .post-date {
-	line-height: 40px;
-	top: 4px;
+	line-height: 36px;
+	top: 3px;
 }
 article.format-status.content .post-status-content {
-	font-size: 32px;
-	line-height: 40px;
+	font-size: 28px;
+	line-height: 36px;
 }
 .post-status-meta {
 	color: #ccc;
