@@ -9,7 +9,7 @@ Author URI: http://crowdfavorite.com
 */
 
 // This is just the start for working HTML
-	
+
 // Admin Page
 	function cfcp_header_admin_menu() {
 		add_submenu_page(
@@ -37,6 +37,13 @@ Author URI: http://crowdfavorite.com
 	}
 	add_action('wp_before_admin_bar_render', 'cfcp_header_admin_bar');
 	
+// Loading style sheets
+function cfcp_admin_header_css() {
+    $cfcp_admin_header_styles = get_bloginfo('template_url').'/css/masthead.css';
+    echo '<link rel="stylesheet" type="text/css" href="' . $cfcp_admin_header_styles . '" />';
+}
+add_action('admin_head', 'cfcp_admin_header_css');
+
 // The settings form, page content
 	function cfcp_header_admin_form() {
 ?>
@@ -48,7 +55,7 @@ Author URI: http://crowdfavorite.com
 				<form id="cfcp-header-settings" name="cfcp-header-settings" action="" method="">
 					
 					<ul id="cfp-header-options">
-						<li id="cfp-header-featured" class="cfp-selected">
+						<li id="cfp-header-featured" class="cfp-selected"> <!-- set .cfp-selected class to it open -->
 							<label>
 								<input type="radio" name="cfp-header-option" value=""> Featured Posts
 							</label>
@@ -56,7 +63,7 @@ Author URI: http://crowdfavorite.com
 								<?php cfct_misc('header-featured-posts'); ?>
 							</div><!--.cfp-featured-preview-->
 						</li>
-						<li id="cfp-header-image" class="">
+						<li id="cfp-header-image">
 							<label>
 								<input type="radio" name="cfp-header-option" value=""> Header Image
 							</label>

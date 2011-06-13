@@ -100,28 +100,28 @@ $blog_desc = get_bloginfo('description');
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
 		}
 		/* featured posts */
-		.featured {
+		#featured-posts .featured {
 			background-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
-		.featured-title a {
+		#featured-posts .featured-title {
 			background-color: <?php echo cf_kuler_color('darkest') ?>;
 			color: <?php echo cf_kuler_color('lightest') ?>;
 		}
-		.featured-content {
+		#featured-posts .featured-content {
 			color:<?php echo cf_kuler_color('lightest') ?>;
 		}
-		.featured-link {
+		#featured-posts .featured-link {
 			border-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
 		/* rollover */
-		.featured:hover .featured-title a {
+		#featured-posts .featured:hover .featured-title {
 			color: <?php echo cf_kuler_color('medium') ?>;
 		}
-		.featured:hover .featured-content {
+		#featured-posts .featured:hover .featured-content {
 			background-color: rgba(<?php echo_hex(cf_kuler_color('light')); ?>.9);
 			color: <?php echo cf_kuler_color('darkest') ?>;
 		}
-		.featured:hover .featured-link {
+		#featured-posts .featured:hover .featured-link {
 		}
 		/* header image */
 		#header-image img {
