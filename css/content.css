@@ -314,10 +314,17 @@ article.format-status.content .post-status-content {
 /** Quote Post Format
  -------------------------------------------------- */
 .format-quote .post-content blockquote {
-	color: #999;
+	background: url(../img/quote.png) 0 2px no-repeat;
+	color: #666;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 20px;
 	line-height: 26px;
+	margin: 0;
+	padding: 0 0 0 26px;
+}
+.format-quote-attribution {
+	margin-left: 120px;
+	margin-right: 30px;
 }
 .format-quote .post-date {
 	line-height: 26px;
