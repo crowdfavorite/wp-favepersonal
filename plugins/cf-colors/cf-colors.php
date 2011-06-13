@@ -486,7 +486,7 @@ function cf_kuler_color_picker($colors_html) {
 
 function cf_kuler_settings_form() {
 	if ($settings = cf_kuler_get_settings()) {
-		$colors = implode(',', $settings['colors']);
+		$colors = $settings['colors'];
 		$colors_html = cf_kuler_colors_html($settings);
 	}
 	else {

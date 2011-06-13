@@ -81,3 +81,8 @@
 .cp-elm-block .cp-elm-image-gallery li img {
 	display: block;
 }
+
+/* Video Field */
+#cfpf-format-video-embed {
+	height: 65px;
+}

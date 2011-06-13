@@ -32,33 +32,20 @@ Author URI: http://crowdfavorite.com
 
 define('CFPF_VERSION', '0.1');
 
-function cfpf_init() {
-	global $pagenow;
-	if (is_admin() && in_array($pagenow, array('post.php', 'post-new.php'))) {
-		switch(true) {
-			case empty($_GET['post_type']):
-				$post_type = 'post';
-				break;
-			case !empty($_GET['post_type']):
-				$post_type = $_GET['post_type'];
-				break;
-			default:
-				global $post;	
-				$post_type = $post->post_type;
-		}
+// we aren't really adding meta boxes here,
+// but this gives us the info we need to get our stuff in.
+function cfpf_add_meta_boxes($post_type) {
+	if (post_type_supports($post_type, 'post-formats') && current_theme_supports('post-formats')) {
+		// assets
+		wp_enqueue_script('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/js/admin.js', array('jquery'), CFPF_VERSION);
+		//wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/css/admin.css', array(), CFPF_VERSION, 'screen');
+		wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/css/admin.css', array(), CFPF_VERSION, 'screen');
 		
-		if (post_type_supports($post_type, 'post-formats') && current_theme_supports('post-formats')) {
-			// assets
-			wp_enqueue_script('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/js/admin.js', array('jquery'), CFPF_VERSION);
-			//wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/css/admin.css', array(), CFPF_VERSION, 'screen');
-			wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/css/admin.css', array(), CFPF_VERSION, 'screen');
-			
-			// actions
-			add_action('edit_form_advanced', 'cfpf_post_admin_setup');
-		}
+		// actions
+		add_action('edit_form_advanced', 'cfpf_post_admin_setup');
 	}
 }
-add_action('admin_init', 'cfpf_init');
+add_action('add_meta_boxes', 'cfpf_add_meta_boxes');
 
 /**
  * Show the post format navigation tabs
@@ -86,7 +73,7 @@ function cfpf_post_admin_setup() {
 		include('views/tabs.php');
 		include('views/format-link.php');
 		include('views/format-quote.php');
-		
+		include('views/format-video.php');
 	}
 }
 
@@ -130,6 +117,13 @@ function cfpf_format_quote_save_post($post_id) {
 	}
 }
 add_action('save_post', 'cfpf_format_quote_save_post');
+
+function cfpf_format_video_save_post($post_id) {
+	if (!defined('XMLRPC_REQUEST') && isset($_POST['_format_video_embed'])) {
+		update_post_meta($post_id, '_format_video_embed', $_POST['_format_video_embed']);
+	}
+}
+add_action('save_post', 'cfpf_format_video_save_post');
 
 
 ?>

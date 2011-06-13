@@ -19,9 +19,6 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $previousday, $post;
-$previousday = -1;
-
 $title_attr = the_title_attribute(array('echo' => false));
 $title_permalink = sprintf(__('Permanent link to %s', 'favepersonal'), $title_attr);
 $title_external = sprintf(__('External link to %s', 'favepersonal'), $title_attr);

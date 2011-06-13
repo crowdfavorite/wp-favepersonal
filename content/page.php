@@ -20,9 +20,6 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $previousday;
-$previousday = -1;
-
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class('page') ?>>
 	<div class="page-header">

@@ -20,8 +20,9 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $previousday;
-$previousday = -1;
+global $wp_embed, $content_width;
+$content_width = '710'; // set for this view
+add_filter('cfcp_format_video_embed', array(&$wp_embed, 'autoembed'));
 
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class('content cleafix') ?>>
@@ -31,7 +32,12 @@ $previousday = -1;
 	</div>
 	
 	<div class="post-media">
-		<iframe src="http://player.vimeo.com/video/13588587?color=ff0065" width="710" height="400" frameborder="0"></iframe>
+<?php
+echo apply_filters(
+	'cfcp_format_video_embed', 
+	get_post_meta(get_the_ID(), '_format_video_embed', true)
+);
+?>
 	</div>
 	
 	<?php cfct_misc('post-meta'); ?>

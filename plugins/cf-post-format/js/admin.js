@@ -54,9 +54,13 @@ jQuery(function($){
 			},
 
 			gallery: function() {
+				$('#postimagediv-placeholder').replaceWith($('#postimagediv'));
 			},
 
 			video: function() {
+				$('#cfpf-format-link-url, #cfpf-format-quote-fields').hide();
+				$('#titlewrap, #cfpf-format-video-fields').show();
+				$('#postimagediv-placeholder').replaceWith($('#postimagediv'));
 			},
 
 			quote: function() {
@@ -70,6 +74,7 @@ jQuery(function($){
 	// move tabs in to place
 	$('#cf-post-format-tabs').insertBefore($('form#post'));
 	$('#cfpf-format-link-url').insertAfter($('#titlediv'));
+	$('#cfpf-format-video-fields').insertAfter($('#titlediv'));
 	$('#cfpf-format-quote-fields').insertBefore($('#normal-sortables'));
 	
 	// tab switch
