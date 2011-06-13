@@ -26,18 +26,18 @@ $title_attr = the_title_attribute(array('echo' => false));
 $title_permalink = sprintf(__('Permanent link to %s', 'favepersonal'), $title_attr);
 $title_external = sprintf(__('External link to %s', 'favepersonal'), $title_attr);
 
-$link = get_post_meta($post->ID, '_format_link_url', true);
+$link = get_post_meta(get_the_ID(), '_format_link_url', true);
 if (!empty($link)) {
 	$url = $link;
 	$title = $title_external;
 }
 else {
-	$url = get_permalink($post->ID);
+	$url = get_permalink(get_the_ID());
 	$title = $title_permalink;
 }
 
 ?>
-<article id="post-<?php the_ID() ?>" <?php post_class('post'); ?>>
+<article id="post-<?php the_ID() ?>" <?php post_class('content'); ?>>
 	<div class="post-header">
 		<h1 class="post-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?> &rarr;</a></h1>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>

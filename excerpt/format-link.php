@@ -23,14 +23,13 @@ $title_attr = the_title_attribute(array('echo' => false));
 $title_permalink = sprintf(__('Permanent link to %s', 'favepersonal'), $title_attr);
 $title_external = sprintf(__('External link to %s', 'favepersonal'), $title_attr);
 
-global $post;
-$link = get_post_meta($post->ID, '_format_link_url', true);
+$link = get_post_meta(get_the_ID(), '_format_link_url', true);
 if (!empty($link)) {
 	$url = $link;
 	$title = $title_external;
 }
 else {
-	$url = get_permalink($post->ID);
+	$url = get_permalink(get_the_ID());
 	$title = $title_permalink;
 }
 
@@ -42,9 +41,13 @@ else {
 	</div>
 	<?php cfct_misc('post-meta-excerpts'); ?>
 	<div class="post-content clearfix">
-		<?php if ( has_post_thumbnail() ) { ?>
-			<a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a>
-		<?php } ?>
-		<?php the_excerpt(); ?>
+<?php
+if ( has_post_thumbnail() ) {
+?>
+		<a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a>
+<?php 
+}
+the_excerpt();
+?>
 	</div><!--post-content-->
 </article><!-- .excerpt -->

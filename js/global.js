@@ -1,14 +1,16 @@
 jQuery(function($) {
 // About box carousel
-	var $aboutImgs = $('#bio-carousel .bio-box-gallery-images');
-	if ($aboutImgs.find('img').size() > 1) {
-		$aboutImgs.cycle({
+	var $bioCarousel = $('#bio-carousel .bio-box-gallery-images');
+	var $bioImages = $bioCarousel.find('img');
+	if ($bioImages.size() > 1) {
+		$bioCarousel.cycle({
 			'fx': 'scrollHorz',
 			'timeout': 0,
-			'next': '#bio-carousel-next', 
+			'next': '#bio-carousel-next, .bio-box-gallery-images img', 
 			'prev': '#bio-carousel-prev',
 			'speed': 400
 		});
+		$bioImages.css({'cursor': 'pointer'});
 	};
 	
 // Search form scripts

@@ -281,14 +281,25 @@
 
 /** Status Post Format
  -------------------------------------------------- */
+article.format-status.content {
+	margin: 60px 0 180px;
+}
 .format-status .post-date {
 	line-height: 26px;
 }
 .post-status-content {
-	color: #999;
+	color: #666;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 20px;
 	line-height: 26px;
+}
+article.format-status.content .post-date {
+	line-height: 40px;
+	top: 4px;
+}
+article.format-status.content .post-status-content {
+	font-size: 32px;
+	line-height: 40px;
 }
 .post-status-meta {
 	color: #ccc;

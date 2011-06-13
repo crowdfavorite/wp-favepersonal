@@ -1,8 +1,11 @@
-/* hide default radio button UI */
-#formatdiv {
+
+#formatdiv, /* hide default radio button UI */
+#titlewrap {
 	display: none;
 }
-
+#post-body-content #postimagediv .inside p {
+	text-align: center;
+}
 
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }
@@ -37,7 +40,7 @@
 .cp-elm-block input[type="text"],
 .cp-elm-block textarea {
 	font-size: 18px;
-	width: 98%;
+	width: 100%;
 }
 .cp-elm-block textarea {
 	height: 161px;

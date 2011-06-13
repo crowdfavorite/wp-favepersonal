@@ -16,15 +16,18 @@
  * **********************************************************************
  */
 
-
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
+
+if (has_post_thumbnail()) {
 ?>
-
-<?php remove_filter('the_content', 'cfct_content_feed'); ?>
-
 <p><a href="<?php the_permalink() ?>"><?php the_post_thumbnail('medium-img'); ?></a></p>
-<?php the_content_feed('rss2'); ?>
+<?php
+}
 
-<?php add_filter('the_content', 'cfct_content_feed'); ?>
+remove_filter('the_content', 'cfct_content_feed');
+the_content_feed('rss2');
+add_filter('the_content', 'cfct_content_feed');
+
+?>

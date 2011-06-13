@@ -39,21 +39,18 @@ else {
 }
 
 ?>
-
-<div style="font-size:1.5em; line-height:1.5em;">
-<?php
-
-remove_filter('the_content', 'cfct_content_feed');
-the_content_feed('rss2');
-add_filter('the_content', 'cfct_content_feed');
-
-?>
-</div>
+<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('content'); ?>>
+	<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
+	<div class="post-content">
+		<blockquote>
+			<?php the_content(); ?>
+		</blockquote>
 <?php
 if (!empty($source)) {
 ?>
-<p><?php echo $source; ?></p>
+		<p class="format-quote-attribution"><?php echo $source; ?></p>
 <?php
 }
 ?>
-
+	</div><!--post-content-->	
+</article><!-- .excerpt -->

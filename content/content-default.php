@@ -24,7 +24,7 @@ global $previousday;
 $previousday = -1;
 
 ?>
-<article id="post-<?php the_ID() ?>" <?php post_class('post cleafix') ?>>
+<article id="post-<?php the_ID() ?>" <?php post_class('content cleafix') ?>>
 	<div class="post-header">
 		<h1 class="post-title"><a href="<?php the_permalink() ?>" title="Permanent link to <?php the_title_attribute() ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?></a></h1>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>

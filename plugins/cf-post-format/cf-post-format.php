@@ -84,8 +84,52 @@ function cfpf_post_admin_setup() {
 		
 		$post_formats = $post_formats[0];
 		include('views/tabs.php');
+		include('views/format-link.php');
+		include('views/format-quote.php');
 		
 	}
 }
+
+function cfpf_format_link_save_post($post_id) {
+	if (!defined('XMLRPC_REQUEST') && isset($_POST['_format_link_url'])) {
+		update_post_meta($post_id, '_format_link_url', $_POST['_format_link_url']);
+	}
+}
+add_action('save_post', 'cfpf_format_link_save_post');
+
+function cfpf_format_auto_title_post($post_id, $post) {
+	remove_action('save_post', 'cfpf_format_status_save_post', 10, 2);
+
+	wp_update_post(array(
+		'ID' => $post_id,
+		'post_title' => substr(trim($post->post_content), 0, 50)
+	));
+}
+
+function cfpf_format_status_save_post($post_id, $post) {
+	if (has_post_format('status', $post)) {
+		cfpf_format_auto_title_post($post_id, $post);
+	}
+}
+add_action('save_post', 'cfpf_format_status_save_post', 10, 2);
+
+function cfpf_format_quote_save_post($post_id) {
+	if (!defined('XMLRPC_REQUEST')) {
+		$keys = array(
+			'_format_quote_source_name',
+			'_format_quote_source_url',
+		);
+		foreach ($keys as $key) {
+			if (isset($_POST[$key])) {
+				update_post_meta($post_id, $key, $_POST[$key]);
+			}
+		}
+	}
+	if (has_post_format('status', $post)) {
+		cfpf_format_auto_title_post($post_id, $post);
+	}
+}
+add_action('save_post', 'cfpf_format_quote_save_post');
+
 
 ?>

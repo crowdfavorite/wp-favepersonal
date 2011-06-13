@@ -21,7 +21,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-<article id="post-<?php the_ID() ?>" <?php post_class('post cleafix') ?>>
+<article id="post-<?php the_ID() ?>" <?php post_class('content cleafix') ?>>
 	<div class="post-header">
 		<h1 class="post-title"><?php the_title() ?></h1>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>

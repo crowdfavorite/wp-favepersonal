@@ -33,12 +33,11 @@ $meta_items = apply_filters('cfcp_format_status_meta', array());
 $meta_items = apply_filters('cfcp_format_status_meta_excerpt', $meta_items);
 
 ?>
-<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
+<article id="post-content-<?php the_ID() ?>" <?php post_class('content'); ?>>
 	<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	<div class="post-content">
 		<div class="post-status-content">
 			<?php
-				//using content because wordpress strips HTML, need the links in updates
 				the_content();
 			?>
 		</div>

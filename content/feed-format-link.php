@@ -19,9 +19,7 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $post;
-
-if (has_post_thumbnail($post->ID)) {
+if (has_post_thumbnail()) {
 ?>
 <div style="float:left; margin: 0 1.5em 1.5em 0;">
 	<?php the_post_thumbnail('thumb-img'); ?>
