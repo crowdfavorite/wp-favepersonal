@@ -96,8 +96,6 @@ $blog_desc = get_bloginfo('description');
 		#header .menu ul ul li.current_page_item > a {
 			border-left: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
 			border-right: 3px solid <?php echo cf_kuler_color('darkest'); ?>;
-			padding-left: 7px;
-			padding-right: 7px;
 		}
 
 		/** Masthead
@@ -242,9 +240,8 @@ $blog_desc = get_bloginfo('description');
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<!--[if IE 7]>
-		<link rel="stylesheet" type="text/css" media="screen" href="<?php  ?>/css/ie7.css?ver=2.20" />
+		<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url'); ?>/css/ie7.css?ver=<?php echo CFCO_VER; ?>" />
 	<![endif]-->
-
 
 <?php
 	/* Add JavaScript to pages with the comment form to support threaded comments (when in use). */

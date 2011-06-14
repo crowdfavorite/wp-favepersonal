@@ -83,6 +83,11 @@
 #header .menu ul li:hover > ul {
 	display: block;
 }
+#header #nav-main ul ul li.current_page_item > a,
+#header .menu ul ul li.current_page_item > a {
+	padding-left: 7px;
+	padding-right: 7px;
+}
 
 
 /** Masthead - also see masthead.css
