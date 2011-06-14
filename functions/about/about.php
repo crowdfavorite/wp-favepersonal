@@ -126,7 +126,12 @@ function cfcp_about_admin_ajax() {
 					'favicon' => trim($_POST['link']['favicon']),
 					'favicon_status' => trim($_POST['link']['favicon_status']),
 				);
-				
+
+				$qs = strpos($link['favicon'], '?');
+				if ($qs !== false) {
+					$link['favicon'] = substr($link['favicon'], 0, $qs);
+				}
+
 				// fetch
 				if (!empty($link['url']) && !empty($link['title'])) {
 					if ($link['favicon_status'] == 'new') {
@@ -160,7 +165,6 @@ function cfcp_about_admin_ajax() {
 						$success = true;
 					}
 					elseif ($link['favicon_status'] == 'custom') {
-						// @TODO
 						$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);						
 						// download and save favicon
 						$f_data = $u->fetch_favicon($link['favicon']);

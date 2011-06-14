@@ -78,6 +78,10 @@ class CF_Favicon_Fetch {
 		
 		if ($f_url = $this->query_head($siteurl)) {
 			$f_data = $this->fetch_favicon($f_url);
+			$qs = strpos($f_data['ext'], '?');
+			if ($qs !== false) {
+				$f_data['ext'] = substr($f_data['ext'], 0, $qs);
+			}
 			$filename = $this->make_filename($siteurl, $f_data['ext']);			
 		}
 		else if ($f_data = $this->query_server($siteurl)) {
@@ -202,10 +206,10 @@ class CF_Favicon_Fetch {
 				'source' => $file['body']
 			);
 		}
-		elseif (!is_wp_error($file) && empty($file['body'])) {
+		else if (!is_wp_error($file) && empty($file['body'])) {
 			$this->handle_error(new WP_Error('Request returned no image content'), __METHOD__);
 		}
-		elseif (is_wp_error($file)) {
+		else if (is_wp_error($file)) {
 			$this->handle_error($file->get_error_message(), __METHOD__);
 		}
 
@@ -305,7 +309,10 @@ class CF_Favicon_Fetch {
 	}
 	
 	public function is_image($file) {
-		return strpos($file['headers']['content-type'], 'image') !== false;
+		return true;
+// wordpress.org returns application/octet-stream
+// need to decide how to handle this in the future
+//		return strpos($file['headers']['content-type'], 'image') !== false;
 	}
 	
 	/**
