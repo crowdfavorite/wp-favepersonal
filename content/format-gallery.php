@@ -28,7 +28,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	</div>
 	
 	<?php
-	gallery(array(
+	cfcp_gallery(array(
 		'before' => '<div class="post-media">',
 		'after' => '</div>'
 	));
