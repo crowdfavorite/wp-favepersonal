@@ -93,6 +93,7 @@
 }
 /* rollover */
 #featured-posts .featured:hover .featured-content {
+	background-color: rgb(153,153,153); /* fallback for IE */
 	background-color: rgba(153,153,153,.9);
 	color: #333;
 }

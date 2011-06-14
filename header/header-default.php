@@ -121,7 +121,8 @@ $blog_desc = get_bloginfo('description');
 		}
 		/* rollover */
 		#featured-posts .featured:hover .featured-content {
-			background-color: rgba(<?php echo_hex(cf_kuler_color('light')); ?>.9);
+			background-color: rgb(<?php echo_hex(cf_kuler_color('light')); ?>); /* fallback for IE */
+			background-color: rgba(<?php echo_hex(cf_kuler_color('light')); ?>, .9);
 			color: <?php echo cf_kuler_color('darkest') ?>;
 		}
 		#featured-posts .featured:hover .featured-link {
@@ -239,6 +240,9 @@ $blog_desc = get_bloginfo('description');
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!--[if IE 7]>
+		<link rel="stylesheet" type="text/css" media="screen" href="<?php  ?>/css/ie7.css?ver=2.20" />
 	<![endif]-->
 
 

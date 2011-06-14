@@ -148,8 +148,12 @@ function hex2rgb( $color ) {
 }
 function echo_hex($color2hex) {
 	$color_array = hex2rgb($color2hex);
-	for ($i=0; $i < 3; $i++) { 
-		echo $color_array[$i].',';
+	for ($i=0; $i < 3; $i++) {
+		if ($i == 2) {
+			echo $color_array[$i];
+		} else {
+			echo $color_array[$i].',';
+		}
 	}
 }
 
