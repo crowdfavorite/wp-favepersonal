@@ -241,6 +241,11 @@ $blog_desc = get_bloginfo('description');
 	<![endif]-->
 	<!--[if IE 7]>
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url'); ?>/css/ie7.css?ver=<?php echo CFCO_VER; ?>" />
+		<style type="text/css" media="screen">
+			#featured-posts .featured:hover .featured-content {
+				background-color: <?php echo cf_kuler_color('light'); ?>;
+			}
+		</style>
 	<![endif]-->
 
 <?php

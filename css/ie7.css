@@ -17,3 +17,9 @@ Fixes for IE 7
 #header .menu ul ul li.current_page_item > a {
 	display: block;
 }
+
+/** Masthead
+ -------------------------------------------------- */
+#featured-posts .featured .featured-content {
+	width: 310px;
+}
