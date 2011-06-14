@@ -13,8 +13,8 @@
 }
 #header h1 {
 	float: left;
-	line-height: 1em;
-	margin: 0 0 5px 0;
+	line-height: 1.3em;
+	margin: 0;
 }
 
 /* Menu */
@@ -31,16 +31,13 @@
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	/* position: absolute; */
-	/* right: 0; */
 	text-align: right;
 	text-transform: uppercase;
-	top: 57px;
 }
 #header #nav-main li,
 #header .menu li {
 	display: inline-block;
-	margin: 0 0 0 20px;
+	margin: 10px 0 0 20px;
 	padding: 0;
 	position: relative;
 }
