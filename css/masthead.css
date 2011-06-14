@@ -56,7 +56,13 @@
 #featured-posts .featured-link {
 	border-color: #666;
 	border-style: solid;
-	border-width: 5px;
+	
+	/* removing border to try out visually
+		want it back? change border width to 5px
+		removing it? also remove border styles from header.php
+	 */
+	border-width: 0px;
+	
 	display: block;
 	position: absolute;
 	height: 170px;
