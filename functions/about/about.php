@@ -68,13 +68,13 @@ function cfcp_about_module_carousel_enqueue() {
  * @return void
  */
 function cfcp_about_admin_ajax() {
-	if (!empty($_POST['cfp_about_action'])) {
-		switch($_POST['cfp_about_action']) {
-			case 'cfp_image_search':
+	if (!empty($_POST['cfcp_about_action'])) {
+		switch($_POST['cfcp_about_action']) {
+			case 'cfcp_image_search':
 				$results = cfp_about_image_search(array(
 						'key' => $_POST['key'],
 						'term' => $_POST['cfp-image-search-term'],
-						'exclude' => (!empty($_POST['cfp_search_exclude']) ? array_map('intval', $_POST['cfp_search_exclude']) : array())
+						'exclude' => (!empty($_POST['cfcp_search_exclude']) ? array_map('intval', $_POST['cfcp_search_exclude']) : array())
 					));
 				
 				$ret = array(
@@ -84,7 +84,7 @@ function cfcp_about_admin_ajax() {
 				);
 				
 				break;
-			case 'cfp_fetch_favicon':
+			case 'cfcp_fetch_favicon':
 				usleep(500000); // pause for 1/2 second to allow the spinner to at least display in the admin
 				
 				$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);
@@ -100,13 +100,13 @@ function cfcp_about_admin_ajax() {
 					}
 					else {
 						$success = false;
-						$favicon = cf_about_favicon_url('default');
+						$favicon = cfcp_about_favicon_url('default');
 						$favicon_status = 'default';
 					}
 				}
 				else {
 					$success = true;
-					$favicon = cf_about_favicon_url($favicon);
+					$favicon = cfcp_about_favicon_url($favicon);
 					$favicon_status = 'local';
 				}
 				
@@ -117,7 +117,7 @@ function cfcp_about_admin_ajax() {
 				);
 				
 				break;
-			case 'cfp_save_favicon':
+			case 'cfcp_save_favicon':
 				$success = false;
 				$error = '';
 				$link = array(
@@ -202,7 +202,7 @@ function cfcp_about_admin_ajax() {
 		exit;
 	}
 }
-add_action('wp_ajax_cfp_about', 'cfcp_about_admin_ajax');
+add_action('wp_ajax_cfcp_about', 'cfcp_about_admin_ajax');
 
 /**
  * Perform image search
@@ -210,7 +210,7 @@ add_action('wp_ajax_cfp_about', 'cfcp_about_admin_ajax');
  * @param array $params 
  * @return array
  */
-function cfp_about_image_search($params) {
+function cfcp_about_image_search($params) {
 	$imgs = new WP_Query(array(
 		's' => trim(stripslashes($params['term'])),
 		'posts_per_page' => 9,
@@ -301,7 +301,7 @@ function cfcp_about_get_settings() {
 	));
 }
 
-function cf_about_favicon_url($favicon = 'default') {
+function cfcp_about_favicon_url($favicon = 'default') {
 	// in the future the $favicon will come in as just a filename
 	if ($favicon == 'default') {
 		$favicon_url = trailingslashit(get_template_directory_uri()).'img/default-favicon.png';

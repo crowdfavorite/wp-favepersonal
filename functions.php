@@ -117,7 +117,7 @@ wp_register_script('cfcp-global', get_bloginfo('template_directory').'/js/global
 
 // feed permalink for link posts
 
-function cfp_the_permalink_rss($url) {
+function cfcp_the_permalink_rss($url) {
 	global $post;
 	if (has_post_format('link', $post)) {
 		$link = get_post_meta($post->ID, '_format_link_url', true);
@@ -127,7 +127,7 @@ function cfp_the_permalink_rss($url) {
 	}
 	return $url;
 }
-add_filter('the_permalink_rss', 'cfp_the_permalink_rss');
+add_filter('the_permalink_rss', 'cfcp_the_permalink_rss');
 
 // Convert color to RGB so we can use background opacity
 function hex2rgb( $color ) {
@@ -172,7 +172,7 @@ function cfcp_comment_date() {
 }
 
 // admin utility
-function cfp_get_popover_html($popover_id, $params = array()) {
+function cfcp_get_popover_html($popover_id, $params = array()) {
 	$html = $class = '';
 
 	if (!empty($params['html'])) {
@@ -222,20 +222,20 @@ function cfcp_load_view($file, $params) {
 //
 // Working HTML for featured post position HTML
 //
-add_action( 'add_meta_boxes', 'cfp_set_featured_position' );
+add_action( 'add_meta_boxes', 'cfcp_set_featured_position' );
 /* Adds a box to the main column on the Post and Page edit screens */
-function cfp_set_featured_position() {
+function cfcp_set_featured_position() {
 	add_meta_box(
 		'cfp-set-featured-position',
 		__( 'Featured Post Position', 'myplugin_textdomain' ),
-		'cfp_featured_position_content',
+		'cfcp_featured_position_content',
 		'post',
 		'advanced',
 		'high'
 	);
 }
 /* Prints the box content */
-function cfp_featured_position_content() {	
+function cfcp_featured_position_content() {	
 	echo '
 	<ul class="cf-clearfix">
 		<li id="cfp-featured-position-1" class="cfp-featured-preset">

@@ -73,7 +73,7 @@
 </div><!-- / cf-about-wrap -->
 <?php
 	// images popover
-	echo cfp_get_popover_html('cfp-img-search', array(
+	echo cfcp_get_popover_html('cfp-img-search', array(
 		'html' => cfcp_load_view(
 			'functions/about/views/img-search-popover.php',
 			array()
@@ -82,7 +82,7 @@
 	));
 	
 	// links popover
-	echo cfp_get_popover_html('cfp-link-edit', array(
+	echo cfcp_get_popover_html('cfp-link-edit', array(
 		'html' => cfcp_load_view(
 			'functions/about/views/link-edit-popover.php', 
 			array()
@@ -90,7 +90,7 @@
 		'arrow_pos' => 'right'
 	));
 
-	echo cfp_get_popover_html('cfp-link-remove', array(
+	echo cfcp_get_popover_html('cfp-link-remove', array(
 		'html' => cfcp_load_view(
 			'functions/about/views/link-remove-popover.php',
 			array()

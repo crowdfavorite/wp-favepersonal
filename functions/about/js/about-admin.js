@@ -98,9 +98,9 @@ jQuery(function($) {
 			initSearch: function() {
 				$search.find('input#cfp-image-search-term').unbind().oTypeAhead({
 					searchParams: {
-						action: 'cfp_about',
-						cfp_about_action: 'cfp_image_search',
-						cfp_search_exclude: this.getSelectedIds()
+						action: 'cfcp_about',
+						cfcp_about_action: 'cfcp_image_search',
+						cfcp_search_exclude: this.getSelectedIds()
 					},
 					form: '#cfp-image-search',
 					url: ajaxurl,
@@ -337,8 +337,8 @@ jQuery(function($) {
 					_fetchIconUrl = _url;
 					this.requestObj = $.post(ajaxurl,
 						{
-							action: 'cfp_about',
-							cfp_about_action: 'cfp_fetch_favicon',
+							action: 'cfcp_about',
+							cfcp_about_action: 'cfcp_fetch_favicon',
 							url: _url
 						},
 						function(r) {
@@ -472,8 +472,8 @@ jQuery(function($) {
 
 				$.post(ajaxurl,
 					{
-						action: 'cfp_about',
-						cfp_about_action: 'cfp_save_favicon',
+						action: 'cfcp_about',
+						cfcp_about_action: 'cfcp_save_favicon',
 						link: {
 							url: _url,
 							title: _title,

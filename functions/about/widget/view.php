@@ -33,7 +33,7 @@ if (!empty($settings['links'])) {
 			$link['favicon'] = 'default';
 		}
 		echo '<li><a href="'.esc_url($link['url']).'" title="'.esc_attr($link['title']).'">'.
-			'<img width="16" height="16" alt="'.esc_attr($link['title']).'" src="'.cf_about_favicon_url($link['favicon']).'" /></a></li>'.PHP_EOL;
+			'<img width="16" height="16" alt="'.esc_attr($link['title']).'" src="'.cfcp_about_favicon_url($link['favicon']).'" /></a></li>'.PHP_EOL;
 	}
 	echo '</ul></div>';
 }
