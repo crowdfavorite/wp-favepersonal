@@ -56,10 +56,6 @@
 	line-height: 1.6;
 	padding-left: 8px;
 }
-.cp-elm-block-image label span {
-	background: url(../img/media-button-image.gif) right 2px no-repeat;
-	padding-right: 24px;
-}
 .cp-elm-block .cp-elm-source {
 	height: 96px;
 }

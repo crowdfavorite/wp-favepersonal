@@ -77,7 +77,9 @@ jQuery(function($){
 	$('#cf-post-format-tabs').insertBefore($('form#post'));
 	$('#cfpf-format-link-url').insertAfter($('#titlediv'));
 	$('#cfpf-format-video-fields').insertAfter($('#titlediv'));
-	$('#cfpf-format-gallery-preview').insertAfter($('#titlediv'));
+	$('#cfpf-format-gallery-preview').find('a').each(function() {
+		$(this).replaceWith($(this.childNodes)); // remove links
+	}).end().insertAfter($('#titlediv'));
 	$('#cfpf-format-quote-fields').insertBefore($('#normal-sortables'));
 	
 	// tab switch
@@ -90,13 +92,31 @@ jQuery(function($){
 	});
 	
 	// refresh gallery on lightbox close
-	$('#cfcp-format-gallery-preview').each(function() {
-		$('#TB_window').live('unload', function() {
-//			console.log('lighbox closed');
+	$('#TB_window').live('unload', function() {
+		var $preview = $('#cfpf-format-gallery-preview');
 // spinner
+		$preview.find('.cp-elm-container').html('<p><img src="' + cfpf_post_format.wpspin_light + '" alt="' + cfpf_post_format.loading + '" /></p>');
 // AJAX call for gallery snippet
+		$.post(
+			ajaxurl,
+			{
+				'action': 'cfpf_gallery_preview',
+				'id': $('#post_ID').val()
+			},
+			function(response) {
 // replace
-		});
+				$preview.replaceWith(response.html);
+				$('#cfpf-format-gallery-preview').find('a').each(function() {
+					$(this).replaceWith($(this.childNodes)); // remove links
+				}).end().show();
+			},
+			'json'
+		);
+	});
+	
+	$('#cfpf-format-gallery-preview .none a').click(function(e) {
+		$('#add_image').click();
+		e.preventDefault();
 	});
 	
 });

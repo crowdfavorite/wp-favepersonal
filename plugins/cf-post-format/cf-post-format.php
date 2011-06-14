@@ -40,6 +40,15 @@ function cfpf_add_meta_boxes($post_type) {
 		wp_enqueue_script('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/js/admin.js', array('jquery'), CFPF_VERSION);
 		//wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/css/admin.css', array(), CFPF_VERSION, 'screen');
 		wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/css/admin.css', array(), CFPF_VERSION, 'screen');
+
+		wp_localize_script(
+			'cf-post-format', 
+			'cfpf_post_format', 
+			array(
+				'loading' => __('Loading...', 'cf-post-format'),
+				'wpspin_light' => admin_url('images/wpspin_light.gif')
+			)
+		);
 		
 		// actions
 		add_action('edit_form_advanced', 'cfpf_post_admin_setup');
@@ -126,5 +135,16 @@ function cfpf_format_video_save_post($post_id) {
 }
 add_action('save_post', 'cfpf_format_video_save_post');
 
+function cfpf_gallery_preview() {
+	global $post;
+	$post->ID = intval($_POST['id']);
+	ob_start();
+	include('views/format-gallery.php');
+	$html = ob_get_clean();
+	header('Content-type: text/javascript');
+	echo json_encode(compact('html'));
+	exit;
+}
+add_action('wp_ajax_cfpf_gallery_preview', 'cfpf_gallery_preview');
 
 ?>

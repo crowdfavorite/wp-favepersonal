@@ -151,6 +151,14 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	}
 }
 
+function cfcp_gallery_has_images($post_id = null) {
+	if (empty($post_id)) {
+		$post_id = get_the_ID();
+	}
+	$gallery = new CFCT_Gallery($post_id);
+	return $gallery->exists();
+}
+
 function cfcp_gallery($args = array()) {
 	$defaults = array(
 		'number' => -1,
