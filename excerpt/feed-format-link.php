@@ -16,22 +16,20 @@
  * **********************************************************************
  */
 
-
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $wp_embed, $content_width;
-$content_width = '510'; // set for this view
-add_filter('cfcp_format_video_embed', array(&$wp_embed, 'autoembed'));
+if (has_post_thumbnail()) {
+?>
+<div style="float:left; margin: 0 1.5em 1.5em 0;">
+	<?php the_post_thumbnail('thumb-img'); ?>
+</div>
+<?php 
+}
 
-echo apply_filters(
-	'cfcp_format_video_embed', 
-	get_post_meta(get_the_ID(), '_format_video_embed', true)
-);
-
-remove_filter('the_content', 'cfct_content_feed');
-the_content_feed('rss2');
-add_filter('the_content', 'cfct_content_feed');
+remove_filter('the_excerpt_rss', 'cfct_excerpt_feed');
+the_excerpt_rss();
+add_filter('the_excerpt_rss', 'cfct_excerpt_feed');
 
 ?>
-
+<p style="clear: both;"><a href="<?php echo get_permalink($post->ID); ?>">#</a></p>

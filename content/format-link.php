@@ -37,7 +37,7 @@ else {
 <article id="post-<?php the_ID() ?>" <?php post_class('content'); ?>>
 	<div class="post-header">
 		<h1 class="post-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?> &rarr;</a></h1>
-		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
+		<p class="post-date"><a href="<?php the_permalink(); ?>"  title="<?php echo $title_permalink; ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
 	<?php cfct_misc('post-meta'); ?>
 	<div class="post-content clearfix">
@@ -45,7 +45,6 @@ else {
 			<a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a>
 		<?php } ?>
 		<?php the_content(); ?>
-		<p class="format-link-local"><a href="<?php echo get_permalink($post->ID); ?>" title="<?php echo $title_permalink; ?>">#</a></p>
 	</div><!--post-content-->
 </article><!-- .post -->
 

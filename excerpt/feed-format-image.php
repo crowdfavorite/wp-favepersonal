@@ -16,22 +16,18 @@
  * **********************************************************************
  */
 
-
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-global $wp_embed, $content_width;
-$content_width = '510'; // set for this view
-add_filter('cfcp_format_video_embed', array(&$wp_embed, 'autoembed'));
 
-echo apply_filters(
-	'cfcp_format_video_embed', 
-	get_post_meta(get_the_ID(), '_format_video_embed', true)
-);
+if (has_post_thumbnail()) {
+?>
+<p><a href="<?php the_permalink() ?>"><?php the_post_thumbnail('medium-img'); ?></a></p>
+<?php
+}
 
-remove_filter('the_content', 'cfct_content_feed');
-the_content_feed('rss2');
-add_filter('the_content', 'cfct_content_feed');
+remove_filter('the_excerpt_rss', 'cfct_excerpt_feed');
+the_excerpt_rss();
+add_filter('the_excerpt_rss', 'cfct_excerpt_feed');
 
 ?>
-

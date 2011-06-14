@@ -40,12 +40,12 @@ else {
 
 ?>
 
-<div style="font-size:1.5em; line-height:1.5em; font-style: italic;">
+<div style="font-size:1.5em; line-height:1.5em; font-style:italic;">
 <?php
 
-remove_filter('the_content', 'cfct_content_feed');
-the_content_feed('rss2');
-add_filter('the_content', 'cfct_content_feed');
+remove_filter('the_excerpt_rss', 'cfct_excerpt_feed');
+the_excerpt_rss();
+add_filter('the_excerpt_rss', 'cfct_excerpt_feed');
 
 ?>
 </div>

@@ -29,9 +29,9 @@ echo apply_filters(
 	get_post_meta(get_the_ID(), '_format_video_embed', true)
 );
 
-remove_filter('the_content', 'cfct_content_feed');
-the_content_feed('rss2');
-add_filter('the_content', 'cfct_content_feed');
+remove_filter('the_excerpt_rss', 'cfct_excerpt_feed');
+the_excerpt_rss();
+add_filter('the_excerpt_rss', 'cfct_excerpt_feed');
 
 ?>
 
