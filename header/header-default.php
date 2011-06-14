@@ -136,6 +136,9 @@ $blog_desc = get_bloginfo('description');
 		.post-title {
 			color: <?php echo cf_kuler_color('dark'); ?>;
 		}
+		.post-media a:hover {
+			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
+		}
 		.post-meta a {
 			color: #999;
 		}
@@ -214,6 +217,9 @@ $blog_desc = get_bloginfo('description');
 			color: <?php echo cf_kuler_color('dark'); ?>;
 			background-color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
+		.gallery-img-excerpt li a:hover {
+			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
+		}
 		.gallery-img-excerpt li.gallery-view-all a {
 			background-color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
@@ -226,6 +232,9 @@ $blog_desc = get_bloginfo('description');
 		.gallery-thumbs a.activated {
 			border-bottom-color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
+		.link-screenshot:hover {
+			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
+		}		
 	</style>
 
 	<!--[if lt IE 9]>
