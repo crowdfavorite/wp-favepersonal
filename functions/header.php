@@ -41,6 +41,16 @@ Author URI: http://crowdfavorite.com
 function cfcp_admin_header_css() {
     $cfcp_admin_header_styles = get_bloginfo('template_url').'/css/masthead.css';
     echo '<link rel="stylesheet" type="text/css" href="' . $cfcp_admin_header_styles . '" />';
+	// Specific styles to over ride WP styles
+	echo '<style type="text/css" media="screen">
+		#cfp-header-featured #featured-posts h2.featured-title {
+			font-family: Helvetica, Verdana, Arial, sans-serif;
+			font-size: 18px;
+			line-height: 20px;
+			text-shadow: none;
+			padding: 6px 15px 7px;
+		}
+		</style>';
 }
 add_action('admin_head', 'cfcp_admin_header_css');
 

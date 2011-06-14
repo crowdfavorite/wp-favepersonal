@@ -34,8 +34,10 @@
 	background-color: #666;
 	color: #fff;
 	display: inline-block;
+	font-size: 18px;
+	line-height: 20px;
 	margin: 0 10px 9px 0;
-	padding: 6px 15px 7px;
+	padding: 8px 15px 6px;
 }
 #featured-posts .featured-content {
 	color: #fff;
@@ -90,25 +92,7 @@
 	z-index: 1;
 }
 /* rollover */
-#featured-posts .featured:hover .featured-title {
-	color: #ccc;
-}
 #featured-posts .featured:hover .featured-content {
 	background-color: rgba(153,153,153,.9);
 	color: #333;
-}
-
-/** Header Image
- -------------------------------------------------- */
-#header-image img {
-	border-color: #999;
-	border-style: solid;
-	border-width: 5px;
-}
-
-#featured-posts h2.featured-title {
-	font-family: Helvetica, Verdana, Arial, sans-serif;
-	font-size: 18px;
-	line-height: 20px;
-	text-shadow: none;
 }

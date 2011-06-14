@@ -120,9 +120,6 @@ $blog_desc = get_bloginfo('description');
 			border-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
 		/* rollover */
-		#featured-posts .featured:hover .featured-title {
-			color: <?php echo cf_kuler_color('medium') ?>;
-		}
 		#featured-posts .featured:hover .featured-content {
 			background-color: rgba(<?php echo_hex(cf_kuler_color('light')); ?>.9);
 			color: <?php echo cf_kuler_color('darkest') ?>;

@@ -22,5 +22,5 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 ?>
 
 <div id="header-image" class="col-abc">
-	<img src="http://placehold.it/980x240" />
+	<img src="http://placehold.it/990x240" />
 </div><!-- .col-a -->
