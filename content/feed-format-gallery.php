@@ -22,9 +22,11 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
 
-<?php remove_filter('the_content', 'cfct_content_feed'); ?>
-
 <p><?php echo do_shortcode('[gallery size="thumb-img"]'); ?></p>
-<?php the_content_feed('rss2'); ?>
+<?php 
 
-<?php add_filter('the_content', 'cfct_content_feed'); ?>
+remove_filter('the_content', 'cfct_content_feed');
+the_content_feed('rss2');
+add_filter('the_content', 'cfct_content_feed');
+
+?>
