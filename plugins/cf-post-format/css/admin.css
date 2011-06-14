@@ -62,20 +62,21 @@
 .cp-elm-block .cp-elm-container {
 	background: #f0f0f0;
 	padding: 10px;
+}
+.cp-elm-block .cp-elm-container p.none {
 	text-align: center;
 }
 .cp-elm-block .cp-elm-image-gallery {
 	margin: 0 0 -5px 0;
 	padding: 0;
 }
-.cp-elm-block .cp-elm-image-gallery li {
-	float: left;
-	list-style: none;
+.cp-elm-block .cp-elm-container .gallery dl,
+.cp-elm-block .cp-elm-container .gallery dt {
+	display: inline;
+}
+.cp-elm-block .cp-elm-image-gallery dt {
 	margin: 0 5px 5px 0;
 	padding: 0;
-}
-.cp-elm-block .cp-elm-image-gallery li img {
-	display: block;
 }
 
 /* Video Field */

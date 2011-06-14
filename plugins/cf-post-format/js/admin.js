@@ -77,7 +77,7 @@ jQuery(function($){
 	$('#cf-post-format-tabs').insertBefore($('form#post'));
 	$('#cfpf-format-link-url').insertAfter($('#titlediv'));
 	$('#cfpf-format-video-fields').insertAfter($('#titlediv'));
-	$('#cfpf-format-gallery-preview').find('li a').each(function() {
+	$('#cfpf-format-gallery-preview').find('dt a').each(function() {
 		$(this).replaceWith($(this.childNodes)); // remove links
 	}).end().insertAfter($('#titlediv'));
 	$('#cfpf-format-quote-fields').insertBefore($('#normal-sortables'));
@@ -106,7 +106,7 @@ jQuery(function($){
 			function(response) {
 // replace
 				$preview.replaceWith(response.html);
-				$('#cfpf-format-gallery-preview').find('li a').each(function() {
+				$('#cfpf-format-gallery-preview').find('dt a').each(function() {
 					$(this).replaceWith($(this.childNodes)); // remove links
 				}).end().show();
 			},

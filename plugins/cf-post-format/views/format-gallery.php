@@ -3,22 +3,13 @@
 	<div class="cp-elm-container">
 <?php
 
-// TODO - check for images
-if (!cfcp_gallery_has_images()) {
+if (!cfpf_post_has_gallery()) {
 ?>
 		<p class="none"><a href="#" class="button"><?php _e('Upload / Choose', 'cf-post-format'); ?></a></p>
 <?php
 }
 else {
-?>
-		<ul class="cp-elm-image-gallery clearfix">
-<?php
-cfcp_gallery_excerpt(array(
-	'number' => -1
-));
-?>
-		</ul>
-<?php
+	echo do_shortcode('[gallery columns="9999"]');
 }
 ?>
 	</div>
