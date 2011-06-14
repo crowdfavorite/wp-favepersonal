@@ -74,6 +74,7 @@ function cfpf_post_admin_setup() {
 		include('views/format-link.php');
 		include('views/format-quote.php');
 		include('views/format-video.php');
+		include('views/format-gallery.php');
 	}
 }
 

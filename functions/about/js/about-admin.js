@@ -468,7 +468,7 @@ jQuery(function($) {
 				$button = $form.find('input[name="submit_button"]');
 
 				$form.addClass('saving');
-				$button.val(cfcp_about_settings.saving);
+				$button.val(cfcp_about_settings.loading);
 
 				$.post(ajaxurl,
 					{
@@ -490,7 +490,7 @@ jQuery(function($) {
 							$('#cfp-link-edit', $edit).append('<div class="cf-error">' + r.error + '</div>');
 						}
 						$form.removeClass('saving');
-						$button.val(cfcp_about_settings.save);
+						$button.val(cfcp_about_settings.add);
 					},
 					'json'
 				);

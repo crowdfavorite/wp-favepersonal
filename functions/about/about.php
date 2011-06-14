@@ -39,8 +39,8 @@ function cfcp_about_admin_init() {
 			array(
 				'image_del_confirm' => __('Are you sure you want to delete this image?', 'favepersonal'),
 				'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'cfcp-about'),
-				'save' => __('Save', 'cfcp-about'),
-				'saving' => __('Saving...', 'cfcp-about'),
+				'add' => __('Add', 'cfcp-about'),
+				'loading' => __('Loading...', 'cfcp-about'),
 			)
 		);
 	}

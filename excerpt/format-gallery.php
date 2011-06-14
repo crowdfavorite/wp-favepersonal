@@ -27,7 +27,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	</div>
 	<?php
 	cfct_misc('post-meta-excerpts');
-	gallery_excerpt(array(
+	cfcp_gallery_excerpt(array(
 		'size' => 'thumb-img',
 		'before' => '<div class="post-media">',
 		'after' => '</div>'

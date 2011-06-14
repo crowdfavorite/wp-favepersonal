@@ -114,7 +114,7 @@ class CFCT_Gallery {
 			$attachment_url = get_attachment_link($image->ID);
 			$thumb = wp_get_attachment_image($image->ID, 'tiny-img', false);
 			
-			$thumbs .= '<li><a id="'.$id.'" data-largesrc="'.$slide_src[0].'" href="'.$attachment_url.'">'.$thumb.'</a></li>';
+			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'">'.$thumb.'</a></li>';
 		}
 		
 		?>
@@ -136,11 +136,11 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 		
 		foreach($gallery->posts as $image) {
 			$id = $this->get_slide_id($image->ID);
-			$thumbs .= '<li><a href="'.$post_permalink.'#'.$id.'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
+			$thumbs .= '<li><a href="'.esc_url($post_permalink.'#'.$id).'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
 		}
 		if ($gallery->found_posts > count($gallery->posts)) {
 			$text = sprintf(__('View all %s', 'favepersonal'), intval($gallery->found_posts));
-			$thumbs .= '<li class="gallery-view-all h5"><a href="'.$post_permalink.'"> '.$text.'</a></li>';
+			$thumbs .= '<li class="gallery-view-all h5"><a href="'.esc_url($post_permalink).'"> '.esc_html($text).'</a></li>';
 		}
 		
 		?>
@@ -151,7 +151,7 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	}
 }
 
-function gallery($args = array()) {
+function cfcp_gallery($args = array()) {
 	$defaults = array(
 		'number' => -1,
 		'id' => get_the_ID(),
@@ -169,7 +169,7 @@ function gallery($args = array()) {
 }
 
 // Display gallery images without our own markup for excerpts 
-function gallery_excerpt($args = array()) {
+function cfcp_gallery_excerpt($args = array()) {
 	$defaults = array(
 		'size' => 'thumbnail',
 		'number' => 8,
