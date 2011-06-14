@@ -96,11 +96,15 @@ add_action('save_post', 'cfpf_format_link_save_post');
 
 function cfpf_format_auto_title_post($post_id, $post) {
 	remove_action('save_post', 'cfpf_format_status_save_post', 10, 2);
+	remove_action('save_post', 'cfpf_format_quote_save_post');
 
 	wp_update_post(array(
 		'ID' => $post_id,
 		'post_title' => substr(trim($post->post_content), 0, 50)
 	));
+
+	add_action('save_post', 'cfpf_format_status_save_post', 10, 2);
+	add_action('save_post', 'cfpf_format_quote_save_post');
 }
 
 function cfpf_format_status_save_post($post_id, $post) {
