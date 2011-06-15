@@ -25,30 +25,31 @@ global $post, $comment;
 extract($data); // for comment reply link
 
 ?>
-<div id="comment-<?php comment_ID(); ?>" class="mcc-comment-inner">
-	<div class="mcc-comment-header">
-		<div class="mcc-comment-author vcard">
+
+<div id="comment-<?php comment_ID(); ?>" class="social-comment-inner">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
 			<?php if (function_exists('get_avatar')) { 
 				echo get_avatar($comment, 30);
 			} ?>
-			<cite class="mcc-fn fn"><?php comment_author_link(); ?></cite>
+			<cite class="social-fn fn"><?php comment_author_link(); ?></cite>
 		</div><!-- .comment-author .vcard -->
-		<div class="mcc-comment-meta">
-			<span class="mcc-posted-from">Comment</span> 
-			<?php echo '<a href="'.esc_url(get_comment_link( $comment->comment_ID )).'" class="mcc-posted-when">',cfcp_comment_date(),'</a>'; ?>
+		<div class="social-comment-meta">
+			<span class="social-posted-from">Comment</span> 
+			<?php echo '<a href="'.esc_url(get_comment_link( $comment->comment_ID )).'" class="social-posted-when">',cfcp_comment_date(),'</a>'; ?>
 		</div>
-	</div><!--.mcc-comment-header-->
-	<div class="mcc-comment-body">
+	</div><!--.social-comment-header-->
+	<div class="social-comment-body">
 		<?php if ($comment->comment_approved == '0') { ?>
 			<p class="notification"><strong><?php _e('(Your comment is awaiting moderation)', 'favepersonal'); ?></strong></p>
 		<?php }
 			comment_text();
 		?>
-	</div><!--.mcc-comment-body-->
-	<div class="mcc-actions">
+	</div><!--.social-comment-body-->
+	<div class="social-actions">
 		<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post); ?>
 		&middot;
-		<a class="mcc-comment-email-link" href="#">Email This</a>
+		<a class="social-comment-email-link" href="#">Email This</a>
 		<?php edit_comment_link(__('Edit', 'favepersonal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
-	</div><!--.mcc-actions-->
+	</div><!--.social-actions-->
 </div><!--#comment-xx-->

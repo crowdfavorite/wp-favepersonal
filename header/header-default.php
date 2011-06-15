@@ -231,6 +231,30 @@ $blog_desc = get_bloginfo('description');
 		.gallery-thumbs a.activated {
 			border-bottom-color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
+
+		
+		/* Social */
+		#social a {
+			color: <?php echo cf_kuler_color('dark'); ?>;
+		}
+		#social .social-title,
+		#social .social-nav,
+		#social .social-nav a span {
+			background-color: <?php echo cf_kuler_color('light'); ?>;
+		}
+		#social .social-title {
+			color: <?php echo cf_kuler_color('dark'); ?>;
+			padding: 6px 10px 3px;
+		}
+		#social .social-nav a,
+		#social .social-post-form button,
+		#facebook_signin,
+		#twitter_signin {
+			background-color: <?php echo cf_kuler_color('dark'); ?>;
+		}
+		#social .social-nav a:hover {
+			background-color: <?php echo cf_kuler_color('medium'); ?>;
+		}
 		.link-screenshot:hover {
 			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
 		}		

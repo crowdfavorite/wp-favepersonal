@@ -107,7 +107,14 @@ function cf_admin_css() {
 wp_register_script('jquery-cycle', get_template_directory_uri().'/js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);
 wp_register_script('cfcp-global', get_bloginfo('template_directory').'/js/global.js', array('jquery'), CFCT_URL_VERSION);
 
+
+/**
+ * Kuler Color Integration
+ * http://kuler.adobe.com
+ */
+
 // feed permalink for link posts
+
 
 function cfcp_the_permalink_rss($url) {
 	global $post;
@@ -249,4 +256,11 @@ function cfcp_featured_position_content() {
 	</ul>
 	';
 }
+
+function cfcp_social_plugins_url($url) {
+	return trailingslashit(get_bloginfo('template_url'));
+}
+add_filter('social_plugins_url', 'cfcp_social_plugins_url', 10, 2);
+
+
 //END featured post position HTML

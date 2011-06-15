@@ -5,57 +5,7 @@
 
 /** @section Comments List
  -------------------------------------------------- */
-#social ol.social-commentlist {
-	font-size: 13px;
-	line-height: 18px;
-	margin: 20px 0;
-	padding: 0;	
-}
-#social li.social-comment {
-	border: 0;
-	margin: 0;
-}
-#social li.social-comment .social-comment-inner {
-	margin: 0;
-	padding: 0;
-	position: relative;
-}
-#social li.social-comment .social-comment-header {
-	margin: 0;
-	position: static;
-	width: 120px;
-}
-	#social li.social-comment .social-comment-header .social-comment-author {
-		position: relative;
-		margin: 0;
-		padding-bottom: 32px;
-		text-align: right;
-	}
-	#social li.social-comment .social-comment-header .social-fn {
-		display: block;
-	}
-	#social li.social-comment .social-comment-header .avatar {
-		bottom: 0;
-		left: auto;
-		height: 30px;
-		position: absolute;
-		right: 0;
-		top: auto;
-		width: 30px;
-	}
-	#social li.social-comment .social-comment-header .social-comment-meta .social-posted-from {
-		display: block;
-	}
-#social li.social-comment .social-comment-body {
-	border-top: 1px solid #ccc;
-	padding-bottom: 18px;
-	margin: 0 0 0 140px;
-	width: auto;
-}
-#social li.social-comment .social-comment-body p {
-	margin: 0 0 10px 0;
-	padding-right: 30px;
-}
+
 
 
 

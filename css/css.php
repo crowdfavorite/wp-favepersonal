@@ -25,6 +25,7 @@ $load = array(
 	'masthead.css',
 	'comments.css',
 	'grid.css',
+	'social.css',
 );
 
 // Initialize gzip and send headers

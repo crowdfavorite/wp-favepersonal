@@ -1,0 +1,329 @@
+/* Social Plugin stylesheet comments.css dequeued in functions.php. Redefining styles in the theme. */
+
+/* structural styles */
+	/* Port social clearfix styles to allow them to work */
+	#social .social-clearfix:before,
+	#social .social-clearfix:after {
+		content: "\0020";
+		display: block;
+		height: 0;
+		visibility: hidden;
+	}
+	#social .social-clearfix:after {
+		clear: both;
+	}
+	#social .social-clearfix {
+		zoom: 1;
+	}
+
+	/* List Styles */
+	#social .social-commentlist {
+		list-style-image: none;
+		list-style-position: outside;
+		list-style-type: none;
+		margin: 0;
+	}
+
+	/* Children Comments */
+	#social .social-children {
+		margin: 0;
+		padding: 0 0 0 50px;
+	}
+	#social .social-children li {
+		list-style: none;
+		margin: 0;
+	}
+
+	#social .social-imr {
+		font-size: 0;
+		line-height: 0;
+		overflow: hidden;
+		text-indent: -32000px;
+	}
+
+/* Presentation Styles */
+#social {
+	font-size: 13px;
+}
+
+#social .social-quiet {
+	color: #666;
+}
+
+#social .social-post-form {
+	margin-bottom: 30px;
+}
+#social .social-nav {
+	padding: 1px 0;
+}
+
+#social .social-nav,
+#social .social-nav li {
+	list-style: none;
+	margin: 0;
+
+}
+#social .social-nav li {
+	float: left;
+	margin-right: 20px;
+	padding: 0;
+}	
+
+#social .social-nav li a,
+#social .social-nav li a span {
+	display: block;
+	height: 25px;
+	line-height: 26px;
+}
+#social .social-nav li a span {
+	padding-left: 5px;
+}
+
+#social .social-nav li a {
+	background-image: url(../img/sprite-y.24bit.png);
+	background-position: 0 100px;
+	background-repeat: no-repeat;
+	padding-left: 25px;
+}
+#social .social-nav li.social-all {
+	font: normal 14px Titillium600, Helvetica, Arial, Verdana, sans-serif;
+	text-align: right;
+	text-transform: uppercase;
+	width: 120px;
+}
+#social .social-nav li.social-all a {
+	background: none;
+	display: inline;
+	padding: 0;
+}
+#social .social-nav li.social-wordpress a {
+	background-position: 4px 5px;
+}
+#social .social-nav li.social-twitter a {
+	background-position: 2px -94px;
+}
+#social .social-nav li.social-facebook a {
+	background-position: 9px -195px;
+}
+#social .social-nav li.social-pingback a {
+	background-position: 7px -395px;
+}
+
+
+/* Social Comment */
+#social .social-comments .social-last-reply-when,
+#social .social-posted-when,
+#social .comment-reply-link {
+	color: #666;
+}
+#social .social-comments .social-last-reply-when {
+	font-style: italic;
+	margin-top: 3px;
+	text-align: right;
+}
+#social ol.social-commentlist {
+	line-height: 18px;
+	margin: 0 0 20px;
+	padding: 0;	
+}
+#social li.social-comment {
+	background-position: right 0;
+	background-repeat: no-repeat;
+	border: 0;
+	margin: 0;
+}
+#social li.social-wordpress {
+	background-image: url(../img/icon-social-wordpress.png);
+}
+#social li.social-twitter {
+	background-image: url(../img/icon-social-twitter.png);
+}
+#social li.social-facebook {
+	background-image: url(../img/icon-social-facebook.png);
+}
+#social li.social-pingback {
+	background-image: url(../img/icon-social-pingback.png);
+}
+
+#social li.social-comment .social-comment-inner {
+	margin: 0;
+	padding: 0 0 20px;
+	position: relative;
+}
+#social li.social-comment .social-comment-header {
+	float: left;
+	margin: 0;
+	position: static;
+	width: 120px;
+}
+	#social li.social-comment .social-comment-header .social-comment-author {
+		position: relative;
+		margin: 0;
+		padding-bottom: 32px;
+		text-align: right;
+	}
+	#social li.social-pingback .social-comment-header .social-comment-author {
+		padding-bottom: 0;
+	}
+	#social li.social-comment .social-comment-header .social-replied {
+		display: none;
+	}
+	#social li.social-comment .social-comment-header .social-fn {
+		display: block;
+		font-style: normal;
+	}
+	#social li.social-comment .social-comment-header .avatar {
+		bottom: 0;
+		left: auto;
+		height: 30px;
+		position: absolute;
+		right: 0;
+		top: auto;
+		width: 30px;
+	}
+	#social li.social-comment .social-comment-header .social-comment-meta .social-posted-from {
+		display: none;
+	}
+	
+	
+	/* Social Comment Pingback Styles */
+	#social li.social-pingback .social-comment-header {
+		float: none;
+		margin-left: 140px;
+		padding-right: 15px;
+		width: auto;
+	}
+	#social li.social-pingback .social-comment-header .social-comment-author {
+		text-align: left;
+	}
+	#social li.social-pingback .social-comment-header .social-comment-label {
+		color: #b5b5b5;
+		left: -74px;
+		position:  absolute;
+		top: 0;
+	}
+	#social li.social-pingback .social-comment-header .social-fn {
+		margin-bottom: 5px;
+	}
+	
+	
+	#social .social-comment-meta,
+	#social .social-actions {
+		bottom: 35px;
+		position: absolute;
+	}
+	#social .social-comment-meta {
+		left: 140px;
+	}
+	#social .social-actions {
+		right: 0;
+	}
+#social li.social-comment .social-comment-body {
+	border-bottom: 1px solid #ccc;
+	margin-left: 140px;
+	padding: 0 15px 25px 0;
+	width: auto;
+}
+#social li.social-comment .social-comment-body p {
+	margin: 0 0 15px 0;
+	padding-right: 30px;
+}
+
+
+/* form controls */
+#social .social-post-form {
+	font-size: 14px;
+}
+#social .social-post-form .social-input-row {
+	margin-bottom: 10px;
+	padding-left: 75px;
+	position: relative;
+}
+#social .social-post-form label {
+	display: block;
+	left: 0;
+	position: absolute;
+	text-align: right;
+	top: 6px;
+	width: 55px;
+}
+#social .social-post-form input.social-input-text,
+#social .social-post-form select,
+#social .social-post-form textarea {
+	background: #f8f8f8;
+	border: 1px solid #ccc;
+	-moz-border-radius: 0; /* FF1+ */
+	-webkit-border-radius: 0; /* Saf3+, Chrome */
+	-khtml-border-radius: 0; /* Konqueror */
+	border-radius: 0; /* Standard. IE9 */
+	/**
+	 * @bugfix border-radius background bleed
+	 * @see http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed
+	 */
+	-webkit-background-clip: padding-box;
+	-moz-box-shadow: none; /* FF3.5+ */
+	-webkit-box-shadow: none; /* Saf3+, Chrome */
+	box-shadow: none; /* Standard. Opera 10.5, IE9 */
+	font-family: Helvetica, Arial, sans-serif;
+	text-indent: 0;
+}
+#social .social-post-form input.social-input-text,
+#social .social-post-form select {
+	padding: 8px 6px;
+	width: 326px;
+}
+#social .social-post-form textarea {
+	height: 110px;
+	padding: 5px 6px;
+	width: 466px;
+}
+#social .social-post-form button {
+	background: url(../img/sprite-y.24bit.png);
+	background-repeat: no-repeat;
+	background-position: 32px -490px;
+	border: 0;
+	display: block;
+	font-size: 0;
+	height: 33px;
+	overflow: hidden;
+	text-indent: -32000px;
+	width: 120px;
+}
+#social .social-sign-in-links {
+	display: block;
+	margin: 0 0 0 162px;
+	width: 347px;
+}
+#social .social-sign-in-links a {
+	background-image: url(../img/sprite-y.24bit.png);
+	background-repeat: no-repeat;
+	background-position: 0 100px;
+	display: block;
+	float: left;
+	height: 25px;
+}
+#social #twitter_signin {
+	background-position: 3px -600px;
+	float: left;
+	width: 153px;
+}
+#social #facebook_signin {
+	background-position: 3px -700px;
+	float: right;
+	width: 174px;
+}
+#social .social-divider {
+	background: url(../img/sprite-y.8bit.png) 0 5px repeat-x;
+	margin: 15px 0;
+}
+#social .social-divider span {
+	background: #fff url(../img/sprite-y.24bit.png) 6px -800px no-repeat;
+	display: block;
+	font-size: 0;
+	height: 10px;
+	overflow: hidden;
+	padding: 0 6px;
+	margin: 0 auto;
+	text-indent: -32000px;
+	width: 16px;
+}
