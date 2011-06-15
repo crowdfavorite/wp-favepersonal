@@ -302,27 +302,36 @@
 	z-index: 5;
 }
 
-/** Status Post Format
+/** Status and Quote Post Format
  -------------------------------------------------- */
-.format-status.content {
+/* shared */
+.format-status,
+.format-quote {
+	margin-bottom: 50px;
 }
-.format-status .post-date {
-	line-height: 26px;
-}
-.post-status-content {
+.post-status-content,
+.format-quote .post-content blockquote {
 	color: #666;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 20px;
-	line-height: 26px;
 }
-article.format-status.content .post-date {
-	line-height: 36px;
-	top: 3px;
+.post-status-content,
+.format-quote .post-content blockquote,
+.format-status .post-date,
+.format-quote .post-date {
+	line-height: 28px;
 }
-article.format-status.content .post-status-content {
-	font-size: 28px;
-	line-height: 36px;
+.single .post-status-content,
+.single .format-quote .post-content blockquote {
+	font-size: 26px;
 }
+.single .post-status-content,
+.single .format-quote .post-content blockquote,
+.single .format-status .post-date,
+.single .format-quote .post-date {
+	line-height: 34px;
+}
+/* status */
 .post-status-meta {
 	color: #ccc;
 	font-size: 12px;
@@ -332,24 +341,15 @@ article.format-status.content .post-status-content {
 .post-status-meta a {
 	color: #999;
 }
-
-/** Quote Post Format
- -------------------------------------------------- */
+/* quote */
 .format-quote .post-content blockquote {
 	background: url(../img/quote.png) 0 2px no-repeat;
-	color: #666;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 20px;
-	line-height: 26px;
 	margin: 0;
 	padding: 0 0 0 26px;
 }
 .format-quote-attribution {
 	margin-left: 120px;
 	margin-right: 30px;
-}
-.format-quote .post-date {
-	line-height: 26px;
 }
 
 /** Link Post Format
