@@ -108,6 +108,14 @@ wp_register_script('jquery-cycle', get_template_directory_uri().'/js/jquery.cycl
 wp_register_script('cfcp-global', get_bloginfo('template_directory').'/js/global.js', array('jquery'), CFCT_URL_VERSION);
 
 
+// Dequeue Social Plugin Stylesheet
+
+function cfcp_social_dequeue_style() {
+	wp_dequeue_style('social');
+}
+add_action('init', 'cfcp_social_dequeue_style', 10);
+
+
 /**
  * Kuler Color Integration
  * http://kuler.adobe.com
@@ -258,7 +266,8 @@ function cfcp_featured_position_content() {
 }
 
 function cfcp_social_plugins_url($url) {
-	return trailingslashit(get_bloginfo('template_url'));
+	$url = trailingslashit(get_bloginfo('template_url'));
+	return $url.'plugins/social/';
 }
 add_filter('social_plugins_url', 'cfcp_social_plugins_url', 10, 2);
 
