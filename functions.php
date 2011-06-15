@@ -50,11 +50,6 @@ include_once(CFCT_PATH.'functions/header.php');
 include_once(CFCT_PATH.'plugins/load.php');
 
 /**
- * Removing theme settings from carrington-core, will replace with favepersonal settings
- */
-//remove_action('admin_menu', 'cfct_admin_menu');
-
-/**
  * Theme Setup
  */
 if ( ! function_exists( 'carrington_personal_setup' ) ) {
@@ -107,9 +102,6 @@ function cf_admin_css() {
 	$cf_admin_styles = get_bloginfo('template_url').'/css/admin.css';
 	echo '<link rel="stylesheet" type="text/css" href="' . $cf_admin_styles . '" />';
 }
-
-// Remove default Carrington-Core theme settings screen
-remove_action('admin_menu', 'cfct_admin_menu');
 
 // Register Scripts
 wp_register_script('jquery-cycle', get_template_directory_uri().'/js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);

@@ -13,8 +13,8 @@ class CFCP_About_Widget extends WP_Widget {
      * @return void
      **/
 	function CFCP_About_Widget() {
-		$widget_ops = array( 'classname' => 'bio-box', 'description' => 'About this site/author' );
-		$this->WP_Widget( 'cfcp-about', 'About', $widget_ops );
+		$widget_ops = array( 'classname' => 'bio-box', 'description' => __('About this site.', 'favepersonal') );
+		$this->WP_Widget( 'cfcp-about', __('Bio', 'favepersonal'), $widget_ops );
 	}
 
     /**
@@ -55,7 +55,7 @@ class CFCP_About_Widget extends WP_Widget {
      * @return void Echoes it's output
      **/
 	function form( $instance ) {
-		echo '<p>'.sprintf(__('This widget has no options. %sClick here to manage the settings for this widget%s', 'favepersonal'), '<a href="#">', '</a>').'</p>';
+		echo '<p>'.__('The settings for this widget are <a href="#">managed on this page</a>.', 'favepersonal').'</p>';
 	}
 }
 

@@ -71,12 +71,12 @@ function cfcp_about_admin_ajax() {
 	if (!empty($_POST['cfcp_about_action'])) {
 		switch($_POST['cfcp_about_action']) {
 			case 'cfcp_image_search':
-				$results = cfp_about_image_search(array(
-						'key' => $_POST['key'],
-						'term' => $_POST['cfp-image-search-term'],
-						'exclude' => (!empty($_POST['cfcp_search_exclude']) ? array_map('intval', $_POST['cfcp_search_exclude']) : array())
-					));
-				
+				$results = cfcp_about_image_search(array(
+					'key' => $_POST['key'],
+					'term' => $_POST['cfp-image-search-term'],
+					'exclude' => (!empty($_POST['cfcp_search_exclude']) ? array_map('intval', $_POST['cfcp_search_exclude']) : array())
+				));
+
 				$ret = array(
 					'success' => (!empty($results) ? true : false),
 					'key' => $_POST['key'],
@@ -247,8 +247,8 @@ function cfcp_about_image_search($params) {
 function cfcp_about_admin_menu() {
 	add_submenu_page(
 		'themes.php',
-		__('About', 'favepersonal'),
-		__('About', 'favepersonal'),
+		__('Bio Widget', 'favepersonal'),
+		__('Bio Widget', 'favepersonal'),
 		'manage_options',
 		basename(__FILE__),
 		'cfcp_about_admin_form'
@@ -262,7 +262,7 @@ function cfcp_about_admin_bar() {
 	if (current_user_can('manage_options')) {
 		$wp_admin_bar->add_menu(array(
 			'id' => 'cfcp-about',
-			'title' => __('About', 'cfcp-about'),
+			'title' => __('Bio Widget', 'cfcp-about'),
 			'href' => admin_url('themes.php?page='.basename(__FILE__)),
 			'parent' => 'appearance'
 		));

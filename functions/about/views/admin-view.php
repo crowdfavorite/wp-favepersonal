@@ -7,7 +7,6 @@
 		}
 	?>
 	
-	<!--Start Working-HTML-->
 	<div id="cfp-about-settings">
 		<form id="cfcp-about-settings" name="cfcp-about-settings" action="options.php" method="post">
 

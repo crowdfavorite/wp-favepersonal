@@ -1,4 +1,4 @@
-jQuery(function($){
+jQuery(function($) {
 	var CF = CF || {};
 	
 	CF.postFormats = function($) {
@@ -39,6 +39,7 @@ jQuery(function($){
 			status: function() {
 				$('#titlewrap, #cfpf-format-link-url, #cfpf-format-quote-fields, #cfpf-format-video-fields, #cfpf-format-gallery-preview').hide();
 				$('#postimagediv-placeholder').replaceWith($('#postimagediv'));
+				$('#content:visible').focus();
 			},
 
 			link: function() {
@@ -67,7 +68,7 @@ jQuery(function($){
 
 			quote: function() {
 				$('#titlewrap, #cfpf-format-link-url, #cfpf-format-video-fields, #cfpf-format-gallery-preview').hide();
-				$('#cfpf-format-quote-fields').show();
+				$('#cfpf-format-quote-fields').show().find(':input:first').focus();
 				$('#postimagediv-placeholder').replaceWith($('#postimagediv'));
 			}
 		};
@@ -80,7 +81,7 @@ jQuery(function($){
 	$('#cfpf-format-gallery-preview').find('dt a').each(function() {
 		$(this).replaceWith($(this.childNodes)); // remove links
 	}).end().insertAfter($('#titlediv'));
-	$('#cfpf-format-quote-fields').insertBefore($('#normal-sortables'));
+	$('#cfpf-format-quote-fields').insertAfter($('#titlediv'));
 	
 	// tab switch
 	$('#cf-post-format-tabs a').live('click', function(e) {
@@ -93,6 +94,9 @@ jQuery(function($){
 	
 	// refresh gallery on lightbox close
 	$('#TB_window').live('unload', function() {
+		if (!$('#cfpf-format-gallery-preview').is(':visible')) {
+			return;
+		}
 		var $preview = $('#cfpf-format-gallery-preview');
 // spinner
 		$preview.find('.cp-elm-container').html('<p><img src="' + cfpf_post_format.wpspin_light + '" alt="' + cfpf_post_format.loading + '" /></p>');
