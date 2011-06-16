@@ -230,7 +230,17 @@
 }
 
 
-/* form controls */
+
+
+/* form styles */
+#social .social-post-form {
+	position: relative;
+}
+#social .social-post-form .avatar {
+	left: 20px;
+	position: absolute;
+	top: 0;
+}
 #social .social-post-form {
 	font-size: 14px;
 }
@@ -246,6 +256,12 @@
 	text-align: right;
 	top: 6px;
 	width: 55px;
+}	
+#social .social-post-form label#post_to {
+		left: 209px;
+		text-align: left;
+		top: 9px;
+		width: auto;
 }
 #social .social-post-form input.social-input-text,
 #social .social-post-form select,
@@ -264,6 +280,7 @@
 	-moz-box-shadow: none; /* FF3.5+ */
 	-webkit-box-shadow: none; /* Saf3+, Chrome */
 	box-shadow: none; /* Standard. Opera 10.5, IE9 */
+	font-size: 14px;
 	font-family: Helvetica, Arial, sans-serif;
 	text-indent: 0;
 }
