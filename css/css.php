@@ -23,7 +23,6 @@ $load = array(
 	'utility.css',
 	'content.css',
 	'masthead.css',
-	'comments.css',
 	'grid.css',
 	'social.css',
 );
