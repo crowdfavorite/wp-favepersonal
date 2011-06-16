@@ -108,9 +108,6 @@
 .pagination .next {
 	float: right;
 }
-.pagination a {
-	color: #ccc;
-}
 .home .pagination {
 	padding-left: 140px;
 }
