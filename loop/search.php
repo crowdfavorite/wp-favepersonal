@@ -21,20 +21,11 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 if (have_posts()) {
-	echo '<ol class="archive">';
 	while (have_posts()) {
 		the_post();
-?>
-	<li class="search">
-<?php
-		cfct_template_file('excerpt', 'search');
-?>
-	</li>
-<?php
+		cfct_excerpt();
 	}
-	echo '</ol>';
-}
-else {
+} else {
 	cfct_misc('no-results');
 }
 
