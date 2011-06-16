@@ -40,7 +40,7 @@ else {
 
 ?>
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('content'); ?>>
-	<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
+	<p class="post-date"><?php echo cfcp_date(); ?></p>
 	<div class="post-content">
 		<blockquote>
 			<?php the_content(); ?>

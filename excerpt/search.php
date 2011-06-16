@@ -21,19 +21,13 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-<article id="post-<?php the_ID(); ?>">
-	<h3 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
-<?php
-
-the_excerpt();
-
-?>
-	<div class="meta"><abbr class="published" title="<?php the_time('Y-m-d\TH:i'); ?>"><?php the_time('M j, Y'); ?></abbr> &mdash; 
-
-<?php
-
-comments_popup_link(__('No comments', 'favepersonal'), __('1 comment', 'favepersonal'), __('% comments', 'favepersonal'));
-
-?>
+<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
+	<div class="post-header">
+		<h2 class="post-title"><a href="<?php the_permalink() ?>"  title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h2>
+		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	</div>
+	<?php cfct_misc('post-meta-excerpts'); ?>	
+	<div class="post-content clearfix">
+		<?php the_excerpt(); ?>
+	</div><!--post-content-->
 </article><!-- .excerpt -->

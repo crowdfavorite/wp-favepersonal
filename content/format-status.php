@@ -34,7 +34,7 @@ $meta_items = apply_filters('cfcp_format_status_meta_excerpt', $meta_items);
 
 ?>
 <article id="post-content-<?php the_ID() ?>" <?php post_class('content'); ?>>
-	<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
+	<p class="post-date"><?php echo cfcp_date(); ?></p>
 	<div class="post-content">
 		<div class="post-status-content">
 			<?php
