@@ -75,7 +75,7 @@ jQuery(function($) {
 	}(jQuery);
 	
 	// move tabs in to place
-	$('#cf-post-format-tabs').insertBefore($('form#post'));
+	$('#cf-post-format-tabs').insertBefore($('form#post')).show();
 	$('#cfpf-format-link-url').insertAfter($('#titlediv'));
 	$('#cfpf-format-video-fields').insertAfter($('#titlediv'));
 	$('#cfpf-format-gallery-preview').find('dt a').each(function() {

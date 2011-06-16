@@ -229,47 +229,8 @@ function cfcp_load_view($file, $params) {
 	return $html;
 }
 
-
-//
-// Working HTML for featured post position HTML
-//
-add_action( 'add_meta_boxes', 'cfcp_set_featured_position' );
-/* Adds a box to the main column on the Post and Page edit screens */
-function cfcp_set_featured_position() {
-	add_meta_box(
-		'cfp-set-featured-position',
-		__( 'Featured Post Position', 'myplugin_textdomain' ),
-		'cfcp_featured_position_content',
-		'post',
-		'advanced',
-		'high'
-	);
-}
-/* Prints the box content */
-function cfcp_featured_position_content() {	
-	echo '
-	<ul class="cf-clearfix">
-		<li id="cfp-featured-position-1" class="cfp-featured-preset">
-			<h4 class="cfp-featured-title">Really really long title that wraps to the next line</h4>
-			<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
-		</li>
-		<li id="cfp-featured-position-2">
-			<h4 class="cfp-featured-title">Title</h4>
-			<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
-		</li>
-		<li id="cfp-featured-position-3">
-			<h4 class="cfp-featured-title">Title</h4>
-			<p class="cfp-featured-meta">Post Type &middot; May, 31 2011</p>
-		</li>
-	</ul>
-	';
-}
-
 function cfcp_social_plugins_url($url) {
 	$url = trailingslashit(get_bloginfo('template_url'));
 	return $url.'plugins/social/';
 }
 add_filter('social_plugins_url', 'cfcp_social_plugins_url', 10, 2);
-
-
-//END featured post position HTML

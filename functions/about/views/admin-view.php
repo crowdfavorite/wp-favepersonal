@@ -8,7 +8,7 @@
 	?>
 	
 	<div id="cfp-about-settings">
-		<form id="cfcp-about-settings" name="cfcp-about-settings" action="options.php" method="post">
+		<form id="cfcp-about-settings" name="cfcp-about-settings" action="<?php echo admin_url('options.php'); ?>" method="post">
 
 			<?php settings_fields(CFCP_ABOUT_SETTINGS); ?>
 			

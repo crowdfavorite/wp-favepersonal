@@ -2,6 +2,14 @@
 
 // Choose what to display in the header: 3 featured post, header image, or nothing
 
+function cfcp_header_admin_init() {
+	register_setting('cfcp_header_options', 'cfcp_header_options', 'cfcp_header_options_validate');
+	if (cfcp_header_options('type') == 'featured') {
+		add_action( 'add_meta_boxes', 'cfcp_set_featured_position' );
+	}
+}
+add_action('admin_init', 'cfcp_header_admin_init');
+
 /*
 
 # Process
@@ -29,8 +37,16 @@ _cfcp_header_slot = 0|1|2|3
 
 */
 
-function cfcp_header_options($key = null) {
-	$defaults = array(
+function cfcp_header_featured_meta($post_id = null) {
+	if (!$post_id) {
+		$post_id = get_the_ID();
+	}
+	return intval(get_post_meta($post_id, '_cfcp_header_slot', true));
+}
+
+// getter/setter function
+function cfcp_header_options($key = null, $val = null) {
+	$data = get_option('cfcp_header_options', array(
 		'type' => 'none',
 		'posts' => array(
 			'_1' => null,
@@ -38,13 +54,13 @@ function cfcp_header_options($key = null) {
 			'_3' => null,
 		),
 		'image_url' => null
-	);
-	if ($options = get_option('cfcp_header_options')) {
-		$data = $options;
+	));
+	// if we have a val, save and return
+	if (!empty($val)) {
+		$data[$key] = $val;
+		return update_option('cfcp_header_options', $data);
 	}
-	else {
-		$data = $defaults;
-	}
+	// return data
 	if (empty($key)) {
 		return $data;
 	}
@@ -56,14 +72,38 @@ function cfcp_header_options($key = null) {
 	}
 }
 
-function cfcp_header_featured_publish_post($post_id, $post) {
-/*
-- find previous post in slot
-- remove previous post in slot (meta)
-- update post in slot (options)
-*/
+function cfcp_header_featured_save_post($post_id, $post) {
+	if (!defined('XMLRPC_REQUEST') && isset($_POST['_cfcp_header_slot'])) {
+		update_post_meta($post_id, '_cfcp_header_slot', intval($_POST['_cfcp_header_slot']));
+		if ($post->post_status == 'publish') {
+			remove_action('publish_post', 'cfcp_header_featured_publish_post');
+			cfcp_header_featured_publish_post($post_id);
+		}
+	}
 }
-add_action('publish_post', 'cfcp_header_featured_publish_post', 10, 2);
+add_action('save_post', 'cfcp_header_featured_save_post', 10, 2);
+
+function cfcp_header_featured_publish_post($post_id) {
+	if ($slot = get_post_meta($post_id, '_cfcp_header_slot', true)) {
+		$posts = cfcp_header_options('posts');
+// find previous post in slot
+		$prev_id = (!empty($posts['_'.$slot]) ? $prev_ids['_'.$slot] : false);
+		if ($prev_id != $post_id) {
+			if ($prev_id) {
+// remove previous post in slot (meta)
+				delete_post_meta($prev_id, '_cfcp_header_slot');
+			}
+			foreach ($posts as $k => $v) {
+				if ($v == $post_id) {
+					$posts[$k] = null;
+				}
+			}
+			$posts['_'.$slot] = $post_id;
+			cfcp_header_options('posts', $posts);
+		}
+	}
+}
+add_action('publish_post', 'cfcp_header_featured_publish_post');
 
 // Admin Page
 function cfcp_header_admin_menu() {
@@ -113,20 +153,26 @@ add_action('admin_head', 'cfcp_admin_header_css');
 
 // The settings form, page content
 function cfcp_header_admin_form() {
-//	$type = cfcp_header_options('type');
-	$type = 'none';
+	$type = cfcp_header_options('type');
 ?>
-
 	<div class="wrap cf cf-clearfix">
 		<h2><?php _e('Header Settings', 'favepersonal'); ?></h2>
 
+<?php 
+		if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
+			echo '<div class="updated below-h2 fade cf-updated-message-fade" id="message"><p>'.__('Settings updated.', 'favepersonal').'</p></div>';
+		}
+?>
+
 		<div id="cfp-header-settings">
-			<form id="cfcp-header-settings" name="cfcp-header-settings" action="" method="">
+			<form id="cfcp-header-settings" name="cfcp-header-settings" action="<?php echo admin_url('options.php'); ?>" method="post">
+
+				<?php settings_fields('cfcp_header_options'); ?>
 				
 				<ul id="cfp-header-options">
-					<li id="cfp-header-featured" class="cfp-selected"> <!-- set .cfp-selected class to it open -->
+					<li id="cfp-header-featured">
 						<label for="cfcp-header-type-featured">
-							<input type="radio" name="cfcp-header-type" id="cfcp-header-type-featured" value="featured" <?php checked('featured', $type); ?>> <?php _e('Featured Posts', 'favepersonal'); ?>
+							<input type="radio" name="cfcp_header_options[type]" id="cfcp-header-type-featured" value="featured" <?php checked('featured', $type); ?>> <?php _e('Featured Posts', 'favepersonal'); ?>
 						</label>
 						<div class="cfp-header-preview">
 							<?php cfct_misc('header-featured-posts'); ?>
@@ -134,7 +180,7 @@ function cfcp_header_admin_form() {
 					</li>
 					<li id="cfp-header-image">
 						<label for="cfcp-header-type-image">
-							<input type="radio" name="cfcp-header-type" id="cfcp-header-type-image" value="image" <?php checked('image', $type); ?>> <?php _e('Header Image', 'favepersonal'); ?>
+							<input type="radio" name="cfcp_header_options[type]" id="cfcp-header-type-image" value="image" <?php checked('image', $type); ?>> <?php _e('Header Image', 'favepersonal'); ?>
 						</label>
 						<div class="cfp-header-preview">
 							<?php cfct_misc('header-image'); ?>
@@ -142,7 +188,7 @@ function cfcp_header_admin_form() {
 					</li>
 					<li id="cfp-header-none">
 						<label for="cfcp-header-type-none">
-							<input type="radio" name="cfcp-header-type" id="cfcp-header-type-none" value="none" <?php checked('none', $type); ?>> <?php _e('No Header', 'favepersonal'); ?>
+							<input type="radio" name="cfcp_header_options[type]" id="cfcp-header-type-none" value="none" <?php checked('none', $type); ?>> <?php _e('No Header', 'favepersonal'); ?>
 						</label>
 					</li>
 				</ul>
@@ -151,7 +197,98 @@ function cfcp_header_admin_form() {
 			</form>
 		</div><!--#cfp-header-->
 	</div><!--.cf wrap -->
-
+	<script type="text/javascript">
+	jQuery(function($) {
+		$('input[name="cfcp_header_options[type]"]').click(function() {
+			$('#cfp-header-options .cfp-selected').removeClass('cfp-selected');
+			$('input[name="cfcp_header_options[type]"]:checked').closest('li').addClass('cfp-selected');
+		});
+		$('input[name="cfcp_header_options[type]"]:checked').click();
+	});
+	</script>
 <?php
 }
+
+function cfcp_header_options_validate($settings) {
+	return array_merge(cfcp_header_options(), $settings);
+}
+
+// Adds a box to the main column on the Post and Page edit screens
+function cfcp_set_featured_position() {
+	add_meta_box(
+		'cfp-set-featured-position',
+		__( 'Featured Post Position', 'myplugin_textdomain' ),
+		'cfcp_header_featured_slot_form',
+		'post',
+		'normal',
+		'high'
+	);
+}
+
+function cfcp_header_featured_slot_form() {
+	global $post;
+	$_post_id = $post->ID;
+// get featured posts
+	$featured_ids = cfcp_header_options('posts');
+// echo 3 boxes
 ?>
+	<ul class="cf-clearfix">
+<?php
+	foreach ($featured_ids as $slot => $id) {
+		$featured = (!empty($id) ? get_post($id) : false);
+		cfcp_header_featured_slot_item($post, $featured, str_replace('_', '', $slot));
+	}
+?>
+	</ul>
+	<input type="hidden" name="_cfcp_header_slot" id="_cfcp_header_slot" value="<?php echo cfcp_header_featured_meta($post->ID); ?>" />
+	<script type="text/javascript">
+	jQuery(function($) {
+		$('#cfp-set-featured-position li').click(function() {
+			
+// if already selected, deselect
+			var c = $(this).attr('class');
+			if (typeof c != 'undefined' && c.indexOf('cfp-featured-') != -1) {
+				$('#_cfcp_header_slot').val('0');
+				$(this).removeClass('cfp-featured-pending').removeClass('cfp-featured-set')
+			}
+// select
+			$('#_cfcp_header_slot').val($(this).attr('id').replace('cfp-featured-position-', ''));
+			$(this).siblings().removeClass('cfp-featured-pending').removeClass('cfp-featured-set').end().addClass('cfp-featured-pending');
+		});
+	});
+	</script>
+<?php
+// reset post data
+	$post = get_post($_post_id);
+	setup_postdata($post);
+}
+
+function cfcp_header_featured_slot_item($post, $featured, $i = 1) {
+// set class
+	if (cfcp_header_featured_meta($post->ID) == $i) {
+		$class = 'class="'.($post->post_status == 'publish' ? 'cfp-featured-set' : 'cfp-featured-pending').'"';
+	}
+	else {
+		$class = '';
+	}
+
+// no post set?
+	if (!$featured) {
+?>
+		<li id="cfp-featured-position-<?php echo $i; ?>" <?php echo $class; ?>>
+			<p class="none"><?php _e('(empty)', 'favepersonal'); ?></p>
+		</li>
+<?php
+	}
+	else {
+// show post type
+		setup_postdata($featured);
+		$labels = get_post_type_labels($featured);
+?>
+		<li id="cfp-featured-position-<?php echo $i; ?>" <?php echo $class; ?>>
+			<h4 class="cfp-featured-title"><?php the_title(); ?></h4>
+			<p class="cfp-featured-meta"><?php echo esc_html($labels->singular_name); ?> &middot; <?php the_time('F j, Y'); ?></p>
+		</li>
+<?php
+	}
+}

@@ -44,7 +44,7 @@ function cfcp_about_admin_init() {
 			)
 		);
 	}
-	register_setting(CFCP_ABOUT_SETTINGS, CFCP_ABOUT_SETTINGS, 'cfcp_validate_settings');
+	register_setting(CFCP_ABOUT_SETTINGS, CFCP_ABOUT_SETTINGS, 'cfcp_about_settings_validate');
 }
 add_action('admin_init', 'cfcp_about_admin_init');
 
@@ -277,7 +277,7 @@ function cfcp_about_admin_form() {
 
 // Settings
 
-function cfcp_validate_settings($settings) {
+function cfcp_about_settings_validate($settings) {
 	// this is an array of attachment post-ids
 	if (!empty($settings['images'])) {
 		$settings['images'] = array_map('intval', $settings['images']);

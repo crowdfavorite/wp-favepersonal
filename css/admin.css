@@ -686,6 +686,7 @@ input.cfp-action-remove:hover {
 	width: 100%;
 }
 #cfp-set-featured-position li {
+	cursor: pointer;
 	float: left;
 	padding: 10px 0 11px 0;
 	width: 33.1%;
@@ -694,6 +695,11 @@ input.cfp-action-remove:hover {
 #cfp-set-featured-position li#cfp-featured-position-2 {
 	border-left: 1px solid #dfdfdf;
 	border-right: 1px solid #dfdfdf;
+}
+#cfp-set-featured-position li p.none {
+	color: #999;
+	padding: 10px;
+	text-align: center;
 }
 #poststuff #cfp-set-featured-position li h4, 
 #poststuff #cfp-set-featured-position li p {
@@ -718,7 +724,7 @@ input.cfp-action-remove:hover {
 	background: url(../img/admin/set-featured-hover.png) 50% 50% no-repeat;
 }
 /* preset - for when post is in draft */
-#cfp-set-featured-position li.cfp-featured-preset {
+#cfp-set-featured-position li.cfp-featured-pending {
 	background: url(../img/admin/set-featured-preset.png) 50% 50% no-repeat;
 }
 /* set - position this post is set to once published */
@@ -727,7 +733,7 @@ input.cfp-action-remove:hover {
 }
 /* hide content for hover and setting position */
 #cfp-set-featured-position li:hover,
-#cfp-set-featured-position li.cfp-featured-preset,
+#cfp-set-featured-position li.cfp-featured-pending,
 #cfp-set-featured-position li.cfp-featured-set {
 	text-indent: -9999px;
 }

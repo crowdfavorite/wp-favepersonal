@@ -425,7 +425,7 @@ function cf_kuler_request_handler() {
 		}
 	}
 }
-add_action('init', 'cf_kuler_request_handler');
+add_action('admin_init', 'cf_kuler_request_handler');
 
 function cf_kuler_admin_menu() {
 	add_submenu_page(

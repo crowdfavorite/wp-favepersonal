@@ -1,4 +1,4 @@
-<div id="cf-post-format-tabs" class="cf-nav">
+<div id="cf-post-format-tabs" class="cf-nav" style="display: none;">
 	<ul class="clearfix">
 <?php
 
