@@ -118,7 +118,7 @@ jQuery(function($) {
 		);
 	});
 	
-	$('#cfpf-format-gallery-preview .none a').click(function(e) {
+	$('#cfpf-format-gallery-preview .none a').live('click', function(e) {
 		$('#add_image').click();
 		e.preventDefault();
 	});

@@ -5,7 +5,7 @@
 
 if (!cfpf_post_has_gallery()) {
 ?>
-		<p class="none"><a href="#" class="button"><?php _e('Upload / Choose', 'cf-post-format'); ?></a></p>
+		<p class="none"><a href="#" class="button"><?php _e('Upload Images', 'cf-post-format'); ?></a></p>
 <?php
 }
 else {
