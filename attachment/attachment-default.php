@@ -68,7 +68,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 
 <?php endwhile; else: ?>
 
-	<p>Sorry, no attachments matched your criteria.</p>
+	<p><?php _e('Sorry, no attachments matched your criteria.', 'favepersonal'); ?></p>
 
 <?php endif; ?>
 

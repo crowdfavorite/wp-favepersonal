@@ -25,13 +25,13 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 <div id="sidebar-1">
 	<?php if (!dynamic_sidebar('sidebar-section-1')) { ?>
 		<aside class="widget">
-			<h3 class="widget-title">Archives</h3>
+			<h3 class="widget-title"><?php _e('Archives', 'favepersonal'); ?></h3>
 			<ul>
 				<?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
 			</ul> 
 		</aside>
 		<aside class="widget">
-			<h3 class="widget-title">Meta</h3>
+			<h3 class="widget-title"><?php _e('Meta', 'favepersonal'); ?></h3>
 			<ul>
 				<?php wp_register(); ?>
 				<li><?php wp_loginout(); ?></li>
