@@ -87,11 +87,6 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 			'footer' => __( 'Footer Navigation', 'favepersonal' )
 		));
 		
-		// Let's load some scripts
-		if (!is_admin()) {
-			wp_enqueue_script('cfcp-global');
-		}
-		
 		add_action('admin_head', 'cf_admin_css');
 	}
 }
@@ -103,10 +98,19 @@ function cf_admin_css() {
 	echo '<link rel="stylesheet" type="text/css" href="' . $cf_admin_styles . '" />';
 }
 
-// Register Scripts
-wp_register_script('jquery-cycle', get_template_directory_uri().'/js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);
-wp_register_script('cfcp-global', get_bloginfo('template_directory').'/js/global.js', array('jquery'), CFCT_URL_VERSION);
-
+/**
+ * Add assets at WP when we have access to is_single, et al
+ */
+function cfcp_add_assets() {
+	// Register Scripts
+	wp_register_script('jquery-cycle', get_bloginfo('template_directory').'/js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);
+	wp_register_script('cfcp-global', get_bloginfo('template_directory').'/js/global.js', array('jquery', 'jquery-cycle', 'jquery-cfgallery'), CFCT_URL_VERSION);
+	
+	if (!is_admin()) {
+		wp_enqueue_script('cfcp-global');
+	}
+}
+add_action('wp', 'cfcp_add_assets');
 
 // Dequeue Social Plugin Stylesheet
 
