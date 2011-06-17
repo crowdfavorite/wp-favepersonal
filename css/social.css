@@ -58,6 +58,7 @@
 	margin-bottom: 30px;
 }
 #social .social-nav {
+	margin-bottom: 3px;
 	padding: 1px 0;
 }
 
@@ -78,6 +79,9 @@
 	display: block;
 	height: 25px;
 	line-height: 26px;
+}
+#social .social-nav li.social-all a span {
+	line-height: 28px;
 }
 #social .social-nav li a span {
 	padding-left: 5px;
@@ -101,16 +105,16 @@
 	padding: 0;
 }
 #social .social-nav li.social-wordpress a {
-	background-position: 4px 5px;
+	background-position: 5px 5px;
 }
 #social .social-nav li.social-twitter a {
-	background-position: 2px -94px;
+	background-position: 3px -94px;
 }
 #social .social-nav li.social-facebook a {
 	background-position: 9px -195px;
 }
 #social .social-nav li.social-pingback a {
-	background-position: 7px -395px;
+	background-position: 6px -395px;
 }
 
 
@@ -122,7 +126,7 @@
 }
 #social .social-comments .social-last-reply-when {
 	font-style: italic;
-	margin-top: 3px;
+	margin-bottom: 10px;
 	text-align: right;
 }
 #social ol.social-commentlist {
@@ -262,11 +266,15 @@
 	width: 55px;
 }	
 #social .social-post-form label#post_to {
-		left: 209px;
-		text-align: left;
-		top: 9px;
-		width: auto;
+	display: inline;
+	left: 209px;
+	position: static;
+	text-align: left;
+	top: 9px;
+	width: auto;
 }
+
+
 #social .social-post-form input.social-input-text,
 #social .social-post-form select,
 #social .social-post-form textarea {
@@ -298,18 +306,49 @@
 	padding: 5px 6px;
 	width: 466px;
 }
+
+#social .social-comment .social-post-form textarea {
+	width: 95%;
+}
+#social .social-post-form .social-input-row-submit {
+	/**
+	 * @workaround min-height Fast Hack
+	 *
+	 * IE6 doesn't support min-height, but treats elements with
+	 * height and overflow:visible as min-height.
+	 *
+	 * @affected IE5, IE6
+	 * @see http://www.dustindiaz.com/min-height-fast-hack/
+	 */
+	height: auto !important;
+	height: 33px;
+	min-height: 33px;
+	
+	padding: 8px 0 0 197px;
+}
 #social .social-post-form button {
 	background: url(../img/sprite-y.24bit.png);
 	background-repeat: no-repeat;
 	background-position: 32px -490px;
 	border: 0;
 	display: block;
+	float: left;
 	font-size: 0;
 	height: 33px;
+	left: 75px;
 	overflow: hidden;
+	position: absolute;
 	text-indent: -32000px;
+	top: 0;
 	width: 120px;
 }
+
+
+#social .social-post-form label#post_to,
+#social .social-post-form #cancel-comment-reply-link {
+	margin-left: 10px;
+}
+
 #social .social-sign-in-links {
 	display: block;
 	margin: 0 0 0 162px;
