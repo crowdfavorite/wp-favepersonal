@@ -204,7 +204,6 @@
 	list-style-type: none;
 }
 
-
 /* Shared styles for media post formats */
 .single .format-image .post-content,
 .single .format-gallery .post-content,
@@ -213,11 +212,15 @@
 }
 .single-format-image #social,
 .single-format-gallery #social,
-.single-format-video #social {
+.single-format-video #social,
+.single-format-image .pagination,
+.single-format-gallery .pagination,
+.single-format-video .pagination {
 	width: 710px;
 	margin-left: auto;
 	margin-right: auto;
 }
+
 
 /** Gallery Post Format
  -------------------------------------------------- */

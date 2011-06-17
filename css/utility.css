@@ -104,6 +104,7 @@
 /* Pagination */
 .pagination {
 	min-height: 20px;
+	margin-top: 40px;
 }
 .pagination .next {
 	float: right;

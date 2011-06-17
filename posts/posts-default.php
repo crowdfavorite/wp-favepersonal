@@ -25,7 +25,6 @@ get_header();
 ?>
 
 <div class="col-ab">
-
 	<?php
 
 	cfct_loop();

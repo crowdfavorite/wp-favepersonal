@@ -30,9 +30,10 @@ get_header();
 
 	cfct_loop();
 	comments_template();
+	cfct_misc('nav-post');
 
 	?>
-
+	
 </div>
 
 <div id="sidebar" class="col-c">
