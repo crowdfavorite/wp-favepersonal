@@ -137,6 +137,7 @@ function cfcp_the_permalink_rss($url) {
 add_filter('the_permalink_rss', 'cfcp_the_permalink_rss');
 
 // Convert color to RGB so we can use background opacity
+// source - http://css-tricks.com/snippets/php/convert-hex-to-rgb/
 function hex2rgb( $color ) {
 	if ( $color[0] == '#' ) {
 			$color = substr( $color, 1 );
