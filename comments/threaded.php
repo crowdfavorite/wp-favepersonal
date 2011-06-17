@@ -20,7 +20,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
 
-<li <?php comment_class('mcc-comment mcc-wordpress'); ?> id="li-comment-<?php comment_ID(); ?>">
+<li <?php comment_class('social-comment social-wordpress'); ?> id="li-comment-<?php comment_ID(); ?>">
 	<?php cfct_comment($data); ?>
 <?php
 // Dropped </li> is intentional: WordPress figures out where to place the </li> so it can nest comment lists.

@@ -43,7 +43,7 @@ if (have_comments() || comments_open()) {
 			}
 		}
 		if ($comment_count) {
-			echo '<ol class="mcc-commentlist commentlist">', wp_list_comments('callback=cfct_threaded_comment'), '</ol>';
+			echo '<ol class="social-commentlist">', wp_list_comments('callback=cfct_threaded_comment'), '</ol>';
 			
 			previous_comments_link();
 			next_comments_link();
