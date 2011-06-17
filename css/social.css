@@ -80,7 +80,7 @@
 	height: 25px;
 	line-height: 26px;
 }
-#social .social-nav li.social-all a span {
+#social .social-nav .social-all a span {
 	line-height: 28px;
 }
 #social .social-nav li a span {
@@ -93,27 +93,27 @@
 	background-repeat: no-repeat;
 	padding-left: 25px;
 }
-#social .social-nav li.social-all {
+#social .social-nav .social-all {
 	font: normal 14px Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	text-align: right;
 	text-transform: uppercase;
 	width: 120px;
 }
-#social .social-nav li.social-all a {
+#social .social-nav .social-all a {
 	background: none;
 	display: inline;
 	padding: 0;
 }
-#social .social-nav li.social-wordpress a {
+#social .social-nav .social-wordpress a {
 	background-position: 5px 5px;
 }
-#social .social-nav li.social-twitter a {
+#social .social-nav .social-twitter a {
 	background-position: 3px -94px;
 }
-#social .social-nav li.social-facebook a {
+#social .social-nav .social-facebook a {
 	background-position: 9px -195px;
 }
-#social .social-nav li.social-pingback a {
+#social .social-nav .social-pingback a {
 	background-position: 6px -395px;
 }
 
@@ -129,58 +129,58 @@
 	margin-bottom: 10px;
 	text-align: right;
 }
-#social ol.social-commentlist {
+#social .social-commentlist {
 	line-height: 18px;
 	margin: 20px 0;
 	padding: 0;	
 }
-#social li.social-comment {
+#social .social-comment {
 	background-position: right 0;
 	background-repeat: no-repeat;
 	border: 0;
 	margin: 0;
 }
-#social li.social-wordpress {
+#social .social-wordpress {
 	background-image: url(../img/icon-social-wordpress.png);
 }
-#social li.social-twitter {
+#social .social-twitter {
 	background-image: url(../img/icon-social-twitter.png);
 }
-#social li.social-facebook {
+#social .social-facebook {
 	background-image: url(../img/icon-social-facebook.png);
 }
-#social li.social-pingback {
+#social .social-pingback {
 	background-image: url(../img/icon-social-pingback.png);
 }
 
-#social li.social-comment .social-comment-inner {
+#social .social-comment .social-comment-inner {
 	margin: 0;
 	padding: 0 0 20px;
 	position: relative;
 }
-#social li.social-comment .social-comment-header {
+#social .social-comment .social-comment-header {
 	float: left;
 	margin: 0;
 	position: static;
 	width: 120px;
 }
-	#social li.social-comment .social-comment-header .social-comment-author {
+	#social .social-comment .social-comment-header .social-comment-author {
 		position: relative;
 		margin: 0;
 		padding-bottom: 32px;
 		text-align: right;
 	}
-	#social li.social-pingback .social-comment-header .social-comment-author {
+	#social .social-pingback .social-comment-header .social-comment-author {
 		padding-bottom: 0;
 	}
-	#social li.social-comment .social-comment-header .social-replied {
+	#social .social-comment .social-comment-header .social-replied {
 		display: none;
 	}
-	#social li.social-comment .social-comment-header .social-fn {
+	#social .social-comment .social-comment-header .social-fn {
 		display: block;
 		font-style: normal;
 	}
-	#social li.social-comment .social-comment-header .avatar {
+	#social .social-comment .social-comment-header .avatar {
 		bottom: 0;
 		left: auto;
 		height: 30px;
@@ -189,28 +189,28 @@
 		top: auto;
 		width: 30px;
 	}
-	#social li.social-comment .social-comment-header .social-comment-meta .social-posted-from {
+	#social .social-comment .social-comment-header .social-comment-meta .social-posted-from {
 		display: none;
 	}
 	
 	
 	/* Social Comment Pingback Styles */
-	#social li.social-pingback .social-comment-header {
+	#social .social-pingback .social-comment-header {
 		float: none;
 		margin-left: 140px;
 		padding-right: 15px;
 		width: auto;
 	}
-	#social li.social-pingback .social-comment-header .social-comment-author {
+	#social .social-pingback .social-comment-header .social-comment-author {
 		text-align: left;
 	}
-	#social li.social-pingback .social-comment-header .social-comment-label {
+	#social .social-pingback .social-comment-header .social-comment-label {
 		color: #b5b5b5;
 		left: -74px;
 		position:  absolute;
 		top: 0;
 	}
-	#social li.social-pingback .social-comment-header .social-fn {
+	#social .social-pingback .social-comment-header .social-fn {
 		margin-bottom: 5px;
 	}
 	
@@ -226,13 +226,13 @@
 	#social .social-actions {
 		right: 0;
 	}
-#social li.social-comment .social-comment-body {
+#social .social-comment .social-comment-body {
 	border-bottom: 1px solid #ccc;
 	margin-left: 140px;
 	padding: 0 15px 25px 0;
 	width: auto;
 }
-#social li.social-comment .social-comment-body p {
+#social .social-comment .social-comment-body p {
 	margin: 0 0 15px 0;
 	padding-right: 30px;
 }
@@ -265,7 +265,7 @@
 	top: 6px;
 	width: 55px;
 }	
-#social .social-post-form label#post_to {
+#social .social-post-form #post_to {
 	display: inline;
 	left: 209px;
 	position: static;
@@ -275,7 +275,7 @@
 }
 
 
-#social .social-post-form input.social-input-text,
+#social .social-post-form .social-input-text,
 #social .social-post-form select,
 #social .social-post-form textarea {
 	background: #f8f8f8;
@@ -296,7 +296,7 @@
 	font-family: Helvetica, Arial, sans-serif;
 	text-indent: 0;
 }
-#social .social-post-form input.social-input-text,
+#social .social-post-form .social-input-text,
 #social .social-post-form select {
 	padding: 8px 6px;
 	width: 326px;
@@ -344,7 +344,7 @@
 }
 
 
-#social .social-post-form label#post_to,
+#social .social-post-form #post_to,
 #social .social-post-form #cancel-comment-reply-link {
 	margin-left: 10px;
 }
@@ -394,10 +394,10 @@
 #social .social-comment-collapse > .social-comment-inner > .social-actions {
 	display: none;
 }
-#social li.social-comment-collapse .social-children {
+#social .social-comment-collapse .social-children {
 	padding-left: 16px;
 }
-#social li.social-comment-collapse > .social-comment-inner {
+#social .social-comment-collapse > .social-comment-inner {
 	padding: 0;
 	margin-bottom: 3px;
 }
