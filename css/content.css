@@ -211,6 +211,13 @@
 .single .format-video .post-content {
 	width: 680px;
 }
+.single-format-image #social,
+.single-format-gallery #social,
+.single-format-video #social {
+	width: 710px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 /** Gallery Post Format
  -------------------------------------------------- */

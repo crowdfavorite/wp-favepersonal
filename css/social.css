@@ -46,6 +46,10 @@
 	font-size: 13px;
 }
 
+#social .social-last-reply-when {
+	display: none;
+}
+
 #social .social-quiet {
 	color: #666;
 }
