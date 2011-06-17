@@ -18,7 +18,8 @@
 }
 
 /* Menu */
-#nav-main {
+#nav-main,
+#header .menu {
 	float: right;
 	padding-top: 9px;
 }
