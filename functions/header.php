@@ -7,6 +7,8 @@ function cfcp_header_admin_init() {
 	if (cfcp_header_options('type') == 'featured') {
 		add_action( 'add_meta_boxes', 'cfcp_set_featured_position' );
 	}
+	wp_register_style( 'myPluginStylesheet', get_bloginfo('template_url') . '/css/masthead.css' );
+	wp_enqueue_style( 'myPluginStylesheet' );
 }
 add_action('admin_init', 'cfcp_header_admin_init');
 
@@ -132,13 +134,8 @@ function cfcp_header_admin_bar() {
 }
 add_action('wp_before_admin_bar_render', 'cfcp_header_admin_bar');
 
-// Loading style sheets
+// Adding some extra style to overide WP
 function cfcp_admin_header_css() {
-	global $pagenow, $plugin_page;
-	if ($pagenow == 'themes.php' && $plugin_page == 'header.php') {
-		echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_url').'/css/masthead.css' . '" />';
-	}
-	// Specific styles to over ride WP styles
 	echo '<style type="text/css" media="screen">
 		#cfp-header-featured #featured-posts h2.featured-title {
 			font-family: Helvetica, Verdana, Arial, sans-serif;
