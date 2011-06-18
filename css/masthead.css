@@ -42,6 +42,7 @@
 #featured-posts .featured-content {
 	color: #fff;
 	min-height: 170px;
+	min-width: 310px;
 	padding: 15px 0;
 }
 #featured-posts .featured-description {
@@ -54,6 +55,11 @@
 #featured-posts .featured-description p {
 	font-size: 14px;
 	line-height: 20px;
+}
+/* Format: status */
+#featured-posts .featured-format-status p {
+	font-size: 20px;
+	line-height: 26px;
 }
 #featured-posts .featured-link {
 	border-color: #666;
@@ -71,7 +77,8 @@
 	left: 0;
 	text-indent: -999em;
 	top: 0;
-	width: 300px;
+	/* set back to 300 if border style is added back */
+	width: 310px;
 	z-index: 20;
 }
 /* with featured image */

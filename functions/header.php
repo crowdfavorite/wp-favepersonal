@@ -303,15 +303,16 @@ function cfcp_header_display_featured() {
 
 // cfct_misc('header-featured-posts'); return;
 
-	$post_ids = cfcp_header_options('posts');
+	$slots = cfcp_header_options('posts');
 	$count = 0;
 	$ids = array();
-	foreach ($post_ids as $post_id) {
+	foreach ($slots as $post_id) {
 		if (!empty($post_id)) {
 			$ids[] = $post_id;
 			$count++;
 		}
 	}
+
 	$posts = new WP_Query(array(
 		'post__in' => wp_parse_id_list($ids)
 	));
@@ -325,7 +326,7 @@ function cfcp_header_display_featured() {
 // run the slots
 	ob_start();
 	$filler_i = 0;
-	foreach ($post_ids as $slot => $post_id) {
+	foreach ($slots as $slot => $post_id) {
 		if (empty($post_id) && count($filler->posts)) {
 			$post_id = $filler->posts[$filler_i]->ID;
 			unset($filler->posts[$filler_i]);
@@ -343,11 +344,11 @@ function cfcp_header_display_featured_post($slot, $post_id) {
 	}
 	else {
 		$file = 'default';
+		if ($post_format = get_post_format($post_id)) {
 // find files
-		$format_files = cfct_files(CFCT_PATH.'header/featured');
-		if (count($format_files)) {
+			$format_files = cfct_files(CFCT_PATH.'header/featured');
 // check for format file, or fall to default
-			if ($post_format = get_post_format($post_id) && in_array('format-'.$post_format.'.php', $format_files)) {
+			if (count($format_files) && in_array('format-'.$post_format.'.php', $format_files)) {
 				$file = 'format-'.$post_format;
 			}
 		}
