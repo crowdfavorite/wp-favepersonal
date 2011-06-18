@@ -21,6 +21,9 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
 
+	<section id="masthead">
+		<div class="container clearfix">
+
 <div id="featured-posts" class="clearfix cf-clearfix">
 	<article id="featured-post-1" class="featured has-featured-img">
 		<img src="<?php bloginfo('template_url'); ?>/img/fpo-300x170-1.jpg" width="310" height="180" class="featured-img" />
@@ -52,3 +55,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<a href="" class="featured-link">Read More</a>
 	</article><!-- .featured -->	
 </div>
+
+		</div><!-- .container -->
+	</section><!-- #masthead -->

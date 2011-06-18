@@ -264,7 +264,7 @@ $blog_desc = get_bloginfo('description');
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<!--[if IE 7]>
-		<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url'); ?>/css/ie7.css?ver=<?php echo CFCO_VER; ?>" />
+		<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url'); ?>/css/ie7.css?ver=<?php echo CFCT_URL_VERSION; ?>" />
 		<style type="text/css" media="screen">
 			#featured-posts .featured:hover .featured-content {
 				background-color: <?php echo cf_kuler_color('light'); ?>;
@@ -296,19 +296,11 @@ $blog_desc = get_bloginfo('description');
 		</div><!-- .container -->
 	</header><!-- #header -->
 	
-	
-	<section id="masthead">
-		<div class="container clearfix">
-			<?php
-				//These files are also loaded for the header settings screen in the admin
-				//If settings are for featured posts
-				cfct_misc('header-featured-posts');
-				//else if setting are for header image
-				//cfct_misc('header-image');
-			?>
-		</div><!-- .container -->
-	</section><!-- #masthead -->
-	
+<?php
+
+cfcp_header_display();
+
+?>	
 	
 	<section id="content">
 		<div class="container clearfix">

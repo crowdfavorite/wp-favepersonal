@@ -223,8 +223,6 @@ function cfcp_set_featured_position() {
 }
 
 function cfcp_header_featured_slot_form() {
-	global $post;
-	$_post_id = $post->ID;
 // get featured posts
 	$featured_ids = cfcp_header_options('posts');
 // echo 3 boxes
@@ -255,9 +253,6 @@ function cfcp_header_featured_slot_form() {
 	});
 	</script>
 <?php
-// reset post data
-	$post = get_post($_post_id);
-	setup_postdata($post);
 }
 
 function cfcp_header_featured_slot_item($post, $featured, $i = 1) {
@@ -279,13 +274,86 @@ function cfcp_header_featured_slot_item($post, $featured, $i = 1) {
 	}
 	else {
 // show post type
-		setup_postdata($featured);
 		$labels = get_post_type_labels($featured);
 ?>
 		<li id="cfp-featured-position-<?php echo $i; ?>" <?php echo $class; ?>>
-			<h4 class="cfp-featured-title"><?php the_title(); ?></h4>
-			<p class="cfp-featured-meta"><?php echo esc_html($labels->singular_name); ?> &middot; <?php the_time('F j, Y'); ?></p>
+			<h4 class="cfp-featured-title"><?php echo esc_html($featured->post_title); ?></h4>
+			<p class="cfp-featured-meta"><?php echo esc_html($labels->singular_name); ?> &middot; <?php echo get_the_time('F j, Y', $featured); ?></p>
 		</li>
 <?php
 	}
+}
+
+// Front-end Display functions
+
+function cfcp_header_display() {
+	switch (cfcp_header_options('type')) {
+		case 'featured':
+			cfcp_header_display_featured();
+		break;
+		case 'image':
+			cfcp_header_display_image();
+		break;
+		case 'none':
+		default:
+	}
+}
+
+function cfcp_header_display_featured() {
+
+// cfct_misc('header-featured-posts'); return;
+
+	$post_ids = cfcp_header_options('posts');
+	$count = 0;
+	$ids = array();
+	foreach ($post_ids as $post_id) {
+		if (!empty($post_id)) {
+			$ids[] = $post_id;
+			$count++;
+		}
+	}
+	$posts = new WP_Query(array(
+		'post__in' => wp_parse_id_list($ids)
+	));
+// if we have less than 3 posts set, grab the latest posts to fill the empty spots
+	if ($count < 3) {
+		$filler = new WP_Query(array(
+			'posts_per_page' => (3 - $count),
+			'post__not_in' => wp_parse_id_list($ids)
+		));
+	}
+// run the slots
+	ob_start();
+	$filler_i = 0;
+	foreach ($post_ids as $slot => $post_id) {
+		if (empty($post_id) && count($filler->posts)) {
+			$post_id = $filler->posts[$filler_i]->ID;
+			unset($filler->posts[$filler_i]);
+			$filler_i++;
+		}
+		cfcp_header_display_featured_post(str_replace('_', '', $slot), $post_id);
+	}
+	$content = ob_get_clean();
+	cfct_template_file('header', 'featured-posts', compact('content'));
+}
+
+function cfcp_header_display_featured_post($slot, $post_id) {
+	if (empty($post_id)) {
+		$file = 'empty';
+	}
+	else {
+		$file = 'default';
+// find files
+		$format_files = cfct_files(CFCT_PATH.'header/featured');
+		if (count($format_files)) {
+// check for format file, or fall to default
+			if ($post_format = get_post_format($post_id) && in_array('format-'.$post_format.'.php', $format_files)) {
+				$file = 'format-'.$post_format;
+			}
+		}
+	}
+	cfct_template_file('header/featured', $file, compact('slot', 'post_id'));
+}
+
+function cfcp_header_display_image() {
 }
