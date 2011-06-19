@@ -49,6 +49,13 @@ include_once(CFCT_PATH.'functions/about/about.php');
 include_once(CFCT_PATH.'functions/header.php');
 include_once(CFCT_PATH.'plugins/load.php');
 
+function cfcp_load_social() {
+	if (!class_exists('Social')) {
+		include_once(CFCT_PATH.'plugins/social/social.php');
+	}
+}
+add_action('init', 'cfcp_load_social');
+
 /**
  * Theme Setup
  */

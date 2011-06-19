@@ -49,7 +49,7 @@ function cfcp_header_featured_meta($post_id = null) {
 // getter/setter function
 function cfcp_header_options($key = null, $val = null) {
 	$data = get_option('cfcp_header_options', array(
-		'type' => 'none',
+		'type' => 'featured',
 		'posts' => array(
 			'_1' => null,
 			'_2' => null,
@@ -172,7 +172,7 @@ function cfcp_header_admin_form() {
 							<input type="radio" name="cfcp_header_options[type]" id="cfcp-header-type-featured" value="featured" <?php checked('featured', $type); ?>> <?php _e('Featured Posts', 'favepersonal'); ?>
 						</label>
 						<div class="cfp-header-preview">
-							<?php cfct_misc('header-featured-posts'); ?>
+							<?php cfcp_header_display_featured(); ?>
 						</div><!--.cfp-featured-preview-->
 					</li>
 					<li id="cfp-header-image">
@@ -201,6 +201,10 @@ function cfcp_header_admin_form() {
 			$('input[name="cfcp_header_options[type]"]:checked').closest('li').addClass('cfp-selected');
 		});
 		$('input[name="cfcp_header_options[type]"]:checked').click();
+		$('#cfp-header-options .cfp-header-preview a').click(function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+		});
 	});
 	</script>
 <?php
@@ -258,7 +262,7 @@ function cfcp_header_featured_slot_form() {
 function cfcp_header_featured_slot_item($post, $featured, $i = 1) {
 // set class
 	if (cfcp_header_featured_meta($post->ID) == $i) {
-		$class = 'class="'.($post->post_status == 'publish' ? 'cfp-featured-set' : 'cfp-featured-pending').'"';
+		$class = 'class="'.($featured->post_status == 'publish' ? 'cfp-featured-set' : 'cfp-featured-pending').'"';
 	}
 	else {
 		$class = '';
@@ -299,10 +303,7 @@ function cfcp_header_display() {
 	}
 }
 
-function cfcp_header_display_featured() {
-
-// cfct_misc('header-featured-posts'); return;
-
+function cfcp_header_featured_slots() {
 	$slots = cfcp_header_options('posts');
 	$count = 0;
 	$ids = array();
@@ -324,14 +325,21 @@ function cfcp_header_display_featured() {
 		));
 	}
 // run the slots
-	ob_start();
 	$filler_i = 0;
 	foreach ($slots as $slot => $post_id) {
 		if (empty($post_id) && count($filler->posts)) {
-			$post_id = $filler->posts[$filler_i]->ID;
+			$slots[$slot] = $filler->posts[$filler_i]->ID;
 			unset($filler->posts[$filler_i]);
 			$filler_i++;
 		}
+	}
+	return $slots;
+}
+
+function cfcp_header_display_featured() {
+	$post_ids = cfcp_header_featured_slots();
+	ob_start();
+	foreach ($post_ids as $slot => $post_id) {
 		cfcp_header_display_featured_post(str_replace('_', '', $slot), $post_id);
 	}
 	$content = ob_get_clean();
@@ -357,4 +365,5 @@ function cfcp_header_display_featured_post($slot, $post_id) {
 }
 
 function cfcp_header_display_image() {
+	echo 'TODO';
 }
