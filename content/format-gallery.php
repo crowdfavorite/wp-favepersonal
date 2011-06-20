@@ -46,4 +46,4 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		?>
 	</div><!--post-content-->
 </article><!-- .post -->
-<script type="text/javascript">var galleryWidth = <?php echo cfcp_gallery_max_width('gallery-large-img'); ?>;</script>
+<script type="text/javascript">var cfcpGalleryWidth = <?php echo cfcp_gallery_max_width('gallery-large-img'); ?>;</script>

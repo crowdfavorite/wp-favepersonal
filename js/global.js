@@ -32,11 +32,11 @@ jQuery(function($) {
 	});
 
 // Gallery
-	if (typeof galleryWidth == 'undefined') {
-		galleryWidth = 710;
+	if (typeof cfcpGalleryWidth == 'undefined') {
+		cfcpGalleryWidth = 710;
 	}
 	$('.gallery').cfgallery({
-		'stageDimensions': [galleryWidth, 474]
+		'stageDimensions': [cfcpGalleryWidth, 474]
 	});
 	$('.gallery-img-excerpt a').cfShimLinkHash();
 });
