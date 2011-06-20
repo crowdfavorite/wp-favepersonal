@@ -270,6 +270,9 @@
 	overflow: hidden;
 	width: 710px;
 }
+.js .gallery-stage {
+	cursor: pointer;
+}
 .gallery-thumbs {
 	list-style-type: none;
 	margin: 0;
