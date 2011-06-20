@@ -24,24 +24,15 @@ get_header();
 
 $s = get_query_var('s');
 
-if (get_option('permalink_structure') != '') {
-	$search_title = '<a href="'.trailingslashit(get_bloginfo('url')).'search/'.urlencode($s).'">'.htmlspecialchars($s).'</a>';
-}
-else {
-	$search_title = '<a href="'.trailingslashit(get_bloginfo('url')).'?s='.urlencode($s).'">'.htmlspecialchars($s).'</a>';
-}
-
 ?>
 
 <div class="col-ab">
 
-	<h1><?php printf(__('Search Results for: %s', 'favepersonal'), $search_title); ?></h1>
+	<h1 class="search-title h3"><?php printf( __( 'Search Results for: %s', 'favepersonal' ), '<em>' . get_search_query() . '</em>' ); ?></h1>
 	
 	<?php
-
 	cfct_loop();
 	cfct_misc('nav-posts');
-
 	?>
 
 </div>

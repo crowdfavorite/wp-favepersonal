@@ -155,7 +155,7 @@ $blog_desc = get_bloginfo('description');
 			color: <?php echo cf_kuler_color('dark'); ?>;
 		}
 
-		/** Sidebar
+		/** Sidebar, Widgets, Search Results
 		 -------------------------------------------------- */
 		.bio-box a {
 			color: <?php echo cf_kuler_color('darkest'); ?>;
@@ -179,9 +179,13 @@ $blog_desc = get_bloginfo('description');
 			border-color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
 		.widget-title,
-		.widget_search form {
+		.widget_search form,
+		.search-title {
 			color: <?php echo cf_kuler_color('dark'); ?>;
 			background-color: <?php echo cf_kuler_color('light'); ?>;
+		}
+		.search-title em {
+			color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
 		.widget_search form #s {
 			color: <?php echo cf_kuler_color('darkest'); ?>;
