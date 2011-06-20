@@ -60,6 +60,11 @@
 			e.preventDefault();
 		});
 		
+		stage.click(function (e) {
+			fn.setNextHashToken();
+			e.preventDefault();
+		});
+		
 		$(docEl).keyup(function(e){
 			// Right arrow
 			if (e.keyCode === 39) {

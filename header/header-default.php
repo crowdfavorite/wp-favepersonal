@@ -23,13 +23,17 @@ $blog_desc = get_bloginfo('description');
 (is_home() && !empty($blog_desc)) ? $title_description = ' - '.$blog_desc : $title_description = '';
 ?>
 <!DOCTYPE html>
-<!--[if IE]><![endif]-->
-<html <?php language_attributes() ?>>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" <?php language_attributes() ?>> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" <?php language_attributes() ?>> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" <?php language_attributes() ?>> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes() ?>> <!--<![endif]-->
 <head>
 	<meta http-equiv="content-type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
-
 	<title><?php wp_title( '-', true, 'right' ); echo esc_html( get_bloginfo('name'), 1 ).$title_description; ?></title>
-
+	<?php /*
+	Empty conditional comment prevents blocking downloads in IE8. Good ol' IE.
+	See http://www.phpied.com/conditional-comments-block-downloads/ for more info. */ ?>
+	<!--[if IE]><![endif]-->
 	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url') ?>" title="<?php printf( __( '%s latest posts', 'favepersonal' ), esc_attr( get_bloginfo('name'), 1 ) ) ?>" />
 	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'favepersonal' ), esc_attr( get_bloginfo('name'), 1 ) ) ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />

@@ -1,3 +1,10 @@
+/* Replace .no-js class with .js class. Very useful for accessible Javascript FOUC
+prevention with CSS */
+;(function (doc) {
+	h = doc.getElementsByTagName('html')[0];
+	h.className = h.className.replace('no-js', 'js');
+})(document);
+
 jQuery(function($) {
 // Bio box carousel
 	var $bioCarousel = $('#bio-carousel .bio-box-gallery-images');
@@ -40,4 +47,3 @@ jQuery(function($) {
 	});
 	$('.gallery-img-excerpt a').cfShimLinkHash();
 });
-
