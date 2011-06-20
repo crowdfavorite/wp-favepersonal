@@ -30,7 +30,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	<?php
 	cfcp_gallery(array(
 		'before' => '<div class="post-media">',
-		'after' => '</div>'
+		'after' => '</div>',
 	));
 	cfct_misc('post-meta'); ?>
 	
@@ -46,3 +46,4 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		?>
 	</div><!--post-content-->
 </article><!-- .post -->
+<script type="text/javascript">var galleryWidth = <?php echo cfcp_gallery_max_width('gallery-large-img'); ?>;</script>

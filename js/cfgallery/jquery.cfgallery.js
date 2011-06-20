@@ -19,9 +19,10 @@
 	
 	/* Constructor */
 	gal = function(options) {
-		var opts = $.extend(options, gal.opts),
+		var opts = $.extend(gal.opts, options),
 			fn = helpers,
 			dim = opts.stageDimensions,
+			bgColor = opts.bgColor,
 			stage;
 			
 		gal.opts = opts;
@@ -44,7 +45,8 @@
 		stage.css({
 			'position': 'relative',
 			'width': dim[0],
-			'height': dim[1]
+			'height': dim[1],
+			'background-color': bgColor
 		});
 		fn.$loading = $('<div class="loading">Loading...</div>')
 			.hide()
@@ -97,7 +99,8 @@
 	gal.opts = {
 		stageDimensions: [710, 474],
 		start: 0,
-		activatedClass: 'activated'
+		activatedClass: 'activated',
+		bgColor: '#000'
 	};
 	
 	$.fn.cfgallery = gal;

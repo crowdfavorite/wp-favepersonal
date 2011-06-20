@@ -32,7 +32,12 @@ jQuery(function($) {
 	});
 
 // Gallery
-	$('.gallery').cfgallery();
+	if (typeof galleryWidth == 'undefined') {
+		galleryWidth = 710;
+	}
+	$('.gallery').cfgallery({
+		'stageDimensions': [galleryWidth, 474]
+	});
 	$('.gallery-img-excerpt a').cfShimLinkHash();
 });
 

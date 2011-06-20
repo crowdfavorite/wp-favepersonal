@@ -116,7 +116,6 @@ class CFCT_Gallery {
 			
 			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'">'.$thumb.'</a></li>';
 		}
-		
 		?>
 <div id="<?php echo $this->id; ?>" class="gallery clearfix">
 	<div class="gallery-stage"></div>
@@ -156,7 +155,9 @@ function cfcp_gallery_has_images($post_id = null) {
 		$post_id = get_the_ID();
 	}
 	$gallery = new CFCT_Gallery($post_id);
-	return $gallery->exists();
+	$ret = $gallery->exists();
+	unset($gallery);
+	return $ret;
 }
 
 function cfcp_gallery($args = array()) {
@@ -183,7 +184,7 @@ function cfcp_gallery_excerpt($args = array()) {
 		'number' => 8,
 		'id' => get_the_ID(),
 		'before' => '',
-		'after' => ''
+		'after' => '',
 	);
 	$args = array_merge($defaults, $args);
 	$gallery = new CFCT_Gallery_Excerpt($args['id'], $args['number']);
@@ -198,4 +199,33 @@ function cfcp_gallery_excerpt($args = array()) {
 	}
 	unset($gallery);
 }
+
+function cfcp_gallery_max_width($size = '', $post_id = null) {
+	$max_width = 0;
+	if (empty($post_id)) {
+		$post_id = get_the_ID();
+	}
+	$gallery = new CFCT_Gallery($post_id, -1);
+	if ($gallery->exists()) { // loads attachments
+// get IDs
+		$photo_ids = array();
+		foreach ($gallery->gallery->posts as $photo) {
+			$photo_ids[] = $photo->ID;
+		}
+// get meta
+		$meta = cf_get_post_meta($photo_ids, '_wp_attachment_metadata');
+// check widths
+		foreach ($meta as $data) {
+			if ($max_width < $data['sizes']['gallery-large-img']['width']) {
+				$max_width = $data['sizes']['gallery-large-img']['width'];
+			}
+		}
+	}
+	unset($gallery);
+	if (!$max_width) {
+		$max_width = 710;
+	}
+	return $max_width;
+}
+
 ?>
