@@ -18,7 +18,7 @@ if (has_post_thumbnail()) {
 		'height' => '180',
 		'width' => '310'
 	));
-	$image = ob_get_Clean();
+	$image = ob_get_clean();
 }
 
 // set format class
