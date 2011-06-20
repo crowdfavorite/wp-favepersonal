@@ -34,8 +34,6 @@ $blog_desc = get_bloginfo('description');
 	Empty conditional comment prevents blocking downloads in IE8. Good ol' IE.
 	See http://www.phpied.com/conditional-comments-block-downloads/ for more info. */ ?>
 	<!--[if IE]><![endif]-->
-	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
-	<?php wp_get_archives('type=monthly&format=link'); ?>
 	
 	<link rel="stylesheet" type="text/css" media="screen, print, handheld" href="<?php bloginfo('template_url') ?>/css/css.php?ver=<?php echo CFCT_URL_VERSION; ?>" />
 	<style type="text/css" media="screen">

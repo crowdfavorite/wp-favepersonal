@@ -126,6 +126,14 @@ function cfcp_social_dequeue_style() {
 }
 add_action('init', 'cfcp_social_dequeue_style', 10);
 
+/**
+ * Misc other things we want added to the <head>
+ */
+function cfcp_head_extra() {
+	echo '<link rel="pingback" href="'.get_bloginfo('pingback_url').'" />';
+	wp_get_archives('type=monthly&format=link');
+}
+add_action('wp_head', 'cfcp_head_extra');
 
 /**
  * Kuler Color Integration
