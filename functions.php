@@ -54,7 +54,7 @@ function cfcp_load_social() {
 		include_once(CFCT_PATH.'plugins/social/social.php');
 	}
 }
-add_action('init', 'cfcp_load_social');
+add_action('after_setup_theme', 'cfcp_load_social');
 
 /**
  * Theme Setup

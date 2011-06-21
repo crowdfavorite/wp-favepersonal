@@ -234,19 +234,19 @@ jQuery(function($) {
 					pnum = $swatch.index(),
 					_left,
 					_classname,
-					_offset = 15;
+					_offset = 25;
 				
 				switch(true) {
-					case pnum < 2: // notch on left
-						_left = pos.left - _offset + 'px';
+					case pnum < 1: // notch on left
+						_left = pos.left + ($swatch.outerWidth() / 2) - _offset - 2 + 'px';
 						_classname = 'left';
 						break;
-					case pnum > 2: // notch on right
-						_left = (pos.left + $swatch.outerWidth()) - $picker.outerWidth() + _offset + 'px';
-						_classname = 'right';
-						break;
+// 					case pnum > 2: // notch on right
+// 						_left = (pos.left + $swatch.outerWidth()) - $picker.outerWidth() + _offset + 'px';
+// 						_classname = 'right';
+// 						break;
 					default: // notch centered
-						_left = (pos.left - ($picker.outerWidth() / 2) + ($swatch.outerWidth() / 2)) + 'px';
+						_left = (pos.left - ($picker.outerWidth() / 2) + ($swatch.outerWidth() / 2)) + 5 + 'px';
 						_classname = 'center';
 				}
 
