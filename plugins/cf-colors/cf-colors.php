@@ -36,7 +36,8 @@ function cfcp_admin_init() {
 		$css_preview_template = preg_replace("/[\n|\t]/", '', $css_preview_template);
 		wp_enqueue_script('cf-colors', $plugin_dir.'/js/cf-colors.js', array('jquery', 'colorpicker', 'jquery-ui-sortable'), CF_KULER_VERSION);
 		wp_localize_script('cf-colors', 'cf_kuler_settings', array(
-			'preview_css_template' => $css_preview_template
+			'preview_css_template' => $css_preview_template,
+			'loading' => 'Loading...'
 		));	
 	}
 }

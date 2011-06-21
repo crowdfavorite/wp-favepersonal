@@ -5,7 +5,7 @@ jQuery(function($) {
 		$('#cf-kuler-menu a').removeClass('current');
 		$(this).addClass('current');
 		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div class="cfcp-loading"><em>Loading...</em></div>');
+		$swatches.html('<div class="cfcp-loading"><em>' + cf_kuler_settings.loading + '</em></div>');
 		$.post(
 			ajaxurl,
 			{
@@ -28,7 +28,7 @@ jQuery(function($) {
 	
 	$('#cf-kuler-search-form').submit(function(e) {
 		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div class="cfcp-loading"><em>Loading...</em></div>');
+		$swatches.html('<div class="cfcp-loading"><em>' + cf_kuler_settings.loading + '</em></div>');
 		$.post(
 			ajaxurl,
 			{
@@ -47,7 +47,7 @@ jQuery(function($) {
 	});
 	$('a.cf-kuler-paging').live('click', function(e) {
 		$swatches = $('#cf-kuler-swatch-selector');
-		$swatches.html('<div class="cfcp-loading"><em>Loading...</em></div>');
+		$swatches.html('<div class="cfcp-loading"><em>' + cf_kuler_settings.loading + '</em></div>');
 		$.post(
 			ajaxurl,
 			{
