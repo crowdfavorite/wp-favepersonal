@@ -89,16 +89,11 @@ function cfcp_header_featured_publish_post($post_id) {
 	if ($slot = get_post_meta($post_id, '_cfcp_header_slot', true)) {
 		$posts = cfcp_header_options('posts');
 // find previous post in slot
-		$prev_id = (!empty($posts['_'.$slot]) ? $prev_ids['_'.$slot] : false);
+		$prev_id = (!empty($posts['_'.$slot]) ? $posts['_'.$slot] : false);
 		if ($prev_id != $post_id) {
 			if ($prev_id) {
 // remove previous post in slot (meta)
 				delete_post_meta($prev_id, '_cfcp_header_slot');
-			}
-			foreach ($posts as $k => $v) {
-				if ($v == $post_id) {
-					$posts[$k] = null;
-				}
 			}
 			$posts['_'.$slot] = $post_id;
 			cfcp_header_options('posts', $posts);
