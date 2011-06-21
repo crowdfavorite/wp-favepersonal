@@ -44,6 +44,8 @@
 	min-height: 170px;
 	min-width: 310px;
 	padding: 15px 0;
+	position: absolute;
+	z-index: 10;
 }
 #featured-posts .featured-description {
 	padding: 0 15px;
@@ -74,28 +76,12 @@
 	width: 310px;
 	height: 180px;
 }
-/* with featured image */
-#featured-posts .has-featured-img .featured-content {
-	position: absolute;
-	z-index: 10;
-}
-#featured-posts .has-featured-img .featured-description {
-	display: none;
-}
-#featured-posts .has-featured-img:hover .featured-description {
-	display: block;
-}
+/* featured image */
 #featured-posts .featured-img {
 	position: absolute;
 	top: 0;
 	left: 0;
 	z-index: 1;
-}
-/* rollover */
-#featured-posts .featured:hover .featured-content {
-	background-color: rgb(153,153,153); /* fallback for IE */
-	background-color: rgba(153,153,153,.9);
-	color: #333;
 }
 
 /** Post Formats
@@ -116,12 +102,26 @@
 	background-repeat: no-repeat;
 	padding-left: 36px;
 }
-/* video */
-#featured-posts .featured-format-video .featured-vid iframe {
-	height: 180px;
-	width: 310px;
+/* gallery */
+#featured-posts .featured-format-gallery .gallery-img-excerpt {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
 	z-index: 1;
 }
+#featured-posts .featured-format-gallery .gallery-img-excerpt li {
+	float: left;
+	height: 90px;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	width: 155px;
+}
+
+/* video */
 #featured-posts .featured-format-video .featured-link {
 	display: none;
 	height: 34px;
@@ -133,4 +133,21 @@
 	background-image: url(../img/link-icon-white.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
+}
+
+/** Hover / rollover
+ -------------------------------------------------- */
+#featured-posts .has-featured-img .featured-description,
+#featured-posts .featured-format-gallery .featured-description {
+	display: none;
+}
+#featured-posts .has-featured-img:hover .featured-description,
+#featured-posts .featured-format-gallery:hover .featured-description {
+	display: block;
+}
+/* rollover */
+#featured-posts .featured:hover .featured-content {
+	background-color: rgb(153,153,153); /* fallback for IE */
+	background-color: rgba(153,153,153,.9);
+	color: #333;
 }

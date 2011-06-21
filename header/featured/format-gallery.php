@@ -4,7 +4,12 @@ include(CFCT_PATH.'header/featured/init.php');
 
 ?>
 				<article id="featured-post-<?php echo $slot; ?>" class="featured <?php echo $class; ?>">
-					<?php echo $image; ?>
+					<?php
+					cfcp_gallery_excerpt(array(
+						'size' => 'thumb-img',
+						'number' => '4',
+					));
+					?>
 					<div class="featured-content">
 						<h2 class="featured-title"><?php the_title(); ?></h2>
 						<div class="featured-description">
