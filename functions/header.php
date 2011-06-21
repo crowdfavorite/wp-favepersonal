@@ -278,11 +278,10 @@ function cfcp_header_featured_slot_item($post, $featured, $i = 1) {
 	}
 	else {
 // show post type
-		$labels = get_post_type_labels($featured);
 ?>
 		<li id="cfp-featured-position-<?php echo $i; ?>" <?php echo $class; ?>>
 			<h4 class="cfp-featured-title"><?php echo esc_html($featured->post_title); ?></h4>
-			<p class="cfp-featured-meta"><?php echo esc_html($labels->singular_name); ?> &middot; <?php echo get_the_time('F j, Y', $featured); ?></p>
+			<p class="cfp-featured-meta"><?php echo esc_html(get_post_format_string(get_post_format($featured->ID))); ?> &middot; <?php echo get_the_time('F j, Y', $featured); ?></p>
 		</li>
 <?php
 	}
