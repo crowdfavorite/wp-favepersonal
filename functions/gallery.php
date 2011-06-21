@@ -50,6 +50,9 @@ function cfcp_img_captions($attr, $content = null) {
 add_shortcode('wp_caption', 'cfcp_img_captions');
 add_shortcode('caption', 'cfcp_img_captions');
 
+// Do not output default WP styles with gallery shortcode
+add_filter('gallery_style', create_function('$a', 'return "<div class=\'gallery\'>";'));
+
 class CFCT_Gallery {
 	public $id;
 	public $post_id;
