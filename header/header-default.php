@@ -127,10 +127,6 @@ $blog_desc = get_bloginfo('description');
 		#header-image img {
 			border-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
-		/* video */
-		#featured-posts .featured-format-video:hover .featured-link {
-			background-color: <?php echo cf_kuler_color('darkest') ?>;
-		}
 		
 		/** Post
 		 -------------------------------------------------- */

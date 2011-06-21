@@ -120,20 +120,13 @@
 	padding: 0;
 	width: 155px;
 }
-
-/* video */
+/* video 
 #featured-posts .featured-format-video .featured-link {
-	display: none;
-	height: 34px;
-	width: 34px;
-	top: 15px;
-}
-#featured-posts .featured-format-video:hover .featured-link {
-	display: block;
-	background-image: url(../img/link-icon-white.png);
-	background-position: 0 0;
+	background-image: url(../img/bio-scroller-btns.png);
+	background-position: 50% 50%;
 	background-repeat: no-repeat;
 }
+*/
 
 /** Hover / rollover
  -------------------------------------------------- */
