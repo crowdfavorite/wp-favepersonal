@@ -1,11 +1,11 @@
 <div class="wrap cf cf-about-wrap cf-clearfix">
 	<h2><?php _e('About Me, Myself and I', 'favepersonal'); ?></h2>
 	
-	<?php 
-		if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
-			echo '<div class="updated below-h2 fade cf-updated-message-fade" id="message"><p>'.__('Settings updated.', 'favepersonal').'</p></div>';
-		}
-	?>
+<?php 
+if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
+	echo '<div class="updated below-h2 fade cf-updated-message-fade" id="message"><p>'.__('Settings updated.', 'favepersonal').'</p></div>';
+}
+?>
 	
 	<div id="cfp-about-settings">
 		<form id="cfcp-about-settings" name="cfcp-about-settings" action="<?php echo admin_url('options.php'); ?>" method="post">
@@ -23,7 +23,11 @@
 								$post_type_object = get_post_type_object('attachment');
 								$img_size = 'tiny-img';
 								foreach ($settings['images'] as $img_id) {
-									echo '<li>'.cfcp_load_view('functions/about/views/image-item.php', compact('img_id', 'post_type_object', 'img_size')).'</li>';
+									echo '<li>'.cfct_template_content(
+										'functions/about/views',
+										'image-item',
+										compact('img_id', 'post_type_object', 'img_size')
+									).'</li>';
 								}
 							}
 						?>
@@ -55,7 +59,11 @@
 							if (!empty($settings['links']) && is_array($settings['links'])) {
 								foreach ($settings['links'] as $link) {
 									if (is_array($link)) {
-										echo cfcp_load_view('functions/about/views/link-item.php', compact('link'));
+										cfct_template_file(
+											'functions/about/views',
+											'link-item',
+											compact('link')
+										);
 									}
 								}
 							}
@@ -71,29 +79,20 @@
 	</div><!--#cfp-about-->
 </div><!-- / cf-about-wrap -->
 <?php
-	// images popover
-	echo cfcp_get_popover_html('cfp-img-search', array(
-		'html' => cfcp_load_view(
-			'functions/about/views/img-search-popover.php',
-			array()
-		),
-		'arrow_pos' => 'right'
-	));
-	
-	// links popover
-	echo cfcp_get_popover_html('cfp-link-edit', array(
-		'html' => cfcp_load_view(
-			'functions/about/views/link-edit-popover.php', 
-			array()
-		),
-		'arrow_pos' => 'right'
-	));
+// images popover
+echo cfcp_get_popover_html('cfp-img-search', array(
+	'html' => cfct_template_content('functions/about/views', 'img-search-popover'),
+	'arrow_pos' => 'right'
+));
 
-	echo cfcp_get_popover_html('cfp-link-remove', array(
-		'html' => cfcp_load_view(
-			'functions/about/views/link-remove-popover.php',
-			array()
-		),
-		'arrow_pos' => 'left'
-	));
+// links popover
+echo cfcp_get_popover_html('cfp-link-edit', array(
+	'html' => cfct_template_content('functions/about/views', 'link-edit-popover'),
+	'arrow_pos' => 'right'
+));
+
+echo cfcp_get_popover_html('cfp-link-remove', array(
+	'html' => cfct_template_content('functions/about/views', 'link-remove-popover'),
+	'arrow_pos' => 'left'
+));
 ?>

@@ -224,29 +224,11 @@ function cfcp_get_popover_html($popover_id, $params = array()) {
 		$display = esc_attr($params['display']);
 	}
 
-	return cfcp_load_view('misc/admin-popover-template.php', compact('popover_id', 'html', 'arrow_pos', 'class', 'display'));
-}
-
-/**
- * Load a view file.
- * File path is relative to the theme root
- *
- * @param string $file 
- * @param string $params 
- * @return void
- */
-function cfcp_load_view($file, $params) {
-	$file = trailingslashit(get_template_directory()).$file;
-	$html = '';
-
-	if (is_file($file)) {
-		ob_start();
-		extract($params);
-		include($file);
-		$html = ob_get_clean();
-	}
-
-	return $html;
+	return cfct_template_content(
+		'misc',
+		'admin-popover-template',
+		compact('popover_id', 'html', 'arrow_pos', 'class', 'display')
+	);
 }
 
 function cfcp_social_plugins_url($url) {

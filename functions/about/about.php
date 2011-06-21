@@ -189,7 +189,11 @@ function cfcp_about_admin_ajax() {
 				if ($success) {
 					$ret = array(
 						'success' => true,
-						'html' => cfcp_load_view('functions/about/views/link-item.php', compact('link'))
+						'html' => cfct_template_content(
+							'functions/about/views',
+							'link-item',
+							compact('link')
+						)
 					);
 				}
 				else {
@@ -231,7 +235,11 @@ function cfcp_about_image_search($params) {
 		$post_type_object = get_post_type_object('attachment');
 		$img_size = 'tiny-img';
 		foreach ($imgs->posts as $img_id) {
-			$ret .= '<li class="cfp-search-result">'.cfcp_load_view('functions/about/views/image-item.php', compact('img_id', 'post_type_object', 'img_size')).'</li>';
+			$ret .= '<li class="cfp-search-result">'.cfct_template_content(
+				'functions/about/views',
+				'image-item',
+				compact('img_id', 'post_type_object', 'img_size')
+			).'</li>';
 		}
 	}
 	
