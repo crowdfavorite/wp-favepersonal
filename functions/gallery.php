@@ -177,7 +177,7 @@ function cfcp_gallery($args = array()) {
 	unset($gallery);
 }
 
-// Display gallery images without our own markup for excerpts 
+// Display gallery images with our own markup for excerpts 
 function cfcp_gallery_excerpt($args = array()) {
 	$defaults = array(
 		'size' => 'thumbnail',
