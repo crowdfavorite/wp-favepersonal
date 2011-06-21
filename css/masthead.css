@@ -56,30 +56,23 @@
 	font-size: 14px;
 	line-height: 20px;
 }
-/* Format: status */
-#featured-posts .featured-format-status p {
-	font-size: 20px;
-	line-height: 26px;
-}
+/* featured-link, same size as featured box and overlays everything in it */
 #featured-posts .featured-link {
-	border-color: #666;
-	border-style: solid;
-	
-	/* removing border to try out visually
-		want it back? change border width to 5px
-		removing it? also remove border styles from header.php
-	 */
-	border-width: 0px;
-	
 	display: block;
 	position: absolute;
-	height: 170px;
-	left: 0;
+	right: 0;
 	text-indent: -999em;
 	top: 0;
-	/* set back to 300 if border style is added back */
-	width: 310px;
 	z-index: 20;
+
+	/* removing border to try out visually
+		want it back? change border width to 5px, width to 300, height to 170
+	 */
+	border-color: #666;
+	border-style: solid;
+	border-width: 0px;
+	width: 310px;
+	height: 180px;
 }
 /* with featured image */
 #featured-posts .has-featured-img .featured-content {
@@ -103,4 +96,41 @@
 	background-color: rgb(153,153,153); /* fallback for IE */
 	background-color: rgba(153,153,153,.9);
 	color: #333;
+}
+
+/** Post Formats
+ -------------------------------------------------- */
+/* status and quote */
+#featured-posts .featured-format-status .featured-description,
+#featured-posts .featured-format-status .featured-description p,
+#featured-posts .featured-format-quote .featured-description,
+#featured-posts .featured-format-quote .featured-description p {
+	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 18px;
+	line-height: 26px;
+}
+/* quote */
+#featured-posts .featured-format-quote .featured-content .featured-description {
+	background-image: url(../img/quote-white.png);
+	background-position: 10px 0px;
+	background-repeat: no-repeat;
+	padding-left: 36px;
+}
+/* video */
+#featured-posts .featured-format-video .featured-vid iframe {
+	height: 180px;
+	width: 310px;
+	z-index: 1;
+}
+#featured-posts .featured-format-video .featured-link {
+	display: none;
+	height: 34px;
+	width: 34px;
+	top: 15px;
+}
+#featured-posts .featured-format-video:hover .featured-link {
+	display: block;
+	background-image: url(../img/link-icon-white.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
 }

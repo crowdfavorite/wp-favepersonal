@@ -120,14 +120,16 @@ $blog_desc = get_bloginfo('description');
 		/* rollover */
 		#featured-posts .featured:hover .featured-content {
 			background-color: rgb(<?php echo_hex(cf_kuler_color('light')); ?>); /* fallback for IE */
-			background-color: rgba(<?php echo_hex(cf_kuler_color('light')); ?>, .9);
+			background-color: rgba(<?php echo_hex(cf_kuler_color('light')); ?>, .8);
 			color: <?php echo cf_kuler_color('darkest') ?>;
-		}
-		#featured-posts .featured:hover .featured-link {
 		}
 		/* header image */
 		#header-image img {
 			border-color: <?php echo cf_kuler_color('darkest') ?>;
+		}
+		/* video */
+		#featured-posts .featured-format-video:hover .featured-link {
+			background-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
 		
 		/** Post
