@@ -96,15 +96,20 @@ add_action('save_post', 'cfpf_format_link_save_post');
 
 function cfpf_format_auto_title_post($post_id, $post) {
 	remove_action('save_post', 'cfpf_format_status_save_post', 10, 2);
-	remove_action('save_post', 'cfpf_format_quote_save_post');
+	remove_action('save_post', 'cfpf_format_quote_save_post', 10, 2);
 
+	$content = trim($post->post_content);
+	$title = substr($content, 0, 50);
+	if (strlen($content) > 50) {
+		$title .= '...';
+	}
 	wp_update_post(array(
 		'ID' => $post_id,
-		'post_title' => substr(trim($post->post_content), 0, 50)
+		'post_title' => $title
 	));
 
 	add_action('save_post', 'cfpf_format_status_save_post', 10, 2);
-	add_action('save_post', 'cfpf_format_quote_save_post');
+	add_action('save_post', 'cfpf_format_quote_save_post', 10, 2);
 }
 
 function cfpf_format_status_save_post($post_id, $post) {
@@ -114,7 +119,7 @@ function cfpf_format_status_save_post($post_id, $post) {
 }
 add_action('save_post', 'cfpf_format_status_save_post', 10, 2);
 
-function cfpf_format_quote_save_post($post_id) {
+function cfpf_format_quote_save_post($post_id, $post) {
 	if (!defined('XMLRPC_REQUEST')) {
 		$keys = array(
 			'_format_quote_source_name',
@@ -126,11 +131,11 @@ function cfpf_format_quote_save_post($post_id) {
 			}
 		}
 	}
-	if (has_post_format('status', $post)) {
+	if (has_post_format('quote', $post)) {
 		cfpf_format_auto_title_post($post_id, $post);
 	}
 }
-add_action('save_post', 'cfpf_format_quote_save_post');
+add_action('save_post', 'cfpf_format_quote_save_post', 10, 2);
 
 function cfpf_format_video_save_post($post_id) {
 	if (!defined('XMLRPC_REQUEST') && isset($_POST['_format_video_embed'])) {
