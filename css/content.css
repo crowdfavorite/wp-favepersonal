@@ -225,32 +225,32 @@
 /** Gallery Post Format
  -------------------------------------------------- */
 /* excerpts */
-.gallery-img-excerpt {
+.post .gallery-img-excerpt {
 	float: left;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	width: 525px;
 }
-.gallery-img-excerpt li {
+.post .gallery-img-excerpt li {
 	float: left;
 	height: 120px;
 	margin: 0 15px 15px 0;
 	width: 160px;
 }
-.gallery-img-excerpt li a,
-.gallery-img-excerpt li img {
+.post .gallery-img-excerpt li a,
+.post .gallery-img-excerpt li img {
 	display: block;
 }
-.gallery-img-excerpt li a:hover {
+.post .gallery-img-excerpt li a:hover {
 	border-bottom-color: #999;
  	border-bottom-width: 2px;
 	border-bottom-style: solid;
 }
-.gallery-img-excerpt li a img {
+.post .gallery-img-excerpt li a img {
 	border-bottom: 1px solid #fff;
 }
-.gallery-img-excerpt li.gallery-view-all a {
+.post .gallery-img-excerpt li.gallery-view-all a {
 	border: 0;
 	display: block;
 	height: 120px;

@@ -222,19 +222,19 @@ $blog_desc = get_bloginfo('description');
 			color: <?php echo cf_kuler_color('dark'); ?>;
 			background-color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
-		.gallery-img-excerpt li a:hover {
+		.post .gallery-img-excerpt li a:hover {
 			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
 		}
-		.gallery-img-excerpt li.gallery-view-all a {
+		.post .gallery-img-excerpt li.gallery-view-all a {
 			background-color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
-		.gallery-img-excerpt li.gallery-view-all a:hover {
+		.post .gallery-img-excerpt li.gallery-view-all a:hover {
 			background-color: <?php echo cf_kuler_color('light'); ?>;
 		}
-		.gallery-thumbs a:hover {
+		.post .gallery-thumbs a:hover {
 			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
 		}
-		.gallery-thumbs a.activated {
+		.post .gallery-thumbs a.activated {
 			border-bottom-color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
 
