@@ -11,6 +11,7 @@ include(CFCT_PATH.'header/featured/init.php');
 					));
 					?>
 					<div class="featured-content">
+						<span class="featured-format"></span>
 						<h2 class="featured-title"><?php the_title(); ?></h2>
 						<div class="featured-description">
 							<?php echo cf_trim_text(get_the_excerpt(), 160, "<p>", "&hellip;</p>"); ?>

@@ -107,7 +107,8 @@ $blog_desc = get_bloginfo('description');
 		#featured-posts .featured {
 			background-color: <?php echo cf_kuler_color('darkest') ?>;
 		}
-		#featured-posts .featured-title {
+		#featured-posts .featured-title,
+		#featured-posts .has-featured-img .featured-format {
 			background-color: <?php echo cf_kuler_color('darkest') ?>;
 			color: <?php echo cf_kuler_color('lightest') ?>;
 		}
