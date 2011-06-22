@@ -235,7 +235,11 @@ $blog_desc = get_bloginfo('description');
 		.post .gallery-thumbs a.activated {
 			border-bottom-color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
-
+		
+		/* Shortcode Gallery */
+		#content .gallery-item .gallery-icon a:hover {
+			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
+		}
 		
 		/* Social */
 		#social a {
