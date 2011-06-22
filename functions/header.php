@@ -102,81 +102,23 @@ function cfcp_header_featured_publish_post($post_id) {
 }
 add_action('publish_post', 'cfcp_header_featured_publish_post');
 
-// Admin Page
-function cfcp_header_admin_menu() {
-	add_submenu_page(
-		'themes.php',
-		__('Header', 'favepersonal'),
-		__('Header', 'favepersonal'),
-		'manage_options',
-		basename(__FILE__),
-		'cfcp_header_admin_form'
-	);
-}
-add_action('admin_menu', 'cfcp_header_admin_menu');
-
-// Add link to the admin menu bar
-function cfcp_header_admin_bar() {
-	global $wp_admin_bar;
-	if (current_user_can('manage_options')) {
-		$wp_admin_bar->add_menu(array(
-			'id' => 'cfcp-header',
-			'title' => __('Header', 'cfcp-header'),
-			'href' => admin_url('themes.php?page='.basename(__FILE__)),
-			'parent' => 'appearance'
-		));
-	}
-}
-add_action('wp_before_admin_bar_render', 'cfcp_header_admin_bar');
-
-// Adding some extra style to overide WP
-function cfcp_admin_header_css() {
-	echo '<style type="text/css" media="screen">
-		#cfp-header-featured #featured-posts h2.featured-title {
-			font-family: Helvetica, Verdana, Arial, sans-serif;
-			font-size: 18px;
-			line-height: 20px;
-			text-shadow: none;
-			padding: 6px 15px 7px;
-		}
-		</style>';
-}
-add_action('admin_head', 'cfcp_admin_header_css');
-
-// The settings form, page content
-function cfcp_header_admin_form() {
+function cfcp_header_options_fields($fields) {
 	$type = cfcp_header_options('type');
+	ob_start();
 ?>
-	<div class="wrap cf cf-clearfix">
-		<h2><?php _e('Header Settings', 'favepersonal'); ?></h2>
-
-<?php 
-		if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
-			echo '<div class="updated below-h2 fade cf-updated-message-fade" id="message"><p>'.__('Settings updated.', 'favepersonal').'</p></div>';
-		}
-?>
-
-		<div id="cfp-header-settings">
-			<form id="cfcp-header-settings" name="cfcp-header-settings" action="<?php echo admin_url('options.php'); ?>" method="post">
-
-				<?php settings_fields('cfcp_header_options'); ?>
-				
 				<ul id="cfp-header-options">
 					<li id="cfp-header-featured">
 						<label for="cfcp-header-type-featured">
 							<input type="radio" name="cfcp_header_options[type]" id="cfcp-header-type-featured" value="featured" <?php checked('featured', $type); ?>> <?php _e('Featured Posts', 'favepersonal'); ?>
+							<img src="<?php bloginfo('template_url'); ?>/functions/header/img/header-option-posts.png" alt="<?php _e('Featured Posts', 'favepersonal'); ?>" height="56" width="250" />
 						</label>
-						<div class="cfp-header-preview">
-							<?php cfcp_header_display_featured(); ?>
-						</div><!--.cfp-featured-preview-->
 					</li>
 					<li id="cfp-header-image">
 						<label for="cfcp-header-type-image">
 							<input type="radio" name="cfcp_header_options[type]" id="cfcp-header-type-image" value="image" <?php checked('image', $type); ?>> <?php _e('Header Image', 'favepersonal'); ?>
+							<img src="<?php bloginfo('template_url'); ?>/functions/header/img/header-option-image.png" alt="<?php _e('Header Image', 'favepersonal'); ?>" height="56" width="250" />
 						</label>
-						<div class="cfp-header-preview">
-							<?php cfct_misc('header-image'); ?>
-						</div><!--.cfp-image-preview-->
+						<a href="<?php echo admin_url('themes.php?page=custom-header'); ?>"><?php _e('Upload or choose a header image', 'favepersonal'); ?></a>
 					</li>
 					<li id="cfp-header-none">
 						<label for="cfcp-header-type-none">
@@ -184,30 +126,39 @@ function cfcp_header_admin_form() {
 						</label>
 					</li>
 				</ul>
+<?php
+	$field = ob_get_clean();
+	$header = array(
+		'header_display' => array(
+			'label' => '<label>'.__('Header display', 'favepersonal').'</label>',
+			'field' => $field
+		),
+	);
+	return array_merge($header, $fields);
+}
+add_filter('cfct_options_fields', 'cfcp_header_options_fields', 99);
 
-				<p class="submit"><input class="button button-primary" type="submit" name="submit" value="<?php _e('Save Settings', 'favepersonal'); ?>" /></p>
-			</form>
-		</div><!--#cfp-header-->
-	</div><!--.cf wrap -->
-	<script type="text/javascript">
-	jQuery(function($) {
-		$('input[name="cfcp_header_options[type]"]').click(function() {
-			$('#cfp-header-options .cfp-selected').removeClass('cfp-selected');
-			$('input[name="cfcp_header_options[type]"]:checked').closest('li').addClass('cfp-selected');
-		});
-		$('input[name="cfcp_header_options[type]"]:checked').click();
-		$('#cfp-header-options .cfp-header-preview a').click(function(e) {
-			e.preventDefault();
-			e.stopPropagation();
-		});
-	});
-	</script>
+// make a few changes to the default header image screen
+function cfcp_custom_header_options() {
+?>
+<script type="text/javascript">
+jQuery(function($) {
+	$('.wrap h2:first').append('<div class="updated"><p><?php printf( __( 'This theme supports multiple header options, <a href="%s">manage your theme options here</a>.' ), admin_url( 'themes.php?page=carrington-settings' ) ); ?></p></div>');
+	$('#removeheader').closest('tr').remove();
+});
+</script>
 <?php
 }
+add_action('custom_header_options', 'cfcp_custom_header_options');
 
-function cfcp_header_options_validate($settings) {
-	return array_merge(cfcp_header_options(), $settings);
+function cfcp_header_options_update() {
+	$settings = $_POST['cfcp_header_options'];
+	if (!is_array($settings) || !isset($settings['type']) || !in_array($settings['type'], array('featured', 'image', 'none'))) {
+		wp_die(__('Sorry, there was an error saving the header settings.', 'favepersonal'));
+	}
+	cfcp_header_options('type', $settings['type']);
 }
+add_action('cfct_update_settings', 'cfcp_header_options_update');
 
 // Adds a box to the main column on the Post and Page edit screens
 function cfcp_set_featured_position() {
@@ -359,5 +310,5 @@ function cfcp_header_display_featured_post($slot, $post_id) {
 }
 
 function cfcp_header_display_image() {
-	echo 'TODO';
+	cfct_template_file('header', 'featured-image');
 }

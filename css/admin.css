@@ -741,49 +741,23 @@ input.cfp-action-remove:hover {
 /** Header Settings
  -------------------------------------------------- */
 #cfp-header-options {
-	border-top: 1px solid #ccc;
-	margin: 15px 0 0 0;
-	min-width: 1000px;
+	margin: 0 0 15px;
 	padding: 0;
 }
 #cfp-header-options li {
-	border-bottom: 1px solid #ccc;
-	margin: 0;
-	overflow: hidden;
+	float: left;
+	margin: 0 20px 0 0;
 	padding: 0;
+	width: 250px;
 }
 #cfp-header-options label {
 	display: block;
-	font-size: 15px;
-	font-weight: bold;
-	line-height: 40px;
 }
 #cfp-header-options label input[type=radio] {
 	margin-top: -2px;
 	margin-right: 2px;
 }
-.cfp-header-preview {
-	margin: 0 5px;
-	width: 990px;
-}
-/* default non-selected styles */
-#cfp-header-featured,
-#cfp-header-image {
-	height: 90px;
-}
-.cfp-header-preview {
-	opacity: 0.5;
-	-moz-opacity: 0.5;
-	filter:alpha(opacity=50);
-}
-/* Selected styles */
-#cfp-header-featured.cfp-selected,
-#cfp-header-image.cfp-selected {
-	height: auto;
-}
-.cfp-selected .cfp-header-preview {
-	margin-bottom: 15px;
-	opacity: 1;
-	-moz-opacity: 1;
-	filter:alpha(opacity=100);
+#cfp-header-options label img {
+	display: block;
+	margin: 5px 0;
 }

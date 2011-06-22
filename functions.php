@@ -95,9 +95,24 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		));
 		
 		add_action('admin_head', 'cf_admin_css');
+
+		// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
+		define( 'HEADER_IMAGE', '%s/functions/header/img/default.png' );
+	
+		define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cfcp_header_image_width', 990 ) );
+		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cfcp_header_image_height', 240 ) );
+	
+		set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
+	
+		// Don't support text inside the header image.
+		define( 'NO_HEADER_TEXT', true );
+	
+		add_custom_image_header( '', 'cfcp_admin_header_style' );
 	}
 }
 add_action( 'after_setup_theme', 'carrington_personal_setup' );
+
+function cfcp_admin_header_style() {} // empty.
 
 /* Let's load some styles that will be used on all theme setting pages */
 function cf_admin_css() {
@@ -243,8 +258,8 @@ $cfct_options[] = 'cfcp_social_enabled';
 $cfct_options[] = 'cfcp_copyright';
 $cfct_options[] = 'cfcp_login_link_enabled';
 
-function cfcp_options_misc_fields($options) {
-	unset($options['about']);
+function cfcp_options_fields($fields) {
+	unset($fields['about']);
 	$yn_options = array(
 		'yes' => __('Yes', 'favepersonal'),
 		'no' => __('No', 'favepersonal')
@@ -269,9 +284,9 @@ function cfcp_options_misc_fields($options) {
 			'field' => '<select name="cfcp_login_link_enabled" id="cfcp_login_link_enabled">'.$loginout_options.'</select>'
 		),
 	);
-	return array_merge($personal, $options);
+	return array_merge($personal, $fields);
 }
-add_filter('cfct_options_misc_fields', 'cfcp_options_misc_fields');
+add_filter('cfct_options_fields', 'cfcp_options_fields');
 
 function cfcp_option_defaults($defaults) {
 	$defaults['social'] = $defaults['loginout'] = 'yes';
@@ -279,6 +294,12 @@ function cfcp_option_defaults($defaults) {
 	return $defaults;
 }
 add_filter('cfct_option_defaults', 'cfcp_option_defaults');
+
+function cfcp_admin_settings_title($title) {
+	return __('Theme Settings', 'favepersonal');
+}
+add_filter('cfct_admin_settings_title', 'cfcp_admin_settings_title');
+add_filter('cfct_admin_settings_form_title', 'cfcp_admin_settings_title');
 
 function cfcp_get_loginout($redirect = '', $before = '', $after = '') {
 	if (cfct_get_option('cfcp_login_link_enabled') != 'no') {
