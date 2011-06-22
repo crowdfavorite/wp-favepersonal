@@ -267,7 +267,7 @@ add_action('admin_menu', 'cfcp_about_admin_menu');
 // Add link to the admin menu bar
 function cfcp_about_admin_bar() {
 	global $wp_admin_bar;
-	if (current_user_can('manage_options')) {
+	if (current_user_can('edit_theme_options')) {
 		$wp_admin_bar->add_menu(array(
 			'id' => 'cfcp-about',
 			'title' => __('Bio Widget', 'cfcp-about'),

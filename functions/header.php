@@ -151,6 +151,33 @@ jQuery(function($) {
 }
 add_action('custom_header_options', 'cfcp_custom_header_options');
 
+function cfcp_header_custom_menu_text() {
+	remove_submenu_page('themes.php', 'custom-header');
+	global $custom_image_header;
+	add_theme_page(
+		__('Header Image', 'favepersonal'),
+		__('Header Image', 'favepersonal'),
+		'edit_theme_options',
+		'custom-header',
+		array(&$custom_image_header, 'admin_page')
+	);
+}
+add_action('admin_menu', 'cfcp_header_custom_menu_text', 100);
+
+function cfcp_header_admin_bar() {
+	global $wp_admin_bar;
+	$wp_admin_bar->remove_menu('header');
+	if (current_user_can('edit_theme_options')) {
+		$wp_admin_bar->add_menu(array(
+			'parent' => 'appearance', 
+			'id' => 'header', 
+			'title' => __('Header Image', 'favepersonal'), 
+			'href' => admin_url('themes.php?page=custom-header')
+		));
+	}
+}
+add_action('wp_before_admin_bar_render', 'cfcp_header_admin_bar');
+
 function cfcp_header_options_update() {
 	$settings = $_POST['cfcp_header_options'];
 	if (!is_array($settings) || !isset($settings['type']) || !in_array($settings['type'], array('featured', 'image', 'none'))) {
