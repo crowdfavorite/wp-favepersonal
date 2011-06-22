@@ -32,7 +32,7 @@ if (!empty($settings['links'])) {
 		if (empty($link['favicon'])) {
 			$link['favicon'] = 'default';
 		}
-		echo '<li><a href="'.esc_url($link['url']).'" title="'.esc_attr($link['title']).'">'.
+		echo '<li><a href="'.esc_url($link['url']).'" title="'.esc_attr($link['title']).'" rel="me">'.
 			'<img width="16" height="16" alt="'.esc_attr($link['title']).'" src="'.cfcp_about_favicon_url($link['favicon']).'" /></a></li>'.PHP_EOL;
 	}
 	echo '</ul></div>';
