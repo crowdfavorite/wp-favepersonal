@@ -46,7 +46,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 		
 		<div class="attachment-content">
 			<div class="center">
-				<a href="<?php echo wp_get_attachment_url($post->ID); ?>"><?php echo wp_get_attachment_image( $post->ID, 'large' ); ?></a>
+				<a href="<?php echo wp_get_attachment_url($post->ID); ?>"><?php echo wp_get_attachment_image( $post->ID, 'large-img' ); ?></a>
 			</div>
 
 			<?php 
