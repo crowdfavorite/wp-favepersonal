@@ -30,26 +30,48 @@
 	position: relative;
 	width: 310px;
 }
+
+
+/* inprogress changes */
+
+#featured-posts .featured-content {
+	color: #fff;
+	min-height: 170px;
+	min-width: 310px;
+	padding: 15px 31px;
+	position: absolute;
+	z-index: 10;
+}
+#featured-posts .featured-format {
+	display: block;
+	height: 30px;
+	left: 0;
+	margin: 0 1px 0 0;
+	overflow: hidden;
+	position: absolute;
+	top: 15px;
+	width: 30px;
+}
+#featured-posts .has-featured-img .featured-format {
+	background-color: #ccc;
+}
 #featured-posts .featured-title {
 	background-color: #666;
 	color: #fff;
 	display: inline-block;
 	font-size: 18px;
-	line-height: 20px;
-	margin: 0 10px 9px 0;
-	padding: 8px 15px 6px;
-}
-#featured-posts .featured-content {
-	color: #fff;
-	min-height: 170px;
-	min-width: 310px;
-	padding: 15px 0;
-	position: absolute;
-	z-index: 10;
+	line-height: 22px;
+	margin: 0 0 10px 0;
+	padding: 6px 8px 2px 7px;
 }
 #featured-posts .featured-description {
-	padding: 0 15px;
+	padding: 0 8px;
 }
+
+/* end inprogress changes */
+
+
+
 #featured-posts .featured-description p {
 	margin-top: 0;
 }
@@ -61,20 +83,13 @@
 /* featured-link, same size as featured box and overlays everything in it */
 #featured-posts .featured-link {
 	display: block;
+	height: 180px;
 	position: absolute;
 	right: 0;
 	text-indent: -999em;
 	top: 0;
 	z-index: 20;
-
-	/* removing border to try out visually
-		want it back? change border width to 5px, width to 300, height to 170
-	 */
-	border-color: #666;
-	border-style: solid;
-	border-width: 0px;
 	width: 310px;
-	height: 180px;
 }
 /* featured image */
 #featured-posts .featured-img {
