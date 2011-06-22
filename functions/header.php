@@ -3,12 +3,11 @@
 // Choose what to display in the header: 3 featured post, header image, or nothing
 
 function cfcp_header_admin_init() {
-	register_setting('cfcp_header_options', 'cfcp_header_options', 'cfcp_header_options_validate');
 	if (cfcp_header_options('type') == 'featured') {
-		add_action( 'add_meta_boxes', 'cfcp_set_featured_position' );
+		add_action('add_meta_boxes', 'cfcp_set_featured_position');
 	}
-	wp_register_style( 'myPluginStylesheet', get_bloginfo('template_url') . '/css/masthead.css' );
-	wp_enqueue_style( 'myPluginStylesheet' );
+	wp_register_style('myPluginStylesheet', get_bloginfo('template_url').'/css/masthead.css');
+	wp_enqueue_style('myPluginStylesheet');
 }
 add_action('admin_init', 'cfcp_header_admin_init');
 
@@ -48,15 +47,24 @@ function cfcp_header_featured_meta($post_id = null) {
 
 // getter/setter function
 function cfcp_header_options($key = null, $val = null) {
+	$posts = array(
+		'_1' => null,
+		'_2' => null,
+		'_3' => null,
+	);
 	$data = get_option('cfcp_header_options', array(
 		'type' => 'featured',
-		'posts' => array(
-			'_1' => null,
-			'_2' => null,
-			'_3' => null,
-		),
-		'image_url' => null
+		'posts' => $posts
 	));
+	if (!is_array($data)) {
+		$data = array();
+	}
+	if (!isset($data['type'])) {
+		$data['type'] = 'featured';
+	}
+	if (!isset($data['posts'])) {
+		$data['posts'] = $posts;
+	}
 	// if we have a val, save and return
 	if (!empty($val)) {
 		$data[$key] = $val;
