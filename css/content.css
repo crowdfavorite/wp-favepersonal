@@ -636,13 +636,22 @@
 	text-align: right;
 }
 .attachment-next a,
-.attachment-prev a {
-	opacity: 0.25;
+.attachment-prev a,
+.attachment-next a img,
+.attachment-prev a img {
+	display: block;
 }
 .attachment-next a:hover,
 .attachment-prev a:hover {
-	opacity: 1.0;
+	border-bottom-color: #999;
+ 	border-bottom-width: 2px;
+	border-bottom-style: solid;
 }
+.attachment-next a img,
+.attachment-prev a img {
+	border-bottom: 1px solid #fff;
+}
+
 
 /** Footer
  -------------------------------------------------- */

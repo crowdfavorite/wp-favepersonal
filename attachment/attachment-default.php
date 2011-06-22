@@ -39,7 +39,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 		<div class="attachment-prev">
 		<?php
 		if (cfct_get_adjacent_image_link(true) != '') {
-			previous_image_link();
+			previous_image_link('thumb-img');
 		}
 		?>
 		</div>
@@ -60,7 +60,7 @@ if (have_posts()) : while (have_posts()) : the_post();
 		<div class="attachment-next">
 		<?php
 		if (cfct_get_adjacent_image_link(false) != '') {
-			next_image_link();
+			next_image_link('thumb-img');
 		}
 		?>
 		</div>

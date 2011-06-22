@@ -218,7 +218,9 @@ $blog_desc = get_bloginfo('description');
 			color: <?php echo cf_kuler_color('dark'); ?>;
 			background-color: <?php echo cf_kuler_color('lightest'); ?>;
 		}
-		.post .gallery-img-excerpt li a:hover {
+		.post .gallery-img-excerpt li a:hover,
+		.attachment-next a:hover,
+		.attachment-prev a:hover {
 			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
 		}
 		.post .gallery-img-excerpt li.gallery-view-all a {
