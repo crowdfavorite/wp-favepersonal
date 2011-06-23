@@ -30,46 +30,26 @@
 	position: relative;
 	width: 310px;
 }
-
-
-/* inprogress changes */
-
-#featured-posts .featured-content {
-	color: #fff;
-	min-height: 170px;
-	min-width: 310px;
-	padding: 15px 31px;
-	position: absolute;
-	z-index: 10;
-}
-#featured-posts .featured-format {
-	background-image: url(../img/featured-format-icons.png);
-	display: block;
-	height: 30px;
-	left: 0;
-	margin: 0 1px 0 0;
-	overflow: hidden;
-	position: absolute;
-	top: 15px;
-	width: 30px;
-}
 #featured-posts .featured-title {
 	background-color: #666;
 	color: #fff;
 	display: inline-block;
 	font-size: 18px;
-	line-height: 22px;
-	margin: 0 0 10px 0;
-	padding: 6px 8px 2px 7px;
+	line-height: 20px;
+	margin: 0 10px 9px 0;
+	padding: 8px 15px 6px;
+}
+#featured-posts .featured-content {
+	color: #fff;
+	min-height: 170px;
+	min-width: 310px;
+	padding: 15px 0;
+	position: absolute;
+	z-index: 10;
 }
 #featured-posts .featured-description {
-	padding: 0 8px;
+	padding: 0 15px;
 }
-
-/* end inprogress changes */
-
-
-
 #featured-posts .featured-description p {
 	margin-top: 0;
 }
@@ -81,13 +61,20 @@
 /* featured-link, same size as featured box and overlays everything in it */
 #featured-posts .featured-link {
 	display: block;
-	height: 180px;
 	position: absolute;
 	right: 0;
 	text-indent: -999em;
 	top: 0;
 	z-index: 20;
+
+	/* removing border to try out visually
+		want it back? change border width to 5px, width to 300, height to 170
+	 */
+	border-color: #666;
+	border-style: solid;
+	border-width: 0px;
 	width: 310px;
+	height: 180px;
 }
 /* featured image */
 #featured-posts .featured-img {
@@ -109,20 +96,13 @@
 	line-height: 26px;
 }
 /* quote */
-#featured-posts .featured-format-gallery .featured-format {
-	background-position: -150px 0px;
-}
 #featured-posts .featured-format-quote .featured-content .featured-description {
+	background-image: url(../img/quote-white.png);
+	background-position: 10px 0px;
+	background-repeat: no-repeat;
+	padding-left: 36px;
 }
-/* image */
-#featured-posts .featured-format-image .featured-format {
-	background-position: -30px 0px;
-}
-
 /* gallery */
-#featured-posts .featured-format-gallery .featured-format {
-	background-position: -30px 0px;
-}
 #featured-posts .featured-format-gallery .gallery-img-excerpt {
 	list-style-type: none;
 	margin: 0;
@@ -140,10 +120,13 @@
 	padding: 0;
 	width: 155px;
 }
-/* video */
-#featured-posts .featured-format-video .featured-format {
-	background-position: -60px 0px;
+/* video 
+#featured-posts .featured-format-video .featured-link {
+	background-image: url(../img/bio-scroller-btns.png);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
 }
+*/
 
 /** Hover / rollover
  -------------------------------------------------- */

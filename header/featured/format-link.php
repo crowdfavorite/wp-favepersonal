@@ -20,7 +20,6 @@ else {
 				<article id="featured-post-<?php echo $slot; ?>" class="featured <?php echo $class; ?>">
 					<?php echo $image; ?>
 					<div class="featured-content">
-						<span class="featured-format"></span>
 						<h2 class="featured-title"><?php the_title(); ?>  &rarr;</h2>
 						<div class="featured-description">
 							<?php echo cf_trim_text(get_the_excerpt(), 160, "<p>", "&hellip;</p>"); ?>
