@@ -18,10 +18,12 @@
 
 	/* List Styles */
 	#social .social-commentlist {
+		line-height: 18px;
 		list-style-image: none;
 		list-style-position: outside;
 		list-style-type: none;
-		margin: 0;
+		margin: 0 0 30px 0;
+		padding: 0;
 	}
 
 	/* Children Comments
@@ -134,11 +136,6 @@
 	font-style: italic;
 	margin-bottom: 10px;
 	text-align: right;
-}
-#social .social-commentlist {
-	line-height: 18px;
-	margin: 0;
-	padding: 0;	
 }
 #social .social-comment {
 	border: 0;
@@ -419,10 +416,7 @@
 }
 	/* signed in */
 	#social .social-comment #respond .social-post-form .avatar {
-		left: 0px;
-	}
-	#social .social-comment #respond .social-post-form .social-input-row {
-		padding-left: 60px;
+		left: -60px;
 	}
 	/* not signed in */
 	#social .social-comment #respond .social-sign-in-links {

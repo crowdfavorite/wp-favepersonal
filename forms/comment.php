@@ -40,36 +40,43 @@ if ('open' == $post->comment_status) {
 	else { 
 ?>
 
-<div id="respond" class="mcc-sign-in-form">
+	
+<div id="respond" class="social-respond">
+	<div class="social-heading">
+		<h2 class="social-title"><span><?php printf(__('Add A Comment', 'favepersonal')); ?></span></h2>
+	</div>
 		
-	<form action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
-		<?php cancel_comment_reply_link() ?>
+<form class="social-respond-inner" action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
+	<div class="social-post-form"> 	
 <?php if (!is_user_logged_in()) { ?>
-		<div class="mcc-input-row">
-			<label><?php _e('Name', 'favepersonal'); ?></label>
-			<input class="mcc-input-text" id="mcc-sign-in-name" type="text" name="author" value="<?php echo $comment_author; ?>" size="22" />
+		<div class="social-input-row">
+			<label class="social-label" for="social-sign-in-name"><?php _e('Name', 'favepersonal'); ?></label>
+			<input class="social-input-text" id="social-sign-in-name" type="text" name="author" value="<?php echo $comment_author; ?>" size="22" />
 		</div>
-		<div class="mcc-input-row">
-			<label><?php _e('Email ', 'favepersonal'); ?></label>
-			<input class="mcc-input-text" id="mcc-sign-in-email" type="text" name="email" value="<?php echo $comment_author_email; ?>" size="22" />
+		<div class="social-input-row">
+			<label class="social-label" for="social-sign-in-email"><?php _e('Email ', 'favepersonal'); ?></label>
+			<input class="social-input-text" id="social-sign-in-email" type="text" name="email" value="<?php echo $comment_author_email; ?>" size="22" />
 		</div>
-		<div class="mcc-input-row">
-			<label><?php _e('Website', 'favepersonal'); ?></label>
-			<input class="mcc-input-text" id="mcc-sign-in-website" type="text" name="url" value="<?php echo $comment_author_url; ?>" size="22" />
+		<div class="social-input-row">
+			<label class="social-label" for="social-sign-in-website"><?php _e('Website', 'favepersonal'); ?></label>
+			<input class="social-input-text" id="social-sign-in-website" type="text" name="url" value="<?php echo $comment_author_url; ?>" size="22" />
 		</div>
 <?php } ?>
-		<div class="mcc-input-row">
-			<label><?php _e('Comment', 'favepersonal'); ?></label>
-			<textarea id="mcc-sign-in-comment" name="comment"></textarea>
+		<div class="social-input-row">
+			<label class="social-label" for="social-sign-in-comment"><?php _e('Comment', 'favepersonal'); ?></label>
+			<textarea id="social-sign-in-comment" name="comment"></textarea>
 		</div>
-		<div class="mcc-input-row">
-			<input class="mcc-input-submit" name="submit" type="submit" value="<?php _e('Post Comment', 'favepersonal'); ?>" />
+		<div class="social-input-row social-input-row-submit social-clearfix">
+			<button type="submit" class="social-input-submit"><span>Post It</span></button>
+			<?php cancel_comment_reply_link() ?>
 		</div>
 <?php 
 		comment_id_fields();
 		do_action('comment_form', $post->ID);
 ?>
-	</form>
+	</div> <!--.social-post-form-->
+</form>
+
 </div><!--#respond-->
 
 <?php 

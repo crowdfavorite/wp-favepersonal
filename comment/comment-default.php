@@ -26,7 +26,7 @@ extract($data); // for comment reply link
 
 ?>
 
-<div id="comment-<?php comment_ID(); ?>" class="social-comment-inner">
+<div id="comment-<?php comment_ID(); ?>" class="social-comment-inner social-clearfix">
 	<div class="social-comment-header">
 		<div class="social-comment-author vcard">
 			<?php if (function_exists('get_avatar')) { 
@@ -41,15 +41,13 @@ extract($data); // for comment reply link
 	</div><!--.social-comment-header-->
 	<div class="social-comment-body">
 		<?php if ($comment->comment_approved == '0') { ?>
-			<p class="notification"><strong><?php _e('(Your comment is awaiting moderation)', 'favepersonal'); ?></strong></p>
+			<p class="notification"><strong><?php _e('Your comment is awaiting moderation', 'favepersonal'); ?></strong></p>
 		<?php }
 			comment_text();
 		?>
 	</div><!--.social-comment-body-->
 	<div class="social-actions">
 		<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post); ?>
-		&middot;
-		<a class="social-comment-email-link" href="#">Email This</a>
 		<?php edit_comment_link(__('Edit', 'favepersonal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
 	</div><!--.social-actions-->
 </div><!--#comment-xx-->

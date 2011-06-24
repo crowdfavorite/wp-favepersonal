@@ -25,9 +25,11 @@ global $post, $wp_query, $comments, $comment;
 if (have_comments() || comments_open()) {
 ?>
 
-<h2 id="comments" class="comments-title"><?php comments_number(__('No Responses (yet)', 'favepersonal'), __('One Response', 'favepersonal'), __('% Responses', 'favepersonal')); ?></h2>
-
 <div id="social">
+	<div class="social-heading">
+		<h2 id="comments" class="social-title"><span><?php comments_number(__('No Responses (yet)', 'favepersonal'), __('One Response', 'favepersonal'), __('% Responses', 'favepersonal')); ?></h2>
+	</div>
+
 	<div class="social-comments">
 <?php 
 	if (!post_password_required()) {

@@ -39,7 +39,7 @@ global $comment;
 		<?php comment_text(); ?>
 	</div><!--.social-comment-body-->
 	<div class="social-actions">
-		<a class="social-comment-email-link" href="#">Email This</a>
+		<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post); ?>
 		<?php edit_comment_link(__('Edit', 'favepersonal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
 	</div><!--.social-actions-->
 </div>
