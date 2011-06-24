@@ -282,7 +282,7 @@
 	font-size: 14px;
 	height: 25px;
 	line-height: 25px;
-	margin: 0 16px 0 0;
+	margin: 4px 16px 0 0;
 	padding-left: 35px;
 	padding-right: 10px;
 	text-indent: 0;	
@@ -295,7 +295,7 @@
 	background-position: 0px -150px;
 }
 #social .social-divider {
-	background: url(../img/sprite-y.8bit.png) 0 10px repeat-x;
+	background: url(../img/strike-through.gif) 0 50% repeat-x;
 	margin: 15px 0;
 	text-align: center;
 }
@@ -406,16 +406,33 @@
 	margin-bottom: 0;
 	padding-bottom: 15px;
 }
-#social .social-comment #respond .social-post-form .avatar {
-	left: 0px;
-}
-#social .social-comment #respond .social-post-form .social-input-row {
-	padding-left: 60px;
-}
 #social .social-comment .social-post-form textarea {
 	width: 95%;
 }
-
+	/* signed in */
+	#social .social-comment #respond .social-post-form .avatar {
+		left: 0px;
+	}
+	#social .social-comment #respond .social-post-form .social-input-row {
+		padding-left: 60px;
+	}
+	/* not signed in */
+	#social .social-comment #respond .social-sign-in-links {
+		padding: 0 0 10px 0;
+	}
+	#social .social-comment #respond .social-divider {
+		display: none;
+	}
+	#social .social-comment #respond .social-post-form label {
+		padding-right: 0px;
+		position: static;
+		text-align: left;
+		width: 100%;
+	}
+	#social .social-comment #respond .social-post-form .social-input-row {
+		padding: 0px;
+	}
+	
 
 /* Comment Collapse */
 #social .social-comment-collapse > .social-comment-inner > .social-comment-body,
