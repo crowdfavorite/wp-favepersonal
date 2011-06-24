@@ -53,7 +53,6 @@
 #social .social-quiet {
 	font-size: 13px;
 	color: #999;
-	margin-left: 5px;
 }
 
 #social .social-post-form {
@@ -354,6 +353,9 @@
 	border: 1px solid #ddd;
 	font-size: 14px;
 	font-family: Helvetica, Arial, sans-serif;
+}
+#social .social-post-form .social-input-text {
+	margin-right: 5px;
 }
 #social .social-post-form .social-input-text,
 #social .social-post-form select {
