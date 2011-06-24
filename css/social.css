@@ -31,7 +31,7 @@
 	}
 	#social .social-children li {
 		list-style: none;
-		margin: 0;
+		padding: 0;
 	}
 
 	.social-imr {
@@ -143,7 +143,7 @@
 }
 
 #social .social-comment .social-comment-inner {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #ddd;
 	margin: 0;
 	padding: 20px 0;
 	position: relative;
@@ -179,7 +179,6 @@
 		top: auto;
 		width: 30px;
 	}
-	
 	#social .social-posted-when {
 		bottom: 15px;
 		position: absolute;
@@ -210,7 +209,6 @@
 		background-position: -150px 0px;
 	}
 	
-	
 	/* Social Comment Pingback Styles */
 	#social .social-pingback .social-comment-header {
 		float: none;
@@ -223,15 +221,17 @@
 	}
 	#social .social-pingback .social-comment-header .social-comment-label {
 		color: #b5b5b5;
-		left: -74px;
-		position:  absolute;
-		top: 0;
+		display: block;
+		float: left;
+		margin-left: -140px;
+		text-align: right;
+		width: 120px;
 	}
 	#social .social-pingback .social-comment-header .social-fn {
 		margin-bottom: 5px;
 	}
-	
-	
+
+
 	#social .social-actions {
 		bottom: 15px;
 		margin: 0;
@@ -248,111 +248,28 @@
 	margin: 0 0 8px 0;
 	padding-right: 30px;
 }
-
-
-
-
-/* form styles */
-#social .social-post-form {
-	position: relative;
+#social .comment-awaiting-moderation {
+	display: inline-block;
+	padding: 1px 4px;
+	margin-bottom: 8px;
 }
-#social .social-post-form .avatar {
-	left: 80px;
-	position: absolute;
-	top: 0;
+
+	
+/* respond title */
+#social .social-heading {
+	height: 27px;
+	margin-bottom: 16px;
+	padding: 0 10px;
 }
-#social .social-post-form {
-	font-size: 14px;
-}
-#social .social-post-form .social-input-row {
-	margin-bottom: 10px;
-	padding-left: 140px;
-	position: relative;
-}
-#social .social-post-form label {
-	color: #666;
-	display: block;
+#social .social-heading .social-title {
 	font-size: 13px;
-	left: 0;
-	padding-right: 20px;
-	position: absolute;
-	text-align: right;
-	top: 7px;
-	width: 120px;
-}	
-#social .social-post-form #post_to {
-	display: inline;
-	left: 209px;
-	position: static;
-	text-align: left;
-	top: 9px;
-	width: auto;
-}
-
-
-#social .social-post-form .social-input-text,
-#social .social-post-form select,
-#social .social-post-form textarea {
-	background: #f8f8f8;
-	border: 1px solid #ccc;
-	-moz-box-shadow: none; /* FF3.5+ */
-	-webkit-box-shadow: none; /* Saf3+, Chrome */
-	box-shadow: none; /* Standard. Opera 10.5, IE9 */
-	font-size: 14px;
-	font-family: Helvetica, Arial, sans-serif;
-	text-indent: 0;
-}
-#social .social-post-form .social-input-text,
-#social .social-post-form select {
-	padding: 5px 6px;
-	width: 326px;
-}
-#social .social-post-form textarea {
-	height: 110px;
-	padding: 5px 6px;
-	width: 496px;
-}
-#social .social-comment .social-post-form textarea {
-	width: 95%;
-}
-
-#social .social-post-form .social-input-row-submit {
-	/**
-	 * @workaround min-height Fast Hack
-	 *
-	 * IE6 doesn't support min-height, but treats elements with
-	 * height and overflow:visible as min-height.
-	 *
-	 * @affected IE5, IE6
-	 * @see http://www.dustindiaz.com/min-height-fast-hack/
-	 */
-	height: auto !important;
-	height: 33px;
-	min-height: 33px;
-}
-#social .social-post-form button {
-	border: 0;
-	color: #fff;
-	display: block;
-	float: left;
-	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 16px;
-	height: 31px;
-	letter-spacing: 1px;
 	line-height: 30px;
+	letter-spacing: 1px;
 	margin: 0;
-	padding-left: 20px;
-	padding-right: 20px;
 	text-transform: uppercase;
 }
-#social .social-post-form #post_to {
-	line-height: 32px;
-}
-#social .social-post-form #post_to,
-#social .social-post-form #cancel-comment-reply-link {
-	margin-left: 20px;
-}
 
+/* sign in */
 #social .social-sign-in-links {
 	display: block;
 	padding: 0 0 0 140px;
@@ -393,8 +310,114 @@
 	text-transform: uppercase;
 }
 
-/* Comment Collapse */
+/* form styles */
+#social .social-post-form {
+	position: relative;
+}
+#social .social-post-form .avatar {
+	left: 80px;
+	position: absolute;
+	top: 4px;
+}
+#social .social-post-form {
+	font-size: 14px;
+}
+#social .social-post-form .social-input-row {
+	margin-bottom: 10px;
+	padding-left: 140px;
+	position: relative;
+}
+#social .social-post-form label {
+	color: #666;
+	display: block;
+	font-size: 13px;
+	left: 0;
+	padding-right: 20px;
+	position: absolute;
+	text-align: right;
+	top: 7px;
+	width: 120px;
+}	
+#social .social-post-form #post_to {
+	display: inline;
+	left: 209px;
+	position: static;
+	text-align: left;
+	top: 9px;
+	width: auto;
+}
 
+#social .social-post-form .social-input-text,
+#social .social-post-form select,
+#social .social-post-form textarea {
+	background: #f8f8f8;
+	border: 1px solid #ddd;
+	font-size: 14px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+#social .social-post-form .social-input-text,
+#social .social-post-form select {
+	padding: 5px 6px;
+	width: 326px;
+}
+#social .social-post-form textarea {
+	height: 110px;
+	padding: 5px 6px;
+	width: 496px;
+}
+
+#social .social-post-form .social-input-row-submit {
+	/**
+	 * @workaround min-height Fast Hack
+	 *
+	 * IE6 doesn't support min-height, but treats elements with
+	 * height and overflow:visible as min-height.
+	 *
+	 * @affected IE5, IE6
+	 * @see http://www.dustindiaz.com/min-height-fast-hack/
+	 */
+	height: auto !important;
+	height: 33px;
+	min-height: 33px;
+}
+#social .social-post-form button {
+	border: 0;
+	color: #fff;
+	display: block;
+	float: left;
+	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 16px;
+	height: 31px;
+	letter-spacing: 1px;
+	line-height: 30px;
+	margin: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-transform: uppercase;
+}
+#social .social-post-form #post_to,
+#social .social-post-form #cancel-comment-reply-link {
+	margin-left: 20px;
+	line-height: 32px;
+}
+/* comment reply form */
+#social .social-comment #respond .social-post-form {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 0;
+	padding-bottom: 15px;
+}
+#social .social-comment #respond .social-post-form .avatar {
+	left: 0px;
+}
+#social .social-comment #respond .social-post-form .social-input-row {
+	padding-left: 60px;
+}
+#social .social-comment .social-post-form textarea {
+	width: 95%;
+}
+
+
+/* Comment Collapse */
 #social .social-comment-collapse > .social-comment-inner > .social-comment-body,
 #social .social-comment-collapse > .social-comment-inner > .social-actions {
 	display: none;
@@ -403,27 +426,25 @@
 	padding-left: 16px;
 }
 #social .social-comment-collapse > .social-comment-inner {
-	padding: 0;
-	margin-bottom: 3px;
+	padding: 10px 0;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header {
-	filter:alpha(opacity=30);
-	font-size: 12px;
-	opacity: .3;
+	filter:alpha(opacity=50);
+	opacity: .5;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header .social-fn {
 	font-size: 12px;
-	left: -10px;
-	position: relative;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100px;
 }
-#social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-meta {
-	bottom: auto;
-	left: auto;
-	right: 20px;
-	top: 0;
+#social .social-pingback.social-comment-collapse .social-fn {
+	display: none;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author {
-	padding: 0 10px 0 0;
+	padding: 0 20px 0 0;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author img {
 	height: 16px;
@@ -431,4 +452,10 @@
 	right: 0;
 	top: 0;
 	width: 16px;
+}
+#social .social-comment-collapse .social-posted-when {
+	bottom: 10px;
+}
+#social .social-comment-collapse .social-posted-from {
+	top: 10px;
 }
