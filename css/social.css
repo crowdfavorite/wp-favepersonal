@@ -406,7 +406,7 @@
 	margin-bottom: 0;
 	padding-bottom: 15px;
 }
-#social .social-comment .social-post-form textarea {
+#social .social-comment #respond .social-post-form textarea {
 	width: 95%;
 }
 	/* signed in */
