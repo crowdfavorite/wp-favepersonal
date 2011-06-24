@@ -27,6 +27,15 @@ jQuery(function($) {
 			$(this).css({'cursor': 'pointer'});
 		});
 	};
+	// Social link tooltips
+	$('.bio-box-links li').each(function() {
+		var $this = $(this);
+		var tooltip_text = $this.find('img').attr('alt');
+		var $tooltip_html = $('<div class="bio-tooltip"/>').html(tooltip_text);
+		
+		$this.append($tooltip_html);
+		$tooltip_html.css('margin-left', -1 * ($tooltip_html.outerWidth() / 2) + ($this.outerWidth() / 2));	
+	});
 	
 // Search form scripts
 	//hide the label after typing
@@ -52,17 +61,5 @@ jQuery(function($) {
 		'stageDimensions': [cfcpGalleryWidth, 474]
 	});
 	$('.gallery-img-excerpt a').cfShimLinkHash();
-	
-	
-	// Social link tooltips
-	$('.bio-box-links li').each(function() {
-		var $this = $(this);
-		var tooltip_text = $this.find('img').attr('alt');
-		var $tooltip_html = $('<div class="bio-tooltip"/>').html(tooltip_text);
-		
-		$this.append($tooltip_html);
-		$tooltip_html.css('margin-left', -1 * ($tooltip_html.outerWidth() / 2) + ($this.outerWidth() / 2));
-		
-	});
 
 });
