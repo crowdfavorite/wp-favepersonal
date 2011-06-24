@@ -34,7 +34,7 @@
 		margin: 0;
 	}
 
-	#social .social-imr {
+	.social-imr {
 		font-size: 0;
 		line-height: 0;
 		overflow: hidden;
@@ -60,7 +60,6 @@
 	margin-bottom: 30px;
 }
 #social .social-nav {
-	margin-bottom: 3px;
 	padding: 1px 0;
 }
 
@@ -90,13 +89,13 @@
 }
 
 #social .social-nav li a {
-	background-image: url(../img/sprite-y.24bit.png);
-	background-position: 0 100px;
+	background-image: url(../img/comment-icons-sprite.png);
 	background-repeat: no-repeat;
 	padding-left: 25px;
 }
 #social .social-nav .social-all {
-	font: normal 14px Titillium600, Helvetica, Arial, Verdana, sans-serif;
+	font: normal 13px Titillium600, Helvetica, Arial, Verdana, sans-serif;
+	line-height: 30px;
 	text-align: right;
 	text-transform: uppercase;
 	width: 120px;
@@ -107,16 +106,16 @@
 	padding: 0;
 }
 #social .social-nav .social-wordpress a {
-	background-position: 5px 5px;
+	background-position: 0px -50px;
 }
 #social .social-nav .social-twitter a {
-	background-position: 3px -94px;
+	background-position: 0px -100px;
 }
 #social .social-nav .social-facebook a {
-	background-position: 9px -195px;
+	background-position: 0px -150px;
 }
 #social .social-nav .social-pingback a {
-	background-position: 6px -395px;
+	background-position: 0px -200px;
 }
 
 
@@ -133,43 +132,32 @@
 }
 #social .social-commentlist {
 	line-height: 18px;
-	margin: 20px 0;
+	margin: 0;
 	padding: 0;	
 }
 #social .social-comment {
-	background-position: right 0;
-	background-repeat: no-repeat;
 	border: 0;
 	margin: 0;
-}
-#social .social-wordpress {
-	background-image: url(../img/icon-social-wordpress.png);
-}
-#social .social-twitter {
-	background-image: url(../img/icon-social-twitter.png);
-}
-#social .social-facebook {
-	background-image: url(../img/icon-social-facebook.png);
-}
-#social .social-pingback {
-	background-image: url(../img/icon-social-pingback.png);
+	padding: 0 0 0 140px;
+	position: relative;
 }
 
 #social .social-comment .social-comment-inner {
+	border-bottom: 1px solid #ccc;
 	margin: 0;
-	padding: 0 0 20px;
+	padding: 20px 0;
 	position: relative;
 }
 #social .social-comment .social-comment-header {
 	float: left;
-	margin: 0;
+	margin: 0 0 0 -140px;
 	position: static;
 	width: 120px;
 }
 	#social .social-comment .social-comment-header .social-comment-author {
 		position: relative;
 		margin: 0;
-		padding-bottom: 32px;
+		padding-bottom: 33px;
 		text-align: right;
 	}
 	#social .social-pingback .social-comment-header .social-comment-author {
@@ -191,15 +179,42 @@
 		top: auto;
 		width: 30px;
 	}
-	#social .social-comment .social-comment-header .social-comment-meta .social-posted-from {
-		display: none;
+	
+	#social .social-posted-when {
+		bottom: 15px;
+		position: absolute;
+		left: 0;		
+	}
+	#social .social-posted-from {
+		background-color: #ddd;
+		background-image: url(../img/comment-icons-sprite.png);
+		background-repeat: no-repeat;
+		height: 16px;
+		position: absolute;
+		overflow: hidden;
+		right: 0;
+		text-indent: -32000px;
+		top: 20px;
+		width: 16px;
+	}
+	#social .social-wordpress .social-posted-from {
+		background-position: 0px 0px;
+	}
+	#social .social-twitter .social-posted-from {
+		background-position: -50px 0px;
+	}
+	#social .social-facebook .social-posted-from {
+		background-position: -100px 0px;
+	}
+	#social .social-pingback .social-posted-from {
+		background-position: -150px 0px;
 	}
 	
 	
 	/* Social Comment Pingback Styles */
 	#social .social-pingback .social-comment-header {
 		float: none;
-		margin-left: 140px;
+		margin: 0px;
 		padding-right: 15px;
 		width: auto;
 	}
@@ -217,25 +232,20 @@
 	}
 	
 	
-	#social .social-comment-meta,
 	#social .social-actions {
-		bottom: 35px;
+		bottom: 15px;
+		margin: 0;
 		position: absolute;
-	}
-	#social .social-comment-meta {
-		left: 140px;
 	}
 	#social .social-actions {
 		right: 0;
 	}
 #social .social-comment .social-comment-body {
-	border-bottom: 1px solid #ccc;
-	margin-left: 140px;
-	padding: 0 15px 25px 0;
+	padding: 0 15px 12px 0;
 	width: auto;
 }
 #social .social-comment .social-comment-body p {
-	margin: 0 0 15px 0;
+	margin: 0 0 8px 0;
 	padding-right: 30px;
 }
 
@@ -247,7 +257,7 @@
 	position: relative;
 }
 #social .social-post-form .avatar {
-	left: 20px;
+	left: 80px;
 	position: absolute;
 	top: 0;
 }
@@ -324,6 +334,7 @@
 	border: 0;
 	color: #fff;
 	display: block;
+	float: left;
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 16px;
 	height: 31px;
@@ -334,50 +345,52 @@
 	padding-right: 20px;
 	text-transform: uppercase;
 }
-
-
+#social .social-post-form #post_to {
+	line-height: 32px;
+}
 #social .social-post-form #post_to,
 #social .social-post-form #cancel-comment-reply-link {
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 #social .social-sign-in-links {
 	display: block;
-	margin: 0 0 0 162px;
-	width: 347px;
+	padding: 0 0 0 140px;
 }
 #social .social-sign-in-links a {
-	background-image: url(../img/sprite-y.24bit.png);
+	color: #fff;
+	background-image: url(../img/comment-icons-sprite.png);
 	background-repeat: no-repeat;
-	background-position: 0 100px;
-	display: block;
-	float: left;
+	display: inline-block;
+	font-size: 14px;
 	height: 25px;
+	line-height: 25px;
+	margin: 0 16px 0 0;
+	padding-left: 35px;
+	padding-right: 10px;
+	text-indent: 0;	
+	text-align: center;
 }
 #social #twitter_signin {
-	background-position: 3px -600px;
-	float: left;
-	width: 153px;
+	background-position: 0px -100px;
 }
 #social #facebook_signin {
-	background-position: 3px -700px;
-	float: right;
-	width: 174px;
+	background-position: 0px -150px;
 }
 #social .social-divider {
-	background: url(../img/sprite-y.8bit.png) 0 5px repeat-x;
+	background: url(../img/sprite-y.8bit.png) 0 10px repeat-x;
 	margin: 15px 0;
+	text-align: center;
 }
 #social .social-divider span {
-	background: #fff url(../img/sprite-y.24bit.png) 6px -800px no-repeat;
-	display: block;
-	font-size: 0;
-	height: 10px;
-	overflow: hidden;
+	background-color: #fff;
 	padding: 0 6px;
-	margin: 0 auto;
-	text-indent: -32000px;
-	width: 16px;
+	margin-left: 20px; /* visual adjustment to line up with buttons */
+	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 13px;
+	letter-spacing: 1px;
+	line-height: 1em;
+	text-transform: uppercase;
 }
 
 /* Comment Collapse */

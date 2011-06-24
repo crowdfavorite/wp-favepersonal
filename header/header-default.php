@@ -236,9 +236,6 @@ $blog_desc = get_bloginfo('description');
 		}
 		
 		/* Social */
-		#social a {
-			color: <?php echo cf_kuler_color('dark'); ?>;
-		}
 		#social .social-title,
 		#social .social-nav,
 		#social .social-nav a span {
@@ -254,12 +251,21 @@ $blog_desc = get_bloginfo('description');
 		#twitter_signin {
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
 		}
-		#social .social-post-form button:hover {
+		#social .social-nav a:hover,
+		#social .social-post-form button:hover,
+		#facebook_signin:hover,
+		#twitter_signin:hover {
+			background-color: <?php echo cf_kuler_color('darkest'); ?>;
+		}		
+		#social .social-nav a {
+			color: <?php echo cf_kuler_color('dark'); ?>;
+		}
+		#social .social-nav a:hover {
+			color: <?php echo cf_kuler_color('darkest'); ?>;
 			background-color: <?php echo cf_kuler_color('darkest'); ?>;
 		}
-		
-		#social .social-nav a:hover {
-			background-color: <?php echo cf_kuler_color('medium'); ?>;
+		#social .social-posted-from {
+			background-color: <?php echo cf_kuler_color('light'); ?>;
 		}
 		.link-screenshot:hover {
 			border-bottom-color: <?php echo cf_kuler_color('medium'); ?>;
