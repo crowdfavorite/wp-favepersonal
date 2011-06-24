@@ -499,6 +499,23 @@
 	margin: 0;
 	padding: 0;
 }
+.widget .bio-box-links li {
+	position: relative;
+}
+.widget .bio-box-links li .bio-tooltip {
+	background: url(../img/bio-tooltip.png) center 0 no-repeat;
+	visibility: hidden;
+	height: 25px;
+	left: 0;
+	padding: 1px 5px 0;
+	position: absolute;
+	top: -26px;
+	white-space: nowrap;
+}
+.widget .bio-box-links li:hover .bio-tooltip,
+.widget .bio-box-links li.hover .bio-tooltip {
+	visibility: visible;
+}
 .widget .bio-box-links ul li,
 .widget .bio-box-links ul li a {
 	display: block;
@@ -506,7 +523,7 @@
 }
 .widget .bio-box-links ul li {
 	height: 20px;
-	padding-right: 5px;
+	margin-right: 5px;
 }
 .widget .bio-box-links ul li a {
 	background-color: #fff;
