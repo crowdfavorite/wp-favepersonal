@@ -24,11 +24,16 @@
 		margin: 0;
 	}
 
-	/* Children Comments */
+	/* Children Comments
+	 * .social-children is for plugin
+	 * .children without plugin
+	 */
+	#social .children,
 	#social .social-children {
 		margin: 0;
 		padding: 0 0 0 50px;
 	}
+	#social .children li,
 	#social .social-children li {
 		list-style: none;
 		padding: 0;
