@@ -44,6 +44,7 @@
 /* Presentation Styles */
 #social {
 	font-size: 13px;
+	overflow: hidden;
 }
 
 #social .social-last-reply-when {
