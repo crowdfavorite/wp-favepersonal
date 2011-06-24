@@ -254,6 +254,10 @@ $blog_desc = get_bloginfo('description');
 		#twitter_signin {
 			background-color: <?php echo cf_kuler_color('dark'); ?>;
 		}
+		#social .social-post-form button:hover {
+			background-color: <?php echo cf_kuler_color('darkest'); ?>;
+		}
+		
 		#social .social-nav a:hover {
 			background-color: <?php echo cf_kuler_color('medium'); ?>;
 		}
