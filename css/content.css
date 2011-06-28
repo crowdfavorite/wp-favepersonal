@@ -60,6 +60,7 @@
 	right: -3px;
 	padding: 5px 0 3px 0;
 	position: absolute;
+	text-align: left;
 	text-transform: none;
 	top: 23px;
 	width: 140px;
@@ -296,7 +297,7 @@
  	border-bottom-width: 2px;
 	border-bottom-style: solid;
 }
- .gallery-thumbs a img {
+.gallery-thumbs a img {
 	border-bottom: 1px solid #fff;
 }
 .gallery .loading {
