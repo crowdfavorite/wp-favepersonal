@@ -118,7 +118,7 @@
 .post-header,
 .post-media,
 .post-content {
-	padding-left: 140px;
+	margin-left: 140px;
 }
 
 /* post-header */
@@ -217,8 +217,7 @@
 .single-format-gallery .pagination,
 .single-format-video .pagination {
 	width: 710px;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 140px;
 }
 
 
@@ -228,7 +227,7 @@
 .post .gallery-img-excerpt {
 	float: left;
 	list-style-type: none;
-	margin: 0;
+	margin: 0 -15px 0 0;
 	padding: 0;
 	width: 525px;
 }
@@ -358,6 +357,7 @@
 	background: url(../img/quote.png) 0 2px no-repeat;
 	margin: 0;
 	padding: 0 0 0 26px;
+	zoom: 1;
 }
 .format-quote-attribution {
 	margin-left: 120px;

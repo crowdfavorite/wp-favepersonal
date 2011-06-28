@@ -29,7 +29,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	cfct_misc('post-meta-excerpts');
 	cfcp_gallery_excerpt(array(
 		'size' => 'thumb-img',
-		'before' => '<div class="post-media">',
+		'before' => '<div class="post-media clearfix">',
 		'after' => '</div>'
 	)); ?>
 	<div class="post-content clearfix">
