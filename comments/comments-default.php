@@ -26,9 +26,14 @@ if (have_comments() || comments_open()) {
 ?>
 
 <div id="social">
-	<div class="social-heading">
-		<h2 id="comments" class="social-title"><span><?php comments_number(__('No Responses (yet)', 'favepersonal'), __('One Response', 'favepersonal'), __('% Responses', 'favepersonal')); ?></h2>
-	</div>
+	
+	<?php $comment_count = get_comment_count($post->ID); ?>
+	<?php if ($comment_count['approved'] > 0) : ?>
+		<div class="social-heading">
+			<h2 id="comments" class="social-title"><span><?php comments_number(__('No Responses (yet)', 'favepersonal'), __('One Response', 'favepersonal'), __('% Responses', 'favepersonal')); ?></h2>
+		</div>
+	<?php endif; ?>
+		
 
 	<div class="social-comments">
 <?php 

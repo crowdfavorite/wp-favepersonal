@@ -43,7 +43,7 @@ if ('open' == $post->comment_status) {
 	
 <div id="respond" class="social-respond">
 	<div class="social-heading">
-		<h2 class="social-title"><span><?php printf(__('Add A Comment', 'favepersonal')); ?></span></h2>
+		<h2 class="social-title"><span><?php printf(__('Post A Comment', 'favepersonal')); ?></span></h2>
 	</div>
 		
 <form class="social-respond-inner" action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
@@ -62,6 +62,9 @@ if ('open' == $post->comment_status) {
 			<input class="social-input-text" id="social-sign-in-website" type="text" name="url" value="<?php echo $comment_author_url; ?>" size="22" />
 		</div>
 <?php } ?>
+<?php if (is_user_logged_in()) { ?>
+		<div class="social-input-row"><?php printf(__('Logged in as <a href="%s">%s</a>. ', 'favepersonal'), get_bloginfo('wpurl').'/wp-admin/profile.php', $user_identity); wp_loginout(); ?>.</div>
+<?php } ?>
 		<div class="social-input-row">
 			<label class="social-label" for="social-sign-in-comment"><?php _e('Comment', 'favepersonal'); ?></label>
 			<textarea id="social-sign-in-comment" name="comment"></textarea>
@@ -70,7 +73,7 @@ if ('open' == $post->comment_status) {
 			<button type="submit" class="social-input-submit"><span>Post It</span></button>
 			<?php cancel_comment_reply_link() ?>
 		</div>
-<?php 
+<?php
 		comment_id_fields();
 		do_action('comment_form', $post->ID);
 ?>
