@@ -8,6 +8,7 @@ include(CFCT_PATH.'header/featured/init.php');
 					cfcp_gallery_excerpt(array(
 						'size' => 'thumb-img',
 						'number' => '4',
+						'view_all_link' => false,
 					));
 					?>
 					<div class="featured-content">

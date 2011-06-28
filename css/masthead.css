@@ -103,7 +103,8 @@
 	padding-left: 36px;
 }
 /* gallery */
-#featured-posts .featured-format-gallery .gallery-img-excerpt {
+#featured-posts .gallery-img-excerpt {
+	height: 180px;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -111,14 +112,33 @@
 	top: 0;
 	left: 0;
 	z-index: 1;
+	width: 310px;
 }
-#featured-posts .featured-format-gallery .gallery-img-excerpt li {
+#featured-posts .gallery-img-excerpt li {
 	float: left;
 	height: 90px;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
+	position: absolute;
 	width: 155px;
+}
+/* set positions for featured gallery */
+#featured-posts .gallery-img-excerpt li.excerpt-img-0 {
+	top: 0;
+	right: 0;
+}
+#featured-posts .gallery-img-excerpt li.excerpt-img-1 {
+	bottom: 0;
+	left: 0;
+}
+#featured-posts .gallery-img-excerpt li.excerpt-img-2 {
+	left: 0;
+	top: 0;
+}
+#featured-posts .gallery-img-excerpt li.excerpt-img-3 {
+	bottom: 0;
+	right: 0;
 }
 /* video 
 #featured-posts .featured-format-video .featured-link {

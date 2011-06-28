@@ -132,15 +132,24 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	public $number_of_images = 8; // 8 by default
 	
 	public function view($args = array()) {
+		$defaults = array(
+			'id' => get_the_ID(),
+			'view_all_link' => true
+		);
+		$args = array_merge($defaults, $args);
 		extract($args);
-		$thumbs = '';
-		$post_permalink = get_permalink(get_the_ID());
-		
-		foreach($gallery->posts as $image) {
-			$id = $this->get_slide_id($image->ID);
-			$thumbs .= '<li><a href="'.esc_url($post_permalink.'#'.$id).'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
+		if (empty($id)) {
+			$id = get_the_ID();
 		}
-		if ($gallery->found_posts > count($gallery->posts)) {
+		$thumbs = '';
+		$post_permalink = get_permalink($id);
+		
+		$i = 0;
+		foreach ($gallery->posts as $image) {
+			$thumbs .= '<li class="excerpt-img-'.$i.'"><a href="'.esc_url($post_permalink.'#'.$this->get_slide_id($image->ID)).'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
+			$i++;
+		}
+		if ($view_all_link && $gallery->found_posts > count($gallery->posts)) {
 			$text = sprintf(__('View all %s', 'favepersonal'), intval($gallery->found_posts));
 			$thumbs .= '<li class="gallery-view-all h5"><a href="'.esc_url($post_permalink).'"> '.esc_html($text).'</a></li>';
 		}
@@ -188,12 +197,14 @@ function cfcp_gallery_excerpt($args = array()) {
 		'id' => get_the_ID(),
 		'before' => '',
 		'after' => '',
+		'view_all_link' => true,
 	);
 	$args = array_merge($defaults, $args);
 	$gallery = new CFCT_Gallery_Excerpt($args['id'], $args['number']);
 	if ($gallery->exists()) {
 		$display_args = array(
-			'size' => $args['size']
+			'size' => $args['size'],
+			'view_all_link' => $args['view_all_link']
 		);
 		
 		echo $args['before'];
