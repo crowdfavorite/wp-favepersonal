@@ -214,7 +214,18 @@ function cfcp_gallery_excerpt($args = array()) {
 	unset($gallery);
 }
 
+function cfcp_gallery_max_height($size = '', $post_id = null) {
+	$max_sizes = cfcp_gallery_max_size($size, $post_id);
+	return $max_sizes['height'];
+}
+
 function cfcp_gallery_max_width($size = '', $post_id = null) {
+	$max_sizes = cfcp_gallery_max_size($size, $post_id);
+	return $max_sizes['width'];
+}
+
+function cfcp_gallery_max_size($size = '', $post_id = null) {
+	$max_height = 0;
 	$max_width = 0;
 	if (empty($post_id)) {
 		$post_id = get_the_ID();
@@ -230,16 +241,25 @@ function cfcp_gallery_max_width($size = '', $post_id = null) {
 		$meta = cf_get_post_meta($photo_ids, '_wp_attachment_metadata');
 // check widths
 		foreach ($meta as $data) {
+			if ($max_height < $data['sizes']['gallery-large-img']['height']) {
+				$max_height = $data['sizes']['gallery-large-img']['height'];
+			}
 			if ($max_width < $data['sizes']['gallery-large-img']['width']) {
 				$max_width = $data['sizes']['gallery-large-img']['width'];
 			}
 		}
 	}
 	unset($gallery);
+	if (!$max_height) {
+		$max_height = 474;
+	}
 	if (!$max_width) {
 		$max_width = 710;
 	}
-	return $max_width;
+	return array(
+		'height' => $max_height,
+		'width' => $max_width
+	);
 }
 
 ?>

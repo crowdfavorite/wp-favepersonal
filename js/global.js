@@ -54,11 +54,14 @@ jQuery(function($) {
 	});
 
 // Gallery
+	if (typeof cfcpGalleryHeight == 'undefined') {
+		cfcpGalleryHeight = 474;
+	}
 	if (typeof cfcpGalleryWidth == 'undefined') {
 		cfcpGalleryWidth = 710;
 	}
 	$('.gallery').cfgallery({
-		'stageDimensions': [cfcpGalleryWidth, 474]
+		'stageDimensions': [cfcpGalleryWidth, cfcpGalleryHeight]
 	});
 	$('.gallery-img-excerpt a').cfShimLinkHash();
 

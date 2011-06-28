@@ -20,6 +20,8 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
+$sizes = cfcp_gallery_max_size('gallery-large-img');
+
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class('content clearfix') ?>>
 	<div class="post-header">
@@ -46,4 +48,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		?>
 	</div><!--post-content-->
 </article><!-- .post -->
-<script type="text/javascript">var cfcpGalleryWidth = <?php echo cfcp_gallery_max_width('gallery-large-img'); ?>;</script>
+<script type="text/javascript">
+var cfcpGalleryHeight = <?php echo $sizes['height']; ?>;
+var cfcpGalleryWidth = <?php echo $sizes['width']; ?>;
+</script>
