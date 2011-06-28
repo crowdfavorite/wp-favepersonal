@@ -345,14 +345,14 @@ button.cf-btn-delete {
 .cf-notice a { color:#514721; }
 .cf-success a { color:#264409; }
 
+.otypeahead-loading {
+	color: #999;
+}
+
 /* clearfix */
 .cf-clearfix:before, .cf-clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .cf-clearfix:after { clear: both; }
 .cf-clearfix { zoom: 1; }
-
-
-
-
 
 
 /**
