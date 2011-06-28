@@ -34,7 +34,7 @@ else {
 }
 
 ?>
-<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
+<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
 	<div class="post-header">
 		<h2 class="post-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?> &rarr;</a></h2>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>

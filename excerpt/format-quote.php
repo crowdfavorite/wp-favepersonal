@@ -39,7 +39,7 @@ else {
 }
 
 ?>
-<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt'); ?>>
+<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
 	<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
 	<div class="post-content">
 		<blockquote>
