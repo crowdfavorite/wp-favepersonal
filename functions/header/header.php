@@ -82,7 +82,7 @@ function cfcp_header_options($key = null, $val = null) {
 	}
 }
 
-function cfcp_header_featured_clear_post($post_id) {
+function cfcp_header_unfeature_post($post_id) {
 	$posts = cfcp_header_options('posts');
 	if (in_array($post_id, $posts)) {
 		foreach ($posts as $k => &$v) {
@@ -98,7 +98,6 @@ function cfcp_header_featured_save_post($post_id, $post) {
 	if (!defined('XMLRPC_REQUEST') && isset($_POST['_cfcp_header_slot'])) {
 		$val = intval($_POST['_cfcp_header_slot']);
 		if ($val == 0) {
-			delete_post_meta($post_id, '_cfcp_header_slot');
 			cfcp_header_featured_clear_post($post_id);
 		}
 		else {
@@ -106,6 +105,9 @@ function cfcp_header_featured_save_post($post_id, $post) {
 			if ($post->post_status == 'publish') {
 				remove_action('publish_post', 'cfcp_header_featured_publish_post');
 				cfcp_header_featured_publish_post($post_id);
+			}
+			else {
+				cfcp_header_unfeature_post($post_id);
 			}
 		}
 	}
@@ -128,6 +130,13 @@ function cfcp_header_featured_publish_post($post_id) {
 	}
 }
 add_action('publish_post', 'cfcp_header_featured_publish_post');
+
+function cfcp_header_featured_clear_post($post_id) {
+	delete_post_meta($post_id, '_cfcp_header_slot');
+	cfcp_header_unfeature_post($post_id);
+}
+add_action('trash_post', 'cfcp_header_featured_clear_post');
+add_action('delete_post', 'cfcp_header_featured_clear_post');
 
 function cfcp_header_options_fields($fields) {
 	$type = cfcp_header_options('type');
