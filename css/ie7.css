@@ -23,3 +23,10 @@ Fixes for IE 7
 #featured-posts .featured .featured-content {
 	width: 310px;
 }
+
+/** Posts
+ -------------------------------------------------- */
+/* gallery-excerpt */
+.post .gallery-img-excerpt {
+	padding-bottom: 15px;
+}

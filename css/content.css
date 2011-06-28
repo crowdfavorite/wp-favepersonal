@@ -578,26 +578,22 @@
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 16px;
 }
-.widget_search form #s {
-	margin-top: 5px;
-}
-.widget_search form label {
-	margin-top: 6px;
-}
 .widget_search form label {
 	left: 0;
+	margin-top: 6px;
 	padding: 0 10px;
-	width: 285px;
+	width: 255px;
 	z-index: 10;
 }
 .widget_search form #s {
 	background: none;
 	border: 0;
 	left: 0;
+	margin-top: 5px;
 	padding: 0 8px;
 	position: absolute;
 	top: 0;
-	width: 260px;
+	width: 255px;
 }
 .widget_search form #searchsubmit {
 	background: url('../img/search-icon.png') center center no-repeat;
@@ -605,16 +601,18 @@
 	border-left: 1px solid #fff;
 	cursor: pointer;
 	display: block;
-	height: 0;
+	font-size: 0;
+	height: 28px;
 	margin: 0;
 	overflow: hidden;
-	padding: 28px 0 0 0;
 	position: absolute;
 	right: 0;
 	text-align: center;
+	text-indent: -9999px;
 	top: 0;
 	width: 34px;
 }
+
 /** Attachment Page
  -------------------------------------------------- */
 .attachment-content,
