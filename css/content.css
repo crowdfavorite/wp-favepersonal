@@ -115,6 +115,22 @@
 	position: relative;
 }
 
+/* show edit link on rollover */
+.post .edit-link {
+	display: none;
+}
+.post:hover .edit-link {
+	display: inline;
+}
+.edit-link {
+	background-color: #eee;
+	font-size: 18px;
+	padding: 2px 6px;
+	position: absolute;
+	top: 2px;
+	left: 0;
+}
+
 /* shared */
 .post-header,
 .post-media,

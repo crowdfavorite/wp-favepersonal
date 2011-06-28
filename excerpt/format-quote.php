@@ -52,5 +52,6 @@ if (!empty($source)) {
 <?php
 }
 ?>
-	</div><!--post-content-->	
+	</div><!--post-content-->
+	<?php edit_post_link('&#x270D;', '<span class="edit-link">', '</span>'); ?>
 </article><!-- .excerpt -->
