@@ -138,8 +138,11 @@ if (!function_exists('cf_sort_hex_colors')) {
 	}
 }
 
-function cf_kuler_color($key = 'darkest') {
+function cf_kuler_color($key = 'darkest', $context = null) {
 	$color = '';
+	if (!empty($context)) {
+		$key = apply_filters('cf_kuler_'.$context, $key);
+	}
 	if ($colors = cf_kuler_get_colors()) {
 		switch ($key) {
 			case 'darkest':
