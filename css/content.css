@@ -196,7 +196,7 @@
 	margin: 0;
 }
 .post-meta a {
-	color: #666;
+	color: #999;
 }
 .post-meta h5 {
 	margin: 0;
@@ -436,7 +436,6 @@
 
 /** Sidebar
  -------------------------------------------------- */
-
 /* Sidebar Footer - split sidebar section into columns */
 #sidebar-footer {
 	margin-top: 60px;

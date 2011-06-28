@@ -41,7 +41,7 @@ extract($data); // for comment reply link
 	</div><!--.social-comment-header-->
 	<div class="social-comment-body">
 		<?php if ($comment->comment_approved == '0') { ?>
-			<p class="notification"><strong><?php _e('Your comment is awaiting moderation', 'favepersonal'); ?></strong></p>
+			<p class="comment-awaiting-moderation"><strong><?php _e('Your comment is awaiting moderation', 'favepersonal'); ?></strong></p>
 		<?php }
 			comment_text();
 		?>
