@@ -82,12 +82,31 @@ function cfcp_header_options($key = null, $val = null) {
 	}
 }
 
+function cfcp_header_featured_clear_post($post_id) {
+	$posts = cfcp_header_options('posts');
+	if (in_array($post_id, $posts)) {
+		foreach ($posts as $k => &$v) {
+			if ($v == $post_id) {
+				$v = null;
+			}
+		}
+		cfcp_header_options('posts', $posts);
+	}
+}
+
 function cfcp_header_featured_save_post($post_id, $post) {
 	if (!defined('XMLRPC_REQUEST') && isset($_POST['_cfcp_header_slot'])) {
-		update_post_meta($post_id, '_cfcp_header_slot', intval($_POST['_cfcp_header_slot']));
-		if ($post->post_status == 'publish') {
-			remove_action('publish_post', 'cfcp_header_featured_publish_post');
-			cfcp_header_featured_publish_post($post_id);
+		$val = intval($_POST['_cfcp_header_slot']);
+		if ($val == 0) {
+			delete_post_meta($post_id, '_cfcp_header_slot');
+			cfcp_header_featured_clear_post($post_id);
+		}
+		else {
+			update_post_meta($post_id, '_cfcp_header_slot', $val);
+			if ($post->post_status == 'publish') {
+				remove_action('publish_post', 'cfcp_header_featured_publish_post');
+				cfcp_header_featured_publish_post($post_id);
+			}
 		}
 	}
 }
@@ -209,6 +228,7 @@ function cfcp_set_featured_position() {
 }
 
 function cfcp_header_featured_slot_form() {
+	global $post;
 // get featured posts
 	$featured_ids = cfcp_header_options('posts');
 // echo 3 boxes
@@ -232,9 +252,11 @@ function cfcp_header_featured_slot_form() {
 				$('#_cfcp_header_slot').val('0');
 				$(this).removeClass('cfp-featured-pending').removeClass('cfp-featured-set')
 			}
+			else {
 // select
-			$('#_cfcp_header_slot').val($(this).attr('id').replace('cfp-featured-position-', ''));
-			$(this).siblings().removeClass('cfp-featured-pending').removeClass('cfp-featured-set').end().addClass('cfp-featured-pending');
+				$('#_cfcp_header_slot').val($(this).attr('id').replace('cfp-featured-position-', ''));
+				$(this).siblings().removeClass('cfp-featured-pending').removeClass('cfp-featured-set').end().addClass('cfp-featured-pending');
+			}
 		});
 	});
 	</script>
@@ -250,8 +272,8 @@ function cfcp_header_featured_slot_item($post, $featured, $i = 1) {
 		$class = '';
 	}
 
-// no post set?
-	if (!$featured) {
+// no post set? also handle "this post"
+	if (!$featured || $post->ID == $featured->ID) {
 ?>
 		<li id="cfp-featured-position-<?php echo $i; ?>" <?php echo $class; ?>>
 			<p class="none"><?php _e('(empty)', 'favepersonal'); ?></p>
