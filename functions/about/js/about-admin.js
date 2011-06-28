@@ -541,8 +541,7 @@ jQuery(function($) {
 	$(document).keyup(function(e) {
 		switch (e.which) {
 			case 27: // esc
-				CF.imgs.hideAllDialogs();
-				CF.aboutLinks.hideAllDialogs();
+				$('body').click();
 				break;
 		}
 	});

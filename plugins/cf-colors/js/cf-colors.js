@@ -396,6 +396,13 @@ jQuery(function($) {
 		CF.preview.hide();
 		CF.picker.hide();
 	});
+	$(document).keyup(function(e) {
+		switch (e.which) {
+			case 27: // esc
+				$('body').click();
+				break;
+		}
+	});
 	
 	$('.cf-kuler-message-fade')
 		.animate({'opacity': 1.0}, 8000) // faux timeout, animates nothing for 8 seconds

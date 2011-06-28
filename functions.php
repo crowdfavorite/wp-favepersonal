@@ -46,7 +46,7 @@ include_once(CFCT_PATH.'carrington-core/carrington.php');
 include_once(CFCT_PATH.'functions/sidebars.php');
 include_once(CFCT_PATH.'functions/gallery.php');
 include_once(CFCT_PATH.'functions/about/about.php');
-include_once(CFCT_PATH.'functions/header.php');
+include_once(CFCT_PATH.'functions/header/header.php');
 include_once(CFCT_PATH.'plugins/load.php');
 
 function cfcp_load_social() {
