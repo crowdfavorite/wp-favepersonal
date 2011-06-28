@@ -502,12 +502,10 @@ function cf_kuler_settings_form() {
 	if (!empty($_GET['updated']) && $_GET['updated'] == true) {
 		$message = '<div class="updated below-h2 fade cf-kuler-message-fade" id="message"><p>'.__('Settings updated.', 'cf-kuler').'</p></div>';
 	}
-	
-	$title_icon = screen_icon();
-	
+		
 	print('
 <div class="wrap cf-kuler-wrap cf-clearfix">
-	'.$title_icon.'
+	'.screen_icon().'
 	<h2>'.__('Color Settings', 'cf-kuler').'</h2>
 	'.$message.'
 	<div class="cfcp-section">
