@@ -1,4 +1,5 @@
 <div class="wrap cf cf-about-wrap cf-clearfix">
+	<?php screen_icon(); ?>
 	<h2><?php _e('About Me, Myself and I', 'favepersonal'); ?></h2>
 	
 <?php 
