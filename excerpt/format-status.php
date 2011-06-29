@@ -50,5 +50,5 @@ if (count($meta_items)) {
 }
 ?>
 	</div><!--post-content-->
-	<?php edit_post_link('&#x270D;', '<span class="edit-link">', '</span>'); ?>
+	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
 </article><!-- .excerpt -->

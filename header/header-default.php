@@ -219,6 +219,13 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	.post .gallery-thumbs a.activated {
 		border-bottom-color: <?php echo cf_kuler_color('darkest', 'gallery_thumbs_a_activated_border'); ?>;
 	}
+	.edit-link {
+		background-color: <?php echo cf_kuler_color('dark', 'edit_link_background'); ?>;
+	}
+	.edit-link:hover {
+		background-color: <?php echo cf_kuler_color('darkest', 'edit_link_background_hover'); ?>;
+	}
+	
 	
 	/* Shortcode Gallery */
 	#content .gallery-item .gallery-icon a:hover {

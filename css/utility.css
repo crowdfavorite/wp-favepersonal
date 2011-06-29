@@ -23,6 +23,20 @@
 	height: 1px;
 }
 
+/* edit-link */
+.edit-link {
+	background: #666 url(../img/edit-icon.png) 0 0 no-repeat;
+	cursor: pointer;
+	font-size: 18px;
+	height: 20px;
+	overflow: hidden;
+	position: absolute;
+	text-indent: -9999px;
+	top: 2px;
+	left: 0;
+	width: 20px;
+}
+
 /** Alignment
  -------------------------------------------------- */
 .center {
