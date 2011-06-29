@@ -55,7 +55,7 @@ class CFCP_About_Widget extends WP_Widget {
      * @return void Echoes it's output
      **/
 	function form( $instance ) {
-		echo '<p>'.__('The settings for this widget are <a href="#">managed on this page</a>.', 'favepersonal').'</p>';
+		echo '<p>'.sprintf(__('The settings for this widget are <a href="%s">managed on this page</a>.', 'favepersonal'), admin_url('themes.php?page=about.php')).'</p>';
 	}
 }
 

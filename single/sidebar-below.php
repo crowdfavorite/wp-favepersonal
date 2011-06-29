@@ -20,4 +20,25 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-include('sidebar-below.php');
+get_header();
+
+?>
+
+<div class="col-abc">
+
+	<?php
+
+	cfct_loop();
+	comments_template();
+	cfct_misc('nav-post');
+
+	?>
+
+</div>
+
+
+<div id="sidebar-footer" class="clearfix">
+	<?php get_sidebar(); ?>
+</div>
+
+<?php get_footer(); ?>

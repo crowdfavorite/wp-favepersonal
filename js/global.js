@@ -30,10 +30,10 @@ jQuery(function($) {
 	// Social link tooltips
 	$('.bio-box-links li').each(function() {
 		var $this = $(this);
-		var tooltip_text = $this.find('img').attr('alt');
-		var $tooltip_html = $('<div class="bio-tooltip"/>').html(tooltip_text);
+		var $tooltip_html = $('<div class="bio-tooltip"/>')
+			.html($this.find('img').attr('alt'));
 		
-		$this.append($tooltip_html);
+		$(this).append($tooltip_html).find('a').removeAttr('title');
 		$tooltip_html.css('margin-left', -1 * ($tooltip_html.outerWidth() / 2) + ($this.outerWidth() / 2));	
 	});
 	
