@@ -81,21 +81,20 @@
 }
 
 /* WP Gallery */
-#content .gallery-item {
+.gallery-item {
 	float: left;
 	margin: 0 15px 12px 0;
 	text-align: center;
 	width: 150px;
 }
-#content .gallery-item .gallery-icon {
+.gallery-item .gallery-icon {
 	margin: 0;
 }
-#content .gallery-item .gallery-icon img {
+.gallery-item .gallery-icon img {
 	border-bottom: #fff solid 1px;
 	display: block;
 }
-/* Shortcode Galleries */
-#content .gallery-item .gallery-icon a {
+.gallery-item .gallery-icon a {
 	border-bottom: #fff solid 2px;
 	display: block;
 	

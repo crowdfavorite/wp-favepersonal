@@ -120,7 +120,7 @@ class CFCT_Gallery {
 			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'">'.$thumb.'</a></li>';
 		}
 		?>
-<div id="<?php echo $this->id; ?>" class="gallery clearfix">
+<div id="<?php echo $this->id; ?>" class="cfgallery clearfix">
 	<div class="gallery-stage"></div>
 	<ul class="gallery-thumbs"><?php echo $thumbs; ?></ul>
 </div>

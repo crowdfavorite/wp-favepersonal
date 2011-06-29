@@ -60,7 +60,7 @@ jQuery(function($) {
 	if (typeof cfcpGalleryWidth == 'undefined') {
 		cfcpGalleryWidth = 710;
 	}
-	$('.gallery').cfgallery({
+	$('.cfgallery').cfgallery({
 		'stageDimensions': [cfcpGalleryWidth, cfcpGalleryHeight]
 	});
 	$('.gallery-img-excerpt a').cfShimLinkHash();
