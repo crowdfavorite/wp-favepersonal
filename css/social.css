@@ -120,15 +120,10 @@
 }
 
 /* Social Comment */
-#social .social-comments .social-last-reply-when,
 #social .social-posted-when,
 #social .comment-reply-link {
 	color: #666;
-}
-#social .social-comments .social-last-reply-when {
-	font-style: italic;
-	margin-bottom: 10px;
-	text-align: right;
+	font-size: 11px;
 }
 #social .social-comment {
 	border: 0;
@@ -176,7 +171,7 @@
 #social .social-posted-when {
 	bottom: 15px;
 	position: absolute;
-	left: 0;		
+	left: 0;
 }
 #social .social-posted-from {
 	background-color: #ddd;
@@ -228,8 +223,6 @@
 	bottom: 15px;
 	margin: 0;
 	position: absolute;
-}
-#social .social-actions {
 	right: 0;
 }
 #social .social-comment .social-comment-body {
@@ -458,6 +451,7 @@
 	width: 16px;
 }
 #social .social-comment-collapse .social-posted-when {
+	font-size: 13px;
 	bottom: 10px;
 }
 #social .social-comment-collapse .social-posted-from {
