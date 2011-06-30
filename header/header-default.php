@@ -115,6 +115,19 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	#featured-posts .featured-content {
 		color: <?php echo cf_kuler_color('lightest', 'featured_posts_content_color') ?>;
 	}
+	/* set bg color to tile featured gallery with less than 4 images */
+	#featured-posts .gallery-img-excerpt li.excerpt-img-0 {
+		background-color: <?php echo cf_kuler_color('light', 'featured_gallery_img_0') ?>;
+	}
+	#featured-posts .gallery-img-excerpt li.excerpt-img-1 {
+		background-color: <?php echo cf_kuler_color('medium', 'featured_gallery_img_1') ?>;
+	}
+	#featured-posts .gallery-img-excerpt li.excerpt-img-2 {
+		background-color: <?php echo cf_kuler_color('medium', 'featured_gallery_img_2') ?>;
+	}
+	#featured-posts .gallery-img-excerpt li.excerpt-img-3 {
+		background-color: <?php echo cf_kuler_color('light', 'featured_gallery_img_3') ?>;
+	}
 	/* rollover */
 	#featured-posts .featured:hover .featured-content {
 		background-color: rgb(<?php echo_hex(cf_kuler_color('light', 'featured_posts_hover_background')); ?>); /* fallback for IE */
