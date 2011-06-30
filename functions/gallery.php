@@ -131,19 +131,20 @@ class CFCT_Gallery {
 class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	public $number_of_images = 8; // 8 by default
 	
-	public function view($args = array()) {
+	protected function _view_prep($args = array()) {
 		$defaults = array(
 			'id' => get_the_ID(),
 			'view_all_link' => true
 		);
 		$args = array_merge($defaults, $args);
+		$args['thumbs'] = '';
+		$args['post_permalink'] = get_permalink($id);
+		return $args;
+	}
+	
+	public function view($args = array()) {
+		$args = $this->_view_prep($args);
 		extract($args);
-		if (empty($id)) {
-			$id = get_the_ID();
-		}
-		$thumbs = '';
-		$post_permalink = get_permalink($id);
-		
 		$i = 0;
 		foreach ($gallery->posts as $image) {
 			$thumbs .= '<li class="excerpt-img-'.$i.'"><a href="'.esc_url($post_permalink.'#'.$this->get_slide_id($image->ID)).'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
@@ -159,6 +160,58 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	<?php echo $thumbs; ?>
 </ul>
 		<?php
+	}
+
+	public function view_featured($args = array()) {
+		$args = $this->_view_prep($args);
+		extract($args);
+		$images = array(
+			'_0' => '',
+			'_1' => '',
+			'_2' => '',
+			'_3' => '',
+		);
+		switch (count($gallery->posts)) {
+			case '1':
+				$images['_1'] = $gallery->posts[0];
+			break;
+			case '2':
+				$images['_1'] = $gallery->posts[0];
+				$images['_2'] = $gallery->posts[1];
+			break;
+			case '4':
+				$images['_3'] = $gallery->posts[3];
+			case '3':
+				$images['_0'] = $gallery->posts[0];
+				$images['_1'] = $gallery->posts[1];
+				$images['_2'] = $gallery->posts[2];
+			break;
+		}
+		$i = 0;
+//		foreach ($gallery->posts as $image) {
+		foreach ($images as $image) {
+			if (empty($image)) {
+				$thumbs .= '<li class="excerpt-img-'.$i.'"></li>';
+			}
+			else {
+				$thumbs .= '<li class="excerpt-img-'.$i.'"><a href="'.esc_url($post_permalink.'#'.$this->get_slide_id($image->ID)).'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
+			}
+			$i++;
+		}
+
+		?>
+<ul class="gallery-img-excerpt">
+	<?php echo $thumbs; ?>
+</ul>
+		<?php
+	}
+
+	public function render_featured($args = array()) {
+		if (!$this->exists()) {
+			return;
+		}
+		$args['gallery'] = $this->get_attachments();
+		$this->view_featured($args);
 	}
 }
 
@@ -209,6 +262,32 @@ function cfcp_gallery_excerpt($args = array()) {
 		
 		echo $args['before'];
 		$gallery->render($display_args);
+		echo $args['after'];
+	}
+	unset($gallery);
+}
+
+// Display gallery images with our own markup for featured posts in masthead
+// TODO - refactor to pass args to render that can select different view methods 
+function cfcp_gallery_featured($args = array()) {
+	$defaults = array(
+		'size' => 'thumbnail',
+		'number' => 8,
+		'id' => get_the_ID(),
+		'before' => '',
+		'after' => '',
+		'view_all_link' => true,
+	);
+	$args = array_merge($defaults, $args);
+	$gallery = new CFCT_Gallery_Excerpt($args['id'], $args['number']);
+	if ($gallery->exists()) {
+		$display_args = array(
+			'size' => $args['size'],
+			'view_all_link' => $args['view_all_link']
+		);
+		
+		echo $args['before'];
+		$gallery->render_featured($display_args);
 		echo $args['after'];
 	}
 	unset($gallery);

@@ -5,7 +5,7 @@ include(CFCT_PATH.'header/featured/init.php');
 ?>
 				<article id="featured-post-<?php echo $slot; ?>" class="featured <?php echo $class; ?>">
 					<?php
-					cfcp_gallery_excerpt(array(
+					cfcp_gallery_featured(array(
 						'size' => 'thumb-img',
 						'number' => '4',
 						'view_all_link' => false,
