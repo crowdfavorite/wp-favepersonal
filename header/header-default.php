@@ -161,7 +161,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	.bio-box-gallery a.bio-carousel-nav:hover {
 		background-color: <?php echo cf_kuler_color('medium', 'bio_box_carousel_hover_background'); ?>;
 	}
-	.bio-box-gallery-images,
+	.bio-box-gallery,
 	.bio-box-content,
 	.bio-box-links {
 		background-color: <?php echo cf_kuler_color('medium', 'bio_box_content_background'); ?>;
