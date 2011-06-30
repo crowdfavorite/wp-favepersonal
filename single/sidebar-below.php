@@ -24,7 +24,7 @@ get_header();
 
 ?>
 
-<div class="col-abc">
+<div id="primary-full">
 
 	<?php
 
@@ -37,7 +37,7 @@ get_header();
 </div>
 
 
-<div id="sidebar-footer" class="clearfix">
+<div id="secondary-full" class="clearfix">
 	<?php get_sidebar(); ?>
 </div>
 

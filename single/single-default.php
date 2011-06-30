@@ -24,7 +24,7 @@ get_header();
 
 ?>
 
-<div class="col-ab">
+<div id="primary">
 
 	<?php
 
@@ -36,7 +36,7 @@ get_header();
 	
 </div>
 
-<div id="sidebar" class="col-c">
+<div id="secondary">
 	<?php get_sidebar(); ?>
 </div>
 

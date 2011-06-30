@@ -24,17 +24,17 @@ get_header();
 
 ?>
 
-<div class="col-ab">
+<div id="primary">
 
 	<?php
 	cfct_loop();
 	comments_template();
 	?>
 
-</div><!--.col-ab-->
+</div><!--#primary-->
 
-<div id="sidebar" class="col-c">
+<div id="secondary">
 	<?php get_sidebar(); ?>
-</div><!--.col-c-->
+</div><!--#secondary-->
 
 <?php get_footer(); ?>

@@ -26,7 +26,7 @@ $s = get_query_var('s');
 
 ?>
 
-<div class="col-ab">
+<div id="primary">
 
 	<h1 class="search-title h3"><?php printf( __( 'Search Results for: %s', 'favepersonal' ), '<em>' . get_search_query() . '</em>' ); ?></h1>
 	
@@ -37,7 +37,7 @@ $s = get_query_var('s');
 
 </div>
 
-<div id="sidebar" class="col-c">
+<div id="secondary">
 	<?php get_sidebar(); ?>
 </div>
 
