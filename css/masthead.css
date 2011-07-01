@@ -61,20 +61,13 @@
 /* featured-link, same size as featured box and overlays everything in it */
 #featured-posts .featured-link {
 	display: block;
+	height: 180px;
 	position: absolute;
 	right: 0;
 	text-indent: -999em;
 	top: 0;
-	z-index: 20;
-
-	/* removing border to try out visually
-		want it back? change border width to 5px, width to 300, height to 170
-	 */
-	border-color: #666;
-	border-style: solid;
-	border-width: 0px;
 	width: 310px;
-	height: 180px;
+	z-index: 20;
 }
 /* featured image */
 #featured-posts .featured-img {
@@ -121,6 +114,21 @@
 	overflow: hidden;
 	padding: 0;
 	width: 155px;
+}
+/* video */
+#featured-posts .featured-format-video .featured-link {
+	background-image: url(../img/play-icon.png);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+#featured-posts .featured-format-video .featured-link:hover {
+	background-image: none;
+}
+#featured-posts .featured-format-video .featured-description {
+	display: none;
+}
+#featured-posts .featured-format-video:hover .featured-description {
+	display: block;
 }
 
 /** Hover / rollover
