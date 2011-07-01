@@ -173,11 +173,11 @@ function cf_kuler_get_colors() {
 function cf_kuler_get_settings() {
 	return get_option(CF_KULER_COLORS, array(
 		'colors' => array(
-			'#0b1a0e',
-            '#3b3d35',
-            '#05ab4a',
-            '#65c752',
-            '#d0dec7'
+			'#196fbf',
+            '#6ab1eb',
+            '#96cded',
+            '#d4efff',
+            '#f0f9ff'
 		),
 		'theme' => array(
 			'id' => 1357787,
