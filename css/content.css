@@ -214,16 +214,13 @@
 	text-align: right;
 	width: 120px;
 }
-.post-meta .h5 {
-	margin-top: 0;
-}
-.post-meta .h6 {
-	margin: 0;
-}
 .post-meta a {
 	color: #999;
 }
-.post-meta h5 {
+.post-meta .post-meta-replies {
+	margin-top: 0;
+}
+.post-meta .post-meta-title {
 	margin: 0;
 }
 .post-meta ul {
