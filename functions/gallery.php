@@ -320,11 +320,12 @@ function cfcp_gallery_max_size($size = '', $post_id = null) {
 		$meta = cf_get_post_meta($photo_ids, '_wp_attachment_metadata');
 // check widths
 		foreach ($meta as $data) {
-			if ($max_height < $data['sizes']['gallery-large-img']['height']) {
-				$max_height = $data['sizes']['gallery-large-img']['height'];
+			$size = (isset($data['sizes']['gallery-large-img']) ? $data['sizes']['gallery-large-img'] : $data);
+			if ($max_height < $size['height']) {
+				$max_height = $size['height'];
 			}
-			if ($max_width < $data['sizes']['gallery-large-img']['width']) {
-				$max_width = $data['sizes']['gallery-large-img']['width'];
+			if ($max_width < $size['width']) {
+				$max_width = $size['width'];
 			}
 		}
 	}
