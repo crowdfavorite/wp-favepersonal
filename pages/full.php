@@ -33,7 +33,7 @@ get_header();
 
 </div><!--.page-full-->
 
-<div id="sidebar-footer" class="clearfix">
+<div id="secondary-full" class="clearfix">
 	<?php get_sidebar(); ?>
 </div>
 
