@@ -259,7 +259,7 @@ jQuery(function($) {
 				}).show().find('input#cfp_link_title').focus();
 				
 				// timer for live favicon fetch
-				$edit.find('input#cfp_link_url').unbind().keyup(function() {
+				$edit.find('input#cfp_link_url').unbind('keyup').keyup(function() {
 					if (_timer != null) {
 						clearTimeout(_timer);
 					}
@@ -267,7 +267,7 @@ jQuery(function($) {
 						parentObj.fetchFaviconUrl();
 					};
 					_timer = setTimeout(actionFunc, 500, CF.aboutLinks);
-				});			
+				});
 			},
 			
 			hideInputs: function() {
@@ -279,6 +279,7 @@ jQuery(function($) {
 			// reset our inputs for editing
 			resetInputs: function() {
 				$edit.find('input[type!="button"]').val('').end()
+					.find('input#cfp_link_url').val('http://').end()
 					.find('img').attr('src', '#');
 				_fetchIconUrl = null;
 				CF.aboutLinks.iconToggleAuto();
@@ -325,29 +326,32 @@ jQuery(function($) {
 			fetchFaviconUrl: function() {
 				this.resetXHR();
 				this.resetIconPreview(false);
-				$previewBlock.show();
 				
 				var _url = $('#cfp_link_url').val();
-				if (_url.length > 0 && _url != _fetchIconUrl) {
-					_fetchIconUrl = _url;
-					this.requestObj = $.post(ajaxurl,
-						{
-							action: 'cfcp_about',
-							cfcp_about_action: 'cfcp_fetch_favicon',
-							url: _url
-						},
-						function(r) {
-							if (r.success) {
-								CF.aboutLinks.setIconPreview(r.favicon_url, r.favicon_status);
-							}
-							else {
-								CF.aboutLinks.setIconPreview(r.favicon_url, r.favicon_status);
-								CF.aboutLinks.setErrorMessage(cfcp_about_settings.favicon_fetch_error + _url);
-							}
-							CF.requestObj = null;
-						},
-						'json'
-					);
+
+				if (_url.length > 7) {
+					$previewBlock.show();
+					if (_url != _fetchIconUrl) {
+						_fetchIconUrl = _url;
+						this.requestObj = $.post(ajaxurl,
+							{
+								action: 'cfcp_about',
+								cfcp_about_action: 'cfcp_fetch_favicon',
+								url: _url
+							},
+							function(r) {
+								if (r.success) {
+									CF.aboutLinks.setIconPreview(r.favicon_url, r.favicon_status);
+								}
+								else {
+									CF.aboutLinks.setIconPreview(r.favicon_url, r.favicon_status);
+									CF.aboutLinks.setErrorMessage(cfcp_about_settings.favicon_fetch_error + _url);
+								}
+								CF.requestObj = null;
+							},
+							'json'
+						);
+					}
 				}
 			},
 			
@@ -450,7 +454,7 @@ jQuery(function($) {
 				if (_title.length == 0) {
 					errors.cfp_link_title = cfcp_about_settings.err_link_title;
 				}
-				if (_url.length == 0) {
+				if (_url.length < 8) {
 					errors.cfp_link_url = cfcp_about_settings.err_link_url;
 				}
 				

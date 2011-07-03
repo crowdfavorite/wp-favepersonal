@@ -3,12 +3,12 @@
 <!-- link data -->
 	<div class="cf-elm-block cf-lbl-pos-left cf-elm-width-full">
 		<label for="cfp-link-title"><?php _e('Title', 'favepersonal'); ?></label>
-		<input type="text" name="title" id="cfp_link_title" class="cf-elm-text" value="" />
+		<input type="text" name="title" id="cfp_link_title" class="cf-elm-text" value="" autocomplete="off" />
 	</div>
 	
 	<div class="cf-elm-block cf-lbl-pos-left cf-elm-width-full">
 		<label for="cfp-link-url"><?php _e('URL', 'favepersonal'); ?></label>
-		<input type="text" name="url" id="cfp_link_url" class="cf-elm-text" value="" title="http://" />
+		<input type="text" name="url" id="cfp_link_url" class="cf-elm-text" value="http://" autocomplete="off" />
 	</div>
 
 	<input type="hidden" name="favicon" id="cfp_link_favicon" value="" />

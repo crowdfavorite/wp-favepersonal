@@ -42,7 +42,7 @@ function cfcp_about_admin_init() {
 				'add' => __('Add', 'favepersonal'),
 				'loading' => __('Loading...', 'favepersonal'),
 				'err_link_title' => __('Please enter a title.', 'favepersonal'),
-				'err_link_url' => __('Please enter a URL.', 'favepersonal'),
+				'err_link_url' => __('Please enter a valid URL (http://...).', 'favepersonal'),
 			)
 		);
 	}
