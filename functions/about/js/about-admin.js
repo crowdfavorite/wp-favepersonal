@@ -496,8 +496,6 @@ jQuery(function($) {
 				this.clearNotices();
 				if (errors !== undefined) {
 					$.each(errors, function(id, errorString) {
-console.log(errorString);
-console.log($('#' + id, $edit).closest('div').size());
 						$('#' + id, $edit).closest('div').append($('<span class="cf-error">' + errorString + '</span>'));
 					});
 				}
