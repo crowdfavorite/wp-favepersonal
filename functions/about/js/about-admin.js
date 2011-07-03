@@ -242,12 +242,7 @@ jQuery(function($) {
 			},
 			
 			showInputs: function(showNew) {
-				if (showNew == true) {
-					$edit.addClass('new');
-				}
-				else {
-					$edit.removeClass('new');
-				}
+				$edit.addClass('new');
 				
 				if (CF.imgs != undefined) {
 					CF.imgs.hideAllDialogs();
@@ -453,10 +448,10 @@ jQuery(function($) {
 					
 				
 				if (_title.length == 0) {
-					errors.cfp_link_title = 'Please enter a link Title';
+					errors.cfp_link_title = cfcp_about_settings.err_link_title;
 				}
 				if (_url.length == 0) {
-					errors.cfp_link_url = 'Please enter a link URL';
+					errors.cfp_link_url = cfcp_about_settings.err_link_url;
 				}
 				
 				this.displayNotices(errors);
@@ -500,7 +495,9 @@ jQuery(function($) {
 			displayNotices: function(errors) {
 				this.clearNotices();
 				if (errors !== undefined) {
-					jQuery.each(errors, function(id, errorString) {
+					$.each(errors, function(id, errorString) {
+console.log(errorString);
+console.log($('#' + id, $edit).closest('div').size());
 						$('#' + id, $edit).closest('div').append($('<span class="cf-error">' + errorString + '</span>'));
 					});
 				}

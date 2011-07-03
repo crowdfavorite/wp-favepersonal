@@ -7,8 +7,8 @@
 	</div>
 	
 	<div class="cf-elm-block cf-lbl-pos-left cf-elm-width-full">
-		<label for="cfp-link-url"><?php _e('Link', 'favepersonal'); ?></label>
-		<input type="text" name="url" id="cfp_link_url" class="cf-elm-text" value="" />
+		<label for="cfp-link-url"><?php _e('URL', 'favepersonal'); ?></label>
+		<input type="text" name="url" id="cfp_link_url" class="cf-elm-text" value="" title="http://" />
 	</div>
 
 	<input type="hidden" name="favicon" id="cfp_link_favicon" value="" />

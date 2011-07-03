@@ -38,9 +38,11 @@ function cfcp_about_admin_init() {
 			'cfcp_about_settings', 
 			array(
 				'image_del_confirm' => __('Are you sure you want to delete this image?', 'favepersonal'),
-				'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'cfcp-about'),
-				'add' => __('Add', 'cfcp-about'),
-				'loading' => __('Loading...', 'cfcp-about'),
+				'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'favepersonal'),
+				'add' => __('Add', 'favepersonal'),
+				'loading' => __('Loading...', 'favepersonal'),
+				'err_link_title' => __('Please enter a title.', 'favepersonal'),
+				'err_link_url' => __('Please enter a URL.', 'favepersonal'),
 			)
 		);
 	}
@@ -270,7 +272,7 @@ function cfcp_about_admin_bar() {
 	if (current_user_can('edit_theme_options')) {
 		$wp_admin_bar->add_menu(array(
 			'id' => 'cfcp-about',
-			'title' => __('Bio Widget', 'cfcp-about'),
+			'title' => __('Bio Widget', 'favepersonal'),
 			'href' => admin_url('themes.php?page='.basename(__FILE__)),
 			'parent' => 'appearance'
 		));

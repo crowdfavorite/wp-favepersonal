@@ -453,6 +453,10 @@ button.cf-btn-delete {
 	position: absolute;
 	right: 0;
 }
+.cfp-popover .cf-error {
+	display: block;
+	padding: 3px;
+}
 
 /* color picker popover */
 #cf-kuler-color-picker.cfp-popover {
@@ -579,6 +583,9 @@ button.cf-btn-delete {
 	line-height: 2em;
 	margin: 0;
 	position: relative;
+}
+#cfp-link-edit .cf-error {
+	margin-left: 20%;
 }
 
 /* about search results */
