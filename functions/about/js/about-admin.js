@@ -264,7 +264,9 @@ jQuery(function($) {
 						clearTimeout(_timer);
 					}
 					actionFunc = function(parentObj) {
-						parentObj.fetchFaviconUrl();
+						if (typeof parentObj != 'undefined') {
+							parentObj.fetchFaviconUrl();
+						}
 					};
 					_timer = setTimeout(actionFunc, 500, CF.aboutLinks);
 				});
