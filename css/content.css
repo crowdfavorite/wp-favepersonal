@@ -132,14 +132,6 @@
 	position: relative;
 }
 
-/* show edit link on rollover */
-.post .edit-link {
-	display: none;
-}
-.post:hover .edit-link {
-	display: inline;
-}
-
 /* shared */
 .post-header,
 .post-media,

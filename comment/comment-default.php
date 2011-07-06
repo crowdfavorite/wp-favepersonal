@@ -48,6 +48,6 @@ extract($data); // for comment reply link
 	</div><!--.social-comment-body-->
 	<div class="social-actions">
 		<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post); ?>
-		<?php edit_comment_link(__('Edit', 'favepersonal'), ' &middot; <span class="comment-editlink">', '</span>'); ?>
 	</div><!--.social-actions-->
+	<?php edit_comment_link('edit', '<span class="edit-link">', '</span>'); ?>
 </div><!--#comment-xx-->
