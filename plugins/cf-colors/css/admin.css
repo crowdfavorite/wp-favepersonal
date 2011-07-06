@@ -271,16 +271,15 @@
 	background-image: url(../js/colorpicker/images/custom_submit.png);
 }
 #cf-kuler-color-picker .colorpicker input {
-	color: #778398;
-	border: none;
-	-moz-border-radius: 0;
-	-webkit-border-radius: 0;
-	-khtml-border-radius: 0;
-	border-radius: 0;
 	background-color: transparent;
-	padding-top: 3px;
+	border: none;
+	color: #778398;
+	padding-left: 3px;
+	padding-top: 2px;
+	outline: none;
 	font-weight: bold;
 	font-size: 11px;
+	line-height: 12px;
 	text-align: center;
 }
 #cf-kuler-color-picker .theme-swatches .cf-kuler-theme {
