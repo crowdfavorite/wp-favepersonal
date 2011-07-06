@@ -252,7 +252,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	}
 	
 	/* Social */
-	#social .social-heading,
+	#social #reply-title,
 	#social .social-nav,
 	#social .social-nav a span {
 		background-color: <?php echo cf_kuler_color('light', 'social-heading_background'); ?>;
@@ -261,13 +261,13 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 		color: <?php echo cf_kuler_color('dark', 'social_heading_color'); ?>;
 	}
 	#social .social-nav a,
-	#social .social-post-form button,
+	#social #submit,
 	#facebook_signin,
 	#twitter_signin {
 		background-color: <?php echo cf_kuler_color('dark', 'social_button_background'); ?>;
 	}
 	#social .social-nav a:hover,
-	#social .social-post-form button:hover,
+	#social #submit:hover,
 	#facebook_signin:hover,
 	#twitter_signin:hover {
 		background-color: <?php echo cf_kuler_color('darkest', 'social_button_hover_background'); ?>;
@@ -310,9 +310,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	wp_head(); 
 ?>
 </head>
-
 <body <?php body_class(); ?>>
-	
 	<header id="header">
 		<div class="container clearfix">
 			<h1><a href="<?php bloginfo('url') ?>/" title="Home" rel="home"><?php bloginfo('name') ?></a></h1>

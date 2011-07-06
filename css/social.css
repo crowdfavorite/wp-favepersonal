@@ -1,6 +1,6 @@
-/* Social Plugin stylesheet comments.css dequeued in functions.php. Redefining styles in the theme. */
+/** @section Utils
+ -------------------------------------------------- */
 
-/* structural styles */
 /* Port social clearfix styles to allow them to work */
 #social .social-clearfix:before,
 #social .social-clearfix:after {
@@ -16,50 +16,149 @@
 	zoom: 1;
 }
 
-/* List Styles */
-#social .social-commentlist {
-	line-height: 18px;
-	list-style-image: none;
-	list-style-position: outside;
-	list-style-type: none;
-	margin: 0 0 30px 0;
-	padding: 0;
+#social .social-help,
+#social .social-psst {
+	font-size: 13px;
+	color: #999;
 }
 
-/* Children Comments
- * .social-children is for plugin
- * .children without plugin
- */
-#social .children,
-#social .social-children {
-	margin: 0;
-	padding: 0 0 0 50px;
-}
-#social .children li,
-#social .social-children li {
-	list-style: none;
-	padding: 0;
-}
-
-.social-imr {
+#social .social-imr {
 	font-size: 0;
 	line-height: 0;
 	overflow: hidden;
 	text-indent: -32000px;
 }
 
-/* Presentation Styles */
-#social {
+/** @section Form
+ -------------------------------------------------- */
+#social .social-input-row,
+#social .form-submit {
+	margin-bottom: 10px;
+	padding-left: 140px;
+	position: relative;
+}
+
+#social .social-input-row .social-label {
+	color: #666;
+	display: block;
 	font-size: 13px;
-	overflow: hidden;
+	left: 0;
+	padding-right: 20px;
+	position: absolute;
+	text-align: right;
+	top: 7px;
+	width: 120px;
 }
-#social .social-last-reply-when {
-	display: none;
+
+#social .social-input,
+#social .social-select {
+	background: #f8f8f8;
+	border: 1px solid #ddd;
+	font-size: 14px;
+	font-family: Helvetica, Arial, sans-serif;
 }
-#social .social-quiet {
+#social .social-text {
+	margin-right: 5px;
+}
+
+#social .social-input {
+	margin-right: 5px;
+}
+#social input.social-input,
+#social .social-select {
+	padding: 5px 6px;
+	width: 326px;
+}
+#social textarea.social-input {
+	display: block;
+	height: 110px;
+	padding: 5px 6px;
+	width: 496px;
+}
+
+/* Submit button and row */
+#social .form-submit {
+	height: 30px;
+	line-height: 30px;
+}
+#social #submit {
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	float: left;
+	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 16px;
+	letter-spacing: 1px;
+	line-height: 1em;
+	margin: 0 10px 0 0;
+	padding: 8px 20px 6px 20px;
+	text-transform: uppercase;
+}
+
+/* Log in buttons */
+#social .social-sign-in-links {
+	display: block;
+	margin-top: 20px;
+	padding: 0 0 0 140px;
+}
+#social .social-sign-in-links a {
+	color: #fff;
+	background-image: url(../img/comment-icons-sprite.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+	margin: 0 16px 0 0;
+	padding-left: 35px;
+	padding-right: 10px;
+	text-indent: 0;
+	text-align: center;
+}
+#social #twitter_signin {
+	background-position: 0px -100px;
+}
+#social #facebook_signin {
+	background-position: 0px -150px;
+}
+
+#social .social-divider {
+	background: url(../img/strike-through.gif) 0 50% repeat-x;
+	margin: 15px 0;
+	text-align: center;
+}
+#social .social-divider span {
+	background-color: #fff;
+	padding: 0 6px;
+	margin-left: 20px; /* visual adjustment to line up with buttons */
+	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 13px;
-	color: #999;
+	letter-spacing: 1px;
+	line-height: 1em;
+	text-transform: uppercase;
 }
+
+#social .social-identity {
+	margin-top: 16px;
+	position: relative;
+}
+#social .social-identity .avatar {
+	left: 80px;
+	position: absolute;
+	top: 4px;
+}
+
+/* When logged in, visually hide the comment field label
+but allow screen readers to see */
+.logged-in #social .social-input-row-comment .social-label {
+	left: -32000px;
+	position: absolute;
+}
+
+/** @section Comment Tabs
+ -------------------------------------------------- */
+
 #social .social-post-form {
 	margin-bottom: 30px;
 }
@@ -119,7 +218,48 @@
 	background-position: 0px -200px;
 }
 
-/* Social Comment */
+/* Comment bar */
+#social #reply-title {
+	height: 27px;
+	margin-bottom: 16px;
+	padding: 0 10px;
+	font-size: 13px;
+	line-height: 30px;
+	letter-spacing: 1px;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+/** @section Comment List
+ -------------------------------------------------- */
+
+#social .social-commentlist {
+	line-height: 18px;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0 0 30px 0;
+	padding: 0;
+}
+
+/* Children Comments
+ * .social-children is for plugin
+ * .children without plugin
+ */
+#social .children,
+#social .social-children {
+	margin: 0;
+	padding: 0 0 0 50px;
+}
+#social .children li,
+#social .social-children li {
+	list-style: none;
+	padding: 0;
+}
+
+/** @section Comment
+ -------------------------------------------------- */
+
 #social .social-posted-when,
 #social .comment-reply-link {
 	color: #666;
@@ -237,181 +377,6 @@
 	display: inline-block;
 	padding: 1px 4px;
 	margin-bottom: 8px;
-}
-
-/* respond title */
-#social .social-heading {
-	height: 27px;
-	margin-bottom: 16px;
-	padding: 0 10px;
-}
-#social .social-heading .social-title {
-	font-size: 13px;
-	line-height: 30px;
-	letter-spacing: 1px;
-	margin: 0;
-	text-transform: uppercase;
-}
-
-/* sign in */
-#social .social-sign-in-links {
-	display: block;
-	padding: 0 0 0 140px;
-}
-#social .social-sign-in-links a {
-	color: #fff;
-	background-image: url(../img/comment-icons-sprite.png);
-	background-repeat: no-repeat;
-	display: inline-block;
-	font-size: 14px;
-	height: 25px;
-	line-height: 25px;
-	margin: 4px 16px 0 0;
-	padding-left: 35px;
-	padding-right: 10px;
-	text-indent: 0;	
-	text-align: center;
-}
-#social #twitter_signin {
-	background-position: 0px -100px;
-}
-#social #facebook_signin {
-	background-position: 0px -150px;
-}
-#social .social-divider {
-	background: url(../img/strike-through.gif) 0 50% repeat-x;
-	margin: 15px 0;
-	text-align: center;
-}
-#social .social-divider span {
-	background-color: #fff;
-	padding: 0 6px;
-	margin-left: 20px; /* visual adjustment to line up with buttons */
-	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 13px;
-	letter-spacing: 1px;
-	line-height: 1em;
-	text-transform: uppercase;
-}
-
-/* form styles */
-#social .social-post-form {
-	position: relative;
-}
-#social .social-post-form .avatar {
-	left: 80px;
-	position: absolute;
-	top: 4px;
-}
-#social .social-post-form {
-	font-size: 14px;
-}
-#social .social-post-form .social-input-row {
-	margin-bottom: 10px;
-	padding-left: 140px;
-	position: relative;
-}
-#social .social-post-form label {
-	color: #666;
-	display: block;
-	font-size: 13px;
-	left: 0;
-	padding-right: 20px;
-	position: absolute;
-	text-align: right;
-	top: 7px;
-	width: 120px;
-}	
-#social .social-post-form #post_to {
-	display: inline;
-	left: 209px;
-	position: static;
-	text-align: left;
-	top: 9px;
-	width: auto;
-}
-#social .social-post-form .social-input-text,
-#social .social-post-form select,
-#social .social-post-form textarea {
-	background: #f8f8f8;
-	border: 1px solid #ddd;
-	font-size: 14px;
-	font-family: Helvetica, Arial, sans-serif;
-}
-#social .social-post-form .social-input-text {
-	margin-right: 5px;
-}
-#social .social-post-form .social-input-text,
-#social .social-post-form select {
-	padding: 5px 6px;
-	width: 326px;
-}
-#social .social-post-form textarea {
-	height: 110px;
-	padding: 5px 6px;
-	width: 496px;
-}
-
-#social .social-post-form .social-input-row-submit {
-	/**
-	 * @workaround min-height Fast Hack
-	 *
-	 * IE6 doesn't support min-height, but treats elements with
-	 * height and overflow:visible as min-height.
-	 *
-	 * @affected IE5, IE6
-	 * @see http://www.dustindiaz.com/min-height-fast-hack/
-	 */
-	height: auto !important;
-	height: 33px;
-	min-height: 33px;
-}
-#social .social-post-form button {
-	border: 0;
-	color: #fff;
-	display: block;
-	float: left;
-	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 16px;
-	letter-spacing: 1px;
-	line-height: 1em;
-	margin: 0;
-	padding: 8px 20px 6px 20px;
-	text-transform: uppercase;
-}
-#social .social-post-form #post_to,
-#social .social-post-form #cancel-comment-reply-link {
-	margin-left: 20px;
-	line-height: 32px;
-}
-/* comment reply form */
-#social .social-comment #respond .social-post-form {
-	border-bottom: 1px solid #ddd;
-	margin-bottom: 0;
-	padding-bottom: 15px;
-}
-#social .social-comment #respond .social-post-form textarea {
-	width: 95%;
-}
-/* signed in */
-#social .social-comment #respond .social-post-form .avatar {
-	left: -60px;
-}
-/* not signed in */
-#social .social-comment #respond .social-sign-in-links {
-	padding: 0 0 10px 0;
-}
-#social .social-comment #respond .social-divider {
-	display: none;
-}
-#social .social-comment #respond .social-post-form label {
-	padding-right: 0px;
-	position: static;
-	text-align: left;
-	width: 100%;
-}
-#social .social-comment #respond .social-post-form .social-input-row {
-	padding: 0px;
 }
 
 /* Comment Collapse */
