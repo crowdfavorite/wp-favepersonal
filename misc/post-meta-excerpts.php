@@ -17,7 +17,18 @@
  */
 
 /* Using as an include since it's used in many places */
+
 ?>
 <div class="post-meta">
+<?php
+
+do_action('favepersonal_excerpt_sidebar_before');
+
+?>
 	<p class="post-meta-replies h5"><?php comments_popup_link(__('No Replies', 'favepersonal'), __('1 Reply', 'favepersonal'), __('% Replies', 'favepersonal')); ?></p>
+<?php
+
+do_action('favepersonal_excerpt_sidebar_after');
+
+?>
 </div>
