@@ -28,7 +28,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 <!--[if IE 8]>    <html class="no-js ie8 oldie" <?php language_attributes() ?>> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes() ?>> <!--<![endif]-->
 <head>
-	<meta http-equiv="content-type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
+	<meta charset="<?php bloginfo('charset') ?>" />
 	<title><?php wp_title( '-', true, 'right' ); echo esc_html( get_bloginfo('name'), 1 ).$title_description; ?></title>
 	<?php /*
 	Empty conditional comment prevents blocking downloads in IE8. Good ol' IE.
@@ -304,7 +304,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 <?php
 	/* Add JavaScript to pages with the comment form to support threaded comments (when in use). */
 	if ( is_singular() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );		
+		wp_enqueue_script( 'comment-reply' );
 	}
 	
 	wp_head(); 
