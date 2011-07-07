@@ -95,6 +95,13 @@ Used for common styles across all admin pages
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+	/**
+	 * @bugfix hasLayout fix
+	 * @affected IE7
+	 * @valid no
+	 * Resolves issue with error message margins.
+	 */
+	zoom: 1;
 }
 /*form .cf-elm-block:hover {
 	background-color: #f3f3f3;
@@ -256,6 +263,13 @@ label.cf-lbl-radio {
 .cf-lbl-pos-left.cf-elm-width-full .cf-elm-password,
 .cf-lbl-pos-left.cf-elm-width-full .cf-elm-textarea {
 	width: 79%;
+	/**
+	 * @bugfix boxmodel workaround
+	 * @affected IE7
+	 * IE7 uses a different box model for inputs from other browsers.
+	 * Make up for the differences here using a "safe" selector hack.
+	 */
+	*width: 76%;
 }
 /* Set form element heights (textarea) */
 .cf-elm-height-60 .cf-elm-textarea {
