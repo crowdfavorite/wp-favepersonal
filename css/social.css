@@ -66,9 +66,9 @@
 	padding-left: 140px;
 	position: relative;
 }
-/* Threaded input row when logged in */
-.logged-in #social .social-commentlist .social-input-row,
-.logged-in #social .social-commentlist .form-submit {
+/* Threaded input row */
+#social .social-commentlist .social-input-row,
+#social .social-commentlist .form-submit {
 	padding-left: 0;
 }
 
@@ -82,6 +82,13 @@
 	text-align: right;
 	top: 7px;
 	width: 120px;
+}
+
+/* Threaded label */
+#social .social-commentlist .social-input-row .social-label {
+	position: static;
+	text-align: left;
+	width: auto;
 }
 
 #social .social-input,
@@ -136,8 +143,11 @@
 /* Log in buttons */
 #social .social-sign-in-links {
 	display: block;
-	margin-top: 20px;
+	margin: 20px 0;
 	padding: 0 0 0 140px;
+}
+#social .social-commentlist .social-sign-in-links {
+	padding-left: 0;
 }
 #social .social-sign-in-links a {
 	color: #fff;
@@ -174,6 +184,11 @@
 	letter-spacing: 1px;
 	line-height: 1em;
 	text-transform: uppercase;
+}
+
+/* Threaded divider */
+#social .social-commentlist #respond .social-divider {
+	display: none;
 }
 
 #social .social-identity {
