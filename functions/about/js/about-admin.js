@@ -259,16 +259,15 @@ jQuery(function($) {
 				}).show().find('input#cfp_link_title').focus();
 				
 				// timer for live favicon fetch
+				var _timer = null;
 				$edit.find('input#cfp_link_url').unbind('keyup').keyup(function() {
-					if (_timer != null) {
+					if (_timer !== null) {
 						clearTimeout(_timer);
 					}
-					actionFunc = function(parentObj) {
-						if (typeof parentObj != 'undefined') {
-							parentObj.fetchFaviconUrl();
-						}
+					var actionFunc = function() {
+						CF.aboutLinks.fetchFaviconUrl();
 					};
-					_timer = setTimeout(actionFunc, 500, CF.aboutLinks);
+					_timer = setTimeout(actionFunc, 500);
 				});
 			},
 			
