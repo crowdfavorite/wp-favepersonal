@@ -31,6 +31,28 @@
 
 /** @section Form
  -------------------------------------------------- */
+
+#respond {
+	margin-bottom: 28px;
+}
+
+/* Comment bar */
+#social #reply-title {
+	height: 27px;
+	margin-bottom: 16px;
+	padding: 0 10px;
+	font-size: 13px;
+	line-height: 30px;
+	letter-spacing: 1px;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+}
+#social #reply-title #cancel-comment-reply-link {
+	font: 12px/30px Helvetica, Arial, Verdana;
+	margin-left: 6px;
+	text-transform: none;
+}
+
 #social .social-input-row,
 #social .form-submit {
 	margin-bottom: 10px;
@@ -218,20 +240,12 @@ but allow screen readers to see */
 	background-position: 0px -200px;
 }
 
-/* Comment bar */
-#social #reply-title {
-	height: 27px;
-	margin-bottom: 16px;
-	padding: 0 10px;
-	font-size: 13px;
-	line-height: 30px;
-	letter-spacing: 1px;
-	margin: 0;
-	text-transform: uppercase;
-}
-
 /** @section Comment List
  -------------------------------------------------- */
+
+#social .social-last-reply-when {
+	display: none;
+}
 
 #social .social-commentlist {
 	line-height: 18px;
