@@ -33,7 +33,14 @@
  -------------------------------------------------- */
 
 #respond {
-	margin-bottom: 28px;
+	padding-bottom: 18px;
+}
+#commentform {
+	margin-bottom: 10px;
+}
+/* Threaded form */
+.social-commentlist #respond {
+	border-bottom: 1px solid #ddd;
 }
 
 /* Comment bar */
@@ -58,6 +65,11 @@
 	margin-bottom: 10px;
 	padding-left: 140px;
 	position: relative;
+}
+/* Threaded input row when logged in */
+.logged-in #social .social-commentlist .social-input-row,
+.logged-in #social .social-commentlist .form-submit {
+	padding-left: 0;
 }
 
 #social .social-input-row .social-label {
@@ -96,6 +108,9 @@
 	height: 110px;
 	padding: 5px 6px;
 	width: 496px;
+}
+#social .social-commentlist textarea.social-input {
+	width: 95%;
 }
 
 /* Submit button and row */
@@ -169,6 +184,9 @@
 	left: 80px;
 	position: absolute;
 	top: 4px;
+}
+.logged-in #social .social-commentlist .social-identity .avatar {
+	left: -60px;
 }
 
 /* When logged in, visually hide the comment field label
