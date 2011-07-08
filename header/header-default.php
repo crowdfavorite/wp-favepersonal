@@ -287,6 +287,10 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 		background-color: <?php echo cf_kuler_color('light', 'social_moderation_background'); ?>;
 		color: <?php echo cf_kuler_color('darkest', 'social_moderation_color'); ?>;
 	}
+	#social .social-posted-when:hover,
+	#social .social-actions a:hover {
+		color: <?php echo cf_kuler_color('medium', 'a_hover'); ?>;
+	}
 	</style>
 
 	<!--[if lt IE 9]>

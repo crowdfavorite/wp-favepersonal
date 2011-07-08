@@ -308,7 +308,8 @@ but allow screen readers to see */
  -------------------------------------------------- */
 
 #social .social-posted-when,
-#social .comment-reply-link {
+#social .social-actions a,
+#social .social-actions {
 	color: #666;
 	font-size: 11px;
 }

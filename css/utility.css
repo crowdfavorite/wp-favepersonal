@@ -24,18 +24,11 @@
 }
 
 /* edit-link */
-.post .edit-link,
-.comment .edit-link {
-	display: none;
-	position: absolute;
-}
 .post .edit-link {
-	top: 2px;
+	display: none;
 	left: 0;
-}
-.comment .edit-link {
-	top: 22px;
-	left: -140px;
+	position: absolute;
+	top: 2px;
 }
 .edit-link a {
 	background: #666 url(../img/edit-icon.png) 0 0 no-repeat;
@@ -45,8 +38,7 @@
 	text-indent: -9999px;
 	width: 20px;
 }
-.post:hover .edit-link,
-.comment:hover .edit-link {
+.post:hover .edit-link {
 	display: inline;
 }
 
