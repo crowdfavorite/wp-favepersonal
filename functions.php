@@ -26,6 +26,13 @@ load_theme_textdomain('favepersonal');
  */
 define('CFCT_DEBUG', false);
 
+/**
+ * In production mode, or doing development?
+ * When true, assets/load.php will enqueue the built versions of the files
+ */
+define('CFCT_PRODUCTION', true);
+
+
 define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
 
 /**
@@ -48,6 +55,7 @@ include_once(CFCT_PATH.'functions/gallery.php');
 include_once(CFCT_PATH.'functions/about/about.php');
 include_once(CFCT_PATH.'functions/header/header.php');
 include_once(CFCT_PATH.'plugins/load.php');
+include_once(CFCT_PATH.'asset-builder/load.php');
 
 function cfcp_load_social() {
 	if (!class_exists('Social') && get_option('cfcp_social_enabled') != 'no') {
@@ -108,6 +116,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		define( 'NO_HEADER_TEXT', true );
 	
 		add_custom_image_header( '', 'cfcp_admin_header_style' );
+		
 	}
 }
 add_action( 'after_setup_theme', 'carrington_personal_setup' );
