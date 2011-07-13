@@ -138,8 +138,9 @@ function cfcp_header_featured_clear_post($post_id) {
 add_action('trash_post', 'cfcp_header_featured_clear_post');
 add_action('delete_post', 'cfcp_header_featured_clear_post');
 
-function cfcp_header_options_fields($fields) {
+function cfcp_header_options_fields($html) {
 	$type = cfcp_header_options('type');
+
 	ob_start();
 ?>
 				<ul id="cfp-header-options">
@@ -164,16 +165,17 @@ function cfcp_header_options_fields($fields) {
 					</li>
 				</ul>
 <?php
-	$field = ob_get_clean();
+	$html = ob_get_clean();
 	$header = array(
 		'header_display' => array(
 			'label' => '<label>'.__('Header display', 'favepersonal').'</label>',
 			'field' => $field
 		),
 	);
-	return array_merge($header, $fields);
+	
+	echo $html;
 }
-add_filter('cfct_options_fields', 'cfcp_header_options_fields', 99);
+add_filter('cfct_option_cfcp_header', 'cfcp_header_options_fields');
 
 // make a few changes to the default header image screen
 function cfcp_custom_header_options() {
@@ -214,15 +216,6 @@ function cfcp_header_admin_bar() {
 	}
 }
 add_action('wp_before_admin_bar_render', 'cfcp_header_admin_bar');
-
-function cfcp_header_options_update() {
-	$settings = $_POST['cfcp_header_options'];
-	if (!is_array($settings) || !isset($settings['type']) || !in_array($settings['type'], array('featured', 'image', 'none'))) {
-		wp_die(__('Sorry, there was an error saving the header settings.', 'favepersonal'));
-	}
-	cfcp_header_options('type', $settings['type']);
-}
-add_action('cfct_update_settings', 'cfcp_header_options_update');
 
 // Adds a box to the main column on the Post and Page edit screens
 function cfcp_set_featured_position() {

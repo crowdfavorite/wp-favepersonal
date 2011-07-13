@@ -54,6 +54,7 @@ include_once(CFCT_PATH.'functions/sidebars.php');
 include_once(CFCT_PATH.'functions/gallery.php');
 include_once(CFCT_PATH.'functions/about/about.php');
 include_once(CFCT_PATH.'functions/header/header.php');
+include_once(CFCT_PATH.'functions/admin.php');
 include_once(CFCT_PATH.'plugins/load.php');
 include_once(CFCT_PATH.'asset-builder/load.php');
 
@@ -260,58 +261,3 @@ function cfcp_social_plugins_url($url) {
 	return $url.'plugins/social/';
 }
 add_filter('social_plugins_url', 'cfcp_social_plugins_url', 10, 2);
-
-// Theme Settings
-
-$cfct_options[] = 'cfcp_social_enabled';
-$cfct_options[] = 'cfcp_copyright';
-$cfct_options[] = 'cfcp_login_link_enabled';
-
-function cfcp_options_fields($fields) {
-	unset($fields['about']);
-	$yn_options = array(
-		'yes' => __('Yes', 'favepersonal'),
-		'no' => __('No', 'favepersonal')
-	);
-	$social_options = '';
-	$loginout_options = '';
-	foreach ($yn_options as $k => $v) {
-		$social_options .= "\n\t".'<option value="'.$k.'" '.selected($k, cfct_get_option('cfcp_social_enabled'), false).'>'.$v.'</option>';
-		$loginout_options .= "\n\t".'<option value="'.$k.'" '.selected($k, cfct_get_option('cfcp_login_link_enabled'), false).'>'.$v.'</option>';
-	}
-	$personal = array(
-		'social' => array(
-			'label' => '<label for="cfcp_social_enabled">'.__('Enable Social plugin', 'favepersonal').'</label>',
-			'field' => '<select name="cfcp_social_enabled" id="cfct_social_enabled">'.$social_options.'</select> <span class="help">'.__('(Twitter/Facebook login for comments, etc.)', 'favepersonal').'</span>'
-		),
-		'copyright' => array(
-			'label' => '<label for="cfcp_copyright">'.__('Copyright / legal footer text', 'favepersonal').'</label>',
-			'field' => '<input type="text" size="60" id="cfcp_copyright" name="cfcp_copyright" value="'.esc_attr(get_option('cfcp_copyright')).'" /><br /><span class="help">'.__('(add %Y to output the current year)', 'carrington-business').'</span>',
-		),
-		'loginout' => array(
-			'label' => '<label for="cfcp_login_link_enabled">'.__('Show log in/out links in footer', 'favepersonal').'</label>',
-			'field' => '<select name="cfcp_login_link_enabled" id="cfcp_login_link_enabled">'.$loginout_options.'</select>'
-		),
-	);
-	return array_merge($personal, $fields);
-}
-add_filter('cfct_options_fields', 'cfcp_options_fields');
-
-function cfcp_option_defaults($defaults) {
-	$defaults['social'] = $defaults['loginout'] = 'yes';
-	$defaults['cfcp_copyright'] = sprintf(__('Copyright &copy; %s &nbsp;&middot;&nbsp; %s', 'favepersonal'), date('Y'), get_bloginfo('name'));
-	return $defaults;
-}
-add_filter('cfct_option_defaults', 'cfcp_option_defaults');
-
-function cfcp_admin_settings_title($title) {
-	return __('Theme Settings', 'favepersonal');
-}
-add_filter('cfct_admin_settings_title', 'cfcp_admin_settings_title');
-add_filter('cfct_admin_settings_form_title', 'cfcp_admin_settings_title');
-
-function cfcp_get_loginout($redirect = '', $before = '', $after = '') {
-	if (cfct_get_option('cfcp_login_link_enabled') != 'no') {
-		return $before . wp_loginout($redirect, false) . $after;
-	}
-}

@@ -35,7 +35,7 @@ if (cfct_get_option('cfct_credit') == 'yes') {
 }
 $colophon = str_replace('%Y', date('Y'), cfct_get_option('cfcp_copyright'));
 $sep = ($colophon ? ' &nbsp;&middot;&nbsp; ' : '');
-$loginout = cfcp_get_loginout('', $sep);
+$loginout = cfct_get_loginout('', $sep);
 if ($colophon || $loginout) {
 	echo '<p>'.$colophon.$loginout.'</p>';
 }
