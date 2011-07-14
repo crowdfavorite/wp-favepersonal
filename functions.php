@@ -54,7 +54,10 @@ include_once(CFCT_PATH.'functions/sidebars.php');
 include_once(CFCT_PATH.'functions/gallery.php');
 include_once(CFCT_PATH.'functions/about/about.php');
 include_once(CFCT_PATH.'functions/header/header.php');
-include_once(CFCT_PATH.'functions/admin.php');
+
+// This is referencing a file that does not exist. -ddl 20110614
+// include_once(CFCT_PATH.'functions/admin.php');
+
 include_once(CFCT_PATH.'plugins/load.php');
 include_once(CFCT_PATH.'asset-builder/load.php');
 
