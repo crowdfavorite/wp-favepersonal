@@ -25,6 +25,9 @@
 	float: right;
 	padding-top: 9px;
 }
+#header .menu {
+	width: 990px;
+}
 #header #nav-main ul,
 #header .menu ul {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
@@ -48,6 +51,20 @@
 #header .menu ul li a {
 	display: inline-block;
 	height: 20px;
+}
+
+
+/* inline block fix for IE6 and IE7 */
+html.ie6 #header #nav-main li,
+html.ie6 #header .menu li,
+html.ie6 #header #nav-main ul li a,
+html.ie6 #header .menu ul li a,
+html.ie7 #header #nav-main li,
+html.ie7 #header .menu li,
+html.ie7 #header #nav-main ul li a,
+html.ie7 #header .menu ul li a {
+	display: inline;
+	zoom: 1;
 }
 
 /* Sub Menu */
