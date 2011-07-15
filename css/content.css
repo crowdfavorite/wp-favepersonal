@@ -25,9 +25,6 @@
 	float: right;
 	padding-top: 9px;
 }
-#header .menu {
-	width: 990px;
-}
 #header #nav-main ul,
 #header .menu ul {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
