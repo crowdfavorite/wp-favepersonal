@@ -30,7 +30,7 @@ define('CFCT_DEBUG', false);
  * In production mode, or doing development?
  * When true, assets/load.php will enqueue the built versions of the files
  */
-define('CFCT_PRODUCTION', true);
+define('CFCT_PRODUCTION', false);
 
 
 define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
@@ -55,7 +55,6 @@ include_once(CFCT_PATH.'functions/gallery.php');
 include_once(CFCT_PATH.'functions/about/about.php');
 include_once(CFCT_PATH.'functions/header/header.php');
 include_once(CFCT_PATH.'functions/admin.php');
-include_once(CFCT_PATH.'plugins/load.php');
 include_once(CFCT_PATH.'asset-builder/load.php');
 
 function cfcp_load_social() {
@@ -136,18 +135,15 @@ function cf_admin_css() {
 function cfcp_add_assets() {
 	// Register Scripts
 	wp_register_script('jquery-cycle', get_bloginfo('template_directory').'/js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);
-	wp_register_script('cfcp-global', get_bloginfo('template_directory').'/js/global.js', array('jquery', 'jquery-cycle', 'jquery-cfgallery'), CFCT_URL_VERSION);
+	include_once(CFCT_PATH.'plugins/load.php');
 	
-	if (!is_admin()) {
-		wp_enqueue_script('cfcp-global');
-	}
 }
 add_action('wp', 'cfcp_add_assets');
 
 // Dequeue Social Plugin Stylesheet
 
 function cfcp_social_dequeue_style() {
-	wp_dequeue_style('social');
+	wp_dequeue_style('social_style_main');
 }
 add_action('init', 'cfcp_social_dequeue_style', 10);
 
