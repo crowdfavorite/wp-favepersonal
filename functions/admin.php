@@ -34,24 +34,24 @@ function cfcp_options($options) {
 				'header' => array(
 					'type' => 'cfcp_header',
 					'label' => __('Header Display', 'favepersonal'),
-					'name' => 'cfct_header_options[type]',
+					'name' => 'header_options[type]',
 				),
 				'header_1' => array(
 					'type' => 'hidden',
-					'name' => 'cfcp_header_options[posts][_1]',
+					'name' => 'header_options[posts][_1]',
 				),
 				'header_2' => array(
 					'type' => 'hidden',
-					'name' => 'cfcp_header_options[posts][_2]',
+					'name' => 'header_options[posts][_2]',
 				),
 				'header_3' => array(
 					'type' => 'hidden',
-					'name' => 'cfcp_header_options[posts][_3]',
+					'name' => 'header_options[posts][_3]',
 				),
 				'social' => array(
 					'type' => 'radio',
 					'label' => __('Enable Social Plugin', 'favepersonal'),
-					'name' => 'cfcp_social_enabled',
+					'name' => 'social_enabled',
 					'options' => $yn_options,
 					'help' => '<span class="cfct-help">'.__('(Twitter/Facebook login for comments, etc.)', 'favepersonal').'</span>',
 				),
@@ -65,11 +65,19 @@ function cfcp_options($options) {
 add_filter('cfct_options', 'cfcp_options');
 
 /**
+ * Set the option prefix.
+ */ 
+function cfcp_option_prefix($prefix) {
+	return 'cfcp';
+}
+add_action('cfct_option_prefix', 'cfcp_option_prefix');
+
+/**
  * Filter for registering defaults of cfcp_options.
  */ 
 function cfcp_option_defaults($defaults) {
-	$defaults['cfcp_social_enabled'] = 'yes';
-	$defaults['cfcp_header_options'] = array(
+	$defaults[cfct_option_name('social_enabled')] = 'yes';
+	$defaults[cfct_option_name('cfcp_header_options')] = array(
 		'posts' => array(
 			'_1' => null,
 			'_2' => null,
