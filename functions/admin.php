@@ -1,0 +1,93 @@
+<?php
+
+/**
+ * @package favepersonal
+ *
+ * This file is part of the FavePersonal Theme for WordPress
+ * http://crowdfavorite.com/wordpress/themes/favepersonal/
+ *
+ * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
+ * http://crowdfavorite.com
+ *
+ * **********************************************************************
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * **********************************************************************
+ */
+
+/**
+ * Filter to add options to the theme settings page
+ */ 
+function cfcp_options($options) {
+	unset($options['cfct']['options']['about']);
+	$yn_options = array(
+		'yes' => __('Yes', 'favepersonal'),
+		'no' => __('No', 'favepersonal')
+	);
+	
+	$personal_options = array(
+		'cfcp' => array(
+			'label' => '',
+			'description' => 'cfct_options_blank',
+			'fields' => array(
+				'header' => array(
+					'type' => 'cfcp_header',
+					'label' => __('Header Display', 'favepersonal'),
+					'name' => 'cfct_header_options[type]',
+				),
+				'header_1' => array(
+					'type' => 'hidden',
+					'name' => 'cfcp_header_options[posts][_1]',
+				),
+				'header_2' => array(
+					'type' => 'hidden',
+					'name' => 'cfcp_header_options[posts][_2]',
+				),
+				'header_3' => array(
+					'type' => 'hidden',
+					'name' => 'cfcp_header_options[posts][_3]',
+				),
+				'social' => array(
+					'type' => 'radio',
+					'label' => __('Enable Social Plugin', 'favepersonal'),
+					'name' => 'cfcp_social_enabled',
+					'options' => $yn_options,
+					'help' => '<span class="cfct-help">'.__('(Twitter/Facebook login for comments, etc.)', 'favepersonal').'</span>',
+				),
+			),
+		),
+	);
+	
+	$options = array_merge($personal_options, $options);
+	return $options;
+}
+add_filter('cfct_options', 'cfcp_options');
+
+/**
+ * Filter for registering defaults of cfcp_options.
+ */ 
+function cfcp_option_defaults($defaults) {
+	$defaults['cfcp_social_enabled'] = 'yes';
+	$defaults['cfcp_header_options'] = array(
+		'posts' => array(
+			'_1' => null,
+			'_2' => null,
+			'_3' => null,
+		),
+		'type' => 'featured',
+	);
+	return $defaults;
+}
+add_filter('cfct_option_defaults', 'cfcp_option_defaults');
+
+/**
+ * Filter theme settings page title
+ */ 
+function cfcp_admin_settings_title($title) {
+	return __('Theme Settings', 'favepersonal');
+}
+add_filter('cfct_admin_settings_title', 'cfcp_admin_settings_title');
+add_filter('cfct_admin_settings_form_title', 'cfcp_admin_settings_title');
+
+?>
