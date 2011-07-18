@@ -58,8 +58,10 @@ function cfcp_options($options) {
 			),
 		),
 	);
+	// cfct_array_merge_recursive($options, $personal_options); For options display after the defaults.
 	
-	$options = array_merge($personal_options, $options);
+	// Note this will have defaults override our settings. Not an issue with defining the new 'cfcp' section.
+	$options = cfct_array_merge_recursive($personal_options, $options);
 	return $options;
 }
 add_filter('cfct_options', 'cfcp_options');
