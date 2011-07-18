@@ -104,6 +104,9 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		
 		add_action('admin_head', 'cf_admin_css');
 
+		//load color styles
+		cfct_template_file('css', 'colors');
+
 		// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
 		define( 'HEADER_IMAGE', '%s/functions/header/img/default.png' );
 	
