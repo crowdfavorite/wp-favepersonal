@@ -414,6 +414,7 @@ but allow screen readers to see */
 	right: 0;
 }
 #social .social-comment .social-comment-body {
+	overflow: hidden;
 	padding: 0 15px 12px 0;
 	width: auto;
 }
