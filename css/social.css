@@ -373,6 +373,11 @@ but allow screen readers to see */
 	top: 20px;
 	width: 16px;
 }
+#social .social-posted-from a {
+	display: block;
+	height: 16px;
+	width: 16px;
+}
 #social .social-wordpress .social-posted-from {
 	background-position: 0px 0px;
 }
