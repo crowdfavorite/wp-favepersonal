@@ -20,13 +20,6 @@ if (is_admin()) {
 	include_once('lib/cf-favicon-fetch.class.php');
 }
 
-function cfcp_about_init() {
-	if (!is_admin()) {
-		cfcp_about_module_carousel_enqueue();
-	}
-}
-add_action('init', 'cfcp_about_init', 50);
-
 function cfcp_about_admin_init() {
 	global $pagenow, $plugin_page;
 	if ($pagenow == 'themes.php' && $plugin_page == 'about.php') {
@@ -57,10 +50,15 @@ add_action('admin_init', 'cfcp_about_admin_init');
  */
 function cfcp_about_module_carousel_enqueue() {
 	$settings = cfcp_about_get_settings();
-	if (count($settings['images']) > 1 && is_active_widget(null, null, 'cfcp-about')) {
+	if (
+		!is_admin()
+		&& count($settings['images']) > 1
+		&& is_active_widget(null, null, 'cfcp-about')
+	) {
 		wp_enqueue_script('jquery-cycle'); // registered in the theme's functions.php file
 	}
 }
+add_action('wp', 'cfcp_about_module_carousel_enqueue', 11);
 
 // Ajax
 
