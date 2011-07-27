@@ -20,7 +20,7 @@
  * Filter to add options to the theme settings page
  */ 
 function cfcp_options($options) {
-	unset($options['cfct']['options']['about']);
+	unset($options['cfct']['fields']['about']);
 	$yn_options = array(
 		'yes' => __('Yes', 'favepersonal'),
 		'no' => __('No', 'favepersonal')
