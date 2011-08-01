@@ -35,8 +35,6 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	See http://www.phpied.com/conditional-comments-block-downloads/ for more info. */ ?>
 	<!--[if IE]><![endif]-->
 	
-	<!-- <link rel="stylesheet" type="text/css" media="screen, print, handheld" href="<?php bloginfo('template_url') ?>/css/css.php?ver=<?php echo CFCT_URL_VERSION; ?>" /> -->
-
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -55,7 +53,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 		wp_enqueue_script( 'comment-reply' );
 	}
 	
-	wp_head(); 
+	wp_head();
 ?>
 </head>
 <body <?php body_class(); ?>>

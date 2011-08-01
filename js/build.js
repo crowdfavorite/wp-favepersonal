@@ -346,21 +346,25 @@ jQuery(function($) {
 		function() { $(this).removeClass('hover'); }
 	);
 
-// Bio box carousel
+	// Bio box carousel
 	var $bioCarousel = $('#bio-carousel .bio-box-gallery-images');
-	var $bioImages = $bioCarousel.find('img');
-	if ($bioImages.size() > 1) {
-		$bioCarousel.cycle({
-			'fx': 'scrollHorz',
-			'timeout': 0,
-			'next': '#bio-carousel-next, .bio-box-gallery-images img', 
-			'prev': '#bio-carousel-prev',
-			'speed': 400
-		});
-		$bioImages.hover(function() {
-			$(this).css({'cursor': 'pointer'});
-		});
+	if ($bioCarousel.length > 0 && typeof $bioCarousel.cycle === 'function') {
+		var $bioImages = $bioCarousel.find('img');
+		
+		if ($bioImages.size() > 1) {
+			$bioCarousel.cycle({
+				'fx': 'scrollHorz',
+				'timeout': 0,
+				'next': '#bio-carousel-next, .bio-box-gallery-images img', 
+				'prev': '#bio-carousel-prev',
+				'speed': 400
+			});
+			$bioImages.hover(function() {
+				$(this).css({'cursor': 'pointer'});
+			});
+		};
 	};
+
 	// Social link tooltips
 	$('.bio-box-links li').each(function() {
 		var $this = $(this);

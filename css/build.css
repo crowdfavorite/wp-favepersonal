@@ -193,18 +193,11 @@ hr {
 }
 
 /* edit-link */
-.post .edit-link,
-.comment .edit-link {
-	display: none;
-	position: absolute;
-}
 .post .edit-link {
-	top: 2px;
+	display: none;
 	left: 0;
-}
-.comment .edit-link {
-	top: 22px;
-	left: -140px;
+	position: absolute;
+	top: 2px;
 }
 .edit-link a {
 	background: #666 url(../img/edit-icon.png) 0 0 no-repeat;
@@ -214,8 +207,7 @@ hr {
 	text-indent: -9999px;
 	width: 20px;
 }
-.post:hover .edit-link,
-.comment:hover .edit-link {
+.post:hover .edit-link {
 	display: inline;
 }
 
@@ -378,6 +370,20 @@ hr {
 #header .menu ul li a {
 	display: inline-block;
 	height: 20px;
+}
+
+
+/* inline block fix for IE6 and IE7 */
+html.ie6 #header #nav-main li,
+html.ie6 #header .menu li,
+html.ie6 #header #nav-main ul li a,
+html.ie6 #header .menu ul li a,
+html.ie7 #header #nav-main li,
+html.ie7 #header .menu li,
+html.ie7 #header #nav-main ul li a,
+html.ie7 #header .menu ul li a {
+	display: inline;
+	zoom: 1;
 }
 
 /* Sub Menu */
@@ -1057,14 +1063,14 @@ hr {
 #featured-post-2 {
 	margin-right: 30px;
 }
-#featured-posts .featured {
+.featured {
 	background-color: #666;
 	height: 180px;
 	overflow: hidden;
 	position: relative;
 	width: 310px;
 }
-#featured-posts .featured-title {
+.featured-title {
 	background-color: #666;
 	color: #fff;
 	display: inline-block;
@@ -1073,7 +1079,7 @@ hr {
 	margin: 0 10px 9px 0;
 	padding: 8px 15px 6px;
 }
-#featured-posts .featured-content {
+.featured-content {
 	color: #fff;
 	min-height: 170px;
 	min-width: 310px;
@@ -1081,19 +1087,19 @@ hr {
 	position: absolute;
 	z-index: 10;
 }
-#featured-posts .featured-description {
+.featured-description {
 	padding: 0 15px;
 }
-#featured-posts .featured-description p {
+.featured-description p {
 	margin-top: 0;
 }
-#featured-posts .featured-description, 
-#featured-posts .featured-description p {
+.featured-description, 
+.featured-description p {
 	font-size: 14px;
 	line-height: 20px;
 }
 /* featured-link, same size as featured box and overlays everything in it */
-#featured-posts .featured-link {
+.featured-link {
 	display: block;
 	height: 180px;
 	position: absolute;
@@ -1104,7 +1110,7 @@ hr {
 	z-index: 20;
 }
 /* featured image */
-#featured-posts .featured-img {
+.featured-img {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1114,16 +1120,16 @@ hr {
 /** Post Formats
  -------------------------------------------------- */
 /* status and quote */
-#featured-posts .featured-format-status .featured-description,
-#featured-posts .featured-format-status .featured-description p,
-#featured-posts .featured-format-quote .featured-description,
-#featured-posts .featured-format-quote .featured-description p {
+.featured-format-status .featured-description,
+.featured-format-status .featured-description p,
+.featured-format-quote .featured-description,
+.featured-format-quote .featured-description p {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 18px;
 	line-height: 26px;
 }
 /* quote */
-#featured-posts .featured-format-quote .featured-content .featured-description {
+.featured-format-quote .featured-content .featured-description {
 	background-image: url(../img/quote-white.png);
 	background-position: 10px 0px;
 	background-repeat: no-repeat;
@@ -1150,33 +1156,33 @@ hr {
 	width: 155px;
 }
 /* video */
-#featured-posts .featured-format-video .featured-link {
+.featured-format-video .featured-link {
 	background-image: url(../img/play-icon.png);
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 }
-#featured-posts .featured-format-video .featured-link:hover {
+.featured-format-video .featured-link:hover {
 	background-image: none;
 }
-#featured-posts .featured-format-video .featured-description {
+.featured-format-video .featured-description {
 	display: none;
 }
-#featured-posts .featured-format-video:hover .featured-description {
+.featured-format-video:hover .featured-description {
 	display: block;
 }
 
 /** Hover / rollover
  -------------------------------------------------- */
-#featured-posts .has-featured-img .featured-description,
-#featured-posts .featured-format-gallery .featured-description {
+.has-featured-img .featured-description,
+.featured-format-gallery .featured-description {
 	display: none;
 }
-#featured-posts .has-featured-img:hover .featured-description,
-#featured-posts .featured-format-gallery:hover .featured-description {
+.has-featured-img:hover .featured-description,
+.featured-format-gallery:hover .featured-description {
 	display: block;
 }
 /* rollover */
-#featured-posts .featured:hover .featured-content {
+.featured:hover .featured-content {
 	background-color: rgb(153,153,153); /* fallback for IE */
 	background-color: rgba(153,153,153,.9);
 	color: #333;
@@ -1490,7 +1496,8 @@ but allow screen readers to see */
  -------------------------------------------------- */
 
 #social .social-posted-when,
-#social .comment-reply-link {
+#social .social-actions a,
+#social .social-actions {
 	color: #666;
 	font-size: 11px;
 }
@@ -1554,6 +1561,11 @@ but allow screen readers to see */
 	top: 20px;
 	width: 16px;
 }
+#social .social-posted-from a {
+	display: block;
+	height: 16px;
+	width: 16px;
+}
 #social .social-wordpress .social-posted-from {
 	background-position: 0px 0px;
 }
@@ -1595,6 +1607,7 @@ but allow screen readers to see */
 	right: 0;
 }
 #social .social-comment .social-comment-body {
+	overflow: hidden;
 	padding: 0 15px 12px 0;
 	width: auto;
 }
