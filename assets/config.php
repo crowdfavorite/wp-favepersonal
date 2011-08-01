@@ -1,7 +1,7 @@
 <?php
 // Navigate to asset root using realpath.
-$abspath = realpath(realpath(dirname(__FILE__)) . '/../');
-require_once($abspath . '/asset-builder/lib/Bundler.php');
+$abspath = realpath(dirname(__FILE__));
+require_once($abspath . '/build/lib/Bundler.php');
 
 $bundler = Bundler::create($abspath);
 
