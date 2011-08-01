@@ -21,8 +21,6 @@
  * Colors are set in the theme settings within the WordPress admin
  * enquequed from the functions.php and loaded into the header
  */
-
-
 function cfcp_color_css() { 
 ?>
 <style type="text/css" media="screen">
