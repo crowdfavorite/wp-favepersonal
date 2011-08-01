@@ -55,7 +55,6 @@ include_once(CFCT_PATH.'functions/gallery.php');
 include_once(CFCT_PATH.'functions/about/about.php');
 include_once(CFCT_PATH.'functions/header/header.php');
 include_once(CFCT_PATH.'functions/admin.php');
-include_once(CFCT_PATH.'asset-builder/load.php');
 
 function cfcp_load_social() {
 	if (!class_exists('Social') && get_option('cfcp_social_enabled') != 'no') {
@@ -102,11 +101,6 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 			'footer' => __( 'Footer Navigation', 'favepersonal' )
 		));
 		
-		add_action('admin_head', 'cf_admin_css');
-
-		//load color styles
-		cfct_template_file('css', 'colors');
-
 		// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
 		define( 'HEADER_IMAGE', '%s/functions/header/img/default.png' );
 	
@@ -126,25 +120,15 @@ add_action( 'after_setup_theme', 'carrington_personal_setup' );
 
 function cfcp_admin_header_style() {} // empty.
 
-/* Let's load some styles that will be used on all theme setting pages */
-function cf_admin_css() {
-	$cf_admin_styles = get_bloginfo('template_url').'/css/admin.css';
-	echo '<link rel="stylesheet" type="text/css" href="' . $cf_admin_styles . '" />';
-}
-
 /**
- * Add assets at WP when we have access to is_single, et al
+ * Load assets at action 'wp', when conditionals like is_single are available.
  */
-function cfcp_add_assets() {
-	// Register Scripts
-	wp_register_script('jquery-cycle', get_bloginfo('template_directory').'/js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);
-	include_once(CFCT_PATH.'plugins/load.php');
-	
+function cfct_load_assets() {
+	include_once(CFCT_PATH.'assets/load.php');
 }
-add_action('wp', 'cfcp_add_assets');
+add_action('wp', 'cfct_load_assets');
 
 // Dequeue Social Plugin Stylesheet
-
 function cfcp_social_dequeue_style() {
 	wp_dequeue_style('social_style_main');
 }
@@ -159,14 +143,7 @@ function cfcp_head_extra() {
 }
 add_action('wp_head', 'cfcp_head_extra');
 
-/**
- * Kuler Color Integration
- * http://kuler.adobe.com
- */
-
 // feed permalink for link posts
-
-
 function cfcp_the_permalink_rss($url) {
 	global $post;
 	if (has_post_format('link', $post)) {
