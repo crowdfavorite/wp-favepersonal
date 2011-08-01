@@ -34,27 +34,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	Empty conditional comment prevents blocking downloads in IE8. Good ol' IE.
 	See http://www.phpied.com/conditional-comments-block-downloads/ for more info. */ ?>
 	<!--[if IE]><![endif]-->
-	
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<!--[if IE 7]>
-		<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url'); ?>/css/ie7.css?ver=<?php echo CFCT_URL_VERSION; ?>" />
-		<style type="text/css" media="screen">
-			#featured-posts .featured:hover .featured-content {
-				background-color: <?php echo cf_kuler_color('light', 'featured_posts_hover_content_background'); ?>;
-			}
-		</style>
-	<![endif]-->
-
-<?php
-	/* Add JavaScript to pages with the comment form to support threaded comments (when in use). */
-	if ( is_singular() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-	
-	wp_head();
-?>
+	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 	<header id="header">

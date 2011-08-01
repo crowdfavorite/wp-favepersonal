@@ -24,12 +24,38 @@ if (!is_admin()) {
 	
 	// Register Scripts
 	wp_register_script('jquery-cycle', $assets.'js/jquery.cycle.all.min.js', array('jquery'), '2.99', true);
+	
+	/* Add JavaScript to pages with the comment form to support threaded comments (when in use). */
+	if ( is_singular() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
 // Admin side
 else {
 	/* Let's load some styles that will be used on all theme setting pages */
 	wp_enqueue_style('cf-admin-css', $assets.'css/admin.css', array(), CFCT_THEME_VERSION);
 }
+
+function cfct_html5_shim() { ?>
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<?php
+}
+add_action('wp_head', 'cfct_html5_shim', 7);
+
+function cfct_ie_css_overrides() { ?>
+<!--[if IE 7]>
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_url'); ?>/assets/css/ie7.css?ver=<?php echo CFCT_URL_VERSION; ?>" />
+	<style type="text/css" media="screen">
+		#featured-posts .featured:hover .featured-content {
+			background-color: <?php echo cf_kuler_color('light', 'featured_posts_hover_content_background'); ?>;
+		}
+	</style>
+<![endif]-->
+<?php
+}
+add_action('wp_head', 'cfct_ie_css_overrides', 8);
 
 function enqueue_bundle($language, $key, $path, $dependencies, $version) {
 	switch($language) {
