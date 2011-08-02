@@ -18,7 +18,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 
 // Load bundler config.
 include_once(CFCT_PATH.'assets/config.php');
-include_once(CFCT_PATH.'assets/build/lib/Bundler_Loader.php');
+include_once(CFCT_PATH.'assets/lib/Bundler_Loader.php');
 // Load custom color styles
 include_once(CFCT_PATH.'assets/colors.php');
 
