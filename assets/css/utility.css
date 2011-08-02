@@ -5,22 +5,21 @@
 /** Clearing
  * Clearing floats without extra markup [http: //www.positioniseverything.net/easyclearing.html]
  -------------------------------------------------- */
-.clearfix {
+/* The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements.
+   j.mp/bestclearfix */
+.clearfix:before,
+.clearfix:after {
+	content: "\0020";
 	display: block;
-	zoom: 1;
+	height: 0;
+	overflow: hidden;
 }
 .clearfix:after {
-	content: " ";
-	display: block;
-	font-size: 0;
-	height: 0;
 	clear: both;
-	visibility: hidden;
 }
-.clear {
-	clear: both;
-	float: none;
-	height: 1px;
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix {
+	zoom: 1;
 }
 
 /* edit-link */

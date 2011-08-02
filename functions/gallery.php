@@ -15,17 +15,6 @@
  * **********************************************************************
  */
 
-/**
- * Run code for gallery at the WP action
- */
-function cfcp_gallery_on_wp() {
-	$theme = trailingslashit(get_bloginfo('template_directory'));
-	/* Add scripts for full gallery */
-	wp_enqueue_script('jquery-cfgallery', $theme . 'js/cfgallery/jquery.cfgallery.js', array('jquery'), CFCT_URL_VERSION);
-}
-add_action('wp', 'cfcp_gallery_on_wp');
-
-
 // Prettier captions
 function cfcp_img_captions($attr, $content = null) {
 	$output = apply_filters('img_caption_shortcode', '', $attr, $content);

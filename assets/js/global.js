@@ -1,10 +1,3 @@
-/* Replace .no-js class with .js class. Very useful for accessible Javascript FOUC
-prevention with CSS */
-;(function (doc) {
-	h = doc.getElementsByTagName('html')[0];
-	h.className = h.className.replace('no-js', 'js');
-})(document);
-
 jQuery(function($) {
 	// add hover support for li
 	$('li').hover(
