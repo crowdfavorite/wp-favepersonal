@@ -1,0 +1,98 @@
+/* --------------------------------------------------
+ * Structure - responsive elements and other structural styles.
+-------------------------------------------------- */
+
+.container {
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+#secondary {
+	width: 310px;
+}
+
+#featured-post-2,
+#featured-post-3 {
+	display: none;
+}
+
+@media screen and (min-width: 675px) {
+	.container {
+		padding: 0 40px;
+	}
+	
+	#primary {
+		width: 650px;
+	}
+	
+	#featured-post-2 {
+		display: block;
+	}
+	#featured-post-1 {
+		margin-right: 4%;
+	}
+	.featured {
+		float: left;
+		width: 48%;
+	}
+	.featured {
+		height: 220px;
+	}
+	.featured .gallery-img-excerpt li {
+		float: left;
+		width: 50%;
+		height: 110px;
+	}
+	
+	.post .post-media {
+		overflow: hidden;
+		width: 510px;
+	}
+	.post .gallery-img-excerpt {
+		overflow: hidden;
+		width: 525px;
+	}
+	.post .gallery-img-excerpt li {
+		float: left;
+	}
+}
+@media screen and (min-width: 1010px) {
+	.container {
+		width: 990px;
+		margin: 0 auto;
+		padding: 0 10px;
+	}
+	
+	#masthead .container {
+		padding: 0 10px;
+		width: 990px;
+	}
+	
+	#primary {
+		margin-right: 30px;
+	}
+	
+	#primary,
+	#secondary {
+		display: inline; /* Double-margin float bug fix */
+		float: left;
+		height: auto !important;
+		height: 1px;
+		min-height: 1px;
+	}
+	
+	.featured {
+		height: 180px;
+		width: 310px;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 90px;
+	}
+	#featured-post-1,
+	#featured-post-2 {
+		margin-right: 30px;
+	}
+	#featured-post-3 {
+		display: block;
+	}
+}

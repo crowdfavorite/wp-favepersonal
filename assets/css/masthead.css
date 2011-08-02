@@ -13,22 +13,12 @@
 
 /** Featured Posts
  -------------------------------------------------- */
-/* featured posts */
-#featured-post-1,
-#featured-post-2,
-#featured-post-3 {
-	float: left;
-}
-#featured-post-1,
-#featured-post-2 {
-	margin-right: 30px;
-}
 .featured {
 	background-color: #666;
 	height: 180px;
+	margin: 0 auto;
 	overflow: hidden;
 	position: relative;
-	width: 310px;
 }
 .featured-title {
 	background-color: #666;
@@ -40,11 +30,14 @@
 	padding: 8px 15px 6px;
 }
 .featured-content {
+	bottom: 0;
 	color: #fff;
+	left: 0;
 	min-height: 170px;
-	min-width: 310px;
 	padding: 15px 0;
 	position: absolute;
+	right: 0;
+	top: 0;
 	z-index: 10;
 }
 .featured-description {
@@ -60,13 +53,13 @@
 }
 /* featured-link, same size as featured box and overlays everything in it */
 .featured-link {
+	bottom: 0;
 	display: block;
-	height: 180px;
+	left: 0;
 	position: absolute;
 	right: 0;
 	text-indent: -999em;
 	top: 0;
-	width: 310px;
 	z-index: 20;
 }
 /* featured image */
@@ -96,24 +89,25 @@
 	padding-left: 36px;
 }
 /* gallery */
-#featured-posts .gallery-img-excerpt {
-	height: 180px;
+.featured .gallery-img-excerpt {
 	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 1;
-	width: 310px;
-}
-#featured-posts .gallery-img-excerpt li {
-	float: left;
-	height: 90px;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
-	width: 155px;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	zoom: 1;
+}
+.featured .gallery-img-excerpt li {
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+.featured .gallery-img-excerpt li img {
+	display: block;
+	height: auto;
+	width: 100%;
 }
 /* video */
 .featured-format-video .featured-link {

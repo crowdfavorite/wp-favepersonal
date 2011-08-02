@@ -2,11 +2,6 @@
  * Content - Posts, Pages, Comments
 -------------------------------------------------- */
 
-.container {
-	width: 990px;
-	margin: 0 auto;
-}
-
 /** Header
  -------------------------------------------------- */
 #header .container {
@@ -121,21 +116,6 @@ html.ie7 #header .menu ul li a {
 #content {
 	background-color: #fff;
 	padding: 40px 0;
-}
-#primary,
-#secondary {
-	display: inline; /* Double-margin float bug fix */
-	float: left;
-	height: auto !important;
-	height: 1px;
-	min-height: 1px;
-}
-#primary {
-	width: 650px;
-	margin-right: 30px;
-}
-#secondary {
-	width: 310px;
 }
 
 /** Posts Default
@@ -254,14 +234,11 @@ html.ie7 #header .menu ul li a {
  -------------------------------------------------- */
 /* excerpts */
 .post .gallery-img-excerpt {
-	float: left;
-	list-style-type: none;
-	margin: 0 -15px 0 0;
+	list-style: none;
+	margin: 0;
 	padding: 0;
-	width: 525px;
 }
 .post .gallery-img-excerpt li {
-	float: left;
 	height: 120px;
 	margin: 0 15px 15px 0;
 	width: 160px;

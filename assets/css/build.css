@@ -47,6 +47,16 @@ footer,header,hgroup,menu,nav,section,summary {
 	border: 0;
 }
 
+img {
+	height: auto;
+	max-width: 100%;
+	width: auto;
+}
+
+/* Bicubic resizing for non-native sized IMG:
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
 /** Load Fonts
  -------------------------------------------------- */
 @font-face {
@@ -323,11 +333,6 @@ hr {
  * Content - Posts, Pages, Comments
 -------------------------------------------------- */
 
-.container {
-	width: 990px;
-	margin: 0 auto;
-}
-
 /** Header
  -------------------------------------------------- */
 #header .container {
@@ -442,21 +447,6 @@ html.ie7 #header .menu ul li a {
 #content {
 	background-color: #fff;
 	padding: 40px 0;
-}
-#primary,
-#secondary {
-	display: inline; /* Double-margin float bug fix */
-	float: left;
-	height: auto !important;
-	height: 1px;
-	min-height: 1px;
-}
-#primary {
-	width: 650px;
-	margin-right: 30px;
-}
-#secondary {
-	width: 310px;
 }
 
 /** Posts Default
@@ -575,14 +565,11 @@ html.ie7 #header .menu ul li a {
  -------------------------------------------------- */
 /* excerpts */
 .post .gallery-img-excerpt {
-	float: left;
-	list-style-type: none;
-	margin: 0 -15px 0 0;
+	list-style: none;
+	margin: 0;
 	padding: 0;
-	width: 525px;
 }
 .post .gallery-img-excerpt li {
-	float: left;
 	height: 120px;
 	margin: 0 15px 15px 0;
 	width: 160px;
@@ -1052,22 +1039,12 @@ html.ie7 #header .menu ul li a {
 
 /** Featured Posts
  -------------------------------------------------- */
-/* featured posts */
-#featured-post-1,
-#featured-post-2,
-#featured-post-3 {
-	float: left;
-}
-#featured-post-1,
-#featured-post-2 {
-	margin-right: 30px;
-}
 .featured {
 	background-color: #666;
 	height: 180px;
+	margin: 0 auto;
 	overflow: hidden;
 	position: relative;
-	width: 310px;
 }
 .featured-title {
 	background-color: #666;
@@ -1079,11 +1056,14 @@ html.ie7 #header .menu ul li a {
 	padding: 8px 15px 6px;
 }
 .featured-content {
+	bottom: 0;
 	color: #fff;
+	left: 0;
 	min-height: 170px;
-	min-width: 310px;
 	padding: 15px 0;
 	position: absolute;
+	right: 0;
+	top: 0;
 	z-index: 10;
 }
 .featured-description {
@@ -1099,13 +1079,13 @@ html.ie7 #header .menu ul li a {
 }
 /* featured-link, same size as featured box and overlays everything in it */
 .featured-link {
+	bottom: 0;
 	display: block;
-	height: 180px;
+	left: 0;
 	position: absolute;
 	right: 0;
 	text-indent: -999em;
 	top: 0;
-	width: 310px;
 	z-index: 20;
 }
 /* featured image */
@@ -1135,24 +1115,25 @@ html.ie7 #header .menu ul li a {
 	padding-left: 36px;
 }
 /* gallery */
-#featured-posts .gallery-img-excerpt {
-	height: 180px;
+.featured .gallery-img-excerpt {
 	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 1;
-	width: 310px;
-}
-#featured-posts .gallery-img-excerpt li {
-	float: left;
-	height: 90px;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
-	width: 155px;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	zoom: 1;
+}
+.featured .gallery-img-excerpt li {
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+.featured .gallery-img-excerpt li img {
+	display: block;
+	height: auto;
+	width: 100%;
 }
 /* video */
 .featured-format-video .featured-link {
@@ -1662,4 +1643,101 @@ but allow screen readers to see */
 }
 #social .social-comment-collapse .social-posted-from {
 	top: 10px;
+}/* --------------------------------------------------
+ * Structure - responsive elements and other structural styles.
+-------------------------------------------------- */
+
+.container {
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+#secondary {
+	width: 310px;
+}
+
+#featured-post-2,
+#featured-post-3 {
+	display: none;
+}
+
+@media screen and (min-width: 675px) {
+	.container {
+		padding: 0 40px;
+	}
+	
+	#primary {
+		width: 650px;
+	}
+	
+	#featured-post-2 {
+		display: block;
+	}
+	#featured-post-1 {
+		margin-right: 4%;
+	}
+	.featured {
+		float: left;
+		width: 48%;
+	}
+	.featured {
+		height: 220px;
+	}
+	.featured .gallery-img-excerpt li {
+		float: left;
+		width: 50%;
+		height: 110px;
+	}
+	
+	.post .post-media {
+		overflow: hidden;
+		width: 510px;
+	}
+	.post .gallery-img-excerpt {
+		overflow: hidden;
+		width: 525px;
+	}
+	.post .gallery-img-excerpt li {
+		float: left;
+	}
+}
+@media screen and (min-width: 1010px) {
+	.container {
+		width: 990px;
+		margin: 0 auto;
+		padding: 0 10px;
+	}
+	
+	#masthead .container {
+		padding: 0 10px;
+		width: 990px;
+	}
+	
+	#primary {
+		margin-right: 30px;
+	}
+	
+	#primary,
+	#secondary {
+		display: inline; /* Double-margin float bug fix */
+		float: left;
+		height: auto !important;
+		height: 1px;
+		min-height: 1px;
+	}
+	
+	.featured {
+		height: 180px;
+		width: 310px;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 90px;
+	}
+	#featured-post-1,
+	#featured-post-2 {
+		margin-right: 30px;
+	}
+	#featured-post-3 {
+		display: block;
+	}
 }

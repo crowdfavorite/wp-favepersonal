@@ -47,6 +47,16 @@ footer,header,hgroup,menu,nav,section,summary {
 	border: 0;
 }
 
+img {
+	height: auto;
+	max-width: 100%;
+	width: auto;
+}
+
+/* Bicubic resizing for non-native sized IMG:
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
 /** Load Fonts
  -------------------------------------------------- */
 @font-face {
