@@ -598,7 +598,6 @@ html.ie7 #header .menu ul li a {
 /* single/full */
 .single .format-gallery .post-media {
 	padding-left: 130px;
-	padding-right: 130px;
 }
 .gallery-stage {
 	height: 400px;
@@ -618,7 +617,7 @@ html.ie7 #header .menu ul li a {
 	background-color: #ddd;
 	display: block;
 	float: left;
-	height: 60px;
+	height: 63px;
 	margin: 10px 10px 0 0;
 	padding: 0;
 	width: 80px;
@@ -775,16 +774,6 @@ html.ie7 #header .menu ul li a {
 /* Sidebar Footer - split sidebar section into columns */
 #secondary-full {
 	margin-top: 60px;
-}
-#secondary-full #sidebar-1,
-#secondary-full #sidebar-2,
-#secondary-full #sidebar-3 {
-	float: left;
-	width: 310px;
-}
-#secondary-full #sidebar-1,
-#secondary-full #sidebar-2 {
-	margin-right: 30px;
 }
 
 /* bio-box */
@@ -1667,6 +1656,7 @@ but allow screen readers to see */
 	}
 	
 	#primary {
+		margin: 0 auto;
 		width: 650px;
 	}
 	
@@ -1689,11 +1679,11 @@ but allow screen readers to see */
 		height: 110px;
 	}
 	
-	.post .post-media {
+	.excerpt .post-media {
 		overflow: hidden;
 		width: 510px;
 	}
-	.post .gallery-img-excerpt {
+	.excerpt .gallery-img-excerpt {
 		overflow: hidden;
 		width: 525px;
 	}
@@ -1714,7 +1704,7 @@ but allow screen readers to see */
 	}
 	
 	#primary {
-		margin-right: 30px;
+		margin: 0 30px 0 0;
 	}
 	
 	#primary,
@@ -1724,6 +1714,17 @@ but allow screen readers to see */
 		height: auto !important;
 		height: 1px;
 		min-height: 1px;
+	}
+	
+	#secondary-full #sidebar-1,
+	#secondary-full #sidebar-2,
+	#secondary-full #sidebar-3 {
+		float: left;
+		width: 310px;
+	}
+	#secondary-full #sidebar-1,
+	#secondary-full #sidebar-2 {
+		margin-right: 30px;
 	}
 	
 	.featured {

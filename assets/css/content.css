@@ -267,7 +267,6 @@ html.ie7 #header .menu ul li a {
 /* single/full */
 .single .format-gallery .post-media {
 	padding-left: 130px;
-	padding-right: 130px;
 }
 .gallery-stage {
 	height: 400px;
@@ -444,16 +443,6 @@ html.ie7 #header .menu ul li a {
 /* Sidebar Footer - split sidebar section into columns */
 #secondary-full {
 	margin-top: 60px;
-}
-#secondary-full #sidebar-1,
-#secondary-full #sidebar-2,
-#secondary-full #sidebar-3 {
-	float: left;
-	width: 310px;
-}
-#secondary-full #sidebar-1,
-#secondary-full #sidebar-2 {
-	margin-right: 30px;
 }
 
 /* bio-box */

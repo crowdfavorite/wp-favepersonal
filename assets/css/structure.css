@@ -45,11 +45,11 @@
 		height: 110px;
 	}
 	
-	.post .post-media {
+	.excerpt .post-media {
 		overflow: hidden;
 		width: 510px;
 	}
-	.post .gallery-img-excerpt {
+	.excerpt .gallery-img-excerpt {
 		overflow: hidden;
 		width: 525px;
 	}
@@ -80,6 +80,17 @@
 		height: auto !important;
 		height: 1px;
 		min-height: 1px;
+	}
+	
+	#secondary-full #sidebar-1,
+	#secondary-full #sidebar-2,
+	#secondary-full #sidebar-3 {
+		float: left;
+		width: 310px;
+	}
+	#secondary-full #sidebar-1,
+	#secondary-full #sidebar-2 {
+		margin-right: 30px;
 	}
 	
 	.featured {
