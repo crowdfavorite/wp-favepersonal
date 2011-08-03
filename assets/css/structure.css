@@ -51,18 +51,20 @@ iPad (landscape) / Screen	1024
 	
 	.featured {
 		height: 140px;
-		width: 31.9266%;
+		width: 226px;
 	}
 	.featured .gallery-img-excerpt li {
 		height: 70px;
 	}
+	
+	#featured-post-1,
 	#featured-post-2,
 	#featured-post-3 {
 		display: block;
 	}
 	#featured-post-1,
 	#featured-post-2 {
-		margin-right: 2.11%; /* 15/708 */
+		margin-right: 15px;
 	}
 
 	.post .gallery-img-excerpt li {
@@ -90,11 +92,11 @@ iPad (landscape) / Screen	1024
 	#secondary-full #sidebar-2,
 	#secondary-full #sidebar-3 {
 		float: left;
-		width: 31.3131%; /* 310/990 */
+		width: ;
 	}
 	#secondary-full #sidebar-1,
 	#secondary-full #sidebar-2 {
-		margin-right: 3.03%; /* 30/990 */
+		margin-right: 15px;
 	}
 }
 @media screen and (min-width: 1010px) {
@@ -107,9 +109,15 @@ iPad (landscape) / Screen	1024
 	
 	.featured {
 		height: 180px;
+		width: 310px;
 	}
 	.featured .gallery-img-excerpt li {
 		height: 90px;
+	}
+	
+	#featured-post-1,
+	#featured-post-2 {
+		margin-right: 30px;
 	}
 	
 	.post .gallery-img-excerpt li {
@@ -132,6 +140,7 @@ iPad (landscape) / Screen	1024
 		line-height: 120px;
 	}
 	
+	
 	#primary,
 	#secondary {
 		display: inline; /* Double-margin float bug fix */
@@ -144,5 +153,9 @@ iPad (landscape) / Screen	1024
 	#primary {
 		width: 650px;
 		margin: 0 30px 0 0;
+	}
+	
+	#masthead {
+		padding: 36px 0 41px 0; /* top = 40px with header border */
 	}
 }
