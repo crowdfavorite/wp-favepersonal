@@ -70,13 +70,13 @@ class CFCT_Gallery {
 	public function get_attachments() {
 		if (!$this->gallery) {
 			$this->gallery = new WP_Query(array(
-				'post_parent'		=> $this->post_id,
-				'post_type'			=> 'attachment',
-				'post_status'		=> 'inherit',
-				'posts_per_page'	=> $this->number_of_images, // -1 to show all
-				'post_mime_type'	=> 'image%',
-				'orderby'			=> 'menu_order',
-				'order'				=> 'ASC'
+				'post_parent' => $this->post_id,
+				'post_type' => 'attachment',
+				'post_status' => 'inherit',
+				'posts_per_page' => $this->number_of_images, // -1 to show all
+				'post_mime_type' => 'image%',
+				'orderby' => 'menu_order',
+				'order' => 'ASC'
 			));
 		}
 		return $this->gallery;
@@ -98,6 +98,7 @@ class CFCT_Gallery {
 	public function view($args = array()) {
 		extract($args);
 		$thumbs = '';
+		
 		foreach($gallery->posts as $image) {
 			/* Individual links can be anchored to. Anchoring to a link triggers Javascript to
 			load its larger image in the stage area */

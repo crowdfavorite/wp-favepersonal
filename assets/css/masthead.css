@@ -33,7 +33,6 @@
 	bottom: 0;
 	color: #fff;
 	left: 0;
-	min-height: 170px;
 	padding: 15px 0;
 	position: absolute;
 	right: 0;
@@ -96,7 +95,11 @@
 	padding: 0;
 	position: relative;
 	z-index: 1;
-	width: 100%;
+	/**
+	 * Give it a bit more than 100%.
+	 * Otherwise we get a sliver of black on the right side from browser round-downs.
+	 */
+	width: 100.5%;
 	zoom: 1;
 }
 .featured .gallery-img-excerpt li {

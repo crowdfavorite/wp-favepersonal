@@ -78,6 +78,14 @@ function cfcp_enqueue_comments_script() {
 }
 add_action('wp', 'cfcp_enqueue_comments_script');
 
+function cfcp_viewport_meta() {
+// Mobile viewport optimized: j.mp/bplateviewport
+?>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+}
+add_action('wp_head', 'cfcp_viewport_meta');
+
 /**
  * Additional CSS fixes for IE to run at wp_head:8
  */

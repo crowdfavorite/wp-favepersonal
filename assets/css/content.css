@@ -238,11 +238,6 @@ html.ie7 #header .menu ul li a {
 	margin: 0;
 	padding: 0;
 }
-.post .gallery-img-excerpt li {
-	height: 120px;
-	margin: 0 15px 15px 0;
-	width: 160px;
-}
 .post .gallery-img-excerpt li a,
 .post .gallery-img-excerpt li img {
 	display: block;
@@ -258,10 +253,8 @@ html.ie7 #header .menu ul li a {
 .post .gallery-img-excerpt li.gallery-view-all a {
 	border: 0;
 	display: block;
-	height: 120px;
-	line-height: 120px;
 	text-align: center;
-	width: 160px;
+	width: 100%;
 }
 
 /* single/full */
@@ -272,7 +265,7 @@ html.ie7 #header .menu ul li a {
 	height: 400px;
 	margin: 0 10px;
 	overflow: hidden;
-	width: 710px;
+	width: 100%;
 }
 .js .gallery-stage {
 	cursor: pointer;

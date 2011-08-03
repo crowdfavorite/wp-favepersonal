@@ -1,5 +1,16 @@
 /* --------------------------------------------------
- * Structure - responsive elements and other structural styles.
+Structure - This file handles floats, layout and responsive elements.
+
+Percentages are calculated by taking the target number of
+pixels and dividing by the container size.
+
+target/context = %
+
+Breakpoints:
+iPhone (landscape)			480
+iPhone (portrait)			320
+iPad (portrait)				768
+iPad (landscape) / Screen	1024
 -------------------------------------------------- */
 
 .container {
@@ -16,61 +27,109 @@
 	display: none;
 }
 
-@media screen and (min-width: 675px) {
+.featured {
+	float: left;
+	width: 48%;
+}
+.featured {
+	height: 220px;
+}
+.featured .gallery-img-excerpt li {
+	float: left;
+	width: 50%;
+	height: 110px;
+}
+.post .gallery-img-excerpt img {
+	width: ;
+}
+
+@media screen and (min-width: 768px) {
 	.container {
-		padding: 0 40px;
+		max-width: 708px;
+		overflow: hidden;
 	}
 	
-	#primary {
-		margin: 0 auto;
-		width: 650px;
-	}
-	
-	#featured-post-2 {
-		display: block;
-	}
-	#featured-post-1 {
-		margin-right: 4%;
-	}
 	.featured {
-		float: left;
-		width: 48%;
-	}
-	.featured {
-		height: 220px;
+		height: 140px;
+		width: 31.9266%;
 	}
 	.featured .gallery-img-excerpt li {
-		float: left;
-		width: 50%;
-		height: 110px;
+		height: 70px;
 	}
-	
-	.excerpt .post-media {
-		overflow: hidden;
-		width: 510px;
+	#featured-post-2,
+	#featured-post-3 {
+		display: block;
 	}
-	.excerpt .gallery-img-excerpt {
-		overflow: hidden;
-		width: 525px;
+	#featured-post-1,
+	#featured-post-2 {
+		margin-right: 2.11%; /* 15/708 */
 	}
+
 	.post .gallery-img-excerpt li {
 		float: left;
+		width: 130px;
+		margin: 0 0 15px 15px;
+	}
+	.post .gallery-img-excerpt li.excerpt-img-0,
+	.post .gallery-img-excerpt li.excerpt-img-4 {
+		margin-left: 0;
+	}
+	.post .excerpt-img-7 {
+		display: none;
+	}
+	.post .gallery-img-excerpt li.gallery-view-all a {
+		height: 97px;
+		line-height: 97px;
+	}
+	
+	#masthead {
+		padding: 26px 0 31px;
+	}
+	
+	#secondary-full #sidebar-1,
+	#secondary-full #sidebar-2,
+	#secondary-full #sidebar-3 {
+		float: left;
+		width: 31.3131%; /* 310/990 */
+	}
+	#secondary-full #sidebar-1,
+	#secondary-full #sidebar-2 {
+		margin-right: 3.03%; /* 30/990 */
 	}
 }
 @media screen and (min-width: 1010px) {
 	.container {
+		max-width: 990px;
 		width: 990px;
 		margin: 0 auto;
 		padding: 0 10px;
 	}
 	
-	#masthead .container {
-		padding: 0 10px;
-		width: 990px;
+	.featured {
+		height: 180px;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 90px;
 	}
 	
-	#primary {
-		margin: 0 30px 0 0;
+	.post .gallery-img-excerpt li {
+		width: 160px;
+	}
+	.post .gallery-img-excerpt li.excerpt-img-0,
+	.post .gallery-img-excerpt li.excerpt-img-3,
+	.post .gallery-img-excerpt li.excerpt-img-6 {
+		margin-left: 0;
+	}
+	/* Re-instate display and margins removed in iPad portrait breakpoint */
+	.post .excerpt-img-7 {
+		display: block;
+	}
+	.post .gallery-img-excerpt li.excerpt-img-4 {
+		margin-left: 15px;
+	}
+	.post .gallery-img-excerpt li.gallery-view-all a {
+		height: 120px;
+		line-height: 120px;
 	}
 	
 	#primary,
@@ -82,29 +141,8 @@
 		min-height: 1px;
 	}
 	
-	#secondary-full #sidebar-1,
-	#secondary-full #sidebar-2,
-	#secondary-full #sidebar-3 {
-		float: left;
-		width: 310px;
-	}
-	#secondary-full #sidebar-1,
-	#secondary-full #sidebar-2 {
-		margin-right: 30px;
-	}
-	
-	.featured {
-		height: 180px;
-		width: 310px;
-	}
-	.featured .gallery-img-excerpt li {
-		height: 90px;
-	}
-	#featured-post-1,
-	#featured-post-2 {
-		margin-right: 30px;
-	}
-	#featured-post-3 {
-		display: block;
+	#primary {
+		width: 650px;
+		margin: 0 30px 0 0;
 	}
 }
