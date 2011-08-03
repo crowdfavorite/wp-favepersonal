@@ -18,10 +18,6 @@ iPad (landscape) / Screen	1024
 	padding: 0 10px;
 }
 
-#secondary {
-	width: 310px;
-}
-
 #featured-post-2,
 #featured-post-3 {
 	display: none;
@@ -88,15 +84,13 @@ iPad (landscape) / Screen	1024
 		padding: 26px 0 31px;
 	}
 	
-	#secondary-full #sidebar-1,
-	#secondary-full #sidebar-2,
-	#secondary-full #sidebar-3 {
+	.sidebar {
 		float: left;
-		width: ;
+		margin-left: 15px;
+		width: 226px;
 	}
-	#secondary-full #sidebar-1,
-	#secondary-full #sidebar-2 {
-		margin-right: 15px;
+	#sidebar-1 {
+		margin-left: 0;
 	}
 }
 @media screen and (min-width: 1010px) {
@@ -153,6 +147,24 @@ iPad (landscape) / Screen	1024
 	#primary {
 		width: 650px;
 		margin: 0 30px 0 0;
+	}
+	
+	#secondary {
+		width: 310px;
+	}
+	
+	.sidebar {
+		float: none;
+		margin-left: 0;
+		width: auto;
+	}
+	#secondary-full .sidebar {
+		float: left;
+		margin-left: 30px;
+		width: 310px;
+	}
+	#secondary-full #sidebar-1 {
+		margin-left: 0;
 	}
 	
 	#masthead {

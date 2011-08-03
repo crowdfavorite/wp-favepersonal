@@ -19,10 +19,8 @@
 
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
-
 ?>
-
-<div id="sidebar-1">
+<div id="sidebar-1" class="sidebar">
 	<?php if (!dynamic_sidebar('sidebar-section-1')) { ?>
 		<aside class="widget">
 			<h3 class="widget-title"><?php _e('Archives', 'favepersonal'); ?></h3>
@@ -40,12 +38,12 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		</aside>
 	<?php } ?>
 </div><!-- #sidebar-1 -->
-<div id="sidebar-2">
+<div id="sidebar-2" class="sidebar">
 	<?php if (!dynamic_sidebar('sidebar-section-2')) {
 		// default content here is desired
 	} ?>
 </div><!-- #sidebar-2 -->
-<div id="sidebar-3">
+<div id="sidebar-3" class="sidebar">
 	<?php if (!dynamic_sidebar('sidebar-section-3')) { 
 		// default content here is desired
 	} ?>
