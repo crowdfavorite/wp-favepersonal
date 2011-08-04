@@ -49,16 +49,12 @@ a:hover {
 	color: <?php echo cf_kuler_color('medium', 'header_a_hover'); ?>;
 }
 /* Menu */
-#header #nav-main ul li,
-#header .menu ul li {
+#nav-main li {
 	border-bottom: 3px solid <?php echo cf_kuler_color('darkest', 'header_menu_li_border'); ?>;
 }
-#header #nav-main ul li:hover,
-#header #nav-main ul li.current_page_item,
-#header #nav-main ul li.current-menu-parent,
-#header .menu ul li:hover,
-#header .menu ul li.current_page_item,
-#header .menu ul li.current_page_parent {
+#nav-main li:hover,
+#nav-main li.current-menu-item,
+#nav-main li.current-menu-parent {
 	border-bottom: 3px solid <?php echo cf_kuler_color('dark', 'header_menu_li_border_hover'); ?>;
 }
 /* Sub Menu */

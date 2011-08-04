@@ -54,6 +54,7 @@ include_once(CFCT_PATH.'functions/sidebars.php');
 include_once(CFCT_PATH.'functions/gallery.php');
 include_once(CFCT_PATH.'functions/about/about.php');
 include_once(CFCT_PATH.'functions/header/header.php');
+include_once(CFCT_PATH.'functions/CF_Patch_Nav_Menu.php');
 include_once(CFCT_PATH.'functions/admin.php');
 
 function cfcp_load_social() {
@@ -114,6 +115,8 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 	
 		add_custom_image_header( '', 'cfcp_admin_header_style' );
 		
+		$patch_nav = new CF_Patch_Nav_Menu();
+		$patch_nav->attach_hooks();
 	}
 }
 add_action( 'after_setup_theme', 'carrington_personal_setup' );

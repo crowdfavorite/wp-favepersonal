@@ -15,13 +15,11 @@
 }
 
 /* Menu */
-#nav-main,
-#header .menu {
+#nav-main {
 	float: right;
 	padding-top: 9px;
 }
-#header #nav-main ul,
-#header .menu ul {
+#nav-main ul {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 13px;
 	letter-spacing: 1px;
@@ -32,36 +30,29 @@
 	text-align: right;
 	text-transform: uppercase;
 }
-#header #nav-main li,
-#header .menu li {
+#nav-main li {
 	display: inline-block;
 	margin: 10px 0 0 20px;
 	padding: 0;
 	position: relative;
 }
-#header #nav-main ul li a,
-#header .menu ul li a {
+#nav-main li {
 	display: inline-block;
 	height: 20px;
 }
 
 
 /* inline block fix for IE6 and IE7 */
-html.ie6 #header #nav-main li,
-html.ie6 #header .menu li,
-html.ie6 #header #nav-main ul li a,
-html.ie6 #header .menu ul li a,
-html.ie7 #header #nav-main li,
-html.ie7 #header .menu li,
-html.ie7 #header #nav-main ul li a,
-html.ie7 #header .menu ul li a {
+html.ie6 #nav-main li,
+html.ie6 #nav-main a,
+html.ie7 #nav-main li,
+html.ie7 #nav-main a {
 	display: inline;
 	zoom: 1;
 }
 
 /* Sub Menu */
-#header #nav-main ul ul,
-#header .menu ul ul {
+#nav-main .sub-menu {
 	/* bg and border colors set in header */
 	box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
 	-moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
@@ -74,17 +65,16 @@ html.ie7 #header .menu ul li a {
 	text-align: left;
 	text-transform: none;
 	top: 23px;
-	width: 140px;
+	min-width: 140px;
+	width: 120%;
 	z-index: 99999;
 }
-#header #nav-main ul ul li,
-#header .menu ul ul li {
+#nav-main .sub-menu li {
 	display: block;
 	margin: 3px 0;
 	padding: 0;
 }
-#header #nav-main ul ul a,
-#header .menu ul ul a {
+#nav-main .sub-menu a {
 	display: block;
 	font-weight: normal;
 	height: auto;
@@ -92,12 +82,10 @@ html.ie7 #header .menu ul li a {
 	line-height: 1em;
 	padding: 4px 10px;
 }
-#header #nav-main ul li:hover > ul,
-#header .menu ul li:hover > ul {
+#nav-main li:hover > .sub-menu {
 	display: block;
 }
-#header #nav-main ul ul li.current_page_item > a,
-#header .menu ul ul li.current_page_item > a {
+#nav-main ul ul li.current-menu-item > a {
 	padding-left: 7px;
 	padding-right: 7px;
 }

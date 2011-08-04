@@ -7,16 +7,11 @@ pixels and dividing by the container size.
 target/context = %
 
 Breakpoints:
-iPhone (landscape)			480
 iPhone (portrait)			320
+iPhone (landscape)			480
 iPad (portrait)				768
 iPad (landscape) / Screen	1024
 -------------------------------------------------- */
-
-.container {
-	margin: 0 auto;
-	padding: 0 10px;
-}
 
 #featured-post-2,
 #featured-post-3 {
@@ -24,25 +19,40 @@ iPad (landscape) / Screen	1024
 }
 
 .featured {
-	float: left;
-	width: 48%;
-}
-.featured {
-	height: 220px;
+	margin-left: 15px;
 }
 .featured .gallery-img-excerpt li {
 	float: left;
 	width: 50%;
-	height: 110px;
 }
-.post .gallery-img-excerpt img {
-	width: ;
+
+@media screen and (min-width: 480px) {
+	.container {
+		width: 460px;
+		margin: 0 auto;
+/*		overflow: hidden;
+*/	}
+	
+	.featured {
+		float: left;
+		height: 140px;
+		width: 222px;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 70px;
+	}
+	#featured-post-1,
+	#featured-post-2 {
+		display: block;
+	}
+	#featured-post-1 {
+		margin-left: 0;
+	}
 }
 
 @media screen and (min-width: 768px) {
 	.container {
-		max-width: 708px;
-		overflow: hidden;
+		width: 708px;
 	}
 	
 	.featured {
@@ -53,14 +63,8 @@ iPad (landscape) / Screen	1024
 		height: 70px;
 	}
 	
-	#featured-post-1,
-	#featured-post-2,
 	#featured-post-3 {
 		display: block;
-	}
-	#featured-post-1,
-	#featured-post-2 {
-		margin-right: 15px;
 	}
 
 	.post .gallery-img-excerpt li {
@@ -95,10 +99,7 @@ iPad (landscape) / Screen	1024
 }
 @media screen and (min-width: 1010px) {
 	.container {
-		max-width: 990px;
 		width: 990px;
-		margin: 0 auto;
-		padding: 0 10px;
 	}
 	
 	.featured {
@@ -109,9 +110,9 @@ iPad (landscape) / Screen	1024
 		height: 90px;
 	}
 	
-	#featured-post-1,
-	#featured-post-2 {
-		margin-right: 30px;
+	#featured-post-2,
+	#featured-post-3 {
+		margin-left: 30px;
 	}
 	
 	.post .gallery-img-excerpt li {
