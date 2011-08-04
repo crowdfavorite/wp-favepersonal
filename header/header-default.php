@@ -39,7 +39,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 <body <?php body_class(); ?>>
 	<header id="header">
 		<div class="container clearfix">
-			<h1><a href="<?php bloginfo('url') ?>/" title="Home" rel="home"><?php bloginfo('name') ?></a></h1>
+			<h1><a href="<?php echo home_url('/'); ?>" title="Home" rel="home"><?php bloginfo('name') ?></a></h1>
 			<?php wp_nav_menu( array(
 				'container' => 'nav',
 				'container_id' => 'nav-main',
