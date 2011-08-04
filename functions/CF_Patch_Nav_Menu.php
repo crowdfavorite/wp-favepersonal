@@ -1,6 +1,6 @@
 <?php
 class CF_Patch_Nav_Menu {
-	public public function attach_hooks() {
+	public function attach_hooks() {
 		add_filter('wp_page_menu_args', array($this, 'wp_page_menu_args'));
 		add_filter('wp_nav_menu_args', array($this, 'wp_nav_menu_args'));
 	}
