@@ -133,7 +133,7 @@ add_action('init', 'cfct_load_assets');
 
 // Dequeue Social Plugin Stylesheet
 function cfcp_social_dequeue_style() {
-	wp_dequeue_style('social_style_main');
+	wp_dequeue_style('social_comments');
 }
 add_action('init', 'cfcp_social_dequeue_style', 10);
 
