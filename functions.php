@@ -117,6 +117,11 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		
 		$patch_nav = new CF_Patch_Nav_Menu();
 		$patch_nav->attach_hooks();
+		
+		/**
+		 * Remove Carrington-added rev attribute -- now deprecated in HTML5
+		 */
+		remove_filter('comments_popup_link_attributes', 'cfct_ajax_comment_link');
 	}
 }
 add_action( 'after_setup_theme', 'carrington_personal_setup' );
@@ -155,7 +160,6 @@ add_action('init', 'cfcp_social_dequeue_style', 10);
  */
 function cfcp_head_extra() {
 	echo '<link rel="pingback" href="'.get_bloginfo('pingback_url').'" />';
-	wp_get_archives('type=monthly&format=link');
 }
 add_action('wp_head', 'cfcp_head_extra');
 
