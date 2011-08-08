@@ -266,6 +266,9 @@ a:hover {
 	color: <?php echo cf_kuler_color('darkest', 'social_nav_a_color'); ?>;
 	background-color: <?php echo cf_kuler_color('darkest', 'social_nav_a_background'); ?>;
 }
+#social .bypostauthor .social-comment-inner {
+	border-bottom-color: <?php echo cf_kuler_color('medium', 'social_comment_inner'); ?>;
+}
 #social .social-posted-from {
 	background-color: <?php echo cf_kuler_color('light', 'social_posted_form_background'); ?>;
 }
