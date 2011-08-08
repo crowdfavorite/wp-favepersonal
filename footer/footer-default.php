@@ -30,7 +30,16 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 <?php
 if (cfct_get_option('credit') == 'yes') { 
 ?>
-			<p class="credit"><?php _e('Powered by <a href="http://wordpress.org/">WordPress</a>', 'favepersonal'); ?> &nbsp;&middot;&nbsp; <?php printf(__('<a href="http://crowdfavorite.com/themes/favepersonal" title="A powerful, personal Wordpress theme.">%s</a>', 'favepersonal'), 'FavePersonal'); ?> by <?php printf(__('<a href="http://crowdfavorite.com" title="Elegant WordPress development and design services." rel="developer designer">%s</a>', 'favepersonal'), 'Crowd Favorite'); ?></p>
+			<p class="credit"><?php 
+			printf(
+				__('Powered by <a href="http://wordpress.org/">WordPress</a> %3$s <a href="%4$s" title="A powerful, personal Wordpress theme.">%2$s</a> by <a href="%5$s" title="Elegant WordPress development and design services.">%1$s</a>', 'favepersonal'), 
+				'Crowd Favorite',
+				'FavePersonal',
+				'&nbsp;&middot;&nbsp;',
+				'http://crowdfavorite.com/themes/favepersonal',
+				'http://crowdfavorite.com'
+			);
+			?></p>
 <?php
 }
 $colophon = str_replace('%Y', date('Y'), cfct_get_option('cfcp_copyright'));
