@@ -200,10 +200,6 @@ iPad (landscape) / Screen	1024
 		width: 120px;
 	}
 	
-	.single .format-gallery .post-media {
-		padding-left: 140px;
-	}
-	
 	.post .gallery-img-excerpt li {
 		margin: 0 0 12px;
 		width: 130px;
@@ -226,6 +222,11 @@ iPad (landscape) / Screen	1024
 	.post .gallery-img-excerpt .excerpt-img-0,
 	.post .gallery-img-excerpt .excerpt-img-4 {
 		margin-left: 0;
+	}
+	
+	.single-format-gallery .post-media {
+		left: -1px;
+		position: relative;
 	}
 	
 	.featured {
@@ -298,6 +299,10 @@ iPad (landscape) / Screen	1024
 	.post .gallery-img-excerpt .excerpt-img-3,
 	.post .gallery-img-excerpt .excerpt-img-6 {
 		margin-left: 0;
+	}
+	
+	.single .format-gallery .post-media {
+		padding-left: 140px;
 	}
 	
 	/* Shared styles for media post formats */
