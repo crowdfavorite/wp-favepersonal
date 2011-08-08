@@ -61,6 +61,7 @@ a:hover {
 #nav-main h1,
 #nav-main .menu {
 	background-color: <?php echo cf_kuler_color('dark', 'header_menu_background'); ?>;
+	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_border'); ?>;
 }
 /* Sub Menu */
 #nav-main .sub-menu a:hover {
@@ -71,12 +72,7 @@ a:hover {
 	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_ul_ul_border'); ?>;
 	border-top: 0;
 }
-#header #nav-main .sub-menu li,
-#header #nav-main .sub-menu li:hover,
-#header #nav-main .sub-menu li.current-menu-item {
-	border-bottom: 0;
-}
-#header #nav-main ul ul li.current-menu-item > a {
+#nav-main ul ul li.current-menu-item > a {
 	border-left: 3px solid <?php echo cf_kuler_color('darkest', 'header_menu_current_a_border_left'); ?>;
 	border-right: 3px solid <?php echo cf_kuler_color('darkest', 'header_menu_current_a_border_right'); ?>;
 }

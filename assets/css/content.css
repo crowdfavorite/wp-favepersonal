@@ -27,9 +27,11 @@
 	padding: 0;
 	text-transform: uppercase;
 }
-
 #nav-main li:first-child {
 	margin-left: 0;
+}
+#nav-main .sub-menu li {
+	border-bottom: 0;
 }
 
 /** Masthead - also see masthead.css

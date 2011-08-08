@@ -32,6 +32,7 @@ iPad (landscape) / Screen	1024
 		font: 12px Helvetica, Arial, Verdana, sans-serif;
 	}
 	#nav-main .menu {
+		border: 3px solid transparent;
 		/* bg and border colors set in header */
 		-moz-box-shadow: 0px 2px 4px rgba(0,0,0,0.8);
 		-webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.8);
@@ -204,9 +205,7 @@ iPad (landscape) / Screen	1024
 		display: inline;
 		zoom: 1;
 	}
-	#nav-main li:hover,
-	#nav-main li.current-menu-item,
-	#nav-main li.current-menu-parent {
+	#nav-main li {
 		border-bottom: 3px solid transparent;
 	}
 	
