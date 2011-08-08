@@ -71,6 +71,7 @@ html.ie7 #nav-main a {
 }
 #nav-main .sub-menu li {
 	display: block;
+	height: auto;
 	margin: 3px 0;
 	padding: 0;
 }
@@ -79,7 +80,7 @@ html.ie7 #nav-main a {
 	font-weight: normal;
 	height: auto;
 	letter-spacing: 0;
-	line-height: 1em;
+	line-height: 1.2em;
 	padding: 4px 10px;
 }
 #nav-main li:hover > .sub-menu {
