@@ -44,6 +44,13 @@ wp_register_style(
 );
 $wp_styles->add_data('personal-ie7', 'conditional', 'IE 7');
 
+wp_enqueue_script(
+	'modernizr',
+	$assets_url.'js/modernizr.custom.js',
+	array(),
+	CFCT_URL_VERSION
+);
+
 // Enqueue bundles compiled by bundler script
 $loader = new Bundler_Loader($assets_url);
 // Set the default cache-busting version number. Used if the bundle doesn't have one set.
@@ -70,17 +77,6 @@ if (is_child_theme() && !is_admin()) {
 if ( is_singular() && get_option( 'thread_comments' ) ) {
 	wp_enqueue_script( 'comment-reply' );
 }
-
-function add_ie_shims() {
-$js_dir = trailingslashit(get_bloginfo('template_url')) . 'assets/js/';
-?>
-<!--[if lte IE 8]>
-<script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<script type="text/javascript" src="<?php echo $js_dir; ?>respond.min.js?ver=<?php echo CFCT_URL_VERSION; ?>"></script>
-<![endif]-->
-<?php
-}
-add_action('wp_head', 'add_ie_shims', 8);
 
 function cfcp_viewport_meta() {
 // Mobile viewport optimized: j.mp/bplateviewport

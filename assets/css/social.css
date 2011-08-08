@@ -108,13 +108,13 @@
 #social input.social-input,
 #social .social-select {
 	padding: 5px 6px;
-	width: 326px;
+	width: 320px;
 }
 #social textarea.social-input {
 	display: block;
 	height: 110px;
 	padding: 5px 6px;
-	width: 496px;
+	width: 96%;
 }
 #social .social-commentlist textarea.social-input {
 	width: 95%;

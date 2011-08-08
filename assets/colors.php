@@ -48,38 +48,35 @@ a:hover {
 #header a:hover {
 	color: <?php echo cf_kuler_color('medium', 'header_a_hover'); ?>;
 }
+
 /* Menu */
-#nav-main .menu {
-	background-color: <?php echo cf_kuler_color('darkest', 'header_background'); ?>;
-}
 #nav-main li {
-	border-bottom: 3px solid <?php echo cf_kuler_color('darkest', 'header_menu_li_border'); ?>;
+	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_li_border'); ?>;
 }
 #nav-main li:hover,
 #nav-main li.current-menu-item,
 #nav-main li.current-menu-parent {
-	border-bottom: 3px solid <?php echo cf_kuler_color('dark', 'header_menu_li_border_hover'); ?>;
+	border-color: <?php echo cf_kuler_color('dark', 'header_menu_li_border_hover'); ?>;
+}
+#nav-main h1,
+#nav-main .menu {
+	background-color: <?php echo cf_kuler_color('dark', 'header_menu_background'); ?>;
 }
 /* Sub Menu */
-#header ul ul li a:hover {
+#nav-main .sub-menu a:hover {
 	color: <?php echo cf_kuler_color('darkest', 'header_menu_li_a_hover'); ?>;
 }
-#header #nav-main ul ul,
-#header .menu ul ul {
+#nav-main .sub-menu {
 	background: <?php echo cf_kuler_color('dark', 'header_menu_ul_ul_background'); ?>;
-	border: 3px solid <?php echo cf_kuler_color('darkest', 'header_menu_ul_ul_border'); ?>;
+	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_ul_ul_border'); ?>;
 	border-top: 0;
 }
-#header #nav-main ul ul li,
-#header #nav-main ul ul li:hover,
-#header #nav-main ul ul li.current_page_item,
-#header .menu ul ul li,
-#header .menu ul ul li:hover,
-#header .menu ul ul li.current_page_item {
+#header #nav-main .sub-menu li,
+#header #nav-main .sub-menu li:hover,
+#header #nav-main .sub-menu li.current-menu-item {
 	border-bottom: 0;
 }
-#header #nav-main ul ul li.current_page_item > a,
-#header .menu ul ul li.current_page_item > a {
+#header #nav-main ul ul li.current-menu-item > a {
 	border-left: 3px solid <?php echo cf_kuler_color('darkest', 'header_menu_current_a_border_left'); ?>;
 	border-right: 3px solid <?php echo cf_kuler_color('darkest', 'header_menu_current_a_border_right'); ?>;
 }
