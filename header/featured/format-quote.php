@@ -7,6 +7,7 @@ include(CFCT_PATH.'header/featured/init.php');
 					<div class="featured-content">
 						<div class="featured-description">
 							<?php echo cf_trim_text(get_the_excerpt(), 170, "<p>", "&hellip;</p>"); ?>
+						</div>
 					</div>
 					<a href="<?php the_permalink(); ?>" class="featured-link"><?php _e('Read More', 'favepersonal'); ?></a>
 				</article><!-- .featured -->
