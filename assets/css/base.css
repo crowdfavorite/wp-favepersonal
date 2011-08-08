@@ -24,6 +24,8 @@ hr {
 }
 body {
 	background-color: #fff;
+	/* Keep webkit from re-sizing text. We're mobile-optimized, baby! */
+	-webkit-text-size-adjust: none;
 }
 /**
  * Set HTML5 block level elements for browsers that don't recognize.
