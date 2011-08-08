@@ -26,6 +26,7 @@ include_once(CFCT_PATH.'assets/colors.php');
 // Used for conditional comments with wp_enqueue_style
 global $wp_styles;
 $assets_url = trailingslashit(get_bloginfo('template_url')) . 'assets/';
+$personal_bundle = (CFCT_PRODUCTION ? array('bundle-personal') : array());
 
 wp_register_script(
 	'jquery-cycle',
@@ -38,7 +39,7 @@ wp_register_script(
 wp_register_style(
 	'personal-ie7',
 	$assets_url.'css/ie7.css',
-	(CFCT_PRODUCTION ? array('bundle-personal') : array()),
+	$personal_bundle,
 	CFCT_URL_VERSION
 );
 $wp_styles->add_data('personal-ie7', 'conditional', 'IE 7');
@@ -58,6 +59,12 @@ else {
 }
 
 wp_enqueue_style('personal-ie7');
+
+// Automatically enqueue child styles
+if (is_child_theme() && !is_admin()) {
+	wp_enqueue_style('personal-child', get_bloginfo('stylesheet_url'), $personal_bundle, CFCT_URL_VERSION, 'screen');
+}
+
 
 /* Add JavaScript to pages with the comment form to support threaded comments (when in use). */
 if ( is_singular() && get_option( 'thread_comments' ) ) {
