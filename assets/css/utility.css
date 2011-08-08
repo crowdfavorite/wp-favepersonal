@@ -97,6 +97,9 @@
 	padding: 2px 8px 3px 8px;
 	margin: 1px 0 0 0;
 }
+img.wp-smiley {
+	vertical-align: sub;
+}
 
 /* WP Gallery */
 .gallery-item {
