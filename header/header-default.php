@@ -40,12 +40,14 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	<header id="header">
 		<div class="container clearfix">
 			<h1><a href="<?php echo home_url('/'); ?>" title="Home" rel="home"><?php bloginfo('name') ?></a></h1>
-			<?php wp_nav_menu( array(
-				'container' => 'nav',
-				'container_id' => 'nav-main',
-				'theme_location' => 'main',
-				'depth' => 2
-			)); ?>
+			<nav id="nav-main" class="clearfix">
+				<h1><?php _e('Main Navigation', 'favepersonal'); ?></h1>
+				<?php wp_nav_menu( array(
+					'container' => '',
+					'theme_location' => 'main',
+					'depth' => 2
+				)); ?>
+			</nav>
 		</div><!-- .container -->
 	</header><!-- #header -->
 	

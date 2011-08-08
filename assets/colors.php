@@ -49,6 +49,9 @@ a:hover {
 	color: <?php echo cf_kuler_color('medium', 'header_a_hover'); ?>;
 }
 /* Menu */
+#nav-main .menu {
+	background-color: <?php echo cf_kuler_color('darkest', 'header_background'); ?>;
+}
 #nav-main li {
 	border-bottom: 3px solid <?php echo cf_kuler_color('darkest', 'header_menu_li_border'); ?>;
 }

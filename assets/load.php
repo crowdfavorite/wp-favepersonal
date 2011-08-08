@@ -43,40 +43,37 @@ wp_register_style(
 );
 $wp_styles->add_data('personal-ie7', 'conditional', 'IE 7');
 
-// Front-end scripts and styles
-if (!is_admin()) {
-	// Enqueue bundles compiled by bundler script
-	$loader = new Bundler_Loader($assets_url);
-	// Set the default cache-busting version number. Used if the bundle doesn't have one set.
-	$loader->set_default_ver(CFCT_URL_VERSION);
-	
-	// If we're in production mode, enqueue the built files
-	if (CFCT_PRODUCTION) {
-		$loader->enqueue_bundled_files();
-	}
-	// Otherwise, if we're in development mode, enqueue the original separate files
-	else {
-		$loader->enqueue_original_files();
-	}
-	
-	wp_enqueue_style('personal-ie7');
+// Enqueue bundles compiled by bundler script
+$loader = new Bundler_Loader($assets_url);
+// Set the default cache-busting version number. Used if the bundle doesn't have one set.
+$loader->set_default_ver(CFCT_URL_VERSION);
+
+// If we're in production mode, enqueue the built files
+if (CFCT_PRODUCTION) {
+	$loader->enqueue_bundled_files();
 }
-// Back end scripts and styles
+// Otherwise, if we're in development mode, enqueue the original separate files
 else {
-	/* Let's load some styles that will be used on all theme setting pages */
-	wp_enqueue_style('cf-admin-css', $assets_url.'css/admin.css', array(), CFCT_THEME_VERSION);
+	$loader->enqueue_original_files();
 }
 
-/**
- * Run this at WP when we can check is_singular...
- */
-function cfcp_enqueue_comments_script() {
-	/* Add JavaScript to pages with the comment form to support threaded comments (when in use). */
-	if ( is_singular() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+wp_enqueue_style('personal-ie7');
+
+/* Add JavaScript to pages with the comment form to support threaded comments (when in use). */
+if ( is_singular() && get_option( 'thread_comments' ) ) {
+	wp_enqueue_script( 'comment-reply' );
 }
-add_action('wp', 'cfcp_enqueue_comments_script');
+
+function add_ie_shims() {
+$js_dir = trailingslashit(get_bloginfo('template_url')) . 'assets/js/';
+?>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script type="text/javascript" src="<?php echo $js_dir; ?>respond.min.js?ver=<?php echo CFCT_URL_VERSION; ?>"></script>
+<![endif]-->
+<?php
+}
+add_action('wp_head', 'add_ie_shims', 8);
 
 function cfcp_viewport_meta() {
 // Mobile viewport optimized: j.mp/bplateviewport

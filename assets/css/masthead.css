@@ -20,6 +20,7 @@
 	overflow: hidden;
 	position: relative;
 }
+
 .featured-title {
 	background-color: #666;
 	color: #fff;
@@ -103,9 +104,11 @@
 	zoom: 1;
 }
 .featured .gallery-img-excerpt li {
+	float: left;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
+	width: 50%;
 }
 .featured .gallery-img-excerpt li img {
 	display: block;

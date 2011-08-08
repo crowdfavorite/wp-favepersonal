@@ -22,7 +22,6 @@ $bundle_js
 	->set_bundle_key('bundle-personal')
 	->set_language('javascript')
 	->set_meta('dependencies', array('jquery'))
-	->add('modernizr', 'js/modernizr.custom.js')
 	->add('base', 'js/cfgallery/jquery.cfgallery.js')
 	->add('utility', 'js/global.js')
 	->add('content', 'js/o-type-ahead.js');

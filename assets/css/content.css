@@ -9,14 +9,12 @@
 	position: relative;
 }
 #header h1 {
-	float: left;
 	line-height: 1.3em;
 	margin: 0;
 }
 
 /* Menu */
 #nav-main {
-	float: right;
 	padding-top: 9px;
 }
 #nav-main ul {
@@ -27,70 +25,12 @@
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	text-align: right;
 	text-transform: uppercase;
 }
-#nav-main li {
-	display: inline-block;
-	margin: 10px 0 0 20px;
-	padding: 0;
-	position: relative;
-}
-#nav-main li {
-	display: inline-block;
-	height: 20px;
-}
 
-
-/* inline block fix for IE6 and IE7 */
-html.ie6 #nav-main li,
-html.ie6 #nav-main a,
-html.ie7 #nav-main li,
-html.ie7 #nav-main a {
-	display: inline;
-	zoom: 1;
+#nav-main li:first-child {
+	margin-left: 0;
 }
-
-/* Sub Menu */
-#nav-main .sub-menu {
-	/* bg and border colors set in header */
-	box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
-	-moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
-	-webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
-	display: none;
-	font-family: Helvetica, Arial, Verdana, sans-serif;
-	right: -3px;
-	padding: 5px 0 3px 0;
-	position: absolute;
-	text-align: left;
-	text-transform: none;
-	top: 23px;
-	min-width: 140px;
-	width: 120%;
-	z-index: 99999;
-}
-#nav-main .sub-menu li {
-	display: block;
-	height: auto;
-	margin: 3px 0;
-	padding: 0;
-}
-#nav-main .sub-menu a {
-	display: block;
-	font-weight: normal;
-	height: auto;
-	letter-spacing: 0;
-	line-height: 1.2em;
-	padding: 4px 10px;
-}
-#nav-main li:hover > .sub-menu {
-	display: block;
-}
-#nav-main ul ul li.current-menu-item > a {
-	padding-left: 7px;
-	padding-right: 7px;
-}
-
 
 /** Masthead - also see masthead.css
  -------------------------------------------------- */
@@ -112,13 +52,6 @@ html.ie7 #nav-main a {
 .page {
 	margin-bottom: 40px;
 	position: relative;
-}
-
-/* shared */
-.post-header,
-.post-media,
-.post-content {
-	margin-left: 140px;
 }
 
 /* post-header */
@@ -146,11 +79,6 @@ html.ie7 #nav-main a {
 	color: #ccc;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 16px;
-	left: 0;
-	position: absolute;
-	text-align: right;
-	top: 2px;
-	width: 120px;
 }
 .post-date a {
 	color: #ccc;
@@ -179,14 +107,11 @@ html.ie7 #nav-main a {
 /* post-meta */
 .post-meta {
 	color: #ccc;
-	float: left;
 	font-size: 12px;
 	line-height: 20px;
 	margin-right: 20px;
 	overflow: hidden;
 	padding-top: 1px;
-	text-align: right;
-	width: 120px;
 }
 .post-meta a {
 	color: #999;

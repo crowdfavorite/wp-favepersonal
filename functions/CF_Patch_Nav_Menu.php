@@ -1,5 +1,14 @@
 <?php
 class CF_Patch_Nav_Menu {
+	public $fallback_cb = null;
+	
+	public function __construct() {
+		$this->fallback_cb = array($this, 'page_menu');
+	}
+	
+	/**
+	 * Run this once after instantiating.
+	 */
 	public function attach_hooks() {
 		add_filter('wp_page_menu_args', array($this, 'wp_page_menu_args'));
 		add_filter('wp_nav_menu_args', array($this, 'wp_nav_menu_args'));
@@ -8,7 +17,7 @@ class CF_Patch_Nav_Menu {
 	public function wp_nav_menu_args($args) {
 		// If using the default fallback_cb, change to the shimmed fallback cb we have in this class.
 		if ($args['fallback_cb'] == 'wp_page_menu') {
-			$args['fallback_cb'] = array($this, 'page_menu');
+			$args['fallback_cb'] = $this->fallback_cb;
 		}
 		return $args;
 	}
@@ -40,14 +49,15 @@ class CF_Patch_Nav_Menu {
 	 * Honor container setting for wp_nav_menu in wp_page_menu
 	 */
 	public function nav_menu_container($menu, $args) {
-		// Container arg is passed along by wp_nav_menu.
-		// If no conainer is passed, strip it out from wp_page_menu.
-
+		// Build ID attr - we'll use it in a bit.
 		$id = ($args['container_id'] ? ' id="'.$args['container_id'].'"' : '');
+		
+		/* Container arg is passed along by wp_nav_menu.
 
-		// String replacements are brittle, but it's all we have for now.
-		// Remove menu divs if there is no container specified AND this public function has been called by wp_nav_menu.
-		if (!$args['container'] && $args['fallback_cb'] == 'wp_page_menu') {
+		String replacements are brittle, but it's all we have for now.
+		Remove menu divs if there is no container specified AND this function has been called by
+		our fallback callback. */
+		if (!$args['container'] && $args['fallback_cb'] == $this->fallback_cb) {
 			$menu = str_replace(array('<div class="'.$args['menu_class'].'">', "</div>\n"), '', $menu);
 		}
 		// If container is a nav tag, replace div with nav. Include ID, too.

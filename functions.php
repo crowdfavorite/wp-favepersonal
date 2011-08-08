@@ -129,7 +129,20 @@ function cfcp_admin_header_style() {} // empty.
 function cfct_load_assets() {
 	include_once(CFCT_PATH.'assets/load.php');
 }
-add_action('init', 'cfct_load_assets');
+
+/**
+ * Load assets at action 'init' for admin, since wp fires inconsistently on admin side
+ */
+function cfct_load_admin_assets() {
+	include_once(CFCT_PATH.'assets/load-admin.php');
+}
+
+if (!is_admin()) {
+	add_action('wp', 'cfct_load_assets');
+}
+else {
+	add_action('init', 'cfct_load_admin_assets');
+}
 
 // Dequeue Social Plugin Stylesheet
 function cfcp_social_dequeue_style() {
