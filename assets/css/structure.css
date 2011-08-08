@@ -223,6 +223,10 @@ iPad (landscape) / Screen	1024
 	#masthead {
 		padding: 26px 0 30px;
 	}
+	
+	#footer .credit {
+		float: right;
+	}
 }
 @media screen and (min-width: 1010px) {
 	.container {
