@@ -21,12 +21,10 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 global $post, $comment;
-
 extract($data); // for comment reply link
 
 ?>
-
-<div id="comment-<?php comment_ID(); ?>" class="social-comment-inner social-clearfix">
+<div id="comment-<?php comment_ID(); ?>" <?php comment_class('social-comment-inner social-clearfix'); ?>>
 	<div class="social-comment-header">
 		<div class="social-comment-author vcard">
 			<?php if (function_exists('get_avatar')) { 
