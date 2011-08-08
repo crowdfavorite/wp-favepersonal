@@ -253,8 +253,7 @@ function cfcp_about_image_search($params) {
 // Admin Page
 
 function cfcp_about_admin_menu() {
-	add_submenu_page(
-		'themes.php',
+	add_theme_page(
 		__('Bio Widget', 'favepersonal'),
 		__('Bio Widget', 'favepersonal'),
 		'manage_options',
