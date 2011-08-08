@@ -62,8 +62,7 @@
 .single .post-header {
 	margin-bottom: 15px;
 }
-.post-title, 
-.post-date {
+.post-title {
 	line-height: 30px;
 	margin: 0;
 	letter-spacing: -1px;
@@ -105,13 +104,20 @@
 }
 
 /* post-meta */
+.post-date,
+.post-meta,
+.post-meta p {
+	display: inline;
+}
 .post-meta {
 	color: #ccc;
 	font-size: 12px;
-	line-height: 20px;
 	margin-right: 20px;
 	overflow: hidden;
-	padding-top: 1px;
+}
+.post-meta p {
+	vertical-align: baseline;
+	margin-bottom: 0;
 }
 .post-meta a {
 	color: #999;
@@ -243,6 +249,10 @@
 .format-status .post-date,
 .format-quote .post-date {
 	line-height: 28px;
+}
+.format-status .post-date,
+.format-quote .post-date {
+	top: 0;
 }
 .single .post-status-content,
 .single .format-quote .post-content blockquote {

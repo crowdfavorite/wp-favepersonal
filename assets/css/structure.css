@@ -22,7 +22,8 @@ iPad (landscape) / Screen	1024
 	margin: 0 10px;
 }
 
-@media screen and (max-width: 479px) {
+/* iPhone portrait and landscape special edge-case styles */
+@media screen and (max-width: 480px) {
 	/**
 	 * Hide h1 in header by default
 	 */
@@ -56,8 +57,8 @@ iPad (landscape) / Screen	1024
 	 */
 	.post .gallery-img-excerpt li {
 		float: left;
-		width: 143px;
-		margin: 0 0 12px 15px;
+		width: 146px;
+		margin: 0 0 7px 10px;
 	}
 	.post .gallery-img-excerpt li.excerpt-img-0,
 	.post .gallery-img-excerpt li.excerpt-img-3,
@@ -65,8 +66,8 @@ iPad (landscape) / Screen	1024
 		margin-left: 0;
 	}
 	.post .gallery-img-excerpt li.gallery-view-all a {
-		height: 107px;
-		line-height: 107px;
+		height: 109px;
+		line-height: 109px;
 	}
 	
 	.featured {
@@ -161,10 +162,19 @@ iPad (landscape) / Screen	1024
 	}
 	
 	/* Put post info in an empty left-hand column */
-	.post-header,
+	.post-title,
 	.post-media,
 	.post-content {
 		margin-left: 140px;
+	}
+	.post-date,
+	.post-meta,
+	.post-meta p {
+		display: block;
+	}
+	.post-date {
+		line-height: 30px;
+		letter-spacing: -1px;
 	}
 	.post-date {
 		left: 0;
@@ -175,11 +185,13 @@ iPad (landscape) / Screen	1024
 	}
 	.post-meta {
 		float: left;
+		padding-top: 8px;
 		text-align: right;
 		width: 120px;
 	}
 	
 	.post .gallery-img-excerpt li {
+		margin: 0 0 12px 15px;
 		width: 130px;
 	}
 	.post .gallery-img-excerpt li.gallery-view-all a {

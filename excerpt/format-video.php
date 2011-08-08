@@ -29,8 +29,8 @@ add_filter('cfcp_format_video_embed', array(&$wp_embed, 'autoembed'));
 	<div class="post-header">
 		<h2 class="post-title"><a href="<?php the_permalink() ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h2>
 		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
+		<?php cfct_misc('post-meta-excerpts'); ?>
 	</div>
-	<?php cfct_misc('post-meta-excerpts'); ?>
 	<div class="post-media">
 <?php
 echo apply_filters(
