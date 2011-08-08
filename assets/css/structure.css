@@ -19,7 +19,8 @@ iPad (landscape) / Screen	1024
 }
 
 .container {
-	margin: 0 10px;
+	margin: 0 auto;
+	width: 300px;
 }
 
 /* iPhone portrait and landscape special edge-case styles */
@@ -49,25 +50,34 @@ iPad (landscape) / Screen	1024
 @media screen and (min-width: 480px) {
 	.container {
 		width: 460px;
-		margin: 0 auto;
 	}
 	
 	/**
 	 * Modify post galleries (3 col)
 	 */
 	.post .gallery-img-excerpt li {
-		float: left;
 		width: 146px;
-		margin: 0 0 7px 10px;
-	}
-	.post .gallery-img-excerpt li.excerpt-img-0,
-	.post .gallery-img-excerpt li.excerpt-img-3,
-	.post .gallery-img-excerpt li.excerpt-img-6 {
-		margin-left: 0;
+		margin: 0 0 7px 0;
 	}
 	.post .gallery-img-excerpt li.gallery-view-all a {
 		height: 109px;
 		line-height: 109px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-7 {
+		display: block;
+	}
+	.post .gallery-img-excerpt .excerpt-img-1,
+	.post .gallery-img-excerpt .excerpt-img-2,
+	.post .gallery-img-excerpt .excerpt-img-4,
+	.post .gallery-img-excerpt .excerpt-img-5,
+	.post .gallery-img-excerpt .excerpt-img-7,
+	.post .gallery-img-excerpt .gallery-view-all {
+		margin-left: 10px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-0,
+	.post .gallery-img-excerpt .excerpt-img-3,
+	.post .gallery-img-excerpt .excerpt-img-6 {
+		margin-left: 0;
 	}
 	
 	.featured {
@@ -173,11 +183,9 @@ iPad (landscape) / Screen	1024
 		display: block;
 	}
 	.post-date {
+		left: 0;
 		line-height: 30px;
 		letter-spacing: -1px;
-	}
-	.post-date {
-		left: 0;
 		position: absolute;
 		text-align: right;
 		top: 2px;
@@ -191,24 +199,29 @@ iPad (landscape) / Screen	1024
 	}
 	
 	.post .gallery-img-excerpt li {
-		margin: 0 0 12px 15px;
+		margin: 0 0 12px;
 		width: 130px;
 	}
 	.post .gallery-img-excerpt li.gallery-view-all a {
 		height: 97px;
 		line-height: 97px;
 	}
-	.post .excerpt-img-7 {
+	.post .gallery-img-excerpt .excerpt-img-7 {
 		display: none;
 	}
-	/* Override reset margins from iPhone (landscape) */
-	.post .gallery-img-excerpt li.excerpt-img-3,
-	.post .gallery-img-excerpt li.excerpt-img-6 {
+	.post .gallery-img-excerpt .excerpt-img-1,
+	.post .gallery-img-excerpt .excerpt-img-2,
+	.post .gallery-img-excerpt .excerpt-img-3,
+	.post .gallery-img-excerpt .excerpt-img-5,
+	.post .gallery-img-excerpt .excerpt-img-6,
+	.post .gallery-img-excerpt .gallery-view-all {
 		margin-left: 15px;
 	}
-	.post .gallery-img-excerpt li.excerpt-img-4 {
+	.post .gallery-img-excerpt .excerpt-img-0,
+	.post .gallery-img-excerpt .excerpt-img-4 {
 		margin-left: 0;
 	}
+
 	
 	.featured {
 		height: 140px;
@@ -261,21 +274,25 @@ iPad (landscape) / Screen	1024
 	.post .gallery-img-excerpt li {
 		width: 160px;
 	}
-	.post .gallery-img-excerpt li.excerpt-img-0,
-	.post .gallery-img-excerpt li.excerpt-img-3,
-	.post .gallery-img-excerpt li.excerpt-img-6 {
-		margin-left: 0;
-	}
-	/* Re-instate display and margins removed in iPad portrait breakpoint */
-	.post .excerpt-img-7 {
-		display: block;
-	}
-	.post .gallery-img-excerpt li.excerpt-img-4 {
-		margin-left: 15px;
-	}
 	.post .gallery-img-excerpt li.gallery-view-all a {
 		height: 120px;
 		line-height: 120px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-7 {
+		display: block;
+	}
+	.post .gallery-img-excerpt .excerpt-img-1,
+	.post .gallery-img-excerpt .excerpt-img-2,
+	.post .gallery-img-excerpt .excerpt-img-4,
+	.post .gallery-img-excerpt .excerpt-img-5,
+	.post .gallery-img-excerpt .excerpt-img-7,
+	.post .gallery-img-excerpt .gallery-view-all {
+		margin-left: 15px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-0,
+	.post .gallery-img-excerpt .excerpt-img-3,
+	.post .gallery-img-excerpt .excerpt-img-6 {
+		margin-left: 0;
 	}
 	
 	
