@@ -47,6 +47,7 @@ iPad (landscape) / Screen	1024
 	}
 }
 
+/* iPhone Landscape */
 @media screen and (min-width: 480px) {
 	.container {
 		width: 460px;
@@ -166,6 +167,7 @@ iPad (landscape) / Screen	1024
 	}
 }
 
+/* iPad Portrait */
 @media screen and (min-width: 768px) {
 	.container {
 		width: 708px;
@@ -198,6 +200,10 @@ iPad (landscape) / Screen	1024
 		width: 120px;
 	}
 	
+	.single .format-gallery .post-media {
+		padding-left: 140px;
+	}
+	
 	.post .gallery-img-excerpt li {
 		margin: 0 0 12px;
 		width: 130px;
@@ -221,7 +227,6 @@ iPad (landscape) / Screen	1024
 	.post .gallery-img-excerpt .excerpt-img-4 {
 		margin-left: 0;
 	}
-
 	
 	.featured {
 		height: 140px;
@@ -230,8 +235,6 @@ iPad (landscape) / Screen	1024
 	.featured .gallery-img-excerpt li {
 		height: 70px;
 	}
-	
-	
 	#featured-post-3 {
 		display: block;
 	}
@@ -253,6 +256,8 @@ iPad (landscape) / Screen	1024
 		float: right;
 	}
 }
+
+/* iPad Landscape and large screen */
 @media screen and (min-width: 1010px) {
 	.container {
 		width: 990px;
@@ -295,6 +300,21 @@ iPad (landscape) / Screen	1024
 		margin-left: 0;
 	}
 	
+	/* Shared styles for media post formats */
+	.single .format-image .post-content,
+	.single .format-gallery .post-content,
+	.single .format-video .post-content {
+		width: 680px;
+	}
+	.single-format-image #social,
+	.single-format-gallery #social,
+	.single-format-video #social,
+	.single-format-image .pagination,
+	.single-format-gallery .pagination,
+	.single-format-video .pagination {
+		width: 710px;
+		margin-left: 140px;
+	}
 	
 	#primary,
 	#secondary {

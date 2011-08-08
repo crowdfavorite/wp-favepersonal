@@ -86,7 +86,6 @@
 /* post-media - wraps featured images, gallery, video */
 .single .post-media {
 	margin: 20px 0 25px 0;
-	padding: 0 140px;
 }
 .post-media a {
 	display: inline-block;
@@ -131,23 +130,6 @@
 .post-meta ul {
 	list-style-type: none;
 }
-
-/* Shared styles for media post formats */
-.single .format-image .post-content,
-.single .format-gallery .post-content,
-.single .format-video .post-content {
-	width: 680px;
-}
-.single-format-image #social,
-.single-format-gallery #social,
-.single-format-video #social,
-.single-format-image .pagination,
-.single-format-gallery .pagination,
-.single-format-video .pagination {
-	width: 710px;
-	margin-left: 140px;
-}
-
 
 /** Gallery Post Format
  -------------------------------------------------- */
@@ -200,12 +182,8 @@
 }
 
 /* single/full */
-.single .format-gallery .post-media {
-	padding-left: 130px;
-}
 .gallery-stage {
 	height: 400px;
-	margin: 0 10px;
 	overflow: hidden;
 	width: 100%;
 }
@@ -215,7 +193,6 @@
 .gallery-thumbs {
 	list-style-type: none;
 	margin: 0;
-	padding: 0 0 0 10px;
 }
 .gallery-thumbs li {
 	background-color: #ddd;
