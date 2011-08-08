@@ -307,6 +307,7 @@ html.ie7 #nav-main a {
 }
 .post-status-content,
 .format-quote .post-content blockquote {
+	border: 0;
 	color: #666;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 20px;
