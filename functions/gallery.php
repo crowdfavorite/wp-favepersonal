@@ -128,7 +128,7 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 		);
 		$args = array_merge($defaults, $args);
 		$args['thumbs'] = '';
-		$args['post_permalink'] = get_permalink($id);
+		$args['post_permalink'] = get_permalink($args['id']);
 		return $args;
 	}
 	
