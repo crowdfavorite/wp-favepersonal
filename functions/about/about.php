@@ -50,9 +50,14 @@ add_action('admin_init', 'cfcp_about_admin_init');
  */
 function cfcp_about_module_carousel_enqueue() {
 	$settings = cfcp_about_get_settings();
+	$images_count = 0;
+	if(isset($settings['images'])) {
+		$images_count = count($settings['images']);
+	}
+	
 	if (
 		!is_admin()
-		&& count($settings['images']) > 1
+		&& $images_count > 1
 		&& is_active_widget(null, null, 'cfcp-about')
 	) {
 		wp_enqueue_script('jquery-cycle'); // registered in the theme's functions.php file
