@@ -25,23 +25,24 @@ iPad (landscape) / Screen	1024
 
 /* iPhone portrait and landscape special edge-case styles */
 @media screen and (max-width: 768px) {
-	/**
-	 * Hide h1 in header by default
-	 */
-	#nav-main h1 {
-		font: 12px Helvetica, Arial, Verdana, sans-serif;
-	}
 	#nav-main .menu {
 		border: 3px solid transparent;
+		border-top: 0;
 		/* bg and border colors set in header */
 		-moz-box-shadow: 0px 2px 4px rgba(0,0,0,0.8);
 		-webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.8);
 		box-shadow: 0px 2px 4px rgba(0,0,0,0.8);
-		left: 0;
+		left: -3px;
+		padding: 4px 0;
 		position: absolute;
-		padding: 10px;
-		right: 0;
+		right: -3px;
 		z-index: 999;
+	}
+	#nav-main a {
+		padding: 4px 10px;
+	}
+	#nav-main .sub-menu a {
+		padding-left: 16px;
 	}
 }
 
@@ -98,6 +99,10 @@ iPad (landscape) / Screen	1024
 	
 	#masthead {
 		padding: 11px 0 15px;
+	}
+	#nav-main .sub-menu li.current-menu-item > a {
+		border-left: 3px solid transparent;
+		border-right: 3px solid transparent;
 	}
 }
 
@@ -174,6 +179,10 @@ iPad (landscape) / Screen	1024
 		display: block;
 	}
 	
+	#header .container {
+		padding-top: 40px;
+	}
+	
 	#masthead {
 		padding: 26px 0 30px;
 	}
@@ -212,10 +221,11 @@ iPad (landscape) / Screen	1024
 	/* Dropdown Menus */
 	#nav-main .sub-menu {
 		border: 3px solid transparent;
+		border-top: 0;
 		/* bg and border colors set in header */
-		box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
-		-moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
-		-webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
+		box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+		-moz-box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+		-webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.4);
 		display: none;
 		font-family: Helvetica, Arial, Verdana, sans-serif;
 		right: -3px;
