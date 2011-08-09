@@ -101,6 +101,7 @@ img.wp-smiley {
 	vertical-align: sub;
 }
 
+
 /* WP Gallery */
 .gallery-item {
 	float: left;
@@ -118,7 +119,10 @@ img.wp-smiley {
 .gallery-item .gallery-icon a {
 	border-bottom: #fff solid 2px;
 	display: block;
-	
+}
+.gallery-caption {
+	color: #999;
+	font-size: 0.9em;
 }
 
 /* Archive */
