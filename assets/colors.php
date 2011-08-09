@@ -264,6 +264,9 @@ a:hover {
 #social .bypostauthor .social-comment-inner {
 	border-bottom-color: <?php echo cf_kuler_color('medium', 'social_comment_inner'); ?>;
 }
+#social .bypostauthor .social-fn {
+	font-weight: bold;
+}
 #social .social-posted-from {
 	background-color: <?php echo cf_kuler_color('light', 'social_posted_form_background'); ?>;
 }
