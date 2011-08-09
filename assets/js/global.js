@@ -1,4 +1,11 @@
 jQuery(function($) {
+	$('#nav-main h1')
+		.bind('touchend', function(e){
+			$('#nav-main .menu').toggle();
+			e.preventDefault();
+			e.stopPropagation();
+		});
+	
 	// add hover support for li
 	$('li').hover(
 		function() { $(this).addClass('hover'); },

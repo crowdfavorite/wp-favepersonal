@@ -42,7 +42,8 @@ a:hover {
 	background-color: <?php echo cf_kuler_color('darkest', 'header_background'); ?>;
 	border-bottom: 4px solid <?php echo cf_kuler_color('dark', 'header_border'); ?>;
 }
-#header a {
+#header a,
+#nav-main {
 	color: <?php echo cf_kuler_color('lightest', 'header_a'); ?>;
 }
 #header a:hover {

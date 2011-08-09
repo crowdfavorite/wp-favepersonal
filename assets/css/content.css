@@ -44,6 +44,9 @@
 #nav-main li:first-child {
 	margin-left: 0;
 }
+#nav-main .menu {
+	display: none;
+}
 #nav-main .sub-menu li {
 	border-bottom: 0;
 }
