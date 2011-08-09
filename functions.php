@@ -59,6 +59,7 @@ include_once(CFCT_PATH.'functions/admin.php');
 
 function cfcp_load_social() {
 	if (!class_exists('Social') && get_option('cfcp_social_enabled') != 'no') {
+		add_filter('social_plugins_url', 'cfcp_social_plugins_url', 10, 2);
 		include_once(CFCT_PATH.'plugins/social/social.php');
 	}
 }
@@ -254,6 +255,5 @@ function cfcp_get_popover_html($popover_id, $params = array()) {
 
 function cfcp_social_plugins_url($url) {
 	$url = trailingslashit(get_bloginfo('template_url'));
-	return trailingslashit($url.'social');
+	return trailingslashit($url.'plugins/social');
 }
-add_filter('social_plugins_url', 'cfcp_social_plugins_url', 10, 2);

@@ -70,6 +70,10 @@ jQuery(function($) {
 				}
 			},
 			
+			clearSearch: function() {
+				$search.find('input#cfp-image-search-term').val('');
+			},
+			
 			showSearch: function() {
 				if (CF.aboutLinks != undefined) {
 					CF.aboutLinks.hideAllDialogs();
@@ -137,6 +141,7 @@ jQuery(function($) {
 			selectImg: function(imgLi) {
 				$(imgLi).attr('class', false).appendTo($list);
 				this.handleEmptyLi();
+				this.clearSearch();
 				this.hideSearch();
 				this.refreshSortables();
 			},

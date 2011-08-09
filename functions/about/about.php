@@ -24,7 +24,7 @@ function cfcp_about_admin_init() {
 	global $pagenow, $plugin_page;
 	if ($pagenow == 'themes.php' && $plugin_page == 'about.php') {
 		wp_enqueue_script('jquery-ui-sortable');
-		wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
+		wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/assets/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
 		wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
 		wp_localize_script(
 			'cfcp-about-admin-js', 
@@ -300,7 +300,9 @@ function cfcp_about_settings_validate($settings) {
 	// hidden element
 	if (!empty($settings['links'])) {
 		foreach ($settings['links'] as &$link) {
-			$link = json_decode($link, true);
+			if (!is_array($link)) {
+				$link = json_decode($link, true);
+			}
 		}
 	}
 	
@@ -327,4 +329,3 @@ function cfcp_about_favicon_url($favicon = 'default') {
 	}
 	return $favicon_url;
 }
-?>

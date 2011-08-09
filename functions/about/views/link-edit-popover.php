@@ -19,7 +19,7 @@
 	<div class="cf-elm-block cf-lbl-pos-left cf-elm-width-full" id="cfp_link_icon_preview" style="display: none;">
 		<div id="cfp-link-icon-preview-auto">
 			<label for="cfp-link-icon"><?php _e('Icon', 'favepersonal'); ?></label>
-			<span class="cfp-icon-preview"><img id="cfp_icon_preview" src="<?php echo trailingslashit(get_template_directory_uri()); ?>img/admin/ajax-loader.gif" width="16" height="16" /></span>
+			<span class="cfp-icon-preview"><img id="cfp_icon_preview" src="<?php echo trailingslashit(get_template_directory_uri()); ?>assets/img/admin/ajax-loader.gif" width="16" height="16" /></span>
 			<input type="button" name="edit" id="cfp-link-icon-edit" class="cfp-action-edit" value="Edit" />
 		</div>
 		<div id="cfp-link-icon-preview-custom" style="display: none;">
