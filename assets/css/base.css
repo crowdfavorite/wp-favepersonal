@@ -161,7 +161,9 @@ ol {
 ul {
 	list-style-type: square;
 }
-
+li	{
+	margin: 5px 0;
+}
 dt {
 	font-weight: bold;
 }
