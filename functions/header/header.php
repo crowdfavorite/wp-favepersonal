@@ -166,13 +166,7 @@ function cfcp_header_options_fields($html) {
 				</ul>
 <?php
 	$html = ob_get_clean();
-	$header = array(
-		'header_display' => array(
-			'label' => '<label>'.__('Header display', 'favepersonal').'</label>',
-			'field' => $field
-		),
-	);
-	
+		
 	echo $html;
 }
 add_filter('cfct_option_cfcp_header', 'cfcp_header_options_fields');
