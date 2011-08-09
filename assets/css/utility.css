@@ -100,7 +100,9 @@
 img.wp-smiley {
 	vertical-align: sub;
 }
-
+.sticky {
+	/* Add styles here if you wish to callout sticky posts */
+}
 
 /* WP Gallery */
 .gallery-item {
