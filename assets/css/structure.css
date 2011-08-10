@@ -83,12 +83,12 @@ iPad (landscape) / Screen	1024
 	
 	.featured {
 		float: left;
-		height: 140px;
+		height: 128px;
 		margin-left: 15px;
 		width: 222px;
 	}
 	.featured .gallery-img-excerpt li {
-		height: 70px;
+		height: 64px;
 	}
 	#featured-post-1,
 	#featured-post-2 {
@@ -170,11 +170,11 @@ iPad (landscape) / Screen	1024
 	}
 	
 	.featured {
-		height: 140px;
+		height: 130px;
 		width: 226px;
 	}
 	.featured .gallery-img-excerpt li {
-		height: 70px;
+		height: 65px;
 	}
 	#featured-post-3 {
 		display: block;

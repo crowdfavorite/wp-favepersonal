@@ -15,10 +15,14 @@
  -------------------------------------------------- */
 .featured {
 	background-color: #666;
-	height: 170px;
+	height: 180px;
 	margin: 0 auto;
 	overflow: hidden;
 	position: relative;
+	width: 310px;
+}
+.featured .gallery-img-excerpt li {
+	height: 90px;
 }
 
 .featured-title {
