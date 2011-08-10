@@ -139,11 +139,11 @@ img.wp-smiley {
 	min-height: 20px;
 	margin-top: 40px;
 }
-.pagination .previous {
+.pagination .next {
 	float: right;
 }
 .home .pagination {
-	padding-left: 140px;
+	margin-top: 60px;
 }
 
 /* Tooltip */
