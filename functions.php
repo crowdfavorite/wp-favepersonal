@@ -47,6 +47,13 @@ define('CFCT_THEME_VERSION', '1.0');
 define('CFCT_URL_VERSION', '0.2');
 
 /**
+ * Define Header Text Color, even though it isn't used in the theme, need to define to prevent Notices
+ */ 
+if (!(defined('HEADER_TEXTCOLOR'))) {
+	define('HEADER_TEXTCOLOR', '');
+}
+
+/**
  * Includes
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
