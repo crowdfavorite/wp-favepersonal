@@ -38,7 +38,7 @@ $sizes = cfcp_gallery_max_size('gallery-large-img');
 	
 	<div class="post-content clearfix">
 		<?php 
-			the_content('<span class="more-link">'.__('Continued...', 'favepersonal').'</span>'); 
+			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
 			$args = array(
 				'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
 				'after' => "</p>\n",

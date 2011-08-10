@@ -35,7 +35,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	
 	<div class="post-content clearfix">
 		<?php 
-			the_content('<span class="more-link">'.__('Continued...', 'favepersonal').'</span>'); 
+			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
 			$args = array(
 				'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
 				'after' => "</p>\n",
