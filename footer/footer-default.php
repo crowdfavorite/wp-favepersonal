@@ -36,7 +36,7 @@ if (cfct_get_option('credit') == 'yes') {
 				'Crowd Favorite',
 				'FavePersonal',
 				'&nbsp;&middot;&nbsp;',
-				'http://crowdfavorite.com/themes/favepersonal',
+				'http://crowdfavorite.com/wordpress/themes/favepersonal',
 				'http://crowdfavorite.com'
 			);
 			?></p>
