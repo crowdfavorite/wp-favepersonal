@@ -211,6 +211,7 @@
 .gallery-thumbs {
 	list-style-type: none;
 	margin: 0;
+	max-width: 720px;
 }
 .gallery-thumbs li {
 	background-color: #ddd;
