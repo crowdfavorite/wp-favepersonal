@@ -86,9 +86,12 @@ iPad (landscape) / Screen	1024
 	
 	.featured {
 		float: left;
-		height: 128px;
+		height: 118px;
 		margin-left: 15px;
 		width: 222px;
+	}
+	.featured.has-featured-img {
+		height: 128px;
 	}
 	.featured-title {
 		font-size: 16px;
@@ -191,8 +194,11 @@ iPad (landscape) / Screen	1024
 	}
 	
 	.featured {
-		height: 130px;
+		height: 120px;
 		width: 226px;
+	}
+	.featured.has-featured-img {
+		height: 130px;
 	}
 	.featured .gallery-img-excerpt li {
 		height: 65px;
@@ -392,8 +398,11 @@ iPad (landscape) / Screen	1024
 	}
 	
 	.featured {
-		height: 180px;
+		height: 170px;
 		width: 310px;
+	}
+	.featured.has-featured-img {
+		height: 180px;
 	}
 	.featured-title {
 		font-size: 18px;

@@ -87,6 +87,7 @@ a:hover {
 /* featured posts */
 #featured-posts .featured {
 	background-color: <?php echo cf_kuler_color('darkest', 'featured_posts_background') ?>;
+	border-bottom-color: <?php echo cf_kuler_color('darkest', 'featured_posts_border_bottom_color') ?>;
 }
 #featured-posts .featured-title,
 #featured-posts .has-featured-img .featured-format {

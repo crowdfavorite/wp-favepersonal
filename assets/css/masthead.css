@@ -15,11 +15,16 @@
  -------------------------------------------------- */
 .featured {
 	background-color: #666;
-	height: 174px;
+	border-bottom: 10px solid #666;
+	height: 164px;
 	margin: 0 auto;
 	overflow: hidden;
 	position: relative;
 	width: 300px;
+}
+.featured.has-featured-img {
+	border: 0;
+	height: 174px;
 }
 .featured .gallery-img-excerpt li {
 	height: 87px;
