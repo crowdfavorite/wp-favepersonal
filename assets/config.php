@@ -21,10 +21,11 @@ $bundle_js = new Bundle('js/build.js');
 $bundle_js
 	->set_bundle_key('bundle-personal')
 	->set_language('javascript')
-	->set_meta('dependencies', array('jquery'))
-	->add('base', 'js/cfgallery/jquery.cfgallery.js')
-	->add('utility', 'js/global.js')
-	->add('content', 'js/o-type-ahead.js');
+	->set_meta('dependencies', array('modernizr', 'jquery'))
+	->add('load-media-query-shim', 'js/load-media-query-shim.js')
+	->add('cfgallery', 'js/cfgallery/jquery.cfgallery.js')
+	->add('global', 'js/global.js')
+	->add('o-type-ahead', 'js/o-type-ahead.js');
 $bundler->push($bundle_js);
 
 /* END EXAMPLE */

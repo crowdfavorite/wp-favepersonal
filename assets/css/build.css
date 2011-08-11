@@ -6,9 +6,9 @@ Base Style Sheet
 -------------------------------------------------- */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, pre,
-a, abbr, acronym, address, big, cite, code,
+a, abbr, acronym, address, cite, code,
 del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+strike, strong, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -24,6 +24,8 @@ hr {
 }
 body {
 	background-color: #fff;
+	/* Keep webkit from re-sizing text. We're mobile-optimized, baby! */
+	-webkit-text-size-adjust: none;
 }
 /**
  * Set HTML5 block level elements for browsers that don't recognize.
@@ -154,17 +156,25 @@ pre {
 
 ul,
 ol {
-	margin-left: 20px;
+	margin-left: 40px;
 }
 ul {
 	list-style-type: square;
 }
-
+li	{
+	margin: 5px 0;
+}
 dt {
 	font-weight: bold;
 }
 dd {
 	margin: 0 20px;
+}
+
+blockquote {
+	border-left: 3px solid #ddd;
+	margin-left: 0;
+	padding-left: 20px;
 }
 
 label[for] {
@@ -276,6 +286,12 @@ hr {
 	padding: 2px 8px 3px 8px;
 	margin: 1px 0 0 0;
 }
+img.wp-smiley {
+	vertical-align: sub;
+}
+.sticky {
+	/* Add styles here if you wish to callout sticky posts */
+}
 
 /* WP Gallery */
 .gallery-item {
@@ -294,7 +310,10 @@ hr {
 .gallery-item .gallery-icon a {
 	border-bottom: #fff solid 2px;
 	display: block;
-	
+}
+.gallery-caption {
+	color: #999;
+	font-size: 0.9em;
 }
 
 /* Archive */
@@ -313,7 +332,7 @@ hr {
 	float: right;
 }
 .home .pagination {
-	padding-left: 140px;
+	margin-top: 60px;
 }
 
 /* Tooltip */
@@ -336,23 +355,30 @@ hr {
 /** Header
  -------------------------------------------------- */
 #header .container {
-	padding-top: 40px;
+	padding-top: 25px;
 	position: relative;
 }
 #header h1 {
-	float: left;
 	line-height: 1.3em;
 	margin: 0;
 }
 
 /* Menu */
-#nav-main,
-#header .menu {
-	float: right;
-	padding-top: 9px;
+#nav-main h1 {
+	border-bottom: 3px solid transparent;
+	display: -moz-inline-box; /* FF2 */
+	display: inline-block; /* Standard. IE8+, Saf, FF3+ */
+	/**
+	 * @bugfix inline-block fix
+	 * @see http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/
+	 * @valid no
+	 */
+	zoom: 1;
+	*display: inline;
+	height: 20px;
 }
-#header #nav-main ul,
-#header .menu ul {
+#nav-main h1,
+#nav-main ul {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 13px;
 	letter-spacing: 1px;
@@ -360,85 +386,26 @@ hr {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	text-align: right;
 	text-transform: uppercase;
 }
-#header #nav-main li,
-#header .menu li {
-	display: inline-block;
-	margin: 10px 0 0 20px;
-	padding: 0;
-	position: relative;
+#nav-main li:first-child {
+	margin-left: 0;
 }
-#header #nav-main ul li a,
-#header .menu ul li a {
-	display: inline-block;
-	height: 20px;
-}
-
-
-/* inline block fix for IE6 and IE7 */
-html.ie6 #header #nav-main li,
-html.ie6 #header .menu li,
-html.ie6 #header #nav-main ul li a,
-html.ie6 #header .menu ul li a,
-html.ie7 #header #nav-main li,
-html.ie7 #header .menu li,
-html.ie7 #header #nav-main ul li a,
-html.ie7 #header .menu ul li a {
-	display: inline;
-	zoom: 1;
-}
-
-/* Sub Menu */
-#header #nav-main ul ul,
-#header .menu ul ul {
-	/* bg and border colors set in header */
-	box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
-	-moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
-	-webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
+#nav-main .menu {
 	display: none;
-	font-family: Helvetica, Arial, Verdana, sans-serif;
-	right: -3px;
-	padding: 5px 0 3px 0;
-	position: absolute;
-	text-align: left;
-	text-transform: none;
-	top: 23px;
-	width: 140px;
-	z-index: 99999;
 }
-#header #nav-main ul ul li,
-#header .menu ul ul li {
-	display: block;
-	margin: 3px 0;
-	padding: 0;
+#nav-main .sub-menu li {
+	border-bottom: 0;
 }
-#header #nav-main ul ul a,
-#header .menu ul ul a {
-	display: block;
-	font-weight: normal;
-	height: auto;
-	letter-spacing: 0;
-	line-height: 1em;
-	padding: 4px 10px;
-}
-#header #nav-main ul li:hover > ul,
-#header .menu ul li:hover > ul {
+#nav-main a {
 	display: block;
 }
-#header #nav-main ul ul li.current_page_item > a,
-#header .menu ul ul li.current_page_item > a {
-	padding-left: 7px;
-	padding-right: 7px;
-}
-
 
 /** Masthead - also see masthead.css
  -------------------------------------------------- */
 #masthead {
 	min-height: 10px;
-	padding: 36px 0 41px 0; /* top = 40px with header border */
+	padding: 6px 0 10px;
 }
 
 
@@ -457,24 +424,13 @@ html.ie7 #header .menu ul li a {
 	position: relative;
 }
 
-/* shared */
-.post-header,
-.post-media,
-.post-content {
-	margin-left: 140px;
-}
-
 /* post-header */
 .post-header {
 	clear: both;
 	margin-bottom: 7px;
 }
-.single .post-header {
-	margin-bottom: 15px;
-}
-.post-title, 
-.post-date {
-	line-height: 30px;
+.post-title {
+	line-height: 32px;
 	margin: 0;
 	letter-spacing: -1px;
 }
@@ -484,16 +440,12 @@ html.ie7 #header .menu ul li a {
 .home .post-title,
 .archive .post-title {
 	font-size: 24px;
+	line-height: 28px;
 }
 .post-date {
 	color: #ccc;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 16px;
-	left: 0;
-	position: absolute;
-	text-align: right;
-	top: 2px;
-	width: 120px;
 }
 .post-date a {
 	color: #ccc;
@@ -502,7 +454,6 @@ html.ie7 #header .menu ul li a {
 /* post-media - wraps featured images, gallery, video */
 .single .post-media {
 	margin: 20px 0 25px 0;
-	padding: 0 140px;
 }
 .post-media a {
 	display: inline-block;
@@ -520,16 +471,20 @@ html.ie7 #header .menu ul li a {
 }
 
 /* post-meta */
+.post-date,
+.post-meta,
+.post-meta p {
+	display: inline;
+}
 .post-meta {
 	color: #ccc;
-	float: left;
 	font-size: 12px;
-	line-height: 20px;
 	margin-right: 20px;
 	overflow: hidden;
-	padding-top: 1px;
-	text-align: right;
-	width: 120px;
+}
+.post-meta p {
+	vertical-align: baseline;
+	margin-bottom: 0;
 }
 .post-meta a {
 	color: #999;
@@ -544,23 +499,6 @@ html.ie7 #header .menu ul li a {
 	list-style-type: none;
 }
 
-/* Shared styles for media post formats */
-.single .format-image .post-content,
-.single .format-gallery .post-content,
-.single .format-video .post-content {
-	width: 680px;
-}
-.single-format-image #social,
-.single-format-gallery #social,
-.single-format-video #social,
-.single-format-image .pagination,
-.single-format-gallery .pagination,
-.single-format-video .pagination {
-	width: 710px;
-	margin-left: 140px;
-}
-
-
 /** Gallery Post Format
  -------------------------------------------------- */
 /* excerpts */
@@ -570,9 +508,25 @@ html.ie7 #header .menu ul li a {
 	padding: 0;
 }
 .post .gallery-img-excerpt li {
-	height: 120px;
-	margin: 0 15px 15px 0;
-	width: 160px;
+	float: left;
+	width: 145px;
+	margin: 0 0 7px;
+}
+.post .gallery-img-excerpt .excerpt-img-7 {
+	display: none;
+}
+.post .gallery-img-excerpt .excerpt-img-1,
+.post .gallery-img-excerpt .excerpt-img-3,
+.post .gallery-img-excerpt .excerpt-img-5,
+.post .gallery-img-excerpt .excerpt-img-8,
+.post .gallery-img-excerpt .gallery-view-all {
+	margin-left: 10px;
+}
+.post .gallery-img-excerpt .excerpt-img-0,
+.post .gallery-img-excerpt .excerpt-img-2,
+.post .gallery-img-excerpt .excerpt-img-4,
+.post .gallery-img-excerpt .excerpt-img-6 {
+	margin-left: 0;
 }
 .post .gallery-img-excerpt li a,
 .post .gallery-img-excerpt li img {
@@ -589,21 +543,17 @@ html.ie7 #header .menu ul li a {
 .post .gallery-img-excerpt li.gallery-view-all a {
 	border: 0;
 	display: block;
-	height: 120px;
-	line-height: 120px;
+	height: 108px;
+	line-height: 108px;
 	text-align: center;
-	width: 160px;
+	width: 100%;
 }
 
 /* single/full */
-.single .format-gallery .post-media {
-	padding-left: 130px;
-}
 .gallery-stage {
 	height: 400px;
-	margin: 0 10px;
 	overflow: hidden;
-	width: 710px;
+	width: 100%;
 }
 .js .gallery-stage {
 	cursor: pointer;
@@ -611,7 +561,6 @@ html.ie7 #header .menu ul li a {
 .gallery-thumbs {
 	list-style-type: none;
 	margin: 0;
-	padding: 0 0 0 10px;
 }
 .gallery-thumbs li {
 	background-color: #ddd;
@@ -658,6 +607,7 @@ html.ie7 #header .menu ul li a {
 }
 .post-status-content,
 .format-quote .post-content blockquote {
+	border: 0;
 	color: #666;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 20px;
@@ -667,6 +617,10 @@ html.ie7 #header .menu ul li a {
 .format-status .post-date,
 .format-quote .post-date {
 	line-height: 28px;
+}
+.format-status .post-date,
+.format-quote .post-date {
+	top: 0;
 }
 .single .post-status-content,
 .single .format-quote .post-content blockquote {
@@ -1010,9 +964,6 @@ html.ie7 #header .menu ul li a {
 }
 #footer p {
 	margin: 0;
-}
-.credit {
-	float: right;
 }/** Masthead/Header
  * 
  * Masthead used for the CSS but we are
@@ -1030,11 +981,16 @@ html.ie7 #header .menu ul li a {
  -------------------------------------------------- */
 .featured {
 	background-color: #666;
-	height: 180px;
+	height: 174px;
 	margin: 0 auto;
 	overflow: hidden;
 	position: relative;
+	width: 300px;
 }
+.featured .gallery-img-excerpt li {
+	height: 87px;
+}
+
 .featured-title {
 	background-color: #666;
 	color: #fff;
@@ -1048,7 +1004,6 @@ html.ie7 #header .menu ul li a {
 	bottom: 0;
 	color: #fff;
 	left: 0;
-	min-height: 170px;
 	padding: 15px 0;
 	position: absolute;
 	right: 0;
@@ -1111,13 +1066,19 @@ html.ie7 #header .menu ul li a {
 	padding: 0;
 	position: relative;
 	z-index: 1;
-	width: 100%;
+	/**
+	 * Give it a bit more than 100%.
+	 * Otherwise we get a sliver of black on the right side from browser round-downs.
+	 */
+	width: 100.5%;
 	zoom: 1;
 }
 .featured .gallery-img-excerpt li {
+	float: left;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
+	width: 50%;
 }
 .featured .gallery-img-excerpt li img {
 	display: block;
@@ -1220,9 +1181,9 @@ html.ie7 #header .menu ul li a {
 #social .social-input-row,
 #social .form-submit {
 	margin-bottom: 10px;
-	padding-left: 140px;
 	position: relative;
 }
+
 /* Threaded input row */
 #social .social-commentlist .social-input-row,
 #social .social-commentlist .form-submit {
@@ -1233,12 +1194,7 @@ html.ie7 #header .menu ul li a {
 	color: #666;
 	display: block;
 	font-size: 13px;
-	left: 0;
 	padding-right: 20px;
-	position: absolute;
-	text-align: right;
-	top: 7px;
-	width: 120px;
 }
 
 /* Threaded label */
@@ -1264,14 +1220,21 @@ html.ie7 #header .menu ul li a {
 }
 #social input.social-input,
 #social .social-select {
+	width: 290px;
+}
+#social textarea.social-input {
+	width: 94%;
+}
+
+#social input.social-input,
+#social .social-select {
 	padding: 5px 6px;
-	width: 326px;
+	width: 96%;
 }
 #social textarea.social-input {
 	display: block;
 	height: 110px;
 	padding: 5px 6px;
-	width: 496px;
 }
 #social .social-commentlist textarea.social-input {
 	width: 95%;
@@ -1353,7 +1316,7 @@ html.ie7 #header .menu ul li a {
 	position: relative;
 }
 #social .social-identity .avatar {
-	left: 80px;
+	left: 0px;
 	position: absolute;
 	top: 4px;
 }
@@ -1381,7 +1344,6 @@ but allow screen readers to see */
 #social .social-nav li {
 	list-style: none;
 	margin: 0;
-
 }
 #social .social-nav li {
 	float: left;
@@ -1408,9 +1370,8 @@ but allow screen readers to see */
 #social .social-nav .social-all {
 	font: normal 13px Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	line-height: 30px;
-	text-align: right;
 	text-transform: uppercase;
-	width: 120px;
+	padding-left: 10px;
 }
 #social .social-nav .social-all a {
 	background: none;
@@ -1428,6 +1389,12 @@ but allow screen readers to see */
 }
 #social .social-nav .social-pingback a {
 	background-position: 0px -200px;
+}
+#social .social-nav .social-wordpress a span,
+#social .social-nav .social-twitter a span,
+#social .social-nav .social-facebook a span,
+#social .social-nav .social-pingback a span {
+	display: none;
 }
 
 /** @section Comment List
@@ -1453,7 +1420,7 @@ but allow screen readers to see */
 #social .children,
 #social .social-children {
 	margin: 0;
-	padding: 0 0 0 50px;
+	padding: 0 0 0 15px;
 }
 #social .children li,
 #social .social-children li {
@@ -1473,26 +1440,16 @@ but allow screen readers to see */
 #social .social-comment {
 	border: 0;
 	margin: 0;
-	padding: 0 0 0 140px;
 	position: relative;
 }
-#social .social-comment .social-comment-inner {
+#social .social-comment-inner {
 	border-bottom: 1px solid #ddd;
 	margin: 0;
-	padding: 20px 0;
+	padding: 20px 0 20px 40px;
 	position: relative;
 }
 #social .social-comment .social-comment-header {
-	float: left;
-	margin: 0 0 0 -140px;
 	position: static;
-	width: 120px;
-}
-#social .social-comment .social-comment-header .social-comment-author {
-	position: relative;
-	margin: 0;
-	padding-bottom: 33px;
-	text-align: right;
 }
 #social .social-pingback .social-comment-header .social-comment-author {
 	padding-bottom: 0;
@@ -1505,18 +1462,15 @@ but allow screen readers to see */
 	font-style: normal;
 }
 #social .social-comment .social-comment-header .avatar {
-	bottom: 0;
-	left: auto;
 	height: 30px;
+	left: 0;
 	position: absolute;
-	right: 0;
-	top: auto;
+	top: 23px;
 	width: 30px;
 }
 #social .social-posted-when {
 	bottom: 15px;
 	position: absolute;
-	left: 0;
 }
 #social .social-posted-from {
 	background-color: #ddd;
@@ -1599,7 +1553,7 @@ but allow screen readers to see */
 	padding-left: 16px;
 }
 #social .social-comment-collapse > .social-comment-inner {
-	padding: 10px 0;
+	padding: 10px 0 10px 26px;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header {
 	filter:alpha(opacity=50);
@@ -1611,100 +1565,471 @@ but allow screen readers to see */
 	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 100px;
 }
 #social .social-pingback.social-comment-collapse .social-fn {
 	display: none;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author {
-	padding: 0 20px 0 0;
+	padding: 0 24px 0 0;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author img {
 	height: 16px;
-	left: auto;
-	right: 0;
-	top: 0;
+	left: 0;
+	top: 10px;
 	width: 16px;
 }
 #social .social-comment-collapse .social-posted-when {
-	font-size: 13px;
-	bottom: 10px;
+	display: none;
 }
 #social .social-comment-collapse .social-posted-from {
 	top: 10px;
 }/* --------------------------------------------------
- * Structure - responsive elements and other structural styles.
+Structure - This file handles floats, layout and responsive elements.
+
+Percentages are calculated by taking the target number of
+pixels and dividing by the container size.
+
+target/context = %
+
+Breakpoints:
+iPhone (portrait)			320
+iPhone (landscape)			480
+iPad (portrait)				768
+iPad (landscape) / Screen	1024
 -------------------------------------------------- */
-
-.container {
-	margin: 0 auto;
-	padding: 0 10px;
-}
-
-#secondary {
-	width: 310px;
-}
 
 #featured-post-2,
 #featured-post-3 {
 	display: none;
 }
 
-@media screen and (min-width: 675px) {
+.container {
+	margin: 0 auto;
+	width: 300px;
+}
+
+/* iPhone portrait and landscape special edge-case styles */
+@media screen and (max-width: 768px) {
+	#nav-main .menu {
+		border: 3px solid transparent;
+		border-top: 0;
+		/* bg and border colors set in header */
+		-moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+		-webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+		box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+		display: none;
+		left: -3px;
+		padding: 4px 0;
+		position: absolute;
+		right: -3px;
+		z-index: 999;
+	}
+	#nav-main a {
+		padding: 4px 10px;
+	}
+	#nav-main .sub-menu a {
+		padding-left: 16px;
+	}
+	#social .social-identity {
+		padding-left: 50px;
+	}
+}
+
+/* iPhone Landscape */
+@media screen and (min-width: 480px) {
 	.container {
-		padding: 0 40px;
+		width: 460px;
 	}
 	
-	#primary {
-		margin: 0 auto;
-		width: 650px;
+	/**
+	 * Modify post galleries (3 col)
+	 */
+	.post .gallery-img-excerpt li {
+		width: 146px;
+		margin: 0 0 7px 0;
+	}
+	.post .gallery-img-excerpt li.gallery-view-all a {
+		height: 109px;
+		line-height: 109px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-7 {
+		display: block;
+	}
+	.post .gallery-img-excerpt .excerpt-img-1,
+	.post .gallery-img-excerpt .excerpt-img-2,
+	.post .gallery-img-excerpt .excerpt-img-4,
+	.post .gallery-img-excerpt .excerpt-img-5,
+	.post .gallery-img-excerpt .excerpt-img-7,
+	.post .gallery-img-excerpt .gallery-view-all {
+		margin-left: 10px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-0,
+	.post .gallery-img-excerpt .excerpt-img-3,
+	.post .gallery-img-excerpt .excerpt-img-6 {
+		margin-left: 0;
 	}
 	
+	.featured {
+		float: left;
+		height: 128px;
+		margin-left: 15px;
+		width: 222px;
+	}
+	.featured-title {
+		padding: 6px 13px 4px;		
+	}
+	.featured-description,
+	.featured:hover .featured-description {
+		display: none;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 64px;
+	}
+	#featured-post-1,
 	#featured-post-2 {
 		display: block;
 	}
 	#featured-post-1 {
-		margin-right: 4%;
-	}
-	.featured {
-		float: left;
-		width: 48%;
-	}
-	.featured {
-		height: 220px;
-	}
-	.featured .gallery-img-excerpt li {
-		float: left;
-		width: 50%;
-		height: 110px;
+		margin-left: 0;
 	}
 	
-	.excerpt .post-media {
-		overflow: hidden;
-		width: 510px;
+	#masthead {
+		padding: 11px 0 15px;
 	}
-	.excerpt .gallery-img-excerpt {
-		overflow: hidden;
-		width: 525px;
+	#nav-main .sub-menu li.current-menu-item > a {
+		border-left: 3px solid transparent;
+		border-right: 3px solid transparent;
 	}
-	.post .gallery-img-excerpt li {
+	
+}
+
+/* iPad Portrait */
+@media screen and (min-width: 768px) {
+	.container {
+		width: 708px;
+	}
+	
+	/* Put post info in an empty left-hand column */
+	.post-title,
+	.post-media,
+	.post-content {
+		margin-left: 140px;
+	}
+	.post-date,
+	.post-meta,
+	.post-meta p {
+		display: block;
+	}
+	.post-date {
+		left: 0;
+		line-height: 30px;
+		letter-spacing: -1px;
+		position: absolute;
+		text-align: right;
+		top: 4px;
+		width: 120px;
+	}
+	.home .post-date,
+	.archive .post-date {
+		top: 0;
+	}
+	.post-meta {
 		float: left;
+		padding-top: 3px;
+		text-align: right;
+		width: 120px;
+	}
+	.post-header .post-meta {
+		padding-top: 8px;
+	}
+	
+	.post .gallery-img-excerpt li {
+		margin: 0 0 12px;
+		width: 130px;
+	}
+	.post .gallery-img-excerpt li.gallery-view-all a {
+		height: 97px;
+		line-height: 97px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-7 {
+		display: none;
+	}
+	.post .gallery-img-excerpt .excerpt-img-1,
+	.post .gallery-img-excerpt .excerpt-img-2,
+	.post .gallery-img-excerpt .excerpt-img-3,
+	.post .gallery-img-excerpt .excerpt-img-5,
+	.post .gallery-img-excerpt .excerpt-img-6,
+	.post .gallery-img-excerpt .gallery-view-all {
+		margin-left: 15px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-0,
+	.post .gallery-img-excerpt .excerpt-img-4 {
+		margin-left: 0;
+	}
+	
+	.single-format-gallery .post-media {
+		left: -1px;
+		position: relative;
+	}
+	
+	.featured {
+		height: 130px;
+		width: 226px;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 65px;
+	}
+	#featured-post-3 {
+		display: block;
+	}
+	
+	#masthead {
+		padding: 16px 0 20px;
+	}
+	
+	#header .container {
+		padding-top: 30px;
+	}
+	#nav-main .menu {
+		background: transparent !important;
+		display: block;
+	}
+	/**
+	 * Visually hide h1 in header when in menu mode
+	 * Leave it readable by screen readers for accessibility.
+	 */
+	#nav-main h1 {
+		position: absolute;
+		left: -999em;
+	}
+	#nav-main li {
+		border-bottom: 3px solid transparent;
+		display: inline-block;
+		height: 20px;
+		margin: 10px 0 0 20px;
+		padding: 0;
+		position: relative;
+	}
+	/* inline block fix for IE6 and IE7 */
+	html.ie6 #nav-main li,
+	html.ie6 #nav-main a,
+	html.ie7 #nav-main li,
+	html.ie7 #nav-main a {
+		display: inline;
+		zoom: 1;
+	}
+	#nav-main li {
+		border-bottom: 3px solid transparent;
+	}
+	
+	/* Dropdown Menus */
+	#nav-main .sub-menu {
+		border: 3px solid transparent;
+		border-top: 0;
+		/* bg and border colors set in header */
+		box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+		-moz-box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+		-webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+		display: none;
+		font-family: Helvetica, Arial, Verdana, sans-serif;
+		right: -3px;
+		padding: 5px 0 3px 0;
+		position: absolute;
+		text-align: left;
+		text-transform: none;
+		top: 23px;
+		min-width: 140px;
+		width: 120%;
+		z-index: 99999;
+	}
+	#nav-main .sub-menu li {
+		display: block;
+		height: auto;
+		margin: 3px 0;
+		padding: 0;
+	}
+
+	#nav-main .sub-menu a {
+		display: block;
+		font-weight: normal;
+		height: auto;
+		letter-spacing: 0;
+		line-height: 1.2em;
+		padding: 4px 10px;
+	}
+	#nav-main li:hover > .sub-menu {
+		display: block;
+	}
+	#nav-main ul ul li.current-menu-item > a {
+		padding-left: 7px;
+		padding-right: 7px;
+	}
+	
+	.sidebar {
+		float: left;
+		margin-left: 15px;
+		width: 226px;
+	}
+	#sidebar-1 {
+		margin-left: 0;
+	}
+	
+	#footer .credit {
+		float: right;
+	}
+	
+	
+	/* Social */
+	#social .social-comment {
+		padding: 0 0 0 140px;
+	}
+	#social .social-comment-inner {
+		padding: 20px 0;
+	}
+	#social .social-comment-collapse > .social-comment-inner {
+		padding: 10px 0;
+	}
+	#social .social-comment .social-comment-header {
+		float: left;
+		margin: 0 0 0 -140px;
+		width: 120px;
+	}
+	#social .social-comment .social-comment-header .avatar {
+		bottom: 0;
+		left: auto;
+		right: 0;
+		top: auto;
+	}
+	#social .social-comment .social-comment-header .social-comment-author {
+		position: relative;
+		margin: 0;
+		padding-bottom: 33px;
+		text-align: right;
+	}
+	#social .social-posted-when {
+		left: 0;
+	}
+	
+	#social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author img {
+		left: auto;
+		right: 0;
+		top: 0;
+	}
+	#social .social-comment-collapse .social-posted-when {
+		display: block;
+		font-size: 13px;
+		bottom: 10px;
+	}
+	
+	/* Threading */
+	#social .children,
+	#social .social-children {
+		padding: 0 0 0 50px;
+	}
+	
+	
+	/* Social form */
+	#social input.social-input,
+	#social .social-select {
+		width: 320px;
+	}
+	#social textarea.social-input {
+		width: 554px;
+	}
+	
+	#social .social-input-row,
+	#social .form-submit {
+		padding-left: 140px;
+	}
+	#social .social-input-row .social-label {
+		left: 0;
+		position: absolute;
+		text-align: right;
+		top: 7px;
+		width: 120px;
+	}
+	#social input.social-input,
+	#social .social-select {
+		width: 320px;
+	}
+	#social .social-identity .avatar {
+		left: 80px;
+	}
+	#social .social-nav .social-all {
+		text-align: right;
+		width: 110px;
+	}
+	#social .social-nav .social-wordpress a span,
+	#social .social-nav .social-twitter a span,
+	#social .social-nav .social-facebook a span,
+	#social .social-nav .social-pingback a span {
+		display: block;
 	}
 }
+
+/* iPad Landscape and large screen */
 @media screen and (min-width: 1010px) {
 	.container {
 		width: 990px;
-		margin: 0 auto;
-		padding: 0 10px;
 	}
 	
-	#masthead .container {
-		padding: 0 10px;
-		width: 990px;
+	.featured {
+		height: 180px;
+		width: 310px;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 90px;
 	}
 	
-	#primary {
-		margin: 0 30px 0 0;
+	#featured-post-2,
+	#featured-post-3 {
+		margin-left: 30px;
+	}
+
+	.featured-description,
+	.featured:hover .featured-description {
+		display: block;
+	}
+	
+	.post .gallery-img-excerpt li {
+		width: 160px;
+	}
+	.post .gallery-img-excerpt li.gallery-view-all a {
+		height: 120px;
+		line-height: 120px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-7 {
+		display: block;
+	}
+	.post .gallery-img-excerpt .excerpt-img-1,
+	.post .gallery-img-excerpt .excerpt-img-2,
+	.post .gallery-img-excerpt .excerpt-img-4,
+	.post .gallery-img-excerpt .excerpt-img-5,
+	.post .gallery-img-excerpt .excerpt-img-7,
+	.post .gallery-img-excerpt .gallery-view-all {
+		margin-left: 15px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-0,
+	.post .gallery-img-excerpt .excerpt-img-3,
+	.post .gallery-img-excerpt .excerpt-img-6 {
+		margin-left: 0;
+	}
+	
+	.single .post-media {
+		padding-left: 140px;
+	}
+	
+	/* Shared styles for media post formats */
+	.single .format-image .post-content,
+	.single .format-gallery .post-content,
+	.single .format-video .post-content {
+		width: 680px;
+	}
+	.single-format-image #social,
+	.single-format-gallery #social,
+	.single-format-video #social {
+		width: 820px;
+		margin-left: 0px;
 	}
 	
 	#primary,
@@ -1716,29 +2041,43 @@ but allow screen readers to see */
 		min-height: 1px;
 	}
 	
-	#secondary-full #sidebar-1,
-	#secondary-full #sidebar-2,
-	#secondary-full #sidebar-3 {
-		float: left;
-		width: 310px;
-	}
-	#secondary-full #sidebar-1,
-	#secondary-full #sidebar-2 {
-		margin-right: 30px;
+	#primary {
+		width: 650px;
+		margin: 0 30px 0 0;
 	}
 	
-	.featured {
-		height: 180px;
+	#secondary {
 		width: 310px;
 	}
-	.featured .gallery-img-excerpt li {
-		height: 90px;
+	
+	.sidebar {
+		float: none;
+		margin-left: 0;
+		width: auto;
 	}
-	#featured-post-1,
-	#featured-post-2 {
-		margin-right: 30px;
+	#secondary-full .sidebar {
+		float: left;
+		margin-left: 30px;
+		width: 310px;
 	}
-	#featured-post-3 {
-		display: block;
+	#secondary-full #sidebar-1 {
+		margin-left: 0;
+	}
+	
+	#header .container {
+		padding-top: 40px;
+	}
+	#header h1 {
+		float: left;
+	}
+	#nav-main {
+		float: right;
+		padding-top: 9px;
+	}
+	#nav-main ul {
+		text-align: right;
+	}
+	#masthead {
+		padding: 36px 0 41px 0; /* top = 40px with header border */
 	}
 }
