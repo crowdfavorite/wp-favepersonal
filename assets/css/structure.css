@@ -388,8 +388,8 @@ iPad (landscape) / Screen	1024
 	.single-format-image .pagination,
 	.single-format-gallery .pagination,
 	.single-format-video .pagination {
-		width: 710px;
-		margin-left: 140px;
+		width: 820px;
+		margin-left: 0px;
 	}
 	
 	#primary,
