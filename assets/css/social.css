@@ -63,7 +63,7 @@
 #social .social-input-row,
 #social .form-submit {
 	margin-bottom: 10px;
-	padding-left: 140px;
+	padding-left: 50px;
 	position: relative;
 }
 /* Threaded input row */
@@ -196,7 +196,7 @@
 	position: relative;
 }
 #social .social-identity .avatar {
-	left: 80px;
+	left: 0px;
 	position: absolute;
 	top: 4px;
 }
@@ -224,7 +224,6 @@ but allow screen readers to see */
 #social .social-nav li {
 	list-style: none;
 	margin: 0;
-
 }
 #social .social-nav li {
 	float: left;
@@ -251,9 +250,8 @@ but allow screen readers to see */
 #social .social-nav .social-all {
 	font: normal 13px Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	line-height: 30px;
-	text-align: right;
 	text-transform: uppercase;
-	width: 120px;
+	padding-left: 10px;
 }
 #social .social-nav .social-all a {
 	background: none;
@@ -271,6 +269,12 @@ but allow screen readers to see */
 }
 #social .social-nav .social-pingback a {
 	background-position: 0px -200px;
+}
+#social .social-nav .social-wordpress a span,
+#social .social-nav .social-twitter a span,
+#social .social-nav .social-facebook a span,
+#social .social-nav .social-pingback a span {
+	display: none;
 }
 
 /** @section Comment List

@@ -112,6 +112,7 @@ iPad (landscape) / Screen	1024
 		border-left: 3px solid transparent;
 		border-right: 3px solid transparent;
 	}
+	
 }
 
 /* iPad Portrait */
@@ -288,6 +289,25 @@ iPad (landscape) / Screen	1024
 	#footer .credit {
 		float: right;
 	}
+	
+	#social .social-input-row,
+	#social .form-submit {
+		padding-left: 140px;
+	}
+	#social .social-identity .avatar {
+		left: 80px;
+	}
+	#social .social-nav .social-all {
+		text-align: right;
+		width: 110px;
+	}
+	#social .social-nav .social-wordpress a span,
+	#social .social-nav .social-twitter a span,
+	#social .social-nav .social-facebook a span,
+	#social .social-nav .social-pingback a span {
+		display: block;
+	}
+	
 }
 
 /* iPad Landscape and large screen */
