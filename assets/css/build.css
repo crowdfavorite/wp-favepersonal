@@ -471,15 +471,16 @@ img.wp-smiley {
 }
 
 /* post-meta */
-.post-date,
-.post-meta,
-.post-meta p {
+.post-header .post-date,
+.post-header .post-meta,
+.post-header .post-meta p {
 	display: inline;
 }
 .post-meta {
 	color: #ccc;
 	font-size: 12px;
 	margin-right: 20px;
+	padding-bottom: 15px;
 	overflow: hidden;
 }
 .post-meta p {
@@ -493,7 +494,7 @@ img.wp-smiley {
 	margin-top: 0;
 }
 .post-meta .post-meta-title {
-	margin: 0;
+	margin: 10px 0 0 0;
 }
 .post-meta ul {
 	list-style-type: none;
