@@ -61,7 +61,7 @@ include_once(CFCT_PATH.'functions/sidebars.php');
 include_once(CFCT_PATH.'functions/gallery.php');
 include_once(CFCT_PATH.'functions/about/about.php');
 include_once(CFCT_PATH.'functions/header/header.php');
-include_once(CFCT_PATH.'functions/CF_Patch_Nav_Menu.php');
+include_once(CFCT_PATH.'functions/patch-nav-menu.php');
 include_once(CFCT_PATH.'functions/admin.php');
 
 function cfcp_load_social() {
