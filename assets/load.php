@@ -51,6 +51,10 @@ wp_enqueue_script(
 	CFCT_URL_VERSION
 );
 
+wp_localize_script('modernizr', 'CFCP', array(
+	'scriptsDirUrl' => get_template_directory_uri() . '/assets/js/'
+));
+
 // Enqueue bundles compiled by bundler script
 $loader = new Bundler_Loader($assets_url);
 // Set the default cache-busting version number. Used if the bundle doesn't have one set.
