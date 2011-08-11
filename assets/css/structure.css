@@ -45,15 +45,8 @@ iPad (landscape) / Screen	1024
 	#nav-main .sub-menu a {
 		padding-left: 16px;
 	}
-	
-	#social .social-nav {
-		padding: 5px;
-	}
-	#social .social-nav li {
-		margin-right: 5px;
-	}
-	#social .social-nav li a span {
-		display: none;
+	#social .social-identity {
+		padding-left: 50px;
 	}
 }
 
@@ -303,6 +296,17 @@ iPad (landscape) / Screen	1024
 	#social .social-input-row,
 	#social .form-submit {
 		padding-left: 140px;
+	}
+	#social .social-input-row .social-label {
+		left: 0;
+		position: absolute;
+		text-align: right;
+		top: 7px;
+		width: 120px;
+	}
+	#social input.social-input,
+	#social .social-select {
+		width: 320px;
 	}
 	#social .social-identity .avatar {
 		left: 80px;

@@ -63,9 +63,9 @@
 #social .social-input-row,
 #social .form-submit {
 	margin-bottom: 10px;
-	padding-left: 50px;
 	position: relative;
 }
+
 /* Threaded input row */
 #social .social-commentlist .social-input-row,
 #social .social-commentlist .form-submit {
@@ -76,12 +76,7 @@
 	color: #666;
 	display: block;
 	font-size: 13px;
-	left: 0;
 	padding-right: 20px;
-	position: absolute;
-	text-align: right;
-	top: 7px;
-	width: 120px;
 }
 
 /* Threaded label */
@@ -116,6 +111,7 @@
 #social input.social-input,
 #social .social-select {
 	padding: 5px 6px;
+	width: 96%;
 }
 #social textarea.social-input {
 	display: block;
