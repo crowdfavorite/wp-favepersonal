@@ -324,7 +324,7 @@ but allow screen readers to see */
 	margin: 0;
 	position: relative;
 }
-#social .social-comment .social-comment-inner {
+#social .social-comment-inner {
 	border-bottom: 1px solid #ddd;
 	margin: 0;
 	padding: 20px 0 20px 40px;
@@ -353,7 +353,6 @@ but allow screen readers to see */
 #social .social-posted-when {
 	bottom: 15px;
 	position: absolute;
-	left: 0;
 }
 #social .social-posted-from {
 	background-color: #ddd;
@@ -436,7 +435,7 @@ but allow screen readers to see */
 	padding-left: 16px;
 }
 #social .social-comment-collapse > .social-comment-inner {
-	padding: 10px 0;
+	padding: 10px 0 10px 26px;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header {
 	filter:alpha(opacity=50);
@@ -448,19 +447,17 @@ but allow screen readers to see */
 	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 100px;
 }
 #social .social-pingback.social-comment-collapse .social-fn {
 	display: none;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author {
-	padding: 0 20px 0 0;
+	padding: 0 24px 0 0;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author img {
 	height: 16px;
-	left: auto;
-	right: 0;
-	top: 0;
+	left: 0;
+	top: 10px;
 	width: 16px;
 }
 #social .social-comment-collapse .social-posted-when {
