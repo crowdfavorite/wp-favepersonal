@@ -124,9 +124,6 @@ a:hover {
 
 /** Post
  -------------------------------------------------- */
-.post-title {
-	color: <?php echo cf_kuler_color('dark', 'post_title_color'); ?>;
-}
 .post-meta a:hover {
 	color: <?php echo cf_kuler_color('darkest', 'post_meta_a_hover_color'); ?>;
 }
