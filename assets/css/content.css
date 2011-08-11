@@ -121,15 +121,16 @@
 }
 
 /* post-meta */
-.post-date,
-.post-meta,
-.post-meta p {
+.post-header .post-date,
+.post-header .post-meta,
+.post-header .post-meta p {
 	display: inline;
 }
 .post-meta {
 	color: #ccc;
 	font-size: 12px;
 	margin-right: 20px;
+	padding-bottom: 15px;
 	overflow: hidden;
 }
 .post-meta p {
