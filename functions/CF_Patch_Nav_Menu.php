@@ -1,6 +1,10 @@
 <?php
 class CF_Patch_Nav_Menu {
 	public $fallback_cb = null;
+	public $wp_page_menu_default_args = array(
+		'menu_class' => 'menu-class',
+		'container' => 'div'
+	);
 	
 	public function __construct() {
 		$this->fallback_cb = array($this, 'page_menu');
@@ -26,10 +30,10 @@ class CF_Patch_Nav_Menu {
 	 * Take care of delta between argument names in wp_nav_menu vs wp_page menu
 	 */
 	public function wp_page_menu_args( $args ) {
+		$args = array_merge($this->wp_page_menu_default_args, $args);
 		// Show home if wp_page_menu is used as fallback
 		$args['show_home'] = true;
-		// wp_page_menu uses different argument names for container class. We'll take care of the difference.
-		$args['menu_class'] = $args['container_class'];
+
 		return $args;
 	}
 
@@ -53,6 +57,9 @@ class CF_Patch_Nav_Menu {
 		$id = ($args['container_id'] ? ' id="'.$args['container_id'].'"' : '');
 		
 		/* Container arg is passed along by wp_nav_menu.
+		
+		menu_class in wp_page_menu maps to container_class in wp_nav_menu. We'll swap it and
+		also reduce the markup delta
 
 		String replacements are brittle, but it's all we have for now.
 		Remove menu divs if there is no container specified AND this function has been called by
@@ -62,12 +69,21 @@ class CF_Patch_Nav_Menu {
 		}
 		// If container is a nav tag, replace div with nav. Include ID, too.
 		else if ($args['container'] == 'nav') {
-			$menu = str_replace(array('<div class="'.$args['menu_class'].'">', "</div>\n"), array('<nav class="'.$args['menu_class'].'" '.$id.'>', "</nav>\n"), $menu);
+			$menu = str_replace(array('<div class="'.$args['menu_class'].'">', "</div>\n"), array('<nav class="'.$args['container_class'].'" '.$id.'>', "</nav>\n"), $menu);
 		}
 		// If we have a container, make sure container ID is included
 		else if ($args['container_id']) {
-			$menu = str_replace('class="'.$args['menu_class'].'"', 'class="'.$args['menu_class'].'"'.$id, $menu);
+			$menu = str_replace('class="'.$args['menu_class'].'"', 'class="'.$args['container_class'].'"'.$id, $menu);
 		}
+		
+		/* Shim classname/id on ul element */
+		if ($args['menu_class'] || $args['menu_id']) {
+			$id = ($args['menu_id'] ? ' id="'.$args['menu_id'].'"' : '');
+			$classname = ($args['menu_class'] ? ' class="'.$args['menu_class'].'"' : '');
+			// This is safe, because ul > ul has the class .children when output by wp_page_menu
+			$menu = str_replace('<ul>', '<ul'.$classname.$id.'>', $menu);
+		}
+		
 		return $menu;
 	}
 

@@ -38,8 +38,8 @@ else {
 	<div class="post-header">
 		<h1 class="post-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?> &rarr;</a></h1>
 		<p class="post-date"><?php echo cfcp_date(); ?></p>
+		<?php cfct_misc('post-meta'); ?>
 	</div>
-	<?php cfct_misc('post-meta'); ?>
 	<div class="post-content clearfix">
 		<?php if ( has_post_thumbnail() ) { ?>
 			<a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a>
