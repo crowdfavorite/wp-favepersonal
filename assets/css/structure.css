@@ -330,6 +330,18 @@ iPad (landscape) / Screen	1024
 		right: 0;
 		top: 0;
 	}
+	#social .social-comment-collapse .social-posted-when {
+		display: block;
+		font-size: 13px;
+		bottom: 10px;
+	}
+	
+	/* Threading */
+	#social .children,
+	#social .social-children {
+		padding: 0 0 0 50px;
+	}
+	
 	
 	/* Social form */
 	#social input.social-input,

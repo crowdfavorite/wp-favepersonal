@@ -302,7 +302,7 @@ but allow screen readers to see */
 #social .children,
 #social .social-children {
 	margin: 0;
-	padding: 0 0 0 50px;
+	padding: 0 0 0 15px;
 }
 #social .children li,
 #social .social-children li {
@@ -461,8 +461,7 @@ but allow screen readers to see */
 	width: 16px;
 }
 #social .social-comment-collapse .social-posted-when {
-	font-size: 13px;
-	bottom: 10px;
+	display: none;
 }
 #social .social-comment-collapse .social-posted-from {
 	top: 10px;
