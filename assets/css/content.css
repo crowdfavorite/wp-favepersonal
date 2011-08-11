@@ -5,7 +5,7 @@
 /** Header
  -------------------------------------------------- */
 #header .container {
-	padding-top: 10px;
+	padding-top: 25px;
 	position: relative;
 }
 #header h1 {
@@ -14,9 +14,6 @@
 }
 
 /* Menu */
-#nav-main {
-	padding-top: 9px;
-}
 #nav-main h1 {
 	border-bottom: 3px solid transparent;
 	display: -moz-inline-box; /* FF2 */

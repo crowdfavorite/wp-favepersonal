@@ -194,14 +194,13 @@ iPad (landscape) / Screen	1024
 		display: block;
 	}
 	
-	#header .container {
-		padding-top: 40px;
-	}
-	
 	#masthead {
 		padding: 16px 0 20px;
 	}
 	
+	#header .container {
+		padding-top: 30px;
+	}
 	#nav-main .menu {
 		background: transparent !important;
 		display: block;
@@ -391,17 +390,20 @@ iPad (landscape) / Screen	1024
 		margin-left: 0;
 	}
 	
-	#masthead {
-		padding: 36px 0 41px 0; /* top = 40px with header border */
+	#header .container {
+		padding-top: 40px;
 	}
-	
+	#header h1 {
+		float: left;
+	}
 	#nav-main {
 		float: right;
+		padding-top: 9px;
 	}
 	#nav-main ul {
 		text-align: right;
 	}
-	#header h1 {
-		float: left;
+	#masthead {
+		padding: 36px 0 41px 0; /* top = 40px with header border */
 	}
 }
