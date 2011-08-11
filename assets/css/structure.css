@@ -87,6 +87,13 @@ iPad (landscape) / Screen	1024
 		margin-left: 15px;
 		width: 222px;
 	}
+	.featured-title {
+		padding: 6px 13px 4px;		
+	}
+	.featured-description,
+	.featured:hover .featured-description {
+		display: none;
+	}
 	.featured .gallery-img-excerpt li {
 		height: 64px;
 	}
@@ -301,6 +308,11 @@ iPad (landscape) / Screen	1024
 	#featured-post-2,
 	#featured-post-3 {
 		margin-left: 30px;
+	}
+
+	.featured-description,
+	.featured:hover .featured-description {
+		display: block;
 	}
 	
 	.post .gallery-img-excerpt li {
