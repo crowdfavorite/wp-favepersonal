@@ -117,11 +117,15 @@ a:hover {
 }
 
 /* rollover */
+#featured-posts .featured:hover {
+	border-bottom-color: rgba(<?php echo_hex(cf_kuler_color('light', 'featured_posts_hover_border')); ?>, .8);
+}
 #featured-posts .featured:hover .featured-content {
 	background-color: rgb(<?php echo_hex(cf_kuler_color('light', 'featured_posts_hover_background')); ?>); /* fallback for IE */
 	background-color: rgba(<?php echo_hex(cf_kuler_color('light', 'featured_posts_hover_background')); ?>, .8);
 	color: <?php echo cf_kuler_color('darkest', 'featured_posts_hover_color') ?>;
 }
+
 
 /** Post
  -------------------------------------------------- */

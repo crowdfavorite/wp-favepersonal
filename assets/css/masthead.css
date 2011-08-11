@@ -22,7 +22,8 @@
 	position: relative;
 	width: 300px;
 }
-.featured.has-featured-img {
+.featured.has-featured-img,
+.featured.featured-format-gallery {
 	border: 0;
 	height: 174px;
 }
