@@ -26,7 +26,7 @@ if (!empty($link)) {
 				<article id="featured-post-<?php echo $slot; ?>" class="featured <?php echo $class; ?>">
 					<?php echo $image; ?>
 					<div class="featured-content">
-						<h2 class="featured-title"><?php the_title(); ?>  &rarr;</h2>
+						<h1 class="featured-title"><?php the_title(); ?>  &rarr;</h1>
 						<div class="featured-description">
 							<?php echo cf_trim_text(get_the_excerpt(), 150, "<p>", "&hellip;</p>"); ?>
 						</div>

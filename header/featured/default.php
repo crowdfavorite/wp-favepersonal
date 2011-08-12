@@ -7,7 +7,7 @@ include(CFCT_PATH.'header/featured/init.php');
 					<?php echo $image; ?>
 					<div class="featured-content">
 						<span class="featured-format"></span>
-						<h2 class="featured-title"><?php the_title(); ?></h2>
+						<h1 class="featured-title"><?php the_title(); ?></h1>
 						<div class="featured-description">
 							<?php echo cf_trim_text(get_the_excerpt(), 150, "<p>", "&hellip;</p>"); ?>
 						</div>
