@@ -333,9 +333,6 @@ but allow screen readers to see */
 #social .social-comment .social-comment-header {
 	position: static;
 }
-#social .social-pingback .social-comment-header .social-comment-author {
-	padding-bottom: 0;
-}
 #social .social-comment .social-comment-header .social-replied {
 	display: none;
 }
