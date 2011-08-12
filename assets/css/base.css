@@ -154,6 +154,11 @@ pre {
 	margin-bottom: 20px;
 }
 
+strong, 
+b {
+	font-weight: bold;
+}
+
 ul,
 ol {
 	margin-left: 40px;
