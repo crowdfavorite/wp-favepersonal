@@ -26,7 +26,7 @@ $sizes = cfcp_gallery_max_size('gallery-large-img');
 <article id="post-<?php the_ID() ?>" <?php post_class('content clearfix') ?>>
 	<div class="post-header">
 		<h1 class="post-title"><a href="<?php the_permalink() ?>"  title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h1>
-		<p class="post-date"><?php echo cfcp_date(); ?></p>
+		<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
 	</div>
 	
 	<?php
