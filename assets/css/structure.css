@@ -401,17 +401,12 @@ iPad (landscape) / Screen	1024
 		text-align: left;
 	}
 	#social .social-pingback .social-comment-header .social-comment-label {
-		color: #b5b5b5;
 		display: block;
 		float: left;
 		margin-left: -140px;
 		text-align: right;
 		width: 120px;
 	}
-	#social .social-pingback .social-comment-header .social-fn {
-		margin-bottom: 5px;
-	}
-	
 }
 
 /* iPad Landscape and large screen */
