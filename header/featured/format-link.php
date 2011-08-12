@@ -6,6 +6,9 @@ $title_attr = the_title_attribute(array('echo' => false));
 $title_permalink = sprintf(__('Permanent link to %s', 'favepersonal'), $title_attr);
 $title_external = sprintf(__('External link to %s', 'favepersonal'), $title_attr);
 
+$url = get_permalink(get_the_ID());
+$title = $title_permalink;
+
 /*
 
 // enable this code if you want header link posts
@@ -15,10 +18,6 @@ $link = get_post_meta(get_the_ID(), '_format_link_url', true);
 if (!empty($link)) {
 	$url = $link;
 	$title = $title_external;
-}
-else {
-	$url = get_permalink(get_the_ID());
-	$title = $title_permalink;
 }
 
 */
