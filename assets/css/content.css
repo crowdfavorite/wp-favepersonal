@@ -360,10 +360,7 @@
 	letter-spacing: -1px;
 	position: absolute;
 }
-/* full page with no sidebar */
-.page-full {
-	padding: 0 140px;
-}
+
 
 /* search results */
 .search-title {

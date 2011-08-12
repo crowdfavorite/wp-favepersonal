@@ -122,7 +122,10 @@ iPad (landscape) / Screen	1024
 		border-left: 3px solid transparent;
 		border-right: 3px solid transparent;
 	}
-	
+	.widget.bio-box {
+		margin: 0 auto;
+		max-width: 310px;
+	}	
 }
 
 /* iPad Portrait */
@@ -407,6 +410,19 @@ iPad (landscape) / Screen	1024
 		text-align: right;
 		width: 120px;
 	}
+	/* full page with no sidebar */
+	.page-full {
+		padding: 0 140px;
+	}
+	
+	/* Let's pull things off the side */
+	.page-full .alignleft.pull {
+		margin-left: -140px;
+	}
+	.page-full .alignright.pull {
+		margin-right: -140px;
+	}
+	
 }
 
 /* iPad Landscape and large screen */
@@ -534,5 +550,5 @@ iPad (landscape) / Screen	1024
 	}
 	#masthead {
 		padding: 36px 0 41px 0; /* top = 40px with header border */
-	}	
+	}
 }
