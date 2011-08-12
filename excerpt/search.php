@@ -24,7 +24,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
 	<div class="post-header">
 		<h1 class="post-title"><a href="<?php the_permalink() ?>"  title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h1>
-		<p class="post-date"><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></p>
+		<a class="post-date" href="<?php the_permalink(); ?>"><time datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time></a>
 	</div>
 	<?php cfct_misc('post-meta-excerpts'); ?>	
 	<div class="post-content clearfix">
