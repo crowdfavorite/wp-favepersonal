@@ -154,6 +154,11 @@ pre {
 	margin-bottom: 20px;
 }
 
+strong, 
+b {
+	font-weight: bold;
+}
+
 ul,
 ol {
 	margin-left: 40px;
@@ -1454,9 +1459,6 @@ but allow screen readers to see */
 #social .social-comment .social-comment-header {
 	position: static;
 }
-#social .social-pingback .social-comment-header .social-comment-author {
-	padding-bottom: 0;
-}
 #social .social-comment .social-comment-header .social-replied {
 	display: none;
 }
@@ -1506,26 +1508,15 @@ but allow screen readers to see */
 }
 
 /* Social Comment Pingback Styles */
-#social .social-pingback .social-comment-header {
-	float: none;
-	margin: 0px;
-	padding-right: 15px;
-	width: auto;
-}
-#social .social-pingback .social-comment-header .social-comment-author {
-	text-align: left;
-}
 #social .social-pingback .social-comment-header .social-comment-label {
 	color: #b5b5b5;
-	display: block;
-	float: left;
-	margin-left: -140px;
-	text-align: right;
-	width: 120px;
+	display: none;
 }
 #social .social-pingback .social-comment-header .social-fn {
 	margin-bottom: 5px;
 }
+
+
 #social .social-actions {
 	bottom: 15px;
 	margin: 0;
@@ -1975,6 +1966,26 @@ iPad (landscape) / Screen	1024
 	#social .social-nav .social-pingback a span {
 		display: block;
 	}
+	/* Social Comment Pingback Styles */
+	#social .social-pingback .social-comment-header .social-comment-author {
+		padding-bottom: 0;
+	}
+	#social .social-pingback .social-comment-header {
+		float: none;
+		margin: 0px;
+		padding-right: 15px;
+		width: auto;
+	}
+	#social .social-pingback .social-comment-header .social-comment-author {
+		text-align: left;
+	}
+	#social .social-pingback .social-comment-header .social-comment-label {
+		display: block;
+		float: left;
+		margin-left: -140px;
+		text-align: right;
+		width: 120px;
+	}
 }
 
 /* iPad Landscape and large screen */
@@ -2102,5 +2113,5 @@ iPad (landscape) / Screen	1024
 	}
 	#masthead {
 		padding: 36px 0 41px 0; /* top = 40px with header border */
-	}
+	}	
 }
