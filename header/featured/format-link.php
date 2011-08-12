@@ -22,7 +22,7 @@ else {
 					<div class="featured-content">
 						<h2 class="featured-title"><?php the_title(); ?>  &rarr;</h2>
 						<div class="featured-description">
-							<?php echo cf_trim_text(get_the_excerpt(), 160, "<p>", "&hellip;</p>"); ?>
+							<?php echo cf_trim_text(get_the_excerpt(), 150, "<p>", "&hellip;</p>"); ?>
 						</div>
 					</div>
 					<a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"  class="featured-link"><?php _e('Go to link', 'favepersonal'); ?> &rarr;</a>
