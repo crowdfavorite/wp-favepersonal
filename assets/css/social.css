@@ -392,10 +392,14 @@ but allow screen readers to see */
 
 
 #social .social-actions {
+	display: none;
 	bottom: 15px;
 	margin: 0;
 	position: absolute;
 	right: 0;
+}
+#social .social-comment:hover .social-actions {
+	display: block;
 }
 #social .social-comment .social-comment-body {
 	overflow: hidden;
