@@ -86,7 +86,7 @@ function cfcp_admin_preview_css_template() {
 
 /* Now load some extra JS */
 function cfcp_admin_scrolljs() {
-    $cfcp_admin_scroll = get_bloginfo('template_url').'/js/jquery.scrollTo-1.4.2-min.js';
+    $cfcp_admin_scroll = get_bloginfo('template_url').'/assets/js/jquery.scrollTo-1.4.2-min.js';
     echo '<script type="text/javascript" src="' . $cfcp_admin_scroll . '"></script>';
 }
 
