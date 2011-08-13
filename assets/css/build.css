@@ -1692,7 +1692,7 @@ iPad (landscape) / Screen	1024
 		border-right: 3px solid transparent;
 	}
 	.widget.bio-box {
-		margin: 0 auto;
+		margin: 0 auto 30px;
 		max-width: 310px;
 	}	
 }
