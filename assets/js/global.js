@@ -63,8 +63,8 @@ jQuery(function($) {
 		scale = $.fn.cfgallery.helpers.scaleWithin,
 		dims = [];
 	
-	dims[0] = cfcpGalleryWidth || 710;
-	dims[1] = cfcpGalleryHeight || 474;
+	dims[0] = (typeof cfcpGalleryWidth === 'undefined' ? 710 : cfcpGalleryWidth);
+	dims[1] = (typeof cfcpGalleryHeight === 'undefined' ? 474 : cfcpGalleryHeight);
 	
 	// Proportional scale based on screen size
 	if (viewportW < 480) {
