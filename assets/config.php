@@ -21,7 +21,8 @@ $bundle_js = new Bundle('js/build.js');
 $bundle_js
 	->set_bundle_key('bundle-personal')
 	->set_language('javascript')
-	->set_meta('dependencies', array('modernizr', 'jquery'))
+	->set_meta('dependencies', array('jquery'))
+	->add('modernizr', 'js/modernizr.custom.js')
 	->add('load-media-query-shim', 'js/load-media-query-shim.js')
 	->add('cfgallery', 'js/cfgallery/jquery.cfgallery.js')
 	->add('global', 'js/global.js')

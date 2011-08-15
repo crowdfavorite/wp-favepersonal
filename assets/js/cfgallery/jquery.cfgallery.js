@@ -20,7 +20,7 @@
 	/* Constructor */
 	gal = function(options) {
 		var opts = $.extend(gal.opts, options),
-			fn = helpers,
+			fn = gal.helpers,
 			dim = opts.stageDimensions,
 			bgColor = opts.bgColor,
 			stage;
@@ -34,8 +34,6 @@
 		// Memoize gallery and thumbs for use later.
 		fn.$gal = this;
 		fn.$thumbs = this.find('ul a[href][id][data-largesrc]');
-		
-		fn.$gal.css('width', dim[0]);
 		
 		// Stage setup. Look for a div if one is provided.
 		stage = this.find('.gallery-stage');
@@ -110,13 +108,11 @@
 		bgColor: '#000'
 	};
 	
-	$.fn.cfgallery = gal;
-	
 	/* Helper functions. These live inside of an object so that
 	"this" still points to the parent object (constructors the $.fn space get their
 	"this" value set to the jQuery collection passed). Object literal object notation also
 	compresses down a little better in Closure Compiler. */
-	helpers = {
+	gal.helpers = {
 		// $gal: Gallery div jQuery object
 		// $stage: Stage div jQuery object
 		// $thumbs: thumb array jQuery object
@@ -361,8 +357,11 @@
 		parseUrl: function(a){return function(b,c,d){a.href=b;c={};for(d in a)if(typeof a[d]=="string")c[d]=a[d];return c}}(document.createElement("a"))
 	};
 	
+	// Export gal object as jQuery plugin.
+	$.fn.cfgallery = gal;
+	
 	$.fn.cfShimLinkHash = function() {
-		var fn = helpers;
+		var fn = gal.helpers;
 		if (this.length > 0) {
 			this.filter('a').each(function(){
 				var t = $(this),

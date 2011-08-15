@@ -58,15 +58,27 @@ jQuery(function($) {
 	});
 
 // Gallery
-	if (typeof cfcpGalleryHeight == 'undefined') {
-		cfcpGalleryHeight = 474;
+	var $gal = $('.cfgallery'),
+		viewportW = $(window).width(),
+		scale = $.fn.cfgallery.helpers.scaleWithin,
+		dims = [];
+	
+	dims[0] = cfcpGalleryWidth || 710;
+	dims[1] = cfcpGalleryHeight || 474;
+	
+	// Proportional scale based on screen size
+	if (viewportW < 480) {
+		dims = scale(dims, [300, 999]);
+		$gal.addClass('mobile-portrait');
 	}
-	if (typeof cfcpGalleryWidth == 'undefined') {
-		cfcpGalleryWidth = 710;
+	// iPhone Landscape
+	else if (viewportW < 768) {
+		dims = scale(dims, [460, 999]);
+		$gal.addClass('mobile-landscape');
 	}
-	$('.cfgallery').cfgallery({
-		'stageDimensions': [cfcpGalleryWidth, cfcpGalleryHeight]
+	
+	$gal.cfgallery({
+		'stageDimensions': dims
 	});
 	$('.gallery-img-excerpt a').cfShimLinkHash();
-
 });

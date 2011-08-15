@@ -44,17 +44,6 @@ wp_register_style(
 );
 $wp_styles->add_data('personal-ie7', 'conditional', 'IE 7');
 
-wp_enqueue_script(
-	'modernizr',
-	$assets_url.'js/modernizr.custom.js',
-	array(),
-	CFCT_URL_VERSION
-);
-
-wp_localize_script('modernizr', 'CFCP', array(
-	'scriptsDirUrl' => get_template_directory_uri() . '/assets/js/'
-));
-
 // Enqueue bundles compiled by bundler script
 $loader = new Bundler_Loader($assets_url);
 // Set the default cache-busting version number. Used if the bundle doesn't have one set.
@@ -68,6 +57,16 @@ if (CFCT_PRODUCTION) {
 else {
 	$loader->enqueue_original_files();
 }
+
+/* Pass path to scripts dir - we're using this in conjunction with Modernizr.load
+to shim support for media queries */
+wp_localize_script(
+	(CFCT_PRODUCTION ? 'bundle-personal' : 'load-media-query-shim'),
+	'CFCP',
+	array(
+	'scriptsDirUrl' => get_template_directory_uri() . '/assets/js/'
+	)
+);
 
 wp_enqueue_style('personal-ie7');
 
