@@ -993,13 +993,14 @@ img.wp-smiley {
 .featured .gallery-img-excerpt li {
 	height: 87px;
 }
-
 .featured-title {
 	background-color: #666;
 	color: #fff;
 	display: inline-block;
+	font-size: 16px;
+	line-height: 18px;
 	margin: 0 10px 9px 0;
-	padding: 8px 15px 6px;
+	padding: 6px 13px 4px;
 }
 .featured-content {
 	bottom: 0;
@@ -1508,10 +1509,14 @@ but allow screen readers to see */
 
 
 #social .social-actions {
+	display: none;
 	bottom: 15px;
 	margin: 0;
 	position: absolute;
 	right: 0;
+}
+#social .social-comment:hover .social-actions {
+	display: block;
 }
 #social .social-comment .social-comment-body {
 	overflow: hidden;
@@ -1662,11 +1667,6 @@ iPad (landscape) / Screen	1024
 	.featured.has-featured-img,
 	.featured.featured-format-gallery {
 		height: 128px;
-	}
-	.featured-title {
-		font-size: 16px;
-		line-height: 18px;
-		padding: 6px 13px 4px;
 	}
 	.featured-description, 
 	.featured-description p {
@@ -2011,6 +2011,7 @@ iPad (landscape) / Screen	1024
 	.featured-title {
 		font-size: 18px;
 		line-height: 20px;
+		padding: 8px 15px 6px;
 	}
 	.featured-description, 
 	.featured-description p {
