@@ -32,7 +32,7 @@ if (cfct_get_option('credit') == 'yes') {
 ?>
 			<p class="credit"><?php 
 			printf(
-				__('Powered by <a href="http://wordpress.org/">WordPress</a> %3$s <a href="%4$s" title="A powerful, personal Wordpress theme.">%2$s</a> by <a href="%5$s" title="Elegant WordPress development and design services.">%1$s</a>', 'favepersonal'), 
+				__('Powered by <a href="http://wordpress.org/">WordPress</a> %3$s <a href="%4$s" title="A powerful, personal WordPress theme.">%2$s</a> by <a href="%5$s" title="Elegant WordPress development and design services.">%1$s</a>', 'favepersonal'), 
 				'Crowd Favorite',
 				'FavePersonal',
 				'&nbsp;&middot;&nbsp;',
