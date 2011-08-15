@@ -35,6 +35,8 @@
 		fn.$gal = this;
 		fn.$thumbs = this.find('ul a[href][id][data-largesrc]');
 		
+		fn.$gal.css('width', dim[0]);
+		
 		// Stage setup. Look for a div if one is provided.
 		stage = this.find('.gallery-stage');
 		// Create a stage if not.
@@ -257,7 +259,10 @@
 		thumbnail list markup. */
 		createImage: function(i) {
 			var src, img,
-				$thumb = this.$thumbs.eq(i);
+				$thumb = this.$thumbs.eq(i),
+				// Used in callback
+				$gal = this.$gal,
+				scaleWithin = this.scaleWithin;
 			
 			src = $thumb.data('largesrc');
 			img = this.loadImage(src)
@@ -277,14 +282,15 @@
 				.appendTo(this.$stage)
 				.trigger('create.cfgal')
 				.load(function() {
-					var t = $(this);
+					var t = $(this),
+						dims = scaleWithin([t.width(), t.height()], [$gal.width(), $gal.height()]);
 					t
 						.css({
-							'width': t.width(),
-							'height': t.height(),
+							'width': dims[0],
+							'height': dims[1],
 							// Add CSS for centering.
-							'margin-left': -1 * (t.width() / 2),
-							'margin-top': -1 * (t.height() / 2),
+							'margin-left': -1 * (dims[0] / 2),
+							'margin-top': -1 * (dims[1] / 2),
 							'visibility': 'visible',
 							'display': 'none'
 						})
@@ -313,6 +319,40 @@
 			img.src = src;
 			img.alt = "";
 			return $(img);
+		},
+		
+		/**
+		 * Proportial scale for image dimensions.
+		 * @param array dims [w,h]
+		 * @param array boundaries [w,h]
+		 * @return array scaled [w,h]
+		 */
+		scaleWithin: function(dims, boundaries) {
+			var factor,
+				/* @param bywidth: true = width, false = height */
+				scaleby = function(bywidth) {
+					var x, y;
+					if (bywidth) {
+						x = 0;
+						y = 1;
+					}
+					else {
+						x = 1;
+						y = 0;
+					}
+					
+					factor = boundaries[x] / dims[x];
+					dims[x] = boundaries[x];
+					dims[y] = Math.floor(dims[y] * factor);
+					return dims;
+				};
+			if (dims[0] > boundaries[0]) {
+				return scaleby(true);
+			};
+			if (dims[1] > boundaries[1]) {
+				return scaleby(false);
+			};
+			return dims;
 		},
 		
 		/* Copyright (c) 2011 Jed Schmidt, http://jed.is
