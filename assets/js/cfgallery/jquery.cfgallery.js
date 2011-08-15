@@ -262,7 +262,7 @@
 				$thumb = this.$thumbs.eq(i),
 				// Used in callback
 				$gal = this.$gal,
-				scaleWithin = this.scaleWithin;
+				scale = this.scaleWithin;
 			
 			src = $thumb.data('largesrc');
 			img = this.loadImage(src)
@@ -283,7 +283,7 @@
 				.trigger('create.cfgal')
 				.load(function() {
 					var t = $(this),
-						dims = scaleWithin([t.width(), t.height()], [$gal.width(), $gal.height()]);
+						dims = scale([t.width(), t.height()], [$gal.width(), $gal.height()]);
 					t
 						.css({
 							'width': dims[0],
