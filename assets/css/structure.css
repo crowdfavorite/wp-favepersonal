@@ -48,7 +48,7 @@ iPad (landscape) / Screen	1024
 	#social .social-identity {
 		padding-left: 50px;
 	}
-}
+}/*/mediaquery*/
 
 /* iPhone Landscape */
 @media screen and (min-width: 480px) {
@@ -120,8 +120,8 @@ iPad (landscape) / Screen	1024
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
-	}	
-}
+	}
+}/*/mediaquery*/
 
 /* iPad Portrait */
 @media screen and (min-width: 768px) {
@@ -417,8 +417,7 @@ iPad (landscape) / Screen	1024
 	.page-full .alignright.pull {
 		margin-right: -140px;
 	}
-	
-}
+}/*/mediaquery*/
 
 /* iPad Landscape and large screen */
 @media screen and (min-width: 1010px) {
@@ -547,4 +546,4 @@ iPad (landscape) / Screen	1024
 	#masthead {
 		padding: 36px 0 41px 0; /* top = 40px with header border */
 	}
-}
+}/*/mediaquery*/

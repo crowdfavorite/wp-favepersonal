@@ -61,13 +61,27 @@ img {
 
 /** Load Fonts
  -------------------------------------------------- */
+
 @font-face {
-    font-family: Titillium400;
-    src: url(../fonts/TitilliumText22L003.otf);
+    font-family: 'Titillium400';
+    src: url('../fonts/titilliumtext22l003-webfont.eot');
+    src: url('../fonts/titilliumtext22l003-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/titilliumtext22l003-webfont.woff') format('woff'),
+         url('../fonts/titilliumtext22l003-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
 }
+
 @font-face {
-    font-family: Titillium600;
-    src: url(../fonts/TitilliumText22L004.otf);
+    font-family: 'Titillium600';
+    src: url('../fonts/titilliumtext22l004-webfont.eot');
+    src: url('../fonts/titilliumtext22l004-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/titilliumtext22l004-webfont.woff') format('woff'),
+         url('../fonts/titilliumtext22l004-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 /** Basic Elements
