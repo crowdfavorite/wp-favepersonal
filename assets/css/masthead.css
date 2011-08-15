@@ -30,13 +30,14 @@
 .featured .gallery-img-excerpt li {
 	height: 87px;
 }
-
 .featured-title {
 	background-color: #666;
 	color: #fff;
 	display: inline-block;
+	font-size: 16px;
+	line-height: 18px;
 	margin: 0 10px 9px 0;
-	padding: 8px 15px 6px;
+	padding: 6px 13px 4px;
 }
 .featured-content {
 	bottom: 0;
