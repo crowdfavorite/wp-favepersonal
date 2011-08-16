@@ -21,10 +21,32 @@
  * Colors are set in the theme settings within the WordPress admin
  * enquequed from the functions.php and loaded into the header
  */
-function cfcp_color_css() { 
+function cfcp_color_css() {
+	$url = trailingslashit(get_template_directory_uri()) . 'assets/';
 ?>
 <style type="text/css" media="screen">
-	
+
+@font-face {
+    font-family: 'Titillium400';
+    src: url('<?php echo $url; ?>fonts/titilliumtext22l003-webfont.eot');
+    src: url('<?php echo $url; ?>fonts/titilliumtext22l003-webfont.eot?#iefix') format('embedded-opentype'),
+         url('<?php echo $url; ?>fonts/titilliumtext22l003-webfont.woff') format('woff'),
+         url('<?php echo $url; ?>fonts/titilliumtext22l003-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Titillium600';
+    src: url('<?php echo $url; ?>fonts/titilliumtext22l004-webfont.eot');
+    src: url('<?php echo $url; ?>fonts/titilliumtext22l004-webfont.eot?#iefix') format('embedded-opentype'),
+         url('<?php echo $url; ?>fonts/titilliumtext22l004-webfont.woff') format('woff'),
+         url('<?php echo $url; ?>fonts/titilliumtext22l004-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
 	background-color: <?php echo cf_kuler_color('dark', 'body_background'); ?>;
 }

@@ -23,12 +23,8 @@ $bundle_js
 	->set_language('javascript')
 	->set_meta('dependencies', array('jquery'))
 	->add('modernizr', 'js/modernizr.custom.js')
-	->add('load-media-query-shim', 'js/load-media-query-shim.js')
 	->add('cfgallery', 'js/cfgallery/jquery.cfgallery.js')
 	->add('global', 'js/global.js')
 	->add('o-type-ahead', 'js/o-type-ahead.js');
 $bundler->push($bundle_js);
-
-/* END EXAMPLE */
-
 ?>
