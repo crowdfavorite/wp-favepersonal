@@ -92,7 +92,7 @@ body #nav-main .menu {
 #nav-main .sub-menu a:hover {
 	color: <?php echo cf_kuler_color('darkest', 'header_menu_li_a_hover'); ?>;
 }
-#nav-main .sub-menu {
+body #nav-main .sub-menu {
 	background: <?php echo cf_kuler_color('dark', 'header_menu_ul_ul_background'); ?>;
 	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_ul_ul_border'); ?>;
 }
