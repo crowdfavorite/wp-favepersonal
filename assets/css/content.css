@@ -78,6 +78,7 @@
 .post-header {
 	clear: both;
 	margin-bottom: 7px;
+	zoom: 1;
 }
 .post-title {
 	line-height: 32px;
@@ -212,20 +213,23 @@
 .gallery-thumbs {
 	list-style-type: none;
 	margin: 0;
-	max-width: 720px;
+	width: 310px;
 }
 .gallery-thumbs li {
 	background-color: #ddd;
 	display: block;
 	float: left;
-	height: 63px;
-	margin: 10px 10px 0 0;
+	height: 52px; /* 63px */
+	margin: 7px 10px 0 0;
 	padding: 0;
-	width: 80px;
+	width: 67px; /* 80px */
 }
 .gallery-thumbs a,
 .gallery-thumbs img {
 	display: block;
+}
+.gallery-thumbs img {
+	width: 100%;
 }
 .gallery-thumbs a.activated,
 .gallery-thumbs a:hover {

@@ -84,6 +84,14 @@ iPad (landscape) / Screen	1024
 		margin-left: 0;
 	}
 	
+	.gallery-thumbs {
+		width: 470px;
+	}
+	.gallery-thumbs li {
+		width: 84px;
+		height: 66px;
+	}
+	
 	.featured {
 		float: left;
 		height: 118px;
@@ -190,6 +198,14 @@ iPad (landscape) / Screen	1024
 	.single-format-gallery .post-media {
 		left: -1px;
 		position: relative;
+	}
+	
+	.gallery-thumbs {
+		width: 720px;
+	}
+	.gallery-thumbs li {
+		width: 80px;
+		height: 63px;
 	}
 	
 	.featured {
