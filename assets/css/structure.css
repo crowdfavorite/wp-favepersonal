@@ -258,9 +258,6 @@ iPad (landscape) / Screen	1024
 		display: inline;
 		zoom: 1;
 	}
-	#nav-main li {
-		border-bottom: 3px solid transparent;
-	}
 	
 	/* Dropdown Menus */
 	#nav-main .sub-menu {

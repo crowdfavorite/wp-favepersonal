@@ -73,7 +73,7 @@ a:hover {
 }
 
 /* Menu */
-#nav-main li {
+body #nav-main li {
 	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_li_border'); ?>;
 }
 #nav-main li:hover,
