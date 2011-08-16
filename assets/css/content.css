@@ -16,16 +16,18 @@
 /* Menu */
 #nav-main h1 {
 	border-bottom: 3px solid transparent;
-	display: -moz-inline-box; /* FF2 */
 	display: inline-block; /* Standard. IE8+, Saf, FF3+ */
+	height: 20px;
+}
+.ie6 #nav-main h1,
+.ie7 #nav-main h1 {
 	/**
 	 * @bugfix inline-block fix
 	 * @see http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/
 	 * @valid no
 	 */
 	zoom: 1;
-	*display: inline;
-	height: 20px;
+	display: inline;
 }
 #nav-main h1,
 #nav-main ul {

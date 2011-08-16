@@ -76,12 +76,12 @@ a:hover {
 body #nav-main li {
 	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_li_border'); ?>;
 }
-#nav-main li:hover,
-#nav-main li.current-menu-item,
-#nav-main li.current-menu-parent {
+body #nav-main li:hover,
+body #nav-main li.current-menu-item,
+body #nav-main li.current-menu-parent {
 	border-color: <?php echo cf_kuler_color('dark', 'header_menu_li_border_hover'); ?>;
 }
-#nav-main h1 {
+body #nav-main h1 {
 	border-color: <?php echo cf_kuler_color('dark', 'header_h1_border'); ?>;
 }
 body #nav-main .menu {
@@ -89,14 +89,14 @@ body #nav-main .menu {
 	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_border'); ?>;
 }
 /* Sub Menu */
-#nav-main .sub-menu a:hover {
+body #nav-main .sub-menu a:hover {
 	color: <?php echo cf_kuler_color('darkest', 'header_menu_li_a_hover'); ?>;
 }
 body #nav-main .sub-menu {
 	background: <?php echo cf_kuler_color('dark', 'header_menu_ul_ul_background'); ?>;
 	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_ul_ul_border'); ?>;
 }
-#nav-main .sub-menu li.current-menu-item > a {
+body #nav-main .sub-menu li.current-menu-item > a {
 	border-left-color: <?php echo cf_kuler_color('darkest', 'header_menu_current_a_border_left'); ?>;
 	border-right-color: <?php echo cf_kuler_color('darkest', 'header_menu_current_a_border_right'); ?>;
 }
