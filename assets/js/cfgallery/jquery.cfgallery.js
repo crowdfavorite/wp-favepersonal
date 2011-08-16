@@ -257,7 +257,7 @@
 			var src, img,
 				$thumb = this.$thumbs.eq(i),
 				// Used in callback
-				$gal = this.$gal,
+				$stage = this.$stage,
 				scale = this.scaleWithin;
 			
 			src = $thumb.data('largesrc');
@@ -275,11 +275,11 @@
 					'top': '50%',
 					'visibility': 'hidden'
 				})
-				.appendTo(this.$stage)
+				.appendTo($stage)
 				.trigger('create.cfgal')
 				.load(function() {
 					var t = $(this),
-						dims = scale([t.width(), t.height()], [$gal.width(), $gal.height()]);
+						dims = scale([t.width(), t.height()], [$stage.width(), $stage.height()]);
 					t
 						.css({
 							'width': dims[0],
@@ -339,7 +339,7 @@
 					
 					factor = boundaries[x] / dims[x];
 					dims[x] = boundaries[x];
-					dims[y] = Math.floor(dims[y] * factor);
+					dims[y] = Math.ceil(dims[y] * factor);
 					return dims;
 				};
 			if (dims[0] > boundaries[0]) {
