@@ -456,7 +456,7 @@
 	$gal.cfgallery({
 		'stageDimensions': dims
 	});
-	$('.gallery-img-excerpt a').cfShimLinkHash();
+	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();
 });(function($) {
 $.fn.oTypeAhead = function(options) {
 	var defaults = {
