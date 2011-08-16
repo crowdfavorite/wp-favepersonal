@@ -84,7 +84,7 @@ body #nav-main li {
 #nav-main h1 {
 	border-color: <?php echo cf_kuler_color('dark', 'header_h1_border'); ?>;
 }
-#nav-main .menu {
+body #nav-main .menu {
 	background-color: <?php echo cf_kuler_color('dark', 'header_menu_background'); ?>;
 	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_border'); ?>;
 }
