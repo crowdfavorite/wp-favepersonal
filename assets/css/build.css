@@ -349,16 +349,18 @@ img.wp-smiley {
 /* Menu */
 #nav-main h1 {
 	border-bottom: 3px solid transparent;
-	display: -moz-inline-box; /* FF2 */
 	display: inline-block; /* Standard. IE8+, Saf, FF3+ */
+	height: 20px;
+}
+.ie6 #nav-main h1,
+.ie7 #nav-main h1 {
 	/**
 	 * @bugfix inline-block fix
 	 * @see http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/
 	 * @valid no
 	 */
 	zoom: 1;
-	*display: inline;
-	height: 20px;
+	display: inline;
 }
 #nav-main h1,
 #nav-main ul {
@@ -545,7 +547,7 @@ img.wp-smiley {
 }
 .gallery-thumbs {
 	list-style-type: none;
-	margin: 0;
+	margin: 3px 0 0;
 	width: 310px;
 }
 .gallery-thumbs li {
@@ -1820,9 +1822,6 @@ iPad (landscape) / Screen	1024
 	html.ie7 #nav-main a {
 		display: inline;
 		zoom: 1;
-	}
-	#nav-main li {
-		border-bottom: 3px solid transparent;
 	}
 	
 	/* Dropdown Menus */
