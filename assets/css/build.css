@@ -1152,7 +1152,8 @@ img.wp-smiley {
 }
 
 /* Comment bar */
-#social #reply-title {
+#social #reply-title,
+#social .nocomments {
 	height: 27px;
 	margin-bottom: 16px;
 	padding: 0 10px;
@@ -1161,6 +1162,11 @@ img.wp-smiley {
 	letter-spacing: 1px;
 	margin: 0 0 10px;
 	text-transform: uppercase;
+}
+#social .nocomments {
+		display: block;
+		font-family: 'Titillium600', Helvetica, Arial, Verdana, sans-serif;
+		text-align: center;
 }
 #social #reply-title #cancel-comment-reply-link {
 	font: 12px/30px Helvetica, Arial, Verdana;
@@ -1254,7 +1260,7 @@ img.wp-smiley {
 #social .social-sign-in-links {
 	display: block;
 	margin: 20px 0;
-	padding: 0 0 0 140px;
+	text-align: center;
 }
 #social .social-commentlist .social-sign-in-links {
 	padding-left: 0;
@@ -1267,7 +1273,7 @@ img.wp-smiley {
 	font-size: 14px;
 	height: 25px;
 	line-height: 25px;
-	margin: 0 16px 0 0;
+	margin: 4px 8px 0 8px;
 	padding-left: 35px;
 	padding-right: 10px;
 	text-indent: 0;
