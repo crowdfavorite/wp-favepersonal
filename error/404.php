@@ -26,10 +26,9 @@ get_header();
 
 <div class="page-full clearfix">
 
-	<p><?php _e('Sorry, we\'re not sure what you\'re looking for here.', 'favepersonal'); ?></p>
-	<?php
-	cfct_form('search');
-	?>
+	<h1><?php _e('Sorry, we\'re not sure what you\'re looking for here.', 'favepersonal'); ?></h1>
+	<p><?php _e('Perhaps searching, or one of the links below, can help.', 'favepersonal'); ?></p>
+	<?php cfct_form('search'); ?>		
 	
 </div><!--.page-full-->
 
