@@ -258,6 +258,7 @@ body #nav-main .sub-menu li.current-menu-item > a {
 
 /* Social */
 #social #reply-title,
+#social .nocomments,
 #social .social-nav,
 #social .social-nav a span {
 	background-color: <?php echo cf_kuler_color('light', 'social-heading_background'); ?>;

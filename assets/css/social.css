@@ -44,7 +44,8 @@
 }
 
 /* Comment bar */
-#social #reply-title {
+#social #reply-title,
+#social .nocomments {
 	height: 27px;
 	margin-bottom: 16px;
 	padding: 0 10px;
@@ -53,6 +54,11 @@
 	letter-spacing: 1px;
 	margin: 0 0 10px;
 	text-transform: uppercase;
+}
+#social .nocomments {
+		display: block;
+		font-family: 'Titillium600', Helvetica, Arial, Verdana, sans-serif;
+		text-align: center;
 }
 #social #reply-title #cancel-comment-reply-link {
 	font: 12px/30px Helvetica, Arial, Verdana;
