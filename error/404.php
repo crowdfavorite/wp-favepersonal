@@ -24,21 +24,20 @@ get_header();
 
 ?>
 
-<div id="content">
+<div class="page-full clearfix">
 
-<p><?php _e('Sorry, we\'re not sure what you\'re looking for here.', 'favepersonal'); ?></p>
+	<p><?php _e('Sorry, we\'re not sure what you\'re looking for here.', 'favepersonal'); ?></p>
+	<?php
+	cfct_form('search');
+	?>
+	
+</div><!--.page-full-->
 
-<?php
-
-cfct_form('search');
-
-?>
-
+<div id="secondary-full" class="clearfix">
+	<?php get_sidebar(); ?>
 </div>
 
 <?php
-
-get_sidebar();
 
 get_footer();
 
