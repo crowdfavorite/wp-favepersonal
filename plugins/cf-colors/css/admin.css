@@ -274,12 +274,12 @@
 	background-color: transparent;
 	border: none;
 	color: #778398;
-	padding-left: 3px;
-	padding-top: 2px;
-	outline: none;
 	font-weight: bold;
-	font-size: 11px;
-	line-height: 12px;
+	font-size: 10px;
+	line-height: 14px;
+	margin-top: 1px;
+	padding: 0 0 0 4px;
+	outline: none;
 	text-align: center;
 }
 #cf-kuler-color-picker .theme-swatches .cf-kuler-theme {
