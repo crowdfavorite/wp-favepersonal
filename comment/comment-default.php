@@ -47,5 +47,4 @@ extract($data); // for comment reply link
 	<div class="social-actions">
 		<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'])), $comment, $post); ?>
 	</div><!--.social-actions-->
-	<?php edit_comment_link('edit', '<span class="edit-link">', '</span>'); ?>
 </div><!--#comment-xx-->

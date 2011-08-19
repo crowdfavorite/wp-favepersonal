@@ -51,10 +51,15 @@ if (have_comments() || comments_open()) {
 		}
 		if ($comment_count) {
 			echo '<ol class="social-commentlist">', wp_list_comments('callback=cfct_threaded_comment'), '</ol>';
-			
-			previous_comments_link();
-			next_comments_link();
 		}
+
+		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
+			<div class="pagination h6">
+				<span class="next"><?php previous_comments_link('Older Comments &raquo;'); ?></span>
+				<span class="prev"><?php next_comments_link('&laquo; Newer Comments'); ?></span>
+			</div> <!-- .navigation -->
+		<?php endif; // check for comment navigation
+
 		cfct_form('comment');
 	}
 ?>
