@@ -45,6 +45,7 @@
 
 /* Comment bar */
 #social #reply-title,
+#social .comments-title,
 #social .nocomments {
 	height: 27px;
 	margin-bottom: 16px;

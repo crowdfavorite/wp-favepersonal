@@ -43,7 +43,7 @@ if ('open' == $post->comment_status) {
 	
 <div id="respond">
 
-	<h3 id="respond-title"><span><?php printf(__('Post A Comment', 'favepersonal')); ?></span></h3>
+	<h2 id="reply-title"><span><?php printf(__('Post A Comment', 'favepersonal')); ?></span></h2>
 		
 <form class="social-respond-inner" action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
 	<div class="social-post-form"> 	
