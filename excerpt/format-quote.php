@@ -40,7 +40,10 @@ else {
 
 ?>
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
-	<a class="post-date" href="<?php the_permalink(); ?>"><time datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time></a>
+	<div class="post-header">
+		<a class="post-date" href="<?php the_permalink(); ?>"><time datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time></a>		
+		<?php cfct_misc('post-meta-excerpts'); ?>
+	</div>
 	<div class="post-content">
 		<blockquote>
 			<?php the_excerpt(); ?>

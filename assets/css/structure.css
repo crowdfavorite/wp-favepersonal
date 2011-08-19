@@ -208,6 +208,14 @@ iPad (landscape) / Screen	1024
 		height: 63px;
 	}
 	
+	.format-status .post-header,
+	.format-quote .post-header {
+		width: 140px;
+		float: left;
+		position: relative;
+		padding-top: 25px;
+	}
+	
 	.featured {
 		height: 120px;
 		width: 226px;
