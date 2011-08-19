@@ -215,6 +215,11 @@ iPad (landscape) / Screen	1024
 		position: relative;
 		padding-top: 25px;
 	}
+
+	.single .format-status .post-meta,
+	.single .format-quote .post-meta {
+		margin-top: 40px;
+	}
 	
 	.featured {
 		height: 120px;
