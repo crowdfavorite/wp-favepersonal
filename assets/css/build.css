@@ -479,6 +479,10 @@ img.wp-smiley {
 .post-meta .post-meta-replies {
 	margin-top: 0;
 }
+.excerpt .post-meta .post-meta-replies {
+	margin: 0 0 0 8px;
+}
+
 .post-meta .post-meta-title {
 	margin: 10px 0 0 0;
 }
@@ -1777,6 +1781,19 @@ iPad (landscape) / Screen	1024
 	.gallery-thumbs li {
 		width: 80px;
 		height: 63px;
+	}
+	
+	.format-status .post-header,
+	.format-quote .post-header {
+		width: 140px;
+		float: left;
+		position: relative;
+		padding-top: 25px;
+	}
+
+	.single .format-status .post-meta,
+	.single .format-quote .post-meta {
+		margin-top: 40px;
 	}
 	
 	.featured {
