@@ -41,38 +41,37 @@ if ('open' == $post->comment_status) {
 ?>
 
 	
-<div id="respond" class="social-respond">
-	<div class="social-heading">
-		<h2 class="social-title"><span><?php printf(__('Post A Comment', 'favepersonal')); ?></span></h2>
-	</div>
+<div id="respond">
+
+	<h3 id="respond-title"><span><?php printf(__('Post A Comment', 'favepersonal')); ?></span></h3>
 		
 <form class="social-respond-inner" action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
 	<div class="social-post-form"> 	
 <?php if (!is_user_logged_in()) { ?>
-		<div class="social-input-row">
+		<p class="social-input-row social-input-row-author">
 			<label class="social-label" for="social-sign-in-name"><?php _e('Name', 'favepersonal'); ?></label>
-			<input class="social-input-text" id="social-sign-in-name" type="text" name="author" value="<?php echo $comment_author; ?>" size="22" />
-		</div>
-		<div class="social-input-row">
+			<input class="social-input" id="social-sign-in-name" required="required" type="text" name="author" value="<?php echo $comment_author; ?>" size="22" />
+		</p>
+		<p class="social-input-row social-input-row-email">
 			<label class="social-label" for="social-sign-in-email"><?php _e('Email ', 'favepersonal'); ?></label>
-			<input class="social-input-text" id="social-sign-in-email" type="text" name="email" value="<?php echo $comment_author_email; ?>" size="22" />
-		</div>
-		<div class="social-input-row">
+			<input class="social-input" id="social-sign-in-email" required="required" type="text" name="email" value="<?php echo $comment_author_email; ?>" size="22" />
+		</p>
+		<p class="social-input-row social-input-row-url">
 			<label class="social-label" for="social-sign-in-website"><?php _e('Website', 'favepersonal'); ?></label>
-			<input class="social-input-text" id="social-sign-in-website" type="text" name="url" value="<?php echo $comment_author_url; ?>" size="22" />
-		</div>
+			<input class="social-input" id="social-sign-in-website" type="text" name="url" value="<?php echo $comment_author_url; ?>" size="22" />
+		</p>
 <?php } ?>
 <?php if (is_user_logged_in()) { ?>
 		<div class="social-input-row"><?php printf(__('Logged in as <a href="%s">%s</a>. ', 'favepersonal'), get_bloginfo('wpurl').'/wp-admin/profile.php', $user_identity); wp_loginout(); ?>.</div>
 <?php } ?>
-		<div class="social-input-row">
+		<p class="social-input-row social-input-row-comment">
 			<label class="social-label" for="social-sign-in-comment"><?php _e('Comment', 'favepersonal'); ?></label>
-			<textarea id="social-sign-in-comment" name="comment"></textarea>
-		</div>
-		<div class="social-input-row social-input-row-submit social-clearfix">
-			<button type="submit" class="social-input-submit"><span>Post It</span></button>
+			<textarea id="comment" name="comment" class="social-input" required="required"></textarea>
+		</p>
+		<p class="form-submit">
+			<input name="submit" type="submit" id="submit" value="<?php _e('Post It', 'favepersonal'); ?>">
 			<?php cancel_comment_reply_link() ?>
-		</div>
+		</p>
 <?php
 		comment_id_fields();
 		do_action('comment_form', $post->ID);
