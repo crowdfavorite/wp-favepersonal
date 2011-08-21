@@ -13,8 +13,9 @@ $bundle_css
 	->add('utility', 'css/utility.css')
 	->add('content', 'css/content.css')
 	->add('masthead', 'css/masthead.css')
-	->add('social', 'css/social.css')
-	->add('structure', 'css/structure.css');
+	->add('media-mobile', 'css/media-mobile.css')
+	->add('media-tablet', 'css/media-tablet.css')
+	->add('social', 'css/social.css');
 $bundler->push($bundle_css);
 
 $bundle_js = new Bundle('js/build.js');

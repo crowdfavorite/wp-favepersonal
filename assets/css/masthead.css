@@ -16,6 +16,7 @@
 .featured {
 	background-color: #666;
 	border-bottom: 10px solid #666;
+	float: left;
 	height: 164px;
 	margin: 0 auto;
 	overflow: hidden;

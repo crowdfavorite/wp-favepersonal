@@ -1,0 +1,143 @@
+/* ------------------------------------------------------
+iPad Landscape and large screen.
+
+This file should NOT be included in built styles when in production mode.
+Instead, it should be linked to twice:
+
+	For modern browsers link with the following media query @media screen and (min-width: 1010px) but do it witin a !IE conditional comment.
+
+	For IE, link it @media screen within an lte IE9 conditional comment.
+
+Breakpoint:
+iPad (landscape) / Screen	1024
+------------------------------------------------------ */
+
+.container {
+	width: 990px;
+}
+
+.featured {
+	height: 170px;
+	width: 310px;
+}
+.featured.has-featured-img,
+.featured.featured-format-gallery {
+	height: 180px;
+}
+.featured-title {
+	font-size: 18px;
+	line-height: 20px;
+	padding: 8px 15px 6px;
+}
+.featured-description, 
+.featured-description p {
+	font-size: 14px;
+	line-height: 20px;
+}
+.featured .gallery-img-excerpt li {
+	height: 90px;
+}
+
+#featured-post-2,
+#featured-post-3 {
+	margin-left: 30px;
+}
+
+.featured-description,
+.featured:hover .featured-description {
+	display: block;
+}
+
+.post .gallery-img-excerpt li {
+	width: 160px;
+}
+.post .gallery-img-excerpt li.gallery-view-all a {
+	height: 120px;
+	line-height: 120px;
+}
+.post .gallery-img-excerpt .excerpt-img-7 {
+	display: block;
+}
+.post .gallery-img-excerpt .excerpt-img-1,
+.post .gallery-img-excerpt .excerpt-img-2,
+.post .gallery-img-excerpt .excerpt-img-4,
+.post .gallery-img-excerpt .excerpt-img-5,
+.post .gallery-img-excerpt .excerpt-img-7,
+.post .gallery-img-excerpt .gallery-view-all {
+	margin-left: 15px;
+}
+.post .gallery-img-excerpt .excerpt-img-0,
+.post .gallery-img-excerpt .excerpt-img-3,
+.post .gallery-img-excerpt .excerpt-img-6 {
+	margin-left: 0;
+}
+
+.single .post-media {
+	padding-left: 140px;
+}
+
+.gallery-thumbs {
+	width: 720px;
+}
+
+/* Shared styles for media post formats */
+.single .format-image .post-content,
+.single .format-gallery .post-content,
+.single .format-video .post-content {
+	width: 680px;
+}
+.single-format-image #social,
+.single-format-gallery #social,
+.single-format-video #social {
+	width: 850px;
+	margin-left: 0px;
+}
+
+#primary,
+#secondary {
+	display: inline; /* Double-margin float bug fix */
+	float: left;
+	height: auto !important;
+	height: 1px;
+	min-height: 1px;
+}
+
+#primary {
+	width: 650px;
+	margin: 0 30px 0 0;
+}
+
+#secondary {
+	width: 310px;
+}
+
+.sidebar {
+	float: none;
+	margin-left: 0;
+	width: auto;
+}
+#secondary-full .sidebar {
+	float: left;
+	margin-left: 30px;
+	width: 310px;
+}
+#secondary-full #sidebar-1 {
+	margin-left: 0;
+}
+
+#header .container {
+	padding-top: 40px;
+}
+#header h1 {
+	float: left;
+}
+#nav-main {
+	float: right;
+	padding-top: 9px;
+}
+#nav-main ul {
+	text-align: right;
+}
+#masthead {
+	padding: 36px 0 41px 0; /* top = 40px with header border */
+}

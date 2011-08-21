@@ -2,6 +2,11 @@
  * Content - Posts, Pages, Comments
 -------------------------------------------------- */
 
+.container {
+	margin: 0 auto;
+	width: 300px;
+}
+
 /** Header
  -------------------------------------------------- */
 #header .container {
@@ -13,22 +18,16 @@
 	margin: 0;
 }
 
-/* Menu */
+/**
+ * Visually hide h1 in header by default. Leave it readable by screen readers for accessibility.
+ * This is reset by mobile styles to create a menu.
+ */
 #nav-main h1 {
-	border-bottom: 3px solid transparent;
-	display: inline-block; /* Standard. IE8+, Saf, FF3+ */
-	height: 20px;
+	position: absolute;
+	left: -999em;
 }
-.ie6 #nav-main h1,
-.ie7 #nav-main h1 {
-	/**
-	 * @bugfix inline-block fix
-	 * @see http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/
-	 * @valid no
-	 */
-	zoom: 1;
-	display: inline;
-}
+
+/* Menu */
 #nav-main h1,
 #nav-main ul {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
@@ -40,17 +39,72 @@
 	padding: 0;
 	text-transform: uppercase;
 }
+#nav-main .menu > li {
+	border-bottom: 3px solid transparent;
+	display: inline-block;
+	height: 20px;
+	margin: 10px 0 0 20px;
+	padding: 0;
+	position: relative;
+	vertical-align: top;
+}
+/* inline block fix for IE6 and IE7 */
+html.ie6 #nav-main .menu > li,
+html.ie7 #nav-main .menu > li {
+	display: inline;
+	zoom: 1;
+}
 #nav-main li:first-child {
 	margin-left: 0;
 }
-#nav-main .menu {
+#nav-main a {
+	display: block;
+}
+/* Dropdown Menus */
+#nav-main .sub-menu {
+	border: 3px solid transparent;
+	border-top: 0;
+	/* bg and border colors set in header */
+	box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+	-webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.4);
 	display: none;
+	font-family: Helvetica, Arial, Verdana, sans-serif;
+	right: -3px;
+	padding: 5px 0 3px 0;
+	position: absolute;
+	text-align: left;
+	text-transform: none;
+	top: 23px;
+	min-width: 140px;
+	width: 120%;
+	z-index: 99999;
 }
 #nav-main .sub-menu li {
 	border-bottom: 0;
-}
-#nav-main a {
 	display: block;
+	height: auto;
+	margin: 3px 0;
+	padding: 0;
+}
+#nav-main .sub-menu a {
+	display: block;
+	font-weight: normal;
+	height: auto;
+	letter-spacing: 0;
+	line-height: 1.2em;
+	padding: 4px 10px;
+}
+#nav-main li:hover > .sub-menu {
+	display: block;
+}
+#nav-main li.current-menu-item > a {
+	padding-left: 7px;
+	padding-right: 7px;
+}
+#nav-main .sub-menu li.current-menu-item > a {
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
 }
 
 /** Masthead - also see masthead.css
@@ -66,6 +120,9 @@
 #content {
 	background-color: #fff;
 	padding: 40px 0;
+}
+.ie7 #content {
+	zoom: 1;
 }
 
 /** Posts Default
@@ -219,7 +276,6 @@
 .gallery-thumbs {
 	list-style-type: none;
 	margin: 3px 0 0;
-	width: 310px;
 }
 .gallery-thumbs li {
 	background-color: #ddd;
@@ -611,6 +667,7 @@
 /** Footer
  -------------------------------------------------- */
 #footer {
+	clear: both;
 	font-size: 12px;
 	line-height: 18px;
 	padding: 35px 0;

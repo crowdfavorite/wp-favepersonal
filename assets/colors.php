@@ -22,31 +22,8 @@
  * enquequed from the functions.php and loaded into the header
  */
 function cfcp_color_css() {
-	$url = trailingslashit(get_template_directory_uri()) . 'assets/';
 ?>
 <style type="text/css" media="screen">
-
-@font-face {
-    font-family: 'Titillium400';
-    src: url('<?php echo $url; ?>fonts/titilliumtext22l003-webfont.eot');
-    src: url('<?php echo $url; ?>fonts/titilliumtext22l003-webfont.eot?#iefix') format('embedded-opentype'),
-         url('<?php echo $url; ?>fonts/titilliumtext22l003-webfont.woff') format('woff'),
-         url('<?php echo $url; ?>fonts/titilliumtext22l003-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'Titillium600';
-    src: url('<?php echo $url; ?>fonts/titilliumtext22l004-webfont.eot');
-    src: url('<?php echo $url; ?>fonts/titilliumtext22l004-webfont.eot?#iefix') format('embedded-opentype'),
-         url('<?php echo $url; ?>fonts/titilliumtext22l004-webfont.woff') format('woff'),
-         url('<?php echo $url; ?>fonts/titilliumtext22l004-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 body {
 	background-color: <?php echo cf_kuler_color('dark', 'body_background'); ?>;
 }
@@ -73,32 +50,37 @@ a:hover {
 }
 
 /* Menu */
-body #nav-main li {
+#nav-main li {
 	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_li_border'); ?>;
 }
-body #nav-main li:hover,
-body #nav-main li.current-menu-item,
-body #nav-main li.current-menu-parent {
+#nav-main li:hover,
+#nav-main li.current-menu-item,
+#nav-main li.current-menu-parent {
 	border-color: <?php echo cf_kuler_color('dark', 'header_menu_li_border_hover'); ?>;
 }
-body #nav-main h1 {
-	border-color: <?php echo cf_kuler_color('dark', 'header_h1_border'); ?>;
-}
-body #nav-main .menu {
-	background-color: <?php echo cf_kuler_color('dark', 'header_menu_background'); ?>;
-	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_border'); ?>;
-}
+
 /* Sub Menu */
-body #nav-main .sub-menu a:hover {
+#nav-main .sub-menu a:hover {
 	color: <?php echo cf_kuler_color('darkest', 'header_menu_li_a_hover'); ?>;
 }
-body #nav-main .sub-menu {
+#nav-main .sub-menu {
 	background: <?php echo cf_kuler_color('dark', 'header_menu_ul_ul_background'); ?>;
 	border-color: <?php echo cf_kuler_color('darkest', 'header_menu_ul_ul_border'); ?>;
 }
-body #nav-main .sub-menu li.current-menu-item > a {
+#nav-main .sub-menu li.current-menu-item > a {
 	border-left-color: <?php echo cf_kuler_color('darkest', 'header_menu_current_a_border_left'); ?>;
 	border-right-color: <?php echo cf_kuler_color('darkest', 'header_menu_current_a_border_right'); ?>;
+}
+
+/* Menu in dropdown mode */
+@media only screen and (max-width: 767px) {
+	#nav-main h1 {
+		border-color: <?php echo cf_kuler_color('dark', 'header_h1_border'); ?>;
+	}
+	#nav-main .menu {
+		background-color: <?php echo cf_kuler_color('dark', 'header_menu_background'); ?>;
+		border-color: <?php echo cf_kuler_color('darkest', 'header_menu_border'); ?>;
+	}
 }
 
 /** Masthead

@@ -36,13 +36,22 @@ wp_register_script(
 	true
 );
 
+// For those that support media queries (IE9 and above)...
 wp_register_style(
-	'personal-ie7',
-	$assets_url.'css/ie7.css',
+	'personal-media-big-screen',
+	$assets_url.'css/media-big-screen.css',
 	$personal_bundle,
+	CFCT_URL_VERSION,
+	'only screen and (min-width: 1010px)'
+);
+// For those that dont...
+wp_register_style(
+	'personal-media-big-screen-lte-ie8',
+	$assets_url.'css/media-big-screen.css',
+	'personal-media-big-screen',
 	CFCT_URL_VERSION
 );
-$wp_styles->add_data('personal-ie7', 'conditional', 'IE 7');
+$wp_styles->add_data('personal-media-big-screen-lte-ie8', 'conditional', 'lte IE 8');
 
 // Enqueue bundles compiled by bundler script
 $loader = new Bundler_Loader($assets_url);
@@ -58,17 +67,8 @@ else {
 	$loader->enqueue_original_files();
 }
 
-/* Pass path to scripts dir - we're using this in conjunction with Modernizr.load
-to shim support for media queries */
-wp_localize_script(
-	(CFCT_PRODUCTION ? 'bundle-personal' : 'load-media-query-shim'),
-	'CFCP',
-	array(
-	'scriptsDirUrl' => get_template_directory_uri() . '/assets/js/'
-	)
-);
-
-wp_enqueue_style('personal-ie7');
+wp_enqueue_style('personal-media-big-screen');
+wp_enqueue_style('personal-media-big-screen-lte-ie8');
 
 // Automatically enqueue child styles
 if (is_child_theme() && !is_admin()) {
@@ -92,7 +92,8 @@ add_action('wp_head', 'cfcp_viewport_meta');
 /**
  * Additional CSS fixes for IE to run at wp_head:8
  */
-function cfcp_ie_css_overrides() { ?>
+function cfcp_ie_css_overrides() {
+?>
 <!--[if IE 7]>
 	<style type="text/css" media="screen">
 		#featured-posts .featured:hover .featured-content {
