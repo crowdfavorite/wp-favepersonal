@@ -1,7 +1,8 @@
 jQuery(function($) {
+	var activate = (Modernizr.touch ? 'touchend' : 'click');
 	$('#nav-main h1')
-		.bind('touchend', function(e){
-			$('#nav-main .menu').toggle();
+		.bind(activate, function(e){
+			$('#nav-main .menu').toggleClass('open');
 			e.preventDefault();
 			e.stopPropagation();
 		});
