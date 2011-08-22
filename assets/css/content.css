@@ -140,9 +140,7 @@ html.ie7 #nav-main .menu > li {
 	zoom: 1;
 }
 .post-title {
-	line-height: 32px;
 	margin: 0;
-	letter-spacing: -1px;
 }
 .post-title {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
@@ -374,16 +372,6 @@ html.ie7 #nav-main .menu > li {
 
 /** Link Post Format
  -------------------------------------------------- */
-.format-link .post-title {
-	font-size: 22px;
-}
-.format-link .post-title,
-.format-link .post-date {
-	line-height: 26px;
-}
-.format-link .post-date {
-	top: 1px;
-}
 .link-screenshot {
 	display: block;
 	border-bottom: 2px solid #fff;
