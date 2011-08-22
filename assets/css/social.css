@@ -73,6 +73,30 @@
 	position: relative;
 }
 
+#social input.social-input,
+#social .social-select {
+	width: 320px;
+}
+
+#social .social-input-row,
+#social .form-submit {
+	padding-left: 140px;
+}
+#social .social-input-row .social-label {
+	left: 0;
+	position: absolute;
+	text-align: right;
+	top: 7px;
+	width: 120px;
+}
+#social input.social-input,
+#social .social-select {
+	width: 320px;
+}
+#social .social-identity .avatar {
+	left: 80px;
+}
+
 /* Threaded input row */
 #social .social-commentlist .social-input-row,
 #social .social-commentlist .form-submit {
@@ -111,19 +135,12 @@
 #social .social-select {
 	width: 290px;
 }
-#social textarea.social-input {
-	width: 96%;
-}
 
-#social input.social-input,
-#social .social-select {
-	padding: 5px 6px;
-	width: 96%;
-}
 #social textarea.social-input {
 	display: block;
 	height: 110px;
 	padding: 5px 6px;
+	width: 96%;
 }
 
 /* Submit button and row */

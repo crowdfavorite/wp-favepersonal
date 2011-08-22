@@ -94,6 +94,21 @@ iPad (portrait)				768
 	#social .social-comment-collapse .social-posted-when {
 		display: none;
 	}
+	
+	#social input.social-input,
+	#social .social-select {
+		padding: 5px 6px;
+		width: 96%;
+	}
+	#social .social-input-row,
+	#social .form-submit {
+		padding-left: 0;
+	}
+	#social .social-input-row .social-label {
+		position: static;
+		text-align: left;
+		width: auto;
+	}
 }
 
 /* iPhone portrait */

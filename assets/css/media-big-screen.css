@@ -1,5 +1,5 @@
 /* ------------------------------------------------------
-iPad Landscape and large screen.
+iPad Portrait, Landscape and large screen.
 
 This file should NOT be included in built styles when in production mode.
 Instead, it should be linked to twice:
@@ -9,6 +9,7 @@ Instead, it should be linked to twice:
 	For IE, link it @media screen within an lte IE9 conditional comment.
 
 Breakpoint:
+iPad (portrait) / Screen	768
 iPad (landscape) / Screen	1024
 ------------------------------------------------------ */
 

@@ -136,29 +136,6 @@ iPad (portrait)				768
 	}
 	
 	/* Social form */
-	#social input.social-input,
-	#social .social-select {
-		width: 320px;
-	}
-	
-	#social .social-input-row,
-	#social .form-submit {
-		padding-left: 140px;
-	}
-	#social .social-input-row .social-label {
-		left: 0;
-		position: absolute;
-		text-align: right;
-		top: 7px;
-		width: 120px;
-	}
-	#social input.social-input,
-	#social .social-select {
-		width: 320px;
-	}
-	#social .social-identity .avatar {
-		left: 80px;
-	}
 	#social .social-nav .social-all {
 		text-align: right;
 		width: 110px;
