@@ -137,6 +137,10 @@ iPad (portrait)				768
 		left: auto;
 	}
 	
+	#social .social-pingback .social-comment-header .social-comment-label {
+		display: none;
+	}
+	
 	#social .children,
 	#social .social-children {
 		padding-left: 15px;

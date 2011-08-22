@@ -1498,6 +1498,10 @@ but allow screen readers to see */
 	height: 25px;
 	line-height: 26px;
 }
+#social .social-nav .social-all {
+	text-align: right;
+	width: 110px;
+}
 #social .social-nav .social-all a span {
 	line-height: 28px;
 }
@@ -1556,7 +1560,7 @@ but allow screen readers to see */
 #social .children,
 #social .social-children {
 	margin: 0;
-	padding: 0 0 0 15px;
+	padding: 0 0 0 50px;
 }
 #social .children li,
 #social .social-children li {
@@ -1647,9 +1651,23 @@ but allow screen readers to see */
 }
 
 /* Social Comment Pingback Styles */
+#social .social-pingback .social-comment-header {
+	float: none;
+	margin: 0px;
+	padding-right: 15px;
+	width: auto;
+}
+#social .social-pingback .social-comment-header .social-comment-author {
+	padding-bottom: 0;
+	text-align: left;
+}
 #social .social-pingback .social-comment-header .social-comment-label {
 	color: #b5b5b5;
-	display: none;
+	display: block;
+	float: left;
+	margin-left: -140px;
+	text-align: right;
+	width: 120px;
 }
 #social .social-pingback .social-comment-header .social-fn {
 	margin-bottom: 5px;
@@ -1717,6 +1735,11 @@ but allow screen readers to see */
 }
 #social .social-comment-collapse .social-posted-from {
 	top: 10px;
+}
+#social .social-comment-collapse .social-posted-when {
+	display: block;
+	font-size: 13px;
+	bottom: 10px;
 }/* --------------------------------------------------
 Tablet styles.
 Dialed in for iPad in portrait mode, since in landscape mode large screen will suffice.
@@ -1956,6 +1979,15 @@ iPad (portrait)				768
 		left: auto;
 	}
 	
+	#social .social-pingback .social-comment-header .social-comment-label {
+		display: none;
+	}
+	
+	#social .children,
+	#social .social-children {
+		padding-left: 15px;
+	}
+	
 	#social .social-identity {
 		padding-left: 50px;
 	}
@@ -1970,6 +2002,10 @@ iPad (portrait)				768
 		top: 10px;
 	}
 	
+	#social .social-nav .social-all {
+		text-align: left;
+		width: auto;
+	}
 	#social .social-nav .social-wordpress a span,
 	#social .social-nav .social-twitter a span,
 	#social .social-nav .social-facebook a span,

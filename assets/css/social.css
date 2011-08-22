@@ -417,9 +417,23 @@ but allow screen readers to see */
 }
 
 /* Social Comment Pingback Styles */
+#social .social-pingback .social-comment-header {
+	float: none;
+	margin: 0px;
+	padding-right: 15px;
+	width: auto;
+}
+#social .social-pingback .social-comment-header .social-comment-author {
+	padding-bottom: 0;
+	text-align: left;
+}
 #social .social-pingback .social-comment-header .social-comment-label {
 	color: #b5b5b5;
-	display: none;
+	display: block;
+	float: left;
+	margin-left: -140px;
+	text-align: right;
+	width: 120px;
 }
 #social .social-pingback .social-comment-header .social-fn {
 	margin-bottom: 5px;
