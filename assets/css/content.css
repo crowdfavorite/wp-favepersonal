@@ -140,6 +140,7 @@ html.ie7 #nav-main .menu > li {
 }
 .post-title {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	margin: 0;
 }
 .home .post-title,
 .archive .post-title {
@@ -174,18 +175,51 @@ html.ie7 #nav-main .menu > li {
 	padding-top: 5px;
 }
 
-/* post-meta */
+/* Post meta
+Put post info in an empty left-hand column */
+.post-title,
+.post-media,
+.post-content {
+	margin-left: 140px;
+}
+.post-date,
+.post-meta,
+.post-meta p {
+	display: block;
+}
 .post-header .post-date,
 .post-header .post-meta,
 .post-header .post-meta p {
 	display: inline;
 }
+
+.post-date {
+	left: 0;
+	line-height: 30px;
+	letter-spacing: -1px;
+	position: absolute;
+	text-align: right;
+	top: 4px;
+	width: 120px;
+}
+.home .post-date,
+.archive .post-date {
+	top: 0;
+}
+
 .post-meta {
 	color: #ccc;
+	float: left;
 	font-size: 12px;
 	margin-right: 20px;
 	padding-bottom: 15px;
+	padding-top: 3px;
 	overflow: hidden;
+	text-align: right;
+	width: 120px;
+}
+.post-header .post-meta {
+	padding-top: 8px;
 }
 .post-meta p {
 	vertical-align: baseline;
