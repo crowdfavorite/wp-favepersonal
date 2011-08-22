@@ -1205,7 +1205,7 @@ iPhone (landscape)			480
 iPad (portrait)				768
 -------------------------------------------------- */
 
-/* iPhone portrait and landscape special edge-case styles */
+/* iPhone portrait and landscape shared edge-case styles */
 @media only screen and (max-width: 767px) {
 	/* Override h1 hiding when in menu mode */
 	#nav-main h1 {
@@ -1271,6 +1271,13 @@ iPad (portrait)				768
 		border-bottom: 3px solid transparent;
 		display: inline-block; /* Standard. IE8+, Saf, FF3+ */
 		height: 20px;
+	}
+	
+	.format-status .post-header,
+	.format-quote .post-header {
+		float: none;
+		width: auto;
+		padding-top: 0;
 	}
 }
 
