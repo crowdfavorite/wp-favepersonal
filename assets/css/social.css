@@ -276,12 +276,6 @@ but allow screen readers to see */
 #social .social-nav .social-pingback a {
 	background-position: 0px -200px;
 }
-#social .social-nav .social-wordpress a span,
-#social .social-nav .social-twitter a span,
-#social .social-nav .social-facebook a span,
-#social .social-nav .social-pingback a span {
-	display: none;
-}
 
 /** @section Comment List
  -------------------------------------------------- */
@@ -453,9 +447,6 @@ but allow screen readers to see */
 	left: 0;
 	top: 10px;
 	width: 16px;
-}
-#social .social-comment-collapse .social-posted-when {
-	display: none;
 }
 #social .social-comment-collapse .social-posted-from {
 	top: 10px;

@@ -8,43 +8,9 @@ Breakpoint:
 iPad (portrait)				768
 ------------------------------------------------------ */
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1009px) {
 	.container {
 		width: 708px;
-	}
-	
-	/* Put post info in an empty left-hand column */
-	.post-title,
-	.post-media,
-	.post-content {
-		margin-left: 140px;
-	}
-	.post-date,
-	.post-meta,
-	.post-meta p {
-		display: block;
-	}
-	.post-date {
-		left: 0;
-		line-height: 30px;
-		letter-spacing: -1px;
-		position: absolute;
-		text-align: right;
-		top: 4px;
-		width: 120px;
-	}
-	.home .post-date,
-	.archive .post-date {
-		top: 0;
-	}
-	.post-meta {
-		float: left;
-		padding-top: 3px;
-		text-align: right;
-		width: 120px;
-	}
-	.post-header .post-meta {
-		padding-top: 8px;
 	}
 	
 	.post .gallery-img-excerpt li {
@@ -92,6 +58,11 @@ iPad (portrait)				768
 	}
 	.featured .gallery-img-excerpt li {
 		height: 65px;
+	}
+	.featured-title {
+		font-size: 16px;
+		line-height: 18px;
+		padding: 6px 13px 4px;
 	}
 	
 	#masthead {

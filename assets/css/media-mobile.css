@@ -10,6 +10,13 @@ iPad (portrait)				768
 
 /* iPhone portrait and landscape shared edge-case styles */
 @media only screen and (max-width: 767px) {
+	.format-status .post-header,
+	.format-quote .post-header {
+		float: none;
+		width: auto;
+		padding-top: 0;
+	}
+	
 	/* Override h1 hiding when in menu mode */
 	#nav-main h1 {
 		position: static;
@@ -66,21 +73,26 @@ iPad (portrait)				768
 		border: 0;
 	}
 
-	#social .social-identity {
-		padding-left: 50px;
-	}
-
 	#nav-main h1 {
 		border-bottom: 3px solid transparent;
 		display: inline-block; /* Standard. IE8+, Saf, FF3+ */
 		height: 20px;
 	}
 	
-	.format-status .post-header,
-	.format-quote .post-header {
-		float: none;
-		width: auto;
-		padding-top: 0;
+	#masthead {
+		padding: 11px 0 15px;
+	}
+	
+	#social .social-identity {
+		padding-left: 50px;
+	}
+	
+	#social .social-nav .social-wordpress a span,
+	#social .social-nav .social-twitter a span,
+	#social .social-nav .social-facebook a span,
+	#social .social-nav .social-pingback a span,
+	#social .social-comment-collapse .social-posted-when {
+		display: none;
 	}
 }
 
@@ -100,6 +112,19 @@ iPad (portrait)				768
 	.gallery-thumbs li {
 		height: 52px; /* 63px */
 		width: 67px; /* 80px */
+	}
+	
+	.featured {
+		height: 164px;
+		width: 300px;
+	}
+	.featured.has-featured-img,
+	.featured.featured-format-gallery {
+		border: 0;
+		height: 174px;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 87px;
 	}
 }
 
@@ -166,10 +191,6 @@ iPad (portrait)				768
 		display: none;
 	}
 	
-	#masthead {
-		padding: 11px 0 15px;
-	}
-
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;

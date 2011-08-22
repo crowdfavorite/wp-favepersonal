@@ -40,7 +40,7 @@ wp_register_script(
 wp_register_style(
 	'personal-media-big-screen',
 	$assets_url.'css/media-big-screen.css',
-	$personal_bundle,
+	array(),
 	CFCT_URL_VERSION,
 	'only screen and (min-width: 1010px)'
 );
@@ -52,6 +52,9 @@ wp_register_style(
 	CFCT_URL_VERSION
 );
 $wp_styles->add_data('personal-media-big-screen-lte-ie8', 'conditional', 'lte IE 8');
+
+wp_enqueue_style('personal-media-big-screen');
+wp_enqueue_style('personal-media-big-screen-lte-ie8');
 
 // Enqueue bundles compiled by bundler script
 $loader = new Bundler_Loader($assets_url);
@@ -66,9 +69,6 @@ if (CFCT_PRODUCTION) {
 else {
 	$loader->enqueue_original_files();
 }
-
-wp_enqueue_style('personal-media-big-screen');
-wp_enqueue_style('personal-media-big-screen-lte-ie8');
 
 // Automatically enqueue child styles
 if (is_child_theme() && !is_admin()) {

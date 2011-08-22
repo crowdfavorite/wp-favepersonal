@@ -16,28 +16,6 @@ iPad (landscape) / Screen	1024
 	width: 990px;
 }
 
-.featured {
-	height: 170px;
-	width: 310px;
-}
-.featured.has-featured-img,
-.featured.featured-format-gallery {
-	height: 180px;
-}
-.featured-title {
-	font-size: 18px;
-	line-height: 20px;
-	padding: 8px 15px 6px;
-}
-.featured-description, 
-.featured-description p {
-	font-size: 14px;
-	line-height: 20px;
-}
-.featured .gallery-img-excerpt li {
-	height: 90px;
-}
-
 #featured-post-2,
 #featured-post-3 {
 	margin-left: 30px;
@@ -46,6 +24,42 @@ iPad (landscape) / Screen	1024
 .featured-description,
 .featured:hover .featured-description {
 	display: block;
+}
+
+/* Posts */
+	
+/* Put post info in an empty left-hand column */
+.post-title,
+.post-media,
+.post-content {
+	margin-left: 140px;
+}
+.post-date,
+.post-meta,
+.post-meta p {
+	display: block;
+}
+.post-date {
+	left: 0;
+	line-height: 30px;
+	letter-spacing: -1px;
+	position: absolute;
+	text-align: right;
+	top: 4px;
+	width: 120px;
+}
+.home .post-date,
+.archive .post-date {
+	top: 0;
+}
+.post-meta {
+	float: left;
+	padding-top: 3px;
+	text-align: right;
+	width: 120px;
+}
+.post-header .post-meta {
+	padding-top: 8px;
 }
 
 .post .gallery-img-excerpt li {
@@ -133,7 +147,4 @@ iPad (landscape) / Screen	1024
 }
 #nav-main ul {
 	text-align: right;
-}
-#masthead {
-	padding: 36px 0 41px 0; /* top = 40px with header border */
 }

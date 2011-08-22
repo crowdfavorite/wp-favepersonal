@@ -17,11 +17,11 @@
 	background-color: #666;
 	border-bottom: 10px solid #666;
 	float: left;
-	height: 164px;
+	height: 170px;
 	margin: 0 auto;
 	overflow: hidden;
 	position: relative;
-	width: 300px;
+	width: 310px;
 }
 #featured-post-1 {
 	margin-left: 0;
@@ -29,19 +29,20 @@
 .featured.has-featured-img,
 .featured.featured-format-gallery {
 	border: 0;
-	height: 174px;
+	height: 180px;
 }
 .featured .gallery-img-excerpt li {
-	height: 87px;
+	height: 90px;
 }
+
 .featured-title {
 	background-color: #666;
 	color: #fff;
 	display: inline-block;
-	font-size: 16px;
-	line-height: 18px;
+	font-size: 18px;
+	line-height: 20px;
 	margin: 0 10px 9px 0;
-	padding: 6px 13px 4px;
+	padding: 8px 15px 6px;
 }
 .featured-content {
 	bottom: 0;
@@ -52,6 +53,11 @@
 	right: 0;
 	top: 0;
 	z-index: 10;
+}
+.featured-description, 
+.featured-description p {
+	font-size: 14px;
+	line-height: 20px;
 }
 .featured-description {
 	padding: 0 15px;

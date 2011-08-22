@@ -9,12 +9,13 @@ $bundle_css = new Bundle('css/build.css');
 $bundle_css
 	->set_bundle_key('bundle-personal')
 	->set_language('css')
+	->set_meta('dependencies', array('personal-media-big-screen'))
 	->add('base', 'css/base.css')
 	->add('utility', 'css/utility.css')
 	->add('content', 'css/content.css')
 	->add('masthead', 'css/masthead.css')
-	->add('media-mobile', 'css/media-mobile.css')
 	->add('media-tablet', 'css/media-tablet.css')
+	->add('media-mobile', 'css/media-mobile.css')
 	->add('social', 'css/social.css');
 $bundler->push($bundle_css);
 

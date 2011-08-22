@@ -110,7 +110,7 @@ html.ie7 #nav-main .menu > li {
  -------------------------------------------------- */
 #masthead {
 	min-height: 10px;
-	padding: 11px 0 15px;
+	padding: 36px 0 41px 0; /* top = 40px with header border */
 }
 
 
@@ -137,9 +137,6 @@ html.ie7 #nav-main .menu > li {
 	clear: both;
 	margin-bottom: 7px;
 	zoom: 1;
-}
-.post-title {
-	margin: 0;
 }
 .post-title {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
