@@ -112,7 +112,7 @@
 	width: 290px;
 }
 #social textarea.social-input {
-	width: 94%;
+	width: 96%;
 }
 
 #social input.social-input,
@@ -124,9 +124,6 @@
 	display: block;
 	height: 110px;
 	padding: 5px 6px;
-}
-#social .social-commentlist textarea.social-input {
-	width: 95%;
 }
 
 /* Submit button and row */
