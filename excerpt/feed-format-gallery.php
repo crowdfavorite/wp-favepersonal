@@ -20,13 +20,10 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-?>
+remove_filter('post_gallery', 'cfcp_gallery_shortcode', 1, 2);
 
+?>
 <p><?php echo do_shortcode('[gallery size="thumb-img"]'); ?></p>
 <?php 
 
-remove_filter('the_excerpt_rss', 'cfct_excerpt_feed');
-the_excerpt_rss();
-add_filter('the_excerpt_rss', 'cfct_excerpt_feed');
-
-?>
+cfct_the_excerpt_feed();

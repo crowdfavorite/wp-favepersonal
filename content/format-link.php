@@ -41,10 +41,14 @@ else {
 		<?php cfct_misc('post-meta'); ?>
 	</div>
 	<div class="post-content clearfix">
-		<?php if ( has_post_thumbnail() ) { ?>
-			<a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a>
-		<?php } ?>
-		<?php the_content(); ?>
+<?php
+if ( has_post_thumbnail() ) {
+?>
+		<a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a>
+<?php
+}
+the_content();
+?>
 	</div><!--post-content-->
 </article><!-- .post -->
 

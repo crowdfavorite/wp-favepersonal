@@ -25,9 +25,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 <div style="font-size:1.5em; line-height:1.5em;">
 <?php
 
-remove_filter('the_content', 'cfct_content_feed');
-the_content_feed('rss2');
-add_filter('the_content', 'cfct_content_feed');
+cfct_the_content_feed();
 
 ?>
 </div>

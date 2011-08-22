@@ -21,12 +21,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-
 <p><?php echo do_shortcode('[gallery size="thumb-img"]'); ?></p>
 <?php 
 
-remove_filter('the_content', 'cfct_content_feed');
-the_content_feed('rss2');
-add_filter('the_content', 'cfct_content_feed');
-
-?>
+cfct_the_content_feed();

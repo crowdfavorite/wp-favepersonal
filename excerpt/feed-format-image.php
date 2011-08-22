@@ -19,15 +19,10 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-
 if (has_post_thumbnail()) {
 ?>
 <p><a href="<?php the_permalink() ?>"><?php the_post_thumbnail('medium-img'); ?></a></p>
 <?php
 }
 
-remove_filter('the_excerpt_rss', 'cfct_excerpt_feed');
-the_excerpt_rss();
-add_filter('the_excerpt_rss', 'cfct_excerpt_feed');
-
-?>
+cfct_the_excerpt_feed();

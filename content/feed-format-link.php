@@ -27,9 +27,7 @@ if (has_post_thumbnail()) {
 <?php 
 }
 
-remove_filter('the_content', 'cfct_content_feed');
-the_content_feed('rss2'); 
-add_filter('the_content', 'cfct_content_feed');
+cfct_the_content_feed();
 
 ?>
 <p style="clear: both;"><a href="<?php echo get_permalink($post->ID); ?>">#</a></p>

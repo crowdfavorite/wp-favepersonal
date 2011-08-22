@@ -39,13 +39,10 @@ else {
 }
 
 ?>
-
 <div style="font-size:1.5em; line-height:1.5em; font-style: italic;">
 <?php
 
-remove_filter('the_content', 'cfct_content_feed');
-the_content_feed('rss2');
-add_filter('the_content', 'cfct_content_feed');
+cfct_the_content_feed();
 
 ?>
 </div>

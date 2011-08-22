@@ -232,6 +232,17 @@ function cfcp_gallery($args = array()) {
 	unset($gallery);
 }
 
+function cfcp_gallery_shortcode($content, $args) {
+	remove_filter('post_gallery', 'cfct_post_gallery', 10, 2);
+	ob_start();
+	cfcp_gallery(array(
+		'before' => '<div>',
+		'after' => '</div>',
+	));
+	return ob_get_clean();
+}
+add_filter('post_gallery', 'cfcp_gallery_shortcode', 1, 2);
+
 // Display gallery images with our own markup for excerpts 
 function cfcp_gallery_excerpt($args = array()) {
 	$defaults = array(
