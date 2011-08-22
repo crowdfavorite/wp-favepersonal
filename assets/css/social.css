@@ -264,6 +264,10 @@ but allow screen readers to see */
 	height: 25px;
 	line-height: 26px;
 }
+#social .social-nav .social-all {
+	text-align: right;
+	width: 110px;
+}
 #social .social-nav .social-all a span {
 	line-height: 28px;
 }
@@ -322,7 +326,7 @@ but allow screen readers to see */
 #social .children,
 #social .social-children {
 	margin: 0;
-	padding: 0 0 0 15px;
+	padding: 0 0 0 50px;
 }
 #social .children li,
 #social .social-children li {

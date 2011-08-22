@@ -137,6 +137,11 @@ iPad (portrait)				768
 		left: auto;
 	}
 	
+	#social .children,
+	#social .social-children {
+		padding-left: 15px;
+	}
+	
 	#social .social-identity {
 		padding-left: 50px;
 	}
@@ -151,6 +156,10 @@ iPad (portrait)				768
 		top: 10px;
 	}
 	
+	#social .social-nav .social-all {
+		text-align: left;
+		width: auto;
+	}
 	#social .social-nav .social-wordpress a span,
 	#social .social-nav .social-twitter a span,
 	#social .social-nav .social-facebook a span,
