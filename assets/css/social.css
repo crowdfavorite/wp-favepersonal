@@ -466,15 +466,16 @@ but allow screen readers to see */
 }
 
 /* Comment Collapse */
+#social .social-comment-collapse > .social-comment-inner {
+	min-height: 18px;
+	padding: 10px 0;
+}
 #social .social-comment-collapse > .social-comment-inner > .social-comment-body,
 #social .social-comment-collapse > .social-comment-inner > .social-actions {
 	display: none;
 }
 #social .social-comment-collapse .social-children {
 	padding-left: 16px;
-}
-#social .social-comment-collapse > .social-comment-inner {
-	padding: 10px 0;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header {
 	filter:alpha(opacity=50);
