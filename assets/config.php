@@ -25,7 +25,6 @@ $bundle_js
 	->set_meta('dependencies', array('jquery'))
 	->add('modernizr', 'js/modernizr.custom.js')
 	->add('cfgallery', 'js/cfgallery/jquery.cfgallery.js')
-	->add('global', 'js/global.js')
-	->add('o-type-ahead', 'js/o-type-ahead.js');
+	->add('global', 'js/global.js');
 $bundler->push($bundle_js);
 ?>
