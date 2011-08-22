@@ -1362,6 +1362,11 @@ Put post info in an empty left-hand column */
 	margin-right: 5px;
 }
 
+#social input.social-input,
+#social .social-select {
+	padding: 5px 6px;
+}
+
 #social .social-input {
 	margin-right: 5px;
 }
@@ -1969,7 +1974,6 @@ iPad (portrait)				768
 	
 	#social input.social-input,
 	#social .social-select {
-		padding: 5px 6px;
 		width: 96%;
 	}
 	#social .social-input-row,
