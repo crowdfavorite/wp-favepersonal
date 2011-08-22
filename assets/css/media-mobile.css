@@ -36,6 +36,15 @@ iPad (portrait)				768
 		text-align: left;
 	}
 	
+	.post .gallery-img-excerpt li {
+		margin: 0 0 7px 0;
+	}
+	
+	.home .post-media,
+	.archive .post-media {
+		margin-bottom: 10px;
+	}
+	
 	/* Override h1 hiding when in menu mode */
 	#nav-main h1 {
 		position: static;
@@ -159,6 +168,30 @@ iPad (portrait)				768
 	}
 	.featured .gallery-img-excerpt li {
 		height: 87px;
+	}
+	
+	.post .gallery-img-excerpt li {
+		width: 145px;
+	}
+	.post .gallery-img-excerpt li.gallery-view-all a {
+		height: 108px;
+		line-height: 108px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-7 {
+		display: none;
+	}
+	.post .gallery-img-excerpt .excerpt-img-1,
+	.post .gallery-img-excerpt .excerpt-img-3,
+	.post .gallery-img-excerpt .excerpt-img-5,
+	.post .gallery-img-excerpt .excerpt-img-8,
+	.post .gallery-img-excerpt .gallery-view-all {
+		margin-left: 10px;
+	}
+	.post .gallery-img-excerpt .excerpt-img-0,
+	.post .gallery-img-excerpt .excerpt-img-2,
+	.post .gallery-img-excerpt .excerpt-img-4,
+	.post .gallery-img-excerpt .excerpt-img-6 {
+		margin-left: 0;
 	}
 }
 

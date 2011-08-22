@@ -28,31 +28,6 @@ iPad (landscape) / Screen	1024
 }
 
 /* Posts */
-
-.post .gallery-img-excerpt li {
-	width: 160px;
-}
-.post .gallery-img-excerpt li.gallery-view-all a {
-	height: 120px;
-	line-height: 120px;
-}
-.post .gallery-img-excerpt .excerpt-img-7 {
-	display: block;
-}
-.post .gallery-img-excerpt .excerpt-img-1,
-.post .gallery-img-excerpt .excerpt-img-2,
-.post .gallery-img-excerpt .excerpt-img-4,
-.post .gallery-img-excerpt .excerpt-img-5,
-.post .gallery-img-excerpt .excerpt-img-7,
-.post .gallery-img-excerpt .gallery-view-all {
-	margin-left: 15px;
-}
-.post .gallery-img-excerpt .excerpt-img-0,
-.post .gallery-img-excerpt .excerpt-img-3,
-.post .gallery-img-excerpt .excerpt-img-6 {
-	margin-left: 0;
-}
-
 .single .post-media {
 	padding-left: 140px;
 }
