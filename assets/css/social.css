@@ -484,3 +484,8 @@ but allow screen readers to see */
 #social .social-comment-collapse .social-posted-from {
 	top: 10px;
 }
+#social .social-comment-collapse .social-posted-when {
+	display: block;
+	font-size: 13px;
+	bottom: 10px;
+}
