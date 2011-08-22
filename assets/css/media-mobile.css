@@ -145,6 +145,12 @@ iPad (portrait)				768
 		padding: 10px 0 10px 26px;
 	}
 	
+	#social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author img {
+		left: 0;
+		right: auto;
+		top: 10px;
+	}
+	
 	#social .social-nav .social-wordpress a span,
 	#social .social-nav .social-twitter a span,
 	#social .social-nav .social-facebook a span,

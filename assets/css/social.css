@@ -477,8 +477,8 @@ but allow screen readers to see */
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author img {
 	height: 16px;
-	left: 0;
-	top: 10px;
+	right: 0;
+	top: 0;
 	width: 16px;
 }
 #social .social-comment-collapse .social-posted-from {
