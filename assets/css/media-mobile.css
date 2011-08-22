@@ -111,8 +111,38 @@ iPad (portrait)				768
 		padding: 11px 0 15px;
 	}
 	
+	#social .social-comment {
+		padding-left: 0;
+	}
+	#social .social-comment-inner {
+		padding: 20px 0 20px 40px;
+	}
+	#social .social-comment .social-comment-header {
+		float: none;
+		margin: 0;
+		width: auto;
+	}
+	#social .social-comment .social-comment-header .avatar {
+		bottom: auto;
+		left: 0;
+		right: auto;
+		top: 23px;
+	}
+	#social .social-comment .social-comment-header .social-comment-author {
+		position: static;
+		padding-bottom: 0;
+		text-align: left;
+	}
+	#social .social-posted-when {
+		left: auto;
+	}
+	
 	#social .social-identity {
 		padding-left: 50px;
+	}
+	
+	#social .social-comment-collapse > .social-comment-inner {
+		padding: 10px 0 10px 26px;
 	}
 	
 	#social .social-nav .social-wordpress a span,

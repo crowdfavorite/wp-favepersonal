@@ -1571,16 +1571,26 @@ but allow screen readers to see */
 #social .social-comment {
 	border: 0;
 	margin: 0;
+	padding-left: 140px;
 	position: relative;
 }
 #social .social-comment-inner {
 	border-bottom: 1px solid #ddd;
 	margin: 0;
-	padding: 20px 0 20px 40px;
+	padding: 20px 0;
 	position: relative;
 }
 #social .social-comment .social-comment-header {
+	float: left;
+	margin: 0 0 0 -140px;
 	position: static;
+	width: 120px;
+}
+#social .social-comment .social-comment-header .social-comment-author {
+	position: relative;
+	margin: 0;
+	padding-bottom: 33px;
+	text-align: right;
 }
 #social .social-comment .social-comment-header .social-replied {
 	display: none;
@@ -1591,12 +1601,13 @@ but allow screen readers to see */
 }
 #social .social-comment .social-comment-header .avatar {
 	height: 30px;
-	left: 0;
 	position: absolute;
-	top: 23px;
+	right: 0;
+	bottom: 0;
 	width: 30px;
 }
 #social .social-posted-when {
+	left: 0;
 	bottom: 15px;
 	position: absolute;
 }
@@ -1674,7 +1685,7 @@ but allow screen readers to see */
 	padding-left: 16px;
 }
 #social .social-comment-collapse > .social-comment-inner {
-	padding: 10px 0 10px 26px;
+	padding: 10px 0;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header {
 	filter:alpha(opacity=50);
@@ -1789,86 +1800,6 @@ iPad (portrait)				768
 		float: right;
 	}
 	
-	
-	/* Social */
-	#social .social-comment {
-		padding: 0 0 0 140px;
-	}
-	#social .social-comment-inner {
-		padding: 20px 0;
-	}
-	#social .social-comment-collapse > .social-comment-inner {
-		padding: 10px 0;
-	}
-	#social .social-comment .social-comment-header {
-		float: left;
-		margin: 0 0 0 -140px;
-		width: 120px;
-	}
-	#social .social-comment .social-comment-header .avatar {
-		bottom: 0;
-		left: auto;
-		right: 0;
-		top: auto;
-	}
-	#social .social-comment .social-comment-header .social-comment-author {
-		position: relative;
-		margin: 0;
-		padding-bottom: 33px;
-		text-align: right;
-	}
-	#social .social-posted-when {
-		left: 0;
-	}
-	
-	#social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author img {
-		left: auto;
-		right: 0;
-		top: 0;
-	}
-	#social .social-comment-collapse .social-posted-when {
-		display: block;
-		font-size: 13px;
-		bottom: 10px;
-	}
-	
-	/* Threading */
-	#social .children,
-	#social .social-children {
-		padding: 0 0 0 50px;
-	}
-	
-	/* Social form */
-	#social .social-nav .social-all {
-		text-align: right;
-		width: 110px;
-	}
-	#social .social-nav .social-wordpress a span,
-	#social .social-nav .social-twitter a span,
-	#social .social-nav .social-facebook a span,
-	#social .social-nav .social-pingback a span {
-		display: block;
-	}
-	/* Social Comment Pingback Styles */
-	#social .social-pingback .social-comment-header .social-comment-author {
-		padding-bottom: 0;
-	}
-	#social .social-pingback .social-comment-header {
-		float: none;
-		margin: 0px;
-		padding-right: 15px;
-		width: auto;
-	}
-	#social .social-pingback .social-comment-header .social-comment-author {
-		text-align: left;
-	}
-	#social .social-pingback .social-comment-header .social-comment-label {
-		display: block;
-		float: left;
-		margin-left: -140px;
-		text-align: right;
-		width: 120px;
-	}
 	/* full page with no sidebar */
 	.page-full {
 		padding: 0 140px;
@@ -1994,8 +1925,38 @@ iPad (portrait)				768
 		padding: 11px 0 15px;
 	}
 	
+	#social .social-comment {
+		padding-left: 0;
+	}
+	#social .social-comment-inner {
+		padding: 20px 0 20px 40px;
+	}
+	#social .social-comment .social-comment-header {
+		float: none;
+		margin: 0;
+		width: auto;
+	}
+	#social .social-comment .social-comment-header .avatar {
+		bottom: auto;
+		left: 0;
+		right: auto;
+		top: 23px;
+	}
+	#social .social-comment .social-comment-header .social-comment-author {
+		position: static;
+		padding-bottom: 0;
+		text-align: left;
+	}
+	#social .social-posted-when {
+		left: auto;
+	}
+	
 	#social .social-identity {
 		padding-left: 50px;
+	}
+	
+	#social .social-comment-collapse > .social-comment-inner {
+		padding: 10px 0 10px 26px;
 	}
 	
 	#social .social-nav .social-wordpress a span,
