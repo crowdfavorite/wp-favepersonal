@@ -83,6 +83,7 @@ iPad (portrait)				768
 	
 	.featured {
 		height: 120px;
+		margin-left: 15px;
 		width: 226px;
 	}
 	.featured.has-featured-img,
@@ -91,9 +92,6 @@ iPad (portrait)				768
 	}
 	.featured .gallery-img-excerpt li {
 		height: 65px;
-	}
-	#featured-post-3 {
-		display: block;
 	}
 	
 	#masthead {

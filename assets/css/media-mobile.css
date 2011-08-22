@@ -78,7 +78,10 @@ iPad (portrait)				768
 }
 
 /* iPhone portrait */
-@media only screen {
+@media only screen and (max-width: 479px) {
+	.container {
+		width: 300px;
+	}
 	/* Hide last 2 by default (brought back in with media queries) */
 	#featured-post-2,
 	#featured-post-3 {
@@ -87,10 +90,14 @@ iPad (portrait)				768
 	.gallery-thumbs {
 		width: 310px;
 	}
+	.gallery-thumbs li {
+		height: 52px; /* 63px */
+		width: 67px; /* 80px */
+	}
 }
 
 /* iPhone Landscape */
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 480px) and (max-width: 767px) {
 	.container {
 		width: 460px;
 	}
@@ -148,12 +155,8 @@ iPad (portrait)				768
 	.featured .gallery-img-excerpt li {
 		height: 64px;
 	}
-	#featured-post-1,
-	#featured-post-2 {
-		display: block;
-	}
-	#featured-post-1 {
-		margin-left: 0;
+	#featured-post-3 {
+		display: none;
 	}
 	
 	#masthead {

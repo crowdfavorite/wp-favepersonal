@@ -23,6 +23,9 @@
 	position: relative;
 	width: 300px;
 }
+#featured-post-1 {
+	margin-left: 0;
+}
 .featured.has-featured-img,
 .featured.featured-format-gallery {
 	border: 0;

@@ -4,7 +4,6 @@
 
 .container {
 	margin: 0 auto;
-	width: 300px;
 }
 
 /** Header
@@ -212,6 +211,19 @@ html.ie7 #nav-main .menu > li {
 	list-style-type: none;
 }
 
+.single .format-status .post-meta,
+.single .format-quote .post-meta {
+	margin-top: 40px;
+}
+
+.format-status .post-header,
+.format-quote .post-header {
+	width: 140px;
+	float: left;
+	position: relative;
+	padding-top: 25px;
+}
+
 /** Gallery Post Format
  -------------------------------------------------- */
 /* excerpts */
@@ -274,15 +286,16 @@ html.ie7 #nav-main .menu > li {
 .gallery-thumbs {
 	list-style-type: none;
 	margin: 3px 0 0;
+	width: 720px;
 }
 .gallery-thumbs li {
 	background-color: #ddd;
 	display: block;
 	float: left;
-	height: 52px; /* 63px */
+	height: 63px; /* 63px */
 	margin: 7px 10px 0 0;
 	padding: 0;
-	width: 67px; /* 80px */
+	width: 80px; /* 80px */
 }
 .gallery-thumbs a,
 .gallery-thumbs img {

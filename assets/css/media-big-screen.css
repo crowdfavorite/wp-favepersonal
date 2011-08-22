@@ -76,10 +76,6 @@ iPad (landscape) / Screen	1024
 	padding-left: 140px;
 }
 
-.gallery-thumbs {
-	width: 720px;
-}
-
 /* Shared styles for media post formats */
 .single .format-image .post-content,
 .single .format-gallery .post-content,
