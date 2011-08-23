@@ -51,7 +51,7 @@
 	margin-bottom: 16px;
 	padding: 0 10px;
 	font-size: 13px;
-	line-height: 30px;
+	line-height: 27px;
 	letter-spacing: 1px;
 	margin: 0 0 10px;
 	text-transform: uppercase;
@@ -173,7 +173,7 @@
 	letter-spacing: 1px;
 	line-height: 1em;
 	margin: 0 10px 0 0;
-	padding: 8px 20px 6px 20px;
+	padding: 6px 20px 8px;
 	text-transform: uppercase;
 }
 
@@ -265,7 +265,7 @@ but allow screen readers to see */
 	width: 110px;
 }
 #social .social-nav .social-all a span {
-	line-height: 28px;
+	line-height: 25px;
 }
 #social .social-nav li a span {
 	padding-left: 5px;
