@@ -195,16 +195,16 @@ Put post info in an empty left-hand column */
 
 .post-date {
 	left: 0;
-	line-height: 30px;
+	line-height: 1em;
 	letter-spacing: -1px;
 	position: absolute;
 	text-align: right;
-	top: 4px;
+	top: 14px;
 	width: 120px;
 }
 .home .post-date,
 .archive .post-date {
-	top: 0;
+	top: 10px;
 }
 
 .post-meta {
@@ -374,25 +374,26 @@ Put post info in an empty left-hand column */
 	font-size: 20px;
 }
 .post-status-content,
-.format-quote .post-content blockquote,
-.format-status .post-date,
-.format-quote .post-date {
+.format-quote .post-content blockquote {
 	line-height: 28px;
 }
-.format-status .post-date,
-.format-quote .post-date {
-	top: 0;
+.excerpt.format-status .post-date,
+.excerpt.format-quote .post-date {
+	top: 8px;
 }
 .single .post-status-content,
 .single .format-quote .post-content blockquote {
 	font-size: 26px;
 }
 .single .post-status-content,
-.single .format-quote .post-content blockquote,
-.single .format-status .post-date,
-.single .format-quote .post-date {
+.single .format-quote .post-content blockquote {
 	line-height: 34px;
 }
+.single .format-status .post-date,
+.single .format-quote .post-date {
+	top: 13px;
+}
+
 /* status */
 .post-status-meta {
 	color: #ccc;
