@@ -34,7 +34,7 @@ else {
 }
 
 ?>
-<article id="post-<?php the_ID() ?>" <?php post_class('content'); ?>>
+<article id="post-<?php the_ID() ?>" <?php post_class('content clearfix'); ?>>
 	<div class="post-header">
 		<h1 class="post-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?> &rarr;</a></h1>
 		<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>

@@ -39,7 +39,7 @@ else {
 }
 
 ?>
-<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('content'); ?>>
+<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('content clearfix'); ?>>
 	<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
 	<?php cfct_misc('post-meta'); ?>
 	<div class="post-content">

@@ -33,7 +33,7 @@ $meta_items = apply_filters('cfcp_format_status_meta', array());
 $meta_items = apply_filters('cfcp_format_status_meta_excerpt', $meta_items);
 
 ?>
-<article id="post-content-<?php the_ID() ?>" <?php post_class('content'); ?>>
+<article id="post-content-<?php the_ID() ?>" <?php post_class('content clearfix'); ?>>
 	<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
 	<?php cfct_misc('post-meta'); ?>
 	<div class="post-content">
