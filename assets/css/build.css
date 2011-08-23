@@ -1327,8 +1327,17 @@ Put post info in an empty left-hand column */
 #social .social-select {
 	width: 320px;
 }
+#social .social-identity {
+	margin-top: 16px;
+	position: relative;
+}
 #social .social-identity .avatar {
 	left: 80px;
+	position: absolute;
+	top: 4px;
+}
+.logged-in #social .social-commentlist .social-identity .avatar {
+	left: -60px;
 }
 
 /* Threaded input row */
@@ -1451,19 +1460,6 @@ Put post info in an empty left-hand column */
 /* Threaded divider */
 #social .social-commentlist #respond .social-divider {
 	display: none;
-}
-
-#social .social-identity {
-	margin-top: 16px;
-	position: relative;
-}
-#social .social-identity .avatar {
-	left: 0px;
-	position: absolute;
-	top: 4px;
-}
-.logged-in #social .social-commentlist .social-identity .avatar {
-	left: -60px;
 }
 
 /* When logged in, visually hide the comment field label
@@ -1700,15 +1696,16 @@ but allow screen readers to see */
 }
 
 /* Comment Collapse */
+#social .social-comment-collapse > .social-comment-inner {
+	min-height: 18px;
+	padding: 10px 0;
+}
 #social .social-comment-collapse > .social-comment-inner > .social-comment-body,
 #social .social-comment-collapse > .social-comment-inner > .social-actions {
 	display: none;
 }
 #social .social-comment-collapse .social-children {
 	padding-left: 16px;
-}
-#social .social-comment-collapse > .social-comment-inner {
-	padding: 10px 0;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-header {
 	filter:alpha(opacity=50);
@@ -1990,6 +1987,10 @@ iPad (portrait)				768
 	
 	#social .social-identity {
 		padding-left: 50px;
+	}
+	#social .social-identity .avatar,
+	.logged-in #social .social-commentlist .social-identity .avatar {
+		left: 0px;
 	}
 	
 	#social .social-comment-collapse > .social-comment-inner {

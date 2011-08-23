@@ -149,6 +149,10 @@ iPad (portrait)				768
 	#social .social-identity {
 		padding-left: 50px;
 	}
+	#social .social-identity .avatar,
+	.logged-in #social .social-commentlist .social-identity .avatar {
+		left: 0px;
+	}
 	
 	#social .social-comment-collapse > .social-comment-inner {
 		padding: 10px 0 10px 26px;

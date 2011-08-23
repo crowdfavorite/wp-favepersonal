@@ -93,8 +93,17 @@
 #social .social-select {
 	width: 320px;
 }
+#social .social-identity {
+	margin-top: 16px;
+	position: relative;
+}
 #social .social-identity .avatar {
 	left: 80px;
+	position: absolute;
+	top: 4px;
+}
+.logged-in #social .social-commentlist .social-identity .avatar {
+	left: -60px;
 }
 
 /* Threaded input row */
@@ -217,19 +226,6 @@
 /* Threaded divider */
 #social .social-commentlist #respond .social-divider {
 	display: none;
-}
-
-#social .social-identity {
-	margin-top: 16px;
-	position: relative;
-}
-#social .social-identity .avatar {
-	left: 0px;
-	position: absolute;
-	top: 4px;
-}
-.logged-in #social .social-commentlist .social-identity .avatar {
-	left: -60px;
 }
 
 /* When logged in, visually hide the comment field label
