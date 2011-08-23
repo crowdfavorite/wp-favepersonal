@@ -15,10 +15,10 @@ Base Style Sheet
 
 @font-face {
     font-family: 'Titillium600';
-    src: url('../fonts/titilliumtext25l004-webfont.eot');
-    src: url('../fonts/titilliumtext25l004-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/titilliumtext25l004-webfont.woff') format('woff'),
-         url('../fonts/titilliumtext25l004-webfont.ttf') format('truetype');
+    src: url('../fonts/titilliumtext25l002-webfont.eot');
+    src: url('../fonts/titilliumtext25l002-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/titilliumtext25l002-webfont.woff') format('woff'),
+         url('../fonts/titilliumtext25l002-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
