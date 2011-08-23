@@ -37,6 +37,10 @@ iPad (portrait)				768
 		margin-right: 0;
 		text-align: left;
 	}
+	.single .format-status .post-meta,
+	.single .format-quote .post-meta {
+		margin-top: 0;
+	}
 	
 	.post .gallery-img-excerpt li {
 		margin: 0 0 7px 0;
