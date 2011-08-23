@@ -1290,7 +1290,7 @@ Put post info in an empty left-hand column */
 	margin-bottom: 16px;
 	padding: 0 10px;
 	font-size: 13px;
-	line-height: 30px;
+	line-height: 27px;
 	letter-spacing: 1px;
 	margin: 0 0 10px;
 	text-transform: uppercase;
@@ -1412,7 +1412,7 @@ Put post info in an empty left-hand column */
 	letter-spacing: 1px;
 	line-height: 1em;
 	margin: 0 10px 0 0;
-	padding: 8px 20px 6px 20px;
+	padding: 6px 20px 8px;
 	text-transform: uppercase;
 }
 
@@ -1504,7 +1504,7 @@ but allow screen readers to see */
 	width: 110px;
 }
 #social .social-nav .social-all a span {
-	line-height: 28px;
+	line-height: 25px;
 }
 #social .social-nav li a span {
 	padding-left: 5px;
@@ -1609,11 +1609,8 @@ but allow screen readers to see */
 	display: block;
 	font-style: normal;
 }
-#social .bypostauthor .social-fn {
+.bypostauthor > .social-comment-inner .social-comment-header .social-comment-author .social-fn {
 	font-weight: bold;
-}
-#social .bypostauthor li .social-fn {
-	font-weight: 300;
 }
 #social .social-comment .social-comment-header .avatar {
 	height: 30px;
@@ -1882,6 +1879,10 @@ iPad (portrait)				768
 		width: auto;
 		margin-right: 0;
 		text-align: left;
+	}
+	.single .format-status .post-meta,
+	.single .format-quote .post-meta {
+		margin-top: 0;
 	}
 	
 	.post .gallery-img-excerpt li {
