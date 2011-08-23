@@ -370,6 +370,12 @@ but allow screen readers to see */
 	display: block;
 	font-style: normal;
 }
+#social .bypostauthor .social-fn {
+	font-weight: bold;
+}
+#social .bypostauthor li .social-fn {
+	font-weight: 300;
+}
 #social .social-comment .social-comment-header .avatar {
 	height: 30px;
 	position: absolute;
