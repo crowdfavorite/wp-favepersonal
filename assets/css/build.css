@@ -1061,6 +1061,9 @@ Put post info in an empty left-hand column */
 	line-height: 18px;
 	padding: 35px 0;
 }
+#footer .credit {
+	float: right;
+}
 #footer a {
 	color: #fff;
 }
@@ -1604,6 +1607,12 @@ but allow screen readers to see */
 	display: block;
 	font-style: normal;
 }
+#social .bypostauthor .social-fn {
+	font-weight: bold;
+}
+#social .bypostauthor li .social-fn {
+	font-weight: 300;
+}
 #social .social-comment .social-comment-header .avatar {
 	height: 30px;
 	position: absolute;
@@ -1821,10 +1830,6 @@ iPad (portrait)				768
 		margin-left: 0;
 	}
 	
-	#footer .credit {
-		float: right;
-	}
-	
 	/* full page with no sidebar */
 	.page-full {
 		padding: 0 140px;
@@ -1948,6 +1953,10 @@ iPad (portrait)				768
 	
 	#masthead {
 		padding: 11px 0 15px;
+	}
+	
+	#footer .credit {
+		float: none;
 	}
 	
 	#social .social-comment {

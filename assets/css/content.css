@@ -705,6 +705,9 @@ Put post info in an empty left-hand column */
 	line-height: 18px;
 	padding: 35px 0;
 }
+#footer .credit {
+	float: right;
+}
 #footer a {
 	color: #fff;
 }

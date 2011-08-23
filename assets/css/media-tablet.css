@@ -82,10 +82,6 @@ iPad (portrait)				768
 		margin-left: 0;
 	}
 	
-	#footer .credit {
-		float: right;
-	}
-	
 	/* full page with no sidebar */
 	.page-full {
 		padding: 0 140px;
