@@ -97,7 +97,7 @@ html.ie7 #nav-main .menu > li {
 #nav-main li:hover > .sub-menu {
 	display: block;
 }
-#nav-main li.current-menu-item > a {
+#nav-main .sub-menu .current-menu-item a {
 	padding-left: 7px;
 	padding-right: 7px;
 }
