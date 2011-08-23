@@ -103,6 +103,7 @@ function cfpf_format_auto_title_post($post_id, $post) {
 	if (strlen($content) > 50) {
 		$title .= '...';
 	}
+	$title = apply_filters('cfpf_format_auto_title', $title, $post);
 	wp_update_post(array(
 		'ID' => $post_id,
 		'post_title' => $title
