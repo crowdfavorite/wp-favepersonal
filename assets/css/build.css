@@ -15,10 +15,10 @@ Base Style Sheet
 
 @font-face {
     font-family: 'Titillium600';
-    src: url('../fonts/titilliumtext25l004-webfont.eot');
-    src: url('../fonts/titilliumtext25l004-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/titilliumtext25l004-webfont.woff') format('woff'),
-         url('../fonts/titilliumtext25l004-webfont.ttf') format('truetype');
+    src: url('../fonts/titilliumtext25l002-webfont.eot');
+    src: url('../fonts/titilliumtext25l002-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/titilliumtext25l002-webfont.woff') format('woff'),
+         url('../fonts/titilliumtext25l002-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -453,7 +453,7 @@ html.ie7 #nav-main .menu > li {
 #nav-main li:hover > .sub-menu {
 	display: block;
 }
-#nav-main li.current-menu-item > a {
+#nav-main .sub-menu .current-menu-item a {
 	padding-left: 7px;
 	padding-right: 7px;
 }
@@ -551,16 +551,16 @@ Put post info in an empty left-hand column */
 
 .post-date {
 	left: 0;
-	line-height: 30px;
+	line-height: 1em;
 	letter-spacing: -1px;
 	position: absolute;
 	text-align: right;
-	top: 4px;
+	top: 14px;
 	width: 120px;
 }
 .home .post-date,
 .archive .post-date {
-	top: 0;
+	top: 10px;
 }
 
 .post-meta {
@@ -730,25 +730,26 @@ Put post info in an empty left-hand column */
 	font-size: 20px;
 }
 .post-status-content,
-.format-quote .post-content blockquote,
-.format-status .post-date,
-.format-quote .post-date {
+.format-quote .post-content blockquote {
 	line-height: 28px;
 }
-.format-status .post-date,
-.format-quote .post-date {
-	top: 0;
+.excerpt.format-status .post-date,
+.excerpt.format-quote .post-date {
+	top: 8px;
 }
 .single .post-status-content,
 .single .format-quote .post-content blockquote {
 	font-size: 26px;
 }
 .single .post-status-content,
-.single .format-quote .post-content blockquote,
-.single .format-status .post-date,
-.single .format-quote .post-date {
+.single .format-quote .post-content blockquote {
 	line-height: 34px;
 }
+.single .format-status .post-date,
+.single .format-quote .post-date {
+	top: 13px;
+}
+
 /* status */
 .post-status-meta {
 	color: #ccc;
@@ -924,7 +925,7 @@ Put post info in an empty left-hand column */
 }
 .widget-title {
 	margin: 0 0 10px 0;
-	padding: 6px 10px 3px 10px;
+	padding: 3px 10px 6px;
 }
 .widget ul {
 	list-style-type: none;
@@ -966,7 +967,7 @@ Put post info in an empty left-hand column */
 }
 .widget_search form label {
 	left: 0;
-	margin-top: 6px;
+	margin-top: 3px;
 	padding: 0 10px;
 	width: 255px;
 	z-index: 10;
@@ -1113,10 +1114,11 @@ Put post info in an empty left-hand column */
 	background-color: #666;
 	color: #fff;
 	display: inline-block;
+	font-family: 'Titillium600', Helvetica, Arial, Verdana, sans-serif;
 	font-size: 18px;
 	line-height: 20px;
 	margin: 0 10px 9px 0;
-	padding: 8px 15px 6px;
+	padding: 5px 15px 8px;
 }
 .featured-content {
 	bottom: 0;
@@ -1168,7 +1170,7 @@ Put post info in an empty left-hand column */
 .featured-format-quote .featured-description p {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 18px;
-	line-height: 26px;
+	line-height: 25px;
 }
 /* quote */
 .featured-format-quote .featured-content .featured-description {
@@ -1866,7 +1868,9 @@ iPad (portrait)				768
 	.post-content {
 		margin-left: 0;
 	}
-	
+	.post-title {
+		margin-bottom: 5px;
+	}
 	.post-date {
 		position: static;
 		text-align: left;
