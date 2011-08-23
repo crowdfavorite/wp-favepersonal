@@ -22,7 +22,9 @@ iPad (portrait)				768
 	.post-content {
 		margin-left: 0;
 	}
-	
+	.post-title {
+		margin-bottom: 5px;
+	}
 	.post-date {
 		position: static;
 		text-align: left;
