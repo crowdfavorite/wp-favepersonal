@@ -173,4 +173,15 @@ function cfpf_post_has_gallery($post_id = null) {
 	return (bool) $images->post_count;
 }
 
+// this will send pingbacks properly when this ticket is accepted
+// http://core.trac.wordpress.org/ticket/18506
+function cfpf_pre_ping_post_links($post_links, $post_id) {
+	$url = get_post_meta($post_id, '_format_link_url', true);
+	if (!empty($url) && !in_array($url, $post_links)) {
+		$post_links[] = $url;
+	}
+	return $post_links;
+}
+add_filter('pre_ping_post_links', 'cfpf_pre_ping_post_links', 10, 2);
+
 ?>
