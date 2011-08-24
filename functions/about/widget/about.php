@@ -2,7 +2,7 @@
 
 /**
  * new WordPress Widget format
- * Wordpress 2.8 and above
+ * WordPress 2.8 and above
  * @see http://codex.wordpress.org/Widgets_API#Developing_Widgets
  */
 class CFCP_About_Widget extends WP_Widget {
