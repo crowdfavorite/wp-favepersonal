@@ -72,6 +72,11 @@ function cfcp_load_social() {
 }
 add_action('after_setup_theme', 'cfcp_load_social');
 
+function cfcp_cfpf_base_url($url) {
+	return get_bloginfo('template_directory').'/plugins/cf-post-format/';
+}
+add_filter('cfpf_base_url', 'cfcp_cfpf_base_url');
+
 /**
  * Theme Setup
  */
