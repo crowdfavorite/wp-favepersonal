@@ -3,7 +3,7 @@
 Plugin Name: CF Post Formats
 Plugin URI: http://crowdfavorite.com
 Description: Custom post format admin screens
-Version: dev
+Version: 1.0dev
 Author: crowdfavorite
 Author URI: http://crowdfavorite.com 
 */
@@ -30,22 +30,25 @@ Author URI: http://crowdfavorite.com
  * **********************************************************************
  */
 
-define('CFPF_VERSION', '0.1');
+define('CFPF_VERSION', '0.2');
+
+function cfpf_base_url() {
+	return trailingslashit(apply_filters('cfpf_base_url', plugins_url('', __FILE__)));
+}
 
 // we aren't really adding meta boxes here,
 // but this gives us the info we need to get our stuff in.
 function cfpf_add_meta_boxes($post_type) {
 	if (post_type_supports($post_type, 'post-formats') && current_theme_supports('post-formats')) {
 		// assets
-		wp_enqueue_script('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/js/admin.js', array('jquery'), CFPF_VERSION);
-		//wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/css/admin.css', array(), CFPF_VERSION, 'screen');
-		wp_enqueue_style('cf-post-format', get_bloginfo('template_directory').'/plugins/cf-post-format/css/admin.css', array(), CFPF_VERSION, 'screen');
+		wp_enqueue_script('cf-post-formats', cfpf_base_url().'js/admin.js', array('jquery'), CFPF_VERSION);
+		wp_enqueue_style('cf-post-formats', cfpf_base_url().'css/admin.css', array(), CFPF_VERSION, 'screen');
 
 		wp_localize_script(
-			'cf-post-format', 
+			'cf-post-formats', 
 			'cfpf_post_format', 
 			array(
-				'loading' => __('Loading...', 'cf-post-format'),
+				'loading' => __('Loading...', 'cf-post-formats'),
 				'wpspin_light' => admin_url('images/wpspin_light.gif')
 			)
 		);
@@ -183,5 +186,3 @@ function cfpf_pre_ping_post_links($post_links, $post_id) {
 	return $post_links;
 }
 add_filter('pre_ping_post_links', 'cfpf_pre_ping_post_links', 10, 2);
-
-?>
