@@ -49,9 +49,10 @@ Used for common styles across all admin pages
 	background-image: linear-gradient(top,#f9f9f9,#ececec);
 	border: 1px solid #ddd;
 	border-bottom: 0;
-	font-size: 14px;
-	height: 30px;
-	line-height: 30px;
+	font-size: 15px;
+	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	height: 29px;
+	line-height: 29px;
 	margin-right: 5px;
 	padding: 0 10px;
 	text-decoration: none;
@@ -70,7 +71,7 @@ Used for common styles across all admin pages
 	background: none;
 	border: 1px solid #ccc;
 	border-bottom: 1px solid #fff;
-	color: #333;
+	color: #464646;
 	margin-bottom: -1px;
 }
 
