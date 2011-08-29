@@ -265,7 +265,7 @@ function cf_kuler_themes_html($themes) {
 		}
 	}
 	else {
-		$html .= '<p class="none">'.__("Sorry, no Colors found.", 'cf-kuler').'</p>';
+		$html .= '<p class="none">'.__("Sorry, no colors found.", 'cf-kuler').'</p>';
 	}
 	return $html;
 }
