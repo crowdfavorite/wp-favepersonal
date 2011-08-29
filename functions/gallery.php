@@ -328,10 +328,10 @@ function cfcp_gallery_max_size($size = '', $post_id = null) {
 // check widths
 		foreach ($meta as $data) {
 			$size = (isset($data['sizes']['gallery-large-img']) ? $data['sizes']['gallery-large-img'] : $data);
-			if ($max_height < $size['height']) {
+			if (isset($size['height']) && $max_height < $size['height']) {
 				$max_height = $size['height'];
 			}
-			if ($max_width < $size['width']) {
+			if (isset($size['width']) && $max_width < $size['width']) {
 				$max_width = $size['width'];
 			}
 		}
