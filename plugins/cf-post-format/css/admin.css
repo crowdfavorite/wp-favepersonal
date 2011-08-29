@@ -65,21 +65,8 @@
 	margin-bottom: -1px;
 }
 
-
-
-/* 
- * to organize
- */
-
-#post-body-content #postimagediv .inside p {
-	text-align: center;
-}
-
-.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
-.clearfix:after { clear: both; }
-.clearfix { zoom: 1; }
-
-
+/** base form field structure
+ -------------------------------------------------- */
 .cp-elm-block {
 	font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
 	margin-bottom: 18px;
@@ -117,6 +104,7 @@
 .cp-elm-block input[type="text"] {
 	padding: 5px 8px;
 }
+/* status and quote */
 .cp-elm-block .description {
 	color: #999;
 	display: block;
@@ -134,6 +122,7 @@
 .cp-elm-block .cp-elm-container p.none {
 	text-align: center;
 }
+/* gallery */
 .cp-elm-block .cp-elm-image-gallery {
 	margin: 0 0 -5px 0;
 	padding: 0;
@@ -149,8 +138,17 @@
 	margin: 0 5px 5px 0;
 	padding: 0;
 }
-
-/* Video Field */
+/* image field */
+#post-body-content #postimagediv .inside p {
+	text-align: center;
+}
+/* video field */
 #cfpf-format-video-embed {
 	height: 65px;
 }
+
+/** utilities
+ -------------------------------------------------- */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
