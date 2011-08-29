@@ -119,7 +119,7 @@ class CFCT_Gallery {
 }
 
 class CFCT_Gallery_Excerpt extends CFCT_Gallery {
-	public $number_of_images = 8; // 8 by default
+	public $number_of_images = 9; // 9 by default
 	
 	protected function _view_prep($args = array()) {
 		$defaults = array(
@@ -136,6 +136,10 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 		$args = $this->_view_prep($args);
 		extract($args);
 		$i = 0;
+		// remove the last gallery post if there are more than we can show here (we'll show a link to view all instead)
+		if ($gallery->found_posts > count($gallery->posts)) {
+			unset($gallery->posts[count($gallery->posts) - 1]);
+		}
 		foreach ($gallery->posts as $image) {
 			$thumbs .= '<li class="excerpt-img-'.$i.'"><a href="'.esc_url($post_permalink.'#'.$this->get_slide_id($image->ID)).'">'.wp_get_attachment_image($image->ID, $size, false).'</a></li>';
 			$i++;
@@ -249,7 +253,7 @@ if (!is_admin()) {
 function cfcp_gallery_excerpt($args = array()) {
 	$defaults = array(
 		'size' => 'thumbnail',
-		'number' => 8,
+		'number' => 9,
 		'id' => get_the_ID(),
 		'before' => '',
 		'after' => '',
@@ -275,7 +279,7 @@ function cfcp_gallery_excerpt($args = array()) {
 function cfcp_gallery_featured($args = array()) {
 	$defaults = array(
 		'size' => 'thumbnail',
-		'number' => 8,
+		'number' => 4,
 		'id' => get_the_ID(),
 		'before' => '',
 		'after' => '',
