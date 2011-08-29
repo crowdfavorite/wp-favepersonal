@@ -132,6 +132,12 @@
 	clear: both;
 	margin-bottom: 80px;
 }
+#cf-kuler-swatch-selector p.none {
+	color: #666;
+	font-size: 14px;
+	padding: 50px 0 100px;
+	text-align: center;
+}
 #cf-kuler-swatch-selector .cf-kuler-theme-actions {
 	background-color: #888;
 	display: none;
