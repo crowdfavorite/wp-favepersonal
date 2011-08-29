@@ -203,7 +203,9 @@ iPad (portrait)				768
 
 /* iPhone portrait */
 @media only screen and (max-width: 479px) {
-	.container {
+	.container,
+	#primary,
+	#secondary {
 		width: 300px;
 	}
 	/* Hide last 2 by default (brought back in with media queries) */
@@ -259,7 +261,9 @@ iPad (portrait)				768
 
 /* iPhone Landscape */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-	.container {
+	.container,
+	#primary,
+	#secondary {
 		width: 460px;
 	}
 	

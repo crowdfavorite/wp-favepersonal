@@ -9,7 +9,9 @@ iPad (portrait)				768
 ------------------------------------------------------ */
 
 @media only screen and (min-width: 768px) and (max-width: 1009px) {
-	.container {
+	.container,
+	#primary,
+	#secondary {
 		width: 708px;
 	}
 	
