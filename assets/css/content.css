@@ -12,7 +12,8 @@
 	padding-top: 25px;
 	position: relative;
 }
-#header h1 {
+#header #site-name {
+	font-size: 30px;
 	line-height: 1.3em;
 	margin: 0;
 }
@@ -37,6 +38,9 @@
 	margin: 0;
 	padding: 0;
 	text-transform: uppercase;
+}
+#nav-main h1 {
+	margin-top: 15px;
 }
 #nav-main .menu > li {
 	border-bottom: 3px solid transparent;
