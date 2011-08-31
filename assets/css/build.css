@@ -1852,6 +1852,9 @@ iPad (portrait)				768
 
 /* iPhone portrait and landscape shared edge-case styles */
 @media only screen and (max-width: 767px) {
+	#header .container {
+		padding-top: 25px;
+	}
 	.format-status .post-header,
 	.format-quote .post-header {
 		float: none;
@@ -2109,7 +2112,7 @@ iPad (portrait)				768
 	#secondary {
 		width: 460px;
 	}
-	
+
 	/**
 	 * Modify post galleries (3 col)
 	 */
