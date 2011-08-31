@@ -113,9 +113,9 @@ h6,
 h1,
 .h1 {
 	font-family: 'Titillium400', Helvetica, Arial, Verdana, sans-serif;
-	font-size: 30px;
+	font-size: 24px;
 	letter-spacing: -1px;
-	line-height: 32px;
+	line-height: 28px;
 	margin-top: 0;
 }
 h2,
@@ -498,10 +498,10 @@ html.ie7 #nav-main .menu > li {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	margin: 0;
 }
-.home .post-title,
-.archive .post-title {
-	font-size: 24px;
-	line-height: 28px;
+.single .post-title,
+.page .post-title {
+	font-size: 30px;
+	line-height: 32px;
 }
 .post-date {
 	color: #ccc;
@@ -1756,7 +1756,9 @@ iPad (portrait)				768
 ------------------------------------------------------ */
 
 @media only screen and (min-width: 768px) and (max-width: 1009px) {
-	.container {
+	.container,
+	#primary,
+	#secondary {
 		width: 708px;
 	}
 	
@@ -2046,7 +2048,9 @@ iPad (portrait)				768
 
 /* iPhone portrait */
 @media only screen and (max-width: 479px) {
-	.container {
+	.container,
+	#primary,
+	#secondary {
 		width: 300px;
 	}
 	/* Hide last 2 by default (brought back in with media queries) */
@@ -2102,7 +2106,9 @@ iPad (portrait)				768
 
 /* iPhone Landscape */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-	.container {
+	.container,
+	#primary,
+	#secondary {
 		width: 460px;
 	}
 	

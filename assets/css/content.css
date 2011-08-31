@@ -142,10 +142,10 @@ html.ie7 #nav-main .menu > li {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	margin: 0;
 }
-.home .post-title,
-.archive .post-title {
-	font-size: 24px;
-	line-height: 28px;
+.single .post-title,
+.page .post-title {
+	font-size: 30px;
+	line-height: 32px;
 }
 .post-date {
 	color: #ccc;
