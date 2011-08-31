@@ -110,7 +110,8 @@ iPad (portrait)				768
 	#nav-main h1 {
 		border-bottom: 3px solid transparent;
 		display: inline-block; /* Standard. IE8+, Saf, FF3+ */
-		height: 20px;
+		height: 23px;
+		margin-top: 10px;
 	}
 	
 	#masthead {

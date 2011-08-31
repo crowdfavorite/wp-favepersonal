@@ -64,17 +64,12 @@ iPad (portrait)				768
 	.featured-title {
 		font-size: 16px;
 		line-height: 18px;
-		padding: 6px 13px 4px;
 	}
 	
 	#masthead {
 		padding: 16px 0 20px;
 	}
-	
-	#header .container {
-		padding-top: 30px;
-	}
-	
+		
 	.sidebar {
 		float: left;
 		margin-left: 15px;
