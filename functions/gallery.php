@@ -237,12 +237,21 @@ function cfcp_gallery($args = array()) {
 }
 
 function cfcp_gallery_shortcode($content, $args) {
+	// Go with default gallery if in a feed (we don't want to run JS in feeds)
+	if (is_feed()) {
+		return $content;
+	}
+	
 	remove_filter('post_gallery', 'cfct_post_gallery', 10, 2);
+
 	ob_start();
 	cfcp_gallery(array(
 		'before' => '<div>',
 		'after' => '</div>',
 	));
+	/**
+	 * @todo size math, comparison against $content_width.
+	 */
 	return ob_get_clean();
 }
 if (!is_admin()) {
