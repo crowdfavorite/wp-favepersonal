@@ -19,6 +19,6 @@
 
 ?>
 <div class="pagination h6">
-	<span class="next"><?php previous_post_link('%link &raquo;') ?></span>
+	<span class="next"><?php previous_post_link('%link &raquo') ?></span>
 	<span class="prev"><?php next_post_link('&laquo; %link') ?></span>
 </div>

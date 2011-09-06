@@ -125,8 +125,15 @@ img.wp-smiley {
 	min-height: 20px;
 	margin-top: 40px;
 }
+.pagination .prev,
+.pagination .next {
+	display: block;
+	line-height: 1.2em;
+	width: 48%;
+}
 .pagination .next {
 	float: right;
+	text-align: right;
 }
 .home .pagination {
 	margin-top: 60px;
