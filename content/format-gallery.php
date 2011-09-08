@@ -20,6 +20,9 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
+global $content_width;
+$content_width = '710'; // set for this view
+
 $sizes = cfcp_gallery_max_size('gallery-large-img');
 
 ?>
@@ -33,6 +36,8 @@ $sizes = cfcp_gallery_max_size('gallery-large-img');
 cfcp_gallery(array(
 	'before' => '<div class="post-media">',
 	'after' => '</div>',
+	'height' => $sizes['height'],
+	'width' => $sizes['width'],
 ));
 cfct_misc('post-meta');
 
@@ -51,7 +56,3 @@ wp_link_pages($args);
 ?>
 	</div><!--post-content-->
 </article><!-- .post -->
-<script type="text/javascript">
-var cfcpGalleryHeight = <?php echo $sizes['height']; ?>;
-var cfcpGalleryWidth = <?php echo $sizes['width']; ?>;
-</script>

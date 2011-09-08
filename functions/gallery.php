@@ -47,6 +47,8 @@ class CFCT_Gallery {
 	public $post_id;
 	public $gallery;
 	public $number_of_images = -1; // Unlimited by default
+	public $height = 474;
+	public $width = 710;
 	protected static $instances;
 	
 	public function __construct($id, $number_of_images = null) {
@@ -60,6 +62,13 @@ class CFCT_Gallery {
 		If we end up needing multiple same galleries per page, we can make a factory
 		to make sure each gallery id is unique. */
 		$this->id = sprintf('gal%s', $this->post_id);
+		
+		if (defined('CFCT_GALLERY_HEIGHT')) {
+			$this->height = CFCT_GALLERY_HEIGHT;
+		}
+		if (defined('CFCT_GALLERY_WIDTH')) {
+			$this->width = CFCT_GALLERY_WIDTH;
+		}
 	}
 	
 	/* Just an API function for piecing together the slide naming convention */
@@ -92,6 +101,12 @@ class CFCT_Gallery {
 			return;
 		}
 		$args['gallery'] = $this->get_attachments();
+		if (empty($args['height'])) {
+			$args['height'] = $this->height;
+		}
+		if (empty($args['width'])) {
+			$args['width'] = $this->width;
+		}
 		$this->view($args);
 	}
 	
@@ -110,7 +125,7 @@ class CFCT_Gallery {
 			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'">'.$thumb.'</a></li>';
 		}
 		?>
-<div id="<?php echo $this->id; ?>" class="cfgallery clearfix">
+<div id="<?php echo $this->id; ?>" class="cfgallery clearfix" data-width="<?php echo intval($width); ?>" data-height="<?php echo intval($height); ?>">
 	<div class="gallery-stage"></div>
 	<ul class="gallery-thumbs"><?php echo $thumbs; ?></ul>
 </div>
@@ -126,6 +141,8 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 			'id' => get_the_ID(),
 			'view_all_link' => true
 		);
+		$defaults['height'] = (defined('CFCT_GALLERY_HEIGHT') ? CFCT_GALLERY_HEIGHT : $this->height);
+		$defaults['width'] = (defined('CFCT_GALLERY_WIDTH') ? CFCT_GALLERY_WIDTH : $this->width);
 		$args = array_merge($defaults, $args);
 		$args['thumbs'] = '';
 		$args['post_permalink'] = get_permalink($args['id']);
@@ -230,7 +247,7 @@ function cfcp_gallery($args = array()) {
 	$gallery = new CFCT_Gallery($args['id'], $args['number']);
 	if ($gallery->exists()) {
 		echo $args['before'];
-		$gallery->render();
+		$gallery->render($args);
 		echo $args['after'];
 	}
 	unset($gallery);
@@ -243,15 +260,23 @@ function cfcp_gallery_shortcode($content, $args) {
 	}
 	
 	remove_filter('post_gallery', 'cfct_post_gallery', 10, 2);
+	
+	global $content_width;
+	$gallery_sizes = $sizes = cfcp_gallery_max_size('gallery-large-img');
+	
+	if ($content_width < $sizes['width']) {
+		$ratio = $sizes['width'] / $content_width;
+		$gallery_sizes['width'] = ceil($sizes['width'] / $ratio);
+		$gallery_sizes['height'] = ceil($sizes['height'] / $ratio);
+	}
 
 	ob_start();
 	cfcp_gallery(array(
 		'before' => '<div>',
 		'after' => '</div>',
+		'height' => $gallery_sizes['height'],
+		'width' => $gallery_sizes['width'],
 	));
-	/**
-	 * @todo size math, comparison against $content_width.
-	 */
 	return ob_get_clean();
 }
 if (!is_admin()) {

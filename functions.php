@@ -96,6 +96,14 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_image_size('large-img', 710, 700, false); // single view for image
 		add_image_size('gallery-large-img', 710, 474, false); // large size for gallery (~3:2 aspect ratio)
 		add_image_size('banner-img', 510, 180, true); // excerpt featured img
+
+		// set primary content width
+		global $content_width;
+		$content_width = '510';
+		
+		// set default gallery dimensions
+		define('CFCT_GALLERY_HEIGHT', 474);
+		define('CFCT_GALLERY_WIDTH', 710);
 		
 		// Add post formats
 		add_theme_support(
@@ -138,6 +146,14 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 	}
 }
 add_action( 'after_setup_theme', 'carrington_personal_setup' );
+
+function cfcp_image_size_input_fields_sizes($sizes) {
+	$sizes['medium-img'] = 'Content Width';
+	$sizes['banner-img'] = 'Content Width Short (Cropped)';
+	$sizes['large-img'] = 'Full Width';
+	return $sizes;
+}
+add_filter('image_size_input_fields_sizes', 'cfcp_image_size_input_fields_sizes');
 
 function cfcp_admin_header_style() {} // empty.
 

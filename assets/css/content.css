@@ -320,7 +320,7 @@ Put post info in an empty left-hand column */
 .gallery-thumbs {
 	list-style-type: none;
 	margin: 3px 0 0;
-	width: 720px;
+	max-width: 720px;
 }
 .gallery-thumbs li {
 	background-color: #ddd;
