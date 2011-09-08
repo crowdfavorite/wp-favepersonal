@@ -266,8 +266,8 @@ function cfcp_gallery_shortcode($content, $args) {
 	
 	if ($content_width < $sizes['width']) {
 		$ratio = $sizes['width'] / $content_width;
-		$gallery_sizes['width'] = ceil($sizes['width'] / $ratio);
-		$gallery_sizes['height'] = ceil($sizes['height'] / $ratio);
+		$gallery_sizes['width'] = floor($sizes['width'] / $ratio);
+		$gallery_sizes['height'] = floor($sizes['height'] / $ratio);
 	}
 
 	ob_start();
