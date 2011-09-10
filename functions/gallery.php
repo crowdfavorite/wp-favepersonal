@@ -141,8 +141,12 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 			'id' => get_the_ID(),
 			'view_all_link' => true
 		);
-		$defaults['height'] = (defined('CFCT_GALLERY_HEIGHT') ? CFCT_GALLERY_HEIGHT : $this->height);
-		$defaults['width'] = (defined('CFCT_GALLERY_WIDTH') ? CFCT_GALLERY_WIDTH : $this->width);
+		if (empty($defaults['height'])) {
+			$defaults['height'] = $this->height;
+		}
+		if (empty($defaults['width'])) {
+			$defaults['width'] = $this->width;
+		}
 		$args = array_merge($defaults, $args);
 		$args['thumbs'] = '';
 		$args['post_permalink'] = get_permalink($args['id']);

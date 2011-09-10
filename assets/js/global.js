@@ -1,11 +1,10 @@
 jQuery(function($) {
 	var activate = (Modernizr.touch ? 'touchend' : 'click');
-	$('#nav-main h1')
-		.bind(activate, function(e){
-			$('#nav-main .menu').toggleClass('open');
-			e.preventDefault();
-			e.stopPropagation();
-		});
+	$('#nav-main h1').bind(activate, function(e) {
+		$('#nav-main .menu').toggleClass('open');
+		e.preventDefault();
+		e.stopPropagation();
+	});
 	
 	// add hover support for li
 	$('li').hover(
@@ -15,7 +14,7 @@ jQuery(function($) {
 
 	// Bio box carousel
 	var $bioCarousel = $('#bio-carousel .bio-box-gallery-images');
-	if ($bioCarousel.length > 0 && typeof $bioCarousel.cycle === 'function') {
+	if ($bioCarousel.size() > 0 && typeof $bioCarousel.cycle === 'function') {
 		var $bioImages = $bioCarousel.find('img');
 		
 		if ($bioImages.size() > 1) {

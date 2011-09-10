@@ -59,8 +59,13 @@ iPad (portrait)				768
 	
 	/* Override h1 hiding when in menu mode */
 	#nav-main h1 {
-		position: static;
+		border-bottom: 3px solid transparent;
+		cursor: pointer;
+		display: inline-block; /* Standard. IE8+, Saf, FF3+ */
+		height: 23px;
 		left: auto;
+		margin-top: 10px;
+		position: static;
 	}
 	#nav-main .menu {
 		border: 3px solid transparent;
@@ -113,13 +118,6 @@ iPad (portrait)				768
 		border: 0;
 	}
 
-	#nav-main h1 {
-		border-bottom: 3px solid transparent;
-		display: inline-block; /* Standard. IE8+, Saf, FF3+ */
-		height: 23px;
-		margin-top: 10px;
-	}
-	
 	#masthead {
 		padding: 11px 0 15px;
 	}
