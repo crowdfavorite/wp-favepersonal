@@ -1,5 +1,5 @@
 jQuery(function($) {
-	var activate = (Modernizr.touch ? 'touchend' : 'click');
+	var activate = (Modernizr.touch && navigator.userAgent.toLowerCase().indexOf('blackberry') == -1 ? 'touchend' : 'click');
 	$('#nav-main h1').bind(activate, function(e) {
 		$('#nav-main .menu').toggleClass('open');
 		e.preventDefault();

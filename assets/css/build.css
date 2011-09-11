@@ -1905,6 +1905,7 @@ iPad (portrait)				768
 		left: auto;
 		margin-top: 10px;
 		position: static;
+		white-space: nowrap;
 	}
 	#nav-main .menu {
 		border: 3px solid transparent;
