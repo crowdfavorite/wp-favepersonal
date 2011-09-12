@@ -334,8 +334,15 @@ img.wp-smiley {
 	min-height: 20px;
 	margin-top: 40px;
 }
+.pagination .prev,
+.pagination .next {
+	display: block;
+	line-height: 1.2em;
+	width: 48%;
+}
 .pagination .next {
 	float: right;
+	text-align: right;
 }
 .home .pagination {
 	margin-top: 60px;
@@ -966,6 +973,10 @@ Put post info in an empty left-hand column */
 .widget_search form #s {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 16px;
+}
+.widget_search form #s {
+	-webkit-appearance: none;
+	-webkit-border-radius: 0px;
 }
 .widget_search form label {
 	left: 0;
@@ -1855,6 +1866,9 @@ iPad (portrait)				768
 	#header .container {
 		padding-top: 25px;
 	}
+	#header #site-name {
+		margin-bottom: 5px;
+	}
 	.format-status .post-header,
 	.format-quote .post-header {
 		float: none;
@@ -2101,6 +2115,9 @@ iPad (portrait)				768
 	.post .gallery-img-excerpt .excerpt-img-4,
 	.post .gallery-img-excerpt .excerpt-img-6 {
 		margin-left: 0;
+	}
+	#footer a {
+		display: inline-block;
 	}
 }
 

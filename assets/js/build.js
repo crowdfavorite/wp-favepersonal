@@ -390,7 +390,7 @@
 
 	// Bio box carousel
 	var $bioCarousel = $('#bio-carousel .bio-box-gallery-images');
-	if ($bioCarousel.length > 0 && typeof $bioCarousel.cycle === 'function') {
+	if ($bioCarousel.size() > 0 && typeof $bioCarousel.cycle === 'function') {
 		var $bioImages = $bioCarousel.find('img');
 		
 		if ($bioImages.size() > 1) {
@@ -439,8 +439,11 @@
 		scale = $.fn.cfgallery.helpers.scaleWithin,
 		dims = [];
 	
-	dims[0] = (typeof cfcpGalleryWidth === 'undefined' ? 710 : cfcpGalleryWidth);
-	dims[1] = (typeof cfcpGalleryHeight === 'undefined' ? 474 : cfcpGalleryHeight);
+	// set defaults
+	var w = $gal.data('width');
+	var h = $gal.data('height');
+	dims[0] = (typeof w === 'undefined' ? 710 : w);
+	dims[1] = (typeof h === 'undefined' ? 474 : h);
 	
 	// Proportional scale based on screen size
 	if (viewportW < 480) {
