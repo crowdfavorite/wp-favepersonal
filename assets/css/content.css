@@ -611,6 +611,10 @@ Put post info in an empty left-hand column */
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 16px;
 }
+.widget_search form #s {
+	-webkit-appearance: none;
+	-webkit-border-radius: 0px;
+}
 .widget_search form label {
 	left: 0;
 	margin-top: 3px;
