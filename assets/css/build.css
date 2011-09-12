@@ -985,7 +985,8 @@ Put post info in an empty left-hand column */
 	width: 255px;
 	z-index: 10;
 }
-.widget_search form #s {
+.widget_search form #s,
+.widget_search form #searchsubmit {
 	background: none;
 	border: 0;
 	left: 0;
