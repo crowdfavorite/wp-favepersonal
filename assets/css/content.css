@@ -611,7 +611,8 @@ Put post info in an empty left-hand column */
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 16px;
 }
-.widget_search form #s {
+.widget_search form #s,
+.widget_search form #searchsubmit {
 	-webkit-appearance: none;
 	-webkit-border-radius: 0px;
 }
@@ -622,8 +623,7 @@ Put post info in an empty left-hand column */
 	width: 255px;
 	z-index: 10;
 }
-.widget_search form #s,
-.widget_search form #searchsubmit {
+.widget_search form #s {
 	background: none;
 	border: 0;
 	left: 0;
