@@ -62,9 +62,8 @@
 		text-align: center;
 }
 #social #reply-title #cancel-comment-reply-link {
-	font: 12px/30px Helvetica, Arial, Verdana;
+	float: right;
 	margin-left: 6px;
-	text-transform: none;
 }
 
 #social .social-input-row,
