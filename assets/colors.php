@@ -172,6 +172,13 @@ a:hover {
 	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 	background-color: <?php echo cf_kuler_color('light', 'widget_title_background'); ?>;
 }
+#primary .heading {
+	background-color: <?php echo cf_kuler_color('light', 'widget_title_background'); ?>;
+}
+#primary .heading .page-title {
+	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
+}
+
 .search-title em {
 	color: <?php echo cf_kuler_color('darkest', 'search_title_em_color'); ?>;
 }

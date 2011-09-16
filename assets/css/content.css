@@ -443,11 +443,22 @@ Put post info in an empty left-hand column */
 	width: 100%;
 }
 .page-title {
+	letter-spacing: -1px;
 	line-height: 1.2em;
 	margin: 0;
 }
-.page-title {
-	letter-spacing: -1px;
+#primary .heading {
+	margin-bottom: 10px;
+}
+#primary .heading .page-title {
+	padding: 5px 7px;
+}
+#primary .heading-description {
+	border-top: #fff solid 1px;
+	padding: 0 7px 5px;
+}
+#primary .heading-description p {
+	margin: 5px 0 0;
 }
 .page-title em {
 	color: #ff0000;
