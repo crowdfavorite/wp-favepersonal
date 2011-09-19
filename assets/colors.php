@@ -29,7 +29,6 @@ body {
 }
 a {
 	color: <?php echo cf_kuler_color('darkest', 'a'); ?>;
-	text-decoration: none;
 }
 a:hover {
 	color: <?php echo cf_kuler_color('medium', 'a_hover'); ?>;
