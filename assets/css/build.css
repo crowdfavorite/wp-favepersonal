@@ -80,9 +80,6 @@ img {
    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
-/** Load Fonts
- -------------------------------------------------- */
-
 /** Basic Elements
 -------------------------------------------------- */
 body,
@@ -93,6 +90,9 @@ textarea {
 	font-weight: 300;
 	line-height: 20px;
 	margin: 0;
+}
+a {
+	text-decoration: none;
 }
 
 h1,
@@ -566,8 +566,7 @@ Put post info in an empty left-hand column */
 	top: 14px;
 	width: 120px;
 }
-.home .post-date,
-.archive .post-date {
+.excerpt .post-date {
 	top: 10px;
 }
 
@@ -806,11 +805,22 @@ Put post info in an empty left-hand column */
 	width: 100%;
 }
 .page-title {
+	letter-spacing: -1px;
 	line-height: 1.2em;
 	margin: 0;
 }
-.page-title {
-	letter-spacing: -1px;
+#primary .heading {
+	margin-bottom: 10px;
+}
+#primary .heading .page-title {
+	padding: 5px 7px;
+}
+#primary .heading-description {
+	border-top: #fff solid 1px;
+	padding: 0 7px 5px;
+}
+#primary .heading-description p {
+	margin: 5px 0 0;
 }
 .page-title em {
 	color: #ff0000;
@@ -1315,9 +1325,8 @@ Put post info in an empty left-hand column */
 		text-align: center;
 }
 #social #reply-title #cancel-comment-reply-link {
-	font: 12px/30px Helvetica, Arial, Verdana;
+	float: right;
 	margin-left: 6px;
-	text-transform: none;
 }
 
 #social .social-input-row,
@@ -2149,6 +2158,7 @@ iPad (portrait)				768
 	.post .gallery-img-excerpt .excerpt-img-4,
 	.post .gallery-img-excerpt .excerpt-img-5,
 	.post .gallery-img-excerpt .excerpt-img-7,
+	.post .gallery-img-excerpt .excerpt-img-8,
 	.post .gallery-img-excerpt .gallery-view-all {
 		margin-left: 10px;
 	}
