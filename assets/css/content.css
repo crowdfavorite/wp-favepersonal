@@ -203,8 +203,7 @@ Put post info in an empty left-hand column */
 	top: 14px;
 	width: 120px;
 }
-.home .post-date,
-.archive .post-date {
+.excerpt .post-date {
 	top: 10px;
 }
 
