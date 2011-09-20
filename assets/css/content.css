@@ -447,14 +447,15 @@ Put post info in an empty left-hand column */
 	margin: 0;
 }
 #primary .heading {
-	margin-bottom: 10px;
+	margin-bottom: 40px;
 }
 #primary .heading .page-title {
-	padding: 5px 7px;
+	font-size: 18px;
+	padding: 5px 10px 7px 10px;
 }
 #primary .heading-description {
 	border-top: #fff solid 1px;
-	padding: 0 7px 5px;
+	padding: 0 10px 5px 10px;
 }
 #primary .heading-description p {
 	margin: 5px 0 0;

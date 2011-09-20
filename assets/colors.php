@@ -177,6 +177,9 @@ a:hover {
 #primary .heading .page-title {
 	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 }
+#primary .heading .page-title em {
+	color: <?php echo cf_kuler_color('darkest', 'widget_title_color'); ?>;
+}
 
 .search-title em {
 	color: <?php echo cf_kuler_color('darkest', 'search_title_em_color'); ?>;
