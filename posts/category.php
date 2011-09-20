@@ -26,7 +26,21 @@ get_header();
 
 <div id="primary">
 	<div class="heading">
-		<?php cfpt_page_title('<h1 class="page-title">', '</h1>'); ?>
+<?php 
+cfpt_page_title('<h1 class="page-title">', '</h1>');
+	
+$category_description = category_description();
+if ($category_description):
+
+?>
+		<div class="heading-description">
+			<?php echo $category_description; ?>
+		</div>
+<?php
+
+endif;
+
+?>
 	</div>
 <?php
 
