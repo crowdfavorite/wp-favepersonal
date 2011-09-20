@@ -499,7 +499,7 @@ html.ie7 #nav-main .menu > li {
 /* post-header */
 .post-header {
 	clear: both;
-	margin-bottom: 7px;
+	margin-bottom: 10px;
 	zoom: 1;
 }
 .post-title {
@@ -521,6 +521,9 @@ html.ie7 #nav-main .menu > li {
 }
 
 /* post-media - wraps featured images, gallery, video */
+.post-media {
+	margin: 0 0 10px 0;
+}
 .single .post-media {
 	margin: 20px 0 25px 0;
 }
@@ -531,12 +534,6 @@ html.ie7 #nav-main .menu > li {
 .post-media a img {
 	display: block;
 	border-bottom: 1px solid #fff;
-}
-.home .post-media,
-.archive .post-media {
-	padding-bottom: 2px;
-	padding-right: 0;
-	padding-top: 5px;
 }
 
 /* Post meta
@@ -580,8 +577,8 @@ Put post info in an empty left-hand column */
 	text-align: right;
 	width: 120px;
 }
-.post-header .post-meta {
-	padding-top: 8px;
+.excerpt .post-meta {
+	padding-top: 10px;
 }
 .post-meta p {
 	vertical-align: baseline;
@@ -593,10 +590,6 @@ Put post info in an empty left-hand column */
 .post-meta .post-meta-replies {
 	margin-top: 0;
 }
-.excerpt .post-meta .post-meta-replies {
-	margin: 0 0 0 8px;
-}
-
 .post-meta .post-meta-title {
 	margin: 10px 0 0 0;
 }
@@ -809,14 +802,15 @@ Put post info in an empty left-hand column */
 	margin: 0;
 }
 #primary .heading {
-	margin-bottom: 10px;
+	margin-bottom: 40px;
 }
 #primary .heading .page-title {
-	padding: 5px 7px;
+	font-size: 18px;
+	padding: 5px 10px 7px 10px;
 }
 #primary .heading-description {
 	border-top: #fff solid 1px;
-	padding: 0 7px 5px;
+	padding: 0 10px 5px 10px;
 }
 #primary .heading-description p {
 	margin: 5px 0 0;
