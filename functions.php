@@ -153,7 +153,7 @@ function cfcp_image_size_input_fields_sizes($sizes) {
 	$sizes['large-img'] = 'Full Width';
 	return $sizes;
 }
-add_filter('image_size_input_fields_sizes', 'cfcp_image_size_input_fields_sizes');
+add_filter('image_size_names_choose', 'cfcp_image_size_input_fields_sizes');
 
 function cfcp_admin_header_style() {} // empty.
 
