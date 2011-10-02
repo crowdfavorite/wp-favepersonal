@@ -25,7 +25,14 @@ class CF_Favicon_Fetch {
 	protected $valid_response_codes = array(200, 301, 302);
 	
 	/**
-	 * Holde on to the last error we encountered for informational messages
+	 * Enable logging to the PHP error log
+	 *
+	 * @var string
+	 */
+	public $error_log_enabled = false;
+	
+	/**
+	 * Hold on to the last error we encountered for informational messages
 	 *
 	 * @var string
 	 */
@@ -44,6 +51,12 @@ class CF_Favicon_Fetch {
 		}
 		if (!empty($options['valid_response_codes']) && is_array($options['valid_response_codes'])) {
 			$this->valid_response_codes = array_map('intval', $options['valid_response_codes']);
+		}
+	}
+	
+	private function error_log($str) {
+		if ($this->error_log_enabled) {
+			error_log($str);
 		}
 	}
 
@@ -273,7 +286,7 @@ class CF_Favicon_Fetch {
 		}
 		$upload_dir = is_dir($this->upload_dir) && is_writable($this->upload_dir);
 		if (!$upload_dir) {
-			error_log('There is a problem with the upload dir "'.$this->upload_dir.'" - it is either missing or not writable');
+			$this->error_log('There is a problem with the upload dir "'.$this->upload_dir.'" - it is either missing or not writable');
 		}
 		return $upload_dir;
 	}
@@ -331,7 +344,7 @@ class CF_Favicon_Fetch {
 				$msg = strval($response);
 			}
 			$this->last_error = $msg;
-			error_log('Error in remote request '.$msg.' :: '.$method);
+			$this->error_log('Error in remote request '.$msg.' :: '.$method);
 		}
 	}
 }
