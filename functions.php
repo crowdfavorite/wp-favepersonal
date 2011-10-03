@@ -182,7 +182,7 @@ else {
 function cfcp_social_dequeue_style() {
 	wp_dequeue_style('social_comments');
 }
-add_action('init', 'cfcp_social_dequeue_style', 10);
+add_action('wp_enqueue_scripts', 'cfcp_social_dequeue_style', 999);
 
 /**
  * Misc other things we want added to the <head>
