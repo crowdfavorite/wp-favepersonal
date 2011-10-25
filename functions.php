@@ -244,7 +244,14 @@ add_filter( 'excerpt_more', 'cfcp_excerpt_more' );
 function cfcp_date() {
 	global $post;
 	$date_format = get_option('date_format');
-	return cf_relative_time_ago($post->post_date_gmt, '', 'ago', '4', $date_format, '', true);
+
+	// Preview?
+	if (isset($_GET['preview'])) {
+		return date($date_format, current_time('timestamp'));
+	}
+	else {
+		return cf_relative_time_ago($post->post_date_gmt, '', 'ago', '4', $date_format, '', true);
+	}
 }
 function cfcp_comment_date() {
 	global $comment;
