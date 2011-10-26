@@ -25,6 +25,7 @@ $bundle_js
 	->set_language('javascript')
 	->set_meta('dependencies', array('jquery'))
 	->add('modernizr', 'js/modernizr.custom.js')
+	->add('fitvids', 'js/fitvids/jquery.fitvids.js')
 	->add('cfgallery', 'js/cfgallery/jquery.cfgallery.js')
 	->add('global', 'js/global.js');
 $bundler->push($bundle_js);
