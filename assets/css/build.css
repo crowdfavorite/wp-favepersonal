@@ -70,7 +70,10 @@ footer,header,hgroup,menu,nav,section,summary {
 	border: 0;
 }
 
-img {
+img,
+embed,
+object,
+video {
 	height: auto;
 	max-width: 100%;
 	width: auto;

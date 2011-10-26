@@ -70,10 +70,17 @@ footer,header,hgroup,menu,nav,section,summary {
 	border: 0;
 }
 
-img {
+img,
+video {
 	height: auto;
 	max-width: 100%;
 	width: auto;
+}
+
+embed,
+object,
+iframe {
+	max-width: 100%;
 }
 
 /* Bicubic resizing for non-native sized IMG:
