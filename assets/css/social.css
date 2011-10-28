@@ -439,15 +439,16 @@ but allow screen readers to see */
 
 
 #social .social-actions {
-	display: none;
+	/* display: none; */
 	bottom: 15px;
 	margin: 0;
 	position: absolute;
 	right: 0;
 }
-#social .social-comment:hover .social-actions {
+/* #social .social-comment:hover .social-actions {
 	display: block;
 }
+*/
 #social .social-comment .social-comment-body {
 	overflow: hidden;
 	padding: 0 15px 12px 0;
@@ -505,4 +506,66 @@ but allow screen readers to see */
 	display: block;
 	font-size: 13px;
 	bottom: 10px;
+}
+
+/**
+ * Social items display (retweets, likes, etc...)
+ */
+#social-items-wrapper {
+	float: left;
+}
+
+#social .social-items {
+	clear: both;
+}
+
+#social .social-items-icon {
+	display: block;
+	float: left;
+	margin: 9px 7px 0 7px;
+	width: 14px;
+}
+
+#social .social-items-comments {
+	float: left;
+}
+
+#social .social-items.social-twitter .social-items-icon {
+	background-image: url('retweet.png');
+	height: 8px;
+}
+
+#social .social-items.social-facebook .social-items-icon {
+	background-image: url('like.png');
+	width: 13px;
+	margin: 6px 8px 0 7px;
+	height: 12px;
+}
+
+#social .social-comment .social-items-icon {
+	margin-top: 6px;
+}
+
+#social .social-items.social-comment-collapse {
+	filter: alpha(opacity = 30);
+	opacity: .3;
+}
+
+#social .social-items img {
+	margin: 0 2px;
+}
+
+#social .social-items-comments a {
+	float: left;
+}
+
+#social .social-items-and-more {
+	margin: 8px 0 0 5px;
+	font-size: 12px;
+	color: #666;
+}
+
+#social .social-items-comments .social-items-and-more {
+	font-size: 11px;
+	margin-top: 4px;
 }
