@@ -437,18 +437,17 @@ but allow screen readers to see */
 	margin-bottom: 5px;
 }
 
-
-#social .social-actions {
-	/* display: none; */
+#social .comment-reply-link {
+	display: none;
 	bottom: 15px;
 	margin: 0;
 	position: absolute;
 	right: 0;
 }
-/* #social .social-comment:hover .social-actions {
+#social .social-comment:hover .comment-reply-link {
 	display: block;
 }
-*/
+
 #social .social-comment .social-comment-body {
 	overflow: hidden;
 	padding: 0 15px 12px 0;
@@ -522,23 +521,24 @@ but allow screen readers to see */
 #social .social-items-icon {
 	display: block;
 	float: left;
-	margin: 9px 7px 0 7px;
+	margin: 9px 7px 0 0;
 	width: 14px;
 }
 
 #social .social-items-comments {
 	float: left;
+	margin-bottom: 2em;
 }
 
 #social .social-items.social-twitter .social-items-icon {
-	background-image: url('retweet.png');
+	background: url(../img/retweet.png) 0 0 no-repeat;
 	height: 8px;
 }
 
 #social .social-items.social-facebook .social-items-icon {
-	background-image: url('like.png');
+	background: url(../img/like.png) 0 0 no-repeat;
 	width: 13px;
-	margin: 6px 8px 0 7px;
+	margin: 6px 8px 0 0;
 	height: 12px;
 }
 
@@ -552,16 +552,17 @@ but allow screen readers to see */
 }
 
 #social .social-items img {
+	height: 18px;
 	margin: 0 2px;
+	width: 18px;
 }
 
 #social .social-items-comments a {
 	float: left;
 }
-
 #social .social-items-and-more {
 	margin: 8px 0 0 5px;
-	font-size: 12px;
+	font-size: 11px;
 	color: #666;
 }
 
