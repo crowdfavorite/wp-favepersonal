@@ -30,6 +30,6 @@ else {
 ?>
 
 <form method="get" action="<?php echo trailingslashit(get_bloginfo('url')); ?>" onsubmit="<?php echo $onsubmit; ?>">
-	<input type="text" id="s" name="s" value="<?php echo esc_attr($s, 1); ?>" size="15" />
+	<input type="text" id="s" name="s" value="<?php echo esc_attr(get_search_query(), 1); ?>" size="15" />
 	<input type="submit" name="submit_button" value="<?php _e('Search', 'favepersonal'); ?>" />
 </form>

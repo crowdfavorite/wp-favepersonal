@@ -22,18 +22,16 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 get_header();
 
-$s = get_query_var('s');
-
 ?>
 
 <div id="primary">
 
-	<h1 class="search-title h3"><?php printf( __( 'Search Results for: %s', 'favepersonal' ), '<em>' . get_search_query() . '</em>' ); ?></h1>
+	<h1 class="search-title h3"><?php printf(__('Search Results for: <em>%s</em>', 'favepersonal' ), esc_html(get_search_query())); ?></h1>
 	
-	<?php
-	cfct_loop();
-	cfct_misc('nav-posts');
-	?>
+<?php
+cfct_loop();
+cfct_misc('nav-posts');
+?>
 
 </div>
 
