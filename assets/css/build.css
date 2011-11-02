@@ -1359,9 +1359,11 @@ Put post info in an empty left-hand column */
 	position: relative;
 }
 #social .social-identity .avatar {
-	left: 40px;
+	height: 40px;
+	left: 80px;
 	position: absolute;
 	top: 4px;
+	width: 40px;
 }
 .logged-in #social .social-commentlist .social-identity .avatar {
 	left: -60px;
@@ -1612,6 +1614,9 @@ but allow screen readers to see */
 	padding: 20px 0;
 	position: relative;
 }
+#social .social-commentlist li:first-child .social-comment-inner {
+	border-top: 1px solid #ddd;
+}
 #social .social-comment .social-comment-header {
 	float: left;
 	margin: 0 0 0 -140px;
@@ -1712,7 +1717,7 @@ but allow screen readers to see */
 }
 #social .social-comment .social-comment-body {
 	overflow: hidden;
-	padding: 0 15px 12px 0;
+	padding: 0 15px 0 0;
 	width: auto;
 }
 #social .social-comment .social-comment-body p {
@@ -1767,6 +1772,104 @@ but allow screen readers to see */
 	display: block;
 	font-size: 13px;
 	bottom: 10px;
+}
+
+/**
+ * Social items display (retweets, likes, etc...)
+ */
+#social-items-wrapper {
+	float: left;
+}
+
+#social-items-wrapper {
+	padding: 20px 0 15px 0;
+	width: auto;
+}
+#social #social-items-wrapper .social-items-icon {
+	width: 120px;
+	margin-right: 20px;
+	background-position: top right;
+}
+#social .social-items {
+	clear: both;
+}
+
+#social .social-items-icon {
+	background-repeat: no-repeat;
+	display: block;
+	float: left;
+	margin: 9px 7px 0 0;
+	width: 14px;
+}
+
+#social .social-items-comments {
+	float: left;
+}
+#social .social-items-comments img {
+	width: 24px;
+	height: 24px;
+}
+#social .social-items-comment {
+	float: left;
+	margin: 6px 0 20px 0;
+}
+#social .social-items-comment img {
+	width: 18px;
+	height: 18px;
+}
+
+#social .social-items.social-twitter .social-items-icon {
+	background-image: url('../img/retweet.png');
+	height: 8px;
+}
+
+#social .social-items.social-facebook .social-items-icon {
+	background-image: url('../img/like.png');
+	width: 13px;
+	margin: 6px 8px 0 0;
+	height: 12px;
+}
+
+#social .social-comment .social-items-icon {
+	margin-top: 6px;
+}
+
+#social .social-items.social-comment-collapse {
+	filter: alpha(opacity = 30);
+	opacity: .3;
+}
+
+#social .social-items img {
+	margin: 0 2px;
+}
+
+#social .social-items-comments a {
+	float: left;
+}
+
+#social .social-items-and-more {
+	margin: 8px 0 0 5px;
+	font-size: 12px;
+	color: #666;
+}
+
+#social .social-items-comments .social-items-and-more {
+	font-size: 11px;
+	margin-top: 4px;
+}
+
+/* social clearfix */
+.cf-clearfix {
+	display: block;
+	zoom: 1;
+}
+.cf-clearfix:after {
+	content: " ";
+	display: block;
+	font-size: 0;
+	height: 0;
+	clear: both;
+	visibility: hidden;
 }/* --------------------------------------------------
 Tablet styles.
 Dialed in for iPad in portrait mode, since in landscape mode large screen will suffice.
@@ -2066,6 +2169,10 @@ iPad (portrait)				768
 		position: static;
 		text-align: left;
 		width: auto;
+	}
+	#social #social-items-wrapper .social-items-icon {
+		width: 13px;
+		margin-right: 7px;
 	}
 }
 
