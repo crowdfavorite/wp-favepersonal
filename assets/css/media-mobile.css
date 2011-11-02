@@ -205,6 +205,10 @@ iPad (portrait)				768
 		text-align: left;
 		width: auto;
 	}
+	#social #social-items-wrapper .social-items-icon {
+		width: 13px;
+		margin-right: 7px;
+	}
 }
 
 /* iPhone portrait */
