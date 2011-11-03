@@ -27,12 +27,15 @@ function cfcp_color_css() {
 body {
 	background-color: <?php echo cf_kuler_color('dark', 'body_background'); ?>;
 }
-a {
+a,
+a:visited { 
 	color: <?php echo cf_kuler_color('darkest', 'a'); ?>;
 }
-a:hover {
+a:hover,
+a:active {
 	color: <?php echo cf_kuler_color('medium', 'a_hover'); ?>;
 }
+
 
 /** Header
  -------------------------------------------------- */
@@ -132,10 +135,10 @@ a:hover {
 
 /** Post
  -------------------------------------------------- */
-.post-meta a:hover {
+.entry-meta a:hover {
 	color: <?php echo cf_kuler_color('darkest', 'post_meta_a_hover_color'); ?>;
 }
-.post-media a:hover {
+.entry-media a:hover {
 	border-bottom-color: <?php echo cf_kuler_color('medium', 'post_media_hover_border'); ?>;
 }
 .link-screenshot:hover {
