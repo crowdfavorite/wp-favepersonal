@@ -21,12 +21,12 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-<article id="post-<?php the_ID() ?>" <?php post_class('content clearfix') ?>>
+<article id="post-<?php the_ID() ?>" <?php post_class('clearfix') ?>>
 	<div class="post-header">
 		<h1 class="post-title"><a href="<?php the_permalink() ?>"  title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h1>
 		<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
 	</div>
-	<?php cfct_misc('post-meta'); ?>
+	<?php cfct_misc('entry-meta'); ?>
 	<div class="post-content clearfix">
 		<?php 
 			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 

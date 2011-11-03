@@ -16,35 +16,35 @@ iPad (portrait)				768
 	#header #site-name {
 		margin-bottom: 5px;
 	}
-	.format-status .post-header,
-	.format-quote .post-header {
+	.format-status .entry-header,
+	.format-quote .entry-header {
 		float: none;
 		width: auto;
 		padding-top: 0;
 	}
 	
-	.post-title,
-	.post-media,
-	.post-content {
+	.entry-title,
+	.entry-media,
+	.entry-content {
 		margin-left: 0;
 	}
-	.post-title {
+	.entry-title {
 		margin-bottom: 5px;
 	}
-	.post-date {
+	.entry-date {
 		position: static;
 		text-align: left;
 		width: auto;
 	}
 	
-	.post-meta {
+	.entry-meta {
 		float: none;
 		width: auto;
 		margin-right: 0;
 		text-align: left;
 	}
-	.single .format-status .post-meta,
-	.single .format-quote .post-meta {
+	.single .format-status .entry-meta,
+	.single .format-quote .entry-meta {
 		margin-top: 0;
 	}
 	
@@ -52,8 +52,8 @@ iPad (portrait)				768
 		margin: 0 0 7px 0;
 	}
 	
-	.home .post-media,
-	.archive .post-media {
+	.home .entry-media,
+	.archive .entry-media {
 		margin-bottom: 10px;
 	}
 	

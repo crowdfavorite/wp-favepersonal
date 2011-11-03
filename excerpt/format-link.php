@@ -35,12 +35,11 @@ else {
 
 ?>
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
-	<div class="post-header">
-		<h1 class="post-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title() ?> &rarr;</a></h1>
-		<a class="post-date" href="<?php the_permalink(); ?>"><time datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time></a>
-		<?php cfct_misc('post-meta-excerpts'); ?>
+	<div class="entry-header">
+		<h1 class="entry-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title() ?> &rarr;</a></h1>
+		<a class="entry-date" href="<?php the_permalink(); ?>"><time datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time></a>
 	</div>
-	<div class="post-content clearfix">
+	<div class="entry-content clearfix">
 <?php
 if ( has_post_thumbnail() ) {
 ?>
@@ -50,5 +49,8 @@ if ( has_post_thumbnail() ) {
 the_excerpt();
 ?>
 	</div><!--post-content-->
+
+	<?php cfct_misc('entry-meta-excerpts'); ?>
+
 	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
-</article><!-- .excerpt -->
+</article>

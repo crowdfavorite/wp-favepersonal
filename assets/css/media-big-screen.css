@@ -28,14 +28,14 @@ iPad (landscape) / Screen	1024
 }
 
 /* Posts */
-.single .post-media {
+.single .entry-media {
 	padding-left: 140px;
 }
 
 /* Shared styles for media post formats */
-.single .format-image .post-content,
-.single .format-gallery .post-content,
-.single .format-video .post-content {
+.single .format-image .entry-content,
+.single .format-gallery .entry-content,
+.single .format-video .entry-content {
 	width: 680px;
 }
 .single-format-image #social,

@@ -39,9 +39,9 @@ else {
 }
 
 ?>
-<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('content clearfix'); ?>>
+<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('clearfix'); ?>>
 	<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
-	<?php cfct_misc('post-meta'); ?>
+	<?php cfct_misc('entry-meta'); ?>
 	<div class="post-content">
 		<blockquote>
 			<?php the_content(); ?>
