@@ -2,10 +2,6 @@
  * Content - Posts, Pages, Comments
 -------------------------------------------------- */
 
-.container {
-	margin: 0 auto;
-}
-
 /** Header
  -------------------------------------------------- */
 #header .container {
@@ -133,31 +129,31 @@ html.ie7 #nav-main .menu > li {
 	position: relative;
 }
 
-/* post-header */
+/* entry-header */
 .entry-header {
 	clear: both;
 	margin-bottom: 10px;
 	zoom: 1;
 }
-.entry-title {
+.entry-title,
+.entry-date {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	margin: 0;
+}
+.entry-date {
+	color: #ccc;
+	font-size: 16px;
+}
+.entry-date a {
+	color: #ccc;
 }
 .single .entry-title,
 .page .entry-title {
 	font-size: 30px;
 	line-height: 32px;
 }
-.entry-date {
-	color: #ccc;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 16px;
-}
-.entry-date a {
-	color: #ccc;
-}
 
-/* post-media - wraps featured images, gallery, video */
+/* entry-media - images, gallery, video */
 .entry-media {
 	margin: 0 0 10px 0;
 }
@@ -627,7 +623,7 @@ Put post info in an empty left-hand column */
 	background: none;
 	border: 0;
 	left: 0;
-	margin-top: 5px;
+	margin-top: 2px;
 	padding: 0 8px;
 	position: absolute;
 	top: 0;

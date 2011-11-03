@@ -159,6 +159,9 @@ h6,
 	font-size: 11px;
 }
 
+.container {
+	margin: 0 auto;
+}
 
 
 /* ==|== non-semantic helper classes ======================================== */
