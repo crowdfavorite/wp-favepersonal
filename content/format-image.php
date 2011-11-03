@@ -30,9 +30,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	<div class="post-media">
 		<?php the_post_thumbnail('large-img'); ?>
 	</div>
-	
-	<?php cfct_misc('entry-meta'); ?>
-	
+		
 	<div class="post-content clearfix">
 		<?php 
 			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
@@ -42,6 +40,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 				'next_or_number' => 'number'
 			);
 			wp_link_pages($args);
+			cfct_misc('entry-meta');
 		?>
 	</div><!--post-content-->
 </article><!-- .post -->

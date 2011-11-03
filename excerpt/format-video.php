@@ -39,10 +39,10 @@ echo apply_filters(
 ?>
 	</div>
 	<div class="entry-content clearfix">
-		<?php the_excerpt(); ?>
+		<?php
+			the_excerpt();
+			cfct_misc('entry-meta-excerpts');
+		?>
 	</div><!--post-content-->
-
-	<?php cfct_misc('entry-meta-excerpts'); ?>
-
 	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
 </article>

@@ -40,8 +40,6 @@ echo apply_filters(
 ?>
 	</div>
 	
-	<?php cfct_misc('entry-meta'); ?>
-	
 	<div class="post-content clearfix">
 		<?php 
 			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
@@ -51,6 +49,8 @@ echo apply_filters(
 				'next_or_number' => 'number'
 			);
 			wp_link_pages($args);
+			
+			cfct_misc('entry-meta');
 		?>
 	</div><!--post-content-->
 </article><!-- .post -->

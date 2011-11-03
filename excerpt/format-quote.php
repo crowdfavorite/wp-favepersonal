@@ -54,9 +54,7 @@ if (!empty($source)) {
 <?php
 }
 ?>
+		<?php cfct_misc('entry-meta-excerpts'); ?>
 	</div><!--post-content-->
-
-	<?php cfct_misc('entry-meta-excerpts'); ?>
-
 	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
 </article>

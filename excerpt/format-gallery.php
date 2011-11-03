@@ -32,10 +32,10 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		'after' => '</div>'
 	)); ?>
 	<div class="entry-content clearfix">
-		<?php the_excerpt(); ?>
-	</div><!--post-content-->
-
-	<?php cfct_misc('entry-meta-excerpts'); ?>
-	
+		<?php
+			the_excerpt();
+			cfct_misc('entry-meta-excerpts');
+		?>
+	</div><!--post-content-->	
 	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
 </article>

@@ -46,11 +46,11 @@ if ( has_post_thumbnail() ) {
 		<a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a>
 <?php 
 }
-the_excerpt();
+		the_excerpt();
+		cfct_misc('entry-meta-excerpts');
 ?>
 	</div><!--post-content-->
 
-	<?php cfct_misc('entry-meta-excerpts'); ?>
 
 	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
 </article>
