@@ -126,14 +126,12 @@ html.ie7 #nav-main .menu > li {
 .post,
 .page {
 	margin-bottom: 40px;
-	position: relative;
 }
 
 /* entry-header */
 .entry-header {
-	clear: both;
-	margin-bottom: 10px;
-	zoom: 1;
+	padding-left: 140px;
+	position: relative;
 }
 .entry-title,
 .entry-date {
@@ -141,10 +139,18 @@ html.ie7 #nav-main .menu > li {
 	margin: 0;
 }
 .entry-date {
-	color: #ccc;
 	font-size: 16px;
+	left: 0;
+	letter-spacing: -1px;
+	line-height: 1em;
+	position: absolute;
+	text-align: right;
+	top: 14px;
+	width: 120px;
+	color: #ccc;
 }
-.entry-date a {
+.entry-date a:link,
+.entry-date a:visited {
 	color: #ccc;
 }
 .single .entry-title,
@@ -152,13 +158,23 @@ html.ie7 #nav-main .menu > li {
 	font-size: 30px;
 	line-height: 32px;
 }
+.excerpt .entry-date {
+	top: 10px;
+}
 
 /* entry-media - images, gallery, video */
 .entry-media {
-	margin: 0 0 10px 0;
+	margin-top: 18px;
+	padding-left: 140px;
 }
-.single .entry-media {
-	margin: 20px 0 25px 0;
+.format-image .entry-media {
+	margin-bottom: -4px;
+}
+.format-gallery .entry-media {
+	margin-bottom: -11px;
+}
+.format-video .entry-media {
+	margin-bottom: 4px;
 }
 .entry-media a {
 	display: inline-block;
@@ -169,76 +185,22 @@ html.ie7 #nav-main .menu > li {
 	border-bottom: 1px solid #fff;
 }
 
-/* Post meta
-Put post info in an empty left-hand column */
-.entry-title,
-.entry-media,
+/* entry content */
 .entry-content {
-	margin-left: 140px;
-}
-.entry-date,
-.entry-meta,
-.entry-meta p {
-	display: block;
-}
-.entry-header .entry-date {
-	display: inline;
+	float: right;
+	width: 510px;
+	overflow: hidden;
 }
 
-.entry-date {
-	left: 0;
-	line-height: 1em;
-	letter-spacing: -1px;
-	position: absolute;
-	text-align: right;
-	top: 14px;
-	width: 120px;
-}
-.excerpt .entry-date {
-	top: 10px;
-}
-
+/* entry meta */
 .entry-meta {
 	color: #ccc;
-	float: left;
-	font-size: 12px;
-	margin-right: 20px;
-	padding-bottom: 15px;
 	overflow: hidden;
 	text-align: right;
 	width: 120px;
 }
-.excerpt .entry-meta {
-	padding-top: 10px;
-}
-.entry-meta p {
-	vertical-align: baseline;
-	margin-bottom: 0;
-}
 .entry-meta a {
 	color: #999;
-}
-.entry-meta .entry-meta-replies {
-	margin-top: 0;
-}
-.entry-meta .entry-meta-title {
-	margin: 10px 0 0 0;
-}
-.entry-meta ul {
-	list-style-type: none;
-}
-
-.single .format-status .entry-meta,
-.single .format-quote .entry-meta {
-	margin-top: 40px;
-}
-
-.format-status .entry-header,
-.format-quote .entry-header {
-	width: 140px;
-	float: left;
-	position: relative;
-	padding-top: 25px;
 }
 
 /** Gallery Post Format

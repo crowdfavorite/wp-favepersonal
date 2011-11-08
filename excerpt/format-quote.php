@@ -40,9 +40,9 @@ else {
 
 ?>
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
-	<div class="entry-header">
-		<a class="entry-date" href="<?php the_permalink(); ?>"><time datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time></a>		
-	</div>
+	<header class="entry-header">
+		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
+	</header>
 	<div class="entry-content">
 		<blockquote>
 			<?php the_excerpt(); ?>
@@ -54,7 +54,6 @@ if (!empty($source)) {
 <?php
 }
 ?>
-		<?php cfct_misc('entry-meta-excerpts'); ?>
 	</div><!--post-content-->
-	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
+	<?php cfct_misc('entry-meta-excerpts'); ?>
 </article>

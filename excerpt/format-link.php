@@ -37,7 +37,7 @@ else {
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
 	<div class="entry-header">
 		<h1 class="entry-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title() ?> &rarr;</a></h1>
-		<a class="entry-date" href="<?php the_permalink(); ?>"><time datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time></a>
+		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
 	</div>
 	<div class="entry-content clearfix">
 <?php
@@ -47,10 +47,7 @@ if ( has_post_thumbnail() ) {
 <?php 
 }
 		the_excerpt();
-		cfct_misc('entry-meta-excerpts');
 ?>
 	</div><!--post-content-->
-
-
-	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
+	<?php cfct_misc('entry-meta-excerpts'); ?>
 </article>
