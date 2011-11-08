@@ -48,6 +48,6 @@ if ( has_post_thumbnail() ) {
 }
 		the_excerpt();
 ?>
-	</div><!--post-content-->
+	</div>
 	<?php cfct_misc('entry-meta-excerpts'); ?>
 </article>

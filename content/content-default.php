@@ -36,6 +36,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			);
 			wp_link_pages($args);
 		?>
-	</div><!--post-content-->
+	</div>
 	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .post -->

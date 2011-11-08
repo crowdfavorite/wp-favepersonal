@@ -35,11 +35,11 @@ else {
 
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class('clearfix'); ?>>
-	<div class="post-header">
-		<h1 class="post-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?> &rarr;</a></h1>
-		<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
-	</div>
-	<div class="post-content clearfix">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"><?php the_title() ?> &rarr;</a></h1>
+		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
+	</header>
+	<div class="entry-content clearfix">
 <?php
 if ( has_post_thumbnail() ) {
 ?>
@@ -47,8 +47,8 @@ if ( has_post_thumbnail() ) {
 <?php
 }
 the_content();
-cfct_misc('entry-meta');
 ?>
-	</div><!--post-content-->
+	</div>
+	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .post -->
 

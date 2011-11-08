@@ -504,64 +504,64 @@ html.ie7 #nav-main .menu > li {
 }
 
 /* post-header */
-.entry-header {
+.post-header {
 	clear: both;
 	margin-bottom: 10px;
 	zoom: 1;
 }
-.entry-title {
+.post-title {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	margin: 0;
 }
-.single .entry-title,
-.page .entry-title {
+.single .post-title,
+.page .post-title {
 	font-size: 30px;
 	line-height: 32px;
 }
-.entry-date {
+.post-date {
 	color: #ccc;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 16px;
 }
-.entry-date a {
+.post-date a {
 	color: #ccc;
 }
 
 /* post-media - wraps featured images, gallery, video */
-.entry-media {
+.post-media {
 	margin: 0 0 10px 0;
 }
-.single .entry-media {
+.single .post-media {
 	margin: 20px 0 25px 0;
 }
-.entry-media a {
+.post-media a {
 	display: inline-block;
 	border-bottom: 2px solid #fff;
 }
-.entry-media a img {
+.post-media a img {
 	display: block;
 	border-bottom: 1px solid #fff;
 }
 
 /* Post meta
 Put post info in an empty left-hand column */
-.entry-title,
-.entry-media,
-.entry-content {
+.post-title,
+.post-media,
+.post-content {
 	margin-left: 140px;
 }
-.entry-date,
-.entry-meta,
-.entry-meta p {
+.post-date,
+.post-meta,
+.post-meta p {
 	display: block;
 }
-.entry-header .entry-date,
-.entry-header .entry-meta,
-.entry-header .entry-meta p {
+.post-header .post-date,
+.post-header .post-meta,
+.post-header .post-meta p {
 	display: inline;
 }
 
-.entry-date {
+.post-date {
 	left: 0;
 	line-height: 1em;
 	letter-spacing: -1px;
@@ -570,11 +570,11 @@ Put post info in an empty left-hand column */
 	top: 14px;
 	width: 120px;
 }
-.excerpt .entry-date {
+.excerpt .post-date {
 	top: 10px;
 }
 
-.entry-meta {
+.post-meta {
 	color: #ccc;
 	float: left;
 	font-size: 12px;
@@ -584,33 +584,33 @@ Put post info in an empty left-hand column */
 	text-align: right;
 	width: 120px;
 }
-.excerpt .entry-meta {
+.excerpt .post-meta {
 	padding-top: 10px;
 }
-.entry-meta p {
+.post-meta p {
 	vertical-align: baseline;
 	margin-bottom: 0;
 }
-.entry-meta a {
+.post-meta a {
 	color: #999;
 }
-.entry-meta .entry-meta-replies {
+.post-meta .post-meta-replies {
 	margin-top: 0;
 }
-.entry-meta .entry-meta-title {
+.post-meta .post-meta-title {
 	margin: 10px 0 0 0;
 }
-.entry-meta ul {
+.post-meta ul {
 	list-style-type: none;
 }
 
-.single .format-status .entry-meta,
-.single .format-quote .entry-meta {
+.single .format-status .post-meta,
+.single .format-quote .post-meta {
 	margin-top: 40px;
 }
 
-.format-status .entry-header,
-.format-quote .entry-header {
+.format-status .post-header,
+.format-quote .post-header {
 	width: 140px;
 	float: left;
 	position: relative;
@@ -730,30 +730,30 @@ Put post info in an empty left-hand column */
 	margin-bottom: 50px;
 }
 .post-status-content,
-.format-quote .entry-content blockquote {
+.format-quote .post-content blockquote {
 	border: 0;
 	color: #666;
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 20px;
 }
 .post-status-content,
-.format-quote .entry-content blockquote {
+.format-quote .post-content blockquote {
 	line-height: 28px;
 }
-.excerpt.format-status .entry-date,
-.excerpt.format-quote .entry-date {
+.excerpt.format-status .post-date,
+.excerpt.format-quote .post-date {
 	top: 8px;
 }
 .single .post-status-content,
-.single .format-quote .entry-content blockquote {
+.single .format-quote .post-content blockquote {
 	font-size: 26px;
 }
 .single .post-status-content,
-.single .format-quote .entry-content blockquote {
+.single .format-quote .post-content blockquote {
 	line-height: 34px;
 }
-.single .format-status .entry-date,
-.single .format-quote .entry-date {
+.single .format-status .post-date,
+.single .format-quote .post-date {
 	top: 13px;
 }
 
@@ -768,7 +768,7 @@ Put post info in an empty left-hand column */
 	color: #999;
 }
 /* quote */
-.format-quote .entry-content blockquote {
+.format-quote .post-content blockquote {
 	background: url(../img/quote.png) 0 2px no-repeat;
 	margin: 0;
 	padding: 0 0 0 26px;
@@ -1911,7 +1911,7 @@ iPad (portrait)				768
 		margin-left: 0;
 	}
 	
-	.single-format-gallery .entry-media {
+	.single-format-gallery .post-media {
 		left: -1px;
 		position: relative;
 	}
@@ -1981,35 +1981,35 @@ iPad (portrait)				768
 	#header #site-name {
 		margin-bottom: 5px;
 	}
-	.format-status .entry-header,
-	.format-quote .entry-header {
+	.format-status .post-header,
+	.format-quote .post-header {
 		float: none;
 		width: auto;
 		padding-top: 0;
 	}
 	
-	.entry-title,
-	.entry-media,
-	.entry-content {
+	.post-title,
+	.post-media,
+	.post-content {
 		margin-left: 0;
 	}
-	.entry-title {
+	.post-title {
 		margin-bottom: 5px;
 	}
-	.entry-date {
+	.post-date {
 		position: static;
 		text-align: left;
 		width: auto;
 	}
 	
-	.entry-meta {
+	.post-meta {
 		float: none;
 		width: auto;
 		margin-right: 0;
 		text-align: left;
 	}
-	.single .format-status .entry-meta,
-	.single .format-quote .entry-meta {
+	.single .format-status .post-meta,
+	.single .format-quote .post-meta {
 		margin-top: 0;
 	}
 	
@@ -2017,8 +2017,8 @@ iPad (portrait)				768
 		margin: 0 0 7px 0;
 	}
 	
-	.home .entry-media,
-	.archive .entry-media {
+	.home .post-media,
+	.archive .post-media {
 		margin-bottom: 10px;
 	}
 	

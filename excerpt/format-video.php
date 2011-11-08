@@ -42,6 +42,6 @@ echo apply_filters(
 		<?php
 			the_excerpt();
 		?>
-	</div><!--post-content-->
+	</div>
 	<?php cfct_misc('entry-meta-excerpts'); ?>
 </article>

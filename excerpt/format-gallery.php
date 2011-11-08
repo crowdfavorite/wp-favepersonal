@@ -35,6 +35,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<?php
 			the_excerpt();
 		?>
-	</div><!--post-content-->
+	</div>
 	<?php cfct_misc('entry-meta-excerpts'); ?>
 </article>

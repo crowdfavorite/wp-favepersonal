@@ -34,10 +34,7 @@ $meta_items = apply_filters('cfcp_format_status_meta_excerpt', $meta_items);
 
 ?>
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
-	<header class="entry-header">
-		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
-	</header>
-		
+	<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
 	<div class="entry-content">
 		<div class="post-status-content">
 			<?php
@@ -52,6 +49,6 @@ if (count($meta_items)) {
 <?php
 }
 ?>
-	</div><!--post-content-->
+	</div>
 	<?php cfct_misc('entry-meta-excerpts'); ?>
 </article>

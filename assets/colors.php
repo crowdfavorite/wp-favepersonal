@@ -135,6 +135,7 @@ a:active {
 
 /** Post
  -------------------------------------------------- */
+.entry-date a:hover,
 .entry-meta a:hover {
 	color: <?php echo cf_kuler_color('darkest', 'post_meta_a_hover_color'); ?>;
 }

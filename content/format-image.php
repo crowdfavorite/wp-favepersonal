@@ -22,10 +22,10 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class('clearfix') ?>>
-	<div class="entry-header">
+	<header class="entry-header">
 		<h1 class="entry-title"><a href="<?php the_permalink() ?>"  title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h1>
 		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
-	</div>
+	</header>
 	
 	<div class="entry-media">
 		<?php the_post_thumbnail('large-img'); ?>
@@ -41,6 +41,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			);
 			wp_link_pages($args);
 		?>
-	</div><!--post-content-->
+	</div>
 	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .post -->
