@@ -33,11 +33,6 @@ iPad (landscape) / Screen	1024
 }
 
 /* Shared styles for media post formats */
-.single .format-image .entry-content,
-.single .format-gallery .entry-content,
-.single .format-video .entry-content {
-	width: 680px;
-}
 .single-format-image #social,
 .single-format-gallery #social,
 .single-format-video #social {
