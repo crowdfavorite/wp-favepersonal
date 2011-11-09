@@ -92,9 +92,9 @@ iPad (portrait)				768
 	}
 	#nav-main a,
 	#nav-main li.current-menu-item > a {
-		padding: 4px 10px;
+		margin: 6px 10px;
 	}
-
+	
 	/* Reset dropdowns */
 	#nav-main .menu > li {
 		height: auto;
