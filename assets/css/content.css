@@ -151,7 +151,8 @@ html.ie7 #nav-main .menu > li {
 	top: 14px;
 	left: 0;
 }
-.entry-date a {
+.entry-date a,
+.entry-date a:visited {
 	color: #ccc;
 }
 .single .entry-title,
