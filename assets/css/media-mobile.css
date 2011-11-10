@@ -132,6 +132,9 @@ iPad (portrait)				768
 		text-align: left;
 		width: auto;
 	}
+	.entry-meta span {
+		display: inline;
+	}
 	
 	/*
 	END NEW

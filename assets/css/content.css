@@ -214,6 +214,9 @@ html.ie7 #nav-main .menu > li {
 	text-align: right;
 	width: 120px;
 }
+.entry-meta span {
+	display: block;
+}
 .entry-meta a {
 	color: #999;
 }
