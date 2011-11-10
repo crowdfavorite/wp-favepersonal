@@ -73,7 +73,7 @@ function cfcp_load_social() {
 add_action('after_setup_theme', 'cfcp_load_social');
 
 function cfcp_cfpf_base_url($url) {
-	return get_bloginfo('template_directory').'/plugins/cf-post-formats/';
+	return get_template_directory_uri().'/plugins/cf-post-formats/';
 }
 add_filter('cfpf_base_url', 'cfcp_cfpf_base_url');
 
@@ -289,6 +289,6 @@ function cfcp_get_popover_html($popover_id, $params = array()) {
 }
 
 function cfcp_social_plugins_url($url) {
-	$url = trailingslashit(get_bloginfo('template_url'));
+	$url = trailingslashit(get_template_directory_uri());
 	return trailingslashit($url.'plugins/social');
 }

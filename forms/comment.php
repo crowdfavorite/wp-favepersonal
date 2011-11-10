@@ -33,7 +33,7 @@ if ('open' == $post->comment_status) {
 	// if you need to be regestered to post comments..
 	if ( get_option('comment_registration') && !is_user_logged_in() ) { ?>
 
-<p id="you-must-be-logged-in-to-comment"><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'favepersonal'), get_bloginfo('wpurl').'/wp-login.php?redirect_to='.urlencode(get_permalink())); ?></p>
+<p id="you-must-be-logged-in-to-comment"><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'favepersonal'), site_url().'/wp-login.php?redirect_to='.urlencode(get_permalink())); ?></p>
 
 <?php
 	}
@@ -45,7 +45,7 @@ if ('open' == $post->comment_status) {
 
 	<h2 id="reply-title"><span><?php printf(__('Post A Comment', 'favepersonal')); ?></span></h2>
 		
-<form class="social-respond-inner" action="<?php echo trailingslashit(get_bloginfo('wpurl')); ?>wp-comments-post.php" method="post">
+<form class="social-respond-inner" action="<?php echo trailingslashit(site_url()); ?>wp-comments-post.php" method="post">
 	<div class="social-post-form"> 	
 <?php if (!is_user_logged_in()) { ?>
 		<p class="social-input-row social-input-row-author">
@@ -62,7 +62,7 @@ if ('open' == $post->comment_status) {
 		</p>
 <?php } ?>
 <?php if (is_user_logged_in()) { ?>
-		<div class="social-input-row"><?php printf(__('Logged in as <a href="%s">%s</a>. ', 'favepersonal'), get_bloginfo('wpurl').'/wp-admin/profile.php', $user_identity); wp_loginout(); ?>.</div>
+		<div class="social-input-row"><?php printf(__('Logged in as <a href="%s">%s</a>. ', 'favepersonal'), site_url().'/wp-admin/profile.php', $user_identity); wp_loginout(); ?>.</div>
 <?php } ?>
 		<p class="social-input-row social-input-row-comment">
 			<label class="social-label" for="social-sign-in-comment"><?php _e('Comment', 'favepersonal'); ?></label>

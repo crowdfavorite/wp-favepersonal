@@ -45,7 +45,7 @@ add_action('admin_init', 'cfcp_admin_init');
 
 /* Let's load some styles that will be used on all theme setting pages */
 function cfcp_admin_css() {
-    $cfcp_admin_styles = get_bloginfo('template_url').'/plugins/cf-colors/css/admin.css';
+    $cfcp_admin_styles = get_template_directory_uri().'/plugins/cf-colors/css/admin.css';
     echo '<link rel="stylesheet" type="text/css" href="' . $cfcp_admin_styles . '" />';
 	echo cfcp_admin_preview_css();
 }
@@ -86,7 +86,7 @@ function cfcp_admin_preview_css_template() {
 
 /* Now load some extra JS */
 function cfcp_admin_scrolljs() {
-    $cfcp_admin_scroll = get_bloginfo('template_url').'/assets/js/jquery.scrollTo-1.4.2-min.js';
+    $cfcp_admin_scroll = get_template_directory_uri().'/assets/js/jquery.scrollTo-1.4.2-min.js';
     echo '<script type="text/javascript" src="' . $cfcp_admin_scroll . '"></script>';
 }
 
@@ -370,7 +370,7 @@ function cf_kuler_admin_ajax() {
 	}
 	
 	$html .= '
-		<a href="http://kuler.adobe.com/" title="Adobe Kuler"><img src="'.get_bloginfo('template_url').'/plugins/cf-colors/img/color-by-kuler.png" width="120" height="33" alt="Color by Adobe Kuler" class="kuler-credit"></a>
+		<a href="http://kuler.adobe.com/" title="Adobe Kuler"><img src="'.get_template_directory_uri().'/plugins/cf-colors/img/color-by-kuler.png" width="120" height="33" alt="Color by Adobe Kuler" class="kuler-credit"></a>
 		<div class="cf-kuler-pagination">'
 			.$next_page.$prev_page.'
 		</div>';
@@ -435,7 +435,7 @@ function cf_kuler_request_handler() {
 add_action('admin_init', 'cf_kuler_request_handler');
 
 function cf_kuler_admin_menu() {
-	add_submenu_page(
+	add_theme_page(
 		'themes.php',
 		__('Color Settings', 'cf-kuler'),
 		__('Colors', 'cf-kuler'),
