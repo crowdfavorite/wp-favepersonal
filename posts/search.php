@@ -26,7 +26,7 @@ get_header();
 
 <div id="primary">
 
-	<h1 class="search-title h3"><?php printf(__('Search Results for: <em>%s</em>', 'favepersonal' ), esc_html(get_search_query())); ?></h1>
+	<h1 class="search-title h2"><?php printf(__('Search Results for: <em>%s</em>', 'favepersonal' ), esc_html(get_search_query())); ?></h1>
 	
 <?php
 cfct_loop();
