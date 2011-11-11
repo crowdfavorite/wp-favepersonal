@@ -86,12 +86,6 @@ iPad (portrait)				768
 		padding: 11px 0 15px;
 	}
 	
-	
-	
-	
-	/* 
-	NEW 
-	*/
 
 	/** Posts Default
 	 -------------------------------------------------- */
@@ -135,26 +129,26 @@ iPad (portrait)				768
 	.entry-meta span {
 		display: inline;
 	}
-	
-	/*
-	END NEW
-	*/
-	
-	
-	
-	
-	/* Posts */	
-	.single .format-status .entry-meta,
-	.single .format-quote .entry-meta {
-		margin-top: 0;
+
+	/** Status and Quote Post Format
+	 -------------------------------------------------- */
+	/* shared */
+	.format-status .entry-date,
+	.format-quote .entry-date {
+		float: none;
+	}
+	.format-status .entry-content p,
+	.format-quote .entry-content blockquote p {
+		margin-top: 1em;
+	}
+	/* quote */
+	.format-quote-attribution {
+		margin-left: 30px;
 	}
 	
-	.post .gallery-img-excerpt li {
-		margin: 0 0 7px 0;
-	}
 	
-		
-	/* Social Comments*/
+	/** Social Comments
+	 -------------------------------------------------- */
 	#social .social-comment {
 		padding-left: 0;
 	}
