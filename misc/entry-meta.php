@@ -25,7 +25,6 @@
 do_action('favepersonal_content_sidebar_before');
 
 ?>
-	<p class="h5"><?php printf(__('Posts by:<br /> <a href="%s">%s</a>', 'favepersonal'), get_author_posts_url(get_the_author_meta('id')), get_the_author_meta('display_name')); ?></p>
 	<p class="h5"><?php comments_popup_link(__('No Replies', 'favepersonal'), __('1 Reply', 'favepersonal'), __('% Replies', 'favepersonal')); ?></p>
 	<?php printf(__('<p><span class="h6">Categories:</span> %s</p>', 'favepersonal'), get_the_category_list(', ')) ?>
 	<?php the_tags(__('<p><span class="h6">Tags:</span> ', 'favepersonal'), ', ', '</p>'); ?>
