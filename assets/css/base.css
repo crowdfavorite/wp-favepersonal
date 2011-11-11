@@ -160,6 +160,21 @@ h6,
 	margin: 0 auto;
 }
 
+img,
+video {
+	height: auto;
+	max-width: 100%;
+	width: auto;
+}
+embed,
+object,
+iframe {
+	max-width: 100%;
+}
+/* Bicubic resizing for non-native sized IMG:
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
 
 /* ==|== non-semantic helper classes ======================================== */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
