@@ -105,6 +105,10 @@
 		stageDimensions: [710, 474],
 		start: 0,
 		activatedClass: 'activated',
+		figureClass: 'gallery-figure',
+		figcaptionClass: 'figcaption',
+		captionClass: 'caption',
+		titleClass: 'title',
 		bgColor: '#000'
 	};
 	
@@ -250,18 +254,59 @@
 			return this.$thumbs.eq(i).data('cfgalExpanded');
 		},
 		
+		getImageData: function ($thumb) {
+			var $img = $thumb.find('img'),
+				title = $img.attr('title'),
+				caption = $img.attr('alt');
+
+			/* Favor caption if they're the same */
+			if (title === caption) {
+				title = '';
+			};
+
+			return {
+				src: $thumb.data('largesrc'),
+				title: title,
+				caption: caption
+			};
+		},
+		
 		/* Get a full size image jQuery object by it's index.
 		If the image doesn't exist yet, this function will create and append it based on the
 		thumbnail list markup. */
 		createImage: function(i) {
-			var src, img,
+			var data, $img, $wrapper, $title, $caption,
+				opts = gal.opts,
 				$thumb = this.$thumbs.eq(i),
 				// Used in callback
 				$stage = this.$stage,
-				scale = this.scaleWithin;
+				scale = this.scale;
 			
-			src = $thumb.data('largesrc');
-			img = this.loadImage(src)
+			data = this.getImageData($thumb);
+			
+			$wrapper = $('<figure/>').addClass(opts.figureClass);
+
+			if (data.title || data.caption) {
+				$figcaption = $('<figcaption/>')
+					.addClass(opts.figcaptionClass)
+					.appendTo($wrapper);
+				
+				if (data.title) {
+					$title = $('<div />')
+						.addClass(opts.titleClass)
+						.html(data.title)
+						.appendTo($figcaption);
+				};
+
+				if (data.caption) {
+					$caption = $('<div />')
+						.addClass(opts.captionClass)
+						.html(data.caption)
+						.appendTo($figcaption);
+				};
+			};
+			
+			$img = this.loadImage(data.src)
 				.css({
 					/* We have to do a bit of a dance with image hide/show and centering
 					Though the image is loaded through loadImage, making its width/height
@@ -275,11 +320,20 @@
 					'top': '50%',
 					'visibility': 'hidden'
 				})
-				.appendTo($stage)
 				.trigger('create.cfgal')
 				.load(function() {
 					var t = $(this),
-						dims = scale([t.width(), t.height()], [$stage.width(), $stage.height()]);
+						dims = scale(
+							[t.width(), t.height()],
+							[$stage.width(), $stage.height()]
+						);
+					
+					$wrapper.css({
+						'width': dims[0],
+						'height': dims[1],
+						'display': 'none'
+					});
+					
 					t
 						.css({
 							'width': dims[0],
@@ -287,13 +341,16 @@
 							// Add CSS for centering.
 							'margin-left': -1 * (dims[0] / 2),
 							'margin-top': -1 * (dims[1] / 2),
-							'visibility': 'visible',
-							'display': 'none'
+							'visibility': 'visible'
 						})
 						.trigger('loaded.cfgal');
 				});
-			$thumb.data('cfgalExpanded', img);
-			return img;
+			
+			$img.prependTo($wrapper);
+			$wrapper.appendTo($stage);
+			
+			$thumb.data('cfgalExpanded', $wrapper);
+			return $wrapper;
 		},
 		
 		preloadNeighbors: function(index) {
@@ -318,12 +375,12 @@
 		},
 		
 		/**
-		 * Proportial scale for image dimensions.
+		 * Proportional scale for image dimensions.
 		 * @param array dims [w,h]
 		 * @param array boundaries [w,h]
 		 * @return array scaled [w,h]
 		 */
-		scaleWithin: function(dims, boundaries) {
+		scale: function(dims, boundaries) {
 			var factor,
 				/* @param bywidth: true = width, false = height */
 				scaleby = function(bywidth) {
