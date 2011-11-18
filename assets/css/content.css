@@ -351,6 +351,24 @@ Put post info in an empty left-hand column */
 	bottom: 0;
 	z-index: 5;
 }
+.gallery-figure:hover .figcaption {
+	background: #196FBF;
+	background-color: rgba(42, 110, 187, 0.8);
+	color: #fff;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	left: 0;	
+	width: 100%;
+}
+.gallery-figure .figcaption .title {
+	font-size: 16px;
+	font-family: 'Titillium600', Helvetica, Arial, Verdana, sans-serif;
+}
+.gallery-figure .figcaption .caption {
+	font-size: 13px;
+	line-height: 28px;
+}
 
 /** Status and Quote Post Format
  -------------------------------------------------- */
