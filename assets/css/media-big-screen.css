@@ -40,6 +40,12 @@ iPad (landscape) / Screen	1024
 	margin-left: 0px;
 }
 
+/* full page with no sidebar */
+.page-full {
+	padding: 0 140px;
+}
+
+
 #primary,
 #secondary {
 	display: inline; /* Double-margin float bug fix */

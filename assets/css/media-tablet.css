@@ -84,12 +84,7 @@ iPad (portrait)				768
 	#sidebar-1 {
 		margin-left: 0;
 	}
-	
-	/* full page with no sidebar */
-	.page-full {
-		padding: 0 140px;
-	}
-	
+		
 	/* Let's pull things off the side */
 	.page-full .alignleft.pull {
 		margin-left: -140px;
