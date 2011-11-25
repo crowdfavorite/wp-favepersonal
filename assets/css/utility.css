@@ -3,8 +3,14 @@
 -------------------------------------------------- */
 
 /* edit-link */
+.post {
+	position: relative;
+}
 .post .edit-link {
 	display: none;
+	position: absolute;
+	top: 5px;
+	left: 0;
 }
 .edit-link a {
 	background: #666 url(../img/edit-icon.png) 0 0 no-repeat;
