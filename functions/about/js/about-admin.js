@@ -19,28 +19,31 @@ jQuery(function($) {
 // Objects
 	var CF = CF || {};
 
-// Image selector
+// attach to add buttons for image search and services
+	$('.cfp-add-link').popover({
+		my: 'right top',
+		at: 'center bottom',
+		offset: '27px 0',
+		collision: 'none none'
+	}).bind('popover-show', function() {
+		$(this).addClass('open');
+	}).bind('popover-hide', function() {
+		$(this).removeClass('open');
+	});
 	
+// Image selector
+
 	CF.imgs = function($) {
-		var $search = $('#cfp-img-search'),
+		var $search = $('#cfp-img-search-popover'),
 			$imgActions = $('#cfp-popover-image-actions'),
-			$add = $('#cfp-add-img'),
 			$list = $('#cfp-about-imgs-input ul');
 		
 		// add image to carousel button handler
-		$('#cfp-add-img').live('click', function(e) {
-			CF.imgs.toggle();
-			e.preventDefault();
-			e.stopPropagation();
-		});
-		
-		// keep clicks in the popup from bubbling
-		$search.live('click', function(e) {
-			e.stopPropagation();
-		});
-		
-		$('.cfp-search-result img').live('click', function() {
-			CF.imgs.selectImg($(this).closest('li').clone());
+		$('#cfp-add-img').bind('popover-show', function() {
+			CF.imgs.initSearch();
+			$search.find('input#cfp-img-search-term').focus();
+		}).bind('popover-hide', function() {
+			$search.find('input#cfp-img-search-term').val('');
 		});
 		
 		$('.cfp-del-image').live('click', function(e) {
@@ -61,55 +64,24 @@ jQuery(function($) {
 		});
 		
 		return {
-			toggle: function() {
-				if (this.isVisible()) {
-					this.hideSearch();
-				}
-				else {
-					this.showSearch();
-				}
-			},
-			
-			clearSearch: function() {
-				$search.find('input#cfp-image-search-term').val('');
-			},
-			
-			showSearch: function() {
-				if (CF.aboutLinks != undefined) {
-					CF.aboutLinks.hideAllDialogs();
-				}
-				
-				$add.addClass('open');
-				// we init search every time we open so that we get a fresh
-				// exclusion of existing images during the type ahead search
-				this.initSearch();
-				var pos = $add.offset();
-				$search.css({
-					top: pos.top + 13 + 'px',
-					left: (pos.left + $add.outerWidth() / 2) - ($search.outerWidth()) + 27 + 'px'
-				}).show().find('input#cfp-image-search-term').focus();
-			},
-			
-			hideSearch: function() {
-				$add.removeClass('open');
-				$search.hide();
-			},
-			
 			isVisible: function () {
 				return $search.is(':visible');
 			},
 			
 			initSearch: function() {
-				$search.find('input#cfp-image-search-term').unbind().oTypeAhead({
+				$search.find('input#cfp-img-search-term').unbind().oTypeAhead({
 					searchParams: {
 						action: 'cfcp_about',
 						cfcp_about_action: 'cfcp_image_search',
 						cfcp_search_exclude: this.getSelectedIds()
 					},
-					form: '#cfp-image-search',
+					form: '#cfp-img-search',
 					url: ajaxurl,
 					target: '#cfp-img-search-results',
 					resultsCallback: function(target) {
+						$('.cfp-search-result img').unbind('click').click(function() {
+							CF.imgs.selectImg($(this).closest('li').clone());
+						});
 						$(target).unbind().bind('o-typeahead-select', function() {
 							CF.imgs.selectImg($(this).find('li.otypeahead-current').clone());
 						});
@@ -142,7 +114,6 @@ jQuery(function($) {
 				$(imgLi).attr('class', false).appendTo($list);
 				this.handleEmptyLi();
 				this.clearSearch();
-				this.hideSearch();
 				this.refreshSortables();
 			},
 			
@@ -153,9 +124,6 @@ jQuery(function($) {
 					});
 			},
 			
-			hideAllDialogs: function() {
-				this.hideSearch();
-			}
 		};
 	}(jQuery);
 
@@ -163,60 +131,55 @@ jQuery(function($) {
 	
 	CF.aboutLinks = function($) {
 		var $add = $('#cfp-add-link'),
-			$edit = $('#cfp-link-edit'),
-			$remove = $('#cfp-link-remove'),
+			$edit = $('#cfp-link-edit-popover'),
+			$remove = $('#cfp-link-remove-popover'),
 			$list = $('#cfp-link-items'),
 			$preview = $('#cfp_icon_preview'),
 			$previewBlock = $('#cfp_link_icon_preview'),
 			$customIconField = $('#cfp_link_custom_favicon'),
 			_fetchIconUrl = null,
 			_timer = null;
-		
+
+		$('#cfp-add-link').bind('popover-show', function() {
+			CF.aboutLinks.showInputs();
+		});
+
+		// attach actions to icons for delete actions
+		$('.cfcp_about_link_item').popover({
+			my: 'left top',
+			at: 'center bottom',
+			offset: '-27px 0',
+			collision: 'none none',
+			popover: '#cfp-link-remove-popover'
+		}).bind('popover-show', function() {
+			$elem = $(this);
+			$remove.find('a').unbind().click(function(e) {
+				$elem.closest('li').fadeOut(function() {
+					$(this).remove();
+				}).end().data('popover').hide();
+			});
+			var data = $.parseJSON($elem.closest('li').find('input[name="cfcp_about_settings[links][]"]').val());
+			$remove.find('p.title').text(data.title).end()
+				.find('p.url').text(data.url).end()
+				.show();
+		});
+
 		// store the original preview source image url
 		$.data($preview, 'src-orig', $preview.attr('src'));
 		
-		$add.live('click', function(e) {
-			CF.aboutLinks.hideRemove();
-			CF.aboutLinks.toggleInputs(true);
- 			e.stopPropagation();
- 			e.preventDefault();
-		});
-		
 		// save button
-		$edit.find('input[name="submit_button"]').live('click', function(e) {
+		$edit.find('input[name="submit_button"]').click(function(e) {
 			CF.aboutLinks.saveFavicon();
-			e.preventDefault();
-			e.stopPropagation();
-		});
-		
-		// cancel
-		$edit.find('input[name="cancel"]').live('click', function(e) {
-			CF.aboutLinks.hideInputs();
-			e.preventDefault();
-			e.stopPropagation();			
-		});
-		
-		// keep clicks in the popup from bubbling
-		$edit.live('click', function(e) {
-			e.stopPropagation();
-		});
-		
-		$list.find('li.cfcp_about_link_item a').live('click', function(e) {
-			CF.aboutLinks.showRemove(e, $(this));
-			e.stopPropagation();
-			e.preventDefault();
 		});
 		
 		// customize favicon url
-		$('#cfp-link-icon-edit, #cfp-link-icon-preview-custom .cfp-action-remove').live('click', function() {
+		$('#cfp-link-icon-edit, #cfp-link-icon-preview-custom .cfp-action-remove').click(function() {
 			CF.aboutLinks.togglePreviewEdit();
 		});
 		
 		// clear custom icon input
-		$('#cfp-cancel-link-icon-edit').live('click', function(e) {
+		$('#cfp-cancel-link-icon-edit').click(function(e) {
 			CF.aboutLinks.togglePreviewEdit();
-			e.stopPropagation();
-			e.preventDefault();
 		});
 		
 		// init sortables
@@ -237,31 +200,12 @@ jQuery(function($) {
 				}
 			},
 			
-			toggleInputs: function(showNew) {
-				if (this.isVisible()) {
-					this.hideInputs(showNew);
-				}
-				else {
-					this.showInputs(showNew);
-				}
-			},
-			
 			showInputs: function(showNew) {
 				$edit.addClass('new');
 				
-				if (CF.imgs != undefined) {
-					CF.imgs.hideAllDialogs();
-				}
-				CF.aboutLinks.hideAllDialogs();
-				
 				this.resetIconPreview();
 				
-				$add.addClass('open');
-				var pos = $add.offset();
-				$edit.css({
-					top: pos.top + 13 + 'px',
-					left: (pos.left + $add.outerWidth() / 2) - ($edit.outerWidth()) + 27 + 'px'
-				}).show().find('input#cfp_link_title').focus();
+				$edit.find('input#cfp_link_title').focus();
 				
 				// timer for live favicon fetch
 				var _timer = null;
@@ -276,12 +220,6 @@ jQuery(function($) {
 				});
 			},
 			
-			hideInputs: function() {
-				$add.removeClass('open');
-				$edit.hide();
-				this.resetInputs();
-			},
-			
 			// reset our inputs for editing
 			resetInputs: function() {
 				$edit.find('input[type!="button"]').val('').end()
@@ -291,40 +229,6 @@ jQuery(function($) {
 				CF.aboutLinks.iconToggleAuto();
 			},
 			
-			showRemove: function(e, $elem) {
-				if (CF.imgs != undefined) {
-					CF.imgs.hideAllDialogs();
-				}
-				CF.aboutLinks.hideAllDialogs();
-
-				$remove.find('a').unbind().click(function(e) {
-					CF.aboutLinks.hideRemove();
-					$elem.closest('li').fadeOut(function() {
-						$(this).remove();
-					});
-					e.stopPropagation();
-					e.preventDefault();
-				});
-				var data = $.parseJSON($elem.closest('li').find('input[name="cfcp_about_settings[links][]"]').val());
-				var pos = $elem.offset();
-				$remove.find('p.title').text(data.title).end()
-					.find('p.url').text(data.url).end()
-					.css({
-						top: pos.top + 13 + 'px',
-						left: (pos.left + $elem.outerWidth() / 2) - 27 + 'px'
-					}).show();
-			},
-			
-			hideRemove: function() {
-				$remove.find('a').unbind();
-				$remove.hide();
-			},
-
-			hideAllDialogs: function() {
-				CF.aboutLinks.hideInputs();
-				CF.aboutLinks.hideRemove();
-			},
-						
 			isVisible: function() {
 				return $edit.is(':visible');
 			},
@@ -489,7 +393,10 @@ jQuery(function($) {
 					function(r) {
 						if (r.success) {
 							CF.aboutLinks.insertLinkItem(r.html);
-							CF.aboutLinks.hideInputs();
+							if (CF.aboutLinks.isVisible()) {
+								$('#cfp-add-link').click();
+							}
+							CF.aboutLinks.resetInputs();
 						}
 						else {
 							$('#cfp-link-edit', $edit).append('<div class="cf-error">' + r.error + '</div>');
@@ -537,11 +444,6 @@ jQuery(function($) {
 	
 // Init
 	
-	// hide all pop-overs on bubbled body click
-	$('body').live('click', function(e) {
-		CF.imgs.hideAllDialogs();
-		CF.aboutLinks.hideAllDialogs();
-	});
 	// hide all pop-overs when hitting ESC
 	$(document).keyup(function(e) {
 		switch (e.which) {

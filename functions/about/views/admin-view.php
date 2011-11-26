@@ -34,7 +34,7 @@ if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
 						?>
 						</ul>
 					</div><!--cfp-about-imgs-->
-					<a href="#add-photo" class="cfp-add-link" id="cfp-add-img"><?php _e('Add', 'favepersonal'); ?></a>
+					<a href="#cfp-img-search-popover" class="cfp-add-link" id="cfp-add-img"><?php _e('Add', 'favepersonal'); ?></a>
 				</div>
 			</fieldset>
 		
@@ -71,7 +71,7 @@ if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
 						?>
 						</ul>
 					</div><!--.cfp-link-->
-					<a href="#add-link" class="cfp-add-link" id="cfp-add-link"><?php _e('Add', 'favepersonal'); ?></a>
+					<a href="#cfp-link-edit-popover" class="cfp-add-link" id="cfp-add-link"><?php _e('Add', 'favepersonal'); ?></a>
 				</div>
 			</fieldset>
 			
@@ -81,18 +81,18 @@ if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
 </div><!-- / cf-about-wrap -->
 <?php
 // images popover
-echo cfcp_get_popover_html('cfp-img-search', array(
+echo cfcp_get_popover_html('cfp-img-search-popover', array(
 	'html' => cfct_template_content('functions/about/views', 'img-search-popover'),
 	'arrow_pos' => 'right'
 ));
 
 // links popover
-echo cfcp_get_popover_html('cfp-link-edit', array(
+echo cfcp_get_popover_html('cfp-link-edit-popover', array(
 	'html' => cfct_template_content('functions/about/views', 'link-edit-popover'),
 	'arrow_pos' => 'right'
 ));
 
-echo cfcp_get_popover_html('cfp-link-remove', array(
+echo cfcp_get_popover_html('cfp-link-remove-popover', array(
 	'html' => cfct_template_content('functions/about/views', 'link-remove-popover'),
 	'arrow_pos' => 'left'
 ));
