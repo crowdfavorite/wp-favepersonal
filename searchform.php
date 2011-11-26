@@ -31,6 +31,6 @@ else {
 
 <form class="searchform" method="get" action="<?php echo trailingslashit(get_bloginfo('url')); ?>" onsubmit="<?php echo $onsubmit; ?>">
 	<label for="s">Search&hellip;</label>
-	<input type="text" id="s" name="s" value="<?php echo esc_html($s, 1); ?>" size="15" />
+	<input type="text" id="s" name="s" value="<?php echo esc_html(get_search_query(), 1); ?>" size="15" />
 	<input type="submit" id="searchsubmit" value="<?php _e('Search', 'favepersonal'); ?>">
 </form>
