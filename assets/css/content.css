@@ -39,8 +39,9 @@
 	border-bottom: 3px solid transparent;
 	display: inline-block;
 	height: 23px;
-	margin: 10px 0 0 20px;
-	padding: 0;
+	line-height: normal;
+	margin: 8px 0 0 20px;
+	padding: 0 0 2px 0;
 	position: relative;
 	vertical-align: top;
 }
@@ -49,9 +50,6 @@ html.ie6 #nav-main .menu > li,
 html.ie7 #nav-main .menu > li {
 	display: inline;
 	zoom: 1;
-}
-#nav-main li:first-child {
-	margin-left: 0;
 }
 #nav-main a {
 	display: block;
@@ -141,7 +139,7 @@ html.ie7 #nav-main .menu > li {
 	display: block;
 	font-size: 16px;
 	letter-spacing: -1px;
-	line-height: 1em;
+	line-height: 20px;
 	text-align: right;
 	width: 120px;
 	color: #ccc;
@@ -161,7 +159,7 @@ html.ie7 #nav-main .menu > li {
 	line-height: 32px;
 }
 .excerpt .entry-date {
-	top: 10px;
+	top: 8px;
 }
 
 /* entry-media - images, gallery, video */
