@@ -144,6 +144,9 @@ html.ie7 #nav-main .menu > li {
 	width: 120px;
 	color: #ccc;
 }
+.entry-date a {
+	padding-right: 1px; /*fixes text crop issue for IE8*/
+}
 .entry-header .entry-date {
 	position: absolute;	
 	top: 14px;
