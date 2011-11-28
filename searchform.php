@@ -20,17 +20,6 @@
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-if (get_option('permalink_structure') != '') {
-	$onsubmit = "location.href=this.action+'search/'+encodeURIComponent(this.s.value).replace(/%20/g, '+'); return false;";
-}
-else {
-	$onsubmit = '';
-}
+cfct_form('search');
 
 ?>
-
-<form class="searchform" method="get" action="<?php echo trailingslashit(get_bloginfo('url')); ?>" onsubmit="<?php echo $onsubmit; ?>">
-	<label for="s">Search&hellip;</label>
-	<input type="text" id="s" name="s" value="<?php echo esc_html($s, 1); ?>" size="15" />
-	<input type="submit" id="searchsubmit" value="<?php _e('Search', 'favepersonal'); ?>">
-</form>
