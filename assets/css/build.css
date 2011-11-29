@@ -1736,7 +1736,8 @@ but allow screen readers to see */
 	padding: 10px 0;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-body,
-#social .social-comment-collapse > .social-comment-inner > .social-actions {
+#social .social-comment-collapse > .social-comment-inner > .social-actions,
+#social .social-comment-collapse > .social-comment-inner > .social-items-comment {
 	display: none;
 }
 #social .social-comment-collapse .social-children {
