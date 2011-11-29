@@ -120,9 +120,10 @@ html.ie7 #nav-main .menu > li {
 
 /** Posts Default
  -------------------------------------------------- */
-.post,
-.page {
+#content .post,
+#content .page {
 	margin-bottom: 30px;
+	overflow: hidden;
 }
 
 /* entry-header */
@@ -145,7 +146,7 @@ html.ie7 #nav-main .menu > li {
 	color: #ccc;
 }
 .entry-date a {
-	padding-right: 1px; /*fixes text crop issue for IE8*/
+	padding-right: 1px; fixes text crop issue for IE8
 }
 .entry-header .entry-date {
 	position: absolute;	
@@ -395,9 +396,6 @@ html.ie7 #nav-main .menu > li {
 
 /** Pages
  -------------------------------------------------- */
-.page {
-	margin-bottom: 40px;
-}
 .page-header {
 	clear: both;
 	position: relative;
