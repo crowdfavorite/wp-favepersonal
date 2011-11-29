@@ -244,6 +244,7 @@ but allow screen readers to see */
 }
 #social .social-nav {
 	padding: 1px 0;
+	font-size: 13px;
 }
 #social .social-nav,
 #social .social-nav li {
@@ -352,9 +353,6 @@ but allow screen readers to see */
 	padding: 20px 0;
 	position: relative;
 }
-#social .social-commentlist li:first-child .social-comment-inner {
-	border-top: 1px solid #ddd;
-}
 #social .social-comment .social-comment-header {
 	float: left;
 	margin: 0 0 0 -140px;
@@ -444,7 +442,8 @@ but allow screen readers to see */
 
 
 #social .social-actions {
-	display: none;
+	background-color: #ddd;
+	/*display: none;*/
 	bottom: 15px;
 	margin: 0;
 	position: absolute;
@@ -455,12 +454,11 @@ but allow screen readers to see */
 }
 #social .social-comment .social-comment-body {
 	overflow: hidden;
-	padding: 0 15px 0 0;
+	padding: 0 15px 1em 0;
 	width: auto;
 }
 #social .social-comment .social-comment-body p {
-	margin: 0 0 8px 0;
-	padding-right: 30px;
+	margin: 0 0 1em 0;
 }
 #social .comment-awaiting-moderation {
 	display: inline-block;
