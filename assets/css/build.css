@@ -1,7 +1,71 @@
-/* --------------------------------------------------
-Base Style Sheet
--------------------------------------------------- */
+/* HTML5 ✰ Boilerplate
+ * ==|== normalize ==========================================================
+ */
 
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body { margin: 0; font-size: 13px; line-height: 1.231; }
+body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+::-moz-selection { color: #fff; text-shadow: none; }
+::selection { color: #fff; text-shadow: none; }
+
+a { text-decoration: none; }
+a:focus { outline: thin dotted; }
+a:hover, a:active { outline: 0; }
+
+abbr[title] { border-bottom: 1px dotted; }
+b, strong { font-weight: bold; }
+blockquote { margin: 1em 40px; }
+dfn { font-style: italic; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+small { font-size: 85%; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+svg:not(:root) { overflow: hidden; }
+figure { margin: 0; }
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+label { cursor: pointer; }
+legend { border: 0; *margin-left: -7px; padding: 0; }
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+button, input { line-height: normal; *overflow: visible; }
+table button, table input { *overflow: auto; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+
+
+/* ==|== primary styles =====================================================
+   Author: Crowd Favorite
+   ========================================================================== */
+
+/* Load Fonts */
 @font-face {
     font-family: 'Titillium400';
     src: url('../fonts/titilliumtext25l003-webfont.eot');
@@ -10,9 +74,7 @@ Base Style Sheet
          url('../fonts/titilliumtext25l003-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-
 }
-
 @font-face {
     font-family: 'Titillium600';
     src: url('../fonts/titilliumtext25l002-webfont.eot');
@@ -23,72 +85,6 @@ Base Style Sheet
     font-style: normal;
 }
 
-/** Meyer Reset
--------------------------------------------------- */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, pre,
-a, abbr, acronym, address, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-strike, strong, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-hr {
-	background: transparent;
-	border: 0;
-	font-size: 100%;
-	margin: 0;
-	outline: 0;
-	padding: 0;
-	vertical-align: baseline;
-}
-body {
-	background-color: #fff;
-	/* Keep webkit from re-sizing text by default. We're mobile-optimized, baby! */
-	-webkit-text-size-adjust: 100%;
-}
-/**
- * Set HTML5 block level elements for browsers that don't recognize.
- */
-article,aside,canvas,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section,summary { 
-    display:block;
-}
-/**
- * Remove dotted borders from links and buttons
- */
-:focus,
-:active {
-	outline: 0;
-}
-/**
- * @bugfix Remove dotted inner borders from buttons in FF
- * @valid no
- */
-::-moz-focus-inner {
-	border: 0;
-}
-
-img,
-video {
-	height: auto;
-	max-width: 100%;
-	width: auto;
-}
-
-embed,
-object,
-iframe {
-	max-width: 100%;
-}
-
-/* Bicubic resizing for non-native sized IMG:
-   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
-.ie7 img { -ms-interpolation-mode: bicubic; }
-
-/** Basic Elements
--------------------------------------------------- */
 body,
 input,
 textarea {
@@ -96,10 +92,6 @@ textarea {
 	font-size: 14px;
 	font-weight: 300;
 	line-height: 20px;
-	margin: 0;
-}
-a {
-	text-decoration: none;
 }
 
 h1,
@@ -115,7 +107,6 @@ h6,
 .h5,
 .h6 { 
 	font-weight: normal;
-	margin: 40px 0 20px 0;
 }
 h1,
 .h1 {
@@ -123,7 +114,6 @@ h1,
 	font-size: 24px;
 	letter-spacing: -1px;
 	line-height: 28px;
-	margin-top: 0;
 }
 h2,
 h3,
@@ -156,7 +146,6 @@ h6,
 	color: #ccc;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	vertical-align: text-bottom;
 }
 h5,
 .h5 {
@@ -167,82 +156,72 @@ h6,
 	font-size: 11px;
 }
 
-p,
-ul,
-ol,
-dl,
-blockquote,
-pre {
-	margin-bottom: 20px;
+.container {
+	margin: 0 auto;
 }
 
-strong, 
-b {
-	font-weight: bold;
+img,
+video {
+	height: auto;
+	max-width: 100%;
+	width: auto;
+}
+embed,
+object,
+iframe {
+	max-width: 100%;
 }
 
-ul,
-ol {
-	margin-left: 40px;
-}
-ul {
-	list-style-type: square;
-}
-li	{
-	margin: 5px 0;
-}
-dt {
-	font-weight: bold;
-}
-dd {
-	margin: 0 20px;
-}
 
-blockquote {
-	border-left: 3px solid #ddd;
-	margin-left: 0;
-	padding-left: 20px;
-}
+/* ==|== non-semantic helper classes ======================================== */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+.hidden { display: none !important; visibility: hidden; }
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
 
-label[for] {
-	cursor: pointer;
-}
 
-hr {
-	border: 0;
-	border-top: 1px solid #ccc;
-	height: 0;
-	margin: 20px 0;
-	padding: 0;
-}/* --------------------------------------------------
+/* ==|== print styles ======================================================= */
+ 
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } 
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; } 
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+/* --------------------------------------------------
  * Standard / Utility Classes
 -------------------------------------------------- */
 
-/* Contain floats: h5bp.com/q */
-.clearfix:before, .clearfix:after {
-	content: "";
-	display: table;
-}
-.clearfix:after {
-	clear: both;
-}
-.clearfix {
-	zoom: 1;
-}
-
-
 /* edit-link */
+.post {
+	position: relative;
+}
 .post .edit-link {
 	display: none;
-	left: 0;
 	position: absolute;
-	top: 2px;
+	top: 5px;
+	left: 0;
 }
 .edit-link a {
 	background: #666 url(../img/edit-icon.png) 0 0 no-repeat;
 	display: block;
+	float: right;
 	height: 20px;
 	overflow: hidden;
+	text-align: left;
 	text-indent: -9999px;
 	width: 20px;
 }
@@ -250,10 +229,50 @@ hr {
 	display: inline;
 }
 
-/** Alignment
- -------------------------------------------------- */
+/* alignment */
 .center {
 	text-align: center;
+}
+
+/* Archive */
+.archive {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Pagination */
+.pagination {
+	min-height: 20px;
+	margin-top: 40px;
+}
+.pagination .prev,
+.pagination .next {
+	display: block;
+	line-height: 1.2em;
+	width: 48%;
+}
+.pagination .next {
+	float: right;
+	text-align: right;
+}
+.home .pagination {
+	margin-top: 60px;
+}
+
+/* Tooltip */
+.tooltip {
+	color:#fff;
+	position:absolute;
+	left:-2000px;
+	line-height: 1em;
+	background-color:#222;
+	max-width: 140px;
+	padding:8px 12px;
+}
+.tooltip p {
+	margin:0;
+	padding:0;
 }
 
 /** WordPress compatibility styles
@@ -327,54 +346,9 @@ img.wp-smiley {
 .gallery-caption {
 	color: #999;
 	font-size: 0.9em;
-}
-
-/* Archive */
-.archive {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-/* Pagination */
-.pagination {
-	min-height: 20px;
-	margin-top: 40px;
-}
-.pagination .prev,
-.pagination .next {
-	display: block;
-	line-height: 1.2em;
-	width: 48%;
-}
-.pagination .next {
-	float: right;
-	text-align: right;
-}
-.home .pagination {
-	margin-top: 60px;
-}
-
-/* Tooltip */
-.tooltip {
-	color:#fff;
-	position:absolute;
-	left:-2000px;
-	line-height: 1em;
-	background-color:#222;
-	max-width: 140px;
-	padding:8px 12px;
-}
-.tooltip p {
-	margin:0;
-	padding:0;
 }/* --------------------------------------------------
  * Content - Posts, Pages, Comments
 -------------------------------------------------- */
-
-.container {
-	margin: 0 auto;
-}
 
 /** Header
  -------------------------------------------------- */
@@ -413,8 +387,9 @@ img.wp-smiley {
 	border-bottom: 3px solid transparent;
 	display: inline-block;
 	height: 23px;
-	margin: 10px 0 0 20px;
-	padding: 0;
+	line-height: normal;
+	margin: 8px 0 0 20px;
+	padding: 0 0 2px 0;
 	position: relative;
 	vertical-align: top;
 }
@@ -423,9 +398,6 @@ html.ie6 #nav-main .menu > li,
 html.ie7 #nav-main .menu > li {
 	display: inline;
 	zoom: 1;
-}
-#nav-main li:first-child {
-	margin-left: 0;
 }
 #nav-main a {
 	display: block;
@@ -484,7 +456,6 @@ html.ie7 #nav-main .menu > li {
 	padding: 36px 0 41px 0; /* top = 40px with header border */
 }
 
-
 /** Content - wraps body and sidebar
  -------------------------------------------------- */
 #content {
@@ -497,125 +468,173 @@ html.ie7 #nav-main .menu > li {
 
 /** Posts Default
  -------------------------------------------------- */
-.post,
-.page {
-	margin-bottom: 40px;
-	position: relative;
+#content .post,
+#content .page {
+	margin-bottom: 30px;
+	overflow: hidden;
 }
 
-/* post-header */
-.post-header {
-	clear: both;
-	margin-bottom: 10px;
-	zoom: 1;
+/* entry-header */
+.entry-header {
+	padding-left: 140px;
+	position: relative;
 }
-.post-title {
+.entry-title,
+.entry-date {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	margin: 0;
 }
-.single .post-title,
-.page .post-title {
+.entry-date {
+	display: block;
+	font-size: 16px;
+	letter-spacing: -1px;
+	line-height: 20px;
+	text-align: right;
+	width: 120px;
+	color: #ccc;
+}
+.entry-date a {
+	padding-right: 1px; fixes text crop issue for IE8
+}
+.entry-header .entry-date {
+	position: absolute;	
+	top: 14px;
+	left: 0;
+}
+.entry-date a,
+.entry-date a:visited {
+	color: #ccc;
+}
+.single .entry-title,
+.page .entry-title {
 	font-size: 30px;
 	line-height: 32px;
 }
-.post-date {
-	color: #ccc;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 16px;
-}
-.post-date a {
-	color: #ccc;
+.excerpt .entry-date {
+	top: 8px;
 }
 
-/* post-media - wraps featured images, gallery, video */
-.post-media {
-	margin: 0 0 10px 0;
+/* entry-media - images, gallery, video */
+.entry-media {
+	margin-top: 18px;
+	padding-left: 140px;
 }
-.single .post-media {
-	margin: 20px 0 25px 0;
+.format-image .entry-media,
+.format-gallery .entry-media,
+.format-video .entry-media {
+	margin-bottom: 10px;
 }
-.post-media a {
+.excerpt.format-image .entry-media {
+	margin-bottom: -4px;
+}
+.excerpt.format-gallery .entry-media {
+	margin-bottom: -11px;
+}
+.excerpt.format-video .entry-media {
+	margin-bottom: 4px;
+}
+.entry-media a {
 	display: inline-block;
 	border-bottom: 2px solid #fff;
 }
-.post-media a img {
+.entry-media a img {
 	display: block;
 	border-bottom: 1px solid #fff;
 }
 
-/* Post meta
-Put post info in an empty left-hand column */
-.post-title,
-.post-media,
-.post-content {
-	margin-left: 140px;
+/* entry content */
+.entry-content {
+	float: right;
+	width: 510px;
+	overflow: hidden;
 }
-.post-date,
-.post-meta,
-.post-meta p {
+.single .format-image .entry-content,
+.single .format-gallery .entry-content,
+.single .format-video .entry-content {
+	width: 710px;
+	margin-right: 140px;
+}
+
+/* entry meta */
+.post .entry-meta {
+	color: #ccc;
+	overflow: hidden;
+	padding-top: 1px;
+	text-align: right;
+	width: 120px;
+}
+.post .entry-meta span {
 	display: block;
 }
-.post-header .post-date,
-.post-header .post-meta,
-.post-header .post-meta p {
-	display: inline;
-}
-
-.post-date {
-	left: 0;
-	line-height: 1em;
-	letter-spacing: -1px;
-	position: absolute;
-	text-align: right;
-	top: 14px;
-	width: 120px;
-}
-.excerpt .post-date {
-	top: 10px;
-}
-
-.post-meta {
-	color: #ccc;
-	float: left;
-	font-size: 12px;
-	margin-right: 20px;
-	padding-bottom: 15px;
-	overflow: hidden;
-	text-align: right;
-	width: 120px;
-}
-.excerpt .post-meta {
-	padding-top: 10px;
-}
-.post-meta p {
-	vertical-align: baseline;
-	margin-bottom: 0;
-}
-.post-meta a {
+.post .entry-meta a {
 	color: #999;
 }
-.post-meta .post-meta-replies {
-	margin-top: 0;
-}
-.post-meta .post-meta-title {
-	margin: 10px 0 0 0;
-}
-.post-meta ul {
-	list-style-type: none;
-}
 
-.single .format-status .post-meta,
-.single .format-quote .post-meta {
-	margin-top: 40px;
-}
 
-.format-status .post-header,
-.format-quote .post-header {
-	width: 140px;
+/** Status and Quote Post Format
+ -------------------------------------------------- */
+/* shared */
+.format-status .entry-date,
+.format-quote .entry-date {
 	float: left;
-	position: relative;
-	padding-top: 25px;
+	margin-bottom: 2px;
+	margin-top: 7px;
 }
+.format-status .entry-content,
+.format-quote .entry-content blockquote {
+	color: #666;
+	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 20px;
+	line-height: 26px;
+}
+.format-status .entry-content p,
+.format-quote .entry-content blockquote p {
+	margin: 0 0 1em;
+}
+.single .format-status .entry-content,
+.single .format-quote .entry-content blockquote {
+	font-size: 24px;
+	line-height: 32px;
+}
+.single .format-status .entry-date,
+.single .format-quote .entry-date {
+	margin-top: 11px;
+}
+/* status */
+.post-status-meta {
+	color: #ccc;
+	font-size: 12px;
+	margin-top: -10px;
+	text-transform: lowercase;
+}
+.post-status-meta a {
+	color: #999;
+}
+/* quote */
+.format-quote .entry-content blockquote {
+	background: url(../img/quote.png) 0 2px no-repeat;
+	margin: 0;
+	padding: 0 0 0 26px;
+	zoom: 1;
+}
+.format-quote-attribution {
+	margin-left: 120px;
+	margin-right: 30px;
+}
+
+/** Link Post Format
+ -------------------------------------------------- */
+.link-screenshot {
+	display: block;
+	border-bottom: 2px solid #fff;
+	float: left;
+	margin-right: 15px;
+}
+.link-screenshot img {
+	display: block;
+	border-bottom: 1px solid #fff;
+}
+
 
 /** Gallery Post Format
  -------------------------------------------------- */
@@ -680,11 +699,11 @@ Put post info in an empty left-hand column */
 }
 .gallery-thumbs {
 	list-style-type: none;
-	margin: 3px 0 0;
+	margin: 3px 0 0 0;
 	max-width: 720px;
+	padding: 0;
 }
 .gallery-thumbs li {
-	background-color: #ddd;
 	display: block;
 	float: left;
 	height: 63px; /* 63px */
@@ -722,81 +741,9 @@ Put post info in an empty left-hand column */
 	z-index: 5;
 }
 
-/** Status and Quote Post Format
- -------------------------------------------------- */
-/* shared */
-.format-status,
-.format-quote {
-	margin-bottom: 50px;
-}
-.post-status-content,
-.format-quote .post-content blockquote {
-	border: 0;
-	color: #666;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 20px;
-}
-.post-status-content,
-.format-quote .post-content blockquote {
-	line-height: 28px;
-}
-.excerpt.format-status .post-date,
-.excerpt.format-quote .post-date {
-	top: 8px;
-}
-.single .post-status-content,
-.single .format-quote .post-content blockquote {
-	font-size: 26px;
-}
-.single .post-status-content,
-.single .format-quote .post-content blockquote {
-	line-height: 34px;
-}
-.single .format-status .post-date,
-.single .format-quote .post-date {
-	top: 13px;
-}
-
-/* status */
-.post-status-meta {
-	color: #ccc;
-	font-size: 12px;
-	margin-top: -10px;
-	text-transform: lowercase;
-}
-.post-status-meta a {
-	color: #999;
-}
-/* quote */
-.format-quote .post-content blockquote {
-	background: url(../img/quote.png) 0 2px no-repeat;
-	margin: 0;
-	padding: 0 0 0 26px;
-	zoom: 1;
-}
-.format-quote-attribution {
-	margin-left: 120px;
-	margin-right: 30px;
-}
-
-/** Link Post Format
- -------------------------------------------------- */
-.link-screenshot {
-	display: block;
-	border-bottom: 2px solid #fff;
-	float: left;
-	margin-right: 15px;
-}
-.link-screenshot img {
-	display: block;
-	border-bottom: 1px solid #fff;
-}
 
 /** Pages
  -------------------------------------------------- */
-.page {
-	margin-bottom: 40px;
-}
 .page-header {
 	clear: both;
 	position: relative;
@@ -839,7 +786,7 @@ Put post info in an empty left-hand column */
 /* search results */
 .search-title {
 	margin: 0 0 30px 0;
-	padding: 6px 10px 3px 10px;
+	padding: 3px 10px 4px;
 }
 .search-title em {
 	font-style: normal;
@@ -903,6 +850,9 @@ Put post info in an empty left-hand column */
 }
 .widget .bio-box-links li {
 	position: relative;
+}
+.widget .bio-box-links li img {
+	vertical-align: top;
 }
 .widget .bio-box-links li .bio-tooltip {
 	background: url(../img/bio-tooltip.png) center 0 no-repeat;
@@ -999,7 +949,7 @@ Put post info in an empty left-hand column */
 	background: none;
 	border: 0;
 	left: 0;
-	margin-top: 5px;
+	margin-top: 2px;
 	padding: 0 8px;
 	position: absolute;
 	top: 0;
@@ -1506,6 +1456,7 @@ but allow screen readers to see */
 }
 #social .social-nav {
 	padding: 1px 0;
+	font-size: 13px;
 }
 #social .social-nav,
 #social .social-nav li {
@@ -1611,11 +1562,8 @@ but allow screen readers to see */
 #social .social-comment-inner {
 	border-bottom: 1px solid #ddd;
 	margin: 0;
-	padding: 20px 0;
+	padding: 20px 0 30px;
 	position: relative;
-}
-#social .social-commentlist li:first-child .social-comment-inner {
-	border-top: 1px solid #ddd;
 }
 #social .social-comment .social-comment-header {
 	float: left;
@@ -1652,7 +1600,6 @@ but allow screen readers to see */
 	position: absolute;
 }
 #social .social-posted-from {
-	background-color: #ddd;
 	background-image: url(../img/comment-icons-sprite.png);
 	background-repeat: no-repeat;
 	height: 16px;
@@ -1721,8 +1668,7 @@ but allow screen readers to see */
 	width: auto;
 }
 #social .social-comment .social-comment-body p {
-	margin: 0 0 8px 0;
-	padding-right: 30px;
+	margin-top: 0;
 }
 #social .comment-awaiting-moderation {
 	display: inline-block;
@@ -1811,11 +1757,11 @@ but allow screen readers to see */
 }
 #social .social-items-comment {
 	float: left;
-	margin: 6px 0 20px 0;
+	margin: 0 0 1em 0;
 }
 #social .social-items-comment img {
-	width: 18px;
-	height: 18px;
+	width: 24px;
+	height: 24px;
 }
 
 #social .social-items.social-twitter .social-items-icon {
@@ -1831,7 +1777,7 @@ but allow screen readers to see */
 }
 
 #social .social-comment .social-items-icon {
-	margin-top: 6px;
+	margin-top: 9px;
 }
 
 #social .social-items.social-comment-collapse {
@@ -1887,6 +1833,33 @@ iPad (portrait)				768
 		width: 708px;
 	}
 	
+	/* Masthead */
+	#masthead {
+		padding: 16px 0 20px;
+	}
+	.featured {
+		height: 120px;
+		margin-left: 15px;
+		width: 226px;
+	}
+	.featured.has-featured-img,
+	.featured.featured-format-gallery {
+		height: 130px;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 65px;
+	}
+	.featured-title {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	
+	/* entry content */
+	.entry-content {
+		width: 568px;
+	}
+	
+	/* gallery posts */
 	.post .gallery-img-excerpt li {
 		margin: 0 0 12px;
 		width: 130px;
@@ -1910,38 +1883,17 @@ iPad (portrait)				768
 	.post .gallery-img-excerpt .excerpt-img-4 {
 		margin-left: 0;
 	}
-	
-	.single-format-gallery .post-media {
+	.single-format-gallery .entry-media {
 		left: -1px;
 		position: relative;
 	}
-	
 	.gallery-thumbs li {
 		width: 80px;
 		height: 63px;
 	}
 	
-	.featured {
-		height: 120px;
-		margin-left: 15px;
-		width: 226px;
-	}
-	.featured.has-featured-img,
-	.featured.featured-format-gallery {
-		height: 130px;
-	}
-	.featured .gallery-img-excerpt li {
-		height: 65px;
-	}
-	.featured-title {
-		font-size: 16px;
-		line-height: 18px;
-	}
 	
-	#masthead {
-		padding: 16px 0 20px;
-	}
-		
+	/* Sidebars */
 	.sidebar {
 		float: left;
 		margin-left: 15px;
@@ -1950,12 +1902,7 @@ iPad (portrait)				768
 	#sidebar-1 {
 		margin-left: 0;
 	}
-	
-	/* full page with no sidebar */
-	.page-full {
-		padding: 0 140px;
-	}
-	
+		
 	/* Let's pull things off the side */
 	.page-full .alignleft.pull {
 		margin-left: -140px;
@@ -1975,51 +1922,13 @@ iPad (portrait)				768
 
 /* iPhone portrait and landscape shared edge-case styles */
 @media only screen and (max-width: 767px) {
+	
+	/* Header */
 	#header .container {
 		padding-top: 25px;
 	}
 	#header #site-name {
 		margin-bottom: 5px;
-	}
-	.format-status .post-header,
-	.format-quote .post-header {
-		float: none;
-		width: auto;
-		padding-top: 0;
-	}
-	
-	.post-title,
-	.post-media,
-	.post-content {
-		margin-left: 0;
-	}
-	.post-title {
-		margin-bottom: 5px;
-	}
-	.post-date {
-		position: static;
-		text-align: left;
-		width: auto;
-	}
-	
-	.post-meta {
-		float: none;
-		width: auto;
-		margin-right: 0;
-		text-align: left;
-	}
-	.single .format-status .post-meta,
-	.single .format-quote .post-meta {
-		margin-top: 0;
-	}
-	
-	.post .gallery-img-excerpt li {
-		margin: 0 0 7px 0;
-	}
-	
-	.home .post-media,
-	.archive .post-media {
-		margin-bottom: 10px;
 	}
 	
 	/* Override h1 hiding when in menu mode */
@@ -2083,15 +1992,75 @@ iPad (portrait)				768
 	#nav-main .sub-menu li.current-menu-item > a {
 		border: 0;
 	}
-
+	
+	/* Masthead */
 	#masthead {
 		padding: 11px 0 15px;
 	}
 	
-	#footer .credit {
+
+	/** Posts Default
+	 -------------------------------------------------- */
+	/* entry-header */
+	.entry-header {
+		padding-left: 0;
+	}
+	.entry-title {
+		margin-bottom: 8px;
+	}
+	.entry-date {
+		text-align: left;
+		width: auto;
+	}
+	.entry-header .entry-date {
+		position: static;
+	}
+
+	/* entry-media - images, gallery, video */
+	.entry-media {
+		padding-left: 0;
+	}
+
+	/* entry content */
+	.entry-content {
+		float: none;
+		width: auto;
+	}
+	.single .format-image .entry-content,
+	.single .format-gallery .entry-content,
+	.single .format-video .entry-content {
+		width: auto;
+		margin-right: 0;
+	}
+
+	/* entry meta */
+	.post .entry-meta {
+		text-align: left;
+		width: auto;
+	}
+	.post .entry-meta span {
+		display: inline;
+	}
+
+	/** Status and Quote Post Format
+	 -------------------------------------------------- */
+	/* shared */
+	.format-status .entry-date,
+	.format-quote .entry-date {
 		float: none;
 	}
+	.format-status .entry-content p,
+	.format-quote .entry-content blockquote p {
+		margin-top: 1em;
+	}
+	/* quote */
+	.format-quote-attribution {
+		margin-left: 30px;
+	}
 	
+	
+	/** Social Comments
+	 -------------------------------------------------- */
 	#social .social-comment {
 		padding-left: 0;
 	}
@@ -2174,6 +2143,12 @@ iPad (portrait)				768
 		width: 13px;
 		margin-right: 7px;
 	}
+	
+	/* Footer */
+	#footer .credit {
+		float: none;
+	}
+	
 }
 
 /* iPhone portrait */
