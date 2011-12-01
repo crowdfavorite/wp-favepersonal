@@ -24,9 +24,9 @@ function cfcp_about_admin_init() {
 	global $pagenow, $plugin_page;
 	if ($pagenow == 'themes.php' && $plugin_page == 'about.php') {
 		wp_register_script(
-			'cf-popover', 
+			'jquery-popover', 
 			get_template_directory_uri().'/assets/js/cf-popover/jquery.cf.popover.min.js',
-			array('jquery'),
+			array('jquery', 'jquery-ui-position'),
 			CFCP_ABOUT_VERSION
 		);
 		wp_enqueue_script(
@@ -38,7 +38,7 @@ function cfcp_about_admin_init() {
 		wp_enqueue_script(
 			'cfcp-about-admin-js',
 			get_template_directory_uri().'/functions/about/js/about-admin.js',
-			array('jquery', 'jquery-ui-sortable', 'jquery-ui-position', 'cf-popover'),
+			array('jquery', 'jquery-ui-sortable', 'jquery-ui-position', 'jquery-popover'),
 			CFCP_ABOUT_VERSION
 		);
 		wp_localize_script(
