@@ -30,7 +30,7 @@ define('CFCT_DEBUG', false);
  * In production mode, or doing development?
  * When true, assets/load.php will enqueue the built versions of the files
  */
-define('CFCT_PRODUCTION', true);
+define('CFCT_PRODUCTION', false);
 
 
 define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
@@ -74,7 +74,7 @@ function cfcp_load_social() {
 add_action('after_setup_theme', 'cfcp_load_social');
 
 function cfcp_cfpf_base_url($url) {
-	return get_bloginfo('template_directory').'/plugins/cf-post-formats/';
+	return get_template_directory_uri().'/plugins/cf-post-formats/';
 }
 add_filter('cfpf_base_url', 'cfcp_cfpf_base_url');
 
