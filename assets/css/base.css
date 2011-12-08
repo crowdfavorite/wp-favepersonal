@@ -156,8 +156,18 @@ h6,
 	font-size: 11px;
 }
 
-.container {
-	margin: 0 auto;
+blockquote {
+	border-left: 3px solid #ddd;
+	margin-left: 0;
+	padding-left: 20px;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid #ccc;
+	height: 0;
+	margin: 20px 0;
+	padding: 0;
 }
 
 img,
@@ -172,6 +182,9 @@ iframe {
 	max-width: 100%;
 }
 
+.container {
+	margin: 0 auto;
+}
 
 /* ==|== non-semantic helper classes ======================================== */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }

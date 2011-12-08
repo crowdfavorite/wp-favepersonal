@@ -215,7 +215,7 @@ html.ie7 #nav-main .menu > li {
 	text-align: right;
 	width: 120px;
 }
-.post .entry-meta span {
+.post .entry-meta span.h6 {
 	display: block;
 }
 .post .entry-meta a {
@@ -264,6 +264,7 @@ html.ie7 #nav-main .menu > li {
 }
 /* quote */
 .format-quote .entry-content blockquote {
+	border-left: 0; /*over rides default*/
 	background: url(../img/quote.png) 0 2px no-repeat;
 	margin: 0;
 	padding: 0 0 0 26px;

@@ -6,7 +6,7 @@
 .post {
 	position: relative;
 }
-.post .edit-link {
+.edit-link {
 	display: none;
 	position: absolute;
 	top: 5px;
