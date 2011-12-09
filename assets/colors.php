@@ -260,6 +260,9 @@ a:active {
 #social .social-nav a span {
 	background-color: <?php echo cf_kuler_color('light', 'social-heading_background'); ?>;
 }
+#social #reply-title {
+	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
+}
 #social .social-heading,
 #social .nocomments {
 	color: <?php echo cf_kuler_color('dark', 'social_heading_color'); ?>;
