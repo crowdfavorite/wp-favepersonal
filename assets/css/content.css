@@ -281,7 +281,7 @@ html.ie7 #nav-main .menu > li {
 	display: block;
 	border-bottom: 2px solid #fff;
 	float: left;
-	margin-right: 15px;
+	margin: 3px 15px 0 0;
 }
 .link-screenshot img {
 	display: block;

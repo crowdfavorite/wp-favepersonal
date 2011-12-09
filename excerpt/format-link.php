@@ -43,7 +43,7 @@ else {
 <?php
 if ( has_post_thumbnail() ) {
 ?>
-		<a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a>
+		<p><a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a></p>
 <?php 
 }
 		the_excerpt();
