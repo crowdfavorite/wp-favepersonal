@@ -438,8 +438,12 @@ html.ie7 #nav-main .menu > li {
 
 /* search results */
 .search-title {
+	font-size: 13px;
+	letter-spacing: 1px;
+	line-height: 28px;
+	text-transform: uppercase;
 	margin: 0 0 30px 0;
-	padding: 3px 10px 4px;
+	padding: 0 10px;
 }
 .search-title em {
 	font-style: normal;
@@ -547,7 +551,7 @@ html.ie7 #nav-main .menu > li {
 .widget-title {
 	font-size: 13px;
 	letter-spacing: 1px;
-	line-height: 27px;
+	line-height: 28px;
 	text-transform: uppercase;
 	margin: 0 0 10px 0;
 	padding: 0 10px;
