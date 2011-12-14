@@ -452,7 +452,7 @@ but allow screen readers to see */
 }
 #social .social-comment .social-comment-body {
 	overflow: hidden;
-	padding: 0 15px 0 0;
+	padding: 0 25px 0 0;
 	width: auto;
 }
 #social .social-comment .social-comment-body p {
