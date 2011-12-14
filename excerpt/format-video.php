@@ -38,7 +38,7 @@ echo apply_filters(
 );
 ?>
 	</div>
-	<div class="entry-content clearfix">
+	<div class="entry-content">
 		<?php
 			the_excerpt();
 		?>

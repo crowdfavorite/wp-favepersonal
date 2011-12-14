@@ -31,7 +31,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		'before' => '<div class="entry-media clearfix">',
 		'after' => '</div>'
 	)); ?>
-	<div class="entry-content clearfix">
+	<div class="entry-content">
 		<?php
 			the_excerpt();
 		?>

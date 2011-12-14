@@ -31,7 +31,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('medium-img'); ?></a>
 	</div>
 <?php } ?>
-	<div class="entry-content clearfix">
+	<div class="entry-content">
 	<?php
 		the_excerpt();
 	?>
