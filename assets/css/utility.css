@@ -41,7 +41,7 @@
 /* Pagination */
 .pagination {
 	min-height: 20px;
-	margin-top: 40px;
+	margin-top: 60px;
 }
 .pagination .prev,
 .pagination .next {
@@ -52,9 +52,6 @@
 .pagination .next {
 	float: right;
 	text-align: right;
-}
-.home .pagination {
-	margin-top: 60px;
 }
 
 /* Tooltip */
