@@ -151,7 +151,7 @@ html.ie7 #nav-main .menu > li {
 }
 .entry-header .entry-date {
 	position: absolute;	
-	top: 14px;
+	top: 8px;
 	left: 0;
 }
 .entry-date a,
@@ -163,8 +163,8 @@ html.ie7 #nav-main .menu > li {
 	font-size: 30px;
 	line-height: 32px;
 }
-.excerpt .entry-date {
-	top: 8px;
+.single .entry-header .entry-date {
+	top: 14px;
 }
 
 /* entry-media - images, gallery, video */
@@ -231,7 +231,7 @@ html.ie7 #nav-main .menu > li {
 .format-quote .entry-date {
 	float: left;
 	margin-bottom: 2px;
-	margin-top: 7px;
+	margin-top: 5px;
 }
 .format-status .entry-content,
 .format-quote .entry-content blockquote {
