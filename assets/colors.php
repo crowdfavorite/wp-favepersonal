@@ -171,7 +171,7 @@ a:active {
 	border-color: <?php echo cf_kuler_color('darkest', 'bio_box_links_a_hover_border'); ?>;
 }
 .widget-title,
-.widget_search form,
+.searchform,
 .search-title {
 	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 	background-color: <?php echo cf_kuler_color('light', 'widget_title_background'); ?>;
@@ -189,20 +189,20 @@ a:active {
 .search-title em {
 	color: <?php echo cf_kuler_color('darkest', 'search_title_em_color'); ?>;
 }
-.widget_search form #s {
+.searchform #s {
 	color: <?php echo cf_kuler_color('darkest', 'widget_search_s_color'); ?>;
 }
-.widget_search form label {
+.searchform label {
 	color: <?php echo cf_kuler_color('dark', 'widget_search_label_color'); ?>;
 }
-.widget_search form label.focus {
+.searchform label.focus {
 	color: <?php echo cf_kuler_color('medium', 'widget_search_label_focus_color'); ?>;
 }
-.widget_search form #searchsubmit:hover,
-.widget_search form #searchsubmit:focus {
+.searchform #searchsubmit:hover,
+.searchform #searchsubmit:focus {
 	background-color: <?php echo cf_kuler_color('dark', 'widget_search_submit_hover_background'); ?>;
 }
-.widget_search form #searchsubmit:active {
+.searchform #searchsubmit:active {
 	background-color: <?php echo cf_kuler_color('darkest', 'widget_search_submit_active_background'); ?>;
 }
 
