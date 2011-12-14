@@ -504,7 +504,7 @@ html.ie7 #nav-main .menu > li {
 	margin: 8px 0 0 0;
 }
 .widget .bio-box-links {
-	padding: 15px 15px 15px 20px;
+	padding: 15px 15px 10px 20px;
 }
 .widget .bio-box-links ul,
 .widget .bio-box-links li {
@@ -514,6 +514,7 @@ html.ie7 #nav-main .menu > li {
 }
 .widget .bio-box-links li {
 	position: relative;
+	margin-bottom: 5px;
 }
 .widget .bio-box-links li img {
 	vertical-align: top;
