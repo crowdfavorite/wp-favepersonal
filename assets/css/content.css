@@ -591,6 +591,7 @@ html.ie7 #nav-main .menu > li {
 	font-size: 13px;
 	letter-spacing: 1px;
 	line-height: 27px;
+	height: 27px;
 	text-transform: uppercase;
 	margin: 0 0 10px 0;
 }
