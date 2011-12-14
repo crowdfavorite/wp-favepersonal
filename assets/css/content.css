@@ -180,7 +180,7 @@ html.ie7 #nav-main .menu > li {
 	margin-bottom: -4px;
 }
 .excerpt.format-gallery .entry-media {
-	margin-bottom: -11px;
+	margin-bottom: 0;
 }
 .excerpt.format-video .entry-media {
 	margin-bottom: 4px;
@@ -340,6 +340,13 @@ html.ie7 #nav-main .menu > li {
 	text-align: center;
 	width: 100%;
 }
+/* fix for space between gallery excerpt and excerpt/meta */
+.format-gallery.excerpt p {
+	margin-top: 0;
+}
+.format-gallery.excerpt .entry-media {
+	padding-bottom: 3px;
+}
 
 /* single/full */
 .gallery-stage {
@@ -434,7 +441,6 @@ html.ie7 #nav-main .menu > li {
 	letter-spacing: -1px;
 	position: absolute;
 }
-
 
 /* search results */
 .search-title {
@@ -551,7 +557,7 @@ html.ie7 #nav-main .menu > li {
 .widget-title {
 	font-size: 13px;
 	letter-spacing: 1px;
-	line-height: 28px;
+	line-height: 27px;
 	text-transform: uppercase;
 	margin: 0 0 10px 0;
 	padding: 0 10px;
