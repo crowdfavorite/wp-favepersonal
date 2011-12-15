@@ -30,6 +30,7 @@ iPad (landscape) / Screen	1024
 /* Posts */
 .single .entry-media {
 	padding-left: 140px;
+	padding-right: 140px;
 }
 
 /* Shared styles for media post formats */
