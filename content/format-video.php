@@ -28,7 +28,7 @@ add_filter('cfcp_format_video_embed', array(&$wp_embed, 'autoembed'));
 <article id="post-<?php the_ID() ?>" <?php post_class('clearfix') ?>>
 	<header class="entry-header">
 		<h1 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h1>
-		<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
+		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
 	</header>
 	
 	<div class="entry-media">
