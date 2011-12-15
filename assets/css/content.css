@@ -51,6 +51,9 @@ html.ie7 #nav-main .menu > li {
 	display: inline;
 	zoom: 1;
 }
+#nav-main li:first-child {
+	margin-left: 0;
+}
 #nav-main a {
 	display: block;
 }

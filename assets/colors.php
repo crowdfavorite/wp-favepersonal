@@ -35,8 +35,12 @@ a:hover,
 a:active {
 	color: <?php echo cf_kuler_color('medium', 'a_hover'); ?>;
 }
-::-moz-selection { background: <?php echo cf_kuler_color('darkest', 'selection_background'); ?>; }
-::selection { background: <?php echo cf_kuler_color('darkest', 'selection_background'); ?>; }
+::-moz-selection {
+	background: <?php echo cf_kuler_color('darkest', 'selection_background'); ?>;
+}
+::selection {
+	background: <?php echo cf_kuler_color('darkest', 'selection_background'); ?>;
+}
 
 /** Header
  -------------------------------------------------- */

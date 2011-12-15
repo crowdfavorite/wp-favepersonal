@@ -23,7 +23,6 @@ define('CF_KULER_API', 'http://colors.api.crowdfavorite.com/1.0/?url={URL}');
 function cfcp_admin_init() {
 	if (!empty($_GET['page']) && $_GET['page'] == basename(__FILE__)) {
 		add_action('admin_head', 'cfcp_admin_css');
-		add_action('admin_head', 'cfcp_admin_scrolljs');
 		
 		$plugin_dir = trailingslashit(get_template_directory_uri()).'plugins/'.basename(__FILE__, '.php');
 		
@@ -82,12 +81,6 @@ function cfcp_admin_preview_css_template() {
 				background-color: %s;
 			}
 		</style>';
-}
-
-/* Now load some extra JS */
-function cfcp_admin_scrolljs() {
-    $cfcp_admin_scroll = get_template_directory_uri().'/assets/js/jquery.scrollTo-1.4.2-min.js';
-    echo '<script type="text/javascript" src="' . $cfcp_admin_scroll . '"></script>';
 }
 
 if (!function_exists('cf_sort_hex_colors')) {

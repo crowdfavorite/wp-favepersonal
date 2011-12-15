@@ -67,6 +67,7 @@ include_once(CFCT_PATH.'functions/admin.php');
 function cfcp_load_social() {
 	if (!class_exists('Social') && get_option('cfcp_social_enabled') != 'no') {
 		add_filter('social_plugins_url', 'cfcp_social_plugins_url', 10, 2);
+		add_action('set_current_user', array('Social', 'social_loaded_by_theme'));
 		include_once(CFCT_PATH.'plugins/social/social.php');
 	}
 }

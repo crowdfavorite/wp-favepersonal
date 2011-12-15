@@ -23,9 +23,24 @@ if (is_admin()) {
 function cfcp_about_admin_init() {
 	global $pagenow, $plugin_page;
 	if ($pagenow == 'themes.php' && $plugin_page == 'about.php') {
-		wp_enqueue_script('jquery-ui-sortable');
-		wp_enqueue_script('o-type-ahead', get_template_directory_uri().'/assets/js/o-type-ahead.js', array('jquery'), CFCP_ABOUT_VERSION);
-		wp_enqueue_script('cfcp-about-admin-js', get_template_directory_uri().'/functions/about/js/about-admin.js', array('jquery'), CFCP_ABOUT_VERSION);
+		wp_register_script(
+			'jquery-popover', 
+			get_template_directory_uri().'/assets/js/cf-popover/jquery.cf.popover.min.js',
+			array('jquery', 'jquery-ui-position'),
+			CFCP_ABOUT_VERSION
+		);
+		wp_enqueue_script(
+			'o-type-ahead',
+			get_template_directory_uri().'/assets/js/o-type-ahead.js',
+			array('jquery'),
+			CFCP_ABOUT_VERSION
+		);
+		wp_enqueue_script(
+			'cfcp-about-admin-js',
+			get_template_directory_uri().'/functions/about/js/about-admin.js',
+			array('jquery', 'jquery-ui-sortable', 'jquery-ui-position', 'jquery-popover'),
+			CFCP_ABOUT_VERSION
+		);
 		wp_localize_script(
 			'cfcp-about-admin-js', 
 			'cfcp_about_settings', 
@@ -51,7 +66,7 @@ add_action('admin_init', 'cfcp_about_admin_init');
 function cfcp_about_module_carousel_enqueue() {
 	$settings = cfcp_about_get_settings();
 	$images_count = 0;
-	if(isset($settings['images'])) {
+	if (isset($settings['images'])) {
 		$images_count = count($settings['images']);
 	}
 	
@@ -78,7 +93,7 @@ function cfcp_about_admin_ajax() {
 			case 'cfcp_image_search':
 				$results = cfcp_about_image_search(array(
 					'key' => $_POST['key'],
-					'term' => $_POST['cfp-image-search-term'],
+					'term' => $_POST['cfp-img-search-term'],
 					'exclude' => (!empty($_POST['cfcp_search_exclude']) ? array_map('intval', $_POST['cfcp_search_exclude']) : array())
 				));
 
@@ -210,7 +225,7 @@ function cfcp_about_admin_ajax() {
 				
 				break;
 		}
-		header('content-type: text/javascript');
+		header('Content-Type: application/json');
 		echo json_encode($ret);
 		exit;
 	}
