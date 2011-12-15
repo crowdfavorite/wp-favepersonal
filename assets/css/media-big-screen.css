@@ -1,91 +1,83 @@
 /* ------------------------------------------------------
 iPad Portrait, Landscape and large screen.
 
-This file should NOT be included in built styles when in production mode.
-Instead, it should be linked to twice:
-
-	For modern browsers link with the following media query @media screen and (min-width: 1010px) but do it witin a !IE conditional comment.
-
-	For IE, link it @media screen within an lte IE9 conditional comment.
-
-Breakpoint:
-iPad (portrait) / Screen	768
-iPad (landscape) / Screen	1024
+This file should be included in built css file when in production mode.
 ------------------------------------------------------ */
+@media only screen and (min-width: 1010px) {
+	.container {
+		width: 990px;
+	}
 
-.container {
-	width: 990px;
-}
+	#featured-post-2,
+	#featured-post-3 {
+		margin-left: 30px;
+	}
 
-#featured-post-2,
-#featured-post-3 {
-	margin-left: 30px;
-}
+	.featured-description,
+	.featured:hover .featured-description {
+		display: block;
+	}
 
-.featured-description,
-.featured:hover .featured-description {
-	display: block;
-}
+	/* Posts */
+	.single .entry-media {
+		padding-left: 140px;
+		padding-right: 140px;
+	}
 
-/* Posts */
-.single .entry-media {
-	padding-left: 140px;
-	padding-right: 140px;
-}
+	/* Shared styles for media post formats */
+	.single-format-image #social,
+	.single-format-gallery #social,
+	.single-format-video #social {
+		width: 850px;
+		margin-left: 0px;
+	}
 
-/* Shared styles for media post formats */
-.single-format-image #social,
-.single-format-gallery #social,
-.single-format-video #social {
-	width: 850px;
-	margin-left: 0px;
-}
-
-/* full page with no sidebar */
-.page-full {
-	padding: 0 140px;
-}
+	/* full page with no sidebar */
+	.page-full {
+		padding: 0 140px;
+	}
 
 
-#primary,
-#secondary {
-	display: inline; /* Double-margin float bug fix */
-	float: left;
-	height: auto !important;
-	height: 1px;
-	min-height: 1px;
-}
+	#primary,
+	#secondary {
+		display: inline; /* Double-margin float bug fix */
+		float: left;
+		height: auto !important;
+		height: 1px;
+		min-height: 1px;
+	}
 
-#primary {
-	width: 650px;
-	margin: 0 30px 0 0;
-}
+	#primary {
+		width: 650px;
+		margin: 0 30px 0 0;
+	}
 
-#secondary {
-	width: 310px;
-}
+	#secondary {
+		width: 310px;
+	}
 
-.sidebar {
-	float: none;
-	margin-left: 0;
-	width: auto;
-}
-#secondary-full .sidebar {
-	float: left;
-	margin-left: 30px;
-	width: 310px;
-}
-#secondary-full #sidebar-1 {
-	margin-left: 0;
-}
+	.sidebar {
+		float: none;
+		margin-left: 0;
+		width: auto;
+	}
+	#secondary-full .sidebar {
+		float: left;
+		margin-left: 30px;
+		width: 310px;
+	}
+	#secondary-full #sidebar-1 {
+		margin-left: 0;
+	}
 
-#header h1 {
-	float: left;
-}
-#nav-main {
-	float: right;
-	padding-top: 9px;
-}
-#nav-main ul {
-	text-align: right;
+	#header h1 {
+		float: left;
+	}
+	#nav-main {
+		float: right;
+		padding-top: 9px;
+	}
+	#nav-main ul {
+		text-align: right;
+	}
 }

@@ -9,7 +9,7 @@ $bundle_css = new Bundle('css/build.css');
 $bundle_css
 	->set_bundle_key('bundle-personal')
 	->set_language('css')
-	->set_meta('dependencies', array('personal-media-big-screen'))
+	->add('media-big-screen', 'css/media-big-screen.css')
 	->add('base', 'css/base.css')
 	->add('utility', 'css/utility.css')
 	->add('content', 'css/content.css')

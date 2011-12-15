@@ -1,4 +1,86 @@
-/* HTML5 ✰ Boilerplate
+/* ------------------------------------------------------
+iPad Portrait, Landscape and large screen.
+
+This file should be included in built css file when in production mode.
+------------------------------------------------------ */
+@media only screen and (min-width: 1010px) {
+	.container {
+		width: 990px;
+	}
+
+	#featured-post-2,
+	#featured-post-3 {
+		margin-left: 30px;
+	}
+
+	.featured-description,
+	.featured:hover .featured-description {
+		display: block;
+	}
+
+	/* Posts */
+	.single .entry-media {
+		padding-left: 140px;
+		padding-right: 140px;
+	}
+
+	/* Shared styles for media post formats */
+	.single-format-image #social,
+	.single-format-gallery #social,
+	.single-format-video #social {
+		width: 850px;
+		margin-left: 0px;
+	}
+
+	/* full page with no sidebar */
+	.page-full {
+		padding: 0 140px;
+	}
+
+
+	#primary,
+	#secondary {
+		display: inline; /* Double-margin float bug fix */
+		float: left;
+		height: auto !important;
+		height: 1px;
+		min-height: 1px;
+	}
+
+	#primary {
+		width: 650px;
+		margin: 0 30px 0 0;
+	}
+
+	#secondary {
+		width: 310px;
+	}
+
+	.sidebar {
+		float: none;
+		margin-left: 0;
+		width: auto;
+	}
+	#secondary-full .sidebar {
+		float: left;
+		margin-left: 30px;
+		width: 310px;
+	}
+	#secondary-full #sidebar-1 {
+		margin-left: 0;
+	}
+
+	#header h1 {
+		float: left;
+	}
+	#nav-main {
+		float: right;
+		padding-top: 9px;
+	}
+	#nav-main ul {
+		text-align: right;
+	}
+}/* HTML5 ✰ Boilerplate
  * ==|== normalize ==========================================================
  */
 
@@ -409,6 +491,9 @@ html.ie7 #nav-main .menu > li {
 	display: inline;
 	zoom: 1;
 }
+#nav-main li:first-child {
+	margin-left: 0;
+}
 #nav-main a {
 	display: block;
 }
@@ -509,7 +594,7 @@ html.ie7 #nav-main .menu > li {
 }
 .entry-header .entry-date {
 	position: absolute;	
-	top: 14px;
+	top: 8px;
 	left: 0;
 }
 .entry-date a,
@@ -521,8 +606,8 @@ html.ie7 #nav-main .menu > li {
 	font-size: 30px;
 	line-height: 32px;
 }
-.excerpt .entry-date {
-	top: 8px;
+.single .entry-header .entry-date {
+	top: 14px;
 }
 
 /* entry-media - images, gallery, video */
@@ -589,7 +674,7 @@ html.ie7 #nav-main .menu > li {
 .format-quote .entry-date {
 	float: left;
 	margin-bottom: 2px;
-	margin-top: 7px;
+	margin-top: 5px;
 }
 .format-status .entry-content,
 .format-quote .entry-content blockquote {
@@ -715,6 +800,21 @@ html.ie7 #nav-main .menu > li {
 }
 .js .gallery-stage {
 	cursor: pointer;
+}
+.gallery-stage-caption {
+	background-color: rgba(0, 0, 0, .8);
+	color: #fff;
+	font-size: 13px;
+	line-height: 18px;
+	margin: 0;
+	padding: 10px;
+}
+.gallery-stage-caption h2 {
+	margin: 0;
+}
+.gallery-stage-caption p {
+	margin-bottom: 0;
+	margin-top: 8px;
 }
 .gallery-thumbs {
 	list-style-type: none;
@@ -1715,7 +1815,8 @@ but allow screen readers to see */
 	padding: 10px 0;
 }
 #social .social-comment-collapse > .social-comment-inner > .social-comment-body,
-#social .social-comment-collapse > .social-comment-inner > .social-actions {
+#social .social-comment-collapse > .social-comment-inner > .social-actions,
+#social .social-comment-collapse > .social-comment-inner > .social-items-comment {
 	display: none;
 }
 #social .social-comment-collapse .social-children {
