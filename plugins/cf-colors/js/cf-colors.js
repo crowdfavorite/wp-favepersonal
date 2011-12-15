@@ -126,7 +126,9 @@ jQuery(function($) {
 			},
 			
 			decodeEntities: function(encoded) {
-				return $('<textarea />').html(encoded).val();
+// TODO - this was breaking in WP 3.3 - need to debug
+// 				return $('<textarea />').html(encoded).val();
+				return encoded;
 			},
 			
 			// colorpicker.js stomps on jQuery.color's getRGB implementation, so we need to duplicate this

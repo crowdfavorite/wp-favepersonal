@@ -10,51 +10,13 @@ iPad (portrait)				768
 
 /* iPhone portrait and landscape shared edge-case styles */
 @media only screen and (max-width: 767px) {
+	
+	/* Header */
 	#header .container {
 		padding-top: 25px;
 	}
 	#header #site-name {
 		margin-bottom: 5px;
-	}
-	.format-status .post-header,
-	.format-quote .post-header {
-		float: none;
-		width: auto;
-		padding-top: 0;
-	}
-	
-	.post-title,
-	.post-media,
-	.post-content {
-		margin-left: 0;
-	}
-	.post-title {
-		margin-bottom: 5px;
-	}
-	.post-date {
-		position: static;
-		text-align: left;
-		width: auto;
-	}
-	
-	.post-meta {
-		float: none;
-		width: auto;
-		margin-right: 0;
-		text-align: left;
-	}
-	.single .format-status .post-meta,
-	.single .format-quote .post-meta {
-		margin-top: 0;
-	}
-	
-	.post .gallery-img-excerpt li {
-		margin: 0 0 7px 0;
-	}
-	
-	.home .post-media,
-	.archive .post-media {
-		margin-bottom: 10px;
 	}
 	
 	/* Override h1 hiding when in menu mode */
@@ -118,15 +80,75 @@ iPad (portrait)				768
 	#nav-main .sub-menu li.current-menu-item > a {
 		border: 0;
 	}
-
+	
+	/* Masthead */
 	#masthead {
 		padding: 11px 0 15px;
 	}
 	
-	#footer .credit {
+
+	/** Posts Default
+	 -------------------------------------------------- */
+	/* entry-header */
+	.entry-header {
+		padding-left: 0;
+	}
+	.entry-title {
+		margin-bottom: 8px;
+	}
+	.entry-date {
+		text-align: left;
+		width: auto;
+	}
+	.entry-header .entry-date {
+		position: static;
+	}
+
+	/* entry-media - images, gallery, video */
+	.entry-media {
+		padding-left: 0;
+	}
+
+	/* entry content */
+	.entry-content {
+		float: none;
+		width: auto;
+	}
+	.single .format-image .entry-content,
+	.single .format-gallery .entry-content,
+	.single .format-video .entry-content {
+		width: auto;
+		margin-right: 0;
+	}
+
+	/* entry meta */
+	.post .entry-meta {
+		text-align: left;
+		width: auto;
+	}
+	.post .entry-meta span {
+		display: inline;
+	}
+
+	/** Status and Quote Post Format
+	 -------------------------------------------------- */
+	/* shared */
+	.format-status .entry-date,
+	.format-quote .entry-date {
 		float: none;
 	}
+	.format-status .entry-content p,
+	.format-quote .entry-content blockquote p {
+		margin-top: 1em;
+	}
+	/* quote */
+	.format-quote-attribution {
+		margin-left: 30px;
+	}
 	
+	
+	/** Social Comments
+	 -------------------------------------------------- */
 	#social .social-comment {
 		padding-left: 0;
 	}
@@ -209,6 +231,12 @@ iPad (portrait)				768
 		width: 13px;
 		margin-right: 7px;
 	}
+	
+	/* Footer */
+	#footer .credit {
+		float: none;
+	}
+	
 }
 
 /* iPhone portrait */

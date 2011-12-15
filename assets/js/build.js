@@ -9,12 +9,7 @@
 * Released under the WTFPL license - http://sam.zoy.org/wtfpl/
 *
 * Date: Thu Sept 01 18:00:00 2011 -0500
-*/(function(a){a.fn.fitVids=function(b){var c={customSelector:null},d=document.createElement("div"),e=document.getElementsByTagName("base")[0]||document.getElementsByTagName("script")[0];return d.className="fit-vids-style",d.innerHTML="&shy;<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style>",e.parentNode.insertBefore(d,e),b&&a.extend(c,b),this.each(function(){var b=["iframe[src^='http://player.vimeo.com']","iframe[src^='http://www.youtube.com']","iframe[src^='http://www.kickstarter.com']","object","embed"];c.customSelector&&b.push(c.customSelector);var d=a(this).find(b.join(","));d.each(function(){var b=a(this),c=this.tagName=="OBJECT"?b.attr("height"):b.height(),d=c/b.width();b.wrap('<div class="fluid-width-video-wrapper" />').parent(".fluid-width-video-wrapper").css("padding-top",d*100+"%"),b.removeAttr("height").removeAttr("width")})})}})(jQuery);/*!
- * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
- *
- * Copyright (c) Crowd Favorite
- */
-/*!
+*/(function(a){a.fn.fitVids=function(b){var c={customSelector:null},d=document.createElement("div"),e=document.getElementsByTagName("base")[0]||document.getElementsByTagName("script")[0];return d.className="fit-vids-style",d.innerHTML="&shy;<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style>",e.parentNode.insertBefore(d,e),b&&a.extend(c,b),this.each(function(){var b=["iframe[src^='http://player.vimeo.com']","iframe[src^='http://www.youtube.com']","iframe[src^='http://www.kickstarter.com']","object","embed"];c.customSelector&&b.push(c.customSelector);var d=a(this).find(b.join(","));d.each(function(){var b=a(this),c=this.tagName=="OBJECT"?b.attr("height"):b.height(),d=c/b.width();b.wrap('<div class="fluid-width-video-wrapper" />').parent(".fluid-width-video-wrapper").css("padding-top",d*100+"%"),b.removeAttr("height").removeAttr("width")})})}})(jQuery)/*
  * jQuery hashchange event - v1.3 - 7/21/2010
  * http://benalman.com/projects/jquery-hashchange-plugin/
  * 
@@ -22,8 +17,11 @@
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
  */
-(function($,e,b){var c="hashchange",h=document,f,g=$.event.special,i=h.documentMode,d="on"+c in e&&(i===b||i>7);function a(j){j=j||location.href;return"#"+j.replace(/^[^#]*#?(.*)$/,"$1")}$.fn[c]=function(j){return j?this.bind(c,j):this.trigger(c)};$.fn[c].delay=50;g[c]=$.extend(g[c],{setup:function(){if(d){return false}$(f.start)},teardown:function(){if(d){return false}$(f.stop)}});f=(function(){var j={},p,m=a(),k=function(q){return q},l=k,o=k;j.start=function(){p||n()};j.stop=function(){p&&clearTimeout(p);p=b};function n(){var r=a(),q=o(m);if(r!==m){l(m=r,q);$(e).trigger(c)}else{if(q!==m){location.href=location.href.replace(/#.*/,"")+q}}p=setTimeout(n,$.fn[c].delay)}$.browser.msie&&!d&&(function(){var q,r;j.start=function(){if(!q){r=$.fn[c].src;r=r&&r+a();q=$('<iframe tabindex="-1" title="empty"/>').hide().one("load",function(){r||l(a());n()}).attr("src",r||"javascript:0").insertAfter("body")[0].contentWindow;h.onpropertychange=function(){try{if(event.propertyName==="title"){q.document.title=h.title}}catch(s){}}}};j.stop=k;o=function(){return a(q.location.href)};l=function(v,s){var u=q.document,t=$.fn[c].domain;if(v!==s){u.title=h.title;u.open();t&&u.write('<script>document.domain="'+t+'"<\/script>');u.close();q.location.hash=v}}})();return j})()})(jQuery,this);
+;(function($,e,b){var c="hashchange",h=document,f,g=$.event.special,i=h.documentMode,d="on"+c in e&&(i===b||i>7);function a(j){j=j||location.href;return"#"+j.replace(/^[^#]*#?(.*)$/,"$1")}$.fn[c]=function(j){return j?this.bind(c,j):this.trigger(c)};$.fn[c].delay=50;g[c]=$.extend(g[c],{setup:function(){if(d){return false}$(f.start)},teardown:function(){if(d){return false}$(f.stop)}});f=(function(){var j={},p,m=a(),k=function(q){return q},l=k,o=k;j.start=function(){p||n()};j.stop=function(){p&&clearTimeout(p);p=b};function n(){var r=a(),q=o(m);if(r!==m){l(m=r,q);$(e).trigger(c)}else{if(q!==m){location.href=location.href.replace(/#.*/,"")+q}}p=setTimeout(n,$.fn[c].delay)}$.browser.msie&&!d&&(function(){var q,r;j.start=function(){if(!q){r=$.fn[c].src;r=r&&r+a();q=$('<iframe tabindex="-1" title="empty"/>').hide().one("load",function(){r||l(a());n()}).attr("src",r||"javascript:0").insertAfter("body")[0].contentWindow;h.onpropertychange=function(){try{if(event.propertyName==="title"){q.document.title=h.title}}catch(s){}}}};j.stop=k;o=function(){return a(q.location.href)};l=function(v,s){var u=q.document,t=$.fn[c].domain;if(v!==s){u.title=h.title;u.open();t&&u.write('<script>document.domain="'+t+'"<\/script>');u.close();q.location.hash=v}}})();return j})()})(jQuery,this);
 
+/**
+ * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
+ */
 ;(function ($, win) {
 	/* Local variable for hash makes lookups faster and is better for closure compiler */
 	var loc = win.location,
@@ -118,10 +116,6 @@
 		stageDimensions: [710, 474],
 		start: 0,
 		activatedClass: 'activated',
-		figureClass: 'gallery-figure',
-		figcaptionClass: 'figcaption',
-		captionClass: 'caption',
-		titleClass: 'title',
 		bgColor: '#000'
 	};
 	
@@ -173,7 +167,7 @@
 			};
 			
 			$img = this.getImage(i);
-			if (typeof $img == 'undefined') {
+			if (typeof $img === 'undefined') {
 				$img = this.createImage(i);
 				$img.bind('loaded.cfgal', function(e) {
 					callback.apply(that, [$(e.currentTarget)]);
@@ -267,61 +261,18 @@
 			return this.$thumbs.eq(i).data('cfgalExpanded');
 		},
 		
-		getImageData: function ($thumb) {
-			var $img = $thumb.find('img'),
-				title = $img.attr('title'),
-				caption = $img.attr('alt');
-
-			/* Favor caption if they're the same */
-			if (title === caption) {
-				title = '';
-			};
-
-			return {
-				src: $thumb.data('largesrc'),
-				title: title,
-				caption: caption
-			};
-		},
-		
 		/* Get a full size image jQuery object by it's index.
 		If the image doesn't exist yet, this function will create and append it based on the
 		thumbnail list markup. */
 		createImage: function(i) {
-			var data, $img, $figure,
-				opts = gal.opts,
+			var src, img,
 				$thumb = this.$thumbs.eq(i),
 				// Used in callback
 				$stage = this.$stage,
-				scale = this.scale;
+				scale = this.scaleWithin;
 			
-			data = this.getImageData($thumb);
-			$figure = this.createFigure($thumb, data);
-
-			$img = this.loadImage(data.src, function() {
-				var t = $(this),
-					dims = scale(
-						[t.width(), t.height()],
-						[$stage.width(), $stage.height()]
-					);
-				
-				$figure.css({
-					'display': 'none'
-				});
-				
-				t
-					.css({
-						'width': dims[0],
-						'height': dims[1],
-						// Add CSS for centering.
-						'margin-left': -1 * (dims[0] / 2),
-						'margin-top': -1 * (dims[1] / 2),
-						'visibility': 'visible'
-					})
-					.trigger('loaded.cfgal');
-			});
-			
-			$img
+			src = $thumb.data('largesrc');
+			img = this.loadImage(src)
 				.css({
 					/* We have to do a bit of a dance with image hide/show and centering
 					Though the image is loaded through loadImage, making its width/height
@@ -335,42 +286,25 @@
 					'top': '50%',
 					'visibility': 'hidden'
 				})
-				.trigger('create.cfgal');
-			
-			$img.prependTo($figure);
-			$figure.appendTo($stage);
-			
-			$thumb.data('cfgalExpanded', $figure);
-			return $figure;
-		},
-		
-		createFigure: function ($thumb, data) {
-			var opts = gal.opts,
-			$figure, $title, $caption, $figcaption;
-			
-			$figure = $('<figure/>').addClass(opts.figureClass);
-
-			if (data.title || data.caption) {
-				$figcaption = $('<figcaption/>')
-					.addClass(opts.figcaptionClass)
-					.appendTo($figure);
-				
-				if (data.title) {
-					$title = $('<div />')
-						.addClass(opts.titleClass)
-						.html(data.title)
-						.appendTo($figcaption);
-				};
-
-				if (data.caption) {
-					$caption = $('<div />')
-						.addClass(opts.captionClass)
-						.html(data.caption)
-						.appendTo($figcaption);
-				};
-			};
-			
-			return $figure;
+				.appendTo($stage)
+				.trigger('create.cfgal')
+				.load(function() {
+					var t = $(this),
+						dims = scale([t.width(), t.height()], [$stage.width(), $stage.height()]);
+					t
+						.css({
+							'width': dims[0],
+							'height': dims[1],
+							// Add CSS for centering.
+							'margin-left': -1 * (dims[0] / 2),
+							'margin-top': -1 * (dims[1] / 2),
+							'visibility': 'visible',
+							'display': 'none'
+						})
+						.trigger('loaded.cfgal');
+				});
+			$thumb.data('cfgalExpanded', img);
+			return img;
 		},
 		
 		preloadNeighbors: function(index) {
@@ -386,34 +320,21 @@
 			};
 		},
 
-		loadImage: function(src, callback) {
-			var img = new Image();
-			/* Really roundabout stuff to get around IE < 8's insane image
-			caching behavior.
-			1. src MUST be set after load event is bound
-			2. image MUST be passed through jQuery's factory twice to be updated in IE (at least I think that's what's happening)
-			3. Load event must run on a timeout, or else IE will ignore for cached images (it fires load) before it populates the data
-			   for cached images, apparently.
-			 */
-			$(img).load(function (e) {
-				var cb = $.proxy(callback, this);
-				setTimeout(function () {
-					cb(e);
-				}, 2);
-			});
-		 	img.src = src;
-			img.alt = '';
-		
+		loadImage: function(src) {
+			var img = new Image(),
+				$img;
+			img.src = src;
+			img.alt = "";
 			return $(img);
 		},
 		
 		/**
-		 * Proportional scale for image dimensions.
+		 * Proportial scale for image dimensions.
 		 * @param array dims [w,h]
 		 * @param array boundaries [w,h]
 		 * @return array scaled [w,h]
 		 */
-		scale: function(dims, boundaries) {
+		scaleWithin: function(dims, boundaries) {
 			var factor,
 				/* @param bywidth: true = width, false = height */
 				scaleby = function(bywidth) {
@@ -462,7 +383,7 @@
 		};
 	};
 })(jQuery, window);jQuery(function($) {
-	$('.post-media').fitVids();
+	$('.entry-media').fitVids();
 	
 	var activate = (Modernizr.touch && navigator.userAgent.toLowerCase().indexOf('blackberry') == -1 ? 'touchend' : 'click');
 	$('#nav-main h1').bind(activate, function(e) {

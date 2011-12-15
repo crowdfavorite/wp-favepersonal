@@ -244,6 +244,7 @@ but allow screen readers to see */
 }
 #social .social-nav {
 	padding: 1px 0;
+	font-size: 13px;
 }
 #social .social-nav,
 #social .social-nav li {
@@ -349,11 +350,8 @@ but allow screen readers to see */
 #social .social-comment-inner {
 	border-bottom: 1px solid #ddd;
 	margin: 0;
-	padding: 20px 0;
+	padding: 20px 0 30px;
 	position: relative;
-}
-#social .social-commentlist li:first-child .social-comment-inner {
-	border-top: 1px solid #ddd;
 }
 #social .social-comment .social-comment-header {
 	float: left;
@@ -390,7 +388,6 @@ but allow screen readers to see */
 	position: absolute;
 }
 #social .social-posted-from {
-	background-color: #ddd;
 	background-image: url(../img/comment-icons-sprite.png);
 	background-repeat: no-repeat;
 	height: 16px;
@@ -455,12 +452,11 @@ but allow screen readers to see */
 }
 #social .social-comment .social-comment-body {
 	overflow: hidden;
-	padding: 0 15px 0 0;
+	padding: 0 25px 0 0;
 	width: auto;
 }
 #social .social-comment .social-comment-body p {
-	margin: 0 0 8px 0;
-	padding-right: 30px;
+	margin-top: 0;
 }
 #social .comment-awaiting-moderation {
 	display: inline-block;
@@ -550,11 +546,11 @@ but allow screen readers to see */
 }
 #social .social-items-comment {
 	float: left;
-	margin: 6px 0 20px 0;
+	margin: 0 0 1em 0;
 }
 #social .social-items-comment img {
-	width: 18px;
-	height: 18px;
+	width: 24px;
+	height: 24px;
 }
 
 #social .social-items.social-twitter .social-items-icon {
@@ -570,7 +566,7 @@ but allow screen readers to see */
 }
 
 #social .social-comment .social-items-icon {
-	margin-top: 6px;
+	margin-top: 9px;
 }
 
 #social .social-items.social-comment-collapse {

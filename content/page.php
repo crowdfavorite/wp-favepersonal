@@ -21,7 +21,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-<article id="post-<?php the_ID() ?>" <?php post_class('page') ?>>
+<article id="post-<?php the_ID() ?>" <?php post_class(); ?>>
 	<div class="page-header">
 		<h1 class="page-title"><?php the_title() ?></h1>
 	</div>

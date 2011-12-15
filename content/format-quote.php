@@ -39,12 +39,13 @@ else {
 }
 
 ?>
-<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('content clearfix'); ?>>
-	<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
-	<?php cfct_misc('post-meta'); ?>
-	<div class="post-content">
+<article id="post-excerpt-<?php the_ID() ?>" <?php post_class('clearfix'); ?>>
+	<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
+	<div class="entry-content">
 		<blockquote>
-			<?php the_content(); ?>
+			<?php
+				the_content();
+			?>
 		</blockquote>
 <?php
 if (!empty($source)) {
@@ -53,5 +54,6 @@ if (!empty($source)) {
 <?php
 }
 ?>
-	</div><!--post-content-->	
+	</div><!--entry-content-->	
+	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .excerpt -->

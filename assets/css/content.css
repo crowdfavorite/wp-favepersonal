@@ -2,10 +2,6 @@
  * Content - Posts, Pages, Comments
 -------------------------------------------------- */
 
-.container {
-	margin: 0 auto;
-}
-
 /** Header
  -------------------------------------------------- */
 #header .container {
@@ -43,8 +39,9 @@
 	border-bottom: 3px solid transparent;
 	display: inline-block;
 	height: 23px;
-	margin: 10px 0 0 20px;
-	padding: 0;
+	line-height: normal;
+	margin: 8px 0 0 20px;
+	padding: 0 0 2px 0;
 	position: relative;
 	vertical-align: top;
 }
@@ -75,7 +72,7 @@ html.ie7 #nav-main .menu > li {
 	position: absolute;
 	text-align: left;
 	text-transform: none;
-	top: 23px;
+	top: 28px;
 	min-width: 140px;
 	width: 120%;
 	z-index: 99999;
@@ -114,7 +111,6 @@ html.ie7 #nav-main .menu > li {
 	padding: 36px 0 41px 0; /* top = 40px with header border */
 }
 
-
 /** Content - wraps body and sidebar
  -------------------------------------------------- */
 #content {
@@ -127,125 +123,175 @@ html.ie7 #nav-main .menu > li {
 
 /** Posts Default
  -------------------------------------------------- */
-.post,
-.page {
-	margin-bottom: 40px;
-	position: relative;
+#content .post,
+#content .page {
+	margin-bottom: 30px;
+	overflow: hidden;
 }
 
-/* post-header */
-.post-header {
-	clear: both;
-	margin-bottom: 10px;
-	zoom: 1;
+/* entry-header */
+.entry-header {
+	min-height: 28px; /*in case of no title*/
+	padding-left: 140px;
+	position: relative;
 }
-.post-title {
+.entry-title,
+.entry-date {
 	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	margin: 0;
 }
-.single .post-title,
-.page .post-title {
+.entry-date {
+	display: block;
+	font-size: 16px;
+	letter-spacing: -1px;
+	line-height: 20px;
+	text-align: right;
+	width: 120px;
+	color: #ccc;
+}
+.entry-date a {
+	padding-right: 1px; fixes text crop issue for IE8
+}
+.entry-header .entry-date {
+	position: absolute;	
+	top: 8px;
+	left: 0;
+}
+.entry-date a,
+.entry-date a:visited {
+	color: #ccc;
+}
+.single .entry-title,
+.page .entry-title {
 	font-size: 30px;
 	line-height: 32px;
 }
-.post-date {
-	color: #ccc;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 16px;
-}
-.post-date a {
-	color: #ccc;
+.single .entry-header .entry-date {
+	top: 14px;
 }
 
-/* post-media - wraps featured images, gallery, video */
-.post-media {
-	margin: 0 0 10px 0;
+/* entry-media - images, gallery, video */
+.entry-media {
+	margin-top: 18px;
+	padding-left: 140px;
 }
-.single .post-media {
-	margin: 20px 0 25px 0;
+.format-image .entry-media,
+.format-gallery .entry-media,
+.format-video .entry-media {
+	margin-bottom: 10px;
 }
-.post-media a {
+.excerpt.format-image .entry-media {
+	margin-bottom: -4px;
+}
+.excerpt.format-gallery .entry-media {
+	margin-bottom: 0;
+}
+.excerpt.format-video .entry-media {
+	margin-bottom: 4px;
+}
+.entry-media a {
 	display: inline-block;
 	border-bottom: 2px solid #fff;
 }
-.post-media a img {
+.entry-media a img {
 	display: block;
 	border-bottom: 1px solid #fff;
 }
 
-/* Post meta
-Put post info in an empty left-hand column */
-.post-title,
-.post-media,
-.post-content {
-	margin-left: 140px;
+/* entry content */
+.entry-content {
+	float: right;
+	width: 510px;
+	overflow: hidden;
 }
-.post-date,
-.post-meta,
-.post-meta p {
+.single .format-image .entry-content,
+.single .format-gallery .entry-content,
+.single .format-video .entry-content {
+	width: 710px;
+	margin-right: 140px;
+}
+
+/* entry meta */
+.post .entry-meta {
+	color: #ccc;
+	overflow: hidden;
+	padding-top: 1px;
+	text-align: right;
+	width: 120px;
+}
+.post .entry-meta span.h6 {
 	display: block;
 }
-.post-header .post-date,
-.post-header .post-meta,
-.post-header .post-meta p {
-	display: inline;
-}
-
-.post-date {
-	left: 0;
-	line-height: 1em;
-	letter-spacing: -1px;
-	position: absolute;
-	text-align: right;
-	top: 14px;
-	width: 120px;
-}
-.excerpt .post-date {
-	top: 10px;
-}
-
-.post-meta {
-	color: #ccc;
-	float: left;
-	font-size: 12px;
-	margin-right: 20px;
-	padding-bottom: 15px;
-	overflow: hidden;
-	text-align: right;
-	width: 120px;
-}
-.excerpt .post-meta {
-	padding-top: 10px;
-}
-.post-meta p {
-	vertical-align: baseline;
-	margin-bottom: 0;
-}
-.post-meta a {
+.post .entry-meta a {
 	color: #999;
 }
-.post-meta .post-meta-replies {
-	margin-top: 0;
-}
-.post-meta .post-meta-title {
-	margin: 10px 0 0 0;
-}
-.post-meta ul {
-	list-style-type: none;
-}
 
-.single .format-status .post-meta,
-.single .format-quote .post-meta {
-	margin-top: 40px;
-}
 
-.format-status .post-header,
-.format-quote .post-header {
-	width: 140px;
+/** Status and Quote Post Format
+ -------------------------------------------------- */
+/* shared */
+.format-status .entry-date,
+.format-quote .entry-date {
 	float: left;
-	position: relative;
-	padding-top: 25px;
+	margin-bottom: 2px;
+	margin-top: 5px;
 }
+.format-status .entry-content,
+.format-quote .entry-content blockquote {
+	color: #666;
+	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-size: 20px;
+	line-height: 26px;
+}
+.format-status .entry-content p,
+.format-quote .entry-content blockquote p {
+	margin: 0 0 1em;
+}
+.single .format-status .entry-content,
+.single .format-quote .entry-content blockquote {
+	font-size: 24px;
+	line-height: 32px;
+}
+.single .format-status .entry-date,
+.single .format-quote .entry-date {
+	margin-top: 11px;
+}
+/* status */
+.post-status-meta {
+	color: #ccc;
+	font-size: 12px;
+	margin-top: -10px;
+	text-transform: lowercase;
+}
+.post-status-meta a {
+	color: #999;
+}
+/* quote */
+.format-quote .entry-content blockquote {
+	border-left: 0; /*over rides default*/
+	background: url(../img/quote.png) 0 2px no-repeat;
+	margin: 0;
+	padding: 0 0 0 26px;
+	zoom: 1;
+}
+.format-quote-attribution {
+	margin-left: 120px;
+	margin-right: 30px;
+}
+
+/** Link Post Format
+ -------------------------------------------------- */
+.link-screenshot {
+	display: block;
+	border-bottom: 2px solid #fff;
+	float: left;
+	margin: 3px 15px 0 0;
+}
+.link-screenshot img {
+	display: block;
+	border-bottom: 1px solid #fff;
+}
+
 
 /** Gallery Post Format
  -------------------------------------------------- */
@@ -298,6 +344,13 @@ Put post info in an empty left-hand column */
 	text-align: center;
 	width: 100%;
 }
+/* fix for space between gallery excerpt and excerpt/meta */
+.format-gallery.excerpt p {
+	margin-top: 0;
+}
+.format-gallery.excerpt .entry-media {
+	padding-bottom: 3px;
+}
 
 /* single/full */
 .gallery-stage {
@@ -310,11 +363,11 @@ Put post info in an empty left-hand column */
 }
 .gallery-thumbs {
 	list-style-type: none;
-	margin: 3px 0 0;
+	margin: 3px 0 0 0;
 	max-width: 720px;
+	padding: 0;
 }
 .gallery-thumbs li {
-	background-color: #ddd;
 	display: block;
 	float: left;
 	height: 63px; /* 63px */
@@ -351,100 +404,10 @@ Put post info in an empty left-hand column */
 	bottom: 0;
 	z-index: 5;
 }
-.gallery-figure:hover .figcaption {
-	background: #196FBF;
-	background-color: rgba(42, 110, 187, 0.8);
-	color: #fff;
-	padding: 10px;
-	position: absolute;
-	bottom: 0;
-	left: 0;	
-	width: 100%;
-}
-.gallery-figure .figcaption .title {
-	font-size: 16px;
-	font-family: 'Titillium600', Helvetica, Arial, Verdana, sans-serif;
-}
-.gallery-figure .figcaption .caption {
-	font-size: 13px;
-	line-height: 28px;
-}
 
-/** Status and Quote Post Format
- -------------------------------------------------- */
-/* shared */
-.format-status,
-.format-quote {
-	margin-bottom: 50px;
-}
-.post-status-content,
-.format-quote .post-content blockquote {
-	border: 0;
-	color: #666;
-	font-family: Titillium400, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 20px;
-}
-.post-status-content,
-.format-quote .post-content blockquote {
-	line-height: 28px;
-}
-.excerpt.format-status .post-date,
-.excerpt.format-quote .post-date {
-	top: 8px;
-}
-.single .post-status-content,
-.single .format-quote .post-content blockquote {
-	font-size: 26px;
-}
-.single .post-status-content,
-.single .format-quote .post-content blockquote {
-	line-height: 34px;
-}
-.single .format-status .post-date,
-.single .format-quote .post-date {
-	top: 13px;
-}
-
-/* status */
-.post-status-meta {
-	color: #ccc;
-	font-size: 12px;
-	margin-top: -10px;
-	text-transform: lowercase;
-}
-.post-status-meta a {
-	color: #999;
-}
-/* quote */
-.format-quote .post-content blockquote {
-	background: url(../img/quote.png) 0 2px no-repeat;
-	margin: 0;
-	padding: 0 0 0 26px;
-	zoom: 1;
-}
-.format-quote-attribution {
-	margin-left: 120px;
-	margin-right: 30px;
-}
-
-/** Link Post Format
- -------------------------------------------------- */
-.link-screenshot {
-	display: block;
-	border-bottom: 2px solid #fff;
-	float: left;
-	margin-right: 15px;
-}
-.link-screenshot img {
-	display: block;
-	border-bottom: 1px solid #fff;
-}
 
 /** Pages
  -------------------------------------------------- */
-.page {
-	margin-bottom: 40px;
-}
 .page-header {
 	clear: both;
 	position: relative;
@@ -483,11 +446,14 @@ Put post info in an empty left-hand column */
 	position: absolute;
 }
 
-
 /* search results */
 .search-title {
+	font-size: 13px;
+	letter-spacing: 1px;
+	line-height: 28px;
+	text-transform: uppercase;
 	margin: 0 0 30px 0;
-	padding: 6px 10px 3px 10px;
+	padding: 0 10px;
 }
 .search-title em {
 	font-style: normal;
@@ -541,7 +507,7 @@ Put post info in an empty left-hand column */
 	margin: 8px 0 0 0;
 }
 .widget .bio-box-links {
-	padding: 15px 15px 15px 20px;
+	padding: 15px 15px 10px 20px;
 }
 .widget .bio-box-links ul,
 .widget .bio-box-links li {
@@ -551,6 +517,10 @@ Put post info in an empty left-hand column */
 }
 .widget .bio-box-links li {
 	position: relative;
+	margin-bottom: 5px;
+}
+.widget .bio-box-links li img {
+	vertical-align: top;
 }
 .widget .bio-box-links li .bio-tooltip {
 	background: url(../img/bio-tooltip.png) center 0 no-repeat;
@@ -590,8 +560,12 @@ Put post info in an empty left-hand column */
 	margin: 0 0 25px 0;
 }
 .widget-title {
+	font-size: 13px;
+	letter-spacing: 1px;
+	line-height: 27px;
+	text-transform: uppercase;
 	margin: 0 0 10px 0;
-	padding: 3px 10px 6px;
+	padding: 0 10px;
 }
 .widget ul {
 	list-style-type: none;
@@ -615,45 +589,51 @@ Put post info in an empty left-hand column */
 .widget_search .widget-title {
 	display: none;
 }
-.widget_search form {
+.searchform {
 	min-height: 28px;
 	position: relative;
+	max-width: 310px;
 }
-.widget_search form label,
-.widget_search form #s,
-.widget_search form #searchsubmit {
+.searchform label,
+.searchform #s,
+.searchform #searchsubmit {
 	margin: 0;
 	position: absolute;
 	top: 0;
 }
-.widget_search form label,
-.widget_search form #s {
+.searchform label,
+.searchform #s {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
-	font-size: 16px;
+	font-size: 13px;
+	letter-spacing: 1px;
+	line-height: 27px;
+	height: 27px;
+	text-transform: uppercase;
+	margin: 0 0 10px 0;
 }
-.widget_search form #s,
-.widget_search form #searchsubmit {
+.searchform #s,
+.searchform #searchsubmit {
 	-webkit-appearance: none;
 	-webkit-border-radius: 0px;
 }
-.widget_search form label {
+.searchform label {
 	left: 0;
-	margin-top: 3px;
+	margin-top: 1px;
 	padding: 0 10px;
 	width: 255px;
 	z-index: 10;
 }
-.widget_search form #s {
+.searchform #s {
 	background: none;
 	border: 0;
 	left: 0;
-	margin-top: 5px;
+	margin-top: 1px;
 	padding: 0 8px;
 	position: absolute;
 	top: 0;
 	width: 255px;
 }
-.widget_search form #searchsubmit {
+.searchform #searchsubmit {
 	background: url('../img/search-icon.png') center center no-repeat;
 	border: 0;
 	border-left: 1px solid #fff;

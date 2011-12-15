@@ -35,20 +35,19 @@ else {
 
 ?>
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
-	<div class="post-header">
-		<h1 class="post-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title() ?> &rarr;</a></h1>
-		<a class="post-date" href="<?php the_permalink(); ?>"><time datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time></a>
-		<?php cfct_misc('post-meta-excerpts'); ?>
+	<div class="entry-header">
+		<h1 class="entry-title"><a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title() ?> &rarr;</a></h1>
+		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
 	</div>
-	<div class="post-content clearfix">
+	<div class="entry-content clearfix">
 <?php
 if ( has_post_thumbnail() ) {
 ?>
-		<a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a>
+		<p><a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a></p>
 <?php 
 }
-the_excerpt();
+		the_excerpt();
 ?>
-	</div><!--post-content-->
-	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
-</article><!-- .excerpt -->
+	</div>
+	<?php cfct_misc('entry-meta-excerpts'); ?>
+</article>

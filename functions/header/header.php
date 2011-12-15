@@ -147,14 +147,14 @@ function cfcp_header_options_fields($html) {
 					<li id="cfp-header-featured">
 						<label for="cfcp-header-type-featured">
 							<input type="radio" name="cfcp_header_options[type]" id="cfcp-header-type-featured" value="featured" <?php checked('featured', $type); ?>> <?php _e('Featured Posts', 'favepersonal'); ?>
-							<img src="<?php bloginfo('template_url'); ?>/functions/header/img/header-option-posts.png" alt="<?php _e('Featured Posts', 'favepersonal'); ?>" height="56" width="250" />
+							<img src="<?php echo get_template_directory_uri(); ?>/functions/header/img/header-option-posts.png" alt="<?php _e('Featured Posts', 'favepersonal'); ?>" height="56" width="250" />
 						</label>
 						<p><?php _e('Defaults to 3 most recent post. Select featured post position from the post edit screen.', 'favepersonal'); ?></p>
 					</li>
 					<li id="cfp-header-image">
 						<label for="cfcp-header-type-image">
 							<input type="radio" name="cfcp_header_options[type]" id="cfcp-header-type-image" value="image" <?php checked('image', $type); ?>> <?php _e('Header Image', 'favepersonal'); ?>
-							<img src="<?php bloginfo('template_url'); ?>/functions/header/img/header-option-image.png" alt="<?php _e('Header Image', 'favepersonal'); ?>" height="56" width="250" />
+							<img src="<?php echo get_template_directory_uri(); ?>/functions/header/img/header-option-image.png" alt="<?php _e('Header Image', 'favepersonal'); ?>" height="56" width="250" />
 						</label>
 						<p><a href="<?php echo admin_url('themes.php?page=custom-header'); ?>"><?php _e('Upload or choose a header image', 'favepersonal'); ?></a></p>
 					</li>

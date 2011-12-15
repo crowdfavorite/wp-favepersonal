@@ -21,19 +21,17 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
-<article id="post-<?php the_ID() ?>" <?php post_class('content clearfix') ?>>
-	<div class="post-header">
-		<h1 class="post-title"><a href="<?php the_permalink() ?>"  title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h1>
-		<time class="post-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
-	</div>
+<article id="post-<?php the_ID() ?>" <?php post_class('clearfix') ?>>
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="<?php the_permalink() ?>"  title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h1>
+		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
+	</header>
 	
-	<div class="post-media">
+	<div class="entry-media">
 		<?php the_post_thumbnail('large-img'); ?>
 	</div>
-	
-	<?php cfct_misc('post-meta'); ?>
-	
-	<div class="post-content clearfix">
+		
+	<div class="entry-content clearfix">
 		<?php 
 			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
 			$args = array(
@@ -43,5 +41,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 			);
 			wp_link_pages($args);
 		?>
-	</div><!--post-content-->
+	</div>
+	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .post -->

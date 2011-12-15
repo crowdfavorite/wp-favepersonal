@@ -19,18 +19,17 @@
 /* Using as an include since it's used in many places */
 
 ?>
-<div class="post-meta">
+<div class="entry-meta">
 <?php
 
-do_action('favepersonal_content_sidebar_before');
+do_action('favepersonal_excerpt_sidebar_before');
 
 ?>
-	<p class="post-meta-replies h5"><?php comments_popup_link(__('No Replies', 'favepersonal'), __('1 Reply', 'favepersonal'), __('% Replies', 'favepersonal')); ?></p>
-	<?php printf(__('<p class="post-meta-title h6">Categories</p> <p class="post-meta-categories">%s</p>', 'favepersonal'), get_the_category_list(', ')) ?>
-	<?php the_tags(__('<p class="post-meta-title h6">Tags</p> <p class="post-meta-tags">', 'favepersonal'), ', ', '</p>'); ?>
+	<p class="entry-meta-replies h5"><?php comments_popup_link(__('No Replies', 'favepersonal'), __('1 Reply', 'favepersonal'), __('% Replies', 'favepersonal')); ?></p>
+	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
 <?php
 
-do_action('favepersonal_content_sidebar_after');
+do_action('favepersonal_excerpt_sidebar_after');
 
 ?>
 </div>

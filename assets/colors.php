@@ -27,11 +27,19 @@ function cfcp_color_css() {
 body {
 	background-color: <?php echo cf_kuler_color('dark', 'body_background'); ?>;
 }
-a {
+a,
+a:visited { 
 	color: <?php echo cf_kuler_color('darkest', 'a'); ?>;
 }
-a:hover {
+a:hover,
+a:active {
 	color: <?php echo cf_kuler_color('medium', 'a_hover'); ?>;
+}
+::-moz-selection {
+	background: <?php echo cf_kuler_color('darkest', 'selection_background'); ?>;
+}
+::selection {
+	background: <?php echo cf_kuler_color('darkest', 'selection_background'); ?>;
 }
 
 /** Header
@@ -132,10 +140,11 @@ a:hover {
 
 /** Post
  -------------------------------------------------- */
-.post-meta a:hover {
+.entry-date a:hover,
+.entry-meta a:hover {
 	color: <?php echo cf_kuler_color('darkest', 'post_meta_a_hover_color'); ?>;
 }
-.post-media a:hover {
+.entry-media a:hover {
 	border-bottom-color: <?php echo cf_kuler_color('medium', 'post_media_hover_border'); ?>;
 }
 .link-screenshot:hover {
@@ -166,7 +175,7 @@ a:hover {
 	border-color: <?php echo cf_kuler_color('darkest', 'bio_box_links_a_hover_border'); ?>;
 }
 .widget-title,
-.widget_search form,
+.searchform,
 .search-title {
 	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 	background-color: <?php echo cf_kuler_color('light', 'widget_title_background'); ?>;
@@ -184,20 +193,20 @@ a:hover {
 .search-title em {
 	color: <?php echo cf_kuler_color('darkest', 'search_title_em_color'); ?>;
 }
-.widget_search form #s {
+.searchform #s {
 	color: <?php echo cf_kuler_color('darkest', 'widget_search_s_color'); ?>;
 }
-.widget_search form label {
+.searchform label {
 	color: <?php echo cf_kuler_color('dark', 'widget_search_label_color'); ?>;
 }
-.widget_search form label.focus {
+.searchform label.focus {
 	color: <?php echo cf_kuler_color('medium', 'widget_search_label_focus_color'); ?>;
 }
-.widget_search form #searchsubmit:hover,
-.widget_search form #searchsubmit:focus {
+.searchform #searchsubmit:hover,
+.searchform #searchsubmit:focus {
 	background-color: <?php echo cf_kuler_color('dark', 'widget_search_submit_hover_background'); ?>;
 }
-.widget_search form #searchsubmit:active {
+.searchform #searchsubmit:active {
 	background-color: <?php echo cf_kuler_color('darkest', 'widget_search_submit_active_background'); ?>;
 }
 
@@ -254,6 +263,9 @@ a:hover {
 #social .social-nav,
 #social .social-nav a span {
 	background-color: <?php echo cf_kuler_color('light', 'social-heading_background'); ?>;
+}
+#social #reply-title {
+	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 }
 #social .social-heading,
 #social .nocomments {

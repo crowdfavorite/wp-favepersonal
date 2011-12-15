@@ -2,31 +2,23 @@
  * Standard / Utility Classes
 -------------------------------------------------- */
 
-/* Contain floats: h5bp.com/q */
-.clearfix:before, .clearfix:after {
-	content: "";
-	display: table;
-}
-.clearfix:after {
-	clear: both;
-}
-.clearfix {
-	zoom: 1;
-}
-
-
 /* edit-link */
-.post .edit-link {
+.post {
+	position: relative;
+}
+.edit-link {
 	display: none;
-	left: 0;
 	position: absolute;
-	top: 2px;
+	top: 5px;
+	left: 0;
 }
 .edit-link a {
 	background: #666 url(../img/edit-icon.png) 0 0 no-repeat;
 	display: block;
+	float: right;
 	height: 20px;
 	overflow: hidden;
+	text-align: left;
 	text-indent: -9999px;
 	width: 20px;
 }
@@ -34,10 +26,47 @@
 	display: inline;
 }
 
-/** Alignment
- -------------------------------------------------- */
+/* alignment */
 .center {
 	text-align: center;
+}
+
+/* Archive */
+.archive {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Pagination */
+.pagination {
+	min-height: 20px;
+	margin-top: 60px;
+}
+.pagination .prev,
+.pagination .next {
+	display: block;
+	line-height: 1.2em;
+	width: 48%;
+}
+.pagination .next {
+	float: right;
+	text-align: right;
+}
+
+/* Tooltip */
+.tooltip {
+	color:#fff;
+	position:absolute;
+	left:-2000px;
+	line-height: 1em;
+	background-color:#222;
+	max-width: 140px;
+	padding:8px 12px;
+}
+.tooltip p {
+	margin:0;
+	padding:0;
 }
 
 /** WordPress compatibility styles
@@ -111,45 +140,4 @@ img.wp-smiley {
 .gallery-caption {
 	color: #999;
 	font-size: 0.9em;
-}
-
-/* Archive */
-.archive {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-/* Pagination */
-.pagination {
-	min-height: 20px;
-	margin-top: 40px;
-}
-.pagination .prev,
-.pagination .next {
-	display: block;
-	line-height: 1.2em;
-	width: 48%;
-}
-.pagination .next {
-	float: right;
-	text-align: right;
-}
-.home .pagination {
-	margin-top: 60px;
-}
-
-/* Tooltip */
-.tooltip {
-	color:#fff;
-	position:absolute;
-	left:-2000px;
-	line-height: 1em;
-	background-color:#222;
-	max-width: 140px;
-	padding:8px 12px;
-}
-.tooltip p {
-	margin:0;
-	padding:0;
 }

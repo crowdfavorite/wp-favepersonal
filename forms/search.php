@@ -29,7 +29,8 @@ else {
 
 ?>
 
-<form method="get" action="<?php echo trailingslashit(get_bloginfo('url')); ?>" onsubmit="<?php echo $onsubmit; ?>">
-	<input type="text" id="s" name="s" value="<?php echo esc_attr(get_search_query(), 1); ?>" size="15" />
-	<input type="submit" name="submit_button" value="<?php _e('Search', 'favepersonal'); ?>" />
+<form class="searchform" method="get" action="<?php echo esc_url(site_url('/')); ?>" onsubmit="<?php echo $onsubmit; ?>">
+	<label for="s">Search&hellip;</label>
+	<input type="text" id="s" name="s" value="" size="15" />
+	<input type="submit" id="searchsubmit" value="<?php _e('Search', 'favepersonal'); ?>">
 </form>

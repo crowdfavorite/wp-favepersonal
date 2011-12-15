@@ -34,13 +34,8 @@ $meta_items = apply_filters('cfcp_format_status_meta_excerpt', $meta_items);
 
 ?>
 <article id="post-excerpt-<?php the_ID() ?>" <?php post_class('excerpt clearfix'); ?>>
-
-	<div class="post-header">
-		<a class="post-date" href="<?php the_permalink(); ?>"><time datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time></a>		
-		<?php cfct_misc('post-meta-excerpts'); ?>
-	</div>
-		
-	<div class="post-content">
+	<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
+	<div class="entry-content">
 		<div class="post-status-content">
 			<?php
 				//using content because wordpress strips HTML, need the links in updates
@@ -54,6 +49,6 @@ if (count($meta_items)) {
 <?php
 }
 ?>
-	</div><!--post-content-->
-	<?php edit_post_link('edit', '<span class="edit-link">', '</span>'); ?>
-</article><!-- .excerpt -->
+	</div>
+	<?php cfct_misc('entry-meta-excerpts'); ?>
+</article>

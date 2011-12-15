@@ -30,7 +30,7 @@ define('CFCT_DEBUG', false);
  * In production mode, or doing development?
  * When true, assets/load.php will enqueue the built versions of the files
  */
-define('CFCT_PRODUCTION', false);
+define('CFCT_PRODUCTION', true);
 
 
 define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
@@ -290,6 +290,6 @@ function cfcp_get_popover_html($popover_id, $params = array()) {
 }
 
 function cfcp_social_plugins_url($url) {
-	$url = trailingslashit(get_bloginfo('template_url'));
+	$url = trailingslashit(get_template_directory_uri());
 	return trailingslashit($url.'plugins/social');
 }

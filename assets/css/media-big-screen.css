@@ -28,22 +28,23 @@ iPad (landscape) / Screen	1024
 }
 
 /* Posts */
-.single .post-media {
+.single .entry-media {
 	padding-left: 140px;
 }
 
 /* Shared styles for media post formats */
-.single .format-image .post-content,
-.single .format-gallery .post-content,
-.single .format-video .post-content {
-	width: 680px;
-}
 .single-format-image #social,
 .single-format-gallery #social,
 .single-format-video #social {
 	width: 850px;
 	margin-left: 0px;
 }
+
+/* full page with no sidebar */
+.page-full {
+	padding: 0 140px;
+}
+
 
 #primary,
 #secondary {

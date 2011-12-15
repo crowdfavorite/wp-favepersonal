@@ -1,5 +1,5 @@
 jQuery(function($) {
-	$('.post-media').fitVids();
+	$('.entry-media').fitVids();
 	
 	var activate = (Modernizr.touch && navigator.userAgent.toLowerCase().indexOf('blackberry') == -1 ? 'touchend' : 'click');
 	$('#nav-main h1').bind(activate, function(e) {

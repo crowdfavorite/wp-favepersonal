@@ -15,6 +15,33 @@ iPad (portrait)				768
 		width: 708px;
 	}
 	
+	/* Masthead */
+	#masthead {
+		padding: 16px 0 20px;
+	}
+	.featured {
+		height: 120px;
+		margin-left: 15px;
+		width: 226px;
+	}
+	.featured.has-featured-img,
+	.featured.featured-format-gallery {
+		height: 130px;
+	}
+	.featured .gallery-img-excerpt li {
+		height: 65px;
+	}
+	.featured-title {
+		font-size: 16px;
+		line-height: 18px;
+	}
+	
+	/* entry content */
+	.entry-content {
+		width: 568px;
+	}
+	
+	/* gallery posts */
 	.post .gallery-img-excerpt li {
 		margin: 0 0 12px;
 		width: 130px;
@@ -38,38 +65,17 @@ iPad (portrait)				768
 	.post .gallery-img-excerpt .excerpt-img-4 {
 		margin-left: 0;
 	}
-	
-	.single-format-gallery .post-media {
+	.single-format-gallery .entry-media {
 		left: -1px;
 		position: relative;
 	}
-	
 	.gallery-thumbs li {
 		width: 80px;
 		height: 63px;
 	}
 	
-	.featured {
-		height: 120px;
-		margin-left: 15px;
-		width: 226px;
-	}
-	.featured.has-featured-img,
-	.featured.featured-format-gallery {
-		height: 130px;
-	}
-	.featured .gallery-img-excerpt li {
-		height: 65px;
-	}
-	.featured-title {
-		font-size: 16px;
-		line-height: 18px;
-	}
 	
-	#masthead {
-		padding: 16px 0 20px;
-	}
-		
+	/* Sidebars */
 	.sidebar {
 		float: left;
 		margin-left: 15px;
@@ -78,12 +84,7 @@ iPad (portrait)				768
 	#sidebar-1 {
 		margin-left: 0;
 	}
-	
-	/* full page with no sidebar */
-	.page-full {
-		padding: 0 140px;
-	}
-	
+		
 	/* Let's pull things off the side */
 	.page-full .alignleft.pull {
 		margin-left: -140px;
