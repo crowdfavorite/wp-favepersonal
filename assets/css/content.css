@@ -361,6 +361,21 @@ html.ie7 #nav-main .menu > li {
 .js .gallery-stage {
 	cursor: pointer;
 }
+.gallery-stage-caption {
+	background-color: rgba(0, 0, 0, .8);
+	color: #fff;
+	font-size: 13px;
+	line-height: 18px;
+	margin: 0;
+	padding: 10px;
+}
+.gallery-stage-caption h2 {
+	margin: 0;
+}
+.gallery-stage-caption p {
+	margin-bottom: 0;
+	margin-top: 8px;
+}
 .gallery-thumbs {
 	list-style-type: none;
 	margin: 3px 0 0 0;
