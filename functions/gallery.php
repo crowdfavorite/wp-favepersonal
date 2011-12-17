@@ -387,4 +387,46 @@ function cfcp_gallery_max_size($size = '', $post_id = null) {
 	);
 }
 
-?>
+if (!function_exists('cf_get_post_meta')) {
+/**
+ * Retrieve post meta field for multiple posts.
+ *
+ * @uses $wpdb
+ * @link http://codex.wordpress.org/Function_Reference/get_post_meta
+ *
+ * @param mixed $post_ids Post ID or array of post IDS.
+ * @param string $key The meta key to retrieve.
+ * @param bool $single Whether to return a single value.
+ * @return mixed Will be an array if $single is false. Will be value of meta data field if $single
+ *  is true.
+ */
+function cf_get_post_meta($post_ids, $key, $single = false) {
+	// if just one, pass through normal call
+	if (is_array($post_ids) && count($post_ids) == 1) {
+		$post_ids = $post_ids[0];
+	}
+	if (!is_array($post_ids)) {
+		return get_post_meta($post_ids, $key, $single);
+	}
+	else {
+		global $wpdb;
+		$post_ids = array_unique(array_map('intval', $post_ids));
+		$sql = $wpdb->prepare("
+				SELECT post_id, meta_value
+				FROM $wpdb->postmeta
+				WHERE meta_key = '%s'
+				AND post_id IN (".implode(',', $post_ids).")
+			", 
+			$key
+		);
+		$results = $wpdb->get_results($sql);
+		$data = array();
+		if (is_array($results) && count($results)) {
+			foreach ($results as $result) {
+				$data['post_'.$result->post_id] = maybe_unserialize($result->meta_value);
+			}
+		}
+		return apply_filters('cf_get_post_meta_values', $data);
+	}
+}
+} // end exists check
