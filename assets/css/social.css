@@ -253,6 +253,7 @@ but allow screen readers to see */
 }
 #social .social-nav li {
 	float: left;
+	height: 25px;
 	margin-right: 20px;
 	padding: 0;
 }
