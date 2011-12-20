@@ -391,8 +391,9 @@ if (!function_exists('cf_trim_text')) {
 		
 		/* Since servers must have MB module installed for mb_* functions, we're keeping the fallback to non-multibyte functions */
 		if (function_exists('mb_strlen')) { // 
-			if (empty($text) || mb_strlen($text) <= $length) { return $text; }
-
+			if (empty($text) || mb_strlen($text) <= $length) {
+				return $text;
+			}
 			if (mb_strlen($text) > $length) {
 				$text = mb_substr($text, 0, $length); // cut string to proper length
 				if (mb_strrpos($text, ' ')) { // if we have spaces in text, cut to the last word, not letter
@@ -401,8 +402,9 @@ if (!function_exists('cf_trim_text')) {
 			}
 		}
 		else {
-			if (empty($text) || strlen($text) <= $length) { return $text; }
-
+			if (empty($text) || strlen($text) <= $length) {
+				return $text;
+			}
 			if (strlen($text) > $length) {
 				$text = substr($text, 0, $length); // cut string to proper length
 				if (strrpos($text, ' ')) { // if we have spaces in text, cut to the last word, not letter
