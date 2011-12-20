@@ -300,7 +300,6 @@ function cfcp_social_plugins_path($path) {
 	return trailingslashit($path.'plugins/social');
 }
 
-if (!function_exists('cf_relative_time_ago')) {
 /**
  * Build simple relative dates
  * Doesn't go too deep in to specificity as that is rarely needed
@@ -314,67 +313,68 @@ if (!function_exists('cf_relative_time_ago')) {
  * @param string $pre_format - default '' - what to put before the date out past 4 weeks
  * @return string
  */
-function cf_relative_time_ago($date,$pre='about',$post='ago',$full_date_cutoff=4,$format='F j, Y',$pre_format, $gmt = false) {
-	$pre .= ' ';
-	$post = ' '.$post;
-	$pre_format = ' ';
-
-	if ($gmt) {
-		$now = gmmktime();
-	}
-	else {
-		$orig_tz = date_default_timezone_get();
-		date_default_timezone_set(get_option('timezone_string'));
-		$now = time();
-	}
-
-	if(!is_numeric($date)) { 
-		$date = strtotime($date); 
-	}
-
-	// seconds
-	$diff = $now - $date;
-	if ($diff < 60){ 
-		return sprintf('%1$s%2$s%3$s', $pre, sprintf(
-			_n('%d second', '%d seconds', $diff), $diff), $post);
-	}
+if (!function_exists('cf_relative_time_ago')) {
+	function cf_relative_time_ago($date, $pre = 'about', $post = 'ago' , $full_date_cutoff = 4, $format='F j, Y', $pre_format, $gmt = false) {
+		$pre .= ' ';
+		$post = ' '.$post;
+		$pre_format = ' ';
 	
-	// minutes
-	$diff = round($diff/60);
-	if ($diff < 60) { 
-		return sprintf('%1$s%2$s%3$s', $pre, sprintf(
-			_n('%d minute', '%d minutes', $diff), $diff), $post);
-	}
+		if ($gmt) {
+			$now = gmmktime();
+		}
+		else {
+			$orig_tz = date_default_timezone_get();
+			date_default_timezone_set(get_option('timezone_string'));
+			$now = time();
+		}
 	
-	// hours
-	$diff = round($diff/60);
-	if ($diff < 24) {
-		return sprintf('%1$s%2$s%3$s', $pre, sprintf(
-			_n('%d hour', '%d hours', $diff), $diff), $post);
-	}
+		if (!is_numeric($date)) { 
+			$date = strtotime($date); 
+		}
 	
-	// days
-	$diff = round($diff/24);
-	if ($diff < 7) { 
-		return sprintf('%1$s%2$s%3$s', $pre, sprintf(
-			_n('%d day', '%d days', $diff), $diff), $post);
-	}
+		// seconds
+		$diff = $now - $date;
+		if ($diff < 60){ 
+			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
+				_n('%d second', '%d seconds', $diff), $diff), $post);
+		}
+		
+		// minutes
+		$diff = round($diff/60);
+		if ($diff < 60) { 
+			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
+				_n('%d minute', '%d minutes', $diff), $diff), $post);
+		}
+		
+		// hours
+		$diff = round($diff/60);
+		if ($diff < 24) {
+			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
+				_n('%d hour', '%d hours', $diff), $diff), $post);
+		}
+		
+		// days
+		$diff = round($diff/24);
+		if ($diff < 7) { 
+			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
+				_n('%d day', '%d days', $diff), $diff), $post);
+		}
+		
+		// weeks
+		$diff = round($diff/7);
+		if ($diff <= $full_date_cutoff) { 
+			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
+				_n('%d week', '%d weeks', $diff), $diff), $post);
+		}
 	
-	// weeks
-	$diff = round($diff/7);
-	if ($diff <= $full_date_cutoff) { 
-		return sprintf('%1$s%2$s%3$s', $pre, sprintf(
-			_n('%d week', '%d weeks', $diff), $diff), $post);
+		// actual date string if farther than 4 weeks ago
+		$ago = $pre_format . mysql2date($format, date('Y-m-d H:i:s', $date));
+	
+		if (!$gmt) {
+			date_default_timezone_set($orig_tz);
+		}
+		return $ago;
 	}
-
-	// actual date string if farther than 4 weeks ago
-	$ago = $pre_format . mysql2date($format, date('Y-m-d H:i:s', $date));
-
-	if (!$gmt) {
-		date_default_timezone_set($orig_tz);
-	}
-	return $ago;
-}
 } // end exists check
 
 /**
@@ -412,5 +412,5 @@ if (!function_exists('cf_trim_text')) {
 		}
 		return $before.$text.$after;
 	}
-}
+} // end exists check
 
