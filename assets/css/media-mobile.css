@@ -344,7 +344,7 @@ iPad (portrait)				768
 		width: 84px;
 		height: 66px;
 	}
-	
+
 	.featured {
 		height: 118px;
 		margin-left: 15px;
@@ -361,6 +361,9 @@ iPad (portrait)				768
 	}
 	.featured .gallery-img-excerpt li {
 		height: 64px;
+	}
+	#featured-post-2 {
+		margin-left: 15px;
 	}
 	#featured-post-3 {
 		display: none;
