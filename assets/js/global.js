@@ -83,7 +83,8 @@ jQuery(function($) {
 	}
 	
 	$gal.cfgallery({
-		'stageDimensions': dims
+		'stageDimensions': dims,
+		'titleClass': 'h2 caption'
 	});
 	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();
 });

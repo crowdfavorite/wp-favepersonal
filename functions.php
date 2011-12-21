@@ -20,6 +20,8 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 
 load_theme_textdomain('favepersonal');
 
+define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
+
 /**
  * Set this to "true" to turn on debugging mode.
  * Debug helps with development by showing you the paths of the files loaded by Carrington.
@@ -31,9 +33,6 @@ define('CFCT_DEBUG', false);
  * When true, assets/load.php will enqueue the built versions of the files
  */
 define('CFCT_PRODUCTION', true);
-
-
-define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
 
 /**
  * Theme version.

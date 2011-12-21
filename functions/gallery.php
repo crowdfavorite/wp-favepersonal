@@ -22,9 +22,9 @@ function cfcp_img_captions($attr, $content = null) {
 		return $output;
 	}
 	extract(shortcode_atts(array(
-		'id'	=> '',
-		'align'	=> 'alignnone',
-		'width'	=> '',
+		'id' => '',
+		'align' => 'alignnone',
+		'width' => '',
 		'caption' => ''
 	), $attr));
 	if ( 1 > (int) $width || empty($caption) ) {
@@ -114,7 +114,7 @@ class CFCT_Gallery {
 		extract($args);
 		$thumbs = '';
 		
-		foreach($gallery->posts as $image) {
+		foreach ($gallery->posts as $image) {
 			/* Individual links can be anchored to. Anchoring to a link triggers Javascript to
 			load its larger image in the stage area */
 			$id = $this->get_slide_id($image->ID);
@@ -122,11 +122,12 @@ class CFCT_Gallery {
 			$attachment_url = get_attachment_link($image->ID);
 			$thumb = wp_get_attachment_image($image->ID, 'tiny-img', false);
 			
-			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'">'.$thumb.'</a></li>';
+			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'" data-title="'.esc_attr(strip_tags($image->post_title)).'" data-caption="'.esc_attr(strip_tags($image->post_content)).'">'.$thumb.'</a></li>';
 		}
 		?>
 <div id="<?php echo $this->id; ?>" class="cfgallery clearfix" data-width="<?php echo intval($width); ?>" data-height="<?php echo intval($height); ?>">
-	<div class="gallery-stage"></div>
+	<div class="gallery-stage">
+	</div>
 	<ul class="gallery-thumbs"><?php echo $thumbs; ?></ul>
 </div>
 		<?php
