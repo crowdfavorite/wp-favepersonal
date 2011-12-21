@@ -212,17 +212,17 @@ html.ie7 #nav-main .menu > li {
 }
 
 /* entry meta */
-.post .entry-meta {
+.entry-meta {
 	color: #ccc;
 	overflow: hidden;
 	padding-top: 1px;
 	text-align: right;
 	width: 120px;
 }
-.post .entry-meta span.h6 {
+.entry-meta span.h6 {
 	display: block;
 }
-.post .entry-meta a {
+.entry-meta a {
 	color: #999;
 }
 

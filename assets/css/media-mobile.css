@@ -122,11 +122,11 @@ iPad (portrait)				768
 	}
 
 	/* entry meta */
-	.post .entry-meta {
+	.entry-meta {
 		text-align: left;
 		width: auto;
 	}
-	.post .entry-meta span {
+	.entry-meta span {
 		display: inline;
 	}
 
