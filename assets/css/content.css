@@ -377,6 +377,9 @@ html.ie7 #nav-main .menu > li {
 	-o-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
 }
+.oldie .gallery-stage figcaption {
+	background-color: #000;
+}
 .gallery-stage figcaption .title {
 	margin: 0;
 }

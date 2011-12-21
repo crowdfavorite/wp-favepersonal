@@ -84,7 +84,7 @@ jQuery(function($) {
 	
 	$gal.cfgallery({
 		'stageDimensions': dims,
-		'titleClass': 'h2 caption'
+		'titleClass': 'h3'
 	});
 	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();
 });
