@@ -21,8 +21,11 @@ iPad (portrait)				768
 	}
 	.featured {
 		height: 120px;
-		margin-left: 15px;
 		width: 226px;
+	}
+	#featured-post-2,
+	#featured-post-3 {
+		margin-left: 15px;
 	}
 	.featured.has-featured-img,
 	.featured.featured-format-gallery {
@@ -80,6 +83,9 @@ iPad (portrait)				768
 		float: left;
 		margin-left: 15px;
 		width: 226px;
+	}
+	.widget .bio-box-gallery {
+		height: auto;
 	}
 	#sidebar-1 {
 		margin-left: 0;
