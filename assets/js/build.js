@@ -22,9 +22,9 @@
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
  */
-(function($,e,b){var c="hashchange",h=document,f,g=$.event.special,i=h.documentMode,d="on"+c in e&&(i===b||i>7);function a(j){j=j||location.href;return"#"+j.replace(/^[^#]*#?(.*)$/,"$1")}$.fn[c]=function(j){return j?this.bind(c,j):this.trigger(c)};$.fn[c].delay=50;g[c]=$.extend(g[c],{setup:function(){if(d){return false}$(f.start)},teardown:function(){if(d){return false}$(f.stop)}});f=(function(){var j={},p,m=a(),k=function(q){return q},l=k,o=k;j.start=function(){p||n()};j.stop=function(){p&&clearTimeout(p);p=b};function n(){var r=a(),q=o(m);if(r!==m){l(m=r,q);$(e).trigger(c)}else{if(q!==m){location.href=location.href.replace(/#.*/,"")+q}}p=setTimeout(n,$.fn[c].delay)}$.browser.msie&&!d&&(function(){var q,r;j.start=function(){if(!q){r=$.fn[c].src;r=r&&r+a();q=$('<iframe tabindex="-1" title="empty"/>').hide().one("load",function(){r||l(a());n()}).attr("src",r||"javascript:0").insertAfter("body")[0].contentWindow;h.onpropertychange=function(){try{if(event.propertyName==="title"){q.document.title=h.title}}catch(s){}}}};j.stop=k;o=function(){return a(q.location.href)};l=function(v,s){var u=q.document,t=$.fn[c].domain;if(v!==s){u.title=h.title;u.open();t&&u.write('<script>document.domain="'+t+'"<\/script>');u.close();q.location.hash=v}}})();return j})()})(jQuery,this);
+;(function($,e,b){var c="hashchange",h=document,f,g=$.event.special,i=h.documentMode,d="on"+c in e&&(i===b||i>7);function a(j){j=j||location.href;return"#"+j.replace(/^[^#]*#?(.*)$/,"$1")}$.fn[c]=function(j){return j?this.bind(c,j):this.trigger(c)};$.fn[c].delay=50;g[c]=$.extend(g[c],{setup:function(){if(d){return false}$(f.start)},teardown:function(){if(d){return false}$(f.stop)}});f=(function(){var j={},p,m=a(),k=function(q){return q},l=k,o=k;j.start=function(){p||n()};j.stop=function(){p&&clearTimeout(p);p=b};function n(){var r=a(),q=o(m);if(r!==m){l(m=r,q);$(e).trigger(c)}else{if(q!==m){location.href=location.href.replace(/#.*/,"")+q}}p=setTimeout(n,$.fn[c].delay)}$.browser.msie&&!d&&(function(){var q,r;j.start=function(){if(!q){r=$.fn[c].src;r=r&&r+a();q=$('<iframe tabindex="-1" title="empty"/>').hide().one("load",function(){r||l(a());n()}).attr("src",r||"javascript:0").insertAfter("body")[0].contentWindow;h.onpropertychange=function(){try{if(event.propertyName==="title"){q.document.title=h.title}}catch(s){}}}};j.stop=k;o=function(){return a(q.location.href)};l=function(v,s){var u=q.document,t=$.fn[c].domain;if(v!==s){u.title=h.title;u.open();t&&u.write('<script>document.domain="'+t+'"<\/script>');u.close();q.location.hash=v}}})();return j})()})(jQuery,this);
 
-;(function ($, win) {
+;(function($, win) {
 	/* Local variable for hash makes lookups faster and is better for closure compiler */
 	var loc = win.location,
 		docEl = win.document.documentElement,
@@ -154,10 +154,10 @@
 				// Hide old and show new if both are present
 				if (current !== null && current !== i) {
 					$current = this.getImage(current);
-					// Hide others
-					this.$stage.children().not($current).hide();
+					// Hide others / Dequeue all animations before starting a new one.
+					this.$stage.children().not($current).stop().removeClass('init').hide();
 					// Dequeue all animations before starting a new one.
-					this.$stage.find('img').stop(true, true);
+					this.$stage.find('figure').stop(true, true);
 					this.transitionSlides(img, $current);
 				}
 				// If there is no current (first load) just show.
@@ -167,7 +167,7 @@
 				
 				this.$thumbs.removeClass(c);
 				$thumb.addClass(c);
-
+				
 				this.preloadNeighbors(i);
 				this.current = i;
 			};
@@ -185,15 +185,27 @@
 		},
 		
 		/* Allow transition to be overidden using Duck Punching */
-		transitionSlides: function ($neue, $old) {
+		transitionSlides: function($neue, $old) {
+			var that = this;
 			if ($old !== null && typeof $old !== 'undefined') {
-				$old.fadeOut('fast', function(){
-					$neue.fadeIn('medium');
+				$old.fadeOut('fast', function() {
+					that.showSlide($neue);
 				});
 			}
 			else {
-				$neue.fadeIn('medium');
+				that.showSlide($neue);
 			};
+			// show captions
+		},
+		
+		showSlide: function($neue) {
+			$neue.stop().addClass('init').fadeIn('medium', function() {
+				$(this).css({ opacity: 1 });
+				var func = $.proxy(function() {
+					$(this).removeClass('init');
+				}, this);
+				var timeout = setTimeout(func, 1600);
+			});
 		},
 		
 		/* Get ID token from hash string */
@@ -267,10 +279,9 @@
 			return this.$thumbs.eq(i).data('cfgalExpanded');
 		},
 		
-		getImageData: function ($thumb) {
-			var $img = $thumb.find('img'),
-				title = $img.attr('title'),
-				caption = $img.attr('alt');
+		getImageData: function($thumb) {
+			var title = $thumb.data('title'),
+				caption = $thumb.data('caption');
 
 			/* Favor title if they're the same */
 			if (title === caption) {
@@ -309,33 +320,31 @@
 					'display': 'none'
 				});
 				
-				t
-					.css({
-						'width': dims[0],
-						'height': dims[1],
-						// Add CSS for centering.
-						'margin-left': -1 * (dims[0] / 2),
-						'margin-top': -1 * (dims[1] / 2),
-						'visibility': 'visible'
-					})
-					.trigger('loaded.cfgal');
+				t.css({
+					'width': dims[0],
+					'height': dims[1],
+					// Add CSS for centering.
+					'margin-left': -1 * (dims[0] / 2),
+					'margin-top': -1 * (dims[1] / 2),
+					'visibility': 'visible'
+				})
+				.trigger('loaded.cfgal');
 			});
 			
-			$img
-				.css({
-					/* We have to do a bit of a dance with image hide/show and centering
-					Though the image is loaded through loadImage, making its width/height
-					info available in most browsers, IE7 doesn't like to give us the w/h
-					without the image being shown. We'll load and place it in the stage,
-					then after loading is finished, we'll set w/h for centering and switch
-					out visibility:hidden for display:none -- that way we can animate the
-					image effectively. */
-					'position': 'absolute',
-					'left': '50%',
-					'top': '50%',
-					'visibility': 'hidden'
-				})
-				.trigger('create.cfgal');
+			$img.css({
+				/* We have to do a bit of a dance with image hide/show and centering
+				Though the image is loaded through loadImage, making its width/height
+				info available in most browsers, IE7 doesn't like to give us the w/h
+				without the image being shown. We'll load and place it in the stage,
+				then after loading is finished, we'll set w/h for centering and switch
+				out visibility:hidden for display:none -- that way we can animate the
+				image effectively. */
+				'position': 'absolute',
+				'left': '50%',
+				'top': '50%',
+				'visibility': 'hidden'
+			})
+			.trigger('create.cfgal');
 			
 			$img.prependTo($figure);
 			$figure.appendTo($stage);
@@ -546,7 +555,8 @@
 	}
 	
 	$gal.cfgallery({
-		'stageDimensions': dims
+		'stageDimensions': dims,
+		'titleClass': 'h3'
 	});
 	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();
 });
