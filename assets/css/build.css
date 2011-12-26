@@ -1596,23 +1596,19 @@ but allow screen readers to see */
 
 /** @section Comment Tabs
  -------------------------------------------------- */
-
 #social .social-post-form {
 	margin-bottom: 30px;
 }
 #social .social-nav {
-	padding: 1px 0;
 	font-size: 13px;
-}
-#social .social-nav,
-#social .social-nav li {
-	list-style: none;
+	list-style-type: none;
 	margin: 0;
+	padding: 1px 0;
 }
 #social .social-nav li {
 	float: left;
 	height: 25px;
-	margin-right: 20px;
+	margin: 0 20px 0 0;
 	padding: 0;
 }
 #social .social-nav li a,
@@ -1621,30 +1617,23 @@ but allow screen readers to see */
 	height: 25px;
 	line-height: 26px;
 }
-#social .social-nav .social-all {
-	text-align: right;
-	width: 110px;
-}
-#social .social-nav .social-all a span {
-	line-height: 25px;
-}
-#social .social-nav li a span {
-	padding-left: 5px;
-}
 #social .social-nav li a {
 	background-image: url(../img/comment-icons-sprite.png);
 	background-repeat: no-repeat;
 	padding-left: 25px;
 }
+#social .social-nav li a span {
+	padding-left: 5px;
+}
 #social .social-nav .social-all {
 	font: normal 13px Titillium600, Helvetica, Arial, Verdana, sans-serif;
-	line-height: 30px;
-	text-transform: uppercase;
 	padding-left: 10px;
+	text-align: right;
+	text-transform: uppercase;
+	width: 110px;
 }
 #social .social-nav .social-all a {
 	background: none;
-	display: inline;
 	padding: 0;
 }
 #social .social-nav .social-wordpress a {
@@ -1662,7 +1651,6 @@ but allow screen readers to see */
 
 /** @section Comment List
  -------------------------------------------------- */
-
 #social .social-last-reply-when {
 	display: none;
 }
