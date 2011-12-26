@@ -124,7 +124,8 @@ a:active {
 }
 /* video */
 #featured-posts .featured-format-video {
-	background-color: <?php echo cf_kuler_color('medium', 'featured_format_video_background') ?>;
+	background-color: <?php echo cf_kuler_color('light', 'featured_format_video_background') ?>;
+	border-bottom-color: <?php echo cf_kuler_color('light', 'featured_posts_border_bottom_color') ?>;
 }
 
 /* rollover */
