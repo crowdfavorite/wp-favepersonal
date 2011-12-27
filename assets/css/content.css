@@ -393,7 +393,7 @@ html.ie7 #nav-main .menu > li {
 }
 .gallery-thumbs {
 	list-style-type: none;
-	margin: 3px 0 0 0;
+	margin: 3px -10px 0 0;
 	max-width: 720px;
 	padding: 0;
 }
