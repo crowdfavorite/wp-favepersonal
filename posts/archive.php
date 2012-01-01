@@ -34,7 +34,6 @@ cfct_loop();
 cfct_misc('nav-posts');
 
 ?>
-
 </div>
 
 <div id="secondary">

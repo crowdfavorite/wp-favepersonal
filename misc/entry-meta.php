@@ -26,8 +26,8 @@ do_action('favepersonal_content_sidebar_before');
 
 ?>
 	<p class="h5"><?php comments_popup_link(__('No Replies', 'favepersonal'), __('1 Reply', 'favepersonal'), __('% Replies', 'favepersonal')); ?></p>
-	<?php printf(__('<p><span class="h6 block">Categories:</span> %s</p>', 'favepersonal'), get_the_category_list(', ')) ?>
-	<?php the_tags(__('<p><span class="h6 block">Tags:</span> ', 'favepersonal'), ', ', '</p>'); ?>
+	<?php printf(__('<p><span class="h6 block">Categories</span> %s</p>', 'favepersonal'), get_the_category_list(', ')) ?>
+	<?php the_tags(__('<p><span class="h6 block">Tags</span> ', 'favepersonal'), ', ', '</p>'); ?>
 <?php
 
 do_action('favepersonal_content_sidebar_after');

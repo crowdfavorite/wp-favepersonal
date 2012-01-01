@@ -29,17 +29,13 @@ get_header();
 <?php 
 cfpt_page_title('<h1 class="page-title">', '</h1>');
 	
-$category_description = category_description();
-if ($category_description):
-
+if ($category_description = category_description()) {
 ?>
 		<div class="heading-description">
 			<?php echo $category_description; ?>
 		</div>
 <?php
-
-endif;
-
+}
 ?>
 	</div>
 <?php
@@ -48,7 +44,6 @@ cfct_loop();
 cfct_misc('nav-posts');
 
 ?>
-
 </div>
 
 <div id="secondary">

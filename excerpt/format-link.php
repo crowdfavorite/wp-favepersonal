@@ -46,7 +46,7 @@ if ( has_post_thumbnail() ) {
 		<p><a href="<?php echo $url; ?>" class="link-screenshot"><?php the_post_thumbnail('thumb-img'); ?></a></p>
 <?php 
 }
-		the_excerpt();
+the_excerpt();
 ?>
 	</div>
 	<?php cfct_misc('entry-meta-excerpts'); ?>
