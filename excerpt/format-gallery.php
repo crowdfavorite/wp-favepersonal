@@ -25,14 +25,14 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<h1 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h1>
 		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
 	</div>
-	<?php
-	cfcp_gallery_excerpt(array(
-		'size' => 'thumb-img',
-		'before' => '<div class="entry-media clearfix">',
-		'after' => '</div>'
-	)); ?>
 	<div class="entry-content">
 		<?php
+			cfcp_gallery_excerpt(array(
+				'size' => 'thumb-img',
+				'before' => '<div class="entry-media clearfix">',
+				'after' => '</div>'
+			));
+			
 			the_excerpt();
 		?>
 	</div>
