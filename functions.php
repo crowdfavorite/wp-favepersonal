@@ -411,6 +411,10 @@ if (!function_exists('cf_trim_text')) {
 				}
 			}
 		}
+		// trim trailing dot if we are appending dots
+		if (substr($text, -1) == '.' && (substr($after, 0, 8) == '&hellip;' || substr($after, 0, 1) == '.')) {
+			$text = substr($text, 0, strlen($text) - 1);
+		}
 		return $before.$text.$after;
 	}
 } // end exists check
