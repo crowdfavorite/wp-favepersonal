@@ -663,6 +663,11 @@ html.ie7 #nav-main .menu > li {
 .entry-meta a {
 	color: #999;
 }
+/* line spacing for formats without titles */
+.format-quote.excerpt .entry-meta-replies,
+.format-status.excerpt .entry-meta-replies {
+	margin-top: 4px;
+}
 
 
 /** Status and Quote Post Format
