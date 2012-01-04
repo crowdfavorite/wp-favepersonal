@@ -40,6 +40,7 @@ iPad (portrait)				768
 		/* Hide until activated */
 		display: none;
 		left: -3px;
+		margin-top: 36px;
 		padding: 4px 0;
 		position: absolute;
 		right: -3px;
@@ -60,6 +61,7 @@ iPad (portrait)				768
 	/* Reset dropdowns */
 	#nav-main .menu > li {
 		height: auto;
+		text-align: left;
 	}
 	#nav-main .sub-menu {
 		border: 0;
@@ -105,8 +107,10 @@ iPad (portrait)				768
 	}
 
 	/* entry-media - images, gallery, video */
-	.entry-media {
+	.entry-media,
+	.single .entry-media {
 		padding-left: 0;
+		padding-right: 0;
 	}
 
 	/* entry content */
@@ -128,6 +132,7 @@ iPad (portrait)				768
 	}
 	.entry-meta span {
 		display: inline;
+		right: 0;
 	}
 
 	/** Status and Quote Post Format
@@ -230,6 +235,17 @@ iPad (portrait)				768
 	#social #social-items-wrapper .social-items-icon {
 		width: 13px;
 		margin-right: 7px;
+	}
+ 	/* media-big-screen.css overrides */
+ 	.single-format-image #social,
+ 	.single-format-gallery #social,
+ 	.single-format-video #social {
+ 		width: auto;
+ 	}
+	
+	/* Sidebar */
+	#secondary {
+		margin-top: 60px;
 	}
 	
 	/* Footer */

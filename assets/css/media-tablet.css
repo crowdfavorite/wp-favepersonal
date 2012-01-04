@@ -44,6 +44,11 @@ iPad (portrait)				768
 		width: 568px;
 	}
 	
+	/* media-big-screen.css overrides */
+	.single .entry-media {
+		padding-right: 0px;
+	}
+	
 	/* gallery posts */
 	.post .gallery-img-excerpt li {
 		margin: 0 0 12px;
@@ -79,6 +84,9 @@ iPad (portrait)				768
 	
 	
 	/* Sidebars */
+	#secondary {
+		margin-top: 60px;
+	}
 	.sidebar {
 		float: left;
 		margin-left: 15px;
@@ -98,4 +106,12 @@ iPad (portrait)				768
 	.page-full .alignright.pull {
 		margin-right: -140px;
 	}
+
+ 	/* social */
+ 	.single-format-image #social,
+ 	.single-format-gallery #social,
+ 	.single-format-video #social {
+ 		width: auto;
+ 	}
+	
 }

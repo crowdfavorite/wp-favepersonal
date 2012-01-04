@@ -154,7 +154,7 @@ html.ie7 #nav-main .menu > li {
 }
 .entry-header .entry-date {
 	position: absolute;	
-	top: 8px;
+	bottom: 0;
 	left: 0;
 }
 .entry-date a,
