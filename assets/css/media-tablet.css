@@ -43,6 +43,12 @@ iPad (portrait)				768
 	.entry-content {
 		width: 568px;
 	}
+	.single .format-image .entry-content,
+	.single .format-gallery .entry-content,
+	.single .format-video .entry-content {
+		width: 568px;
+		margin-right: 0;
+	}	
 	
 	/* media-big-screen.css overrides */
 	.single .entry-media {
