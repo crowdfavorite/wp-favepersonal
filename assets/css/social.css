@@ -242,10 +242,12 @@ but allow screen readers to see */
 	margin-bottom: 30px;
 }
 #social .social-nav {
+	float: left;
 	font-size: 13px;
 	list-style-type: none;
 	margin: 0;
 	padding: 1px 0;
+	width: 100%;
 }
 #social .social-nav li {
 	float: left;
@@ -503,10 +505,7 @@ but allow screen readers to see */
  */
 #social-items-wrapper {
 	float: left;
-}
-
-#social-items-wrapper {
-	padding: 20px 0 15px 0;
+	margin: 10px 0;
 	width: auto;
 }
 #social #social-items-wrapper .social-items-icon {
@@ -515,7 +514,9 @@ but allow screen readers to see */
 	background-position: top right;
 }
 #social .social-items {
-	clear: both;
+	float: left;
+	margin: 5px 0;
+	width: 100%;
 }
 
 #social .social-items-icon {
@@ -580,18 +581,4 @@ but allow screen readers to see */
 #social .social-items-comments .social-items-and-more {
 	font-size: 11px;
 	margin-top: 4px;
-}
-
-/* social clearfix */
-.cf-clearfix {
-	display: block;
-	zoom: 1;
-}
-.cf-clearfix:after {
-	content: " ";
-	display: block;
-	font-size: 0;
-	height: 0;
-	clear: both;
-	visibility: hidden;
 }
