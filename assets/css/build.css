@@ -592,7 +592,7 @@ html.ie7 #nav-main .menu > li {
 }
 .entry-header .entry-date {
 	position: absolute;	
-	top: 8px;
+	bottom: 0;
 	left: 0;
 }
 .entry-date a,
@@ -612,6 +612,9 @@ html.ie7 #nav-main .menu > li {
 .entry-media {
 	margin-top: 18px;
 	padding-left: 140px;
+}
+.excerpt .entry-media {
+	padding-left: 0;
 }
 .format-image .entry-media,
 .format-gallery .entry-media,
@@ -647,6 +650,9 @@ html.ie7 #nav-main .menu > li {
 .single .format-video .entry-content {
 	width: 710px;
 	margin-right: 140px;
+}
+.entry-content li {
+	margin: 3px 0;
 }
 
 /* entry meta */
@@ -806,14 +812,14 @@ html.ie7 #nav-main .menu > li {
 }
 .gallery-stage figcaption {
 	background-color: rgba(0, 0, 0, .6);
-	bottom: -100px;
+	bottom: -150px;
 	color: #fff;
 	font-size: 13px;
 	line-height: 18px;
 	margin: 0;
-	padding: 10px;
+	padding: 1.5%;
 	position: absolute;
-	width: 100%;
+	width: 97%;
 	z-index: 5;
 	-moz-transition: all .5s ease-in-out;
 	-webkit-transition: all .5s ease-in-out;
@@ -1605,10 +1611,12 @@ but allow screen readers to see */
 	margin-bottom: 30px;
 }
 #social .social-nav {
+	float: left;
 	font-size: 13px;
 	list-style-type: none;
 	margin: 0;
 	padding: 1px 0;
+	width: 100%;
 }
 #social .social-nav li {
 	float: left;
@@ -1866,10 +1874,7 @@ but allow screen readers to see */
  */
 #social-items-wrapper {
 	float: left;
-}
-
-#social-items-wrapper {
-	padding: 20px 0 15px 0;
+	margin: 10px 0;
 	width: auto;
 }
 #social #social-items-wrapper .social-items-icon {
@@ -1878,7 +1883,9 @@ but allow screen readers to see */
 	background-position: top right;
 }
 #social .social-items {
-	clear: both;
+	float: left;
+	margin: 5px 0;
+	width: 100%;
 }
 
 #social .social-items-icon {
@@ -1943,20 +1950,6 @@ but allow screen readers to see */
 #social .social-items-comments .social-items-and-more {
 	font-size: 11px;
 	margin-top: 4px;
-}
-
-/* social clearfix */
-.cf-clearfix {
-	display: block;
-	zoom: 1;
-}
-.cf-clearfix:after {
-	content: " ";
-	display: block;
-	font-size: 0;
-	height: 0;
-	clear: both;
-	visibility: hidden;
 }/* --------------------------------------------------
 Tablet styles.
 Dialed in for iPad in portrait mode, since in landscape mode large screen will suffice.
@@ -2002,6 +1995,17 @@ iPad (portrait)				768
 	.entry-content {
 		width: 568px;
 	}
+	.single .format-image .entry-content,
+	.single .format-gallery .entry-content,
+	.single .format-video .entry-content {
+		width: 568px;
+		margin-right: 0;
+	}	
+	
+	/* media-big-screen.css overrides */
+	.single .entry-media {
+		padding-right: 0px;
+	}
 	
 	/* gallery posts */
 	.post .gallery-img-excerpt li {
@@ -2038,7 +2042,11 @@ iPad (portrait)				768
 	
 	
 	/* Sidebars */
-	.sidebar {
+	#secondary {
+		margin-top: 60px;
+	}
+	.sidebar,
+	#secondary-full .sidebar {
 		float: left;
 		margin-left: 15px;
 		width: 226px;
@@ -2046,7 +2054,8 @@ iPad (portrait)				768
 	.widget .bio-box-gallery {
 		height: auto;
 	}
-	#sidebar-1 {
+	#sidebar-1,
+	#secondary-full #sidebar-1 {
 		margin-left: 0;
 	}
 		
@@ -2057,6 +2066,14 @@ iPad (portrait)				768
 	.page-full .alignright.pull {
 		margin-right: -140px;
 	}
+
+ 	/* social */
+ 	.single-format-image #social,
+ 	.single-format-gallery #social,
+ 	.single-format-video #social {
+ 		width: auto;
+ 	}
+	
 }/* --------------------------------------------------
 Mobile styles
 This file should be included in the built CSS output when in production mode.
@@ -2099,6 +2116,7 @@ iPad (portrait)				768
 		/* Hide until activated */
 		display: none;
 		left: -3px;
+		margin-top: 36px;
 		padding: 4px 0;
 		position: absolute;
 		right: -3px;
@@ -2119,6 +2137,7 @@ iPad (portrait)				768
 	/* Reset dropdowns */
 	#nav-main .menu > li {
 		height: auto;
+		text-align: left;
 	}
 	#nav-main .sub-menu {
 		border: 0;
@@ -2164,8 +2183,10 @@ iPad (portrait)				768
 	}
 
 	/* entry-media - images, gallery, video */
-	.entry-media {
+	.entry-media,
+	.single .entry-media {
 		padding-left: 0;
+		padding-right: 0;
 	}
 
 	/* entry content */
@@ -2187,6 +2208,7 @@ iPad (portrait)				768
 	}
 	.entry-meta span {
 		display: inline;
+		right: 0;
 	}
 
 	/** Status and Quote Post Format
@@ -2289,6 +2311,17 @@ iPad (portrait)				768
 	#social #social-items-wrapper .social-items-icon {
 		width: 13px;
 		margin-right: 7px;
+	}
+ 	/* media-big-screen.css overrides */
+ 	.single-format-image #social,
+ 	.single-format-gallery #social,
+ 	.single-format-video #social {
+ 		width: auto;
+ 	}
+	
+	/* Sidebar */
+	#secondary {
+		margin-top: 60px;
 	}
 	
 	/* Footer */
@@ -2432,4 +2465,10 @@ iPad (portrait)				768
 		margin: 0 auto 30px;
 		max-width: 310px;
 	}
+	#secondary-full .sidebar {
+		float: left;
+		margin-left: 0px;
+		width: 100%;
+	}
+	
 }
