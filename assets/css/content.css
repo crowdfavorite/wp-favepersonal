@@ -374,14 +374,14 @@ html.ie7 #nav-main .menu > li {
 }
 .gallery-stage figcaption {
 	background-color: rgba(0, 0, 0, .6);
-	bottom: -100px;
+	bottom: -150px;
 	color: #fff;
 	font-size: 13px;
 	line-height: 18px;
 	margin: 0;
-	padding: 10px;
+	padding: 1.5%;
 	position: absolute;
-	width: 100%;
+	width: 97%;
 	z-index: 5;
 	-moz-transition: all .5s ease-in-out;
 	-webkit-transition: all .5s ease-in-out;
