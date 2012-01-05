@@ -175,6 +175,9 @@ html.ie7 #nav-main .menu > li {
 	margin-top: 18px;
 	padding-left: 140px;
 }
+.excerpt .entry-media {
+	padding-left: 0;
+}
 .format-image .entry-media,
 .format-gallery .entry-media,
 .format-video .entry-media {
@@ -209,6 +212,9 @@ html.ie7 #nav-main .menu > li {
 .single .format-video .entry-content {
 	width: 710px;
 	margin-right: 140px;
+}
+.entry-content li {
+	margin: 3px 0;
 }
 
 /* entry meta */
