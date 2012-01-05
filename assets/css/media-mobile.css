@@ -389,4 +389,10 @@ iPad (portrait)				768
 		margin: 0 auto 30px;
 		max-width: 310px;
 	}
+	#secondary-full .sidebar {
+		float: left;
+		margin-left: 0px;
+		width: 100%;
+	}
+	
 }

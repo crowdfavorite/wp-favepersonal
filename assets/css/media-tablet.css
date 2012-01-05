@@ -93,7 +93,8 @@ iPad (portrait)				768
 	#secondary {
 		margin-top: 60px;
 	}
-	.sidebar {
+	.sidebar,
+	#secondary-full .sidebar {
 		float: left;
 		margin-left: 15px;
 		width: 226px;
@@ -101,7 +102,8 @@ iPad (portrait)				768
 	.widget .bio-box-gallery {
 		height: auto;
 	}
-	#sidebar-1 {
+	#sidebar-1,
+	#secondary-full #sidebar-1 {
 		margin-left: 0;
 	}
 		
