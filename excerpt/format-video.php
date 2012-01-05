@@ -32,16 +32,14 @@ add_filter('cfcp_format_video_embed', array(&$wp_embed, 'autoembed'));
 	</div>
 	<div class="entry-content">
 		<div class="entry-media">
-		<?php
-		echo apply_filters(
-			'cfcp_format_video_embed', 
-			get_post_meta(get_the_ID(), '_format_video_embed', true)
-		);
-		?>
+<?php
+echo apply_filters(
+	'cfcp_format_video_embed', 
+	get_post_meta(get_the_ID(), '_format_video_embed', true)
+);
+?>
 		</div>
-		<?php
-			the_excerpt();
-		?>
+		<?php the_excerpt(); ?>
 	</div>
 	<?php cfct_misc('entry-meta-excerpts'); ?>
 </article>

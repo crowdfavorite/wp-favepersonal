@@ -27,14 +27,16 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
 	</div>	
 	<div class="entry-content">
-		<?php if ( has_post_thumbnail() ) { ?>
-			<div class="entry-media">
-				<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('banner-img'); ?></a>
-			</div>
-		<?php } ?>	
-		<?php
-			the_excerpt();
-		?>
+<?php 
+if ( has_post_thumbnail() ) { 
+?>
+		<div class="entry-media">
+			<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('banner-img'); ?></a>
+		</div>
+<?php 
+} 
+the_excerpt();
+?>
 	</div>
 	<?php cfct_misc('entry-meta-excerpts'); ?>
 </article>
