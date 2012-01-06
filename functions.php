@@ -208,38 +208,51 @@ add_filter('the_permalink_rss', 'cfcp_the_permalink_rss');
 
 // Convert color to RGB so we can use background opacity
 // source - http://css-tricks.com/snippets/php/convert-hex-to-rgb/
-function hex2rgb( $color ) {
-	if ( $color[0] == '#' ) {
-			$color = substr( $color, 1 );
+function hex2rgb($color) {
+	if ($color[0] == '#') {
+			$color = substr($color, 1);
 	}
-	if ( strlen( $color ) == 6 ) {
-		list( $r, $g, $b ) = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-	} elseif ( strlen( $color ) == 3 ) {
-		list( $r, $g, $b ) = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
-	} else {
+	if (strlen($color) == 6) {
+		list($r, $g, $b) = array($color[0].$color[1], $color[2].$color[3], $color[4].$color[5]);
+	}
+	else if (strlen($color) == 3) {
+		list($r, $g, $b) = array($color[0].$color[0], $color[1].$color[1], $color[2].$color[2]);
+	}
+	else {
 		return false;
 	}
-	$r = hexdec( $r );
-	$g = hexdec( $g );
-	$b = hexdec( $b );
-	return array( $r, $g, $b );
+	$r = hexdec($r);
+	$g = hexdec($g);
+	$b = hexdec($b);
+	return array($r, $g, $b);
 }
 function echo_hex($color2hex) {
 	$color_array = hex2rgb($color2hex);
-	for ($i=0; $i < 3; $i++) {
+	for ($i = 0; $i < 3; $i++) {
 		if ($i == 2) {
 			echo $color_array[$i];
-		} else {
+		}
+		else {
 			echo $color_array[$i].',';
 		}
 	}
 }
 
 // Replaces "[...]" with something more pretty
-function cfcp_excerpt_more( $more ) {
+function cfcp_excerpt_more($more) {
 	return '&hellip;';
 }
 add_filter( 'excerpt_more', 'cfcp_excerpt_more' );
+
+// make status posts clickable if they include URLs
+function cfcp_make_clickable($content) {
+	global $post;
+	if (has_post_format('status', $post)) {
+		$content = make_clickable($content);
+	}
+	return $content;
+}
+add_filter('the_content', 'cfcp_make_clickable');
 
 // Common Relative date formatting. Uses plugins/cf-compat/
 function cfcp_date() {
