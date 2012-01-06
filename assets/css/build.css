@@ -793,10 +793,6 @@ html.ie7 #nav-main .menu > li {
 	text-align: center;
 	width: 100%;
 }
-/* fix for space between gallery excerpt and excerpt/meta */
-.format-gallery.excerpt p {
-	margin-top: 0;
-}
 .format-gallery.excerpt .entry-media {
 	padding-bottom: 3px;
 }
@@ -1950,7 +1946,21 @@ but allow screen readers to see */
 #social .social-items-comments .social-items-and-more {
 	font-size: 11px;
 	margin-top: 4px;
-}/* --------------------------------------------------
+}
+
+/* social clearfix */
+.cf-clearfix {
+	display: block;
+	zoom: 1;
+}
+.cf-clearfix:after {
+	content: " ";
+	display: block;
+	font-size: 0;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+ }/* --------------------------------------------------
 Tablet styles.
 Dialed in for iPad in portrait mode, since in landscape mode large screen will suffice.
 
