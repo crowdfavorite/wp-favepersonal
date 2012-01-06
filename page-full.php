@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Template Name: Full Page (no sidebar)
- * Description: A full page without a sidebar.
+ * Template Name: Full Width Page
+ * Description: A full width page with the sidebars below the content.
  *
  * @package favepersonal
  *
