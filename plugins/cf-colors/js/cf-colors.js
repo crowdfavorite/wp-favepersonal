@@ -178,7 +178,10 @@ jQuery(function($) {
 					'axis': 'x',
 					'cursor': 'crosshair',
 					'forcePlaceholderSize': true,
-					'placeholder': 'cf-kuler-theme-swatch-placeholder'
+					'placeholder': 'cf-kuler-theme-swatch-placeholder',
+					'start': function() {
+						CF.kuler.picker.hide();
+					}
 				});
 			}
 		};
