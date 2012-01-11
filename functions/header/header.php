@@ -85,9 +85,9 @@ function cfcp_header_options($key = null, $val = null) {
 function cfcp_header_unfeature_post($post_id) {
 	$posts = cfcp_header_options('posts');
 	if (in_array($post_id, $posts)) {
-		foreach ($posts as $k => &$v) {
+		foreach ($posts as $k => $v) {
 			if ($v == $post_id) {
-				$v = null;
+				$posts[$k] = null;
 			}
 		}
 		cfcp_header_options('posts', $posts);
@@ -95,7 +95,7 @@ function cfcp_header_unfeature_post($post_id) {
 }
 
 function cfcp_header_featured_save_post($post_id, $post) {
-	if (!defined('XMLRPC_REQUEST') && isset($_POST['_cfcp_header_slot'])) {
+	if (!defined('XMLRPC_REQUEST') && isset($_POST['_cfcp_header_slot']) && $post->post_type != 'revision') {
 		$val = intval($_POST['_cfcp_header_slot']);
 		if ($val == 0) {
 			cfcp_header_featured_clear_post($post_id);
@@ -116,8 +116,10 @@ add_action('save_post', 'cfcp_header_featured_save_post', 10, 2);
 
 function cfcp_header_featured_publish_post($post_id) {
 	if ($slot = get_post_meta($post_id, '_cfcp_header_slot', true)) {
-		$posts = cfcp_header_options('posts');
+// remove post from any other slots
+		cfcp_header_unfeature_post($post_id);
 // find previous post in slot
+		$posts = cfcp_header_options('posts');
 		$prev_id = (!empty($posts['_'.$slot]) ? $posts['_'.$slot] : false);
 		if ($prev_id != $post_id) {
 			if ($prev_id) {
