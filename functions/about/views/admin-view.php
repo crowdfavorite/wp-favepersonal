@@ -1,12 +1,16 @@
 <div class="wrap cf cf-about-wrap cf-clearfix">
 	<?php screen_icon(); ?>
-	<h2><?php _e('About Me, Myself and I', 'favepersonal'); ?></h2>
+	<h2><?php _e('Bio Widget Settings', 'favepersonal'); ?></h2>
 	
 <?php 
 if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
 	echo '<div class="updated below-h2 fade cf-updated-message-fade" id="message"><p>'.__('Settings updated.', 'favepersonal').'</p></div>';
 }
 ?>
+
+	<p>
+		Use this settings screen to set your photos, title, bio text and links for the Bio Widget before adding it to a sidebar.
+	</p>
 	
 	<div id="cfp-about-settings">
 		<form id="cfcp-about-settings" name="cfcp-about-settings" action="<?php echo admin_url('options.php'); ?>" method="post">
