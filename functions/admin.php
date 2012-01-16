@@ -53,7 +53,7 @@ function cfcp_options($options) {
 					'label' => __('Enable Social Plugin', 'favepersonal'),
 					'name' => 'social_enabled',
 					'options' => $yn_options,
-					'help' => '<span class="cfct-help">'.__('(Twitter/Facebook login for comments, etc.)', 'favepersonal').'</span>',
+					'help' => '<span class="cfct-help">'.__('(Social is a plugin that allows broadcasting new post notifications to social networks and also authenticating to them for post commenting. <a href="http://crowdfavorite.com/wordpress/plugins/social/">Learn more...</a>)', 'favepersonal').'</span>',
 				),
 			),
 		),
