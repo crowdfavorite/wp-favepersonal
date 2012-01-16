@@ -190,8 +190,8 @@ function cfcp_header_custom_menu_text() {
 	remove_submenu_page('themes.php', 'custom-header');
 	global $custom_image_header;
 	add_theme_page(
-		__('Custom Header', 'favepersonal'),
-		__('Custom Header', 'favepersonal'),
+		__('Header Image', 'favepersonal'),
+		__('Header Image', 'favepersonal'),
 		'edit_theme_options',
 		'custom-header',
 		array(&$custom_image_header, 'admin_page')
