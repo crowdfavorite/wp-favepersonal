@@ -216,6 +216,13 @@ html.ie7 #nav-main .menu > li {
 .entry-content li {
 	margin: 3px 0;
 }
+/* to account for media post that don't have an excerpt */
+.excerpt .entry-content p {
+	margin-bottom: 0;
+}
+.excerpt .entry-content {
+	margin-bottom: 1em;
+}
 
 /* entry meta */
 .entry-meta {
@@ -354,10 +361,6 @@ html.ie7 #nav-main .menu > li {
 	line-height: 120px;
 	text-align: center;
 	width: 100%;
-}
-/* fix for space between gallery excerpt and excerpt/meta */
-.format-gallery.excerpt p {
-	margin-top: 0;
 }
 .format-gallery.excerpt .entry-media {
 	padding-bottom: 3px;
