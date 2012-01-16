@@ -13,7 +13,7 @@ class CFCP_About_Widget extends WP_Widget {
      * @return void
      **/
 	function CFCP_About_Widget() {
-		$widget_ops = array( 'classname' => 'bio-box', 'description' => __('About this site.', 'favepersonal') );
+		$widget_ops = array( 'classname' => 'bio-box', 'description' => __('Shows photos, bio text, and links. Populated under Bio Widget appearance menu.', 'favepersonal') );
 		$this->WP_Widget( 'cfcp-about', __('Bio', 'favepersonal'), $widget_ops );
 	}
 
