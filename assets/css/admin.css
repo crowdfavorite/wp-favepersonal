@@ -582,6 +582,10 @@ button.cf-btn-delete {
 	vertical-align: middle;
 }
 
+.cfp-about-link-item a {
+	cursor: move;
+}
+
 /** @section Utilities
  -------------------------------------------------- */
 /* Popup Actions */
