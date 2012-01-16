@@ -151,7 +151,7 @@ function cfcp_header_options_fields($html) {
 							<input type="radio" name="cfcp_header_options[type]" id="cfcp-header-type-featured" value="featured" <?php checked('featured', $type); ?>> <?php _e('Featured Posts', 'favepersonal'); ?>
 							<img src="<?php echo get_template_directory_uri(); ?>/functions/header/img/header-option-posts.png" alt="<?php _e('Featured Posts', 'favepersonal'); ?>" height="56" width="250" />
 						</label>
-						<p><?php _e('Defaults to 3 most recent post. Select featured post position from the post edit screen.', 'favepersonal'); ?></p>
+						<p><?php _e('Defaults to 3 most recent Posts. Set a featured post and position from an Edit Post screen.', 'favepersonal'); ?></p>
 					</li>
 					<li id="cfp-header-image">
 						<label for="cfcp-header-type-image">
