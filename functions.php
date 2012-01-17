@@ -43,7 +43,7 @@ define('CFCT_THEME_VERSION', '1.0');
  * Theme URL version.
  * Added to query var at the end of assets to force browser cache to reload after upgrade.
  */
-define('CFCT_URL_VERSION', '0.3');
+define('CFCT_URL_VERSION', '0.5');
 
 /**
  * Define Header Text Color, even though it isn't used in the theme, need to define to prevent Notices
