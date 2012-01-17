@@ -119,10 +119,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 			)
 		);
 		
-		register_nav_menus(array(
-			'main' => __( 'Main Navigation', 'favepersonal' ),
-			'footer' => __( 'Footer Navigation', 'favepersonal' )
-		));
+		register_nav_menu( 'main', __( 'Main Navigation', 'favepersonal'));
 		
 		// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
 		define( 'HEADER_IMAGE', '%s/functions/header/img/default.png' );
