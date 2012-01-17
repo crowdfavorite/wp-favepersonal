@@ -8,7 +8,7 @@ if (!empty($_GET['settings-updated']) && $_GET['settings-updated'] == true) {
 }
 ?>
 
-	<p>Use this settings screen to set your photos, title, bio text and links for the Bio Widget before adding it to a sidebar.</p>
+	<p><?php __('Use this settings screen to set your photos, title, bio text and links for the Bio Widget before adding it to a sidebar.', 'favepersonal')?></p>
 	
 	<div id="cfp-about-settings">
 		<form id="cfp-about-settings" name="cfp-about-settings" action="<?php echo admin_url('options.php'); ?>" method="post">
