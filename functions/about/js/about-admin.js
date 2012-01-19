@@ -145,7 +145,7 @@ jQuery(function($) {
 		});
 
 		// attach actions to icons for delete actions
-		$('.cfcp-about-link-item').popover({
+		$('.cfp-about-link-item').popover({
 			my: 'left top',
 			at: 'center bottom',
 			offset: '-27px 0',
