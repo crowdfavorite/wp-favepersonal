@@ -30,7 +30,6 @@ add_filter('cfcp_format_status_meta', 'my_status_meta');
 
 */
 $meta_items = apply_filters('cfcp_format_status_meta', array());
-$meta_items = apply_filters('cfcp_format_status_meta_excerpt', $meta_items);
 
 ?>
 <article id="post-content-<?php the_ID() ?>" <?php post_class('clearfix'); ?>>

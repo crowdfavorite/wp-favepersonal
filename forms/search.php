@@ -30,7 +30,7 @@ else {
 ?>
 
 <form class="searchform" method="get" action="<?php echo esc_url(home_url('/')); ?>" onsubmit="<?php echo $onsubmit; ?>">
-	<label for="s">Search&hellip;</label>
+	<label for="s"><?php _e('Search&hellip;', 'favepersonal'); ?></label>
 	<input type="text" id="s" name="s" value="" size="15" />
 	<input type="submit" id="searchsubmit" value="<?php _e('Search', 'favepersonal'); ?>">
 </form>
