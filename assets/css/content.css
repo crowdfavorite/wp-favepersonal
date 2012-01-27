@@ -305,6 +305,9 @@ html.ie7 #nav-main .menu > li {
 	float: left;
 	margin: 3px 15px 0 0;
 }
+.single .link-screenshot {
+	margin-top: 18px;
+}
 .link-screenshot img {
 	display: block;
 	border-bottom: 1px solid #fff;
