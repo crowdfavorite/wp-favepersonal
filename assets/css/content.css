@@ -123,8 +123,7 @@ html.ie7 #nav-main .menu > li {
 
 /** Posts Default
  -------------------------------------------------- */
-#content .post,
-#content .page {
+article {
 	margin-bottom: 30px;
 	overflow: hidden;
 }

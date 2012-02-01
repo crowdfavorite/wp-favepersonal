@@ -561,8 +561,7 @@ html.ie7 #nav-main .menu > li {
 
 /** Posts Default
  -------------------------------------------------- */
-#content .post,
-#content .page {
+article {
 	margin-bottom: 30px;
 	overflow: hidden;
 }
@@ -654,6 +653,13 @@ html.ie7 #nav-main .menu > li {
 .entry-content li {
 	margin: 3px 0;
 }
+/* to account for media post that don't have an excerpt */
+.excerpt .entry-content p {
+	margin-bottom: 0;
+}
+.excerpt .entry-content {
+	margin-bottom: 1em;
+}
 
 /* entry meta */
 .entry-meta {
@@ -735,6 +741,9 @@ html.ie7 #nav-main .menu > li {
 	border-bottom: 2px solid #fff;
 	float: left;
 	margin: 3px 15px 0 0;
+}
+.single .link-screenshot {
+	margin-top: 18px;
 }
 .link-screenshot img {
 	display: block;
