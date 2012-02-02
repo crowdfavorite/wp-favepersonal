@@ -188,13 +188,13 @@ function cf_kuler_get_settings() {
 function cf_kuler_api_get($listType = 'rating', $startIndex = 0, $itemsPerPage = 20) {
 	$url = 'http://kuler-api.adobe.com/rss/get.cfm';
 	$params = compact('listType', 'startIndex', 'itemsPerPage');
-	return cf_kuler_api_request($url.'?'.http_build_query($params));
+	return cf_kuler_api_request($url.'?'.http_build_query($params, null, '&'));
 }
 
 function cf_kuler_api_search($searchQuery, $startIndex = 0, $itemsPerPage = 20) {
 	$url = 'http://kuler-api.adobe.com/rss/search.cfm';
 	$params = compact('searchQuery', 'startIndex', 'itemsPerPage');
-	return cf_kuler_api_request($url.'?'.http_build_query($params));
+	return cf_kuler_api_request($url.'?'.http_build_query($params, null, '&'));
 }
 
 function cf_kuler_api_request($url) {
