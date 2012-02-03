@@ -4,3 +4,6 @@
 [submodule "plugins/social"]
 	path = plugins/social
 	url = git@github.com:crowdfavorite/wp-social.git
+[submodule "plugins/cf-archive-title"]
+	path = plugins/cf-archive-title
+	url = git@github.com:crowdfavorite/wp-archive-title.git
