@@ -1,3 +1,6 @@
 [submodule "carrington-core"]
 	path = carrington-core
 	url = git@github.com:crowdfavorite/wp-carrington-core.git
+[submodule "plugins/social"]
+	path = plugins/social
+	url = git@github.com:crowdfavorite/wp-social.git
