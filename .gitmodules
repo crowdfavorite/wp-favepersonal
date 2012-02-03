@@ -16,3 +16,6 @@
 [submodule "assets/js/cfgallery"]
 	path = assets/js/cfgallery
 	url = git@github.com:crowdfavorite/jquery-gallery.git
+[submodule "assets/js/cf-popover"]
+	path = assets/js/cf-popover
+	url = git@github.com:crowdfavorite/jquery-popover.git
