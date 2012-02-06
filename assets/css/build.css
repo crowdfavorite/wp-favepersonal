@@ -1416,6 +1416,9 @@ article {
 .social-commentlist #respond {
 	border-bottom: 1px solid #ddd;
 }
+#commentform-extras {
+	padding-left: 140px;
+}
 
 /* Comment bar */
 #social #reply-title,
@@ -2337,6 +2340,9 @@ iPad (portrait)				768
  	.single-format-video #social {
  		width: auto;
  	}
+	#comment-form #commentform-extras {
+		padding-left: 0;
+	}
 	
 	/* Sidebar */
 	#secondary {

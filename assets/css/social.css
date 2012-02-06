@@ -42,6 +42,9 @@
 .social-commentlist #respond {
 	border-bottom: 1px solid #ddd;
 }
+#commentform-extras {
+	padding-left: 140px;
+}
 
 /* Comment bar */
 #social #reply-title,

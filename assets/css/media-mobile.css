@@ -242,6 +242,9 @@ iPad (portrait)				768
  	.single-format-video #social {
  		width: auto;
  	}
+	#comment-form #commentform-extras {
+		padding-left: 0;
+	}
 	
 	/* Sidebar */
 	#secondary {
