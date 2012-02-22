@@ -19,11 +19,24 @@
  * **********************************************************************
  */
 
-
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-// NOTE: this file is here for compatibility reasons - active templates are in the pages/ dir 
-
-cfct_page('full');
+get_header();
 
 ?>
+
+<div class="page-full clearfix">
+
+<?php
+cfct_loop();
+comments_template();
+?>
+
+</div><!--.page-full-->
+
+<div id="secondary-full" class="clearfix">
+	<?php get_sidebar(); ?>
+</div>
+
+<?php get_footer(); ?>

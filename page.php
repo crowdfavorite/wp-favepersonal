@@ -18,9 +18,23 @@
 
 
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-// NOTE: this file is here for compatibility reasons - active templates are in the pages/ dir 
-
-cfct_page();
+get_header();
 
 ?>
+
+<div id="primary">
+
+<?php
+cfct_loop();
+comments_template();
+?>
+
+</div><!--#primary-->
+
+<div id="secondary">
+	<?php get_sidebar(); ?>
+</div><!--#secondary-->
+
+<?php get_footer(); ?>
