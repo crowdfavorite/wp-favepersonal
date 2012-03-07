@@ -45,7 +45,7 @@ function cfcp_about_admin_init() {
 			'cfcp-about-admin-js', 
 			'cfcp_about_settings', 
 			array(
-				'image_del_confirm' => __('Are you sure you want to delete this image?', 'favepersonal'),
+				'image_del_confirm' => __('Remove this image from the carousel?', 'favepersonal'),
 				'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'favepersonal'),
 				'add' => __('Add', 'favepersonal'),
 				'loading' => __('Loading...', 'favepersonal'),

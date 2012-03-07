@@ -454,6 +454,7 @@ button.cf-btn-delete {
 	float: left;
 	list-style-type: none;
 	margin: 0;
+	min-height: 60px;
 	padding: 5px 0 0 5px;
 }
 .cfp-list-img-left ul li {
@@ -462,10 +463,23 @@ button.cf-btn-delete {
 	margin: 0 5px 1px 0;
 	padding: 0;
 }
+.cfp-list-img-left ul li img {
+	min-width: 60px;
+}
 .cfp-list-img-left ul li p {
-	color: #666;
-	line-height: 16px;
-	margin: 0 3px 4px 3px;
+	color: #888;
+	margin: 0;
+	padding: 5px;
+}
+/* override min-height for links */
+#cfp-link-items {
+	min-height: 20px;
+}
+.cfp-about-link-item,
+.cfp-about-link-item img {
+	height: 20px;
+	min-width: 20px;
+	width: 20px;
 }
 /* positioning for .cfp-add-link */
 #cfp-about-settings .cf-elm-block {

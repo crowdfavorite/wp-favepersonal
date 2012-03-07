@@ -102,25 +102,26 @@ jQuery(function($) {
 			},
 			
 			handleEmptyLi: function() {
-				if ($list.find('li').size() > 1) {
+				if ($list.find('img').size() > 0) {
 					$list.find('li.no-image-item').hide();
 				}
 				else {
-					$list.find('li.no-image-item').show();					
+					$list.find('li.no-image-item').show();
 				}
 			},
 			
 			selectImg: function(imgLi) {
 				$(imgLi).attr('class', false).appendTo($list);
 				this.handleEmptyLi();
-				this.clearSearch();
 				this.refreshSortables();
+				$search.find('input#cfp-img-search-term').val('').focus();
 			},
 			
 			removeImage: function(del) {
 				$(del).closest('li')
 					.animate({'width': 0}, 500, function() {
 						$(this).remove();
+						CF.imgs.handleEmptyLi();
 					});
 			},
 			
@@ -153,10 +154,12 @@ jQuery(function($) {
 			popover: '#cfp-link-remove-popover'
 		}).bind('popover-show', function() {
 			$elem = $(this);
-			$remove.find('a').unbind().click(function(e) {
+			$remove.find('a').unbind('click').click(function(e) {
 				$elem.closest('li').fadeOut(function() {
 					$(this).remove();
+					CF.aboutLinks.handleEmptyLi();
 				}).end().data('popover').hide();
+				e.preventDefault();
 			});
 			var data = $.parseJSON($elem.closest('li').find('input[name="cfcp_about_settings[links][]"]').val());
 			$remove.find('p.title').text(data.title).end()
@@ -428,11 +431,11 @@ jQuery(function($) {
 			},
 			
 			handleEmptyLi: function() {
-				if ($list.find('li').size() > 1) {
+				if ($list.find('img').size() > 0) {
 					$list.find('.no-link-item').hide();
 				}
 				else {
-					$list.find('no-link-item').show();					
+					$list.find('.no-link-item').show();
 				}
 			},
 			
