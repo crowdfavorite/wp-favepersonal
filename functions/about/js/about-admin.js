@@ -123,7 +123,7 @@ jQuery(function($) {
 						$(this).remove();
 						CF.imgs.handleEmptyLi();
 					});
-			},
+			}
 			
 		};
 	}(jQuery);
