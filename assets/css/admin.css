@@ -460,10 +460,10 @@ button.cf-btn-delete {
 .cfp-list-img-left ul li {
 	cursor: move;
 	float: left;
-	margin: 0 5px 1px 0;
+	margin: 0 5px 0 0;
 	padding: 0;
 }
-.cfp-list-img-left ul li img {
+.cfp-list-img-left img {
 	min-width: 60px;
 }
 .cfp-list-img-left ul li p {
@@ -477,9 +477,8 @@ button.cf-btn-delete {
 }
 .cfp-about-link-item,
 .cfp-about-link-item img {
-	height: 20px;
-	min-width: 20px;
-	width: 20px;
+	min-height: 16px;
+	min-width: 16px;
 }
 /* positioning for .cfp-add-link */
 #cfp-about-settings .cf-elm-block {
