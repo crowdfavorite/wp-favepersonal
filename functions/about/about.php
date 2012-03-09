@@ -337,7 +337,7 @@ function cfcp_about_get_settings() {
 function cfcp_about_favicon_url($favicon = 'default') {
 	// in the future the $favicon will come in as just a filename
 	if ($favicon == 'default') {
-		$favicon_url = trailingslashit(get_template_directory_uri()).'img/default-favicon.png';
+		$favicon_url = trailingslashit(get_template_directory_uri()).'assets/img/default-favicon.png';
 	}
 	else {
 		$favicon_url = CFCP_FAVICON_URL.'/'.$favicon;
