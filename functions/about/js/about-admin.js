@@ -62,7 +62,7 @@ jQuery(function($) {
 			helper: 'clone',
 			placeholder: 'cfp-about-img-placeholder'
 		});
-		
+				
 		return {
 			isVisible: function () {
 				return $search.is(':visible');
@@ -145,28 +145,6 @@ jQuery(function($) {
 			CF.aboutLinks.showInputs();
 		});
 
-		// attach actions to icons for delete actions
-		$('.cfp-about-link-item').popover({
-			my: 'left top',
-			at: 'center bottom',
-			offset: '-27px 0',
-			collision: 'none none',
-			popover: '#cfp-link-remove-popover'
-		}).bind('popover-show', function() {
-			$elem = $(this);
-			$remove.find('a').unbind('click').click(function(e) {
-				$elem.closest('li').fadeOut(function() {
-					$(this).remove();
-					CF.aboutLinks.handleEmptyLi();
-				}).end().data('popover').hide();
-				e.preventDefault();
-			});
-			var data = $.parseJSON($elem.closest('li').find('input[name="cfcp_about_settings[links][]"]').val());
-			$remove.find('p.title').text(data.title).end()
-				.find('p.url').text(data.url).end()
-				.show();
-		});
-
 		// store the original preview source image url
 		$.data($preview, 'src-orig', $preview.attr('src'));
 		
@@ -194,6 +172,10 @@ jQuery(function($) {
 			placeholder: 'cfp-link-img-placeholder'
 		});
 		
+		$(function() {
+			CF.aboutLinks.initPopover();
+		});
+		
 		return {
 			requestObj: null,
 			resetXHR: function() {
@@ -201,6 +183,30 @@ jQuery(function($) {
 					this.requestObj.abort();
 					this.requestObj = null;
 				}
+			},
+			
+			initPopover: function() {
+				// attach actions to icons for delete actions
+				$('.cfp-about-link-item').unbind().popover({
+					my: 'left top',
+					at: 'center bottom',
+					offset: '-27px 0',
+					collision: 'none none',
+					popover: '#cfp-link-remove-popover'
+				}).bind('popover-show', function() {
+					$elem = $(this);
+					$remove.find('a').unbind('click').click(function(e) {
+						$elem.closest('li').fadeOut(function() {
+							$(this).remove();
+							CF.aboutLinks.handleEmptyLi();
+						}).end().data('popover').hide();
+						e.preventDefault();
+					});
+					var data = $.parseJSON($elem.closest('li').find('input[name="cfcp_about_settings[links][]"]').val());
+					$remove.find('p.title').text(data.title).end()
+						.find('p.url').text(data.url).end()
+						.show();
+				});
 			},
 			
 			showInputs: function(showNew) {
@@ -400,6 +406,7 @@ jQuery(function($) {
 								$('#cfp-add-link').click();
 							}
 							CF.aboutLinks.resetInputs();
+							CF.aboutLinks.initPopover();
 						}
 						else {
 							$('#cfp-link-edit', $edit).append('<div class="cf-error">' + r.error + '</div>');
