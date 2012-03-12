@@ -338,6 +338,8 @@ function cfcp_header_featured_slots() {
 }
 
 function cfcp_header_display_featured() {
+	global $more;
+	$_more = $more;
 	$post_ids = cfcp_header_featured_slots();
 	ob_start();
 	foreach ($post_ids as $slot => $post_id) {
@@ -345,6 +347,7 @@ function cfcp_header_display_featured() {
 	}
 	$content = ob_get_clean();
 	cfct_template_file('header', 'featured-posts', compact('content'));
+	$more = $_more;
 }
 
 function cfcp_header_display_featured_post($slot, $post_id) {
