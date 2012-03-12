@@ -340,6 +340,7 @@ function cfcp_header_featured_slots() {
 function cfcp_header_display_featured() {
 	global $more;
 	$_more = $more;
+	$more = 1;
 	$post_ids = cfcp_header_featured_slots();
 	ob_start();
 	foreach ($post_ids as $slot => $post_id) {
