@@ -569,8 +569,12 @@ button.cf-btn-delete {
 #cfp-img-search-results {
 	display: none;
 }
+#cfp-img-search-results ul {
+	margin: 3px 7px 5px;
+}
 .cfp-search-result {
-	display: inline-block;
+	float: left;
+	display: block;
 	height: 60px;
 	margin: 0 5px 5px 0;
 	width: 80px;
