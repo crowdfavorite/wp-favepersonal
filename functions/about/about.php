@@ -241,7 +241,7 @@ add_action('wp_ajax_cfcp_about', 'cfcp_about_admin_ajax');
 function cfcp_about_image_search($params) {
 	$imgs = new WP_Query(array(
 		's' => trim(stripslashes($params['term'])),
-		'posts_per_page' => 9,
+		'posts_per_page' => 12,
 		'post_type' => 'attachment',
 		'post_mime_type' => 'image',
 		'post_status' => 'inherit',
