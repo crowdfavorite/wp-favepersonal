@@ -570,7 +570,7 @@ button.cf-btn-delete {
 	display: none;
 }
 #cfp-img-search-results ul {
-	margin: 3px 7px 5px;
+	margin: 3px 0 5px 0;
 }
 .cfp-search-result {
 	float: left;
