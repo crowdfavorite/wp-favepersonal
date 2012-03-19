@@ -249,7 +249,7 @@ jQuery(function($) {
 					$previewBlock.show();
 					if (_url != _fetchIconUrl) {
 						_fetchIconUrl = _url;
-						$('#cfp-link-edit-popover input[name="submit_button"]')
+						$edit.find('input[name="submit_button"]')
 							.addClass('disabled').val(cfcp_about_settings.loading);
 						this.requestObj = $.post(
 							ajaxurl,
