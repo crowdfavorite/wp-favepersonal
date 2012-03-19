@@ -210,11 +210,8 @@ jQuery(function($) {
 			},
 			
 			showInputs: function(showNew) {
-				$edit.addClass('new');
-				
 				this.resetIconPreview();
-				
-				$edit.find('input#cfp_link_title').focus();
+				$edit.addClass('new').find('input#cfp_link_title').focus();
 				
 				// timer for live favicon fetch
 				var _timer = null;
@@ -252,7 +249,10 @@ jQuery(function($) {
 					$previewBlock.show();
 					if (_url != _fetchIconUrl) {
 						_fetchIconUrl = _url;
-						this.requestObj = $.post(ajaxurl,
+						$('#cfp-link-edit-popover input[name="submit_button"]')
+							.addClass('disabled').val(cfcp_about_settings.loading);
+						this.requestObj = $.post(
+							ajaxurl,
 							{
 								action: 'cfcp_about',
 								cfcp_about_action: 'cfcp_fetch_favicon',
@@ -267,6 +267,8 @@ jQuery(function($) {
 									CF.aboutLinks.setErrorMessage(cfcp_about_settings.favicon_fetch_error + _url);
 								}
 								CF.requestObj = null;
+								$('#cfp-link-edit-popover input[name="submit_button"]')
+									.removeClass('disabled').val(cfcp_about_settings.add);
 							},
 							'json'
 						);
@@ -382,8 +384,12 @@ jQuery(function($) {
 					return false;
 				}
 				
-				$form = $('#cfp-link-edit');
+				$form = $('#cfp-link-edit-popover');
 				$button = $form.find('input[name="submit_button"]');
+
+				if ($button.hasClass('disabled') || $form.hasClass('saving')) {
+					return;
+				}
 
 				$form.addClass('saving');
 				$button.val(cfcp_about_settings.loading);
