@@ -18,7 +18,7 @@
 
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 
-delete_site_transient('update_themes'); // for testing only
+//delete_site_transient('update_themes'); // for testing only
 
 function cfcp_pre_set_site_transient_update_themes($value) {
 
