@@ -234,7 +234,8 @@ article {
 .entry-meta span.h6 {
 	display: block;
 }
-.entry-meta a {
+.entry-meta a,
+.entry-meta a:visited {
 	color: #999;
 }
 /* line spacing for formats without titles */
