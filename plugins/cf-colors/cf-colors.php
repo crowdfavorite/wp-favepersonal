@@ -586,13 +586,6 @@ function cf_kuler_settings_form() {
 	');
 }
 
-function cf_kuler_update_settings() {
-	if (!current_user_can('manage_options')) {
-		return;
-	}
-// update options
-}
-
 /* API endpoints
 
 rss/get.cfm?listType=[listType]&startIndex=[startIndex]&itemsPerPage=[itemsPerPage]&timeSpan=[timeSpan]&key=[key]
