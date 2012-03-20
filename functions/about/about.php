@@ -45,7 +45,7 @@ function cfcp_about_admin_init() {
 			'cfcp-about-admin-js', 
 			'cfcp_about_settings', 
 			array(
-				'image_del_confirm' => __('Are you sure you want to delete this image?', 'favepersonal'),
+				'image_del_confirm' => __('Remove this image from the carousel?', 'favepersonal'),
 				'favicon_fetch_error' => __('Could not fetch the favicon for: ', 'favepersonal'),
 				'add' => __('Add', 'favepersonal'),
 				'loading' => __('Loading...', 'favepersonal'),
@@ -241,7 +241,7 @@ add_action('wp_ajax_cfcp_about', 'cfcp_about_admin_ajax');
 function cfcp_about_image_search($params) {
 	$imgs = new WP_Query(array(
 		's' => trim(stripslashes($params['term'])),
-		'posts_per_page' => 9,
+		'posts_per_page' => 12,
 		'post_type' => 'attachment',
 		'post_mime_type' => 'image',
 		'post_status' => 'inherit',
@@ -276,7 +276,7 @@ function cfcp_about_admin_menu() {
 	add_theme_page(
 		__('Bio Widget', 'favepersonal'),
 		__('Bio Widget', 'favepersonal'),
-		'manage_options',
+		'edit_theme_options',
 		basename(__FILE__),
 		'cfcp_about_admin_form'
 	);
@@ -337,7 +337,7 @@ function cfcp_about_get_settings() {
 function cfcp_about_favicon_url($favicon = 'default') {
 	// in the future the $favicon will come in as just a filename
 	if ($favicon == 'default') {
-		$favicon_url = trailingslashit(get_template_directory_uri()).'img/default-favicon.png';
+		$favicon_url = trailingslashit(get_template_directory_uri()).'assets/img/default-favicon.png';
 	}
 	else {
 		$favicon_url = CFCP_FAVICON_URL.'/'.$favicon;

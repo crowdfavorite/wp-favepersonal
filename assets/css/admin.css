@@ -454,18 +454,31 @@ button.cf-btn-delete {
 	float: left;
 	list-style-type: none;
 	margin: 0;
+	min-height: 60px;
 	padding: 5px 0 0 5px;
 }
 .cfp-list-img-left ul li {
 	cursor: move;
 	float: left;
-	margin: 0 5px 1px 0;
+	margin: 0 5px 0 0;
 	padding: 0;
 }
+.cfp-list-img-left img {
+	min-width: 60px;
+}
 .cfp-list-img-left ul li p {
-	color: #666;
-	line-height: 16px;
-	margin: 0 3px 4px 3px;
+	color: #888;
+	margin: 0;
+	padding: 5px;
+}
+/* override min-height for links */
+#cfp-link-items {
+	min-height: 20px;
+}
+.cfp-about-link-item,
+.cfp-about-link-item img {
+	min-height: 16px;
+	min-width: 16px;
 }
 /* positioning for .cfp-add-link */
 #cfp-about-settings .cf-elm-block {
@@ -556,8 +569,12 @@ button.cf-btn-delete {
 #cfp-img-search-results {
 	display: none;
 }
+#cfp-img-search-results ul {
+	margin: 3px 0 5px 0;
+}
 .cfp-search-result {
-	display: inline-block;
+	float: left;
+	display: block;
 	height: 60px;
 	margin: 0 5px 5px 0;
 	width: 80px;

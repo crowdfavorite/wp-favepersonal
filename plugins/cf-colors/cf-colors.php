@@ -431,7 +431,7 @@ function cf_kuler_admin_menu() {
 	add_theme_page(
 		__('Color Settings', 'cf-kuler'),
 		__('Colors', 'cf-kuler'),
-		'manage_options',
+		'edit_theme_options',
 		basename(__FILE__),
 		'cf_kuler_settings_form'
 	);
@@ -440,7 +440,7 @@ add_action('admin_menu', 'cf_kuler_admin_menu');
 
 function cf_kuler_admin_bar() {
 	global $wp_admin_bar;
-	if (current_user_can('manage_options')) {
+	if (current_user_can('edit_theme_options')) {
 		$wp_admin_bar->add_menu(array(
 			'id' => 'cf-kuler',
 			'title' => __('Colors', 'cf-kuler'),
@@ -584,13 +584,6 @@ function cf_kuler_settings_form() {
 	});
 </script>
 	');
-}
-
-function cf_kuler_update_settings() {
-	if (!current_user_can('manage_options')) {
-		return;
-	}
-// update options
 }
 
 /* API endpoints

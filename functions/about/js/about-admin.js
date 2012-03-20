@@ -62,7 +62,7 @@ jQuery(function($) {
 			helper: 'clone',
 			placeholder: 'cfp-about-img-placeholder'
 		});
-		
+				
 		return {
 			isVisible: function () {
 				return $search.is(':visible');
@@ -102,27 +102,28 @@ jQuery(function($) {
 			},
 			
 			handleEmptyLi: function() {
-				if ($list.find('li').size() > 1) {
+				if ($list.find('img').size() > 0) {
 					$list.find('li.no-image-item').hide();
 				}
 				else {
-					$list.find('li.no-image-item').show();					
+					$list.find('li.no-image-item').show();
 				}
 			},
 			
 			selectImg: function(imgLi) {
 				$(imgLi).attr('class', false).appendTo($list);
 				this.handleEmptyLi();
-				this.clearSearch();
 				this.refreshSortables();
+				$search.find('input#cfp-img-search-term').val('').focus();
 			},
 			
 			removeImage: function(del) {
 				$(del).closest('li')
 					.animate({'width': 0}, 500, function() {
 						$(this).remove();
+						CF.imgs.handleEmptyLi();
 					});
-			},
+			}
 			
 		};
 	}(jQuery);
@@ -142,26 +143,6 @@ jQuery(function($) {
 
 		$('#cfp-add-link').bind('popover-show', function() {
 			CF.aboutLinks.showInputs();
-		});
-
-		// attach actions to icons for delete actions
-		$('.cfp-about-link-item').popover({
-			my: 'left top',
-			at: 'center bottom',
-			offset: '-27px 0',
-			collision: 'none none',
-			popover: '#cfp-link-remove-popover'
-		}).bind('popover-show', function() {
-			$elem = $(this);
-			$remove.find('a').unbind().click(function(e) {
-				$elem.closest('li').fadeOut(function() {
-					$(this).remove();
-				}).end().data('popover').hide();
-			});
-			var data = $.parseJSON($elem.closest('li').find('input[name="cfcp_about_settings[links][]"]').val());
-			$remove.find('p.title').text(data.title).end()
-				.find('p.url').text(data.url).end()
-				.show();
 		});
 
 		// store the original preview source image url
@@ -191,6 +172,10 @@ jQuery(function($) {
 			placeholder: 'cfp-link-img-placeholder'
 		});
 		
+		$(function() {
+			CF.aboutLinks.initPopover();
+		});
+		
 		return {
 			requestObj: null,
 			resetXHR: function() {
@@ -200,12 +185,33 @@ jQuery(function($) {
 				}
 			},
 			
+			initPopover: function() {
+				// attach actions to icons for delete actions
+				$('.cfp-about-link-item').unbind().popover({
+					my: 'left top',
+					at: 'center bottom',
+					offset: '-27px 0',
+					collision: 'none none',
+					popover: '#cfp-link-remove-popover'
+				}).bind('popover-show', function() {
+					$elem = $(this);
+					$remove.find('a').unbind('click').click(function(e) {
+						$elem.closest('li').fadeOut(function() {
+							$(this).remove();
+							CF.aboutLinks.handleEmptyLi();
+						}).end().data('popover').hide();
+						e.preventDefault();
+					});
+					var data = $.parseJSON($elem.closest('li').find('input[name="cfcp_about_settings[links][]"]').val());
+					$remove.find('p.title').text(data.title).end()
+						.find('p.url').text(data.url).end()
+						.show();
+				});
+			},
+			
 			showInputs: function(showNew) {
-				$edit.addClass('new');
-				
 				this.resetIconPreview();
-				
-				$edit.find('input#cfp_link_title').focus();
+				$edit.addClass('new').find('input#cfp_link_title').focus();
 				
 				// timer for live favicon fetch
 				var _timer = null;
@@ -243,7 +249,10 @@ jQuery(function($) {
 					$previewBlock.show();
 					if (_url != _fetchIconUrl) {
 						_fetchIconUrl = _url;
-						this.requestObj = $.post(ajaxurl,
+						$edit.find('input[name="submit_button"]')
+							.addClass('disabled').val(cfcp_about_settings.loading);
+						this.requestObj = $.post(
+							ajaxurl,
 							{
 								action: 'cfcp_about',
 								cfcp_about_action: 'cfcp_fetch_favicon',
@@ -258,6 +267,8 @@ jQuery(function($) {
 									CF.aboutLinks.setErrorMessage(cfcp_about_settings.favicon_fetch_error + _url);
 								}
 								CF.requestObj = null;
+								$('#cfp-link-edit-popover input[name="submit_button"]')
+									.removeClass('disabled').val(cfcp_about_settings.add);
 							},
 							'json'
 						);
@@ -373,8 +384,12 @@ jQuery(function($) {
 					return false;
 				}
 				
-				$form = $('#cfp-link-edit');
+				$form = $('#cfp-link-edit-popover');
 				$button = $form.find('input[name="submit_button"]');
+
+				if ($button.hasClass('disabled') || $form.hasClass('saving')) {
+					return;
+				}
 
 				$form.addClass('saving');
 				$button.val(cfcp_about_settings.loading);
@@ -397,6 +412,7 @@ jQuery(function($) {
 								$('#cfp-add-link').click();
 							}
 							CF.aboutLinks.resetInputs();
+							CF.aboutLinks.initPopover();
 						}
 						else {
 							$('#cfp-link-edit', $edit).append('<div class="cf-error">' + r.error + '</div>');
@@ -428,11 +444,11 @@ jQuery(function($) {
 			},
 			
 			handleEmptyLi: function() {
-				if ($list.find('li').size() > 1) {
+				if ($list.find('img').size() > 0) {
 					$list.find('.no-link-item').hide();
 				}
 				else {
-					$list.find('no-link-item').show();					
+					$list.find('.no-link-item').show();
 				}
 			},
 			

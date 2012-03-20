@@ -5,7 +5,7 @@
  * This file is part of the FavePersonal Theme for WordPress
  * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2012 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -19,7 +19,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 // Load bundler config.
 include_once(CFCT_PATH.'assets/config.php');
 // Helper class for enqueueing bundles
-include_once(CFCT_PATH.'assets/lib/Bundler_Loader.php');
+include_once(CFCT_PATH.'assets/asset-build/lib/Bundler_Loader.php');
 // Load custom color styles
 include_once(CFCT_PATH.'assets/colors.php');
 

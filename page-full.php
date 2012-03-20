@@ -9,7 +9,7 @@
  * This file is part of the FavePersonal Theme for WordPress
  * http://crowdfavorite.com/wordpress/themes/favepersonal/
  *
- * Copyright (c) 2008-2011 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2012 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -19,11 +19,24 @@
  * **********************************************************************
  */
 
-
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
+if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
-// NOTE: this file is here for compatibility reasons - active templates are in the pages/ dir 
-
-cfct_page('full');
+get_header();
 
 ?>
+
+<div class="page-full clearfix">
+
+<?php
+cfct_loop();
+comments_template();
+?>
+
+</div><!--.page-full-->
+
+<div id="secondary-full" class="clearfix">
+	<?php get_sidebar(); ?>
+</div>
+
+<?php get_footer(); ?>

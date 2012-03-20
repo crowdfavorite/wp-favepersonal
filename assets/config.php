@@ -1,7 +1,7 @@
 <?php
 // Navigate to asset root using realpath.
 $abspath = realpath(dirname(__FILE__));
-require_once($abspath . '/lib/Bundler.php');
+require_once('asset-build/lib/Bundler.php');
 
 $bundler = Bundler::create($abspath);
 
@@ -29,4 +29,3 @@ $bundle_js
 	->add('cfgallery', 'js/cfgallery/jquery.cfgallery.js')
 	->add('global', 'js/global.js');
 $bundler->push($bundle_js);
-?>

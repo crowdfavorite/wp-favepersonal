@@ -1,0 +1,21 @@
+[submodule "carrington-core"]
+	path = carrington-core
+	url = git@github.com:crowdfavorite/wp-carrington-core.git
+[submodule "plugins/social"]
+	path = plugins/social
+	url = git@github.com:crowdfavorite/wp-social.git
+[submodule "plugins/cf-archive-title"]
+	path = plugins/cf-archive-title
+	url = git@github.com:crowdfavorite/wp-archive-title.git
+[submodule "plugins/cf-post-formats"]
+	path = plugins/cf-post-formats
+	url = git@github.com:crowdfavorite/wp-post-formats.git
+[submodule "assets/asset-build"]
+	path = assets/asset-build
+	url = git@git.crowdfave.org:wp-plugin/asset-build.git
+[submodule "assets/js/cfgallery"]
+	path = assets/js/cfgallery
+	url = git@github.com:crowdfavorite/jquery-gallery.git
+[submodule "assets/js/cf-popover"]
+	path = assets/js/cf-popover
+	url = git@github.com:crowdfavorite/jquery-popover.git
