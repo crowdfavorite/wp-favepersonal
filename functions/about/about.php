@@ -276,7 +276,7 @@ function cfcp_about_admin_menu() {
 	add_theme_page(
 		__('Bio Widget', 'favepersonal'),
 		__('Bio Widget', 'favepersonal'),
-		'manage_options',
+		'edit_theme_options',
 		basename(__FILE__),
 		'cfcp_about_admin_form'
 	);
