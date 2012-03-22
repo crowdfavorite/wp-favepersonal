@@ -19,3 +19,6 @@
 [submodule "assets/js/cf-popover"]
 	path = assets/js/cf-popover
 	url = git@github.com:crowdfavorite/jquery-popover.git
+[submodule "plugins/cf-colors"]
+	path = plugins/cf-colors
+	url = git@github.com:crowdfavorite/wp-colors.git
