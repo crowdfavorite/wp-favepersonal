@@ -235,6 +235,14 @@ function echo_hex($color2hex) {
 	}
 }
 
+// customize Colors API endpoint
+function cfcp_cf_kuler_api_request($url) {
+	$url = remove_query_arg('key', $url);
+	$url = 'http://colors.api.crowdfavorite.com/1.0/?url='.base64_encode($url);
+	return $url;
+}
+add_filter('cf_kuler_api_request', 'cfcp_cf_kuler_api_request');
+
 // Replaces "[...]" with something more pretty
 function cfcp_excerpt_more($more) {
 	return '&hellip;';
