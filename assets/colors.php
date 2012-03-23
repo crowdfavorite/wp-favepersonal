@@ -24,7 +24,6 @@
 function cfcp_color_css() {
 	ob_start();
 ?>
-<style type="text/css" media="screen">
 body {
 	background-color: <?php echo cf_kuler_color('dark', 'body_background'); ?>;
 }
@@ -304,7 +303,6 @@ a:active {
 #social .social-actions a:hover {
 	color: <?php echo cf_kuler_color('medium', 'a_hover'); ?>;
 }
-</style>
 <?php
 	return ob_get_clean();
 }
@@ -317,6 +315,6 @@ function cfcp_color_css_min() {
 		$css
 	);
 	$css = preg_replace('/\/\*(.*?)\*\//', '', $css);
-	echo $css;
+	echo '<style type="text/css" media="screen">'.$css.'</style>'."\n";
 }
 add_action('wp_head', 'cfcp_color_css_min', 8); 
