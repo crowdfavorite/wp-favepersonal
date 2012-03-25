@@ -10,9 +10,18 @@ Author URI: http://crowdfavorite.com
 
 define('CFCP_ABOUT_VERSION', 1.0);
 define('CFCP_ABOUT_SETTINGS', 'cfcp_about_settings');
-$favicon_subdir = '/uploads/favicons';
-define('CFCP_FAVICON_URL', WP_CONTENT_URL.$favicon_subdir);
-define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.$favicon_subdir);
+$favicon_subdir = wp_upload_dir
+
+$favicon_subdir = 'favicon';
+$upload_dir_info = wp_upload_dir();
+if (is_array($upload_dir_info) && isset($upload_dir_info['basedir'])) {
+	define('CFCP_FAVICON_URL', trailingslashit($upload_dir_info['baseurl']).$favicon_subdir);
+	define('CFCP_FAVICON_DIR', trailingslashit($upload_dir_info['basedir']).$favicon_subdir);
+}
+else {
+	define('CFCP_FAVICON_URL', WP_CONTENT_URL.'/uploads/'.$favicon_subdir);
+	define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.'/uploads/'.$favicon_subdir);
+}
 
 // Init
 include_once('widget/about.php');
