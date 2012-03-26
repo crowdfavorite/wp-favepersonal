@@ -91,6 +91,21 @@ function cfcp_option_defaults($defaults) {
 }
 add_filter('cfct_option_defaults', 'cfcp_option_defaults');
 
+function cfcp_options_customize() {
+?>
+<table class="form-table">
+	<tr valign="top">
+		<th scope="row"><label><?php _e('Customize', 'favepersonal'); ?></label></th>
+		<td>
+			<p><?php printf(__('<a href="%s">Download Child Theme</a> (with current Colors)', 'favepersonal'), esc_url(home_url('index.php?cf_action=cfcp_child_theme_export'))); ?></p>
+			<p><?php _e('<a href="http://crowdfavorite.com/wordpress/themes/favepersonal/docs/customization/">View Customization Tips</a> (in documentation)', 'favepersonal'); ?></p>
+		</td>
+	</tr>
+</table>
+<?php
+}
+add_action('cfct_settings_form_after', 'cfcp_options_customize');
+
 /**
  * Filter theme settings page title
  */ 
@@ -100,4 +115,3 @@ function cfcp_admin_settings_title($title) {
 add_filter('cfct_admin_settings_title', 'cfcp_admin_settings_title');
 add_filter('cfct_admin_settings_form_title', 'cfcp_admin_settings_title');
 
-?>
