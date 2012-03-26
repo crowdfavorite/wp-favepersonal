@@ -3,12 +3,12 @@
 /*
 Plugin Name: About Settings & Widget
 Description: About&hellip;
-Version: 1.0
+Version: 1.0.1
 Author: Crowd Favorite
 Author URI: http://crowdfavorite.com
 */
 
-define('CFCP_ABOUT_VERSION', 1.0);
+define('CFCP_ABOUT_VERSION', '1.0.1');
 define('CFCP_ABOUT_SETTINGS', 'cfcp_about_settings');
 
 // Init
