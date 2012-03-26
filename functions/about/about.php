@@ -337,7 +337,7 @@ function cfcp_about_favicon_url($favicon = 'default') {
 		$favicon_url = trailingslashit(get_template_directory_uri()).'assets/img/default-favicon.png';
 	}
 	else {
-		$favicon_url = cfcp_about_get_favicon_dir_url().$favicon;
+		$favicon_url = trailingslashit(cfcp_about_get_favicon_dir_url()).$favicon;
 	}
 	return $favicon_url;
 }
