@@ -3,6 +3,7 @@
 
 ## Version 1.0.1
 
+- added CHANGELOG
 - compressed CSS output in HTML head
 - added child theme CSS download feature
 - store favicon images for bio widget in a manner that is more compatible with WPMS
