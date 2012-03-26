@@ -119,7 +119,7 @@ class CF_Favicon_Fetch {
 	 */
 	public function have_site_favicon($siteurl) {
 		$filename = $this->make_filename($siteurl);
-		$files = glob(CFCP_FAVICON_DIR.'/'.$filename.'\.*');
+		$files = glob(trailingslashit(cfcp_about_get_favicon_dir()).$filename.'\.*');
 		
 		$favicon = false;
 		if (!empty($files[0])) {
