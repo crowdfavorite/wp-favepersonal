@@ -104,7 +104,7 @@ function cfcp_about_admin_ajax() {
 			case 'cfcp_fetch_favicon':
 				usleep(500000); // pause for 1/2 second to allow the spinner to at least display in the admin
 				
-				$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);
+				$u = new CF_Favicon_Fetch(cfcp_about_get_favicon_dir());
 				$favicon = $u->have_site_favicon($_POST['url']);
 
 				if (empty($favicon)) {
@@ -153,7 +153,7 @@ function cfcp_about_admin_ajax() {
 				if (!empty($link['url']) && !empty($link['title'])) {
 					if ($link['favicon_status'] == 'new') {
 
-						$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);						
+						$u = new CF_Favicon_Fetch(cfcp_about_get_favicon_dir());						
 						$a = $u->get_favicon($link['url']);
 				
 						if (!empty($a) && $a != 'default') {
@@ -182,7 +182,7 @@ function cfcp_about_admin_ajax() {
 						$success = true;
 					}
 					elseif ($link['favicon_status'] == 'custom') {
-						$u = new CF_Favicon_Fetch(CFCP_FAVICON_DIR);						
+						$u = new CF_Favicon_Fetch(cfcp_about_get_favicon_dir());						
 						// download and save favicon
 						$f_data = $u->fetch_favicon($link['favicon']);
 						$filename = $u->make_filename($siteurl, $f_data['ext']);
@@ -337,7 +337,7 @@ function cfcp_about_favicon_url($favicon = 'default') {
 		$favicon_url = trailingslashit(get_template_directory_uri()).'assets/img/default-favicon.png';
 	}
 	else {
-		$favicon_url = CFCP_FAVICON_URL.'/'.$favicon;
+		$favicon_url = cfcp_about_get_favicon_dir_url().$favicon;
 	}
 	return $favicon_url;
 }
