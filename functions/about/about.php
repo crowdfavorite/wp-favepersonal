@@ -11,34 +11,10 @@ Author URI: http://crowdfavorite.com
 define('CFCP_ABOUT_VERSION', 1.0);
 define('CFCP_ABOUT_SETTINGS', 'cfcp_about_settings');
 
-cfcp_about_define_favicon_dir();
-
 // Init
 include_once('widget/about.php');
 if (is_admin()) {
 	include_once('lib/cf-favicon-fetch.class.php');
-}
-
-/**
- * Defines the favicon directory for local storage.  Handles Multi-Site upload 
- * directories appropriately (i.e., places the favicon directory inside the
- * uploads directory for the specific blog).
- *
- * Falls back to wp-content/uploads/favicon if there was an error.
- *
- * @return void
- **/
-function cfcp_about_define_favicon_dir() {
-	$favicon_subdir = 'favicon';
-	$upload_dir_info = wp_upload_dir();
-	if (is_array($upload_dir_info) && !empty($upload_dir_info['basedir'])) {
-		define('CFCP_FAVICON_URL', trailingslashit($upload_dir_info['baseurl']).$favicon_subdir);
-		define('CFCP_FAVICON_DIR', trailingslashit($upload_dir_info['basedir']).$favicon_subdir);
-	}
-	else {
-		define('CFCP_FAVICON_URL', WP_CONTENT_URL.'/uploads/'.$favicon_subdir);
-		define('CFCP_FAVICON_DIR', WP_CONTENT_DIR.'/uploads/'.$favicon_subdir);
-	}
 }
 
 function cfcp_about_admin_init() {
@@ -364,4 +340,20 @@ function cfcp_about_favicon_url($favicon = 'default') {
 		$favicon_url = CFCP_FAVICON_URL.'/'.$favicon;
 	}
 	return $favicon_url;
+}
+
+function cfcp_about_get_favicon_dir_url() {
+	$upload_dir_info = wp_upload_dir();
+	return apply_filters(
+		'cfcp_about_favicon_dir_url',
+		trailingslashit($upload_dir_info['baseurl']).'favicons'
+	);
+}
+
+function cfcp_about_get_favicon_dir() {
+	$upload_dir_info = wp_upload_dir();
+	return apply_filters(
+		'cfcp_about_favicon_dir',
+		trailingslashit($upload_dir_info['basedir']).'favicons'
+	);
 }
