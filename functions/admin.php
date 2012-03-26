@@ -98,7 +98,7 @@ function cfcp_options_customize() {
 		<th scope="row"><label><?php _e('Customize', 'favepersonal'); ?></label></th>
 		<td>
 			<p><?php printf(__('<a href="%s">Download Child Theme</a> (with current Colors)', 'favepersonal'), esc_url(home_url('index.php?cf_action=cfcp_child_theme_export'))); ?></p>
-			<p><?php _e('<a href="http://crowdfavorite.com/wordpress/themes/favepersonal/docs/customization/">View Customization Tips</a> (in documentation)', 'favepersonal'); ?></p>
+			<p><?php _e('<a href="http://crowdfavorite.com/wordpress/themes/favepersonal/docs/customization/" target="_blank">View Customization Tips</a> (in documentation)', 'favepersonal'); ?></p>
 		</td>
 	</tr>
 </table>
