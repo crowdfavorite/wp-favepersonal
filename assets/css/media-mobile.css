@@ -135,6 +135,11 @@ iPad (portrait)				768
 		right: 0;
 	}
 
+	/* full page with no sidebar, no padding for mobile */
+	.page-full {
+		padding: 0;
+	}
+
 	/** Status and Quote Post Format
 	 -------------------------------------------------- */
 	/* shared */
@@ -249,6 +254,11 @@ iPad (portrait)				768
 	/* Sidebar */
 	#secondary {
 		margin-top: 60px;
+	}
+
+	#secondary-full .sidebar {
+		margin-left: 0px;
+		width: 100%;
 	}
 	
 	/* Footer */
@@ -391,11 +401,6 @@ iPad (portrait)				768
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
-	}
-	#secondary-full .sidebar {
-		float: left;
-		margin-left: 0px;
-		width: 100%;
 	}
 	
 }
