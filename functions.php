@@ -37,13 +37,15 @@ define('CFCT_PRODUCTION', true);
 /**
  * Theme version.
  */
-define('CFCT_THEME_VERSION', '1.0');
+define('CFCT_THEME_VERSION', '1.0.1');
 
 /**
  * Theme URL version.
  * Added to query var at the end of assets to force browser cache to reload after upgrade.
  */
-define('CFCT_URL_VERSION', '0.5');
+if (!(defined('CFCT_URL_VERSION'))) {
+	define('CFCT_URL_VERSION', '2');
+}
 
 /**
  * Define Header Text Color, even though it isn't used in the theme, need to define to prevent Notices
@@ -51,6 +53,11 @@ define('CFCT_URL_VERSION', '0.5');
 if (!(defined('HEADER_TEXTCOLOR'))) {
 	define('HEADER_TEXTCOLOR', '');
 }
+
+/**
+ * CF Colors.
+ */
+define('CF_KULER_API_KEY', 'UNUSED');
 
 /**
  * Includes
@@ -234,6 +241,48 @@ function echo_hex($color2hex) {
 		}
 	}
 }
+
+// customize Colors API endpoint
+function cfcp_cf_kuler_api_request($url) {
+	$url = remove_query_arg('key', $url);
+	$url = 'http://colors.api.crowdfavorite.com/1.0/?url='.base64_encode($url);
+	return $url;
+}
+add_filter('cf_kuler_api_request', 'cfcp_cf_kuler_api_request');
+
+// Colors child theme export
+function cfcp_child_theme_export() {
+	if (current_user_can('edit_theme_options') && isset($_GET['cf_action']) && $_GET['cf_action'] == 'cfcp_child_theme_export') {
+		$settings = cf_kuler_get_settings();
+		if (!isset($settings['theme'])) {
+			wp_die('Sorry, an error occured.');
+		}
+		header('Cache-Control: public');
+		header('Content-Description: File Transfer');
+		header('Content-Disposition: attachment; filename=style.css');
+		header('Content-Type: application/zip');
+		header('Content-type: text-css');
+		echo '/* 
+Theme Name:     FavePersonal Child Theme ('.$settings['theme']['title'].') 
+Description:    Child theme for FavePersonal (based on <a href="'.$settings['theme']['link'].'">'.$settings['theme']['title'].'</a> by '.$settings['theme']['author'].') 
+Author:         '.get_bloginfo('name').' 
+Author URI:     '.home_url().' 
+Template:       favepersonal 
+Version:        1.0 
+*/
+
+/* Add your custom CSS styles here */
+
+
+
+
+/* Your selected colors are below */
+';
+		echo cfcp_color_css()."\n\n";
+		die();
+	}
+}
+add_action('wp', 'cfcp_child_theme_export', 9999);
 
 // Replaces "[...]" with something more pretty
 function cfcp_excerpt_more($more) {

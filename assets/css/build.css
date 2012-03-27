@@ -603,9 +603,6 @@ article {
 	font-size: 30px;
 	line-height: 32px;
 }
-.single .entry-header .entry-date {
-	top: 14px;
-}
 
 /* entry-media - images, gallery, video */
 .entry-media {
@@ -1077,7 +1074,6 @@ article {
 .searchform {
 	min-height: 28px;
 	position: relative;
-	max-width: 310px;
 }
 .searchform label,
 .searchform #s,
@@ -1105,7 +1101,6 @@ article {
 	left: 0;
 	margin-top: 1px;
 	padding: 0 10px;
-	width: 255px;
 	z-index: 10;
 }
 .searchform #s {
@@ -1116,7 +1111,7 @@ article {
 	padding: 0 8px;
 	position: absolute;
 	top: 0;
-	width: 255px;
+	width: 80%;
 }
 .searchform #searchsubmit {
 	background: url('../img/search-icon.png') center center no-repeat;
@@ -2234,6 +2229,11 @@ iPad (portrait)				768
 		right: 0;
 	}
 
+	/* full page with no sidebar, no padding for mobile */
+	.page-full {
+		padding: 0;
+	}
+
 	/** Status and Quote Post Format
 	 -------------------------------------------------- */
 	/* shared */
@@ -2348,6 +2348,11 @@ iPad (portrait)				768
 	/* Sidebar */
 	#secondary {
 		margin-top: 60px;
+	}
+
+	#secondary-full .sidebar {
+		margin-left: 0px;
+		width: 100%;
 	}
 	
 	/* Footer */
@@ -2490,11 +2495,6 @@ iPad (portrait)				768
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
-	}
-	#secondary-full .sidebar {
-		float: left;
-		margin-left: 0px;
-		width: 100%;
 	}
 	
 }

@@ -62,7 +62,7 @@ jQuery(function($) {
 // Gallery
 	var $gal = $('.cfgallery'),
 		viewportW = $(window).width(),
-		scale = $.fn.cfgallery.helpers.scaleWithin,
+		scale = $.fn.cfgallery.helpers.scale,
 		dims = [];
 	
 	// set defaults

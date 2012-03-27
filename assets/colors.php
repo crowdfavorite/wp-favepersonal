@@ -22,8 +22,8 @@
  * enquequed from the functions.php and loaded into the header
  */
 function cfcp_color_css() {
+	ob_start();
 ?>
-<style type="text/css" media="screen">
 body {
 	background-color: <?php echo cf_kuler_color('dark', 'body_background'); ?>;
 }
@@ -303,8 +303,18 @@ a:active {
 #social .social-actions a:hover {
 	color: <?php echo cf_kuler_color('medium', 'a_hover'); ?>;
 }
-</style>
 <?php
+	return ob_get_clean();
 }
-add_action('wp_head', 'cfcp_color_css', 8); 
-?>
+
+function cfcp_color_css_min() {
+	$css = cfcp_color_css();
+	$css = str_replace(
+		array("\t", "\n", "\r"),
+		'',
+		$css
+	);
+	$css = preg_replace('/\/\*(.*?)\*\//', '', $css);
+	echo '<style type="text/css" media="screen">'.$css.'</style>'."\n";
+}
+add_action('wp_head', 'cfcp_color_css_min', 8); 

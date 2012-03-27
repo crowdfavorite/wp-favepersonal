@@ -1,0 +1,17 @@
+# FavePersonal
+
+
+## Version 1.0.1
+
+- added CHANGELOG
+- when colors are changed, throw an action so that cache plugins can respond accordingly
+- compressed CSS output in HTML head
+- added child theme CSS download feature
+- store favicon images for bio widget in a manner that is more compatible with WPMS
+- Colors feature is now a submodule of our public repo on GitHub
+- update to latest Post Formats plugin (presumtive WordPress 3.4 compatibility)
+
+
+## Version 1.0
+
+- first public release
