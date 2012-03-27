@@ -64,7 +64,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 function cfcp_viewport_meta() {
 // Mobile viewport optimized: j.mp/bplateviewport
 ?>
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php
 }
 add_action('wp_head', 'cfcp_viewport_meta');
