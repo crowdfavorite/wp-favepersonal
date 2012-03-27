@@ -636,7 +636,6 @@ article {
 .searchform {
 	min-height: 28px;
 	position: relative;
-	max-width: 310px;
 }
 .searchform label,
 .searchform #s,
@@ -664,7 +663,6 @@ article {
 	left: 0;
 	margin-top: 1px;
 	padding: 0 10px;
-	width: 255px;
 	z-index: 10;
 }
 .searchform #s {
@@ -675,7 +673,7 @@ article {
 	padding: 0 8px;
 	position: absolute;
 	top: 0;
-	width: 255px;
+	width: 80%;
 }
 .searchform #searchsubmit {
 	background: url('../img/search-icon.png') center center no-repeat;
