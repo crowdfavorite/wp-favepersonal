@@ -1,5 +1,9 @@
 # FavePersonal
 
+## Version 
+
+- When Social is disabled, still output comments imported via Social as expected.
+
 
 ## Version 1.0.1
 
