@@ -3,6 +3,7 @@
 ## Version 
 
 - When Social is disabled, still output comments imported via Social as expected.
+- Proper color for .comments-title when Social is disabled
 
 
 ## Version 1.0.1
