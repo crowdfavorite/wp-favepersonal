@@ -265,7 +265,8 @@ a:active {
 #social .social-nav a span {
 	background-color: <?php echo cf_kuler_color('light', 'social-heading_background'); ?>;
 }
-#social #reply-title {
+#social #reply-title,
+#social .comments-title {
 	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 }
 #social .social-heading,
