@@ -1767,16 +1767,16 @@ but allow screen readers to see */
 	height: 16px;
 	width: 16px;
 }
-#social .social-wordpress .social-posted-from {
+#social .social-comment-meta-wordpress .social-posted-from {
 	background-position: 0px 0px;
 }
-#social .social-twitter .social-posted-from {
+#social .social-comment-meta-twitter .social-posted-from {
 	background-position: -50px 0px;
 }
-#social .social-facebook .social-posted-from {
+#social .social-comment-meta-facebook .social-posted-from {
 	background-position: -100px 0px;
 }
-#social .social-pingback .social-posted-from {
+#social .social-comment-meta-pingback .social-posted-from {
 	background-position: -150px 0px;
 }
 
