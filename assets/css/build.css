@@ -1874,6 +1874,22 @@ but allow screen readers to see */
 }
 
 /**
+ * Comment Aggregation Widget
+ */
+.social-aggregation-spinner {
+	vertical-align: middle;
+}
+
+#wp-adminbar-comments-social {
+	position: absolute;
+	visibility: hidden;
+}
+
+.social-aggregation-results {
+	white-space: nowrap;
+}
+
+/**
  * Social items display (retweets, likes, etc...)
  */
 #social-items-wrapper {
