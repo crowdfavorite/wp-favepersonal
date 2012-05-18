@@ -74,7 +74,7 @@ function cfcp_load_social() {
 	if (!class_exists('Social') && get_option('cfcp_social_enabled') != 'no') {
 		add_filter('social_plugins_url', 'cfcp_social_plugins_url');
 		add_filter('social_plugins_path', 'cfcp_social_plugins_path');
-		add_filter('social_items_avatar_size', 'cfcp_social_items_avatar_size');
+		add_filter('social_items_comment_avatar_size', 'cfcp_social_items_comment_avatar_size');
 		add_action('set_current_user', array('Social', 'social_loaded_by_theme'));
 		include_once(CFCT_PATH.'plugins/social/social.php');
 	}
@@ -359,7 +359,7 @@ function cfcp_social_plugins_path($path) {
 	return trailingslashit($path.'plugins/social');
 }
 
-function cfcp_social_items_avatar_size($avatar_size) {
+function cfcp_social_items_comment_avatar_size($avatar_size) {
 	$avatar_size['height'] = $avatar_size['width'] = 24;
 	return $avatar_size;
 }
