@@ -1,7 +1,8 @@
 # FavePersonal
 
-## Version 
+## Version 1.0.2
 
+- Update the included Social plugin to version 2.5
 - When Social is disabled, still output comments imported via Social as expected.
 - Proper color for .comments-title when Social is disabled
 
