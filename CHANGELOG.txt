@@ -1,10 +1,15 @@
 # FavePersonal
 
-## Version 1.0.2
+## Version 1.1
 
 - Update the included Social plugin to version 2.5
+- Update the included Post Formats Admin UI plugin to version 1.0.2
 - When Social is disabled, still output comments imported via Social as expected.
+- When Social is loaded as a plugin, still enable FavePersonal's Social filters
 - Proper color for .comments-title when Social is disabled
+- Add a filter to the WP_Query that populates the featured posts in the header
+- Require WordPress 3.4
+- Use new WordPress 3.4 syntax for various functions
 
 
 ## Version 1.0.1
