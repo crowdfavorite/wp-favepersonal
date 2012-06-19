@@ -22,10 +22,17 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 
 function cfcp_pre_set_site_transient_update_themes($value) {
 
-	if (!function_exists('current_theme_info')) {
-		include_once(trailingslashit(ABSPATH).'wp-admin/includes/theme.php');
-	}
-	$theme = current_theme_info();
+    // current_theme_info is deprecated in 3.4 - use wp_get_theme
+    // by preference instead
+    if (!function_exists('wp_get_theme')) {
+            if (!function_exists('current_theme_info')) {
+                    include_once(trailingslashit(ABSPATH).'wp-admin/includes/theme.php');
+            }
+            $theme = current_theme_info();
+    }
+    else {
+            $theme = wp_get_theme();
+    }
 	$response = wp_remote_get(
 		'http://api.crowdfavorite.com/wordpress/themes/favepersonal/?cf_action=version-api&request=latest&current_version='.CFCT_THEME_VERSION,
 		array(
