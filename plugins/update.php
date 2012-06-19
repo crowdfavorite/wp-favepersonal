@@ -45,5 +45,3 @@ function cfcp_pre_set_site_transient_update_themes($value) {
 	return $value;
 }
 add_filter('pre_set_site_transient_update_themes', 'cfcp_pre_set_site_transient_update_themes');
-
-?>
