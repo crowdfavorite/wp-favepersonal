@@ -139,8 +139,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 	
 		// Don't support text inside the header image.
 		define( 'NO_HEADER_TEXT', true );
-	
-		add_custom_image_header( '', 'cfcp_admin_header_style' );
+		add_theme_support( 'custom-header', array('admin-head-callback' => 'cfcp_admin_header_style'));
 		
 		$patch_nav = new CF_Patch_Nav_Menu();
 		$patch_nav->attach_hooks();
