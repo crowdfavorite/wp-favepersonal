@@ -44,20 +44,9 @@ jQuery(function($) {
 	});
 	
 // Search form scripts
-	//hide the label after typing
-	$('.searchform #s').keypress(function() {
-		if ($(this).val() == '') {
-			$(this).prev('label').hide();
-		};
-	}).blur(function() {
-		if ($(this).val() == '') {
-			$(this).prev('label').show();
-			$('.searchform label').removeClass('focus');
-		};
-	});
-	$('.searchform label').click(function() {
-		$(this).addClass('focus');
-	});
+	// make placeholder attribute work in older browsers
+	// requires jquery.placeholder.min.js
+	$('#s').placeholder();
 
 // Gallery
 	var $gal = $('.cfgallery'),

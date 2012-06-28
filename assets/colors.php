@@ -197,11 +197,11 @@ a:active {
 .searchform #s {
 	color: <?php echo cf_kuler_color('darkest', 'widget_search_s_color'); ?>;
 }
-.searchform label {
-	color: <?php echo cf_kuler_color('dark', 'widget_search_label_color'); ?>;
+.searchform #s::-webkit-input-placeholder {
+	color: <?php echo cf_kuler_color('dark', 'widget_search_placeholder_color'); ?>;
 }
-.searchform label.focus {
-	color: <?php echo cf_kuler_color('medium', 'widget_search_label_focus_color'); ?>;
+.searchform #s:-moz-placeholder {
+	color: <?php echo cf_kuler_color('dark', 'widget_search_placeholder_color'); ?>;
 }
 .searchform #searchsubmit:hover,
 .searchform #searchsubmit:focus {

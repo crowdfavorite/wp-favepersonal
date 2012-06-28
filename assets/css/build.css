@@ -1075,14 +1075,12 @@ article {
 	min-height: 28px;
 	position: relative;
 }
-.searchform label,
 .searchform #s,
 .searchform #searchsubmit {
 	margin: 0;
 	position: absolute;
 	top: 0;
 }
-.searchform label,
 .searchform #s {
 	font-family: Titillium600, Helvetica, Arial, Verdana, sans-serif;
 	font-size: 13px;
@@ -1096,12 +1094,6 @@ article {
 .searchform #searchsubmit {
 	-webkit-appearance: none;
 	-webkit-border-radius: 0px;
-}
-.searchform label {
-	left: 0;
-	margin-top: 1px;
-	padding: 0 10px;
-	z-index: 10;
 }
 .searchform #s {
 	background: none;
