@@ -315,15 +315,17 @@ function cfcp_header_featured_slots() {
 		}
 	}
 
-	$posts = new WP_Query(array(
+	$selected_args = apply_filters('cfcp_header_featured_slots_selected_args', array(
 		'post__in' => wp_parse_id_list($ids)
 	));
+	$posts = new WP_Query($selected_args);
 // if we have less than 3 posts set, grab the latest posts to fill the empty spots
 	if ($count < 3) {
-		$filler = new WP_Query(array(
+		$filler_args = apply_filters('cfcp_header_featured_slots_filler_args', array(
 			'posts_per_page' => (3 - $count),
 			'post__not_in' => wp_parse_id_list($ids)
 		));
+		$filler = new WP_Query($filler_args);
 	}
 // run the slots
 	$filler_i = 0;

@@ -40,7 +40,7 @@ if (have_comments() || comments_open()) {
 		$comment_count = 0;
 		$ping_count = 0;
 		foreach ($comments as $comment) {
-			if (get_comment_type() == 'comment') {
+			if (!in_array(get_comment_type(), array('pingback', 'trackback'))) {
 				$comment_count++;
 			}
 			else {

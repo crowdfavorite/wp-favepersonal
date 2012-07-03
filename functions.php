@@ -71,11 +71,16 @@ include_once(CFCT_PATH.'functions/patch-nav-menu.php');
 include_once(CFCT_PATH.'functions/admin.php');
 
 function cfcp_load_social() {
-	if (!class_exists('Social') && get_option('cfcp_social_enabled') != 'no') {
+	if (get_option('cfcp_social_enabled') != 'no') {
+// load filters for Social
 		add_filter('social_plugins_url', 'cfcp_social_plugins_url');
 		add_filter('social_plugins_path', 'cfcp_social_plugins_path');
+		add_filter('social_items_comment_avatar_size', 'cfcp_social_items_comment_avatar_size');
 		add_action('set_current_user', array('Social', 'social_loaded_by_theme'));
-		include_once(CFCT_PATH.'plugins/social/social.php');
+		if (!class_exists('Social')) {
+// load Social if not already loaded
+			include_once(CFCT_PATH.'plugins/social/social.php');
+		}
 	}
 }
 add_action('after_setup_theme', 'cfcp_load_social');
@@ -138,8 +143,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 	
 		// Don't support text inside the header image.
 		define( 'NO_HEADER_TEXT', true );
-	
-		add_custom_image_header( '', 'cfcp_admin_header_style' );
+		add_theme_support( 'custom-header', array('admin-head-callback' => 'cfcp_admin_header_style'));
 		
 		$patch_nav = new CF_Patch_Nav_Menu();
 		$patch_nav->attach_hooks();
@@ -356,6 +360,11 @@ function cfcp_social_plugins_url($url) {
 function cfcp_social_plugins_path($path) {
 	$path = trailingslashit(get_template_directory());
 	return trailingslashit($path.'plugins/social');
+}
+
+function cfcp_social_items_comment_avatar_size($avatar_size) {
+	$avatar_size['height'] = $avatar_size['width'] = 24;
+	return $avatar_size;
 }
 
 /**
