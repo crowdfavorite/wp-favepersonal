@@ -8,9 +8,9 @@
 - When Social is loaded as a plugin, still enable FavePersonal's Social filters
 - Proper color for .comments-title when Social is disabled
 - Add a filter to the WP_Query that populates the featured posts in the header
-- Require WordPress 3.4
 - Use new WordPress 3.4 syntax for various functions
 - Update included Carrington Core to version 3.4
+- Minimum required WordPress version: 3.4
 
 ## Version 1.0.1
 
