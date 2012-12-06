@@ -33,95 +33,116 @@
  */
 ;(function($,e,b){var c="hashchange",h=document,f,g=$.event.special,i=h.documentMode,d="on"+c in e&&(i===b||i>7);function a(j){j=j||location.href;return"#"+j.replace(/^[^#]*#?(.*)$/,"$1")}$.fn[c]=function(j){return j?this.bind(c,j):this.trigger(c)};$.fn[c].delay=50;g[c]=$.extend(g[c],{setup:function(){if(d){return false}$(f.start)},teardown:function(){if(d){return false}$(f.stop)}});f=(function(){var j={},p,m=a(),k=function(q){return q},l=k,o=k;j.start=function(){p||n()};j.stop=function(){p&&clearTimeout(p);p=b};function n(){var r=a(),q=o(m);if(r!==m){l(m=r,q);$(e).trigger(c)}else{if(q!==m){location.href=location.href.replace(/#.*/,"")+q}}p=setTimeout(n,$.fn[c].delay)}$.browser.msie&&!d&&(function(){var q,r;j.start=function(){if(!q){r=$.fn[c].src;r=r&&r+a();q=$('<iframe tabindex="-1" title="empty"/>').hide().one("load",function(){r||l(a());n()}).attr("src",r||"javascript:0").insertAfter("body")[0].contentWindow;h.onpropertychange=function(){try{if(event.propertyName==="title"){q.document.title=h.title}}catch(s){}}}};j.stop=k;o=function(){return a(q.location.href)};l=function(v,s){var u=q.document,t=$.fn[c].domain;if(v!==s){u.title=h.title;u.open();t&&u.write('<script>document.domain="'+t+'"<\/script>');u.close();q.location.hash=v}}})();return j})()})(jQuery,this);
 
-;(function($, win) {
+;(function($) {
 	/* Local variable for hash makes lookups faster and is better for closure compiler */
-	var loc = win.location,
-		docEl = win.document.documentElement,
-		gal, helpers;
+	var loc = window.location,
+		docEl = window.document.documentElement,
+		stageCounter = 0;
 	
 	/* Constructor */
-	gal = function(options) {
+	var gal = function(options) {
 		var opts = $.extend(gal.opts, options),
 			fn = gal.helpers,
 			dim = opts.stageDimensions,
 			bgColor = opts.bgColor,
-			stage;
-			
+			currentStageId = 0;
+		
 		gal.opts = opts;
 
 		if (this.length < 1) {
 			return;
 		};
-		
-		// Memoize gallery and thumbs for use later.
-		fn.$gal = this;
-		fn.$thumbs = this.find('ul a[href][id][data-largesrc]');
-		
-		// Stage setup. Look for a div if one is provided.
-		stage = this.find('.gallery-stage');
-		// Create a stage if not.
-		if (stage.length < 1) {
-			stage = $('<div class="gallery-stage" />');
-			this.prepend(stage);
-		};
-		stage.css({
-			'position': 'relative',
-			'width': dim[0],
-			'height': dim[1],
-			'background-color': bgColor
-		});
-		fn.$loading = $('<div class="loading">Loading...</div>')
-			.hide()
-			.appendTo(stage);
-		
-		fn.$stage = stage;
-		
-		// Bind thumb click to change hash token
-		fn.$thumbs.click(function(e){
-			fn.setHashToken($(this).attr('id'));
-			e.preventDefault();
-		});
-		
-		stage.click(function (e) {
-			fn.setNextHashToken();
-			e.preventDefault();
-		});
-		
-		$(docEl).keyup(function(e){
-			// Right arrow
-			if (e.keyCode === 39) {
-				fn.setNextHashToken();
-			}
-			// Left arrow
-			else if (e.keyCode === 37) {
-				fn.setPrevHashToken();
+
+		this.each(function() {
+			var gallery = $(this);
+			var stageId = stageCounter++;
+
+			// Stage setup. Look for a div if one is provided.
+			var stage = $('.gallery-stage', this);
+
+			// Create a stage if not.
+			if (stage.length < 1) {
+				stage = $('<div class="gallery-stage" />').appendTo(this);
 			};
-		});
-		
-		$(win)
-			.hashchange(function(e){
-				/* Change image on hashChange (relies on jquery.hashchange shim) */
-				var id = fn.getHashToken();
-				fn.exhibit(id);
-			})
-			.ready(function(){
-				fn.patchHashToken();
-			})
-			.load(function(){
-				/* If hash is set onload, show the appropriate image.
-				If not, will show the start image. */
-				var ht = fn.getHashToken();
-				fn.exhibit(ht);
+
+			stage.css({
+				'position': 'relative',
+				'width': dim[0],
+				'height': dim[1],
+				'background-color': bgColor
 			});
 
-		// Bind loading message to image create and loaded events.
-		fn.$stage.bind('create.cfgal', function(e){
-			fn.$loading.show();
-		});
-		fn.$stage.bind('loaded.cfgal', function(e){
-			fn.$loading.hide();
+			stage.data('stage-id', stageId);
+
+			var thumbs = $(this).find('ul a[href][id][data-largesrc]')
+				.each(function() {
+					$(this).data('stage-id', stageId);
+				})
+				.click(function(e) {
+
+					var id = $(this).attr('id');
+
+					if (currentStageId != stageId) {
+						fn.exhibit(id, stage, thumbs, gallery);
+					}
+
+					currentStageId = stageId;
+					fn.setHashToken(id);
+
+					e.preventDefault();
+				});
+
+			var loading = $('<div class="loading">Loading...</div>').hide().appendTo(stage);
+
+			// Bind loading message to image create and loaded events.
+			gallery.bind({
+				'create.cfgal': function(e) {
+					loading.show();
+				},
+				'loaded.cfgal': function(e) {
+					loading.hide();
+				}
+			});
+
+			$(docEl).keyup(function(e) {
+				// Right arrow
+				if (e.keyCode === 39) {
+					if (currentStageId == stageId) {
+						fn.setNextHashToken(thumbs, stage);
+						return false;
+					}
+				}
+				// Left arrow
+				else if (e.keyCode === 37) {
+					if (currentStageId == stageId) {
+						fn.setPrevHashToken(thumbs, stage);
+						return false;
+					}
+				};
+			});
+
+			$(window)
+				.hashchange(function(e) {
+
+					/* Change image on hashChange (relies on jquery.hashchange shim) */
+					var id = fn.getHashToken();
+
+					if (currentStageId == stageId) {
+						fn.exhibit(id, stage, thumbs, gallery);
+					}
+				})
+				.ready(function() {
+					fn.patchHashToken(thumbs);
+				})
+				.load(function() {
+					/* If hash is set onload, show the appropriate image.
+					If not, will show the start image. */
+					var ht = fn.getHashToken();
+					fn.exhibit(ht, stage, thumbs, gallery);
+				});
 		});
 	};
+	
 	/* Default options for gallery */
 	gal.opts = {
 		stageDimensions: [710, 474],
@@ -139,53 +160,52 @@
 	"this" value set to the jQuery collection passed). Object literal object notation also
 	compresses down a little better in Closure Compiler. */
 	gal.helpers = {
-		// $gal: Gallery div jQuery object
-		// $stage: Stage div jQuery object
-		// $thumbs: thumb array jQuery object
-		current: null, // int of active thumb
 		
 		/* Show an image on the stage by it's thumb's ID token.
 		- Loads image if not already loaded
 		- Preloads it's siblings afterwords
-		- Updates index of this.current */
-		exhibit: function(token) {
+		*/
+		exhibit: function(token, stage, thumbs, gallery) {
+
 			var that = this,
 				$img,
-				$thumb = $( '#' + (token || this.getToken()) ),
-				i = this.getThumbIndex($thumb),
-				callback;
+				$thumb = $( '#' + (token || this.getToken(null, thumbs)) , gallery),
+				i = this.getThumbIndex($thumb, thumbs);
 			
-			callback = function (img) {
+			var callback = function (img) {
 				var c = gal.opts.activatedClass,
-					current = this.current,
+					current = $(stage).data('gallery-current'),
 					$current;
-				
+
+				console.log('callback', img, current, i)
+
 				// Hide old and show new if both are present
 				if (current !== null && current !== i) {
-					$current = this.getImage(current);
+					$current = this.getImage(current, thumbs);
 					// Hide others / Dequeue all animations before starting a new one.
-					this.$stage.children().not($current).stop().removeClass('init').hide();
+					stage.children().not($current).stop().removeClass('init').hide();
 					// Dequeue all animations before starting a new one.
-					this.$stage.find('figure').stop(true, true);
+					stage.find('figure').stop(true, true);
 					this.transitionSlides(img, $current);
 				}
+				
 				// If there is no current (first load) just show.
 				if (current === null) {
 					this.transitionSlides(img);
 				};
 				
-				this.$thumbs.removeClass(c);
+				thumbs.removeClass(c);
 				$thumb.addClass(c);
-				
-				this.preloadNeighbors(i);
-				this.current = i;
+
+				$(stage).data('gallery-current', i);
+
+				this.preloadNeighbors(i, stage, thumbs);
 			};
-			
-			$img = this.getImage(i);
+
+			$img = this.getImage(i, thumbs);
 			if (typeof $img == 'undefined') {
-				$img = this.createImage(i);
-				$img.bind('loaded.cfgal', function(e) {
-					callback.apply(that, [$(e.currentTarget)]);
+				$img = this.createImage(i, stage, thumbs, function(img) {
+					callback.apply(that, [img]);
 				});
 			}
 			else {
@@ -194,15 +214,15 @@
 		},
 		
 		/* Allow transition to be overidden using Duck Punching */
-		transitionSlides: function($neue, $old) {
+		transitionSlides: function($img, $old) {
 			var that = this;
 			if ($old !== null && typeof $old !== 'undefined') {
 				$old.fadeOut('fast', function() {
-					that.showSlide($neue);
+					that.showSlide($img);
 				});
 			}
 			else {
-				that.showSlide($neue);
+				that.showSlide($img);
 			};
 			// show captions
 		},
@@ -238,54 +258,54 @@
 		
 		/* Run this on DOMReady or similar
 		Turns URLs with hashes anchored to gallery thumbs into #/foo URLs */
-		patchHashToken: function() {
+		patchHashToken: function(thumbs) {
 			var l = loc.hash;
-			if (l.indexOf('#/') === -1 && this.$thumbs.filter(l).length > 0) {
+			if (l.indexOf('#/') === -1 && thumbs.filter(l).length > 0) {
 				loc.hash = this.makeHashToken(l.replace('#', ''));
-			};
+			}
 		},
 		
-		setNextHashToken: function() {
-			var i,
-				max = this.$thumbs.length - 1,
+		setNextHashToken: function(thumbs, stage) {
+			var max = thumbs.length - 1,
 				t;
-			if (this.current < max) {
-				i = this.current + 1;
+
+			var current = stage.data('gallery-current') || 0;
+			if (++current > max) {
+				current = 0;
 			}
-			else {
-				i = 0;
-			};
-			t = this.getToken(i);
+
+			t = this.getToken(current, thumbs);
+			
 			this.setHashToken(t);
 		},
 		
-		setPrevHashToken: function() {
-			var i,
-				max = this.$thumbs.length - 1,
+		setPrevHashToken: function(thumbs, stage) {
+			var max = thumbs.length - 1,
 				t;
-			if (this.current > 0) {
-				i = this.current - 1;
+
+			var current = stage.data('gallery-current') || 0;
+			if (--current < 0) {
+				current = max;
 			}
-			else {
-				i = max;
-			};
-			t = this.getToken(i);
+
+			t = this.getToken(current, thumbs);
+
 			this.setHashToken(t);
 		},
 		
 		/*
 		Get the index of a thumb jQuery object in the set of thumb objects. */
-		getThumbIndex: function($thumb) {
-			return this.$thumbs.index($thumb);
+		getThumbIndex: function($thumb, thumbs) {
+			return thumbs.index($thumb);
 		},
 		
-		getToken: function(i) {
+		getToken: function(i, thumbs) {
 			var a = i || gal.opts.start;
-			return this.$thumbs.eq(a).attr('id');
+			return thumbs.eq(a).attr('id');
 		},
 		
-		getImage: function(i) {
-			return this.$thumbs.eq(i).data('cfgalExpanded');
+		getImage: function(i, thumbs) {
+			return thumbs.eq(i).data('cfgalExpanded');
 		},
 		
 		getImageData: function($thumb) {
@@ -307,12 +327,11 @@
 		/* Get a full size image jQuery object by it's index.
 		If the image doesn't exist yet, this function will create and append it based on the
 		thumbnail list markup. */
-		createImage: function(i) {
+		createImage: function(i, stage, thumbs, callback) {
 			var data, $img, $figure,
 				opts = gal.opts,
-				$thumb = this.$thumbs.eq(i),
+				$thumb = thumbs.eq(i),
 				// Used in callback
-				$stage = this.$stage,
 				scale = this.scale;
 			
 			data = this.getImageData($thumb);
@@ -322,7 +341,7 @@
 				var t = $(this),
 					dims = scale(
 						[t.width(), t.height()],
-						[$stage.width(), $stage.height()]
+						[stage.width(), stage.height()]
 					);
 				
 				$figure.css({
@@ -338,6 +357,10 @@
 					'visibility': 'visible'
 				})
 				.trigger('loaded.cfgal');
+
+				if ($.isFunction(callback)) {
+					callback($figure);
+				}
 			});
 			
 			$img.css({
@@ -356,7 +379,7 @@
 			.trigger('create.cfgal');
 			
 			$img.prependTo($figure);
-			$figure.appendTo($stage);
+			$figure.appendTo(stage);
 			
 			$thumb.data('cfgalExpanded', $figure);
 			return $figure;
@@ -391,15 +414,15 @@
 			return $figure;
 		},
 		
-		preloadNeighbors: function(index) {
+		preloadNeighbors: function(index, stage, thumbs) {
 			var check = [1, 2, -1],
-				max = this.$thumbs.length -1,
+				max = thumbs.length -1,
 				i,
 				a;
 			for (i = check.length - 1; i >= 0; i--){
 				a = index + check[i];
-				if (a >= 0 && a <= max && !this.getImage(a)) {
-					this.createImage(a);
+				if (a >= 0 && a <= max && !this.getImage(a, thumbs)) {
+					this.createImage(a, stage, thumbs);
 				};
 			};
 		},
@@ -479,7 +502,7 @@
 			});
 		};
 	};
-})(jQuery, window);jQuery(function($) {
+})(jQuery);jQuery(function($) {
 	$('.entry-media').fitVids();
 	
 	var activate = (Modernizr.touch && navigator.userAgent.toLowerCase().indexOf('blackberry') == -1 ? 'touchend' : 'click');
