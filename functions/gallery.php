@@ -16,28 +16,26 @@
  */
 
 // Prettier captions
-function cfcp_img_captions($attr, $content = null) {
-	$output = apply_filters('img_caption_shortcode', '', $attr, $content);
-	if ($output != '') {
-		return $output;
-	}
+function cfcp_img_captions($output, $attr, $content = null) {
 	extract(shortcode_atts(array(
-		'id' => '',
-		'align' => 'alignnone',
-		'width' => '',
+		'id'	=> '',
+		'align'	=> 'alignnone',
+		'width'	=> '',
 		'caption' => ''
 	), $attr));
-	if ( 1 > (int) $width || empty($caption) ) {
+
+	if ( 1 > (int) $width || empty($caption) )
 		return $content;
-	}
+
+	if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
+
 	return '
-		<dl id="'.$id.'" class="wp-caption '.$align.'" style="width:'.$width.'px">
+		<dl '.$id.'class="wp-caption '.$align.'" style="width:'.$width.'px">
 			<dt>'.do_shortcode($content).'</dt>
 			<dd>'.$caption.'</dd>
 		</dl>';
 }
-add_shortcode('wp_caption', 'cfcp_img_captions');
-add_shortcode('caption', 'cfcp_img_captions');
+add_filter('img_caption_shortcode', 'cfcp_img_captions', 10, 3);
 
 // Do not output default WP styles with gallery shortcode
 add_filter('gallery_style', create_function('$a', 'return "<div class=\'gallery\'>";'));
