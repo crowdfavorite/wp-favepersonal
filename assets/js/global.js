@@ -49,30 +49,8 @@ jQuery(function($) {
 	$('#s').placeholder();
 
 // Gallery
-	var $gal = $('.cfgallery'),
-		viewportW = $(window).width(),
-		scale = $.fn.cfgallery.helpers.scale,
-		dims = [];
-	
-	// set defaults
-	var w = $gal.data('width');
-	var h = $gal.data('height');
-	dims[0] = (typeof w === 'undefined' ? 710 : w);
-	dims[1] = (typeof h === 'undefined' ? 474 : h);
-	
-	// Proportional scale based on screen size
-	if (viewportW < 480) {
-		dims = scale(dims, [300, 999]);
-		$gal.addClass('mobile-portrait');
-	}
-	// iPhone Landscape
-	else if (viewportW < 768) {
-		dims = scale(dims, [460, 999]);
-		$gal.addClass('mobile-landscape');
-	}
-	
-	$gal.cfgallery({
-		'stageDimensions': dims,
+	$('.cfgallery').cfgallery({
+		'stageDimensions': [null, null],
 		'titleClass': 'h3'
 	});
 	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();
