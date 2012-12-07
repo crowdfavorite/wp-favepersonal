@@ -1,5 +1,16 @@
 # FavePersonal
 
+## Version 1.2
+
+- WordPress 3.5 compatibility
+- Support for gallery shortcode with ID parameters
+- Support for multiple galleries in a single page/post
+- New-style WP generated caption shortcodes work properly
+- Updated Kuler API compatibliity
+- Update the included Social plugin to version 2.6.1
+- Update the included Post Formats Admin UI plugin to version 1.0.2
+- Minimum required WordPress version: 3.5
+
 ## Version 1.1
 
 - Update the included Social plugin to version 2.5
