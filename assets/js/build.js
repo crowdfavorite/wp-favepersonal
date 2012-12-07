@@ -126,18 +126,17 @@
 
 					return false;
 				},
-				'swiperight': function() {
+				'swipeleft': function() {
 					currentStageId = stageId;
 					fn.setNextHashToken(thumbs, stage);
 					return false;
 				},
-				'swipeleft': function() {
+				'swiperight': function() {
 					currentStageId = stageId;
 					fn.setPrevHashToken(thumbs, stage);
 					return false;
 				}
 			});
-
 
 			$(docEl).keyup(function(e) {
 				if (currentStageId == stageId) {
