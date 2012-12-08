@@ -5,6 +5,7 @@
 - WordPress 3.5 compatibility
 - Support for gallery shortcode with ID parameters
 - Support for multiple galleries in a single page/post
+- Support for swiping Left/Right to navigate galleries on touch devices
 - New-style WP generated caption shortcodes work properly
 - Updated Kuler API compatibliity
 - Update the included Social plugin to version 2.6.1
