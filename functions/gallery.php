@@ -304,7 +304,7 @@ function cfcp_gallery($args = array()) {
 function cfcp_gallery_shortcode($content, $args) {
 	// Go with default gallery if in a feed (we don't want to run JS in feeds)
 	if (is_feed()) {
-		return $content;
+		return '';
 	}
 
 	global $content_width;
