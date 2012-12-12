@@ -6,8 +6,6 @@ function cfcp_header_admin_init() {
 	if (cfcp_header_options('type') == 'featured') {
 		add_action('add_meta_boxes', 'cfcp_set_featured_position');
 	}
-	wp_register_style('myPluginStylesheet', get_template_directory_uri().'/assets/css/masthead.css');
-	wp_enqueue_style('myPluginStylesheet');
 }
 add_action('admin_init', 'cfcp_header_admin_init');
 

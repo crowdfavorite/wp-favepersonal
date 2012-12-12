@@ -122,4 +122,7 @@ iPad (portrait)				768
  		width: auto;
  	}
 	
+	.gallery-stage {
+		width: 530px;
+	}
 }

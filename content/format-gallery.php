@@ -23,8 +23,6 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 global $content_width;
 $content_width = '710'; // set for this view
 
-$sizes = cfcp_gallery_max_size('gallery-large-img');
-
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class('clearfix') ?>>
 	<header class="entry-header">
@@ -36,8 +34,6 @@ $sizes = cfcp_gallery_max_size('gallery-large-img');
 cfcp_gallery(array(
 	'before' => '<div class="entry-media">',
 	'after' => '</div>',
-	'height' => $sizes['height'],
-	'width' => $sizes['width'],
 ));
 
 ?>
