@@ -265,10 +265,6 @@ iPad (portrait)				768
 	#footer .credit {
 		float: none;
 	}
-
-	.gallery-stage {
-		height: 201px;
-	}
 }
 
 /* iPhone portrait */
@@ -404,9 +400,5 @@ iPad (portrait)				768
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
-	}
-
-	.gallery-stage {
-		height: 308px;
 	}
 }
