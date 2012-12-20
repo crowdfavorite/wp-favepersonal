@@ -151,6 +151,10 @@ class CFCT_Gallery {
 			$this->width = floor($sizes['width'] / $ratio);
 			$this->height = floor($sizes['height'] / $ratio);
 		}
+		else {
+			$this->width = $sizes['width'];
+			$this->height = $sizes['height'];
+		}
 
 		if (empty($args['height'])) {
 			$args['height'] = $this->height;
