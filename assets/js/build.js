@@ -19,7 +19,7 @@
 * Date: Thu Sept 01 18:00:00 2011 -0500
 */(function(a){a.fn.fitVids=function(b){var c={customSelector:null},d=document.createElement("div"),e=document.getElementsByTagName("base")[0]||document.getElementsByTagName("script")[0];return d.className="fit-vids-style",d.innerHTML="&shy;<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style>",e.parentNode.insertBefore(d,e),b&&a.extend(c,b),this.each(function(){var b=["iframe[src^='http://player.vimeo.com']","iframe[src^='http://www.youtube.com']","iframe[src^='http://www.kickstarter.com']","object","embed"];c.customSelector&&b.push(c.customSelector);var d=a(this).find(b.join(","));d.each(function(){var b=a(this),c=this.tagName=="OBJECT"?b.attr("height"):b.height(),d=c/b.width();b.wrap('<div class="fluid-width-video-wrapper" />').parent(".fluid-width-video-wrapper").css("padding-top",d*100+"%"),b.removeAttr("height").removeAttr("width")})})}})(jQuery);/*!
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
- * version 1.0
+ * version 1.1
  *
  * Copyright (c) 2011-2012 Crowd Favorite (http://crowdfavorite.com)
  */
@@ -581,8 +581,35 @@
 	$('#s').placeholder();
 
 // Gallery
-	$('.cfgallery').cfgallery({
-		'stageDimensions': [null, null],
+	var $gal = $('.cfgallery'),
+		viewportW = $(window).width(),
+		scale = $.fn.cfgallery.helpers.scale,
+		dims = [];
+
+	// set defaults
+	var w = $gal.data('width');
+	var h = $gal.data('height');
+	dims[0] = (typeof w === 'undefined' ? 710 : w);
+	dims[1] = (typeof h === 'undefined' ? 474 : h);
+
+	// Proportional scale based on screen size
+	if (viewportW < 480) {
+		dims = scale(dims, [300, 999]);
+		$gal.addClass('mobile-portrait');
+	}
+	// iPhone Landscape
+	else if (viewportW < 768) {
+		dims = scale(dims, [460, 999]);
+		$gal.addClass('mobile-landscape');
+	}
+	// iPad Portrait
+	else if (viewportW < 1009) {
+		dims = scale(dims, [708, 999]);
+		$gal.addClass('mobile-tablet');
+	}
+
+	$gal.cfgallery({
+		'stageDimensions': dims,
 		'titleClass': 'h3'
 	});
 	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();

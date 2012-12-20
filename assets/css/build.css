@@ -2091,10 +2091,6 @@ iPad (portrait)				768
  	.single-format-video #social {
  		width: auto;
  	}
-	
-	.gallery-stage {
-		width: 530px;
-	}
 }/* --------------------------------------------------
 Mobile styles
 This file should be included in the built CSS output when in production mode.
@@ -2362,10 +2358,6 @@ iPad (portrait)				768
 	#footer .credit {
 		float: none;
 	}
-
-	.gallery-stage {
-		height: 201px;
-	}
 }
 
 /* iPhone portrait */
@@ -2501,9 +2493,5 @@ iPad (portrait)				768
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
-	}
-
-	.gallery-stage {
-		height: 308px;
 	}
 }
