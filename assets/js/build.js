@@ -40,15 +40,15 @@
 	/* Local variable for hash makes lookups faster and is better for closure compiler */
 	var loc = window.location,
 		docEl = window.document.documentElement,
-		stageCounter = 0;
+		stageCounter = 0,
+		currentStageId = 0;
 	
 	/* Constructor */
 	var gal = function(options) {
 		var opts = $.extend(gal.opts, options),
 			fn = gal.helpers,
 			dim = opts.stageDimensions,
-			bgColor = opts.bgColor,
-			currentStageId = 0;
+			bgColor = opts.bgColor;
 		
 		gal.opts = opts;
 
@@ -393,7 +393,7 @@
 			$img = this.loadImage(data.src, function() {
 
 				var t = $(this),
-					thumbDims = [t.prop('naturalWidth') || t.width(), t.prop('naturalHeight') ||t.height()],
+					thumbDims = [t.prop('naturalWidth') || t.width(), t.prop('naturalHeight') || t.height()],
 					dims = scale(
 						[thumbDims[0], thumbDims[1]],
 						[stage.width(), stage.height()]
@@ -613,45 +613,51 @@
 	var $gal = $('.cfgallery'),
 		scale = $.fn.cfgallery.helpers.scale;
 
-	var getGalleryDims = function() {
+	var getGalleryDims = function(gallery) {
+		gallery = $(gallery);
+
 		var dims = [];
 		var viewportW = $(window).width()
 		
 		// set defaults
-		var w = $gal.data('width');
-		var h = $gal.data('height');
+		var w = gallery.data('width');
+		var h = gallery.data('height');
 		dims[0] = (typeof w === 'undefined' ? 710 : w);
 		dims[1] = (typeof h === 'undefined' ? 474 : h);
 
 		// Proportional scale based on screen size
 		if (viewportW < 480) {
 			dims = scale(dims, [300, 999]);
-			$gal.addClass('mobile-portrait');
+			gallery.addClass('mobile-portrait');
 		}
 		// iPhone Landscape
 		else if (viewportW < 768) {
 			dims = scale(dims, [460, 999]);
-			$gal.addClass('mobile-landscape');
+			gallery.addClass('mobile-landscape');
 		}
 		// iPad Portrait
 		else if (viewportW < 1009) {
 			dims = scale(dims, [570, 999]);
-			$gal.addClass('mobile-tablet');
+			gallery.addClass('mobile-tablet');
 		}
 
 		return dims;
 	}
 
-	$gal.cfgallery({
-		'stageDimensions': getGalleryDims(),
-		'titleClass': 'h3'
+	$gal.each(function() {
+		$(this).cfgallery({
+			'stageDimensions': getGalleryDims(this),
+			'titleClass': 'h3'
+		});
 	});
 	
 	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();
 
 	var resizePage = function() {
-		var dims = getGalleryDims();
-		$gal.trigger('resize.cfgal', dims);
+		$gal.each(function() {
+			var dims = getGalleryDims(this);
+			$(this).trigger('resize.cfgal', dims);
+		})
 	}
 
 	var fgResizeTimeout;
