@@ -104,6 +104,31 @@
 				},
 				'loaded.cfgal': function(e) {
 					loading.hide();
+				},
+				'resize.cfgal': function(e, stageWidth, stageHeight) {
+					stage.css({
+						width: stageWidth,
+						height: stageHeight
+					});
+
+					$('figure.gallery-figure img', this).each(function() {
+						var $img = $(this),
+							thumbDims = $img.data('thumbDims');
+
+						var dims = fn.scale(
+								[thumbDims[0], thumbDims[1]],
+								[stageWidth, stageHeight]
+							);
+
+						$img.css({
+							'width': dims[0],
+							'height': dims[1],
+							// Add CSS for centering.
+							'margin-left': -1 * (dims[0] / 2),
+							'margin-top': -1 * (dims[1] / 2),
+							'visibility': 'visible'
+						});
+					})
 				}
 			});
 
@@ -366,16 +391,20 @@
 			$figure = this.createFigure($thumb, data);
 
 			$img = this.loadImage(data.src, function() {
+
 				var t = $(this),
+					thumbDims = [t.prop('naturalWidth') || t.width(), t.prop('naturalHeight') ||t.height()],
 					dims = scale(
-						[t.width(), t.height()],
+						[thumbDims[0], thumbDims[1]],
 						[stage.width(), stage.height()]
 					);
-				
+
 				$figure.css({
 					'display': 'none'
 				});
-				
+
+				t.data('thumbDims', thumbDims);
+
 				t.css({
 					'width': dims[0],
 					'height': dims[1],
@@ -582,35 +611,54 @@
 
 // Gallery
 	var $gal = $('.cfgallery'),
-		viewportW = $(window).width(),
-		scale = $.fn.cfgallery.helpers.scale,
-		dims = [];
+		scale = $.fn.cfgallery.helpers.scale;
 
-	// set defaults
-	var w = $gal.data('width');
-	var h = $gal.data('height');
-	dims[0] = (typeof w === 'undefined' ? 710 : w);
-	dims[1] = (typeof h === 'undefined' ? 474 : h);
+	var getGalleryDims = function() {
+		var dims = [];
+		var viewportW = $(window).width()
+		
+		// set defaults
+		var w = $gal.data('width');
+		var h = $gal.data('height');
+		dims[0] = (typeof w === 'undefined' ? 710 : w);
+		dims[1] = (typeof h === 'undefined' ? 474 : h);
 
-	// Proportional scale based on screen size
-	if (viewportW < 480) {
-		dims = scale(dims, [300, 999]);
-		$gal.addClass('mobile-portrait');
-	}
-	// iPhone Landscape
-	else if (viewportW < 768) {
-		dims = scale(dims, [460, 999]);
-		$gal.addClass('mobile-landscape');
-	}
-	// iPad Portrait
-	else if (viewportW < 1009) {
-		dims = scale(dims, [708, 999]);
-		$gal.addClass('mobile-tablet');
+		// Proportional scale based on screen size
+		if (viewportW < 480) {
+			dims = scale(dims, [300, 999]);
+			$gal.addClass('mobile-portrait');
+		}
+		// iPhone Landscape
+		else if (viewportW < 768) {
+			dims = scale(dims, [460, 999]);
+			$gal.addClass('mobile-landscape');
+		}
+		// iPad Portrait
+		else if (viewportW < 1009) {
+			dims = scale(dims, [570, 999]);
+			$gal.addClass('mobile-tablet');
+		}
+
+		return dims;
 	}
 
 	$gal.cfgallery({
-		'stageDimensions': dims,
+		'stageDimensions': getGalleryDims(),
 		'titleClass': 'h3'
 	});
+	
 	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();
+
+	var resizePage = function() {
+		var dims = getGalleryDims();
+		$gal.trigger('resize.cfgal', dims);
+	}
+
+	var fgResizeTimeout;
+	$(window).resize(function() {
+		clearTimeout(fgResizeTimeout);
+
+		//call the resizePage function
+		fgResizeTimeout = setTimeout(resizePage, 100);
+	});
 });
