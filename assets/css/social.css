@@ -548,6 +548,7 @@ but allow screen readers to see */
 
 #social .social-items-comments {
 	float: left;
+	max-width: 510px;
 }
 #social .social-items-comments img {
 	width: 24px;
@@ -584,7 +585,7 @@ but allow screen readers to see */
 }
 
 #social .social-items img {
-	margin: 0 2px;
+	margin: 2px;
 }
 
 #social .social-items-comments a {
