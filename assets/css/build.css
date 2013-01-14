@@ -2094,7 +2094,7 @@ iPad (portrait)				768
  	}
 
  	#social .social-items-comments {
- 		max-width: 440px;
+ 		max-width: 568px;
  	}
 }/* --------------------------------------------------
 Mobile styles
@@ -2342,7 +2342,7 @@ iPad (portrait)				768
 
 	#social .social-items-comments {
 		float: left;
-		max-width: 280px;
+		max-width: 440px;
 	}
  	/* media-big-screen.css overrides */
  	.single-format-image #social,
@@ -2428,6 +2428,10 @@ iPad (portrait)				768
 	}
 	#footer a {
 		display: inline-block;
+	}
+
+	#social .social-items-comments {
+		max-width: 280px;
 	}
 }
 
