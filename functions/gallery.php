@@ -30,7 +30,7 @@ function cfcp_img_captions($output, $attr, $content = null) {
 	if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
 
 	return '
-		<dl '.$id.'class="wp-caption '.$align.'" style="width:'.$width.'px">
+		<dl '.$id.'class="wp-caption '.$align.'" style="max-width:'.$width.'px">
 			<dt>'.do_shortcode($content).'</dt>
 			<dd>'.$caption.'</dd>
 		</dl>';

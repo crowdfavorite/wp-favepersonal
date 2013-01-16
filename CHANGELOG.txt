@@ -4,6 +4,7 @@
 
 - Addressed bug in Bio Widget admin that would cause the favicon lookup to pause indefinitely when pressing enter in the URL field for a link.
 - Updated Bio Widget link admin so that pressing enter when the "Add" button is focused triggers the "click" action on that button.
+- Addressed bug with responsive resizing of captioned images in front end.
 
 ## Version 1.2
 
