@@ -37,7 +37,7 @@ define('CFCT_PRODUCTION', true);
 /**
  * Theme version.
  */
-define('CFCT_THEME_VERSION', '1.2');
+define('CFCT_THEME_VERSION', '1.2.1');
 
 /**
  * Theme URL version.

@@ -1,5 +1,10 @@
 # FavePersonal
 
+## Version 1.2.1
+
+- Addressed bug in Bio Widget admin that would cause the favicon lookup to pause indefinitely when pressing enter in the URL field for a link.
+- Updated Bio Widget link admin so that pressing enter when the "Add" button is focused triggers the "click" action on that button.
+
 ## Version 1.2
 
 - WordPress 3.5 compatibility
