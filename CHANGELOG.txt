@@ -1,5 +1,9 @@
 # FavePersonal
 
+## Version ?
+
+- Gallery shortcodes with specified post ids now work properly in RSS feeds.
+
 ## Version 1.2.1
 
 - Addressed bug in Bio Widget admin that would cause the favicon lookup to pause indefinitely when pressing enter in the URL field for a link.
