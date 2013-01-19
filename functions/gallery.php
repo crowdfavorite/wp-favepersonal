@@ -313,8 +313,6 @@ function cfcp_gallery_shortcode($content, $args) {
 
 	global $content_width;
 
-	remove_filter('post_gallery', 'cfct_post_gallery', 10, 2);
-	
 	$defaults = array(
 		'number' => -1,
 		'id' => get_the_ID(),
@@ -342,6 +340,8 @@ function cfcp_gallery_shortcode($content, $args) {
 if (!is_admin()) {
 	add_filter('post_gallery', 'cfcp_gallery_shortcode', 1, 2);
 }
+// disable carrington core gallery
+remove_filter('post_gallery', 'cfct_post_gallery', 10, 2);
 
 // Display gallery images with our own markup for excerpts 
 function cfcp_gallery_excerpt($args = array()) {
