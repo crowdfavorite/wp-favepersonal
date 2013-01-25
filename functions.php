@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -32,7 +32,7 @@ define('CFCT_DEBUG', false);
  * In production mode, or doing development?
  * When true, assets/load.php will enqueue the built versions of the files
  */
-define('CFCT_PRODUCTION', true);
+define('CFCT_PRODUCTION', false);
 
 /**
  * Theme version.
@@ -49,7 +49,7 @@ if (!(defined('CFCT_URL_VERSION'))) {
 
 /**
  * Define Header Text Color, even though it isn't used in the theme, need to define to prevent Notices
- */ 
+ */
 if (!(defined('HEADER_TEXTCOLOR'))) {
 	define('HEADER_TEXTCOLOR', '');
 }
@@ -97,7 +97,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 	function carrington_personal_setup() {
 		// Add default posts and comments RSS feed links to head
 		add_theme_support( 'automatic-feed-links' );
-		
+
 		// This theme uses post thumbnails
 		add_theme_support( 'post-thumbnails' );
 
@@ -113,14 +113,14 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		// set primary content width
 		global $content_width;
 		$content_width = '510';
-		
+
 		// set default gallery dimensions
 		define('CFCT_GALLERY_HEIGHT', 474);
 		define('CFCT_GALLERY_WIDTH', 710);
-		
+
 		// Add post formats
 		add_theme_support(
-			'post-formats', 
+			'post-formats',
 			array(
 				'status',
 				'link',
@@ -130,24 +130,24 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 				'quote',
 			)
 		);
-		
+
 		register_nav_menu( 'main', __( 'Main Navigation', 'favepersonal'));
-		
+
 		// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
 		define( 'HEADER_IMAGE', '%s/functions/header/img/default.png' );
-	
+
 		define( 'HEADER_IMAGE_WIDTH', apply_filters( 'cfcp_header_image_width', 990 ) );
 		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'cfcp_header_image_height', 240 ) );
-	
+
 		set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
-	
+
 		// Don't support text inside the header image.
 		define( 'NO_HEADER_TEXT', true );
 		add_theme_support( 'custom-header', array('admin-head-callback' => 'cfcp_admin_header_style'));
-		
+
 		$patch_nav = new CF_Patch_Nav_Menu();
 		$patch_nav->attach_hooks();
-		
+
 		/**
 		 * Remove Carrington-added rev attribute -- now deprecated in HTML5
 		 */
@@ -266,13 +266,13 @@ function cfcp_child_theme_export() {
 		header('Content-Disposition: attachment; filename=style.css');
 		header('Content-Type: application/zip');
 		header('Content-type: text-css');
-		echo '/* 
-Theme Name:     FavePersonal Child Theme ('.$settings['theme']['title'].') 
-Description:    Child theme for FavePersonal (based on <a href="'.$settings['theme']['link'].'">'.$settings['theme']['title'].'</a> by '.$settings['theme']['author'].') 
-Author:         '.get_bloginfo('name').' 
-Author URI:     '.home_url().' 
-Template:       favepersonal 
-Version:        1.0 
+		echo '/*
+Theme Name:     FavePersonal Child Theme ('.$settings['theme']['title'].')
+Description:    Child theme for FavePersonal (based on <a href="'.$settings['theme']['link'].'">'.$settings['theme']['title'].'</a> by '.$settings['theme']['author'].')
+Author:         '.get_bloginfo('name').'
+Author URI:     '.home_url().'
+Template:       favepersonal
+Version:        1.0
 */
 
 /* Add your custom CSS styles here */
@@ -385,7 +385,7 @@ if (!function_exists('cf_relative_time_ago')) {
 		$pre .= ' ';
 		$post = ' '.$post;
 		$pre_format = ' ';
-	
+
 		if ($gmt) {
 			$now = gmmktime();
 		}
@@ -394,49 +394,49 @@ if (!function_exists('cf_relative_time_ago')) {
 			date_default_timezone_set(get_option('timezone_string'));
 			$now = time();
 		}
-	
-		if (!is_numeric($date)) { 
-			$date = strtotime($date); 
+
+		if (!is_numeric($date)) {
+			$date = strtotime($date);
 		}
-	
+
 		// seconds
 		$diff = $now - $date;
-		if ($diff < 60){ 
+		if ($diff < 60){
 			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
 				_n('%d second', '%d seconds', $diff), $diff), $post);
 		}
-		
+
 		// minutes
 		$diff = round($diff/60);
-		if ($diff < 60) { 
+		if ($diff < 60) {
 			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
 				_n('%d minute', '%d minutes', $diff), $diff), $post);
 		}
-		
+
 		// hours
 		$diff = round($diff/60);
 		if ($diff < 24) {
 			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
 				_n('%d hour', '%d hours', $diff), $diff), $post);
 		}
-		
+
 		// days
 		$diff = round($diff/24);
-		if ($diff < 7) { 
+		if ($diff < 7) {
 			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
 				_n('%d day', '%d days', $diff), $diff), $post);
 		}
-		
+
 		// weeks
 		$diff = round($diff/7);
-		if ($diff <= $full_date_cutoff) { 
+		if ($diff <= $full_date_cutoff) {
 			return sprintf('%1$s%2$s%3$s', $pre, sprintf(
 				_n('%d week', '%d weeks', $diff), $diff), $post);
 		}
-	
+
 		// actual date string if farther than 4 weeks ago
 		$ago = $pre_format . mysql2date($format, date('Y-m-d H:i:s', $date));
-	
+
 		if (!$gmt) {
 			date_default_timezone_set($orig_tz);
 		}
@@ -455,16 +455,16 @@ if (!function_exists('cf_relative_time_ago')) {
 if (!function_exists('cf_trim_text')) {
 	function cf_trim_text($text, $length = 250, $before = '', $after = '') {
 		// If the text field is empty or is shorter than the $length, there is no need to make it smaller
-		
+
 		/* Since servers must have MB module installed for mb_* functions, we're keeping the fallback to non-multibyte functions */
-		if (function_exists('mb_strlen')) { // 
+		if (function_exists('mb_strlen')) { //
 			if (empty($text) || mb_strlen($text) <= $length) {
 				return $text;
 			}
 			if (mb_strlen($text) > $length) {
 				$text = mb_substr($text, 0, $length); // cut string to proper length
 				if (mb_strrpos($text, ' ')) { // if we have spaces in text, cut to the last word, not letter
-					$text = mb_substr($text, 0, mb_strrpos($text, ' ')); 
+					$text = mb_substr($text, 0, mb_strrpos($text, ' '));
 				}
 			}
 		}
@@ -475,7 +475,7 @@ if (!function_exists('cf_trim_text')) {
 			if (strlen($text) > $length) {
 				$text = substr($text, 0, $length); // cut string to proper length
 				if (strrpos($text, ' ')) { // if we have spaces in text, cut to the last word, not letter
-					$text = substr($text, 0, strrpos($text, ' ')); 
+					$text = substr($text, 0, strrpos($text, ' '));
 				}
 			}
 		}
@@ -486,4 +486,3 @@ if (!function_exists('cf_trim_text')) {
 		return $before.$text.$after;
 	}
 } // end exists check
-

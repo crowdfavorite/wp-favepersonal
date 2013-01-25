@@ -335,6 +335,15 @@ iPad (portrait)				768
 	#social .social-items-comments {
 		max-width: 280px;
 	}
+
+	.img-archive-container {
+		width: 300px;
+	}
+
+	.img-archive {
+		display: block;
+		margin: 0;
+	}
 }
 
 /* iPhone Landscape */
@@ -409,5 +418,15 @@ iPad (portrait)				768
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
+	}
+
+	/* Image archive pages */
+
+	.img-archive-container {
+		width: 475px; /* 460 + 2*7.5px */
+	}
+
+	.img-archive {
+		margin: 0 7.5px;
 	}
 }

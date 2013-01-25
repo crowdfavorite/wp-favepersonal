@@ -125,4 +125,16 @@ iPad (portrait)				768
  	#social .social-items-comments {
  		max-width: 568px;
  	}
+
+ 	/* img-archive page */
+
+ 	.img-archive-container {
+ 		width: 723px; /* 708px + 2*7.5 */
+ 	}
+
+ 	.img-archive {
+ 		background-color: #fff;
+ 		border: none;
+ 		margin: 0 7.5px;
+ 	}
 }

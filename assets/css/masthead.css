@@ -1,14 +1,14 @@
 /** Masthead/Header
- * 
+ *
  * Masthead used for the CSS but we are
  * calling it "header" where the user sees
  * most people won't know the term "masthead"
  *
  * Default colors here will be over ridden by
  * the ones choosen in the color settings
- * 
+ *
  * These styles are loaded for the front-end and admin-settings screen
- * 
+ *
  -------------------------------------------------- */
 
 /** Featured Posts
@@ -55,7 +55,7 @@
 	top: 0;
 	z-index: 10;
 }
-.featured-description, 
+.featured-description,
 .featured-description p {
 	font-size: 14px;
 	line-height: 20px;
@@ -162,4 +162,19 @@
 	background-color: rgb(153,153,153); /* fallback for IE */
 	background-color: rgba(153,153,153,.9);
 	color: #333;
+}
+
+/** Img archive
+ -------------------------------------------------- */
+
+.img-archive {
+	background-color: #fff;
+	border: none;
+	margin: 0 15px;
+}
+
+.img-archive-container {
+	width: 1020px; /* 990 + 2*15px */
+	text-align: center;
+	margin: auto;
 }

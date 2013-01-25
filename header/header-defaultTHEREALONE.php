@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
  * **********************************************************************
  */
 
@@ -50,11 +50,12 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 			</nav>
 		</div><!-- .container -->
 	</header><!-- #header -->
-
+	
 <?php
 
 cfcp_header_display();
 
-?>
-
+?>	
+	
 	<section id="content">
+		<div class="container clearfix">

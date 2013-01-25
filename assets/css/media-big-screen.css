@@ -79,3 +79,15 @@ This file should be included in built css file when in production mode.
 #nav-main ul {
 	text-align: right;
 }
+
+/* img-archive page */
+
+.img-archive-container {
+	width: 1050px; /* 990 + 30*2 */
+}
+
+.img-archive {
+	background-color: #fff;
+	border: none;
+	margin: 0 15px;
+}
