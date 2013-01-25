@@ -167,14 +167,38 @@
 /** Img archive
  -------------------------------------------------- */
 
+ .img-archive-container {
+ 	width: 1020px; /* 990 + 2*15px */
+ 	text-align: center;
+ 	margin: auto;
+ }
+
 .img-archive {
 	background-color: #fff;
 	border: none;
-	margin: 0 15px;
+	margin: 15px;
+	position: relative;
+	height: 240px;
 }
 
-.img-archive-container {
-	width: 1020px; /* 990 + 2*15px */
-	text-align: center;
-	margin: auto;
+.entry-header-img {
+	position: absolute;
+	bottom: 0;
+	display: block;
+	width: 100%;
+	background-color: #ddd;
+}
+
+.entry-title-img {
+	float: left;
+	width: 100%;
+	margin: 0;
+	background: none;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+.entry-date-img {
+	float: left;
 }

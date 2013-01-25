@@ -342,7 +342,8 @@ iPad (portrait)				768
 
 	.img-archive {
 		display: block;
-		margin: 0;
+		margin: 7.5px 0;
+		height: 232px;
 	}
 }
 
@@ -427,6 +428,7 @@ iPad (portrait)				768
 	}
 
 	.img-archive {
-		margin: 0 7.5px;
+		margin: 7.5px;
+		height: 180px;
 	}
 }
