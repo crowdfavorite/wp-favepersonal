@@ -87,6 +87,14 @@ jQuery(function($) {
 						});
 					}
 				});
+
+				// Hide popup when esc key is pressed and search results display is empty
+				$search.on('keydown', '#cfp-img-search-term', function(e) {
+					if (e.which == 27 && $('#cfp-img-search-results').is(':hidden')) {
+						$('body').click();
+						return false;
+					}
+				});
 			},
 			
 			getSelectedIds: function() {
