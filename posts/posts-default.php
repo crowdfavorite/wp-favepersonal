@@ -24,13 +24,18 @@ get_header();
 
 ?>
 
-<div class="img-archive-container clearfix">
+<div id="primary">
 	<?php
 
 	cfct_loop();
-	// cfct_misc('nav-posts');
+	cfct_misc('nav-posts');
 
 	?>
+
+</div>
+
+<div id="secondary">
+	<?php get_sidebar(); ?>
 </div>
 
 <?php get_footer(); ?>
