@@ -486,3 +486,19 @@ if (!function_exists('cf_trim_text')) {
 		return $before.$text.$after;
 	}
 } // end exists check
+function cfcp_add_taxonomy_tamplates ( $order ) {
+	$exec_order = array(
+		'author',
+		'role',
+		'category',
+		'taxonomy',
+		'tag',
+		'type',
+		'taxonomy',
+		'single',
+		'default'
+	);
+
+	return $order;
+}
+//add_filter('cfct_general_match_order', 'cfcp_add_taxonomy_tamplates');

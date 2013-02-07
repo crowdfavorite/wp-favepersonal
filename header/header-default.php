@@ -57,5 +57,7 @@ cfcp_header_display();
 
 ?>	
 	
-	<section id="content">
+	<section id="content">	
+	<?php if ( ! is_tax('post_format', 'post-format-image') ) { ?>
 		<div class="container clearfix">
+	<?php } ?>				

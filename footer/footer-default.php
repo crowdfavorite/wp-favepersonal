@@ -21,7 +21,9 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
 
+	<?php if ( ! is_tax('post_format', 'post-format-image') ) { ?>
 		</div><!-- .container -->		
+	<?php } ?>				
 	</section><!-- #content -->
 
 
