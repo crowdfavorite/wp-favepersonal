@@ -78,6 +78,18 @@ This file should be included in built css file when in production mode.
 }
 #nav-main ul {
 	text-align: right;
+}
+
+/* img-archive page */
+
+.img-archive-container {
+	width: 1050px; /* 990 + 30*2 */
+}
+
+.img-archive {
+	background-color: #eee;
+	border: none;
+	margin: 15px;
 }/* HTML5 ✰ Boilerplate
  * ==|== normalize ==========================================================
  */
@@ -1189,16 +1201,16 @@ article {
 #footer p {
 	margin: 0;
 }/** Masthead/Header
- * 
+ *
  * Masthead used for the CSS but we are
  * calling it "header" where the user sees
  * most people won't know the term "masthead"
  *
  * Default colors here will be over ridden by
  * the ones choosen in the color settings
- * 
+ *
  * These styles are loaded for the front-end and admin-settings screen
- * 
+ *
  -------------------------------------------------- */
 
 /** Featured Posts
@@ -1245,7 +1257,7 @@ article {
 	top: 0;
 	z-index: 10;
 }
-.featured-description, 
+.featured-description,
 .featured-description p {
 	font-size: 14px;
 	line-height: 20px;
@@ -1352,6 +1364,45 @@ article {
 	background-color: rgb(153,153,153); /* fallback for IE */
 	background-color: rgba(153,153,153,.9);
 	color: #333;
+}
+
+/** Img archive
+ -------------------------------------------------- */
+
+ .img-archive-container {
+ 	width: 1020px; /* 990 + 2*15px */
+ 	text-align: center;
+ 	margin: auto;
+ }
+
+.img-archive {
+	background-color: #eee;
+	border: none;
+	margin: 15px;
+	position: relative;
+	height: 240px;
+}
+
+.entry-header-img {
+	position: absolute;
+	bottom: 0;
+	display: block;
+	width: 100%;
+	background-color: #ddd;
+}
+
+.entry-title-img {
+	float: left;
+	width: 100%;
+	margin: 0;
+	background: none;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+.entry-date-img {
+	float: left;
 }/** @section Utils
  -------------------------------------------------- */
 
@@ -2096,6 +2147,19 @@ iPad (portrait)				768
  	#social .social-items-comments {
  		max-width: 568px;
  	}
+
+ 	/* img-archive page */
+
+ 	.img-archive-container {
+ 		width: 723px; /* 708px + 2*7.5 */
+ 	}
+
+ 	.img-archive {
+ 		background-color: #eee;
+ 		border: none;
+ 		margin: 7.5px;
+ 		height: 179px;
+ 	}
 }/* --------------------------------------------------
 Mobile styles
 This file should be included in the built CSS output when in production mode.
@@ -2433,6 +2497,16 @@ iPad (portrait)				768
 	#social .social-items-comments {
 		max-width: 280px;
 	}
+
+	.img-archive-container {
+		width: 300px;
+	}
+
+	.img-archive {
+		display: block;
+		margin: 7.5px 0;
+		height: 232px;
+	}
 }
 
 /* iPhone Landscape */
@@ -2507,5 +2581,17 @@ iPad (portrait)				768
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
+	}
+
+	/* Image archive pages */
+
+	.img-archive-container {
+		width: 475px; /* 460 + 2*7.5px */
+	}
+
+	.img-archive {
+		background-color: #eee;
+		margin: 7.5px;
+		height: 180px;
 	}
 }
