@@ -47,10 +47,11 @@ cfct_the_content_feed();
 ?>
 </div>
 <?php
+
 if (!empty($source)) {
+
 ?>
 <p><?php echo $source; ?></p>
 <?php
-}
-?>
 
+}

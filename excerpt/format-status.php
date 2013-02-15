@@ -37,10 +37,10 @@ $meta_items = apply_filters('cfcp_format_status_meta_excerpt', $meta_items);
 	<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
 	<div class="entry-content">
 		<div class="post-status-content">
-			<?php
-				//using content because wordpress strips HTML, need the links in updates
-				the_content();
-			?>
+<?php
+//using content because wordpress strips HTML, need the links in updates
+the_content();
+?>
 		</div>
 <?php
 if (count($meta_items)) {

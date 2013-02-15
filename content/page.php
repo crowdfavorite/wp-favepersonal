@@ -26,14 +26,14 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<h1 class="page-title"><?php the_title() ?></h1>
 	</div>
 	<div class="page-content">
-		<?php
-			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
-			$args = array(
-				'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
-				'after' => "</p>\n",
-				'next_or_number' => 'number'
-			);
-			wp_link_pages($args);
-		?>
-	</div><!--.page-content-->
+<?php
+the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
+$args = array(
+	'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
+	'after' => "</p>\n",
+	'next_or_number' => 'number'
+);
+wp_link_pages($args);
+?>
+	</div><!-- .page-content -->
 </article><!-- .post -->

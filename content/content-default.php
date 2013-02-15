@@ -27,15 +27,15 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
 	</header>
 	<div class="entry-content">
-		<?php 
-			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
-			$args = array(
-				'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
-				'after' => "</p>\n",
-				'next_or_number' => 'number'
-			);
-			wp_link_pages($args);
-		?>
-	</div>
+<?php 
+the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
+$args = array(
+	'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
+	'after' => "</p>\n",
+	'next_or_number' => 'number'
+);
+wp_link_pages($args);
+?>
+	</div><!-- .entry-content -->
 	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .post -->

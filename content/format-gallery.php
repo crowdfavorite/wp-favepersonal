@@ -49,6 +49,6 @@ $args = array(
 wp_link_pages($args);
 
 ?>
-	</div><!--entry-content-->
+	</div><!-- .entry-content -->
 	<?php cfct_misc('entry-meta'); ?>
-</article>
+</article><!-- .post -->

@@ -29,18 +29,18 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	
 	<div class="entry-media">
 		<?php the_post_thumbnail('large-img'); ?>
-	</div>
+	</div><!-- .entry-media -->
 		
 	<div class="entry-content clearfix">
-		<?php 
-			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
-			$args = array(
-				'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
-				'after' => "</p>\n",
-				'next_or_number' => 'number'
-			);
-			wp_link_pages($args);
-		?>
-	</div>
+<?php 
+the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
+$args = array(
+	'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
+	'after' => "</p>\n",
+	'next_or_number' => 'number'
+);
+wp_link_pages($args);
+?>
+	</div><!-- .entry-content -->
 	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .post -->

@@ -48,7 +48,7 @@ if ( has_post_thumbnail() ) {
 }
 the_content();
 ?>
-	</div>
+	</div><!-- .entry-content -->
 	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .post -->
 
