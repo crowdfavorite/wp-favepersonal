@@ -26,13 +26,13 @@ get_header();
 
 <div id="primary">
 
-	<?php
+<?php
 
-	cfct_loop();
-	comments_template();
-	cfct_misc('nav-post');
+cfct_loop();
+comments_template();
+cfct_misc('nav-post');
 
-	?>
+?>
 	
 </div>
 
