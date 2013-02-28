@@ -599,7 +599,7 @@ article {
 	color: #ccc;
 }
 .single .entry-title,
-.page .entry-title {
+.page .page-title {
 	font-size: 30px;
 	line-height: 32px;
 }
