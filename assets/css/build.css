@@ -87,7 +87,7 @@ This file should be included in built css file when in production mode.
 }
 
 .img-archive {
-	background-color: #eee;
+	/*background-color: #eee;*/
 	border: none;
 	margin: 15px;
 }/* HTML5 ✰ Boilerplate
@@ -602,7 +602,7 @@ article {
 	padding-right: 1px; fixes text crop issue for IE8
 }
 .entry-header .entry-date {
-	position: absolute;	
+	position: absolute;
 	bottom: 1px;
 	left: 0;
 }
@@ -1200,7 +1200,83 @@ article {
 }
 #footer p {
 	margin: 0;
-}/** Masthead/Header
+}
+
+/** Img archive
+ -------------------------------------------------- */
+
+#primary.img-archive-primary {
+	display: block;
+	float: none;
+	margin: 0;
+	width: auto;
+}
+
+#primary.img-archive-secondary {
+	display: block;
+	float: left;
+}
+
+	#primary.img-archive-primary .heading {
+		margin: 0 15px 15px;
+	}
+
+.img-archive-container {
+	margin: auto;
+	width: 1020px; /* 990 + 2*15px */
+}
+
+.img-archive {
+	border: none;
+	float: left;
+	margin: 15px;
+	position: relative;
+	height: 180px;
+	width: 310px;
+}
+
+.entry-header-img {
+	display: block;
+	position: absolute;
+	top: 15px;
+	width: 100%;
+}
+
+	.img-archive .entry-title-img {
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
+		float: left;
+		margin: 0 10px 0 0;
+	}
+
+	.entry-title-img a,
+	.entry-title-img a:visited {
+		color: #fff;
+	}
+
+.entry-date-img {
+	float: left;
+}
+
+#secondary.img-archive-secondary {
+	display: block;
+	float: none;
+	margin: 0 auto;
+	width: 990px;
+}
+
+	.img-archive-secondary #sidebar-1,
+	.img-archive-secondary #sidebar-2,
+	.img-archive-secondary #sidebar-3 {
+		float: left;
+		margin-left: 30px;
+		width: 310px;
+	}
+
+	.img-archive-secondary #sidebar-1 {
+		margin-left: 0;
+	}/** Masthead/Header
  *
  * Masthead used for the CSS but we are
  * calling it "header" where the user sees
@@ -1364,45 +1440,6 @@ article {
 	background-color: rgb(153,153,153); /* fallback for IE */
 	background-color: rgba(153,153,153,.9);
 	color: #333;
-}
-
-/** Img archive
- -------------------------------------------------- */
-
- .img-archive-container {
- 	width: 1020px; /* 990 + 2*15px */
- 	text-align: center;
- 	margin: auto;
- }
-
-.img-archive {
-	background-color: #eee;
-	border: none;
-	margin: 15px;
-	position: relative;
-	height: 240px;
-}
-
-.entry-header-img {
-	position: absolute;
-	bottom: 0;
-	display: block;
-	width: 100%;
-	background-color: #ddd;
-}
-
-.entry-title-img {
-	float: left;
-	width: 100%;
-	margin: 0;
-	background: none;
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
-}
-
-.entry-date-img {
-	float: left;
 }/** @section Utils
  -------------------------------------------------- */
 
@@ -2150,16 +2187,35 @@ iPad (portrait)				768
 
  	/* img-archive page */
 
+ 	#primary.img-archive-primary .heading {
+		margin: 0 7px 10px;
+	}
+
  	.img-archive-container {
  		width: 723px; /* 708px + 2*7.5 */
  	}
 
  	.img-archive {
- 		background-color: #eee;
  		border: none;
  		margin: 7.5px;
- 		height: 179px;
+ 		height: 130px;
+ 		width: 226px;
  	}
+
+ 	#secondary.img-archive-secondary {
+		width: 708px;
+	}
+
+		.img-archive-secondary #sidebar-1,
+		.img-archive-secondary #sidebar-2,
+		.img-archive-secondary #sidebar-3 {
+			margin-left: 15px;
+			width: 226px;
+		}
+
+		.img-archive-secondary #sidebar-1 {
+			margin-left: 0;
+		}
 }/* --------------------------------------------------
 Mobile styles
 This file should be included in the built CSS output when in production mode.
@@ -2506,6 +2562,7 @@ iPad (portrait)				768
 		display: block;
 		margin: 7.5px 0;
 		height: 232px;
+		width: 300px;
 	}
 }
 
@@ -2593,5 +2650,6 @@ iPad (portrait)				768
 		background-color: #eee;
 		margin: 7.5px;
 		height: 180px;
+		width: 222px;
 	}
 }

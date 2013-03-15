@@ -344,6 +344,7 @@ iPad (portrait)				768
 		display: block;
 		margin: 7.5px 0;
 		height: 232px;
+		width: 300px;
 	}
 }
 
@@ -431,5 +432,6 @@ iPad (portrait)				768
 		background-color: #eee;
 		margin: 7.5px;
 		height: 180px;
+		width: 222px;
 	}
 }

@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -22,10 +22,10 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 get_header();
 
-?>	
+?>
 
 
-<?php 
+<?php
 
 // Posts that are NOT post_type image
 if ( ! is_tax('post_format', 'post-format-image') ) { ?>
@@ -46,20 +46,28 @@ cfct_misc('nav-posts');
 	<?php get_sidebar(); ?>
 </div>
 
-<?php 
+<?php
 // END Posts that are NOT post_type image
 
 // Posts that ARE post_type image
-} 
-else { 
+}
+else {
 ?>
-<div class="img-archive-container clearfix">
-	<?php
+<div id="primary" class="img-archive-primary">
+	<div class="img-archive-container clearfix">
+		<div class="heading">
+			<h1 class="page-title"><em>Image</em> Archives</h1>
+		</div>
+		<?php
 
-	cfct_loop();
-	// cfct_misc('nav-posts');
+		cfct_loop();
+		// cfct_misc('nav-posts');
 
-	?>
+		?>
+	</div>
+</div>
+<div id="secondary" class="img-archive-secondary">
+	<?php get_sidebar(); ?>
 </div>
 <?php } // end Posts that ARE post_type image ?>
 

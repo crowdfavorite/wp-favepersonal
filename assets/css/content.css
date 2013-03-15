@@ -152,7 +152,7 @@ article {
 	padding-right: 1px; fixes text crop issue for IE8
 }
 .entry-header .entry-date {
-	position: absolute;	
+	position: absolute;
 	bottom: 1px;
 	left: 0;
 }
@@ -751,3 +751,79 @@ article {
 #footer p {
 	margin: 0;
 }
+
+/** Img archive
+ -------------------------------------------------- */
+
+#primary.img-archive-primary {
+	display: block;
+	float: none;
+	margin: 0;
+	width: auto;
+}
+
+#primary.img-archive-secondary {
+	display: block;
+	float: left;
+}
+
+	#primary.img-archive-primary .heading {
+		margin: 0 15px 15px;
+	}
+
+.img-archive-container {
+	margin: auto;
+	width: 1020px; /* 990 + 2*15px */
+}
+
+.img-archive {
+	border: none;
+	float: left;
+	margin: 15px;
+	position: relative;
+	height: 180px;
+	width: 310px;
+}
+
+.entry-header-img {
+	display: block;
+	position: absolute;
+	top: 15px;
+	width: 100%;
+}
+
+	.img-archive .entry-title-img {
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
+		float: left;
+		margin: 0 10px 0 0;
+	}
+
+	.entry-title-img a,
+	.entry-title-img a:visited {
+		color: #fff;
+	}
+
+.entry-date-img {
+	float: left;
+}
+
+#secondary.img-archive-secondary {
+	display: block;
+	float: none;
+	margin: 0 auto;
+	width: 990px;
+}
+
+	.img-archive-secondary #sidebar-1,
+	.img-archive-secondary #sidebar-2,
+	.img-archive-secondary #sidebar-3 {
+		float: left;
+		margin-left: 30px;
+		width: 310px;
+	}
+
+	.img-archive-secondary #sidebar-1 {
+		margin-left: 0;
+	}

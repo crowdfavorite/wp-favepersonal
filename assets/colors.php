@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -28,7 +28,7 @@ body {
 	background-color: <?php echo cf_kuler_color('dark', 'body_background'); ?>;
 }
 a,
-a:visited { 
+a:visited {
 	color: <?php echo cf_kuler_color('darkest', 'a'); ?>;
 }
 a:hover,
@@ -211,6 +211,12 @@ a:active {
 	background-color: <?php echo cf_kuler_color('darkest', 'widget_search_submit_active_background'); ?>;
 }
 
+/** Image Archive
+ -------------------------------------------------- */
+.img-archive .entry-title-img {
+	background-color: <?php echo cf_kuler_color('darkest', 'featured_posts_title_background'); ?>;
+}
+
 /** Footer
  -------------------------------------------------- */
 #footer {
@@ -284,7 +290,7 @@ a:active {
 #facebook_signin:hover,
 #twitter_signin:hover {
 	background-color: <?php echo cf_kuler_color('darkest', 'social_button_hover_background'); ?>;
-}		
+}
 #social .social-nav a {
 	color: <?php echo cf_kuler_color('dark', 'social_a_color'); ?>;
 }
@@ -318,4 +324,4 @@ function cfcp_color_css_min() {
 	$css = preg_replace('/\/\*(.*?)\*\//', '', $css);
 	echo '<style type="text/css" media="screen">'.$css.'</style>'."\n";
 }
-add_action('wp_head', 'cfcp_color_css_min', 8); 
+add_action('wp_head', 'cfcp_color_css_min', 8);

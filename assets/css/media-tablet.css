@@ -128,14 +128,33 @@ iPad (portrait)				768
 
  	/* img-archive page */
 
+ 	#primary.img-archive-primary .heading {
+		margin: 0 7px 10px;
+	}
+
  	.img-archive-container {
  		width: 723px; /* 708px + 2*7.5 */
  	}
 
  	.img-archive {
- 		background-color: #eee;
  		border: none;
  		margin: 7.5px;
- 		height: 179px;
+ 		height: 130px;
+ 		width: 226px;
  	}
+
+ 	#secondary.img-archive-secondary {
+		width: 708px;
+	}
+
+		.img-archive-secondary #sidebar-1,
+		.img-archive-secondary #sidebar-2,
+		.img-archive-secondary #sidebar-3 {
+			margin-left: 15px;
+			width: 226px;
+		}
+
+		.img-archive-secondary #sidebar-1 {
+			margin-left: 0;
+		}
 }
