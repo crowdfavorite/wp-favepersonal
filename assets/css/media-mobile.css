@@ -336,6 +336,10 @@ iPad (portrait)				768
 		max-width: 280px;
 	}
 
+	#primary.img-archive-primary .heading {
+		margin: 0 0 10px;
+	}
+
 	.img-archive-container {
 		width: 300px;
 	}
@@ -343,9 +347,21 @@ iPad (portrait)				768
 	.img-archive {
 		display: block;
 		margin: 7.5px 0;
-		height: 232px;
+		height: 173px;
 		width: 300px;
 	}
+
+	#secondary.img-archive-secondary {
+		width: 300px;
+	}
+
+		.img-archive-secondary #sidebar-1,
+		.img-archive-secondary #sidebar-2,
+		.img-archive-secondary #sidebar-3 {
+			float: none;
+			margin-left: 0;
+			width: auto;
+		}
 }
 
 /* iPhone Landscape */
@@ -424,14 +440,29 @@ iPad (portrait)				768
 
 	/* Image archive pages */
 
+	#primary.img-archive-primary .heading {
+		margin: 0 7px 10px;
+	}
+
 	.img-archive-container {
 		width: 475px; /* 460 + 2*7.5px */
 	}
 
 	.img-archive {
-		background-color: #eee;
 		margin: 7.5px;
-		height: 180px;
+		height: 128px;
 		width: 222px;
 	}
+
+	#secondary.img-archive-secondary {
+		width: 460px;
+	}
+
+		.img-archive-secondary #sidebar-1,
+		.img-archive-secondary #sidebar-2,
+		.img-archive-secondary #sidebar-3 {
+			float: none;
+			margin-left: 0;
+			width: auto;
+		}
 }
