@@ -61,7 +61,7 @@ else {
 		<?php
 
 		cfct_loop();
-		// cfct_misc('nav-posts');
+		cfct_misc('nav-posts');
 
 		?>
 	</div>

@@ -217,6 +217,10 @@ a:active {
 	background-color: <?php echo cf_kuler_color('darkest', 'featured_posts_title_background'); ?>;
 }
 
+.img-archive-container .pagination {
+	border-bottom-color: <?php echo cf_kuler_color('light', 'featured_posts_border_bottom_color') ?>;
+}
+
 /** Footer
  -------------------------------------------------- */
 #footer {

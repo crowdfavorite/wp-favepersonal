@@ -128,6 +128,10 @@ iPad (portrait)				768
 
  	/* img-archive page */
 
+ 	#primary.img-archive-primary {
+		margin: 0 0 27px 0;
+	}
+
  	#primary.img-archive-primary .heading {
 		margin: 0 7px 10px;
 	}
@@ -142,6 +146,10 @@ iPad (portrait)				768
  		height: 130px;
  		width: 226px;
  	}
+
+ 	.img-archive-container .pagination {
+		margin: 0 8px;
+	}
 
  	#secondary.img-archive-secondary {
 		width: 708px;
