@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -26,15 +26,15 @@ if (have_comments() || comments_open()) {
 ?>
 
 <div id="social">
-	
+
 	<?php $comment_count = get_comment_count($post->ID); ?>
 	<?php if ($comment_count['approved'] > 0) : ?>
 		<h2 id="comments" class="comments-title"><span><?php comments_number(__('No Responses (yet)', 'favepersonal'), __('One Response', 'favepersonal'), __('% Responses', 'favepersonal')); ?></h2>
 	<?php endif; ?>
-		
+
 
 	<div class="social-comments">
-<?php 
+<?php
 	if (!post_password_required()) {
 		$comments = $wp_query->comments;
 		$comment_count = 0;
@@ -47,7 +47,7 @@ if (have_comments() || comments_open()) {
 				$ping_count++;
 			}
 		}
-		if ($comment_count) {
+		if ($comment_count || $ping_count) {
 			echo '<ol class="social-commentlist">', wp_list_comments('callback=cfct_threaded_comment'), '</ol>';
 		}
 
@@ -64,6 +64,6 @@ if (have_comments() || comments_open()) {
 
 	</div><!-- .social-comments -->
 </div><!--#social-->
-<?php 
+<?php
 }
 ?>
