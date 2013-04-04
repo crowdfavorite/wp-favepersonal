@@ -347,12 +347,11 @@ iPad (portrait)				768
 	.img-archive {
 		display: block;
 		margin: 7.5px 0;
-		height: 173px;
 		width: 300px;
 	}
 
 	.img-archive-container .pagination {
-		margin: 0;
+		margin: 72px 8px 25px;
 	}
 
 	#secondary.img-archive-secondary {
@@ -458,12 +457,11 @@ iPad (portrait)				768
 
 	.img-archive {
 		margin: 7.5px;
-		height: 128px;
 		width: 222px;
 	}
 
 	.img-archive-container .pagination {
-		margin: 0 8px;
+		margin: 72px 8px 25px;
 	}
 
 	#secondary.img-archive-secondary {

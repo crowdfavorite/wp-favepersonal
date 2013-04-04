@@ -87,7 +87,6 @@ This file should be included in built css file when in production mode.
 }
 
 .img-archive {
-	/*background-color: #eee;*/
 	border: none;
 	margin: 15px;
 }/* HTML5 ✰ Boilerplate
@@ -1226,43 +1225,32 @@ article {
 	width: 1020px; /* 990 + 2*15px */
 }
 
+	.img-archive-container li {
+		display: inline-block;
+		vertical-align: top;
+	}
+
 .img-archive {
 	border: none;
-	float: left;
 	margin: 15px;
 	position: relative;
-	height: 180px;
 	width: 310px;
 }
 
 .entry-header-img {
 	display: block;
-	position: absolute;
-	top: 15px;
 	width: 100%;
 }
 
-	.img-archive .entry-title-img {
-		-webkit-box-sizing: border-box;
-		   -moz-box-sizing: border-box;
-		        box-sizing: border-box;
-		float: left;
-		margin: 0 10px 0 0;
-	}
-
-	.entry-title-img a,
-	.entry-title-img a:visited {
-		color: #fff;
-	}
-
-.entry-date-img {
-	float: left;
+.entry-header-img .entry-date {
+	margin-top: 5px;
+	text-align: left;
+	width: auto;
 }
 
 .img-archive-container .pagination {
-	border-bottom: 1px solid #eee;
 	clear: both;
-	margin: 0 15px;
+	margin: 72px 15px 25px;
 }
 
 #secondary.img-archive-secondary {
@@ -2208,12 +2196,11 @@ iPad (portrait)				768
  	.img-archive {
  		border: none;
  		margin: 7.5px;
- 		height: 130px;
  		width: 226px;
  	}
 
  	.img-archive-container .pagination {
-		margin: 0 8px;
+ 		margin: 72px 8px 25px;
 	}
 
  	#secondary.img-archive-secondary {
@@ -2579,12 +2566,11 @@ iPad (portrait)				768
 	.img-archive {
 		display: block;
 		margin: 7.5px 0;
-		height: 173px;
 		width: 300px;
 	}
 
 	.img-archive-container .pagination {
-		margin: 0;
+		margin: 72px 8px 25px;
 	}
 
 	#secondary.img-archive-secondary {
@@ -2690,12 +2676,11 @@ iPad (portrait)				768
 
 	.img-archive {
 		margin: 7.5px;
-		height: 128px;
 		width: 222px;
 	}
 
 	.img-archive-container .pagination {
-		margin: 0 8px;
+		margin: 72px 8px 25px;
 	}
 
 	#secondary.img-archive-secondary {

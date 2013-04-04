@@ -87,7 +87,6 @@ This file should be included in built css file when in production mode.
 }
 
 .img-archive {
-	/*background-color: #eee;*/
 	border: none;
 	margin: 15px;
 }

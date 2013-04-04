@@ -143,12 +143,11 @@ iPad (portrait)				768
  	.img-archive {
  		border: none;
  		margin: 7.5px;
- 		height: 130px;
  		width: 226px;
  	}
 
  	.img-archive-container .pagination {
-		margin: 0 8px;
+ 		margin: 72px 8px 25px;
 	}
 
  	#secondary.img-archive-secondary {
