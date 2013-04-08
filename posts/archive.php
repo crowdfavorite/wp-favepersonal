@@ -54,7 +54,7 @@ cfct_misc('nav-posts');
 else {
 ?>
 <div id="primary" class="img-archive-primary">
-	<div class="img-archive-container clearfix">
+	<div class="img-archive-container clearfix two-column-option">
 		<div class="heading">
 			<h1 class="page-title"><em>Image</em> Archives</h1>
 		</div>

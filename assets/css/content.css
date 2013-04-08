@@ -788,16 +788,33 @@ article {
 	width: 310px;
 }
 
+.two-column-option .img-archive {
+	width: 480px;
+}
+
 .entry-header-img {
-	display: block;
+	margin-top: 4px;
 	width: 100%;
 }
 
 .entry-header-img .entry-date {
-	margin-top: 5px;
+	display: inline;
 	text-align: left;
-	width: auto;
 }
+
+.entry-header-img .comments-title {
+	color: #ccc;
+	display: inline;
+	font: 16px/20px Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-weight: 300;
+	letter-spacing: -1px;
+}
+
+	.entry-header-img .comments-title:before {
+		content: '• ';
+		font-size: 14px;
+		padding-right: 3px;
+	}
 
 .img-archive-container .pagination {
 	clear: both;

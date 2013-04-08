@@ -255,6 +255,10 @@ iPad (portrait)				768
 	#commentform-extras {
 		padding-left: 0;
 	}
+	/* image archive overrides */
+	.entry-header-img .entry-title {
+		margin-bottom: 0;
+	}
 
 	/* Sidebar */
 	#secondary {
@@ -344,9 +348,10 @@ iPad (portrait)				768
 		width: 300px;
 	}
 
-	.img-archive {
+	.img-archive,
+	.two-column-option .img-archive  {
 		display: block;
-		margin: 7.5px 0;
+		margin: 8px 0;
 		width: 300px;
 	}
 
@@ -452,11 +457,12 @@ iPad (portrait)				768
 	}
 
 	.img-archive-container {
-		width: 475px; /* 460 + 2*7.5px */
+		width: 476px;
 	}
 
-	.img-archive {
-		margin: 7.5px;
+	.img-archive,
+	.two-column-option .img-archive {
+		margin: 8px;
 		width: 222px;
 	}
 

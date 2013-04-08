@@ -146,6 +146,15 @@ iPad (portrait)				768
  		width: 226px;
  	}
 
+ 	.two-column-option.img-archive-container {
+ 		width: 724px;
+ 	}
+
+ 	.two-column-option .img-archive {
+ 		margin: 8px;
+ 		width: 346px;
+ 	}
+
  	.img-archive-container .pagination {
  		margin: 72px 8px 25px;
 	}
