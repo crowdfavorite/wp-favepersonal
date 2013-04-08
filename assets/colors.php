@@ -217,6 +217,10 @@ a:active {
 	background-color: <?php echo cf_kuler_color('darkest', 'featured_posts_title_background'); ?>;
 }
 
+.entry-header-img .comments-title:hover {
+	color: <?php echo cf_kuler_color('darkest', 'post_meta_a_hover_color'); ?>;
+}
+
 /** Footer
  -------------------------------------------------- */
 #footer {

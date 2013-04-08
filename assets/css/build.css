@@ -1265,6 +1265,10 @@ article {
 		padding-right: 3px;
 	}
 
+	.entry-header-img .comments-title:hover:before {
+		color: #ccc;
+	}
+
 .img-archive-container .pagination {
 	clear: both;
 	margin: 72px 15px 25px;

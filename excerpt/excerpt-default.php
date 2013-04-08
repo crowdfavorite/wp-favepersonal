@@ -60,9 +60,7 @@ else {
 		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
 		<?php $comment_count = get_comment_count($post->ID); ?>
 		<?php if ($comment_count['approved'] > 0) : ?>
-		<div id="comments" class="comments-title">
-			<span><?php comments_number(__('No Comments (yet)', 'favepersonal'), __('One Comment', 'favepersonal'), __('% Comments', 'favepersonal')); ?></span>
-		</div>
+		<a id="comments" class="comments-title" href="<?php comments_link(); ?>"><?php comments_number(__('No Comments (yet)', 'favepersonal'), __('One Comment', 'favepersonal'), __('% Comments', 'favepersonal')); ?></a>
 		<?php endif; ?>
 	</div>
 <?php
