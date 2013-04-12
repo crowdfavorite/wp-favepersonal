@@ -2451,7 +2451,11 @@ iPad (portrait)				768
 	#commentform-extras {
 		padding-left: 0;
 	}
-	/* image archive overrides */
+	/* image/video archives */
+	.video-excerpt {
+		width: 300px;
+	}
+
 	.entry-header-img-vid .entry-title {
 		margin-bottom: 0;
 	}
@@ -2547,7 +2551,6 @@ iPad (portrait)				768
 
 	.image-excerpt,
 	.video-excerpt {
-		display: block;
 		margin: 8px 0;
 		width: 300px;
 	}
@@ -2648,10 +2651,14 @@ iPad (portrait)				768
 		width: 476px;
 	}
 
-	.image-excerpt,
-	.video-excerpt {
+	.image-excerpt {
 		margin: 8px;
 		width: 222px;
+	}
+
+	.video-excerpt {
+		margin: 8px;
+		width: 460px;
 	}
 
 		.img-archive-link {
