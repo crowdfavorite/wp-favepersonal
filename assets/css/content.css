@@ -466,7 +466,8 @@ article {
 #primary .heading {
 	margin-bottom: 40px;
 }
-#primary .heading .page-title {
+#primary .heading .page-title,
+#primary-full .heading .page-title {
 	font-size: 18px;
 	padding: 5px 10px 7px 10px;
 }
@@ -752,94 +753,60 @@ article {
 	margin: 0;
 }
 
-/** Img archive
+/** Img/Video archives
  -------------------------------------------------- */
 
-#primary.img-archive-primary {
-	display: block;
-	float: none;
-	margin: 0 0 35px 0;
-	width: auto;
-}
-
-#primary.img-archive-secondary {
-	display: block;
-	float: left;
-}
-
-	#primary.img-archive-primary .heading {
-		margin: 0 15px 15px;
-	}
-
-.img-archive-container {
-	margin: auto;
+.full-archive-container {
+	margin: 0 -15px;
 	width: 1020px; /* 990 + 2*15px */
 }
 
-	.img-archive-container li {
+	.full-archive-container .heading {
+		margin: 0 15px 15px;
+	}
+
+	.full-archive-container li {
 		display: inline-block;
 		vertical-align: top;
 	}
 
-.img-archive {
+.image-excerpt,
+.video-excerpt {
 	border: none;
 	margin: 15px;
 	position: relative;
-	width: 310px;
-}
-
-.two-column-option .img-archive {
 	width: 480px;
 }
 
-.entry-header-img {
+.entry-header-img-vid {
 	margin-top: 4px;
 	width: 100%;
 }
 
-.entry-header-img .entry-date {
+.entry-header-img-vid .entry-date {
 	display: inline;
 	text-align: left;
 }
 
-.entry-header-img .comments-title {
+.entry-header-img-vid .comments-title {
 	color: #ccc;
 	display: inline;
 	font: 16px/20px Titillium400, Helvetica, Arial, Verdana, sans-serif;
 	font-weight: 300;
 	letter-spacing: -1px;
+	padding-left: 12px;
 }
 
-	.entry-header-img .comments-title:before {
-		content: '• ';
-		font-size: 14px;
-		padding-right: 3px;
+	.img-archive-link {
+		background-color: #000;
+		background-position: center center;
+		background-repeat: no-repeat;
+		display: block;
+		height: 280px;
+		width: 480px;
 	}
 
-	.entry-header-img .comments-title:hover:before {
-		color: #ccc;
-	}
-
-.img-archive-container .pagination {
+.full-archive-container .pagination {
 	clear: both;
 	margin: 72px 15px 25px;
 }
-
-#secondary.img-archive-secondary {
-	display: block;
-	float: none;
-	margin: 0 auto;
-	width: 990px;
-}
-
-	.img-archive-secondary #sidebar-1,
-	.img-archive-secondary #sidebar-2,
-	.img-archive-secondary #sidebar-3 {
-		float: left;
-		margin-left: 30px;
-		width: 310px;
-	}
-
-	.img-archive-secondary #sidebar-1 {
-		margin-left: 0;
-	}

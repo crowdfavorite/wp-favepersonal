@@ -128,49 +128,29 @@ iPad (portrait)				768
 
  	/* img-archive page */
 
- 	#primary.img-archive-primary {
-		margin: 0 0 27px 0;
-	}
-
- 	#primary.img-archive-primary .heading {
+ 	.full-archive-container .heading {
 		margin: 0 7px 10px;
 	}
 
- 	.img-archive-container {
- 		width: 723px; /* 708px + 2*7.5 */
- 	}
-
- 	.img-archive {
- 		border: none;
- 		margin: 7.5px;
- 		width: 226px;
- 	}
-
- 	.two-column-option.img-archive-container {
+ 	.full-archive-container {
+ 		margin: 0 -8px;
  		width: 724px;
  	}
 
- 	.two-column-option .img-archive {
+	.image-excerpt,
+	.video-excerpt{
+ 		border: none;
  		margin: 8px;
  		width: 346px;
  	}
 
- 	.img-archive-container .pagination {
+ 		.img-archive-link {
+ 			background-size: auto 100%;
+			height: 202px;
+			width: 346px;
+		}
+
+ 	.full-archive-container .pagination {
  		margin: 72px 8px 25px;
 	}
-
- 	#secondary.img-archive-secondary {
-		width: 708px;
-	}
-
-		.img-archive-secondary #sidebar-1,
-		.img-archive-secondary #sidebar-2,
-		.img-archive-secondary #sidebar-3 {
-			margin-left: 15px;
-			width: 226px;
-		}
-
-		.img-archive-secondary #sidebar-1 {
-			margin-left: 0;
-		}
 }

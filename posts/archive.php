@@ -28,7 +28,7 @@ get_header();
 <?php
 
 // Posts that are NOT post_type image
-if ( ! is_tax('post_format', 'post-format-image') ) { ?>
+if ( !is_tax('post_format', 'post-format-image') && !is_tax('post_format', 'post-format-video') ) { ?>
 
 <div id="primary">
 	<div class="heading">
@@ -49,14 +49,21 @@ cfct_misc('nav-posts');
 <?php
 // END Posts that are NOT post_type image
 
-// Posts that ARE post_type image
+// Posts that ARE post_type image or video
 }
 else {
 ?>
-<div id="primary" class="img-archive-primary">
-	<div class="img-archive-container clearfix two-column-option">
+<div id="primary-full" class="img-vid-archive">
+	<div class="full-archive-container clearfix">
 		<div class="heading">
-			<h1 class="page-title"><em>Image</em> Archives</h1>
+			<h1 class="page-title"><em>
+			<?php if (is_tax('post_format', 'post-format-image')) {
+				echo 'Image';
+			}
+			else {
+				echo 'Video';
+			} ?>
+			</em> Archives</h1>
 		</div>
 		<?php
 
@@ -66,7 +73,7 @@ else {
 		?>
 	</div>
 </div>
-<div id="secondary" class="img-archive-secondary">
+<div id="secondary-full">
 	<?php get_sidebar(); ?>
 </div>
 <?php } // end Posts that ARE post_type image ?>

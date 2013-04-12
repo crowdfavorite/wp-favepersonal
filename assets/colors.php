@@ -181,13 +181,16 @@ a:active {
 	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 	background-color: <?php echo cf_kuler_color('light', 'widget_title_background'); ?>;
 }
-#primary .heading {
+#primary .heading,
+.full-archive-container .heading {
 	background-color: <?php echo cf_kuler_color('light', 'widget_title_background'); ?>;
 }
-#primary .heading .page-title {
+#primary .heading .page-title,
+.full-archive-container .page-title {
 	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 }
-#primary .heading .page-title em {
+#primary .heading .page-title em,
+.full-archive-container .page-title em {
 	color: <?php echo cf_kuler_color('darkest', 'widget_title_color'); ?>;
 }
 
@@ -213,7 +216,7 @@ a:active {
 
 /** Image Archive
  -------------------------------------------------- */
-.img-archive .entry-title-img {
+.img-vid-archive .entry-title-img {
 	background-color: <?php echo cf_kuler_color('darkest', 'featured_posts_title_background'); ?>;
 }
 

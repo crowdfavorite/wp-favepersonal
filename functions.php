@@ -109,7 +109,7 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 		add_image_size('large-img', 710, 700, false); // single view for image
 		add_image_size('gallery-large-img', 710, 474, false); // large size for gallery (~3:2 aspect ratio)
 		add_image_size('banner-img', 510, 180, true); // excerpt featured img
-		add_image_size('image-archive', 480, 279, true); // image archive
+		add_image_size('image-archive', 480, 280, true); // image archive
 
 		// set primary content width
 		global $content_width;
