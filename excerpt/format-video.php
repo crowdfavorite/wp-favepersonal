@@ -38,6 +38,10 @@ echo apply_filters(
 	<div class="entry-header-img-vid">
 		<h1 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'favepersonal' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h1>
 		<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><a href="<?php the_permalink(); ?>"><?php echo cfcp_date(); ?></a></time>
+		<?php $comment_count = get_comment_count($post->ID); ?>
+		<?php if ($comment_count['approved'] > 0) : ?>
+		<a id="comments" class="comments-title" href="<?php comments_link(); ?>"><?php comments_number(__('No Comments (yet)', 'favepersonal'), __('1 Comment', 'favepersonal'), __('% Comments', 'favepersonal')); ?></a>
+		<?php endif; ?>
 	</div>
 
 </article>
