@@ -255,6 +255,14 @@ iPad (portrait)				768
 	#commentform-extras {
 		padding-left: 0;
 	}
+	/* image/video archives */
+	.video-excerpt {
+		width: 300px;
+	}
+
+	.entry-header-img-vid .entry-title {
+		margin-bottom: 0;
+	}
 
 	/* Sidebar */
 	#secondary {
@@ -335,6 +343,31 @@ iPad (portrait)				768
 	#social .social-items-comments {
 		max-width: 280px;
 	}
+
+	.full-archive-container .heading {
+		margin: 0 0 10px;
+	}
+
+	.full-archive-container {
+		margin: 0;
+		width: 300px;
+	}
+
+	.image-excerpt,
+	.video-excerpt {
+		margin: 8px 0;
+		width: 300px;
+	}
+
+		.img-archive-link {
+			background-size: auto 100%;
+			height: 174px;
+			width: 298px;
+		}
+
+	.full-archive-container .pagination {
+		margin: 72px 8px 25px;
+	}
 }
 
 /* iPhone Landscape */
@@ -409,5 +442,36 @@ iPad (portrait)				768
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
+	}
+
+	/* Image archive pages */
+
+	.full-archive-container .heading {
+		margin: 0 7px 10px;
+	}
+
+	.full-archive-container {
+		margin: 0 -8px;
+		width: 476px;
+	}
+
+	.image-excerpt {
+		margin: 8px;
+		width: 222px;
+	}
+
+	.video-excerpt {
+		margin: 8px;
+		width: 460px;
+	}
+
+		.img-archive-link {
+			background-size: auto 100%;
+			height: 130px;
+			width: 222px;
+		}
+
+	.full-archive-container .pagination {
+		margin: 72px 8px 25px;
 	}
 }

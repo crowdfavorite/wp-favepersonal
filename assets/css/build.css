@@ -78,6 +78,17 @@ This file should be included in built css file when in production mode.
 }
 #nav-main ul {
 	text-align: right;
+}
+
+/* img-archive page */
+
+.img-archive-container {
+	width: 1050px; /* 990 + 30*2 */
+}
+
+.img-archive {
+	border: none;
+	margin: 15px;
 }/* HTML5 ✰ Boilerplate
  * ==|== normalize ==========================================================
  */
@@ -590,7 +601,7 @@ article {
 	padding-right: 1px; fixes text crop issue for IE8
 }
 .entry-header .entry-date {
-	position: absolute;	
+	position: absolute;
 	bottom: 1px;
 	left: 0;
 }
@@ -904,7 +915,8 @@ article {
 #primary .heading {
 	margin-bottom: 40px;
 }
-#primary .heading .page-title {
+#primary .heading .page-title,
+#primary-full .heading .page-title {
 	font-size: 18px;
 	padding: 5px 10px 7px 10px;
 }
@@ -1188,17 +1200,75 @@ article {
 }
 #footer p {
 	margin: 0;
+}
+
+/** Img/Video archives
+ -------------------------------------------------- */
+
+.full-archive-container {
+	margin: 0 -15px;
+	width: 1020px; /* 990 + 2*15px */
+}
+
+	.full-archive-container .heading {
+		margin: 0 15px 15px;
+	}
+
+	.full-archive-container li {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+.image-excerpt,
+.video-excerpt {
+	border: none;
+	margin: 15px;
+	position: relative;
+	width: 480px;
+}
+
+.entry-header-img-vid {
+	margin-top: 4px;
+	width: 100%;
+}
+
+.entry-header-img-vid .entry-date {
+	display: inline;
+	text-align: left;
+}
+
+.entry-header-img-vid .comments-title {
+	color: #ccc;
+	display: inline;
+	font: 16px/20px Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-weight: 300;
+	letter-spacing: -1px;
+	padding-left: 12px;
+}
+
+	.img-archive-link {
+		background-color: #000;
+		background-position: center center;
+		background-repeat: no-repeat;
+		display: block;
+		height: 280px;
+		width: 480px;
+	}
+
+.full-archive-container .pagination {
+	clear: both;
+	margin: 72px 15px 25px;
 }/** Masthead/Header
- * 
+ *
  * Masthead used for the CSS but we are
  * calling it "header" where the user sees
  * most people won't know the term "masthead"
  *
  * Default colors here will be over ridden by
  * the ones choosen in the color settings
- * 
+ *
  * These styles are loaded for the front-end and admin-settings screen
- * 
+ *
  -------------------------------------------------- */
 
 /** Featured Posts
@@ -1245,7 +1315,7 @@ article {
 	top: 0;
 	z-index: 10;
 }
-.featured-description, 
+.featured-description,
 .featured-description p {
 	font-size: 14px;
 	line-height: 20px;
@@ -2096,6 +2166,34 @@ iPad (portrait)				768
  	#social .social-items-comments {
  		max-width: 568px;
  	}
+
+ 	/* img-archive page */
+
+ 	.full-archive-container .heading {
+		margin: 0 7px 10px;
+	}
+
+ 	.full-archive-container {
+ 		margin: 0 -8px;
+ 		width: 724px;
+ 	}
+
+	.image-excerpt,
+	.video-excerpt{
+ 		border: none;
+ 		margin: 8px;
+ 		width: 346px;
+ 	}
+
+ 		.img-archive-link {
+ 			background-size: auto 100%;
+			height: 202px;
+			width: 346px;
+		}
+
+ 	.full-archive-container .pagination {
+ 		margin: 72px 8px 25px;
+	}
 }/* --------------------------------------------------
 Mobile styles
 This file should be included in the built CSS output when in production mode.
@@ -2353,6 +2451,14 @@ iPad (portrait)				768
 	#commentform-extras {
 		padding-left: 0;
 	}
+	/* image/video archives */
+	.video-excerpt {
+		width: 300px;
+	}
+
+	.entry-header-img-vid .entry-title {
+		margin-bottom: 0;
+	}
 
 	/* Sidebar */
 	#secondary {
@@ -2433,6 +2539,31 @@ iPad (portrait)				768
 	#social .social-items-comments {
 		max-width: 280px;
 	}
+
+	.full-archive-container .heading {
+		margin: 0 0 10px;
+	}
+
+	.full-archive-container {
+		margin: 0;
+		width: 300px;
+	}
+
+	.image-excerpt,
+	.video-excerpt {
+		margin: 8px 0;
+		width: 300px;
+	}
+
+		.img-archive-link {
+			background-size: auto 100%;
+			height: 174px;
+			width: 298px;
+		}
+
+	.full-archive-container .pagination {
+		margin: 72px 8px 25px;
+	}
 }
 
 /* iPhone Landscape */
@@ -2507,5 +2638,36 @@ iPad (portrait)				768
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
+	}
+
+	/* Image archive pages */
+
+	.full-archive-container .heading {
+		margin: 0 7px 10px;
+	}
+
+	.full-archive-container {
+		margin: 0 -8px;
+		width: 476px;
+	}
+
+	.image-excerpt {
+		margin: 8px;
+		width: 222px;
+	}
+
+	.video-excerpt {
+		margin: 8px;
+		width: 460px;
+	}
+
+		.img-archive-link {
+			background-size: auto 100%;
+			height: 130px;
+			width: 222px;
+		}
+
+	.full-archive-container .pagination {
+		margin: 72px 8px 25px;
 	}
 }

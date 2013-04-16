@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -28,7 +28,6 @@ if (have_posts()) {
 	<li>
 		<?php cfct_excerpt(); ?>
 		<div id="post-<?php the_ID(); ?>-target"></div>
-	</li>
 <?php
 	}
 	echo '</ol>';

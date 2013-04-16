@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -21,18 +21,18 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 ?>
 
-		</div><!-- .container -->		
+		</div><!-- .container -->
 	</section><!-- #content -->
 
 
 	<footer id="footer">
 		<div class="container clearfix">
 <?php
-if (cfct_get_option('credit') == 'yes') { 
+if (cfct_get_option('credit') == 'yes') {
 ?>
-			<p class="credit"><?php 
+			<p class="credit"><?php
 			printf(
-				__('Powered by <a href="http://wordpress.org/">WordPress</a> %3$s <a href="%4$s" title="A powerful, personal WordPress theme.">%2$s</a> by <a href="%5$s" title="Elegant WordPress development and design services.">%1$s</a>', 'favepersonal'), 
+				__('Powered by <a href="http://wordpress.org/">WordPress</a> %3$s <a href="%4$s" title="A powerful, personal WordPress theme.">%2$s</a> by <a href="%5$s" title="Elegant WordPress development and design services.">%1$s</a>', 'favepersonal'),
 				'Crowd Favorite',
 				'FavePersonal',
 				'&nbsp;&middot;&nbsp;',

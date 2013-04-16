@@ -58,4 +58,3 @@ cfcp_header_display();
 ?>
 
 	<section id="content">
-		<div class="container clearfix">

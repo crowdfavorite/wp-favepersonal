@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -28,7 +28,7 @@ body {
 	background-color: <?php echo cf_kuler_color('dark', 'body_background'); ?>;
 }
 a,
-a:visited { 
+a:visited {
 	color: <?php echo cf_kuler_color('darkest', 'a'); ?>;
 }
 a:hover,
@@ -181,13 +181,16 @@ a:active {
 	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 	background-color: <?php echo cf_kuler_color('light', 'widget_title_background'); ?>;
 }
-#primary .heading {
+#primary .heading,
+.full-archive-container .heading {
 	background-color: <?php echo cf_kuler_color('light', 'widget_title_background'); ?>;
 }
-#primary .heading .page-title {
+#primary .heading .page-title,
+.full-archive-container .page-title {
 	color: <?php echo cf_kuler_color('dark', 'widget_title_color'); ?>;
 }
-#primary .heading .page-title em {
+#primary .heading .page-title em,
+.full-archive-container .page-title em {
 	color: <?php echo cf_kuler_color('darkest', 'widget_title_color'); ?>;
 }
 
@@ -209,6 +212,16 @@ a:active {
 }
 .searchform #searchsubmit:active {
 	background-color: <?php echo cf_kuler_color('darkest', 'widget_search_submit_active_background'); ?>;
+}
+
+/** Image Archive
+ -------------------------------------------------- */
+.img-vid-archive .entry-title-img {
+	background-color: <?php echo cf_kuler_color('darkest', 'featured_posts_title_background'); ?>;
+}
+
+.entry-header-img .comments-title:hover {
+	color: <?php echo cf_kuler_color('darkest', 'post_meta_a_hover_color'); ?>;
 }
 
 /** Footer
@@ -284,7 +297,7 @@ a:active {
 #facebook_signin:hover,
 #twitter_signin:hover {
 	background-color: <?php echo cf_kuler_color('darkest', 'social_button_hover_background'); ?>;
-}		
+}
 #social .social-nav a {
 	color: <?php echo cf_kuler_color('dark', 'social_a_color'); ?>;
 }
@@ -318,4 +331,4 @@ function cfcp_color_css_min() {
 	$css = preg_replace('/\/\*(.*?)\*\//', '', $css);
 	echo '<style type="text/css" media="screen">'.$css.'</style>'."\n";
 }
-add_action('wp_head', 'cfcp_color_css_min', 8); 
+add_action('wp_head', 'cfcp_color_css_min', 8);
