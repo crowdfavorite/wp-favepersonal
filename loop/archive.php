@@ -26,7 +26,20 @@ if (have_posts()) {
 		the_post();
 ?>
 	<li>
-		<?php cfct_excerpt(); ?>
+<?php
+	// image archive
+	if ( is_tax('post_format', 'post-format-image') ) {
+		cfct_template_file('excerpt', 'format-image-archive');
+	}
+	// video archive
+	else if ( is_tax('post_format', 'post-format-video') ) {
+		cfct_template_file('excerpt', 'format-video-archive');
+	}
+	// other archives
+	else {
+		cfct_excerpt();
+	}
+?>
 		<div id="post-<?php the_ID(); ?>-target"></div>
 <?php
 	}
