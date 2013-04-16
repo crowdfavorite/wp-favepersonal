@@ -3,6 +3,7 @@
 ## Version ?
 
 - Gallery shortcodes with specified post ids now work properly in RSS feeds.
+- Image and Video archive templates created.
 
 ## Version 1.2.1
 
