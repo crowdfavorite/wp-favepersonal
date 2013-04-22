@@ -9,7 +9,9 @@
  * Version: 1.1
  * Patches the HTML5 placeholder atttribute functionality for browsers that don't support it
  */
-(function(c){c.fn.placeholder=function(f){var g=c.extend({},c.fn.placeholder.settings,f);var e=null;var h=function(){c("["+g.attribute+"]."+g.classname).val("")};if(g.attribute=="placeholder"&&g.disableIfSupported==true&&"placeholder" in document.createElement("input")){return}if("undefined"===typeof document.activeElement){if(c().jquery.split(".")>="1.6".split(".")){e=c(c("*:focus").get(0))}}else{e=c(document.activeElement)}this.each(function(){var i=c(this);i.focus(function(){b(i,g)});i.blur(function(){d(i,g)});i.blur();i.parents("form").submit(function(){});if(i.filter(c(e)).length){c(e).focus()}});c(window).unbind("unload",h);c(window).unload(h)};c.fn.placeholder.settings={classname:"cfp-placeholder",attribute:"placeholder",disableIfSupported:true};c.placeholders=function(e){var f=c.extend({},c.fn.placeholder.settings,e);c("["+f.attribute+"]").placeholder(f)};function b(e,f){e=c(e);if(e.hasClass(f.classname)){e.val("");e.removeClass(f.classname)}}function d(e,f){e=c(e);if(e.val()===""){e.addClass(f.classname);e.val(e.attr(f.attribute))}}function a(f,e){c(f).find("["+e.attribute+"]").each(function(){var g=c(this);if(g.hasClass(e.classname)){g.val("")}})}})(jQuery);/*global jQuery *//*! 
+(function(c){c.fn.placeholder=function(f){var g=c.extend({},c.fn.placeholder.settings,f);var e=null;var h=function(){c("["+g.attribute+"]."+g.classname).val("")};if(g.attribute=="placeholder"&&g.disableIfSupported==true&&"placeholder" in document.createElement("input")){return}if("undefined"===typeof document.activeElement){if(c().jquery.split(".")>="1.6".split(".")){e=c(c("*:focus").get(0))}}else{e=c(document.activeElement)}this.each(function(){var i=c(this);i.focus(function(){b(i,g)});i.blur(function(){d(i,g)});i.blur();i.parents("form").submit(function(){});if(i.filter(c(e)).length){c(e).focus()}});c(window).unbind("unload",h);c(window).unload(h)};c.fn.placeholder.settings={classname:"cfp-placeholder",attribute:"placeholder",disableIfSupported:true};c.placeholders=function(e){var f=c.extend({},c.fn.placeholder.settings,e);c("["+f.attribute+"]").placeholder(f)};function b(e,f){e=c(e);if(e.hasClass(f.classname)){e.val("");e.removeClass(f.classname)}}function d(e,f){e=c(e);if(e.val()===""){e.addClass(f.classname);e.val(e.attr(f.attribute))}}function a(f,e){c(f).find("["+e.attribute+"]").each(function(){var g=c(this);if(g.hasClass(e.classname)){g.val("")}})}})(jQuery);/*global jQuery */
+/*jshint multistr:true browser:true */
+/*!
 * FitVids 1.0
 *
 * Copyright 2011, Chris Coyier - http://css-tricks.com + Dave Rupert - http://daverupert.com
@@ -17,7 +19,78 @@
 * Released under the WTFPL license - http://sam.zoy.org/wtfpl/
 *
 * Date: Thu Sept 01 18:00:00 2011 -0500
-*/(function(a){a.fn.fitVids=function(b){var c={customSelector:null},d=document.createElement("div"),e=document.getElementsByTagName("base")[0]||document.getElementsByTagName("script")[0];return d.className="fit-vids-style",d.innerHTML="&shy;<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style>",e.parentNode.insertBefore(d,e),b&&a.extend(c,b),this.each(function(){var b=["iframe[src^='http://player.vimeo.com']","iframe[src^='http://www.youtube.com']","iframe[src^='http://www.kickstarter.com']","object","embed"];c.customSelector&&b.push(c.customSelector);var d=a(this).find(b.join(","));d.each(function(){var b=a(this),c=this.tagName=="OBJECT"?b.attr("height"):b.height(),d=c/b.width();b.wrap('<div class="fluid-width-video-wrapper" />').parent(".fluid-width-video-wrapper").css("padding-top",d*100+"%"),b.removeAttr("height").removeAttr("width")})})}})(jQuery);/*!
+*/
+
+(function( $ ){
+
+  "use strict";
+
+  $.fn.fitVids = function( options ) {
+    var settings = {
+      customSelector: null
+    };
+
+    var div = document.createElement('div'),
+        ref = document.getElementsByTagName('base')[0] || document.getElementsByTagName('script')[0];
+
+    div.className = 'fit-vids-style';
+    div.innerHTML = '&shy;<style>         \
+      .fluid-width-video-wrapper {        \
+         width: 100%;                     \
+         position: relative;              \
+         padding: 0;                      \
+      }                                   \
+                                          \
+      .fluid-width-video-wrapper iframe,  \
+      .fluid-width-video-wrapper object,  \
+      .fluid-width-video-wrapper embed {  \
+         position: absolute;              \
+         top: 0;                          \
+         left: 0;                         \
+         width: 100%;                     \
+         height: 100%;                    \
+      }                                   \
+    </style>';
+
+    ref.parentNode.insertBefore(div,ref);
+
+    if ( options ) {
+      $.extend( settings, options );
+    }
+
+    return this.each(function(){
+      var selectors = [
+        "iframe[src*='player.vimeo.com']",
+        "iframe[src*='youtube.com']",
+        "iframe[src*='youtube-nocookie.com']",
+        "iframe[src*='kickstarter.com']",
+        "object",
+        "embed"
+      ];
+
+      if (settings.customSelector) {
+        selectors.push(settings.customSelector);
+      }
+
+      var $allVideos = $(this).find(selectors.join(','));
+
+      $allVideos.each(function(){
+        var $this = $(this);
+        if (this.tagName.toLowerCase() === 'embed' && $this.parent('object').length || $this.parent('.fluid-width-video-wrapper').length) { return; }
+        var height = ( this.tagName.toLowerCase() === 'object' || ($this.attr('height') && !isNaN(parseInt($this.attr('height'), 10))) ) ? parseInt($this.attr('height'), 10) : $this.height(),
+            width = !isNaN(parseInt($this.attr('width'), 10)) ? parseInt($this.attr('width'), 10) : $this.width(),
+            aspectRatio = height / width;
+        if(!$this.attr('id')){
+          var videoID = 'fitvid' + Math.floor(Math.random()*999999);
+          $this.attr('id', videoID);
+        }
+        $this.wrap('<div class="fluid-width-video-wrapper"></div>').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100)+"%");
+        $this.removeAttr('height').removeAttr('width');
+      });
+    });
+  };
+})( jQuery );
+/*!
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
  * version 1.1
  *
