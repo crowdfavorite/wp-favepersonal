@@ -28,7 +28,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	</header>
 	
 	<div class="entry-media">
-		<?php the_post_thumbnail('large-img'); ?>
+		<?php the_post_format_image('large-img'); ?>
 	</div><!-- .entry-media -->
 		
 	<div class="entry-content clearfix">

@@ -21,7 +21,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 if (has_post_thumbnail()) {
 ?>
-<p><a href="<?php the_permalink() ?>"><?php the_post_thumbnail('medium-img'); ?></a></p>
+<p><a href="<?php the_permalink() ?>"><?php the_post_format_image('medium-img'); ?></a></p>
 <?php
 }
 

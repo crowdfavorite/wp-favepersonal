@@ -35,6 +35,7 @@ cfcp_gallery(array(
 	'before' => '<div class="entry-media">',
 	'after' => '</div>',
 ));
+// TODO the_post_format_gallery();
 
 ?>
 	<div class="entry-content clearfix">
