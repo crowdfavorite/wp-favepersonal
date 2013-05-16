@@ -77,7 +77,7 @@ function cfcp_ie_css_overrides() {
 <!--[if IE 7]>
 	<style type="text/css" media="screen">
 		#featured-posts .featured:hover .featured-content {
-			background-color: <?php echo cf_kuler_color('light', 'featured_posts_hover_content_background'); ?>;
+			background-color: <?php echo cf_colors_color('light', 'featured_posts_hover_content_background'); ?>;
 		}
 	</style>
 <![endif]-->
