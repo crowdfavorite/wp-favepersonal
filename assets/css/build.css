@@ -573,7 +573,7 @@ html.ie7 #nav-main .menu > li {
 /** Posts Default
  -------------------------------------------------- */
 article {
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 	overflow: hidden;
 }
 
@@ -2330,6 +2330,10 @@ iPad (portrait)				768
 		display: inline;
 		right: 0;
 	}
+	article p.entry-meta-replies,
+	.format-status.excerpt p.entry-meta-replies {
+		margin: -.25em 0 .25em;
+	}
 
 	/* full page with no sidebar, no padding for mobile */
 	.page-full {
@@ -2345,7 +2349,7 @@ iPad (portrait)				768
 	}
 	.format-status .entry-content p,
 	.format-quote .entry-content blockquote p {
-		margin-top: 1em;
+		margin: .5em 0 0;
 	}
 	/* quote */
 	.format-quote-attribution {
