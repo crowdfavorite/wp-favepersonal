@@ -131,6 +131,17 @@ if ( ! function_exists( 'carrington_personal_setup' ) ) {
 				'quote',
 			)
 		);
+		add_theme_support(
+			'structured-post-formats',
+			array(
+				'status',
+				'link',
+				'image',
+				'gallery',
+				'video',
+				'quote',
+			)
+		);
 
 		register_nav_menu( 'main', __( 'Main Navigation', 'favepersonal'));
 
