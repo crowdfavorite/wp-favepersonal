@@ -395,6 +395,121 @@ function cfcp_gallery_featured($args = array()) {
 	unset($gallery);
 }
 
+function cfcp_gallery_format_admin() {
+	$post = get_post();
+?>
+<style>
+.cfcp-gallery {
+	display: none;
+}
+#post-body-content.wp-format-gallery .cfcp-gallery {
+	display: block;
+}
+.cfcp-gallery li {
+	display: inline-block;
+	margin-right: 7px;
+}
+.cfcp-gallery li img {
+	height: 75px;
+	width: 75px;
+}
+.cfcp-gallery p {
+	padding: 20px 0;
+	text-align: center;
+}
+.cfcp-gallery img {
+	height: auto;
+	width: auto;
+}
+</style>
+<?php
+
+echo cfpf_gallery_admin_html($post->ID);
+
+?>
+<script>
+var cfpf_post_format = {
+	loading: '<?php _e('Loading...', 'cf-post-formats'); ?>',
+	wpspin_light: '<?php echo admin_url('images/wpspin_light.gif'); ?>'
+};
+jQuery(function($) {
+	$('.cfcp-gallery').insertAfter('.post-formats-fields');
+
+	var postId = $('#post_ID').val();
+	var gallery = wp.media.query({ uploadedTo: postId });
+
+	// Run the query.
+	// This returns a promise (like $.ajax) so you can do things when it completes.
+	gallery.more();
+
+	// Bind your events for when the contents of the gallery changes.
+	gallery.on( 'add remove reset', function() {
+		// Something changed, update your stuff.
+
+		var $preview = $('.cfcp-gallery');
+// spinner
+		$preview.html('<p><img src="' + cfpf_post_format.wpspin_light + '" alt="' + cfpf_post_format.loading + '" /></p>');
+// AJAX call for gallery snippet
+		$.post(
+			ajaxurl,
+			{
+				'action': 'cfpf_gallery_preview',
+				'id': postId
+			},
+			function(response) {
+				$preview.html(response.html);
+			},
+			'json'
+		);
+
+	}, gallery );
+});
+</script>
+<?php
+}
+add_action('admin_footer-post.php', 'cfcp_gallery_format_admin');
+add_action('admin_footer-post-new.php', 'cfcp_gallery_format_admin');
+
+function cfpf_gallery_admin_html($post_id) {
+	ob_start();
+?>
+<div class="cfcp-gallery">
+<?php
+
+$attachments = get_posts(array(
+	'post_type' => 'attachment',
+	'numberposts' => -1,
+	'post_status' => null,
+	'post_parent' => $post_id,
+	'order' => 'ASC',
+	'orderby' => 'menu_order ID',
+));
+if ($attachments) {
+	echo '<ul class="gallery">';
+	foreach ($attachments as $attachment) {
+		echo '<li>'.wp_get_attachment_image($attachment->ID, 'thumbnail').'</li>';
+	}
+	echo '</ul>';
+}
+
+?>
+</div>
+<?php
+	return ob_get_clean();
+}
+
+function cfpf_gallery_admin_preview() {
+	if (empty($_POST['id']) || !($post_id = intval($_POST['id']))) {
+		exit;
+	}
+	global $post;
+	$post->ID = $post_id;
+	$html = cfpf_gallery_admin_html($post_id);
+	echo json_encode(compact('html'));
+	exit;
+}
+add_action('wp_ajax_cfpf_gallery_preview', 'cfpf_gallery_admin_preview');
+
 if (!function_exists('cf_get_post_meta')) {
 /**
  * Retrieve post meta field for multiple posts.
