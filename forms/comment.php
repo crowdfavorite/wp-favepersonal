@@ -55,7 +55,7 @@ if ('open' == $post->comment_status) {
 		<p class="social-input-row social-input-row-email">
 			<label class="social-label" for="social-sign-in-email"><?php _e('Email ', 'favepersonal'); ?></label>
 			<input class="social-input" id="social-sign-in-email" required="required" type="text" name="email" value="<?php echo $comment_author_email; ?>" size="22" />
-			<small class="social-help">Not published</small>
+			<small class="social-help"><?php _e('Not published', 'favepersonal'); ?></small>
 		</p>
 		<p class="social-input-row social-input-row-url">
 			<label class="social-label" for="social-sign-in-website"><?php _e('Website', 'favepersonal'); ?></label>
