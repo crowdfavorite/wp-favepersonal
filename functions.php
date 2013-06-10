@@ -258,14 +258,6 @@ function echo_hex($color2hex) {
 	}
 }
 
-// customize Colors API endpoint
-function cfcp_cf_kuler_api_request($url) {
-	$url = remove_query_arg('key', $url);
-	$url = 'http://colors.api.crowdfavorite.com/1.0/?url='.base64_encode($url);
-	return $url;
-}
-add_filter('cf_kuler_api_request', 'cfcp_cf_kuler_api_request');
-
 // Colors child theme export
 function cfcp_child_theme_export() {
 	if (current_user_can('edit_theme_options') && isset($_GET['cf_action']) && $_GET['cf_action'] == 'cfcp_child_theme_export') {
