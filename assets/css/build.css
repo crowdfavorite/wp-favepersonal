@@ -850,6 +850,47 @@ article {
 	-o-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
 }
+.gallery-stage a.gallery-stage-nav-link {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 75px;
+	z-index: 100;
+	-moz-transition: all .5s ease-in-out;
+	-webkit-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+}
+.gallery-stage a.gallery-stage-nav-link div {
+	position: absolute;
+	padding: 1em 0;
+	margin-top: -1em;
+	width: 100%;
+	text-align:center;
+	font-size: 1em;
+	top:50%;
+	background-color: rgba(255,255,255,.75);
+	color: #333;
+}
+.gallery-stage a.gallery-stage-nav-link.next-link {
+	right: -75px;
+}
+.gallery-stage:hover a.gallery-stage-nav-link.next-link {
+	right: 0;
+}
+.gallery-stage a.gallery-stage-nav-link.next-link div {
+	border-radius: 3px 0px 0px 3px;
+}
+.gallery-stage a.gallery-stage-nav-link.prev-link {
+	left: -75px;
+}
+.gallery-stage:hover a.gallery-stage-nav-link.prev-link {
+	left: 0;
+}
+.gallery-stage a.gallery-stage-nav-link.prev-link div {
+	border-radius: 0px 3px 3px 0px;
+}
+
 .oldie .gallery-stage figcaption {
 	background-color: #000;
 }

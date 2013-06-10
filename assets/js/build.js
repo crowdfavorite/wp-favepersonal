@@ -99,7 +99,7 @@
 })( jQuery );
 /*!
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
- * version 1.1
+ * version 1.2
  *
  * Copyright (c) 2011-2012 Crowd Favorite (http://crowdfavorite.com)
  */
@@ -176,6 +176,19 @@
 				});
 
 			var loading = $('<div class="loading">Loading...</div>').hide().appendTo(stage);
+
+			stage.append(jQuery('<a class="gallery-stage-nav-link prev-link"><div>Previous</div></a>').on('click', function (e) {
+				e.stopPropagation();
+				e.preventDefault();
+				currentStageId = stageId;
+				fn.setPrevHashToken(thumbs, stage);
+			}));
+			stage.append(jQuery('<a class="gallery-stage-nav-link next-link"><div>Next</div></a>').on('click', function(e) {
+				e.stopPropagation();
+				e.preventDefault();
+				currentStageId = stageId;
+				fn.setNextHashToken(thumbs, stage);
+			}));
 
 			// Bind loading message to image create and loaded events.
 			gallery.bind({
@@ -316,7 +329,7 @@
 				if (current !== null && current !== i) {
 					$current = this.getImage(current, thumbs);
 					// Hide others / Dequeue all animations before starting a new one.
-					stage.children().not($current).stop().removeClass('init').hide();
+					stage.children().not($current).not('a.gallery-stage-nav-link').stop().removeClass('init').hide();
 					// Dequeue all animations before starting a new one.
 					stage.find('figure').stop(true, true);
 					this.transitionSlides(img, $current);
@@ -639,7 +652,8 @@
 			});
 		};
 	};
-})(jQuery);jQuery(function($) {
+})(jQuery);
+jQuery(function($) {
 	$('.entry-media').fitVids();
 	
 	var activate = (Modernizr.touch && navigator.userAgent.toLowerCase().indexOf('blackberry') == -1 ? 'touchend' : 'click');

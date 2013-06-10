@@ -32,7 +32,7 @@ define('CFCT_DEBUG', false);
  * In production mode, or doing development?
  * When true, assets/load.php will enqueue the built versions of the files
  */
-define('CFCT_PRODUCTION', true);
+define('CFCT_PRODUCTION', false);
 
 /**
  * Theme version.
