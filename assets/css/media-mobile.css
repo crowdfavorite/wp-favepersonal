@@ -125,6 +125,11 @@ iPad (portrait)				768
 		margin-right: 0;
 	}
 
+	.excerpt.format-status .entry-content,
+	.excerpt.format-gallery .entry-content {
+		margin-bottom: .5em;
+	}
+
 	/* entry meta */
 	.entry-meta {
 		text-align: left;

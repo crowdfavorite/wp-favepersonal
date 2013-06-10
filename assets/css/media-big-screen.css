@@ -31,6 +31,14 @@ This file should be included in built css file when in production mode.
 	margin-left: 0px;
 }
 
+.excerpt.format-gallery .entry-content {
+	margin-bottom: .3em;
+}
+
+.excerpt.format-status .entry-content {
+	margin-bottom: .1em;
+}
+
 /* full page with no sidebar */
 .page-full {
 	padding: 0 140px;
