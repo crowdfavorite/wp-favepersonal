@@ -23,16 +23,18 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 global $post, $wp_query, $comments, $comment;
 
 if (have_comments() || comments_open()) {
+	$comment_count = get_comment_count($post->ID);
 ?>
 
 <div id="social">
 
-	<?php $comment_count = get_comment_count($post->ID); ?>
-	<?php if ($comment_count['approved'] > 0) : ?>
+<?php
+	if ($comment_count['approved'] > 0) {
+?>
 		<h2 id="comments" class="comments-title"><span><?php comments_number(__('No Responses (yet)', 'favepersonal'), __('One Response', 'favepersonal'), __('% Responses', 'favepersonal')); ?></h2>
-	<?php endif; ?>
-
-
+<?php 
+	}
+?>
 	<div class="social-comments">
 <?php
 	if (!post_password_required()) {
