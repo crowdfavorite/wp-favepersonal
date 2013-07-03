@@ -30,7 +30,7 @@ function cfcp_img_captions($output, $attr, $content = null) {
 	if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
 
 	return '
-		<dl '.$id.'class="wp-caption '.$align.'" style="width:'.$width.'px">
+		<dl '.$id.'class="wp-caption '.$align.'" style="max-width:'.$width.'px">
 			<dt>'.do_shortcode($content).'</dt>
 			<dd>'.$caption.'</dd>
 		</dl>';
@@ -150,6 +150,10 @@ class CFCT_Gallery {
 			$ratio = $sizes['width'] / $content_width;
 			$this->width = floor($sizes['width'] / $ratio);
 			$this->height = floor($sizes['height'] / $ratio);
+		}
+		else {
+			$this->width = $sizes['width'];
+			$this->height = $sizes['height'];
 		}
 
 		if (empty($args['height'])) {
@@ -309,8 +313,6 @@ function cfcp_gallery_shortcode($content, $args) {
 
 	global $content_width;
 
-	remove_filter('post_gallery', 'cfct_post_gallery', 10, 2);
-	
 	$defaults = array(
 		'number' => -1,
 		'id' => get_the_ID(),
@@ -338,6 +340,8 @@ function cfcp_gallery_shortcode($content, $args) {
 if (!is_admin()) {
 	add_filter('post_gallery', 'cfcp_gallery_shortcode', 1, 2);
 }
+// disable carrington core gallery
+remove_filter('post_gallery', 'cfct_post_gallery', 10, 2);
 
 // Display gallery images with our own markup for excerpts 
 function cfcp_gallery_excerpt($args = array()) {

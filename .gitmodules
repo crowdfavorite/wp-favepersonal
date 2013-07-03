@@ -22,3 +22,9 @@
 [submodule "plugins/cf-colors"]
 	path = plugins/cf-colors
 	url = git@github.com:crowdfavorite/wp-colors.git
+[submodule "assets/js/fitvids"]
+	path = assets/js/fitvids
+	url = git@github.com:crowdfavorite-mirrors/jquery-fit-vids.git
+[submodule "plugins/social-native-broadcasts"]
+	path = plugins/social-native-broadcasts
+	url = git@github.com:crowdfavorite/wp-social-native-broadcasts.git

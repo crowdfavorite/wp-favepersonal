@@ -87,6 +87,14 @@ jQuery(function($) {
 						});
 					}
 				});
+
+				// Hide popup when esc key is pressed and search results display is empty
+				$search.on('keydown', '#cfp-img-search-term', function(e) {
+					if (e.which == 27 && $('#cfp-img-search-results').is(':hidden')) {
+						$('body').click();
+						return false;
+					}
+				});
 			},
 			
 			getSelectedIds: function() {
@@ -151,6 +159,11 @@ jQuery(function($) {
 		// save button
 		$edit.find('input[name="submit_button"]').click(function(e) {
 			CF.aboutLinks.saveFavicon();
+		}).keypress(function(e) {
+			if (typeof e != "undefined" && typeof e.keyCode != "undefined" && e.keyCode == 13) {
+				// User pressed enter on the button.
+				$(this).trigger('click');
+			}
 		});
 		
 		// customize favicon url
@@ -216,6 +229,9 @@ jQuery(function($) {
 				// timer for live favicon fetch
 				var _timer = null;
 				$edit.find('input#cfp_link_url').unbind('keyup').keyup(function() {
+					if ($(this).val() == _fetchIconUrl) {
+						return;
+					}
 					if (_timer !== null) {
 						clearTimeout(_timer);
 					}

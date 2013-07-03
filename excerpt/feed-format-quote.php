@@ -52,5 +52,3 @@ if (!empty($source)) {
 <p><?php echo $source; ?></p>
 <?php
 }
-?>
-

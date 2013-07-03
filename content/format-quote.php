@@ -54,6 +54,6 @@ if (!empty($source)) {
 <?php
 }
 ?>
-	</div><!--entry-content-->	
+	</div><!-- .entry-content -->
 	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .excerpt -->

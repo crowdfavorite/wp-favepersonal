@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -37,16 +37,16 @@ if ('open' == $post->comment_status) {
 
 <?php
 	}
-	else { 
+	else {
 ?>
 
-	
+
 <div id="respond">
 
 	<h2 id="reply-title"><span><?php printf(__('Post A Comment', 'favepersonal')); ?></span></h2>
-		
+
 <form class="social-respond-inner" action="<?php echo site_url('wp-comments-post.php'); ?>" method="post">
-	<div class="social-post-form"> 	
+	<div class="social-post-form">
 <?php if (!is_user_logged_in()) { ?>
 		<p class="social-input-row social-input-row-author">
 			<label class="social-label" for="social-sign-in-name"><?php _e('Name', 'favepersonal'); ?></label>
@@ -55,6 +55,7 @@ if ('open' == $post->comment_status) {
 		<p class="social-input-row social-input-row-email">
 			<label class="social-label" for="social-sign-in-email"><?php _e('Email ', 'favepersonal'); ?></label>
 			<input class="social-input" id="social-sign-in-email" required="required" type="text" name="email" value="<?php echo $comment_author_email; ?>" size="22" />
+			<small class="social-help"><?php _e('Not published', 'favepersonal'); ?></small>
 		</p>
 		<p class="social-input-row social-input-row-url">
 			<label class="social-label" for="social-sign-in-website"><?php _e('Website', 'favepersonal'); ?></label>
@@ -81,7 +82,7 @@ if ('open' == $post->comment_status) {
 
 </div><!--#respond-->
 
-<?php 
-	} // If registration required and not logged in 
+<?php
+	} // If registration required and not logged in
 } // If you delete this the sky will fall on your head
 ?>

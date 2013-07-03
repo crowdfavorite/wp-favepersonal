@@ -41,15 +41,15 @@ echo apply_filters(
 	</div>
 	
 	<div class="entry-content clearfix">
-		<?php 
-			the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
-			$args = array(
-				'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
-				'after' => "</p>\n",
-				'next_or_number' => 'number'
-			);
-			wp_link_pages($args);
-		?>
-	</div><!--entry-content-->
+<?php 
+the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
+$args = array(
+	'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
+	'after' => "</p>\n",
+	'next_or_number' => 'number'
+);
+wp_link_pages($args);
+?>
+	</div><!-- .entry-content -->
 	<?php cfct_misc('entry-meta'); ?>
 </article><!-- .post -->

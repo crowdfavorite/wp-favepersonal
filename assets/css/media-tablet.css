@@ -14,7 +14,7 @@ iPad (portrait)				768
 	#secondary {
 		width: 708px;
 	}
-	
+
 	/* Masthead */
 	#masthead {
 		padding: 16px 0 20px;
@@ -38,7 +38,7 @@ iPad (portrait)				768
 		font-size: 16px;
 		line-height: 18px;
 	}
-	
+
 	/* entry content */
 	.entry-content {
 		width: 568px;
@@ -48,13 +48,13 @@ iPad (portrait)				768
 	.single .format-video .entry-content {
 		width: 568px;
 		margin-right: 0;
-	}	
-	
+	}
+
 	/* media-big-screen.css overrides */
 	.single .entry-media {
 		padding-right: 0px;
 	}
-	
+
 	/* gallery posts */
 	.post .gallery-img-excerpt li {
 		margin: 0 0 12px;
@@ -87,8 +87,8 @@ iPad (portrait)				768
 		width: 80px;
 		height: 63px;
 	}
-	
-	
+
+
 	/* Sidebars */
 	#secondary {
 		margin-top: 60px;
@@ -106,7 +106,7 @@ iPad (portrait)				768
 	#secondary-full #sidebar-1 {
 		margin-left: 0;
 	}
-		
+
 	/* Let's pull things off the side */
 	.page-full .alignleft.pull {
 		margin-left: -140px;
@@ -121,8 +121,36 @@ iPad (portrait)				768
  	.single-format-video #social {
  		width: auto;
  	}
-	
-	.gallery-stage {
-		width: 530px;
+
+ 	#social .social-items-comments {
+ 		max-width: 568px;
+ 	}
+
+ 	/* img-archive page */
+
+ 	.full-archive-container .heading {
+		margin: 0 7px 10px;
+	}
+
+ 	.full-archive-container {
+ 		margin: 0 -8px;
+ 		width: 724px;
+ 	}
+
+	.image-excerpt,
+	.video-excerpt{
+ 		border: none;
+ 		margin: 8px;
+ 		width: 346px;
+ 	}
+
+ 		.img-archive-link {
+ 			background-size: auto 100%;
+			height: 202px;
+			width: 346px;
+		}
+
+ 	.full-archive-container .pagination {
+ 		margin: 72px 8px 25px;
 	}
 }

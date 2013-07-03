@@ -31,6 +31,14 @@ This file should be included in built css file when in production mode.
 	margin-left: 0px;
 }
 
+.excerpt.format-gallery .entry-content {
+	margin-bottom: .3em;
+}
+
+.excerpt.format-status .entry-content {
+	margin-bottom: .1em;
+}
+
 /* full page with no sidebar */
 .page-full {
 	padding: 0 140px;
@@ -78,6 +86,17 @@ This file should be included in built css file when in production mode.
 }
 #nav-main ul {
 	text-align: right;
+}
+
+/* img-archive page */
+
+.img-archive-container {
+	width: 1050px; /* 990 + 30*2 */
+}
+
+.img-archive {
+	border: none;
+	margin: 15px;
 }/* HTML5 ✰ Boilerplate
  * ==|== normalize ==========================================================
  */
@@ -264,6 +283,16 @@ iframe {
 
 .container {
 	margin: 0 auto;
+}
+
+select {
+	background: url(../img/select-arrows.png) no-repeat right center;
+	background-size: 14px 16px;
+	border: 1px solid #ccc;
+	border-radius: 0;
+	padding: 5px;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
 }
 
 /* ==|== non-semantic helper classes ======================================== */
@@ -562,7 +591,7 @@ html.ie7 #nav-main .menu > li {
 /** Posts Default
  -------------------------------------------------- */
 article {
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 	overflow: hidden;
 }
 
@@ -590,8 +619,8 @@ article {
 	padding-right: 1px; fixes text crop issue for IE8
 }
 .entry-header .entry-date {
-	position: absolute;	
-	bottom: 0;
+	position: absolute;
+	bottom: 1px;
 	left: 0;
 }
 .entry-date a,
@@ -599,7 +628,7 @@ article {
 	color: #ccc;
 }
 .single .entry-title,
-.page .entry-title {
+.page .page-title {
 	font-size: 30px;
 	line-height: 32px;
 }
@@ -829,6 +858,51 @@ article {
 	-o-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
 }
+.gallery-stage a.gallery-stage-nav-link {
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	width: 75px;
+	z-index: 100;
+	-moz-transition: all .5s ease-in-out;
+	-webkit-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+}
+
+.gallery-stage:hover a.gallery-stage-nav-link {
+	opacity: 1;
+}
+
+.gallery-stage a.gallery-stage-nav-link div {
+	background: url(../img/gallery-sprite.png) no-repeat 0 0;
+	color: #333;
+	font-size: 1em;
+	height: 47px;
+	margin-top: -24px;
+	position: absolute;
+	text-indent: -10000px;
+	top:50%;
+	width: 47px;
+}
+.gallery-stage a.gallery-stage-nav-link.next-link {
+	right: 0;
+}
+.gallery-stage a.gallery-stage-nav-link.next-link div {
+	background-position: -47px 0;
+	right: 0;
+}
+a.gallery-stage-nav-link.next-link:hover div {
+	background-position: -47px -47px;
+}
+.gallery-stage a.gallery-stage-nav-link.prev-link {
+	left: 0;
+}
+a.gallery-stage-nav-link.prev-link:hover div{
+	background-position: 0 -47px;
+}
+
 .oldie .gallery-stage figcaption {
 	background-color: #000;
 }
@@ -904,7 +978,8 @@ article {
 #primary .heading {
 	margin-bottom: 40px;
 }
-#primary .heading .page-title {
+#primary .heading .page-title,
+#primary-full .heading .page-title {
 	font-size: 18px;
 	padding: 5px 10px 7px 10px;
 }
@@ -1188,17 +1263,75 @@ article {
 }
 #footer p {
 	margin: 0;
+}
+
+/** Img/Video archives
+ -------------------------------------------------- */
+
+.full-archive-container {
+	margin: 0 -15px;
+	width: 1020px; /* 990 + 2*15px */
+}
+
+	.full-archive-container .heading {
+		margin: 0 15px 15px;
+	}
+
+	.full-archive-container li {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+.image-excerpt,
+.video-excerpt {
+	border: none;
+	margin: 15px;
+	position: relative;
+	width: 480px;
+}
+
+.entry-header-img-vid {
+	margin-top: 4px;
+	width: 100%;
+}
+
+.entry-header-img-vid .entry-date {
+	display: inline;
+	text-align: left;
+}
+
+.entry-header-img-vid .comments-title {
+	color: #ccc;
+	display: inline;
+	font: 16px/20px Titillium400, Helvetica, Arial, Verdana, sans-serif;
+	font-weight: 300;
+	letter-spacing: -1px;
+	padding-left: 12px;
+}
+
+	.img-archive-link {
+		background-color: #000;
+		background-position: center center;
+		background-repeat: no-repeat;
+		display: block;
+		height: 280px;
+		width: 480px;
+	}
+
+.full-archive-container .pagination {
+	clear: both;
+	margin: 72px 15px 25px;
 }/** Masthead/Header
- * 
+ *
  * Masthead used for the CSS but we are
  * calling it "header" where the user sees
  * most people won't know the term "masthead"
  *
  * Default colors here will be over ridden by
  * the ones choosen in the color settings
- * 
+ *
  * These styles are loaded for the front-end and admin-settings screen
- * 
+ *
  -------------------------------------------------- */
 
 /** Featured Posts
@@ -1245,7 +1378,7 @@ article {
 	top: 0;
 	z-index: 10;
 }
-.featured-description, 
+.featured-description,
 .featured-description p {
 	font-size: 14px;
 	line-height: 20px;
@@ -1902,6 +2035,7 @@ but allow screen readers to see */
 
 #social .social-items-comments {
 	float: left;
+	max-width: 510px;
 }
 #social .social-items-comments img {
 	width: 24px;
@@ -1938,7 +2072,7 @@ but allow screen readers to see */
 }
 
 #social .social-items img {
-	margin: 0 2px;
+	margin: 2px;
 }
 
 #social .social-items-comments a {
@@ -1984,7 +2118,7 @@ iPad (portrait)				768
 	#secondary {
 		width: 708px;
 	}
-	
+
 	/* Masthead */
 	#masthead {
 		padding: 16px 0 20px;
@@ -2008,7 +2142,7 @@ iPad (portrait)				768
 		font-size: 16px;
 		line-height: 18px;
 	}
-	
+
 	/* entry content */
 	.entry-content {
 		width: 568px;
@@ -2018,13 +2152,13 @@ iPad (portrait)				768
 	.single .format-video .entry-content {
 		width: 568px;
 		margin-right: 0;
-	}	
-	
+	}
+
 	/* media-big-screen.css overrides */
 	.single .entry-media {
 		padding-right: 0px;
 	}
-	
+
 	/* gallery posts */
 	.post .gallery-img-excerpt li {
 		margin: 0 0 12px;
@@ -2057,8 +2191,8 @@ iPad (portrait)				768
 		width: 80px;
 		height: 63px;
 	}
-	
-	
+
+
 	/* Sidebars */
 	#secondary {
 		margin-top: 60px;
@@ -2076,7 +2210,7 @@ iPad (portrait)				768
 	#secondary-full #sidebar-1 {
 		margin-left: 0;
 	}
-		
+
 	/* Let's pull things off the side */
 	.page-full .alignleft.pull {
 		margin-left: -140px;
@@ -2091,9 +2225,37 @@ iPad (portrait)				768
  	.single-format-video #social {
  		width: auto;
  	}
-	
-	.gallery-stage {
-		width: 530px;
+
+ 	#social .social-items-comments {
+ 		max-width: 568px;
+ 	}
+
+ 	/* img-archive page */
+
+ 	.full-archive-container .heading {
+		margin: 0 7px 10px;
+	}
+
+ 	.full-archive-container {
+ 		margin: 0 -8px;
+ 		width: 724px;
+ 	}
+
+	.image-excerpt,
+	.video-excerpt{
+ 		border: none;
+ 		margin: 8px;
+ 		width: 346px;
+ 	}
+
+ 		.img-archive-link {
+ 			background-size: auto 100%;
+			height: 202px;
+			width: 346px;
+		}
+
+ 	.full-archive-container .pagination {
+ 		margin: 72px 8px 25px;
 	}
 }/* --------------------------------------------------
 Mobile styles
@@ -2107,7 +2269,7 @@ iPad (portrait)				768
 
 /* iPhone portrait and landscape shared edge-case styles */
 @media only screen and (max-width: 767px) {
-	
+
 	/* Header */
 	#header .container {
 		padding-top: 25px;
@@ -2115,7 +2277,7 @@ iPad (portrait)				768
 	#header #site-name {
 		margin-bottom: 5px;
 	}
-	
+
 	/* Override h1 hiding when in menu mode */
 	#nav-main h1 {
 		border-bottom: 3px solid transparent;
@@ -2179,12 +2341,12 @@ iPad (portrait)				768
 	#nav-main .sub-menu li.current-menu-item > a {
 		border: 0;
 	}
-	
+
 	/* Masthead */
 	#masthead {
 		padding: 11px 0 15px;
 	}
-	
+
 
 	/** Posts Default
 	 -------------------------------------------------- */
@@ -2222,6 +2384,11 @@ iPad (portrait)				768
 		margin-right: 0;
 	}
 
+	.excerpt.format-status .entry-content,
+	.excerpt.format-gallery .entry-content {
+		margin-bottom: .3em;
+	}
+
 	/* entry meta */
 	.entry-meta {
 		text-align: left;
@@ -2230,6 +2397,10 @@ iPad (portrait)				768
 	.entry-meta span {
 		display: inline;
 		right: 0;
+	}
+	article p.entry-meta-replies,
+	.format-status.excerpt p.entry-meta-replies {
+		margin: -.25em 0 .25em;
 	}
 
 	/* full page with no sidebar, no padding for mobile */
@@ -2246,14 +2417,14 @@ iPad (portrait)				768
 	}
 	.format-status .entry-content p,
 	.format-quote .entry-content blockquote p {
-		margin-top: 1em;
+		margin: .5em 0 0;
 	}
 	/* quote */
 	.format-quote-attribution {
 		margin-left: 30px;
 	}
-	
-	
+
+
 	/** Social Comments
 	 -------------------------------------------------- */
 	#social .social-comment {
@@ -2281,16 +2452,16 @@ iPad (portrait)				768
 	#social .social-posted-when {
 		left: auto;
 	}
-	
+
 	#social .social-pingback .social-comment-header .social-comment-label {
 		display: none;
 	}
-	
+
 	#social .children,
 	#social .social-children {
 		padding-left: 15px;
 	}
-	
+
 	#social .social-identity {
 		padding-left: 50px;
 	}
@@ -2298,17 +2469,17 @@ iPad (portrait)				768
 	.logged-in #social .social-commentlist .social-identity .avatar {
 		left: 0px;
 	}
-	
+
 	#social .social-comment-collapse > .social-comment-inner {
 		padding: 10px 0 10px 26px;
 	}
-	
+
 	#social .social-comment-collapse > .social-comment-inner > .social-comment-header > .social-comment-author img {
 		left: 0;
 		right: auto;
 		top: 10px;
 	}
-	
+
 	#social .social-nav .social-all {
 		text-align: left;
 		width: auto;
@@ -2320,7 +2491,7 @@ iPad (portrait)				768
 	#social .social-comment-collapse .social-posted-when {
 		display: none;
 	}
-	
+
 	#social input.social-input,
 	#social .social-select {
 		width: 96%;
@@ -2338,6 +2509,11 @@ iPad (portrait)				768
 		width: 13px;
 		margin-right: 7px;
 	}
+
+	#social .social-items-comments {
+		float: left;
+		max-width: 440px;
+	}
  	/* media-big-screen.css overrides */
  	.single-format-image #social,
  	.single-format-gallery #social,
@@ -2347,7 +2523,15 @@ iPad (portrait)				768
 	#commentform-extras {
 		padding-left: 0;
 	}
-	
+	/* image/video archives */
+	.video-excerpt {
+		width: 300px;
+	}
+
+	.entry-header-img-vid .entry-title {
+		margin-bottom: 0;
+	}
+
 	/* Sidebar */
 	#secondary {
 		margin-top: 60px;
@@ -2357,14 +2541,10 @@ iPad (portrait)				768
 		margin-left: 0px;
 		width: 100%;
 	}
-	
+
 	/* Footer */
 	#footer .credit {
 		float: none;
-	}
-
-	.gallery-stage {
-		height: 201px;
 	}
 }
 
@@ -2387,7 +2567,7 @@ iPad (portrait)				768
 		height: 52px; /* 63px */
 		width: 67px; /* 80px */
 	}
-	
+
 	.featured {
 		height: 164px;
 		width: 300px;
@@ -2400,7 +2580,7 @@ iPad (portrait)				768
 	.featured .gallery-img-excerpt li {
 		height: 87px;
 	}
-	
+
 	.post .gallery-img-excerpt li {
 		width: 145px;
 	}
@@ -2426,6 +2606,35 @@ iPad (portrait)				768
 	}
 	#footer a {
 		display: inline-block;
+	}
+
+	#social .social-items-comments {
+		max-width: 280px;
+	}
+
+	.full-archive-container .heading {
+		margin: 0 0 10px;
+	}
+
+	.full-archive-container {
+		margin: 0;
+		width: 300px;
+	}
+
+	.image-excerpt,
+	.video-excerpt {
+		margin: 8px 0;
+		width: 300px;
+	}
+
+		.img-archive-link {
+			background-size: auto 100%;
+			height: 174px;
+			width: 298px;
+		}
+
+	.full-archive-container .pagination {
+		margin: 72px 8px 25px;
 	}
 }
 
@@ -2465,7 +2674,7 @@ iPad (portrait)				768
 	.post .gallery-img-excerpt .excerpt-img-6 {
 		margin-left: 0;
 	}
-	
+
 	.gallery-thumbs {
 		width: 470px;
 	}
@@ -2483,7 +2692,7 @@ iPad (portrait)				768
 	.featured.featured-format-gallery {
 		height: 128px;
 	}
-	.featured-description, 
+	.featured-description,
 	.featured-description p {
 		font-size: 12px;
 		line-height: 17px;
@@ -2497,13 +2706,40 @@ iPad (portrait)				768
 	#featured-post-3 {
 		display: none;
 	}
-	
+
 	.widget.bio-box {
 		margin: 0 auto 30px;
 		max-width: 310px;
 	}
 
-	.gallery-stage {
-		height: 308px;
+	/* Image archive pages */
+
+	.full-archive-container .heading {
+		margin: 0 7px 10px;
+	}
+
+	.full-archive-container {
+		margin: 0 -8px;
+		width: 476px;
+	}
+
+	.image-excerpt {
+		margin: 8px;
+		width: 222px;
+	}
+
+	.video-excerpt {
+		margin: 8px;
+		width: 460px;
+	}
+
+		.img-archive-link {
+			background-size: auto 100%;
+			height: 130px;
+			width: 222px;
+		}
+
+	.full-archive-container .pagination {
+		margin: 72px 8px 25px;
 	}
 }

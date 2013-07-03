@@ -35,16 +35,15 @@ $meta_items = apply_filters('cfcp_format_status_meta', array());
 <article id="post-content-<?php the_ID() ?>" <?php post_class('clearfix'); ?>>
 	<time class="entry-date" datetime="<?php the_time('c'); ?>" pubdate><?php echo cfcp_date(); ?></time>
 	<div class="entry-content">
-		<?php
-			the_content();
-		?>
 <?php
+the_content();
+
 if (count($meta_items)) {
 ?>
 		<p class="post-status-meta"><?php echo implode(' &middot; ', $meta_items); ?></p>
 <?php
 }
 ?>
-	</div>
+	</div><!-- .entry-content -->
 	<?php cfct_misc('entry-meta'); ?>
-</article><!-- .excerpt -->
+</article><!-- .post -->

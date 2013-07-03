@@ -16,9 +16,12 @@
  * **********************************************************************
  */
 
-
+global $post;
+if (!is_post_type_hierarchical($post->post_type)) {
 ?>
 <div class="pagination h6 clearfix">
 	<span class="next"><?php previous_post_link('%link &raquo') ?></span>
 	<span class="prev"><?php next_post_link('&laquo; %link') ?></span>
 </div>
+<?php
+}

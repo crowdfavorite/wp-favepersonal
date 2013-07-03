@@ -9,7 +9,9 @@
  * Version: 1.1
  * Patches the HTML5 placeholder atttribute functionality for browsers that don't support it
  */
-(function(c){c.fn.placeholder=function(f){var g=c.extend({},c.fn.placeholder.settings,f);var e=null;var h=function(){c("["+g.attribute+"]."+g.classname).val("")};if(g.attribute=="placeholder"&&g.disableIfSupported==true&&"placeholder" in document.createElement("input")){return}if("undefined"===typeof document.activeElement){if(c().jquery.split(".")>="1.6".split(".")){e=c(c("*:focus").get(0))}}else{e=c(document.activeElement)}this.each(function(){var i=c(this);i.focus(function(){b(i,g)});i.blur(function(){d(i,g)});i.blur();i.parents("form").submit(function(){});if(i.filter(c(e)).length){c(e).focus()}});c(window).unbind("unload",h);c(window).unload(h)};c.fn.placeholder.settings={classname:"cfp-placeholder",attribute:"placeholder",disableIfSupported:true};c.placeholders=function(e){var f=c.extend({},c.fn.placeholder.settings,e);c("["+f.attribute+"]").placeholder(f)};function b(e,f){e=c(e);if(e.hasClass(f.classname)){e.val("");e.removeClass(f.classname)}}function d(e,f){e=c(e);if(e.val()===""){e.addClass(f.classname);e.val(e.attr(f.attribute))}}function a(f,e){c(f).find("["+e.attribute+"]").each(function(){var g=c(this);if(g.hasClass(e.classname)){g.val("")}})}})(jQuery);/*global jQuery *//*! 
+(function(c){c.fn.placeholder=function(f){var g=c.extend({},c.fn.placeholder.settings,f);var e=null;var h=function(){c("["+g.attribute+"]."+g.classname).val("")};if(g.attribute=="placeholder"&&g.disableIfSupported==true&&"placeholder" in document.createElement("input")){return}if("undefined"===typeof document.activeElement){if(c().jquery.split(".")>="1.6".split(".")){e=c(c("*:focus").get(0))}}else{e=c(document.activeElement)}this.each(function(){var i=c(this);i.focus(function(){b(i,g)});i.blur(function(){d(i,g)});i.blur();i.parents("form").submit(function(){});if(i.filter(c(e)).length){c(e).focus()}});c(window).unbind("unload",h);c(window).unload(h)};c.fn.placeholder.settings={classname:"cfp-placeholder",attribute:"placeholder",disableIfSupported:true};c.placeholders=function(e){var f=c.extend({},c.fn.placeholder.settings,e);c("["+f.attribute+"]").placeholder(f)};function b(e,f){e=c(e);if(e.hasClass(f.classname)){e.val("");e.removeClass(f.classname)}}function d(e,f){e=c(e);if(e.val()===""){e.addClass(f.classname);e.val(e.attr(f.attribute))}}function a(f,e){c(f).find("["+e.attribute+"]").each(function(){var g=c(this);if(g.hasClass(e.classname)){g.val("")}})}})(jQuery);/*global jQuery */
+/*jshint multistr:true browser:true */
+/*!
 * FitVids 1.0
 *
 * Copyright 2011, Chris Coyier - http://css-tricks.com + Dave Rupert - http://daverupert.com
@@ -17,9 +19,87 @@
 * Released under the WTFPL license - http://sam.zoy.org/wtfpl/
 *
 * Date: Thu Sept 01 18:00:00 2011 -0500
-*/(function(a){a.fn.fitVids=function(b){var c={customSelector:null},d=document.createElement("div"),e=document.getElementsByTagName("base")[0]||document.getElementsByTagName("script")[0];return d.className="fit-vids-style",d.innerHTML="&shy;<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style>",e.parentNode.insertBefore(d,e),b&&a.extend(c,b),this.each(function(){var b=["iframe[src^='http://player.vimeo.com']","iframe[src^='http://www.youtube.com']","iframe[src^='http://www.kickstarter.com']","object","embed"];c.customSelector&&b.push(c.customSelector);var d=a(this).find(b.join(","));d.each(function(){var b=a(this),c=this.tagName=="OBJECT"?b.attr("height"):b.height(),d=c/b.width();b.wrap('<div class="fluid-width-video-wrapper" />').parent(".fluid-width-video-wrapper").css("padding-top",d*100+"%"),b.removeAttr("height").removeAttr("width")})})}})(jQuery);/*!
+*/
+
+(function( $ ){
+
+  "use strict";
+
+  $.fn.fitVids = function( options ) {
+    var settings = {
+      customSelector: null
+    };
+
+    if(!document.getElementById('fit-vids-style')) {
+
+      var div = document.createElement('div'),
+          ref = document.getElementsByTagName('base')[0] || document.getElementsByTagName('script')[0];
+
+      div.className = 'fit-vids-style';
+      div.id = 'fit-vids-style';
+      div.style.display = 'none';
+      div.innerHTML = '&shy;<style>         \
+        .fluid-width-video-wrapper {        \
+           width: 100%;                     \
+           position: relative;              \
+           padding: 0;                      \
+        }                                   \
+                                            \
+        .fluid-width-video-wrapper iframe,  \
+        .fluid-width-video-wrapper object,  \
+        .fluid-width-video-wrapper embed {  \
+           position: absolute;              \
+           top: 0;                          \
+           left: 0;                         \
+           width: 100%;                     \
+           height: 100%;                    \
+        }                                   \
+      </style>';
+
+      ref.parentNode.insertBefore(div,ref);
+
+    }
+
+    if ( options ) {
+      $.extend( settings, options );
+    }
+
+    return this.each(function(){
+      var selectors = [
+        "iframe[src*='player.vimeo.com']",
+        "iframe[src*='youtube.com']",
+        "iframe[src*='youtube-nocookie.com']",
+        "iframe[src*='kickstarter.com'][src*='video.html']",
+        "object",
+        "embed"
+      ];
+
+      if (settings.customSelector) {
+        selectors.push(settings.customSelector);
+      }
+
+      var $allVideos = $(this).find(selectors.join(','));
+      $allVideos = $allVideos.not("object object"); // SwfObj conflict patch
+
+      $allVideos.each(function(){
+        var $this = $(this);
+        if (this.tagName.toLowerCase() === 'embed' && $this.parent('object').length || $this.parent('.fluid-width-video-wrapper').length) { return; }
+        var height = ( this.tagName.toLowerCase() === 'object' || ($this.attr('height') && !isNaN(parseInt($this.attr('height'), 10))) ) ? parseInt($this.attr('height'), 10) : $this.height(),
+            width = !isNaN(parseInt($this.attr('width'), 10)) ? parseInt($this.attr('width'), 10) : $this.width(),
+            aspectRatio = height / width;
+        if(!$this.attr('id')){
+          var videoID = 'fitvid' + Math.floor(Math.random()*999999);
+          $this.attr('id', videoID);
+        }
+        $this.wrap('<div class="fluid-width-video-wrapper"></div>').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100)+"%");
+        $this.removeAttr('height').removeAttr('width');
+      });
+    });
+  };
+})( jQuery );
+/*!
  * cfgallery - a light-weight, semantic gallery script with bookmarkable slides.
- * version 1.0
+ * version 1.2
  *
  * Copyright (c) 2011-2012 Crowd Favorite (http://crowdfavorite.com)
  */
@@ -40,15 +120,15 @@
 	/* Local variable for hash makes lookups faster and is better for closure compiler */
 	var loc = window.location,
 		docEl = window.document.documentElement,
-		stageCounter = 0;
+		stageCounter = 0,
+		currentStageId = 0;
 	
 	/* Constructor */
 	var gal = function(options) {
 		var opts = $.extend(gal.opts, options),
 			fn = gal.helpers,
 			dim = opts.stageDimensions,
-			bgColor = opts.bgColor,
-			currentStageId = 0;
+			bgColor = opts.bgColor;
 		
 		gal.opts = opts;
 
@@ -97,6 +177,19 @@
 
 			var loading = $('<div class="loading">Loading...</div>').hide().appendTo(stage);
 
+			stage.append(jQuery('<a class="gallery-stage-nav-link prev-link"><div>Previous</div></a>').on('click', function (e) {
+				e.stopPropagation();
+				e.preventDefault();
+				currentStageId = stageId;
+				fn.setPrevHashToken(thumbs, stage);
+			}));
+			stage.append(jQuery('<a class="gallery-stage-nav-link next-link"><div>Next</div></a>').on('click', function(e) {
+				e.stopPropagation();
+				e.preventDefault();
+				currentStageId = stageId;
+				fn.setNextHashToken(thumbs, stage);
+			}));
+
 			// Bind loading message to image create and loaded events.
 			gallery.bind({
 				'create.cfgal': function(e) {
@@ -104,6 +197,31 @@
 				},
 				'loaded.cfgal': function(e) {
 					loading.hide();
+				},
+				'resize.cfgal': function(e, stageWidth, stageHeight) {
+					stage.css({
+						width: stageWidth,
+						height: stageHeight
+					});
+
+					$('figure.gallery-figure img', this).each(function() {
+						var $img = $(this),
+							thumbDims = $img.data('thumbDims');
+
+						var dims = fn.scale(
+								[thumbDims[0], thumbDims[1]],
+								[stageWidth, stageHeight]
+							);
+
+						$img.css({
+							'width': dims[0],
+							'height': dims[1],
+							// Add CSS for centering.
+							'margin-left': -1 * (dims[0] / 2),
+							'margin-top': -1 * (dims[1] / 2),
+							'visibility': 'visible'
+						});
+					})
 				}
 			});
 
@@ -211,7 +329,7 @@
 				if (current !== null && current !== i) {
 					$current = this.getImage(current, thumbs);
 					// Hide others / Dequeue all animations before starting a new one.
-					stage.children().not($current).stop().removeClass('init').hide();
+					stage.children().not($current).not('a.gallery-stage-nav-link').stop().removeClass('init').hide();
 					// Dequeue all animations before starting a new one.
 					stage.find('figure').stop(true, true);
 					this.transitionSlides(img, $current);
@@ -366,16 +484,20 @@
 			$figure = this.createFigure($thumb, data);
 
 			$img = this.loadImage(data.src, function() {
+
 				var t = $(this),
+					thumbDims = [t.prop('naturalWidth') || t.width(), t.prop('naturalHeight') || t.height()],
 					dims = scale(
-						[t.width(), t.height()],
+						[thumbDims[0], thumbDims[1]],
 						[stage.width(), stage.height()]
 					);
-				
+
 				$figure.css({
 					'display': 'none'
 				});
-				
+
+				t.data('thumbDims', thumbDims);
+
 				t.css({
 					'width': dims[0],
 					'height': dims[1],
@@ -530,7 +652,8 @@
 			});
 		};
 	};
-})(jQuery);jQuery(function($) {
+})(jQuery);
+jQuery(function($) {
 	$('.entry-media').fitVids();
 	
 	var activate = (Modernizr.touch && navigator.userAgent.toLowerCase().indexOf('blackberry') == -1 ? 'touchend' : 'click');
@@ -581,9 +704,61 @@
 	$('#s').placeholder();
 
 // Gallery
-	$('.cfgallery').cfgallery({
-		'stageDimensions': [null, null],
-		'titleClass': 'h3'
+	var $gal = $('.cfgallery'),
+		scale = $.fn.cfgallery.helpers.scale;
+
+	var getGalleryDims = function(gallery) {
+		gallery = $(gallery);
+
+		var dims = [];
+		var viewportW = $(window).width()
+		
+		// set defaults
+		var w = gallery.data('width');
+		var h = gallery.data('height');
+		dims[0] = (typeof w === 'undefined' ? 710 : w);
+		dims[1] = (typeof h === 'undefined' ? 474 : h);
+
+		// Proportional scale based on screen size
+		if (viewportW < 480) {
+			dims = scale(dims, [300, 999]);
+			gallery.addClass('mobile-portrait');
+		}
+		// iPhone Landscape
+		else if (viewportW < 768) {
+			dims = scale(dims, [460, 999]);
+			gallery.addClass('mobile-landscape');
+		}
+		// iPad Portrait
+		else if (viewportW < 1009) {
+			dims = scale(dims, [570, 999]);
+			gallery.addClass('mobile-tablet');
+		}
+
+		return dims;
+	}
+
+	$gal.each(function() {
+		$(this).cfgallery({
+			'stageDimensions': getGalleryDims(this),
+			'titleClass': 'h3'
+		});
 	});
+	
 	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();
+
+	var resizePage = function() {
+		$gal.each(function() {
+			var dims = getGalleryDims(this);
+			$(this).trigger('resize.cfgal', dims);
+		})
+	}
+
+	var fgResizeTimeout;
+	$(window).resize(function() {
+		clearTimeout(fgResizeTimeout);
+
+		//call the resizePage function
+		fgResizeTimeout = setTimeout(resizePage, 100);
+	});
 });

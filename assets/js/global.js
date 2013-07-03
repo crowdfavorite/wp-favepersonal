@@ -49,9 +49,61 @@ jQuery(function($) {
 	$('#s').placeholder();
 
 // Gallery
-	$('.cfgallery').cfgallery({
-		'stageDimensions': [null, null],
-		'titleClass': 'h3'
+	var $gal = $('.cfgallery'),
+		scale = $.fn.cfgallery.helpers.scale;
+
+	var getGalleryDims = function(gallery) {
+		gallery = $(gallery);
+
+		var dims = [];
+		var viewportW = $(window).width()
+		
+		// set defaults
+		var w = gallery.data('width');
+		var h = gallery.data('height');
+		dims[0] = (typeof w === 'undefined' ? 710 : w);
+		dims[1] = (typeof h === 'undefined' ? 474 : h);
+
+		// Proportional scale based on screen size
+		if (viewportW < 480) {
+			dims = scale(dims, [300, 999]);
+			gallery.addClass('mobile-portrait');
+		}
+		// iPhone Landscape
+		else if (viewportW < 768) {
+			dims = scale(dims, [460, 999]);
+			gallery.addClass('mobile-landscape');
+		}
+		// iPad Portrait
+		else if (viewportW < 1009) {
+			dims = scale(dims, [570, 999]);
+			gallery.addClass('mobile-tablet');
+		}
+
+		return dims;
+	}
+
+	$gal.each(function() {
+		$(this).cfgallery({
+			'stageDimensions': getGalleryDims(this),
+			'titleClass': 'h3'
+		});
 	});
+	
 	$('.gallery-img-excerpt li:not(.gallery-view-all) a').cfShimLinkHash();
+
+	var resizePage = function() {
+		$gal.each(function() {
+			var dims = getGalleryDims(this);
+			$(this).trigger('resize.cfgal', dims);
+		})
+	}
+
+	var fgResizeTimeout;
+	$(window).resize(function() {
+		clearTimeout(fgResizeTimeout);
+
+		//call the resizePage function
+		fgResizeTimeout = setTimeout(resizePage, 100);
+	});
 });
