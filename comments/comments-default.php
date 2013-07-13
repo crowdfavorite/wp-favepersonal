@@ -22,7 +22,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 global $post, $wp_query, $comments, $comment;
 
-if (have_comments() || comments_open()) {
+if (post_type_supports($post->post_type, 'comments') && (have_comments() || comments_open())) {
 	$comment_count = get_comment_count($post->ID);
 ?>
 
