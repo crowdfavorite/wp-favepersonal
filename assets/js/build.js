@@ -486,7 +486,7 @@
 			$img = this.loadImage(data.src, function() {
 
 				var t = $(this),
-					thumbDims = [t.prop('naturalWidth') || t.width(), t.prop('naturalHeight') || t.height()],
+					thumbDims = [$thumb.data('largew') || t.prop('naturalWidth') || t.width(), $thumb.data('largeh') || t.prop('naturalHeight') || t.height()],
 					dims = scale(
 						[thumbDims[0], thumbDims[1]],
 						[stage.width(), stage.height()]
