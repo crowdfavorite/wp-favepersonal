@@ -219,6 +219,9 @@ article {
 .excerpt .entry-content {
 	margin-bottom: 1em;
 }
+.format-image .entry-media .wp-post-image {
+	width: 100%;
+}
 
 /* entry meta */
 .entry-meta {
