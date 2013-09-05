@@ -2151,6 +2151,7 @@ iPad (portrait)				768
 	.single .entry-media {
 		padding-right: 0px;
 	}
+	.entry-content img,
 	.entry-media img {
 		max-width: 100%;
 	}
@@ -2367,6 +2368,7 @@ iPad (portrait)				768
 		padding-left: 0;
 		padding-right: 0;
 	}
+	.entry-content img,
 	.entry-media img {
 		max-width: 100%;
 	}

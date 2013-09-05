@@ -54,6 +54,7 @@ iPad (portrait)				768
 	.single .entry-media {
 		padding-right: 0px;
 	}
+	.entry-content img,
 	.entry-media img {
 		max-width: 100%;
 	}
