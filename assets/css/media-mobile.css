@@ -112,6 +112,9 @@ iPad (portrait)				768
 		padding-left: 0;
 		padding-right: 0;
 	}
+	.entry-media img {
+		max-width: 100%;
+	}
 
 	/* entry content */
 	.entry-content {
