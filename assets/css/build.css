@@ -677,7 +677,7 @@ article {
 	margin-bottom: 1em;
 }
 .format-image .entry-media .wp-post-image {
-	width: 100%;
+	max-width: 100%;
 }
 
 /* entry meta */
