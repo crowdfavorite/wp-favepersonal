@@ -1306,6 +1306,7 @@ a.gallery-stage-nav-link.prev-link:hover div{
 		background-color: #000;
 		background-position: center center;
 		background-repeat: no-repeat;
+		background-size: cover;
 		display: block;
 		height: 280px;
 		width: 480px;
