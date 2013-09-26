@@ -185,7 +185,7 @@ function cfcp_about_admin_ajax() {
 						$u = new CF_Favicon_Fetch(cfcp_about_get_favicon_dir());						
 						// download and save favicon
 						$f_data = $u->fetch_favicon($link['favicon']);
-						$filename = $u->make_filename($siteurl, $f_data['ext']);
+						$filename = $u->make_filename($link['url'], $f_data['ext']);
 						if ($u->save_file($filename, $f_data) !== false) {
 							$link['favicon'] = $filename;
 							$link['favicon_status'] = 'local';
