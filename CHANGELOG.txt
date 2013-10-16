@@ -3,6 +3,7 @@
 ## Version 1.3.1
 
 - (feature) Add ability to insert shortcodes in Bio Widget
+- (fix) Gallery captions and descriptions were flickering the wrong information the first time through
 - (fix) Bio Widget links were using the same custom icon for all links in rare instances
 - (fix) Proper version number for update checking
 - (fix) Don't show comments/form for post types that don't support them
