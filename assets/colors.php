@@ -122,6 +122,11 @@ a:active {
 #featured-posts .gallery-img-excerpt li.excerpt-img-3 {
 	background-color: <?php echo cf_colors_color('light', 'featured_gallery_img_3') ?>;
 }
+a.gallery-stage-nav-link.next-link:hover div,
+a.gallery-stage-nav-link.prev-link:hover div {
+	background-color: <?php echo cf_colors_color('medium', 'bio_box_carousel_hover_background'); ?>;
+}
+
 /* video */
 #featured-posts .featured-format-video {
 	background-color: <?php echo cf_colors_color('light', 'featured_format_video_background') ?>;
