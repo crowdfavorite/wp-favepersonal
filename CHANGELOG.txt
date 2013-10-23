@@ -8,6 +8,7 @@
 - (fix) Proper version number for update checking
 - (fix) Don't show comments/form for post types that don't support them
 - (fix) Put in production mode to use built CSS files
+- Gallery navigation arrows now match bio widget arrows.
 
 ## Version 1.3
 
