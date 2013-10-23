@@ -415,7 +415,6 @@ article {
 }
 
 .gallery-stage a.gallery-stage-nav-link div {
-	background: url(../img/gallery-sprite.png?v=2) no-repeat -3px 4px;
 	color: #333;
 	font-size: 1em;
 	height: 56px;
@@ -428,9 +427,16 @@ article {
 }
 
 .gallery-stage a.gallery-stage-nav-link.next-link div {
-	background-position: -56px 4px;
 	left: auto;
 	right: 10px;
+}
+
+.gallery-stage a.gallery-stage-nav-link:hover div {
+	background: url(../img/gallery-sprite.png?v=2) no-repeat -3px 4px;
+}
+
+.gallery-stage a.gallery-stage-nav-link.next-link:hover div {
+	background-position: -56px 4px;
 }
 
 .oldie .gallery-stage figcaption {
