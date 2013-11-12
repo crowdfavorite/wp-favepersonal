@@ -20,7 +20,7 @@ if (!empty($settings['images']) && count($settings['images'])) {
 ?>
 <div class="bio-box-content">
 	<h2 class="bio-box-title"><?php echo $settings['title']; ?></h2>
-	<?php echo wpautop(wptexturize($settings['description'])); ?>
+	<?php echo do_shortcode(wpautop(wptexturize($settings['description']))); ?>
 </div>
 <?php
 if (!empty($settings['links'])) {

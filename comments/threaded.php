@@ -3,7 +3,7 @@
 // This file is part of the Carrington JAM Theme for WordPress
 // http://carringtontheme.com
 //
-// Copyright (c) 2008-2012 Crowd Favorite, Ltd. All rights reserved.
+// Copyright (c) 2008-2013 Crowd Favorite, Ltd. All rights reserved.
 // http://crowdfavorite.com
 //
 // Released under the GPL license

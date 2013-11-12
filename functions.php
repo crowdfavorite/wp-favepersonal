@@ -4,9 +4,9 @@
  * @package favepersonal
  *
  * This file is part of the FavePersonal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/favepersonal/
+ * http://crowdfavorite.com/favepersonal/
  *
- * Copyright (c) 2008-2012 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2013 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -32,19 +32,19 @@ define('CFCT_DEBUG', false);
  * In production mode, or doing development?
  * When true, assets/load.php will enqueue the built versions of the files
  */
-define('CFCT_PRODUCTION', false);
+define('CFCT_PRODUCTION', true);
 
 /**
  * Theme version.
  */
-define('CFCT_THEME_VERSION', '1.2.1');
+define('CFCT_THEME_VERSION', '1.4');
 
 /**
  * Theme URL version.
  * Added to query var at the end of assets to force browser cache to reload after upgrade.
  */
 if (!(defined('CFCT_URL_VERSION'))) {
-	define('CFCT_URL_VERSION', '3');
+	define('CFCT_URL_VERSION', '5');
 }
 
 /**
@@ -261,7 +261,7 @@ function echo_hex($color2hex) {
 // Colors child theme export
 function cfcp_child_theme_export() {
 	if (current_user_can('edit_theme_options') && isset($_GET['cf_action']) && $_GET['cf_action'] == 'cfcp_child_theme_export') {
-		$settings = cf_kuler_get_settings();
+		$settings = cf_colors_get_settings();
 		if (!isset($settings['theme'])) {
 			wp_die('Sorry, an error occured.');
 		}

@@ -106,7 +106,7 @@
 /*!
  * jQuery hashchange event - v1.3 - 7/21/2010
  * http://benalman.com/projects/jquery-hashchange-plugin/
- * 
+ *
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
@@ -122,14 +122,14 @@
 		docEl = window.document.documentElement,
 		stageCounter = 0,
 		currentStageId = 0;
-	
+
 	/* Constructor */
 	var gal = function(options) {
 		var opts = $.extend(gal.opts, options),
 			fn = gal.helpers,
 			dim = opts.stageDimensions,
 			bgColor = opts.bgColor;
-		
+
 		gal.opts = opts;
 
 		if (this.length < 1) {
@@ -290,7 +290,7 @@
 				});
 		});
 	};
-	
+
 	/* Default options for gallery */
 	gal.opts = {
 		stageDimensions: [710, 474],
@@ -302,13 +302,13 @@
 		titleClass: 'title',
 		bgColor: '#000'
 	};
-	
+
 	/* Helper functions. These live inside of an object so that
 	"this" still points to the parent object (constructors the $.fn space get their
 	"this" value set to the jQuery collection passed). Object literal object notation also
 	compresses down a little better in Closure Compiler. */
 	gal.helpers = {
-		
+
 		/* Show an image on the stage by it's thumb's ID token.
 		- Loads image if not already loaded
 		- Preloads it's siblings afterwords
@@ -319,7 +319,7 @@
 				$img,
 				$thumb = $( '#' + (token || this.getToken(null, thumbs)) , gallery),
 				i = this.getThumbIndex($thumb, thumbs);
-			
+
 			var callback = function (img) {
 				var c = gal.opts.activatedClass,
 					current = $(stage).data('gallery-current'),
@@ -334,12 +334,12 @@
 					stage.find('figure').stop(true, true);
 					this.transitionSlides(img, $current);
 				}
-				
+
 				// If there is no current (first load) just show.
 				if (current === null) {
 					this.transitionSlides(img);
 				};
-				
+
 				thumbs.removeClass(c);
 				$thumb.addClass(c);
 
@@ -358,7 +358,7 @@
 				callback.apply(that, [$img]);
 			};
 		},
-		
+
 		/* Allow transition to be overidden using Duck Punching */
 		transitionSlides: function($img, $old) {
 			var that = this;
@@ -372,7 +372,7 @@
 			}
 			// show captions
 		},
-		
+
 		showSlide: function($neue) {
 			$neue.stop().addClass('init').fadeIn('medium', function() {
 				$(this).css({ opacity: 1 });
@@ -382,7 +382,7 @@
 				var timeout = setTimeout(func, 1600);
 			});
 		},
-		
+
 		/* Get ID token from hash string */
 		getHashToken: function(location) {
 			l = location || loc.hash;
@@ -391,17 +391,17 @@
 			};
 			return l.slice(2);
 		},
-		
+
 		/* Set hash without jumping */
 		setHashToken: function(str) {
 			loc.hash = this.makeHashToken(str);
 		},
-		
+
 		/* hash without jumping by prepending / to text */
 		makeHashToken: function(str) {
 			return '#/' + str;
 		},
-		
+
 		/* Run this on DOMReady or similar
 		Turns URLs with hashes anchored to gallery thumbs into #/foo URLs */
 		patchHashToken: function(thumbs) {
@@ -410,7 +410,7 @@
 				loc.hash = this.makeHashToken(l.replace('#', ''));
 			}
 		},
-		
+
 		setNextHashToken: function(thumbs, stage) {
 			var max = thumbs.length - 1,
 				t;
@@ -421,10 +421,10 @@
 			}
 
 			t = this.getToken(current, thumbs);
-			
+
 			this.setHashToken(t);
 		},
-		
+
 		setPrevHashToken: function(thumbs, stage) {
 			var max = thumbs.length - 1,
 				t;
@@ -438,22 +438,22 @@
 
 			this.setHashToken(t);
 		},
-		
+
 		/*
 		Get the index of a thumb jQuery object in the set of thumb objects. */
 		getThumbIndex: function($thumb, thumbs) {
 			return thumbs.index($thumb);
 		},
-		
+
 		getToken: function(i, thumbs) {
 			var a = i || gal.opts.start;
 			return thumbs.eq(a).attr('id');
 		},
-		
+
 		getImage: function(i, thumbs) {
 			return thumbs.eq(i).data('cfgalExpanded');
 		},
-		
+
 		getImageData: function($thumb) {
 			var title = $thumb.data('title'),
 				caption = $thumb.data('caption');
@@ -469,7 +469,7 @@
 				caption: caption
 			};
 		},
-		
+
 		/* Get a full size image jQuery object by it's index.
 		If the image doesn't exist yet, this function will create and append it based on the
 		thumbnail list markup. */
@@ -479,14 +479,14 @@
 				$thumb = thumbs.eq(i),
 				// Used in callback
 				scale = this.scale;
-			
+
 			data = this.getImageData($thumb);
 			$figure = this.createFigure($thumb, data);
 
 			$img = this.loadImage(data.src, function() {
 
 				var t = $(this),
-					thumbDims = [t.prop('naturalWidth') || t.width(), t.prop('naturalHeight') || t.height()],
+					thumbDims = [$thumb.data('largew') || t.prop('naturalWidth') || t.width(), $thumb.data('largeh') || t.prop('naturalHeight') || t.height()],
 					dims = scale(
 						[thumbDims[0], thumbDims[1]],
 						[stage.width(), stage.height()]
@@ -512,7 +512,7 @@
 					callback($figure);
 				}
 			});
-			
+
 			$img.css({
 				/* We have to do a bit of a dance with image hide/show and centering
 				Though the image is loaded through loadImage, making its width/height
@@ -527,25 +527,26 @@
 				'visibility': 'hidden'
 			})
 			.trigger('create.cfgal');
-			
+
+			$figure.hide(); // Make sure figure isn't visisble by default
 			$img.prependTo($figure);
 			$figure.appendTo(stage);
-			
+
 			$thumb.data('cfgalExpanded', $figure);
 			return $figure;
 		},
-		
+
 		createFigure: function ($thumb, data) {
 			var opts = gal.opts,
 			$figure, $title, $caption, $figcaption;
-			
+
 			$figure = $('<figure/>').addClass(opts.figureClass);
 
 			if (data.title || data.caption) {
 				$figcaption = $('<figcaption/>')
 					.addClass(opts.figcaptionClass)
 					.appendTo($figure);
-				
+
 				if (data.title) {
 					$title = $('<div />')
 						.addClass(opts.titleClass)
@@ -560,10 +561,10 @@
 						.appendTo($figcaption);
 				};
 			};
-			
+
 			return $figure;
 		},
-		
+
 		preloadNeighbors: function(index, stage, thumbs) {
 			var check = [1, 2, -1],
 				max = thumbs.length -1,
@@ -594,10 +595,10 @@
 			});
 		 	img.src = src;
 			img.alt = '';
-		
+
 			return $(img);
 		},
-		
+
 		/**
 		 * Proportional scale for image dimensions.
 		 * @param array dims [w,h]
@@ -617,7 +618,7 @@
 						x = 1;
 						y = 0;
 					}
-					
+
 					factor = boundaries[x] / dims[x];
 					dims[x] = boundaries[x];
 					dims[y] = Math.ceil(dims[y] * factor);
@@ -631,16 +632,16 @@
 			};
 			return dims;
 		},
-		
+
 		/* Copyright (c) 2011 Jed Schmidt, http://jed.is
 		https://gist.github.com/964849
 		Released under MIT license */
 		parseUrl: function(a){return function(b,c,d){a.href=b;c={};for(d in a)if(typeof a[d]=="string")c[d]=a[d];return c}}(document.createElement("a"))
 	};
-	
+
 	// Export gal object as jQuery plugin.
 	$.fn.cfgallery = gal;
-	
+
 	$.fn.cfShimLinkHash = function() {
 		var fn = gal.helpers;
 		if (this.length > 0) {

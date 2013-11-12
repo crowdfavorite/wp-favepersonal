@@ -4,9 +4,9 @@
  * @package favepersonal
  *
  * This file is part of the FavePersonal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/favepersonal/
+ * http://crowdfavorite.com/favepersonal/
  *
- * Copyright (c) 2008-2012 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2013 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -122,6 +122,7 @@ a:active {
 #featured-posts .gallery-img-excerpt li.excerpt-img-3 {
 	background-color: <?php echo cf_colors_color('light', 'featured_gallery_img_3') ?>;
 }
+
 /* video */
 #featured-posts .featured-format-video {
 	background-color: <?php echo cf_colors_color('light', 'featured_format_video_background') ?>;

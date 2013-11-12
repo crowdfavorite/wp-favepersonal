@@ -4,9 +4,9 @@
  * @package favepersonal
  *
  * This file is part of the FavePersonal Theme for WordPress
- * http://crowdfavorite.com/wordpress/themes/favepersonal/
+ * http://crowdfavorite.com/favepersonal/
  *
- * Copyright (c) 2008-2012 Crowd Favorite, Ltd. All rights reserved.
+ * Copyright (c) 2008-2013 Crowd Favorite, Ltd. All rights reserved.
  * http://crowdfavorite.com
  *
  * **********************************************************************
@@ -22,7 +22,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 global $post, $wp_query, $comments, $comment;
 
-if (have_comments() || comments_open()) {
+if (post_type_supports($post->post_type, 'comments') && (have_comments() || comments_open())) {
 	$comment_count = get_comment_count($post->ID);
 ?>
 
