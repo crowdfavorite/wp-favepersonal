@@ -1,14 +1,19 @@
 # FavePersonal
 
-## Version 1.3.1
+## Version 1.4
 
+- (announce) First release on WordPress.org
 - (feature) Add ability to insert shortcodes in Bio Widget
+- (change) Gallery navigation arrows now match bio widget arrows.
+- (change) Reduce footer link to single URL per WordPress.org guideline
+- (change) Remove option to hide credit link
 - (fix) Gallery captions and descriptions were flickering the wrong information the first time through
 - (fix) Bio Widget links were using the same custom icon for all links in rare instances
 - (fix) Proper version number for update checking
 - (fix) Don't show comments/form for post types that don't support them
 - (fix) Put in production mode to use built CSS files
-- Gallery navigation arrows now match bio widget arrows.
+- (fix) Child theme download works as expected
+- (fix) Point documentation links to updated URLs
 
 ## Version 1.3
 
