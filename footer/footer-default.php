@@ -28,7 +28,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		<div class="container clearfix">
 			<p class="credit"><?php _e('Powered by <a href="http://wordpress.org/">WordPress</a> &nbsp;&middot;&nbsp; <a href="http://crowdfavorite.com/favepersonal/" title="Elegant WordPress development and design services.">FavePersonal by Crowd Favorite</a>', 'favepersonal'); ?></p>
 <?php
-$colophon = str_replace('%Y', date('Y'), cfct_get_option('cfcp_copyright'));
+$colophon = cfct_get_option('cfcp_copyright', false);
 $sep = ($colophon ? ' &nbsp;&middot;&nbsp; ' : '');
 $loginout = cfct_get_loginout('', $sep);
 if ($colophon || $loginout) {
