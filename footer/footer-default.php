@@ -24,24 +24,10 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 		</div><!-- .container -->
 	</section><!-- #content -->
 
-
 	<footer id="footer">
 		<div class="container clearfix">
+			<p class="credit"><?php _e('Powered by <a href="http://wordpress.org/">WordPress</a> &nbsp;&middot;&nbsp; <a href="http://crowdfavorite.com/favepersonal/" title="Elegant WordPress development and design services.">FavePersonal by Crowd Favorite</a>', 'favepersonal'); ?></p>
 <?php
-if (cfct_get_option('credit') == 'yes') {
-?>
-			<p class="credit"><?php
-			printf(
-				__('Powered by <a href="http://wordpress.org/">WordPress</a> %3$s <a href="%4$s" title="A powerful, personal WordPress theme.">%2$s</a> by <a href="%5$s" title="Elegant WordPress development and design services.">%1$s</a>', 'favepersonal'),
-				'Crowd Favorite',
-				'FavePersonal',
-				'&nbsp;&middot;&nbsp;',
-				'http://crowdfavorite.com/wordpress/themes/favepersonal/',
-				'http://crowdfavorite.com'
-			);
-			?></p>
-<?php
-}
 $colophon = str_replace('%Y', date('Y'), cfct_get_option('cfcp_copyright'));
 $sep = ($colophon ? ' &nbsp;&middot;&nbsp; ' : '');
 $loginout = cfct_get_loginout('', $sep);

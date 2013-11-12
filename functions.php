@@ -261,7 +261,7 @@ function echo_hex($color2hex) {
 // Colors child theme export
 function cfcp_child_theme_export() {
 	if (current_user_can('edit_theme_options') && isset($_GET['cf_action']) && $_GET['cf_action'] == 'cfcp_child_theme_export') {
-		$settings = cf_kuler_get_settings();
+		$settings = cf_colors_get_settings();
 		if (!isset($settings['theme'])) {
 			wp_die('Sorry, an error occured.');
 		}

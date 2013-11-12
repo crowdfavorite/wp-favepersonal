@@ -21,6 +21,7 @@
  */ 
 function cfcp_options($options) {
 	unset($options['cfct']['fields']['about']);
+	unset($options['cfct']['fields']['credit']);
 	$yn_options = array(
 		'yes' => __('Yes', 'favepersonal'),
 		'no' => __('No', 'favepersonal')
@@ -98,7 +99,7 @@ function cfcp_options_customize() {
 		<th scope="row"><label><?php _e('Customize', 'favepersonal'); ?></label></th>
 		<td>
 			<p><?php printf(__('<a href="%s">Download Child Theme Stylesheet</a> (with current Colors)', 'favepersonal'), esc_url(home_url('index.php?cf_action=cfcp_child_theme_export'))); ?></p>
-			<p><?php _e('<a href="http://crowdfavorite.com/wordpress/themes/favepersonal/docs/customization/" target="_blank">View Customization Tips</a> (in documentation)', 'favepersonal'); ?></p>
+			<p><?php _e('<a href="http://crowdfavorite.com/favepersonal/docs/customization/" target="_blank">View Customization Tips</a> (in documentation)', 'favepersonal'); ?></p>
 		</td>
 	</tr>
 </table>
