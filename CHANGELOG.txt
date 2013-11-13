@@ -1,8 +1,12 @@
 # FavePersonal
 
-## Version 1.4
+## Version 1.4.1
 
 - (announce) First release on WordPress.org
+- (change) Update the included Post Formats Admin UI plugin to version 1.2
+
+## Version 1.4
+
 - (feature) Add ability to insert shortcodes in Bio Widget
 - (feature) Include Carrington Core v3.7
 - (change) Gallery navigation arrows now match bio widget arrows.
