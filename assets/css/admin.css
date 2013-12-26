@@ -41,7 +41,6 @@ Used for common styles across all admin pages
 .cf-elm-block {
 	clear: both;
 	margin: 10px 0;
-	padding: 3px 5px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
