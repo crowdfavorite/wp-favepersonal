@@ -1,6 +1,6 @@
 # FavePersonal
 
-## Version 1.4.2
+## Version 1.5
 
 - (change) Update the included Social plugin to version 2.10 (fixes threaded comments)
 - (change) Update the included Post Formats Admin UI plugin to version 1.3.1 (WP 3.8 admin UI)
