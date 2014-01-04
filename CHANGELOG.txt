@@ -1,5 +1,9 @@
 # FavePersonal
 
+## Version XX
+
+- (change) The gallery function is now preferring the fields exposed by the WP 3.6+ Media Library (while still respecting content entered in previous versions of WP)
+
 ## Version 1.5
 
 - (change) Update the included Social plugin to version 2.10 (fixes threaded comments)

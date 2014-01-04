@@ -11,7 +11,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -50,10 +50,10 @@ class CFCT_Gallery {
 	public $width = 710;
 
 	protected static $instances;
-	
+
 	public function __construct($id, $number_of_images = null, $attachment_ids = null) {
 		$this->post_id = $id;
-		
+
 		if ($number_of_images) {
 			$this->number_of_images = $number_of_images;
 		}
@@ -67,12 +67,12 @@ class CFCT_Gallery {
 			$this->width = CFCT_GALLERY_WIDTH;
 		}
 	}
-	
+
 	/* Just an API function for piecing together the slide naming convention */
 	public function get_slide_id($id) {
 		return 's'.$id;
 	}
-	
+
 	public function get_attachments() {
 		if (!$this->gallery) {
 			if (!empty($this->attachment_ids)) {
@@ -99,16 +99,16 @@ class CFCT_Gallery {
 		}
 		return $this->gallery;
 	}
-	
+
 	public function exists() {
 		$e = $this->get_attachments();
 		return $e->have_posts();
 	}
-	
+
 	public function max_size() {
 		$max_height = 0;
 		$max_width = 0;
-		
+
 		if ($this->exists()) { // loads attachments
 			// get IDs
 			$photo_ids = array();
@@ -139,7 +139,7 @@ class CFCT_Gallery {
 			'width' => $max_width
 		);
 	}
-	
+
 	public function render($args = array()) {
 		if (!$this->exists()) {
 			return;
@@ -167,11 +167,11 @@ class CFCT_Gallery {
 
 		$this->view($args);
 	}
-	
+
 	public function view($args = array()) {
 		extract($args);
 		$thumbs = '';
-		
+
 		foreach ($gallery->posts as $image) {
 			/* Individual links can be anchored to. Anchoring to a link triggers Javascript to
 			load its larger image in the stage area */
@@ -179,8 +179,14 @@ class CFCT_Gallery {
 			$slide_src = wp_get_attachment_image_src($image->ID, 'gallery-large-img', false);
 			$attachment_url = get_attachment_link($image->ID);
 			$thumb = wp_get_attachment_image($image->ID, 'tiny-img', false);
-			
-			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'" data-title="'.esc_attr(strip_tags($image->post_title)).'" data-caption="'.esc_attr(strip_tags($image->post_content)).'" data-largeh="'.esc_attr($slide_src[2]).'" data-largew="'.esc_attr($slide_src[1]).'">'.$thumb.'</a></li>';
+
+			// FavePersonal was built when WordPress used the post_title for captions
+			// in WP 3.6, the media library was changed to expose the post_excerpt for
+			// captions instead. We'll try to be backward compatible and forward looking
+			// at the same time here.
+			$title = (!empty($image->post_excerpt) ? $image->post_excerpt : $image->post_title);
+
+			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'" data-title="'.esc_attr(strip_tags($title)).'" data-caption="'.esc_attr(strip_tags($image->post_content)).'" data-largeh="'.esc_attr($slide_src[2]).'" data-largew="'.esc_attr($slide_src[1]).'">'.$thumb.'</a></li>';
 		}
 ?>
 <div class="cfgallery clearfix" data-width="<?php echo intval($width); ?>" data-height="<?php echo intval($height); ?>">
@@ -193,7 +199,7 @@ class CFCT_Gallery {
 
 class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	public $number_of_images = 9; // 9 by default
-	
+
 	protected function _view_prep($args = array()) {
 		$defaults = array(
 			'id' => get_the_ID(),
@@ -210,7 +216,7 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 		$args['post_permalink'] = get_permalink($args['id']);
 		return $args;
 	}
-	
+
 	public function view($args = array()) {
 		$args = $this->_view_prep($args);
 		extract($args);
@@ -227,7 +233,7 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 			$text = sprintf(__('View all %s', 'favepersonal'), intval($gallery->found_posts));
 			$thumbs .= '<li class="gallery-view-all h5"><a href="'.esc_url($post_permalink).'"> '.esc_html($text).'</a></li>';
 		}
-		
+
 		?>
 <ul class="gallery-img-excerpt">
 	<?php echo $thumbs; ?>
@@ -343,7 +349,7 @@ if (!is_admin()) {
 // disable carrington core gallery
 remove_filter('post_gallery', 'cfct_post_gallery', 10, 2);
 
-// Display gallery images with our own markup for excerpts 
+// Display gallery images with our own markup for excerpts
 function cfcp_gallery_excerpt($args = array()) {
 	$defaults = array(
 		'size' => 'thumbnail',
@@ -361,7 +367,7 @@ function cfcp_gallery_excerpt($args = array()) {
 			'size' => $args['size'],
 			'view_all_link' => $args['view_all_link']
 		);
-		
+
 		echo $args['before'];
 		$gallery->render($display_args);
 		echo $args['after'];
@@ -370,7 +376,7 @@ function cfcp_gallery_excerpt($args = array()) {
 }
 
 // Display gallery images with our own markup for featured posts in masthead
-// TODO - refactor to pass args to render that can select different view methods 
+// TODO - refactor to pass args to render that can select different view methods
 function cfcp_gallery_featured($args = array()) {
 	$defaults = array(
 		'size' => 'thumbnail',
@@ -387,7 +393,7 @@ function cfcp_gallery_featured($args = array()) {
 			'size' => $args['size'],
 			'view_all_link' => $args['view_all_link']
 		);
-		
+
 		echo $args['before'];
 		$gallery->render_featured($display_args);
 		echo $args['after'];
@@ -424,7 +430,7 @@ function cf_get_post_meta($post_ids, $key, $single = false) {
 				FROM $wpdb->postmeta
 				WHERE meta_key = '%s'
 				AND post_id IN (".implode(',', $post_ids).")
-			", 
+			",
 			$key
 		);
 		$results = $wpdb->get_results($sql);
