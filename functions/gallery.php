@@ -180,13 +180,13 @@ class CFCT_Gallery {
 			$attachment_url = get_attachment_link($image->ID);
 			$thumb = wp_get_attachment_image($image->ID, 'tiny-img', false);
 
-			// FavePersonal was built when WordPress used the post_title for captions
+			// FavePersonal was built when WordPress used the post_content for captions
 			// in WP 3.6, the media library was changed to expose the post_excerpt for
 			// captions instead. We'll try to be backward compatible and forward looking
 			// at the same time here.
-			$title = (!empty($image->post_excerpt) ? $image->post_excerpt : $image->post_title);
+			$caption = (!empty($image->post_excerpt) ? $image->post_excerpt : $image->post_content);
 
-			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'" data-title="'.esc_attr(strip_tags($title)).'" data-caption="'.esc_attr(strip_tags($image->post_content)).'" data-largeh="'.esc_attr($slide_src[2]).'" data-largew="'.esc_attr($slide_src[1]).'">'.$thumb.'</a></li>';
+			$thumbs .= '<li><a id="'.esc_attr($id).'" data-largesrc="'.esc_attr($slide_src[0]).'" href="'.esc_url($attachment_url).'" data-title="'.esc_attr(strip_tags($image->post_title)).'" data-caption="'.esc_attr(strip_tags($caption)).'" data-largeh="'.esc_attr($slide_src[2]).'" data-largew="'.esc_attr($slide_src[1]).'">'.$thumb.'</a></li>';
 		}
 ?>
 <div class="cfgallery clearfix" data-width="<?php echo intval($width); ?>" data-height="<?php echo intval($height); ?>">
