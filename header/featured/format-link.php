@@ -31,5 +31,5 @@ if (!empty($link)) {
 							<?php echo cf_trim_text(get_the_excerpt(), 150, "<p>", "&hellip;</p>"); ?>
 						</div>
 					</div>
-					<a href="<?php echo $url; ?>" title="<?php echo $title; ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"  class="featured-link"><?php _e('Go to link', 'favepersonal'); ?> &rarr;</a>
+					<a href="<?php echo esc_url($url); ?>" title="<?php echo esc_attr($title); ?>" rel="bookmark" rev="post-<?php the_ID(); ?>"  class="featured-link"><?php _e('Go to link', 'favepersonal'); ?> &rarr;</a>
 				</article><!-- .featured -->
