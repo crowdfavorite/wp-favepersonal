@@ -166,7 +166,7 @@ function cfcp_header_options_fields($html) {
 				</ul>
 <?php
 	$html = ob_get_clean();
-		
+
 	echo $html;
 }
 add_filter('cfct_option_cfcp_header', 'cfcp_header_options_fields');
@@ -202,9 +202,9 @@ function cfcp_header_admin_bar() {
 	$wp_admin_bar->remove_menu('header');
 	if (current_user_can('edit_theme_options')) {
 		$wp_admin_bar->add_menu(array(
-			'parent' => 'appearance', 
-			'id' => 'header', 
-			'title' => __('Header Image', 'favepersonal'), 
+			'parent' => 'appearance',
+			'id' => 'header',
+			'title' => __('Header Image', 'favepersonal'),
 			'href' => admin_url('themes.php?page=custom-header')
 		));
 	}
@@ -215,7 +215,7 @@ add_action('wp_before_admin_bar_render', 'cfcp_header_admin_bar');
 function cfcp_set_featured_position() {
 	add_meta_box(
 		'cfp-set-featured-position',
-		__( 'Featured Post Position', 'myplugin_textdomain' ),
+		__('Featured Post Position', 'favepersonal'),
 		'cfcp_header_featured_slot_form',
 		'post',
 		'normal',
@@ -241,7 +241,7 @@ function cfcp_header_featured_slot_form() {
 	<script type="text/javascript">
 	jQuery(function($) {
 		$('#cfp-set-featured-position li').click(function() {
-			
+
 // if already selected, deselect
 			var c = $(this).attr('class');
 			if (typeof c != 'undefined' && c.indexOf('cfp-featured-') != -1) {
