@@ -12,7 +12,7 @@
 	url = git@github.com:crowdfavorite/wp-post-formats.git
 [submodule "assets/asset-build"]
 	path = assets/asset-build
-	url = git@git.crowdfave.org:wp-plugin/asset-build.git
+	url = git@github.com:crowdfavorite/wp-asset-build.git 
 [submodule "assets/js/cfgallery"]
 	path = assets/js/cfgallery
 	url = git@github.com:crowdfavorite/jquery-gallery.git
