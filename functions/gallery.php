@@ -294,15 +294,25 @@ function cfcp_gallery($args = array()) {
 		'attachment_ids' => null,
 		'before' => '',
 		'after' => '',
+		'shortcode' => '',
+		'shortcodeatts' => '', 
 	);
+
 	$args = array_merge($defaults, $args);
-	$gallery = new CFCT_Gallery($args['id'], $args['number'], $args['attachment_ids']);
-	if ($gallery->exists()) {
+
+	if ( $args['shortcode'] == 'shortcode' ) {
 		echo $args['before'];
-		$gallery->render($args);
+		echo do_shortcode( $args['shortcodeatts'] );
 		echo $args['after'];
+	} elseif ( $args['shortcode'] == 'allimages' ) {
+		$gallery = new CFCT_Gallery($args['id'], $args['number'], $args['attachment_ids']);
+		if ($gallery->exists()) {
+			echo $args['before'];
+			$gallery->render($args);
+			echo $args['after'];
+		}
+		unset($gallery);
 	}
-	unset($gallery);
 }
 
 function cfcp_gallery_shortcode($content, $args) {
