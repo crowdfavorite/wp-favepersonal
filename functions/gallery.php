@@ -304,7 +304,7 @@ function cfcp_gallery($args = array()) {
 		echo $args['before'];
 		echo do_shortcode( $args['shortcodeatts'] );
 		echo $args['after'];
-	} elseif ( $args['shortcode'] == 'allimages' ) {
+	} elseif ( $args['shortcode'] == 'attached-images' ) {
 		$gallery = new CFCT_Gallery($args['id'], $args['number'], $args['attachment_ids']);
 		if ($gallery->exists()) {
 			echo $args['before'];
