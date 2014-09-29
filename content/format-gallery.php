@@ -12,7 +12,7 @@
  * **********************************************************************
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * **********************************************************************
  */
 
@@ -31,16 +31,23 @@ $content_width = '710'; // set for this view
 	</header>
 <?php
 
-cfcp_gallery(array(
-	'before' => '<div class="entry-media">',
-	'after' => '</div>',
-));
+if (cfpf_post_gallery_type() == 'shortcode') {
+	echo '<div class="entry-media">';
+	cfpf_gallery_output();
+	echo '</div>';
+}
+else {
+	cfcp_gallery(array(
+		'before' => '<div class="entry-media">',
+		'after' => '</div>',
+	));
+}
 
 ?>
 	<div class="entry-content clearfix">
-<?php 
+<?php
 
-the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>'); 
+the_content('<span class="more-link">'.__('Continued&hellip;', 'favepersonal').'</span>');
 $args = array(
 	'before' => '<p class="pages-link">'. __('Pages: ', 'favepersonal'),
 	'after' => "</p>\n",

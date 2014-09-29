@@ -201,8 +201,9 @@ class CFCT_Gallery_Excerpt extends CFCT_Gallery {
 	public $number_of_images = 9; // 9 by default
 
 	protected function _view_prep($args = array()) {
+		$post = get_post();
 		$defaults = array(
-			'id' => get_the_ID(),
+			'id' => $post->ID,
 			'view_all_link' => true
 		);
 		if (empty($defaults['height'])) {
@@ -311,22 +312,25 @@ function cfcp_gallery($args = array()) {
 	unset($gallery);
 }
 
-function cfcp_gallery_shortcode($content, $args) {
+function cfcp_gallery_shortcode($content, $args = array()) {
 	// Go with default gallery if in a feed (we don't want to run JS in feeds)
 	if (is_feed()) {
 		return '';
 	}
 
-	global $content_width;
+	$post = get_post();
 
-	$defaults = array(
+	$gallery_args = $defaults = array(
 		'number' => -1,
-		'id' => get_the_ID(),
+		'id' => $post->ID,
 		'attachment_ids' => null,
 		'before' => '<div>',
 		'after' => '</div>',
 	);
-	$gallery_args = array_merge($defaults, $args);
+	// occasionally $args is null
+	if (is_array($args)) {
+		$gallery_args = array_merge($defaults, $args);
+	}
 	if (!empty($args['ids'])) {
 		$gallery_args['attachment_ids'] = $args['ids'];
 	}
@@ -351,10 +355,11 @@ remove_filter('post_gallery', 'cfct_post_gallery', 10, 2);
 
 // Display gallery images with our own markup for excerpts
 function cfcp_gallery_excerpt($args = array()) {
+	$post = get_post();
 	$defaults = array(
 		'size' => 'thumbnail',
 		'number' => 9,
-		'id' => get_the_ID(),
+		'id' => $post->ID,
 		'attachment_ids' => null,
 		'before' => '',
 		'after' => '',
