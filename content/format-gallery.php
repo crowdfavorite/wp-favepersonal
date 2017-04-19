@@ -34,6 +34,8 @@ $content_width = '710'; // set for this view
 cfcp_gallery(array(
 	'before' => '<div class="entry-media">',
 	'after' => '</div>',
+	'shortcode' => get_post_meta($post->ID, '_format_gallery_type', true),
+	'shortcodeatts' => get_post_meta($post->ID, '_format_gallery_preview_shortcode', true),
 ));
 
 ?>
