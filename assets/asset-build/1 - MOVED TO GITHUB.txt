@@ -1,0 +1,3 @@
+Project has moved to github - https://github.com/crowdfavorite/wp-asset-build 
+
+Please make all updates there.

@@ -1,0 +1,29 @@
+# CF Colors
+
+## Version 2.1
+
+- WordPress 3.8 admin UI compatibility
+
+## Version 2.0.1
+
+- Proper changelog, etc.
+
+## Version 2.0
+
+- convert to ColourLovers instead of Adobe Kuler
+
+## Version 1.0.2
+
+- Kuler API compatibility change (use https)
+- additional check to make sure SimplePie exists before invoking
+
+## Version 1.0.1
+
+- added CHANGELOG
+- no tab selected when showing search results
+- allow pre-overriding of defined variables
+
+
+## Version 1.0
+
+- first public release
