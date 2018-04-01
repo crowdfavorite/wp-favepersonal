@@ -1,6 +1,3 @@
-[submodule "plugins/cf-archive-title"]
-	path = plugins/cf-archive-title
-	url = git@github.com:crowdfavorite/wp-archive-title.git
 [submodule "plugins/cf-post-formats"]
 	path = plugins/cf-post-formats
 	url = git@github.com:crowdfavorite/wp-post-formats.git
